@@ -1,15 +1,20 @@
-const React = require('react');
-const { Layout } = require('./src/components');
+var React = require('react'); // const causes a conflict?
+const { Layout: GatsbyBrowserLayout } = require('./src/components');
 
-// Logs when the client route changes
-exports.onRouteUpdate = ({ location, prevLocation }) => {
-  console.log('new pathname', location.pathname)
-  console.log('old pathname', prevLocation ? prevLocation.pathname : null)
-};
+// Adds a class name to the body element
+exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
+    setBodyAttributes({
+      className: "my-body-class",
+    })
+  }
 
 // Wraps every page in a component
 exports.wrapPageElement = ({ element, props }) => {
+    // props provide same data to Layout as Page element will get
+    // including location, data, etc - you don't need to pass it
     return (
-        <Layout {...props}>{element}</Layout>
+        <GatsbyBrowserLayout {...props}>
+            {element}
+        </GatsbyBrowserLayout>
     );
 };
