@@ -11,7 +11,7 @@
     "yarn": "^1.22.19"
   },
   "scripts": {
-    "install:clean": "rm -rf node_modules/ && yarn cache clean && yarn install",
+    "install:clean": "gatsby clean && rm -rf node_modules/ && yarn cache clean && yarn install",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -21,12 +21,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "gatsby": "^4.18.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "styled-components": "^5.3.5"
-  },
-  "devDependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/lab": "^5.0.0-alpha.75",
+    "@mui/material": "^5.5.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -35,6 +33,12 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.24",
+    "gatsby": "^4.18.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
     "babel-eslint": "^10.0.0",
     "eslint": ">= 4.12.1",
     "gh-pages": "^4.0.0",
@@ -42,6 +46,7 @@
     "typescript": "^4.7.4"
   },
   "resolutions": {
+    "**/@babel/core": "^7.0.0-0",
     "**/react-is": ">= 16.8.0",
     "@testing-library/dom": ">=7.21.4"
   },
