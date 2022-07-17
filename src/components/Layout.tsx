@@ -19,36 +19,36 @@ const GlobalStyles = createGlobalStyle`
     main {
         color: #232129;
         font-family: "-apple-system, Roboto, sans-serif, serif";
-        padding: 96;
+        padding: 96px;
     }
 
     h1 {
-        margin-top: 0;
-        margin-bottom: 64;
-        max-width: 320;
+        margin-top: 0px;
+        margin-bottom: 0.5em;
     }
 
     p {
-        margin-bottom: 48;
+        margin-bottom: 48px;
     }
 
     li {
         font-size: 24;
         font-weight: 300;
-        margin-bottom: 30;
-        max-width: 560;
+        margin-bottom: 30px;
+        max-width: 560px;
     }
 
     code {
         color: #8A6534;
-        padding: 4;
+        padding: 4px;
         background-color: #FFF4DB;
         font-size: 1.25rem;
-        border-radius: 4;
+        border-radius: 4px;
     }
 
     .heading-accent {
         color: #663399;
+        font-size: 0.75em;
     }
 
     .doc-list {
@@ -56,13 +56,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .link-list {
-        margin-bottom: 96;
+        margin-bottom: 96px;
         padding-left: 0;
     }
 
     .basic-link {
         color: #8954A8;
-        font-size: 16;
+        font-size: 16px;
         font-weight: bold;
         vertical-align: 5%;
     }
@@ -72,32 +72,32 @@ const GlobalStyles = createGlobalStyle`
 
         display: inline-block;
         list-style-type: none;
-        margin-right: 12;
-        margin-bottom: 24;
+        margin-right: 12px;
+        margin-bottom: 24px;
     }
 
     .badge {
         background-color: #088413;
         border: 1px solid #088413;
-        borderRadius: 4;
+        border-radius: 4px;
         color: #ffffff;
         display: inline-block;
-        font-size: 11;
+        font-size: 11px;
         font-weight: bold;
         letter-spacing: 1;
         line-height: 1;
-        margin-left: 10;
+        margin-left: 10px;
         padding: 4px 6px;
         position: relative;
-        top: -2;
+        top: -2px;
     }
 
     .description {
         color: #232129;
-        font-size: 14;
+        font-size: 14px;
         line-height: 1.25;
-        margin-top: 10;
-        margin-bottom: 0;
+        margin-top: 10px;
+        margin-bottom: 0px;
       }
 `;
 

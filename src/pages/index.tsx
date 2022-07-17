@@ -1,5 +1,11 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
+const ParagraphLines = styled.span`
+    display: block;
+`;
+
 const docLinks = [
   {
     text: "TypeScript Documentation",
@@ -66,14 +72,15 @@ const IndexPage = () => {
         <main>
             <title>Home Page</title>
             <h1>
-                Congratulations
+                Has this ever happened to you?
                 <br />
-                <span className="heading-accent">— you just made a Gatsby site! </span>
-                🎉🎉🎉
+                <span className="heading-accent">
+                    {`You start to write something and think, "Oh 💩, how do you write that thing in <blank> again!?"`}
+                </span>
             </h1>
             <p>
-                Edit <code>src/pages/index.tsx</code> to see this page
-                update in real-time. 😎
+                <ParagraphLines>Well, this little site is dedicated to helping you through those kind of moments. 🤓</ParagraphLines>
+                <ParagraphLines>CHECK IT OUUUUTTTTTTTT</ParagraphLines>
             </p>
             <ul className="doc-list">
                 {docLinks.map(doc => (

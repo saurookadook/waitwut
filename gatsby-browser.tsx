@@ -1,12 +1,11 @@
 var React = require('react'); // const causes a conflict?
 const { Layout: GatsbyBrowserLayout } = require('./src/components');
 
-// Adds a class name to the body element
-exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
-    setBodyAttributes({
-      className: "my-body-class",
-    })
-  }
+// Logs when the client route changes
+exports.onRouteUpdate = ({ location, prevLocation }) => {
+    console.log('new pathname', location.pathname);
+    console.log('old pathname', prevLocation ? prevLocation.pathname : null);
+};
 
 // Wraps every page in a component
 exports.wrapPageElement = ({ element, props }) => {

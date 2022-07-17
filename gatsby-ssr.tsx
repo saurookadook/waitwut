@@ -1,10 +1,11 @@
 var React = require('react'); // const causes a conflict?
 const { Layout } = require('./src/components');
 
-// Logs when the client route changes
-exports.onRouteUpdate = ({ location, prevLocation }) => {
-  console.log('new pathname', location.pathname)
-  console.log('old pathname', prevLocation ? prevLocation.pathname : null)
+// Adds a class name to the body element
+exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
+    setBodyAttributes({
+      className: "my-body-class",
+    })
 };
 
 // Wraps every page in a component
