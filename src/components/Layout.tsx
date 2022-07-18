@@ -1,5 +1,5 @@
-import React from 'react';
-
+import * as React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import {
     Box,
@@ -16,6 +16,10 @@ import {
 
 // TODO: maybe move this elsewhere to clean up this file?
 const GlobalStyles = createGlobalStyle`
+    body {
+        min-height: 100vh;
+    }
+
     main {
         color: #232129;
         font-family: "-apple-system, Roboto, sans-serif, serif";
@@ -102,9 +106,11 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const StyledContainer = styled(Container)`
+    background-color: ${props => props?.theme?.backgroundColor};
     height: 100vh;
-    margin-top: 6em;
+    margin-top: 4em;
     max-width: 100vw !important;
+    padding: 1.5em 2em;
 `;
 
 const StyledBox = styled(Box)`
@@ -118,11 +124,22 @@ const StyledBox = styled(Box)`
     padding-left: 10vw;
 `;
 
-const Layout = ({ children }: any) => {
+const Layout = ({ pageTitle, children }: any) => {
+    const data = useStaticQuery(graphql`
+        query {
+            site {
+                siteMetadata {
+                    title
+                }
+            }
+        }
+    `);
+
     return (
         <ThemeProvider theme={baseTheme}>
             <CssBaseline />
             <GlobalStyles />
+            <title>{pageTitle} | {data.site.siteMetadata.title}</title>
             <Header />
             <ThemeProvider theme={containerTheme}>
                 <StyledContainer disableGutters={true}>

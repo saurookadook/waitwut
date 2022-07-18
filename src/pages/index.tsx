@@ -84,7 +84,7 @@ const IndexPage = () => {
             </p>
             <ul className="doc-list">
                 {docLinks.map(doc => (
-                <li className="doc-link">
+                <li key={doc.url} className="doc-link">
                     <a
                     className='basic-link'
                     href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}

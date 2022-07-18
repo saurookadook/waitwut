@@ -1,5 +1,5 @@
-import React from 'react';
-
+import * as React from 'react';
+import { Link } from 'gatsby';
 import styled, { ThemeProvider, useTheme } from 'styled-components';
 import {
     AppBar,
@@ -15,6 +15,20 @@ const StyledAppBar = styled(AppBar)`
     color: ${props => props.theme?.color} !important;
 `;
 
+const NavLink = styled(Link)`
+    color: ${props => props?.theme?.color};
+    font-size: 1.5rem;
+    padding: 0 1em;
+    text-decoration: none;
+`;
+
+const navLinks = [
+    {
+        slug: 'sheet',
+        label: 'Sheet'
+    }
+];
+
 const Header = () => {
     const theme = useTheme();
 
@@ -27,6 +41,15 @@ const Header = () => {
                             <Typography variant="h4" component="div">
                                 wait, wut?
                             </Typography>
+                            {navLinks.map((navLink, index) => (
+                                <NavLink
+                                    key={`${index}:${navLink.slug}`}
+                                    to={`/${navLink.slug}`}
+                                >
+                                    {navLink.label}
+                                </NavLink>
+                            ))}
+
                         </Toolbar>
                     </StyledAppBar>
                 </ThemeProvider>
