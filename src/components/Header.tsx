@@ -39,7 +39,9 @@ const Header = () => {
                     <StyledAppBar>
                         <Toolbar>
                             <Typography variant="h4" component="div">
-                                wait, wut?
+                                <NavLink to='/'>
+                                    wait, wut?
+                                </NavLink>
                             </Typography>
                             {navLinks.map((navLink, index) => (
                                 <NavLink

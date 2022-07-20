@@ -9,6 +9,7 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
 
 // Wraps every page in a component
 exports.wrapPageElement = ({ element, props }) => {
+    console.log('browser - wrapPageElement props: ', props);
     // props provide same data to Layout as Page element will get
     // including location, data, etc - you don't need to pass it
     return (

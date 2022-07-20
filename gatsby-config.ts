@@ -10,7 +10,15 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   pathPrefix: '/waitwut',
-  plugins: [],
+  plugins: [
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `sheet`,
+        path: `${__dirname}/sheet`,
+      }
+    },
+  ],
 
   /**
    * misc devDependencies

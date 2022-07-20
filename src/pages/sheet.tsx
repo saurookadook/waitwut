@@ -12,12 +12,24 @@ const SheetContentContainer = styled(Container)`
     text-align: center;
 `;
 
-const SheetPage = () => {
+interface NodeFromQuery {
+    name: string;
+}
+
+const SheetPage = ({ data }: any) => {
+    console.log(data)
     return (
         <SheetContentContainer>
             <Typography variant="h2">
                 {`Some day, I'll have content 🙂`}
             </Typography>
+            <ul>
+                {data.allFile.nodes.map((node: NodeFromQuery): React.ReactElement => (
+                    <li key={node.name}>
+                        {node.name}
+                    </li>
+                ))}
+            </ul>
         </SheetContentContainer>
         // <SheetContentContainer container spacing={12}>
         //     {ants.map((ant: Ant, index: number) => {
@@ -43,6 +55,16 @@ const SheetPage = () => {
         //     })}
         // </SheetContentContainer>
     );
-}
+};
+
+export const query = graphql`
+  query {
+    allFile {
+      nodes {
+        name
+      }
+    }
+  }
+`;
 
 export default SheetPage;
