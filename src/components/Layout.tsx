@@ -135,11 +135,16 @@ const Layout = ({ pageTitle, children }: any) => {
         }
     `);
 
+    console.log('------------------------------------------------------------------------ Layout ------------------------------------------------------------------------');
+    console.log(' - pageTitle: ', pageTitle);
+    console.log(' - children: ', children);
+    console.log(' - data: ', data);
+
     return (
         <ThemeProvider theme={baseTheme}>
             <CssBaseline />
             <GlobalStyles />
-            <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+            <title>😬 {pageTitle || ''} | {data.site.siteMetadata.title}</title>
             <Header />
             <ThemeProvider theme={containerTheme}>
                 <StyledContainer disableGutters={true}>
