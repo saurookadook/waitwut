@@ -11,7 +11,7 @@
     "yarn": "^1.22.19"
   },
   "scripts": {
-    "install:clean": "gatsby clean && rm -rf node_modules/ && yarn cache clean && yarn install",
+    "install:clean": "gatsby clean && rm -rf node_modules/ && yarn cache clean && yarn install && yarn build",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -23,6 +23,8 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@mdx-js/mdx": "^1.0.0",
+    "@mdx-js/react": "^1.0.0",
     "@mui/lab": "^5.0.0-alpha.75",
     "@mui/material": "^5.5.3",
     "@testing-library/jest-dom": "^5.16.3",
@@ -34,7 +36,12 @@
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.24",
     "gatsby": "^4.18.2",
+    "gatsby-plugin-mdx": "^3.19.0",
+    "gatsby-remark-autolink-headers": "^5.19.0",
+    "gatsby-remark-prismjs": "^6.19.0",
     "gatsby-source-filesystem": "^4.19.0",
+    "gatsby-transformer-remark": "^5.19.0",
+    "prismjs": "^1.28.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "styled-components": "^5.3.5"
@@ -42,6 +49,8 @@
   "devDependencies": {
     "babel-eslint": "^10.0.0",
     "eslint": ">= 4.12.1",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-mdx": "^2.0.2",
     "gh-pages": "^4.0.0",
     "prettier": "^2.6.1",
     "typescript": "^4.7.4"
@@ -49,7 +58,9 @@
   "resolutions": {
     "**/@babel/core": "^7.0.0-0",
     "**/react-is": ">= 16.8.0",
-    "@testing-library/dom": ">=7.21.4"
+    "@testing-library/dom": ">=7.21.4",
+    "@babel/plugin-syntax-flow": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9"
   },
   "eslintConfig": {
     "extends": [
