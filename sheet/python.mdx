@@ -7,10 +7,19 @@ date: "2022-07-23"
 - [tuples](#tuples)
 - [lists](#lists)
 - [dicts](#dicts)
+- [Modules](#modules)
+- [Conditionals](#conditionals)
+- [Lamdas](#lamdas)
+- [Those other things that are good to know](#those-other-things-that-are-good-to-know)
+- [Functions](#functions)
+- [Closures](#closures)
+- [decorators](#decorators)
+- [Strings and Representations](#strings-and-representations)
+
 
 ---
 
-## tuples
+### tuples
 ```python
 simple_tuple = ("Norway", 4.953, 3)
 simple_tuple[0] #=> 'Norway'
@@ -75,7 +84,7 @@ a, b = b, a
 # then unpacks tuple on left, reusing names `a` and `b`
 ```
 
-## using tuple constructor
+### using tuple constructor
 ```python
 tuple([561, 1105, 1729, 2465])
 tuple("Carmichael")
@@ -259,14 +268,6 @@ sorted(scientists, key=lamda scientist_name: scientist_name.split()[-1])
 
 ![`function` vs `lamda`](/images/python/function-vs-lamda.png)
 
-
-
-### header
-
-```python
-
-```
-
 ---
 
 ## Those other things that are good to know
@@ -421,10 +422,6 @@ for item in zip(*daily):
 transposed = list(zip(*daily)) #=> list of tuples
 ```
 
----
-
-## Functions
-
 ### Local Functions
 
 - generally refers to functions defined inside of other functions
@@ -457,7 +454,7 @@ example()
 ### First-class Functions
 - functions can be treated like any other object
 
-### Closures
+## Closures
 - formed by local functions
 - maintain references to objects from earlier scopes
 - implemented in Python with special attribute `__closure__`
@@ -589,7 +586,7 @@ def make_timer():
 
 ```
 
-### decorators
+## decorators
 - modify or enhance functions without changing their definition
     - aka, non-intrusive and maintainable
 - implemented as callables that take and return other callables
@@ -598,14 +595,14 @@ def make_timer():
     - that function object is then passed to decorator function
     - return value from decorator function is then bound to the name of the original function
 
-#### Basic Syntax
+### Basic Syntax
 ```python
 @my_decorator
 def my_function():
     pass
 ```
 
-#### First Decorator Example
+### First Decorator Example
 
 Consider: for whatever reason, you need to ensure that these functions return strings which only contain ASCII characters
 ```python
@@ -668,9 +665,9 @@ mineral()
 #=> 'st\\xe5l'
 ```
 
-#### Other Objects as Decorators
+### Other Objects as Decorators
 
-##### Classes as Decorators
+#### Classes as Decorators
 ```python
 class MyDec:
     def __init__(self, f):
@@ -716,7 +713,7 @@ def hello(name):
 #=> 4
 ```
 
-##### Instances as Decorators
+#### Instances as Decorators
 
 ```python
 class AnotherDec:
@@ -769,7 +766,7 @@ def rotate_list(l):
 
 ```
 
-#### Multiple Decorators
+### Multiple Decorators
 - simply declare decorators above function with each decorator on a new line
 - processed in reverse order
 
@@ -781,7 +778,7 @@ def some_function():
     pass
 ```
 
-#### Decorating Methods
+### Decorating Methods
 
 ```python
 from escape_unicode import escape_unicode # from escape_unicode.py
@@ -815,12 +812,12 @@ class IslandMaker:
 
 ```
 
-#### `functools.wrap()`
+### `functools.wrap()`
 
 - properly updates metadata on wrapped functions
 - **problem:** naive decorators can lose important metadata
 
-##### Initial:
+#### Initial:
 ```python
 # no_op.py
 def hello():
@@ -840,7 +837,7 @@ def hello():
 #=>     Print a well-known message.
 ```
 
-##### After adding decorator:
+#### After adding decorator:
 ```python
 # no_op.py
 def no_op(f):
@@ -865,7 +862,7 @@ def hello():
 #=>
 ```
 
-##### After fixing decorator:
+#### After fixing decorator:
 ```python
 # no_op.py
 def no_op(f):
@@ -894,7 +891,7 @@ def hello():
 #=> 'Print a well-known message.'
 ```
 
-##### After fixing decorator with `functools.wrap()`:
+#### After fixing decorator with `functools.wrap()`:
 ```python
 # no_op.py
 import functools
@@ -923,7 +920,7 @@ def hello():
 #=> 'Print a well-known message.'
 ```
 
-#### Decorators as argument validators
+### Decorators as argument validators
 
 ```python
 # create_list.py
@@ -943,3 +940,27 @@ def create_list(value, size):
     return [value] * size
 
 ```
+
+---
+
+## Strings and Representations
+
+### `repr()`
+
+_TODO_ 🙃
+
+### `str()`
+
+_TODO_ 🙃
+
+---
+
+
+### header
+_TODO_ 🙃
+
+```python
+# _TODO_ 🙃
+```
+
+---
