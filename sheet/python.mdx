@@ -780,3 +780,166 @@ def rotate_list(l):
 def some_function():
     pass
 ```
+
+#### Decorating Methods
+
+```python
+from escape_unicode import escape_unicode # from escape_unicode.py
+
+class Trace:
+    def __init__(self):
+        self.enabled = True
+
+    def __call__(self, f):
+        def wrap(*args, **kwargs):
+            if self.enabled:
+                print('Calling {}'.format(f))
+            return f(*args)
+
+
+tracer = Trace()
+
+@tracer
+@escape_unicode
+def norwegian_island_maker(name):
+    return name + 'øy'
+
+
+class IslandMaker:
+    def __init__(self, suffix):
+        self.suffix = suffix
+
+    @tracer
+    def make_island(self, name):
+        return name + self.suffix
+
+```
+
+#### `functools.wrap()`
+
+- properly updates metadata on wrapped functions
+- **problem:** naive decorators can lose important metadata
+
+##### Initial:
+```python
+# no_op.py
+def hello():
+    """Print a well-known message."""
+    print('Hello, world!')
+
+# in repl
+>>> from no_op import hello
+>>> hello.__name__
+#=> 'hello'
+>>> hello.__doc__
+#=> 'Print a well-known message.'
+>>> help(hello)
+#=> Help on function hello in module no_op:
+#=>
+#=> hello()
+#=>     Print a well-known message.
+```
+
+##### After adding decorator:
+```python
+# no_op.py
+def no_op(f):
+    def no_op_wrapper():
+        return f()
+    return no_op_wrapper
+
+@no_op
+def hello():
+    """Print a well-known message."""
+    print('Hello, world!')
+
+# in repl
+>>> from no_op import hello
+>>> help(hello)
+#=> Help on function no_op_wrapper in module no_op:
+#=>
+#=> no_op_wrapper()
+>>> hello.__name__
+#=> 'no_op_wrapper'
+>>> hello.__doc__
+#=>
+```
+
+##### After fixing decorator:
+```python
+# no_op.py
+def no_op(f):
+    def no_op_wrapper():
+        return f()
+
+    no_op_wrapper.__name__ = f.__name__
+    no_op_wrapper.__doc__ = f.__doc__
+    return no_op_wrapper
+
+@no_op
+def hello():
+    """Print a well-known message."""
+    print('Hello, world!')
+
+# in repl
+>>> from no_op import hello
+>>> help(hello)
+#=> Help on function hello in module no_op:
+#=>
+#=> hello()
+#=>     Print a well-known message.
+>>> hello.__name__
+#=> 'hello'
+>>> hello.__doc__
+#=> 'Print a well-known message.'
+```
+
+##### After fixing decorator with `functools.wrap()`:
+```python
+# no_op.py
+import functools
+
+def no_op(f):
+    @functools.wrap(f)
+    def no_op_wrapper():
+        return f()
+    return no_op_wrapper
+
+@no_op
+def hello():
+    """Print a well-known message."""
+    print('Hello, world!')
+
+# in repl
+>>> from no_op import hello
+>>> help(hello)
+#=> Help on function hello in module no_op:
+#=>
+#=> hello()
+#=>     Print a well-known message.
+>>> hello.__name__
+#=> 'hello'
+>>> hello.__doc__
+#=> 'Print a well-known message.'
+```
+
+#### Decorators as argument validators
+
+```python
+# create_list.py
+def check_non_negative(index):
+    def validator(f):
+        def wrap(*args):
+            if args[index] < 0:
+                raise ValueError(
+                    'Argument {} must be non-negative'.format(index)
+                )
+            return f(*args)
+        return wrap
+    return validator
+
+@check_non_negative(1)
+def create_list(value, size):
+    return [value] * size
+
+```
