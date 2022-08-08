@@ -4,3 +4,32 @@ date: "2022-07-24"
 ---
 
 # Table of Contents
+
+- [Asynchronous Stuff](#asynchronous-stuff)
+- [IIFE](#iife)
+
+---
+
+## Asynchronous Stuff
+
+_TODO_ 🙃
+
+---
+
+## IIFE
+
+```JavaScript
+const colors = []
+
+(function() {
+    if (!dontAddColors) {
+        colors.push('green', 'blue', 'red');
+    }
+})();
+
+if (colors.length) {
+    console.log('Look at these colors! ', colors);
+} else {
+    console.log('No colors to print :(');
+}
+```

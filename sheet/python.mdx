@@ -177,8 +177,606 @@ pp(basic_dict)
 ```
 
 
+## Modules
+
+### Executable Directories
+
+```
+reader
+ |__  __main__.py  <- This file will handle the execution
+ |__  reader
+       |__  __init__.py
+       |__  compressed
+       |     |__  __init__.py
+       |     |__  bzipped.py
+       |     |__  gzipped.py
+       |__  reader.py
+```
+
+### Modules as Singletons
+
+```python
+# registry.py
+_registry = []
+
+def register(name):
+    _registry.append(name)
+
+def registered_names():
+    return iter(_registry)
+
+
+
+# use_registry.py
+import registry
+
+registry.register('my name')
+for name in registry.registered_names():
+    print(name)
+
+
+```
+
+
+## Conditionals
+
+### Conditional statement
+
+```python
+if condition:
+    result = true_value
+else:
+    result = false_value
+```
+
+### Conditional expression
+
+```python
+result = true_value if condition else false_value
+```
+
+---
+
+## Lamdas
+
+- named after lamda calculus, developed by Alonzo Church in 1936
+
+```python
+scientists = [
+    'Marie Curie',
+    'Albert Einstein',
+    'Niels Bohr',
+    'Isaac Newton',
+    'Dmitri Mendeleev',
+    'Antoine Lavoisier',
+    'Carl Linnaeus',
+    'Alfred Wegener',
+    'Charles Darwin'
+]
+
+sorted(scientists, key=lamda scientist_name: scientist_name.split()[-1])
+```
+
+![`function` vs `lamda`](/images/python/function-vs-lamda.png)
+
+
+
+### header
+
+```python
+
+```
+
 ---
 
 ## Those other things that are good to know
 - `==` tests "value equality"
 - `is` tests "identity equality"
+
+## Functions
+
+### Detecting callable objects:
+```python
+def is_even(x):
+    return x % 2 == 0
+
+callable(is_even)
+#=> True
+```
+
+### Making instances of classes callable(?)
+```python
+class CallMe:
+    def __call__(self):
+        print("Called!")
+
+call_me = CallMe()
+callable(call_me)
+#=> True
+```
+
+### Extended formal argument syntax
+
+```python
+def extended(*args, **kwargs):
+```
+
+1) 'star args' _must_ come before 'k w args'
+2) any arguments preceding 'star args' will be considered positional arguments
+3) any arguments after 'star args' will be mandatory keyword arguments
+4) if 'k w args' is present, it _must_ be last in arguments list
+
+#### 'star args'
+- handles positional arguments
+
+```python
+def hypervolume(*lengths):
+    print(f"lengths: {lengths}")
+    print(f"type: {type(lengths)}")
+
+    i = iter(lengths)
+    v = next(i)
+    for length in i:
+        v *= length
+    return v
+
+### or better yet, making sure a meaningful
+# exception gets thrown if called without arguments
+def hypervolume(length, *lengths):
+    print(f"lengths: {lengths}")
+    print(f"type: {type(lengths)}")
+
+    v = length
+    for item in lengths:
+        v *= item
+    return v
+
+```
+
+#### 'k w args' (KWARGS)
+- handles keyword arguments
+- keyword args passed to `kwargs` as dictionary
+
+```python
+def example(name, **kwargs):
+    print(f"name: {name}")
+    print("kwargs: ")
+    print(kwargs)
+    print(f"type of kwargs: {type(kwargs)}")
+
+
+def tag(name, **attributes):
+    result = '<' + name
+    for key, value in attributes.items():
+        result += ' {k}="{v}"'.format(k=key, v=str(value))
+    result += '/>'
+    return result
+
+```
+
+### Extended actual argument syntax
+
+#### 'star args'
+
+```python
+def print_args(arg1, arg2, *args):
+    print(arg1)
+    print(arg2)
+    print(arg3)
+
+t = (11, 12, 13, 14)
+print(*t)
+#=> 11
+#=> 12
+#=> (13, 14)
+```
+
+#### 'k w args'
+
+```python
+def color(red, green, blue, **kwargs):
+    print("r = ", red)
+    print("g = ", green)
+    print("b = ", blue)
+    print(kwargs)
+
+k = {'red': 21, 'green': 68, 'blue': 120, 'alpha': 52}
+color(**k)
+#=> r = 21
+#=> g = 68
+#=> b = 120
+#=> {'alpha': 52}
+```
+
+### Forwarding Arguments using `*args` and `**kwargs`
+
+```python
+def trace(f, *args, **kwargs):
+    print("args = ", args)
+    print("kwargs = ", kwargs)
+    result = f(*args, **kwargs)
+    print("result = ", result)
+    return result
+```
+
+### Example using `zip()`
+
+```python
+sunday = [2, 3, 4, 5, 6]
+monday =[11, 12, 13, 14, 15]
+tuesday = [5, 4, 3, 2, 1]
+daily = [sunday, monday, tuesday]
+
+### all do the same thing
+for item in zip(sunday, monday, tuesday):
+    print(item)
+
+for item in zip(daily[0], daily[1], daily[2]):
+    print(item)
+
+for item in zip(*daily):
+    print(item)
+
+### result from `print` in `for` loop as single data structure
+transposed = list(zip(*daily)) #=> list of tuples
+```
+
+---
+
+## Functions
+
+### Local Functions
+
+- generally refers to functions defined inside of other functions
+
+```python
+def func():
+    def local_func():
+        a = 'hello'
+        b = 'world'
+        return a + b
+
+    x = 1
+    y = 2
+    return x + y
+```
+
+### Returning Function from Function
+
+```python
+def outer():
+    def inner():
+        print('inner')
+    return inner
+
+example = outer()
+example()
+#=> inner
+```
+
+### First-class Functions
+- functions can be treated like any other object
+
+### Closures
+- formed by local functions
+- maintain references to objects from earlier scopes
+- implemented in Python with special attribute `__closure__`
+
+```python
+def enclosing():
+    x = 'closed over'
+    def local_func():
+        print(x)
+    return local_func
+
+lf = enclosing()
+lf()
+#=> closed over
+lf.__closure__
+#=> (<cell at 0x10ea95cc8: str object at 0x10eac19f0>,)
+```
+
+### Function Factory
+- function that returns new, specialized functions
+- simple example
+```python
+def raise_to(exp):
+    def raise_to_exp(x):
+        return pow(x, exp)
+    return raise_to_exp
+
+```
+
+### The `nonlocal` Keyword
+- LEGB does not apply when making new bindings
+- `nonlocal` keyword introduces names from enclosing namespace into local namespace
+    - **IMPORTANT**: using `nonlocal` with a name that doesn't exist will result in error
+
+```python
+message = 'global'
+
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        # does not affect `global` or `enclosing` bindings
+        message = 'local'
+
+    print('enclosing message before `local()` call: ', message)
+    local()
+    print('enclosing message after `local()` call: ', message)
+
+print('global message before `enclosing()` call: ', message)
+enclosing()
+print('global message after `enclosing()` call: ', message)
+
+#=> global message before `enclosing()` call: global
+#=> enclosing message before `local()` call: enclosing
+#=> enclosing message after `local()` call: enclosing
+#=> global message after `enclosing()` call: global
+```
+
+#### Changing `local` binding using `global` keyword
+```python
+message = 'global'
+
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        global message
+        message = 'local'
+
+    print('enclosing message before `local()` call: ', message)
+    local()
+    print('enclosing message after `local()` call: ', message)
+
+print('enclosing message before `enclosing()` call: ', message)
+enclosing()
+print('enclosing message after `enclosing()` call: ', message)
+
+#=> global message before `enclosing()` call: global
+#=> enclosing message before `local()` call: enclosing
+#=> enclosing message after `local()` call: enclosing
+#=> global message after `enclosing()` call: local
+```
+
+#### Changing `local` binding using `nonlocal` keyword
+```python
+message = 'global'
+
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        nonlocal message
+        message = 'local'
+
+    print('enclosing message before `local()` call: ', message)
+    local()
+    print('enclosing message after `local()` call: ', message)
+
+print('enclosing message before `enclosing()` call: ', message)
+enclosing()
+print('enclosing message after `enclosing()` call: ', message)
+
+#=> global message before `enclosing()` call: global
+#=> enclosing message before `local()` call: enclosing
+#=> enclosing message after `local()` call: local
+#=> global message after `enclosing()` call: global
+```
+
+#### Practical Example
+```python
+# make_timer.py
+import time
+
+
+def make_timer():
+    last_called = None
+
+    def elapsed():
+        nonlocal last_called
+        now = time.time()
+        if last_called is None:
+            last_called = now
+            return None
+        result = now - last_called
+        last_called = now
+        return result
+
+    return elapsed
+
+```
+
+### decorators
+- modify or enhance functions without changing their definition
+    - aka, non-intrusive and maintainable
+- implemented as callables that take and return other callables
+- how they work:
+    - Python takes decorated function and creates new function object
+    - that function object is then passed to decorator function
+    - return value from decorator function is then bound to the name of the original function
+
+#### Basic Syntax
+```python
+@my_decorator
+def my_function():
+    pass
+```
+
+#### First Decorator Example
+
+Consider: for whatever reason, you need to ensure that these functions return strings which only contain ASCII characters
+```python
+# translated_words.py
+def vegetable():
+    return 'blomkål'
+
+def animal():
+    return 'bjørn'
+
+def mineral():
+    return 'stål'
+```
+
+Solution 1: wrap strings in `ascii()`
+- not scalable
+- not maintainable
+```python
+# translated_words.py
+def vegetable():
+    return ascii('blomkål')
+
+def animal():
+    return ascii('bjørn')
+
+def mineral():
+    return ascii('stål')
+```
+
+Solution 2: using `escape_unicode` decorator
+```python
+# escape_unicode.py
+def escape_unicode(f):
+    def wrap(*args, **kwargs):
+        x = f(*args, **kwargs)
+        return ascii(x)
+
+    return wrap
+
+# translated_words.py
+from escape_unicode import escape_unicode
+
+@escape_unicode
+def vegetable():
+    return ascii('blomkål')
+
+@escape_unicode
+def animal():
+    return ascii('bjørn')
+
+@escape_unicode
+def mineral():
+    return ascii('stål')
+
+vegetable()
+#=> 'blomk\\xe5l'
+animal()
+#=> 'bj\\xf8rn'
+mineral()
+#=> 'st\\xe5l'
+```
+
+#### Other Objects as Decorators
+
+##### Classes as Decorators
+```python
+class MyDec:
+    def __init__(self, f):
+        pass
+
+    # NOTE: MUST implement this method in order for instance to be callable
+    def __call__(self):
+        pass
+
+@MyDec
+def func():
+    pass
+```
+
+Example:
+```python
+class CallCount:
+    def __init__(self, f):
+        self.f = f
+        self.count = 0
+
+    def __call__(self, *args, **kwargs):
+        self.count += 1
+        return self.f(*args, **kwargs)
+
+
+@CallCount
+def hello(name):
+    print('Hello, {}'.format(name))
+
+
+# in REPL
+>>> from call_count import hello
+>>> hello('Fred')
+#=> Hello, Fred
+>>> hello('Wilma')
+#=> Hello, Wilma
+>>> hello('Betty')
+#=> Hello, Betty
+>>> hello('Barney')
+#=> Hello, Barney
+>>> hello.count
+#=> 4
+```
+
+##### Instances as Decorators
+
+```python
+class AnotherDec:
+    def __call__(self, f):
+        def wrap():
+            pass
+        return wrap
+
+
+@AnotherDec()
+def func():
+    pass
+```
+
+Example:
+```python
+# tracer.py
+class Trace:
+    def __init__(self):
+        self.enabled = True
+
+    def __call__(self, f):
+        def wrap(*args, **kwargs):
+            if self.enabled:
+                print('Calling {}'.format(f))
+            return f(*args)
+
+
+tracer = Trace()
+
+@tracer
+def rotate_list(l):
+    return l[1:] + [l[0]]
+
+
+# in REPL
+>>> from tracer import rotate_list, tracer
+>>> l = [1, 2, 3]
+>>> l = rotate_list(l)
+#=> Calling <function rotate_list at 0x103a70dd0>
+>>> l
+#=> [2, 3, 1]
+>>> l = rotate_list(l)
+#=> Calling <function rotate_list at 0x103a70dd0>
+>>> l
+#=> [3, 1, 2]
+>>> tracer.enabled = False
+>>> l = rotate_list(l)
+#=>
+
+```
+
+#### Multiple Decorators
+- simply declare decorators above function with each decorator on a new line
+- processed in reverse order
+
+```python
+@decorator1
+@decorator2
+@decorator3
+def some_function():
+    pass
+```
