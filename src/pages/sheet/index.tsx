@@ -48,6 +48,7 @@ const SheetPage = ({ data }: SheetPageProps) => {
             <ul>
                 {nodes.map((node: NodeFromQuery): React.ReactElement => (
                     <li key={node.slug}>
+                        {/* TODO: add thumbnails! */}
                         <Link to={`/sheet/${node.slug}`}>
                             {(node.frontmatter || {}).title || node.slug}
                         </Link>
