@@ -947,7 +947,35 @@ def create_list(value, size):
 
 ### `repr()`
 
-_TODO_ 🙃
+- built-in function
+- produces unambiguous string representation of an object
+- often suggested that `repr()` should return legitimate source code (i.e. can be copy/pasted and run to recreate the object)
+
+```python
+class Point2D:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return '({}, {})'.format(self.x, self.y)
+
+    def __repr__(self):
+        return 'Point2D(x={}, y={})'.format(self.x, self.y)
+
+point = Point2D(x=12, y=24)
+point.repr()
+#=> 'Point2D(x=12, y=24)'
+```
+
+#### Other considerations
+
+- exactness more important than human-friendliness
+- suited for debugging
+- includes identifying information
+- generally best for logging
+- generally, result of `repr()` should contain **more information** than result of `str()`
+- as a rule, should **always write** a `repr()` for your classes
 
 ### `str()`
 
