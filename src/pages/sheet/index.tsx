@@ -12,6 +12,10 @@ const SheetContentContainer = styled(Container)`
     text-align: center;
 `;
 
+const SheetLineItem = styled.li`
+    list-type: none;
+`;
+
 interface NodeFrontmatter {
     date?: Date;
     title: string;
@@ -42,19 +46,24 @@ const SheetPage = ({ data }: SheetPageProps) => {
     return (
         // <SheetContentContainer container spacing={12}>
         <SheetContentContainer>
-            <Typography variant="h2">
-                {`Some day, I'll have content 🙂`}
-            </Typography>
-            <ul>
-                {nodes.map((node: NodeFromQuery): React.ReactElement => (
-                    <li key={node.slug}>
-                        {/* TODO: add thumbnails! */}
-                        <Link to={`/sheet/${node.slug}`}>
-                            {(node.frontmatter || {}).title || node.slug}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {(nodes || []).length > 0 ? (
+                <ul>
+                    {nodes.map((node: NodeFromQuery): React.ReactElement => (
+                        <SheetLineItem key={node.slug}>
+                            {/*
+                                TODO: add thumbnails!
+                                maybe using devicon? https://devicon.dev/
+                            */}
+                            <Link to={`/sheet/${node.slug}`}>
+                                {(node.frontmatter || {}).title || node.slug}
+                            </Link>
+                        </SheetLineItem>
+                    ))}
+                </ul>) : (
+                <Typography variant="h2">
+                    {`Some day, I'll have content 🙂`}
+                </Typography>
+            )}
         </SheetContentContainer>
     );
 };

@@ -19,7 +19,7 @@ date: "2022-07-23"
 
 ---
 
-### tuples
+## tuples
 ```python
 simple_tuple = ("Norway", 4.953, 3)
 simple_tuple[0] #=> 'Norway'
@@ -1025,6 +1025,69 @@ class MyClass:
     - takes single character string and converts it to **integer** Unicode codepoint
 - `chr()`
     - takes single **integer** Unicode codepoint and converts it to single character string
+
+---
+
+## Iterables and Iteration
+
+### Multi-Input Comprehensions
+
+Comprehensions can use **multiple input sequences** and **multile if-clauses**
+
+Benefits:
+- container populated "atomically"
+- allows Python to optimize creation
+- more readable
+
+```python
+[(x, y) for x in range(5) for y in range(3)]
+
+# above as `for` loops
+points = []
+for x in range(5):
+    for y in range(3):
+        points.append((x, y))
+
+
+values = [x / (x - y)
+          for x in range(100) if x > 50
+          for y in range(100) if x - y != 0]
+
+# above as `for` loops
+values = []
+for x in range(100):
+    if x > 50:
+        for y in range(100):
+            if x - y != 0:
+                values.append(x / (x - y))
+
+# referencing variable from 1st `for` loop in 2nd `for` loop
+[(x, y) for x in range(10) for y in range(x)]
+
+# above as `for` loops
+result = []
+for x in range(100):
+    for y in range(x):
+        result.append((x, y))
+```
+
+### Nested Comprehensions
+
+- all comprehensions nest in the same way
+
+```python
+vals = [[y * 3 for y in range(x)] for x in range(10)]
+
+# above as `for` loops
+outer = []
+for x in range(10):
+    inner = []
+    for y in range(x):
+        inner.append(y * 3)
+    outer.append(inner)
+
+
+```
 
 ---
 

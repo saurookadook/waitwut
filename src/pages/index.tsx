@@ -43,7 +43,7 @@ const IndexPage = () => {
                     <span>
                     <a
                         className='basic-link'
-                        href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
+                        href={`${link.url}`}
                     >
                         {link.text}
                     </a>

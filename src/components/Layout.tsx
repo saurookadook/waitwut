@@ -142,6 +142,7 @@ const Layout = ({ pageTitle, children }: any) => {
 
     return (
         <ThemeProvider theme={baseTheme}>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
             <CssBaseline />
             <GlobalStyles />
             <title>😬 {pageTitle || ''} | {data.site.siteMetadata.title}</title>
