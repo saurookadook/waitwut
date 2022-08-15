@@ -179,6 +179,24 @@ basic_dict = dict(foo='bar', baz='beep')
 del basic_dict['foo']
 ```
 
+### Common/Useful Methods
+
+#### [`get()`](https://python-reference.readthedocs.io/en/latest/docs/dict/get.html)
+
+```python
+basic_dict = dict(foo='bar', baz='beep')
+basic_dict.get('foo')
+#=> 'bar'
+basic_dict.get('meow', 'DEFAULT')
+#=> 'DEFAULT'
+
+counts_by_letter = {'a': 1, 'b': 2}
+counts_by_letter['c'] = counts_by_letter.get('c', 0) + 1
+counts_by_letter
+#=> {'a': 1, 'b': 2, 'c': 1}
+
+```
+
 ### pretty-printing using `pprint` module from Python standard library
 ```python
 from pprint import pprint as pp
@@ -1087,6 +1105,125 @@ for x in range(10):
     outer.append(inner)
 
 
+```
+
+### `map()`
+
+- apply a function to every element in a sequence, producing a new sequence
+- creates `map` object that uses lazy evaluation, meaning it only produces values as needed
+    - `map` object is an iterator object
+- can accept any number of input sequences
+    - **NOTE**: number of input sequences _**must**_ match number of functional arguments
+![map-with-multiple-input-sequences](/images/python/map-with-multiple-input-sequences.png)
+- map will terminate as soon as _any_ of the input sequences are terminated
+
+```python
+# get Unicode codepoint for each character in string
+map(ord, 'The quick brown fox')
+#=> <map object at 0x101576a90>
+```
+
+Using `Trace` with first arg of `map()`
+
+```python
+class Trace:
+    def __init__(self):
+        self.enabled = True
+
+    def __call__(self, f):
+        def wrap(*args, **kwargs):
+            if self.enabled:
+                print('Calling {}'.format(f))
+            return f(*args)
+
+result = map(Trace()(ord), 'The quick brown fox')
+```
+
+Example with multiple input-sequences:
+```python
+sizes = ['small', 'medium', 'large']
+colors = ['lavender', 'teal', 'burnt orange']
+animals = ['koala', 'platypus', 'salamander']
+def combine(size, color, animal):
+    return '{} {} {}'.format(size, color, animal)
+
+list(map(combine, sizes, colors, animals))
+#=> ['small lavender koala', 'medium teal platypus', 'large burnt orange salamander']
+```
+
+Example of early termination
+```python
+import itertools
+
+sizes = ['small', 'medium', 'large']
+colors = ['lavender', 'teal', 'burnt orange']
+animals = ['koala', 'platypus', 'salamander']
+
+def combine(quantity, size, color, animal):
+    return '{} x {} {} {}'.format(quantity, size, color, animal)
+
+list(map(combine, itertools.count(), sizes, colors, animals))
+#=> ['0 x small lavender koala', '1 x medium teal platypus', '2 x large burnt orange salamander']
+```
+
+### `filter()`
+
+- apply a function to each element in a sequence, constructing a new sequence with the elements for which the function returns `True`
+- unlike `map`, only accepts single sequence and function must only accept single argument
+- **NOTE**: can pass `None` as first argument to remove elements which evaluate to `False`
+
+```python
+positives = filter(lamda x: x > 0, [1, -5, 0, 6, -2, 8])
+#=> <filter object at 0x101576d90>
+list(positives)
+#=> [1, 6, 8]
+```
+
+### `functools.reduce()`
+
+- repeatedly apply a function to elements of a sequence, reducing them to a single value
+- accepts optional **initial value**
+    - _conceptually, just added to the start of the input sequence_
+
+_NOTE: standard library `operator` module contains function equivalents of infix operators_
+
+```python
+from functools import reduce
+import operator
+
+reduce(operator.add, [1, 2, 3, 4, 5])
+#=> 15
+```
+
+Example with function that prints progress
+```python
+from functools import reduce
+
+def mul(x, y):
+    print('mul {} {}'.format(x, y))
+    return x * y
+
+reduce(mul, range(1, 10))
+#=> mul 1, 2
+#=> mul 2, 3
+#=> mul 6, 4
+#=> mul 24, 5
+#=> mul 120, 6
+#=> mul 720, 7
+#=> mul 5040, 8
+#=> mul 40320, 9
+#=> 362880
+
+
+import operator
+
+values = [1, 2, 3]
+reduce(operator.add, values, 0)
+#=> 6
+
+values = []
+reduce(operator.add, values, 0)
+#=> 0
 ```
 
 ---
