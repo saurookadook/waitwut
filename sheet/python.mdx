@@ -4,6 +4,7 @@ date: "2022-07-23"
 ---
 
 # Table of Contents
+- [Numeric Types](#numeric-types)
 - [tuples](#tuples)
 - [lists](#lists)
 - [dicts](#dicts)
@@ -16,6 +17,123 @@ date: "2022-07-23"
 - [decorators](#decorators)
 - [Strings and Representations](#strings-and-representations)
 
+---
+
+## Numeric Types
+
+### `int`
+
+- unlimited precision signed integer
+
+### `float`
+
+- IEEE-754 double precision (64-bit)
+    - _in C-based languages, commonly known as a `double`_
+- 53 bits of binary precision
+- 15 to 17 bits of decimal precision
+
+**NOTE:**
+- generally, shouldn't assume that any Python `int` can be converted to a Python `float` without loss of information
+    - _usually fine for smaller numbers_
+```python
+# in repl
+>>> 2**53
+#=> 9007199254740992
+>>> float(2**53)
+#=> 9007199254740992.0
+>>> float(2**53 + 1) # loss of precision here
+#=> 9007199254740992.0
+>>> float(2**53 + 2) # but this is correct
+#=> 9007199254740994.0
+>>> float(2**53 + 3) # loss of precision here again
+#=> 9007199254740996.0
+>>> float(2**53 + 4) # but then this is correct
+#=> 9007199254740996.0
+```
+
+_For more, suggested reading: "What Every Computer Scientist Should Know About Floating-Point Arithmetic" by David Goldberg_
+
+### The `decimal` Module
+
+- standard library module
+- contains `Decimal` class
+    - decimal floating point
+    - configurable (although finite) precision
+    - defaults to 28 digits of decimal precision
+
+### Rational Numbers
+
+_TODO_ 🙃
+
+### Complex Type and `cmath` Module
+
+_TODO_ 🙃
+
+### `abs()`
+
+- built-in function
+- gives distance from zero
+
+```python
+# in repl
+>>> abs(-5)
+#=> 5
+>>> abs(-5.0)
+#=> 5.0
+>>> abs(Decimal(-5))
+#=> Decimal('5')
+>>> abs(Fraction(-5, 1))
+#=> Fraction(5, 1)
+>>> abs(complex(0, -5))
+#=> 5.0
+
+
+```
+
+### `round()`
+
+- built-in function
+- performs **decimal** rounding for all scalar number types
+- when there are equally close alternatives, rounding is done towards even numbers
+- **NOTE**:
+    - not supported for `complex`
+    - can show surprising results with `float` values (since they can't be represented _exactly_ in binary)
+
+```python
+# in repl
+>>> round(0.2812, 3)
+#=> 0.281
+>>> round(0.625, 1)
+#=> 0.6
+
+### equally close alternatives
+>>> round(1.5)
+#=> 2
+>>> round(2.5)
+#=> 2
+
+>>> round(Decimal('3.25'), 1)
+#=> Decimal('3.2')
+>>> round(Fraction(57, 100), 2)
+#=> Fraction(57, 100)
+>>> round(Fraction(57, 100), 1)
+#=> Fraction(3, 5)
+>>> round(Fraction(57, 100), 0)
+#=> Fraction(1, 1)
+```
+
+### Number Base Conversions
+
+_TODO_ 🙃
+
+### The `datetime` Module
+
+- standard library module
+- **types**
+    - `date`: Gregorian Calendar date _(assumes **proleptic** Gregorian calendar that extends into the infinite past and future)_
+        - `year`, `month`, `day`
+    - `time`: time within ideal day, ignoring leap seconds
+        - `hour`, `minute`, `second`, `microsecond`
 
 ---
 
