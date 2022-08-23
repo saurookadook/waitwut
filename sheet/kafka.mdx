@@ -1,0 +1,131 @@
+---
+title: "Kafka"
+date: "2022-08-23"
+---
+
+# Table of Contents
+
+## Basics
+
+- [Apache Kafka](https://kafaka.apache.org/intro) is a _distributed streaming platform_
+- centralized system for publishing and subscribing to data
+- allows for reading and re-reading data
+- "native" implementation written in Scala _(and by extension, Java)_
+
+### Common Uses
+
+- log aggregation
+- can perform ML tasks _(with help from third-parties)_
+- durable storage allows it to serve as reliable data lake
+- storing events for event-source system
+- external distributed commit log
+- stream-processing framework
+    - _newest capability_
+
+---
+
+## Architecture Overview
+
+**Broker**
+- "the heart of Kafka"
+- where data resides
+- several servers with Brokers coordinating together as single unit is a **cluster**
+
+**Producer**
+- produced data sent as _messages_
+    - byte arrays with no specific format
+    - can optionally be paired together with keys
+    - typeless by default
+- can attach _schema_ to messages
+    - can be verified against and typecast
+    - schema can be backed by by JSON, XML, Avro, etc.
+    - Avro tends to be the standard
+- Avro
+    - serialization framework originally built for Hadoop
+    - provides decent level of compression
+    - is decouplable from data
+    - _meaning code is (usually) not required to be regenerated upon schema change_
+    - provides support for backwards and forwards compatibility
+**Topic**
+- specific name to which a message is assigned
+- scalability achieved through splitting topic into _partitions_
+    - each partition is basically a separate and single log
+- Kafka can scale up to maximum equal to topic's partition count
+    - max cap necessary to guarantee that messages will be replayed in same order in which they were received
+        - to guarantee _that_, only one _reader_ within single consuming group _(signified by ID)_ can be attached to any given partition
+        - since there can only _**ever**_ be one reader per partition at a time, total partition count becomes maximum parallelism capability
+- fault tolerance:
+    - _partitions_ handle parallelism factor
+    - _replication factor_ handles redundancy
+    - cluster's metadata manager _ZooKeeper_ handles leader elections if leader in cluster goes down
+
+
+**Data**
+- data backing is basically commit log _(an append-only data structure)_
+    - guarantees ordering
+- each message appended to log is given an _offset_
+    - offset allows consumers of data to be able to replay back from any given point of the log
+    - also is what allows different reader applications to consume same data at their own pace
+
+**Consumers**
+- consume messages from a topic
+- typically scaled out via grouping of consumer apps, known as _consumer groups_
+- each consumer
+    - is assigned subset of topic(s) via its partitions
+    - moves at own pace, keeping track of last processed message's offset separately
+
+**Stream**
+- generally, movement of data from end to end: _producer > broker > consumer_
+
+### Brokers
+
+_TODO_ 🙃
+
+---
+
+### Zookeeper
+
+_TODO_ 🙃
+
+---
+
+### Producers
+
+_TODO_ 🙃
+
+---
+
+### Consumers
+
+_TODO_ 🙃
+
+---
+
+### Configuration
+
+_TODO_ 🙃
+
+---
+
+### Customization & Production Readiness
+
+_TODO_ 🙃
+
+---
+
+### DevOps: Monitoring
+
+_TODO_ 🙃
+
+---
+
+
+
+---
+
+##
+
+_TODO_ 🙃
+
+---
+
