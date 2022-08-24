@@ -9,6 +9,7 @@ date: "2022-07-23"
 - [lists](#lists)
 - [dicts](#dicts)
 - [Modules](#modules)
+- [Statements](#statements)
 - [Conditionals](#conditionals)
 - [Lamdas](#lamdas)
 - [Those other things that are good to know](#those-other-things-that-are-good-to-know)
@@ -362,6 +363,34 @@ for name in registry.registered_names():
 
 ```
 
+---
+
+## Statements
+
+`assert`
+- [The `assert` Statement](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement)
+- [assert (The Right Way)](https://python-reference.readthedocs.io/en/latest/docs/statements/assert.html)
+- [Python `assert` Statement](https://realpython.com/python-assert-statement/)
+
+```python
+assert expression
+
+# equivalent to
+if __debug__:
+    if not expression: raise AssertionError
+
+assert expression, other_expression
+
+# equivalent to
+if __debug__:
+    if not expression: raise AssertionError(other_expression)
+
+
+
+```
+
+
+---
 
 ## Conditionals
 

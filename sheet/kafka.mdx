@@ -79,7 +79,21 @@ date: "2022-08-23"
 
 ### Brokers
 
-_TODO_ 🙃
+- hub/heart for all data, managing:
+    - how it's stored
+    - in which partition it's stored
+    - other metadata-based tasks _(including dealing with offsets)_
+- usually exists as group of Brokers as a cluster _(for scalability)_
+- number of Brokers should be based on:
+    - storage needs and growth
+    - replication requirements _(since that effectively serves as a multiplier)_
+        - for example:
+            - expectation = store 100TB on 2 servers of 50TB
+            - actual = have replication factor of 2 means that you need 4 servers handling 200TB of data
+    - amount of network traffic expected to be hitting Brokers
+        - _namely, how many expected Consumers and how often are you expecting them to be hitting the servers?_
+        - since replica acts as Consumer, that shold also be considered in this estimate
+
 
 ---
 
