@@ -12,8 +12,24 @@ const SheetContentContainer = styled(Container)`
     text-align: center;
 `;
 
+const StyledUl = styled.ul`
+    width: 100%;
+`;
+
 const SheetLineItem = styled.li`
-    list-type: none;
+    /* display: inline-block; */
+    list-style: none;
+    /* max-width: 50%; */
+    text-align: center;
+    width: 100%;
+`;
+
+const SheetLineItemLink = styled(Link)`
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
 `;
 
 interface NodeFrontmatter {
@@ -47,19 +63,19 @@ const SheetPage = ({ data }: SheetPageProps) => {
         // <SheetContentContainer container spacing={12}>
         <SheetContentContainer>
             {(nodes || []).length > 0 ? (
-                <ul>
+                <StyledUl>
                     {nodes.map((node: NodeFromQuery): React.ReactElement => (
                         <SheetLineItem key={node.slug}>
                             {/*
                                 TODO: add thumbnails!
                                 maybe using devicon? https://devicon.dev/
                             */}
-                            <Link to={`/sheet/${node.slug}`}>
+                            <SheetLineItemLink to={`/sheet/${node.slug}`}>
                                 {(node.frontmatter || {}).title || node.slug}
-                            </Link>
+                            </SheetLineItemLink>
                         </SheetLineItem>
                     ))}
-                </ul>) : (
+                </StyledUl>) : (
                 <Typography variant="h2">
                     {`Some day, I'll have content 🙂`}
                 </Typography>

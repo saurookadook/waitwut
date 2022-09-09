@@ -36,10 +36,10 @@ const GlobalStyles = createGlobalStyle`
     }
 
     li {
-        font-size: 24;
+        font-size: 24px;
         font-weight: 300;
         margin-bottom: 30px;
-        max-width: 560px;
+        /* max-width: 560px; */
     }
 
     code {
@@ -102,7 +102,7 @@ const GlobalStyles = createGlobalStyle`
         line-height: 1.25;
         margin-top: 10px;
         margin-bottom: 0px;
-      }
+    }
 `;
 
 const StyledContainer = styled(Container)`

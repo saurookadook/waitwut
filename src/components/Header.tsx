@@ -4,6 +4,7 @@ import styled, { ThemeProvider, useTheme } from 'styled-components';
 import {
     AppBar,
     Box,
+    Drawer,
     Toolbar,
     Typography
 } from '@mui/material';
@@ -28,6 +29,8 @@ const navLinks = [
         label: 'Sheet'
     }
 ];
+
+const drawerWidth = 240;
 
 const Header = () => {
     const theme = useTheme();
@@ -54,6 +57,14 @@ const Header = () => {
 
                         </Toolbar>
                     </StyledAppBar>
+                    <Drawer
+                        variant="permanent"
+                            sx={{
+                            width: drawerWidth,
+                            flexShrink: 0,
+                            [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+                            }}
+                        ></Drawer>
                 </ThemeProvider>
             </Box>
         </ThemeProvider>
