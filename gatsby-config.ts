@@ -51,12 +51,12 @@ const config: GatsbyConfig = {
         }
     ],
 
-  /**
-   * misc devDependencies
-   * "@babel/core": "^7.0.0-0",
-   * "@babel/plugin-syntax-flow": "^7.14.5",
-   * "@babel/plugin-transform-react-jsx": "^7.14.9",
-   */
+    /**
+     * misc devDependencies
+     * "@babel/core": "^7.0.0-0",
+     * "@babel/plugin-syntax-flow": "^7.14.5",
+     * "@babel/plugin-transform-react-jsx": "^7.14.9",
+     */
 }
 
 export default config

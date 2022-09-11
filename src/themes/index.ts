@@ -2,7 +2,8 @@ import {
     DefaultTheme,
     AppBarTheme,
     BaseTheme,
-    ContainerTheme
+    ContainerTheme,
+    MenuTheme
 } from 'styled-components';
 
 const themeColors = {
@@ -51,9 +52,15 @@ const containerTheme: ContainerTheme = {
     width: "100%"
 };
 
+const menuTheme: MenuTheme = {
+    backgroundColor: themeColors.commentGray,
+    color: themeColors.graphite,
+}
+
 export {
     defaultTheme,
     appBarTheme,
     baseTheme,
-    containerTheme
+    containerTheme,
+    menuTheme
 };

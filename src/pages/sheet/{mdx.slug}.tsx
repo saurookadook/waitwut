@@ -39,15 +39,15 @@ const DocSheet = ({ data }: DocSheetProps) => {
 }
 
 export const query = graphql`
-  query ($id: String) {
-    mdx(id: {eq: $id}) {
-      frontmatter {
-        title
-        date(formatString: "MMMM D, YYYY")
-      }
-      body
+    query ($id: String) {
+        mdx(id: {eq: $id}) {
+            frontmatter {
+                title
+                date(formatString: "MMMM D, YYYY")
+            }
+            body
+        }
     }
-  }
 `;
 
 export default DocSheet

@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import {
-    Box,
-    CssBaseline,
     Container,
     Typography
 } from '@mui/material';

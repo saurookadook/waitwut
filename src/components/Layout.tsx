@@ -16,6 +16,10 @@ import {
 
 // TODO: maybe move this elsewhere to clean up this file?
 const GlobalStyles = createGlobalStyle`
+    html {
+        background-color: ${props => props?.theme?.backgroundColor};
+    }
+
     body {
         min-height: 100vh;
     }
@@ -108,9 +112,9 @@ const GlobalStyles = createGlobalStyle`
 const StyledContainer = styled(Container)`
     background-color: ${props => props?.theme?.backgroundColor};
     height: 100vh;
-    margin-top: 4em;
+    margin-top: 5.5em;
     max-width: 100vw !important;
-    padding: 1.5em 2em;
+    padding: 0 2em 1.5em;
 `;
 
 const StyledBox = styled(Box)`
