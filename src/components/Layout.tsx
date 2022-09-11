@@ -31,8 +31,12 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1 {
-        margin-top: 0px;
+        margin-top: 0;
         margin-bottom: 0.5em;
+    }
+
+    h1:first-of-type {
+        margin-top: 1em;
     }
 
     p {
@@ -112,9 +116,9 @@ const GlobalStyles = createGlobalStyle`
 const StyledContainer = styled(Container)`
     background-color: ${props => props?.theme?.backgroundColor};
     height: 100vh;
-    margin-top: 5.5em;
+    margin-top: 4em;
     max-width: 100vw !important;
-    padding: 0 2em 1.5em;
+    padding: 0 2.5em 1.5em;
 `;
 
 const StyledBox = styled(Box)`
@@ -139,8 +143,10 @@ const Layout = ({ pageTitle, children }: any) => {
         }
     `);
 
+    const title = pageTitle || data?.site?.siteMetadata?.title;
+
     console.log('------------------------------------------------------------------------ Layout ------------------------------------------------------------------------');
-    console.log(' - pageTitle: ', pageTitle);
+    console.log(' - pageTitle: ', title);
     console.log(' - children: ', children);
     console.log(' - data: ', data);
 
@@ -149,7 +155,7 @@ const Layout = ({ pageTitle, children }: any) => {
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
             <CssBaseline />
             <GlobalStyles />
-            <title>😬 {pageTitle || ''} | {data.site.siteMetadata.title}</title>
+            <title>😬 {title || ''} | {data.site.siteMetadata.title}</title>
             <Header />
             <ThemeProvider theme={containerTheme}>
                 <StyledContainer disableGutters={true}>

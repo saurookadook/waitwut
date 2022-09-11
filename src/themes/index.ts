@@ -26,7 +26,8 @@ const defaultTheme: DefaultTheme = {
     // backgroundColor: themeColors.plBackgroundYellow,
     // color: themeColors.plBlue,
     backgroundColor: themeColors.commentGray,
-    color: themeColors.keywordPurple,
+    // color: themeColors.keywordPurple,
+    color: themeColors.graphite,
     height: "100%",
     width: "100%"
 };

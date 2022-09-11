@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import styled, { ThemeProvider, useTheme } from 'styled-components';
 import {
     AppBar,
@@ -46,17 +46,63 @@ const MenuNavLink = styled(Link)`
     text-decoration: none;
 `;
 
-const navLinks = [
+const navLinks: NavLinkItem[] = [
     {
         slug: 'sheet',
-        label: 'Sheet'
+        label: 'Sheets',
+        children: []
     }
 ];
 
 const drawerWidth = 240;
 
-const Header = () => {
+export const useSheetsQuery = () => {
+    const { allMdx } = useStaticQuery(
+        graphql`
+            query {
+                allMdx(sort: {fields: frontmatter___title, order: DESC}) {
+                    nodes {
+                        frontmatter {
+                            title
+                        }
+                        id
+                        slug
+                    }
+                }
+            }
+        `
+    );
+    return allMdx;
+}
+
+const _MenuNavLink = ({ navLink, index }: _MenuNavLinkArgs): React.ReactElement => (
+    <>
+        <MenuNavLink
+            key={`${index}:${navLink.slug}`}
+            to={`/${navLink.slug}`}
+        >
+            {navLink.label}
+        </MenuNavLink>
+        {(navLink.children || []).map((childNavLink, childIndex) => (
+            _MenuNavLink({ navLink: childNavLink, index: childIndex})
+        ))}
+    </>
+)
+
+const Header = ({ data }: HeaderProps) => {
     const theme = useTheme();
+    const { nodes } = useSheetsQuery();
+
+    if ((nodes || []).length > 0) {
+        navLinks[0].children = (nodes || []).map((node: NodeFromQuery): NavLinkItem => {
+            return {
+                slug: node.slug,
+                label: ((node.frontmatter || {}).title || node.slug)
+            };
+        });
+    }
+
+    console.log('---------- data: ', data);
 
     return (
         <ThemeProvider theme={theme}>
@@ -81,12 +127,7 @@ const Header = () => {
                                 }}
                             >
                                 {navLinks.map((navLink, index) => (
-                                    <MenuNavLink
-                                        key={`${index}:${navLink.slug}`}
-                                        to={`/${navLink.slug}`}
-                                    >
-                                        {navLink.label}
-                                    </MenuNavLink>
+                                    _MenuNavLink({ navLink, index })
                                 ))}
                             </StyledDrawer>
                         </ThemeProvider>
