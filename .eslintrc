@@ -1,0 +1,108 @@
+{
+    "root": true,
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "requireConfigFile": false,
+        "babelOptions": {
+            "presets": ["@babel/preset-react"]
+        }
+    },
+    "extends": [
+        "prettier",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended"
+    ],
+    "env": {
+        "es6": true,
+        "jest": true,
+        "node": true,
+        "browser": true
+    },
+    "globals": {
+        "expect": false,
+        "assert": false,
+        "__DEVTOOLS__": false
+    },
+    "plugins": [
+        "prettier",
+        "babel",
+        "react",
+        "jsx-a11y"
+    ],
+    "rules": {
+        "array-bracket-newline": [1, "consistent"],
+        "array-bracket-spacing": [
+            1,
+            "never",
+            {
+                "arraysInArrays": true,
+                "objectsInArrays": false
+            }
+        ],
+        "array-element-newline": [
+            0,
+            {
+                "multiline": true,
+                "minItems": 2
+            }
+        ],
+        "arrow-parens": [2, "always"],
+        "curly": [1, "multi-line"],
+        "class-methods-use-this": 0,
+        "keyword-spacing": [
+            2,
+            {
+                "before": true,
+                "after": true,
+                "overrides": {
+                    "function": {
+                        "after": false
+                    },
+                    "while": {
+                        "after": false
+                    }
+                }
+            }
+        ],
+        "import/no-extraneous-dependencies": 0,
+        "import/no-named-as-default": 0,
+        "import/prefer-default-export": 0,
+        "jsx-quotes": [2, "prefer-double"],
+        "max-len": 0,
+        "no-extraneous-imports": 0,
+        "no-prototype-builtins": 0,
+        "no-unused-expressions": 0,
+        "no-unused-vars": 1,
+        "no-use-before-define": 0,
+        "no-useless-escape": 0,
+        "object-curly-spacing": [1, "always"],
+        "operator-linebreak": 0,
+        "prettier/prettier": 0,
+        "react/destructuring-assignment": 0,
+        "react/jsx-filename-extension": 0,
+        "react/jsx-fragments": 0,
+        "react/jsx-one-expression-per-line": 0,
+        "react/forbid-prop-types": 0,
+        "react/no-danger": 0,
+        "react/prop-types": [
+            2,
+            {
+                "ignore": ["css"]
+            }
+        ],
+        "semi": [1, "always"],
+        "space-before-function-paren": 0,
+        "wrap-iife": [2, "inside"]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["."]
+            }
+        },
+        "react": {
+            "version": "detect"
+        }
+    }
+}

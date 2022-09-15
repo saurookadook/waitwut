@@ -1,4 +1,4 @@
-import type { GatsbyConfig } from 'gatsby'
+import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
     siteMetadata: {
@@ -12,17 +12,17 @@ const config: GatsbyConfig = {
     pathPrefix: '/waitwut',
     plugins: [
         {
-            resolve: "gatsby-source-filesystem",
+            resolve: 'gatsby-source-filesystem',
             options: {
                 name: `sheet`,
                 path: `${__dirname}/sheet`,
-            }
+            },
         },
         {
-            resolve: "gatsby-plugin-mdx",
+            resolve: 'gatsby-plugin-mdx',
             options: {
-                gatsbyRemarkPlugins: ["gatsby-remark-prismjs", "gatsby-remark-autolink-headers"]
-            }
+                gatsbyRemarkPlugins: ['gatsby-remark-prismjs', 'gatsby-remark-autolink-headers'],
+            },
         },
         {
             resolve: `gatsby-transformer-remark`,
@@ -32,7 +32,7 @@ const config: GatsbyConfig = {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
                             // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
-                            classPrefix: "language-",
+                            classPrefix: 'language-',
                             // This is used to allow setting a language for inline code
                             // (i.e. single backticks) by creating a separator.
                             // This separator is a string and will do no white-space
@@ -41,14 +41,57 @@ const config: GatsbyConfig = {
                             // character '›'.
                             inlineCodeMarker: null,
                             aliases: {
-                                'sh': 'bash'
+                                sh: 'bash',
                             },
                             showLineNumbers: true,
-                        }
-                    }
-                ]
-            }
-        }
+                        },
+                    },
+                ],
+            },
+        },
+        // TODO: https://github.com/andreabreu-me/gatsby-plugin-prettier-eslint/issues/11
+        // {
+        //     resolve: "gatsby-plugin-prettier-eslint",
+        //     // this is the default configuration, override only what you need
+        //     options: {
+        //         cwd: process.cwd(), // path to a directory that should be considered as the current working directory
+        //         watch: true, // format/lint on save
+        //         initialScan: true, // if true, will format/lint the whole project on Gatsby startup
+        //         onChangeFullScanLint: false, // if true, on file save always perform full scan lint
+        //         onChangeFullScanFormat: false, // if true, on file save always perform full scan format
+        //         prettierLast: false, // if true, will run Prettier after ESLint
+        //         ignorePatterns: [
+        //             "**/node_modules/**/*",
+        //             "**/.git/**/*",
+        //             "**/dist/**/*",
+        //             ".cache/**/*",
+        //             "public/**/*",
+        //         ],
+        //         prettier: {
+        //             patterns: [
+        //                 "**/*.{css,scss,less}",
+        //                 "**/*.{json,json5}",
+        //                 "**/*.{graphql}",
+        //                 "**/*.{md,mdx}",
+        //                 "**/*.{html}",
+        //                 "**/*.{yaml,yml}",
+        //             ], // string or array of paths/files/globs to include related only to Prettier
+        //             ignorePatterns: [], // string or array of paths/files/globs to exclude related only to Prettier
+        //             customOptions: {}, // see: https://prettier.io/docs/en/options.html
+        //         },
+        //         eslint: {
+        //             patterns: ["**/*.{js,jsx,ts,tsx}"], // string or array of paths/files/globs to include related only to ESLint
+        //             ignorePatterns: [], // string or array of paths/files/globs to exclude related only to ESLint
+        //             formatter: "stylish", // set custom or third party formatter
+        //             maxWarnings: undefined, // number of max warnings allowed, when exceed it will fail Gatsby build
+        //             emitWarning: true, // if true, will emit lint warnings
+        //             failOnError: false, // if true, any lint error will fail the build, you may set true only in your prod config
+        //             failOnWarning: false, // same as failOnError but for warnings
+        //             plugins: [], // an array of plugins to load for ESLint
+        //             customOptions: {}, // see: https://eslint.org/docs/developer-guide/nodejs-api#cliengine
+        //         },
+        //     },
+        // },
     ],
 
     /**
@@ -57,6 +100,6 @@ const config: GatsbyConfig = {
      * "@babel/plugin-syntax-flow": "^7.14.5",
      * "@babel/plugin-transform-react-jsx": "^7.14.9",
      */
-}
+};
 
-export default config
+export default config;
