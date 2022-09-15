@@ -99,19 +99,60 @@ date: "2022-08-23"
 
 ### Zookeeper
 
-_TODO_ 🙃
+- high-level coordinator/controller of the cluster, responsible for assigning out topic partitions and monitoring for failures
+- typically run as a cluster, known as an _ensemble_
+    - should be an odd number of servers
+        - 3 is ok
+        - 5 is optimal
+        - more than 7 likely results in degradation
+    - can opt to run multiple Kafka clusters on same ensemble, using `chroot` to delineate each cluster:
+        ```sh
+        # KafkaCluster1 is `chroot`
+        zookeeper.connect = host:port/KafkaCluster1
+        ```
+    - **not** suggested to share ensemble with other non-Kafka apps
+        - sensitive to latency and timeouts
+        - connection hiccups can make brokers act unpredictably
+- role in Kafka
+    1) when Broker starts up, registers itself in ZooKeeper by creating ephemeral node using its unique ID
+    2) controller is simply the first Broker to create ephemeral node named controller
+    3) subsequent Brokers will attempt to do the same, but will instead create a watch on current controller node
+
 
 ---
 
 ### Producers
 
-_TODO_ 🙃
+- responsible for creatings messages and sending them to Broker
+- when possible, will wait to send messages in batches by Topic and Parition to reduce impact of network
+    - _NOTE: when no partition is assigned or calculated, it will be assigned using round-robin algorithm_
+- managing speed of data production
+    - can increase throughput by increasing number of threads used by Producer
+    - if more is needed, can spin up more Producers
 
 ---
 
 ### Consumers
 
-_TODO_ 🙃
+- responsible for flowing messages out from _(i.e. reading Topic data out of)_ Broker
+- can track one or more Kafka Topics
+- must push offsets of data they've already processed back to Kafka cluster
+    - _in that sense, a Consumer is also a Producer_
+- more than one is usually needed
+- _Consumer groups_ consist of Consumers working together in coordinated system
+    - each Consumer shares Consumer group ID
+    - coordinate which Consumers get which Paritions of data
+    - since Partition cannot be split, max Consumers in group _**should not**_ equal more than total available Partitions
+- when Consumer has group ID, sends join group message to coordinator
+    - _first consumer to join becomes group's leader_
+- with leader set, coordinator sends Consumers it already knows or becomes aware of down to leader
+    - leader then decides each Consumer's Partition assignments
+    - once divvied up, sends assignments back to coordinator so that it can send each Consumer its assigned Partitions
+    - this division of labor is rebalanced upon Consumers being added or removed from group
+        - _**NOTE**: message flows halted during this time_
+- group coordinator determines Consumer availability via Consumers sending periodic pings _(known as heartbeats)_
+    - if coordinator notices too many missed successive heartbeats, marks that Consumer as unavailable
+- **NOTE**: most of the above is handled for you
 
 ---
 
