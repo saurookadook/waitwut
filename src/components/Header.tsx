@@ -38,12 +38,17 @@ const StyledDrawer = styled(Drawer)`
     }
 `;
 
-const MenuNavLink = styled(Link)`
+const StyledNavLink = styled(Link)`
     color: ${props => props?.theme?.color};
     font-size: 1.5rem;
     padding: 0 1em;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
+`;
+
+const ChildLinkWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 const navLinks: NavLinkItem[] = [
@@ -75,19 +80,26 @@ export const useSheetsQuery = () => {
     return allMdx;
 }
 
-const _MenuNavLink = ({ navLink, index }: _MenuNavLinkArgs): React.ReactElement => (
+const MenuNavLink = ({ depth, navLink }: MenuNavLinkArgs): React.ReactElement => (
     <>
-        <MenuNavLink
-            key={`${index}:${navLink.slug}`}
+        <StyledNavLink
             to={`/${navLink.slug}`}
         >
             {navLink.label}
-        </MenuNavLink>
-        {(navLink.children || []).map((childNavLink, childIndex) => (
-            _MenuNavLink({ navLink: childNavLink, index: childIndex})
-        ))}
+        </StyledNavLink>
+        {(navLink.children || []).length > 0 ? (
+            <ChildLinkWrapper style={{ marginLeft: `${(depth + 1) * 1}em` }}>
+                {(navLink.children || []).map((childNavLink, childIndex) => (
+                    <MenuNavLink
+                        depth={depth + 1}
+                        key={`${childIndex}:${navLink.slug}`}
+                        navLink={childNavLink}
+                    />
+                ))}
+            </ChildLinkWrapper>
+        ) : null}
     </>
-)
+);
 
 const Header = ({ data }: HeaderProps) => {
     const theme = useTheme();
@@ -121,13 +133,17 @@ const Header = ({ data }: HeaderProps) => {
                         <StyledDrawer
                             variant="permanent"
                                 sx={{
-                                width: drawerWidth,
-                                flexShrink: 0,
-                                [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+                                    width: drawerWidth,
+                                    flexShrink: 0,
+                                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
                                 }}
                             >
                                 {navLinks.map((navLink, index) => (
-                                    _MenuNavLink({ navLink, index })
+                                    <MenuNavLink
+                                        depth={0}
+                                        key={`${index}:${navLink.slug}`}
+                                        navLink={navLink}
+                                    />
                                 ))}
                             </StyledDrawer>
                         </ThemeProvider>

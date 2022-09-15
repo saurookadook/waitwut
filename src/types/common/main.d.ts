@@ -33,9 +33,10 @@ interface MdxNodes {
     nodes?: NodeFromQuery[];
 }
 
-interface _MenuNavLinkArgs {
-    navLink: NavLinkItem,
-    index: Number
+interface MenuNavLinkArgs {
+    depth: Integer;
+    key?: string;
+    navLink: NavLinkItem;
 }
 
 interface SheetPageData {
