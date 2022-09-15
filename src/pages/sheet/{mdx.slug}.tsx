@@ -1,26 +1,9 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+
 import Layout from '../../components/Layout'
 
-
-interface DocSheetMdxFrontmatter {
-    title: string;
-    date: Date;
-}
-
-interface DocSheetMdx {
-    body: string;
-    frontmatter: DocSheetMdxFrontmatter
-}
-
-interface DocSheetData {
-    mdx: DocSheetMdx
-}
-
-interface DocSheetProps {
-    data: DocSheetData;
-}
 
 const DocSheet = ({ data }: DocSheetProps) => {
     console.log('DocSheet - data: ', data);
@@ -39,15 +22,15 @@ const DocSheet = ({ data }: DocSheetProps) => {
 }
 
 export const query = graphql`
-  query ($id: String) {
-    mdx(id: {eq: $id}) {
-      frontmatter {
-        title
-        date(formatString: "MMMM D, YYYY")
-      }
-      body
+    query ($id: String) {
+        mdx(id: {eq: $id}) {
+            frontmatter {
+                title
+                date(formatString: "MMMM D, YYYY")
+            }
+            body
+        }
     }
-  }
 `;
 
 export default DocSheet

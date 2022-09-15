@@ -1,70 +1,66 @@
 import * as React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import {
-    Box,
-    CssBaseline,
     Container,
     Typography
 } from '@mui/material';
+
+import { defaultTheme } from '../../themes';
 
 const SheetContentContainer = styled(Container)`
     text-align: center;
 `;
 
-const SheetLineItem = styled.li`
-    list-type: none;
+const StyledUl = styled.ul`
+    width: 100%;
 `;
 
-interface NodeFrontmatter {
-    date?: Date;
-    title: string;
-}
+const SheetLineItem = styled.li`
+    /* display: inline-block; */
+    list-style: none;
+    /* max-width: 50%; */
+    text-align: center;
+    width: 100%;
+`;
 
-interface NodeFromQuery {
-    name: string;
-    slug: string;
-    frontmatter: NodeFrontmatter;
-}
+const SheetLineItemLink = styled(Link)`
+    color: ${props => props?.theme?.color};
+    text-decoration: none;
 
-interface MdxNodes {
-    nodes: NodeFromQuery[];
-}
-
-interface SheetPageData {
-    allMdx: MdxNodes;
-}
-
-interface SheetPageProps {
-    data: SheetPageData;
-}
+    &:hover {
+        text-decoration: none;
+    }
+`;
 
 const SheetPage = ({ data }: SheetPageProps) => {
     console.log('SheetPage - data: ', data)
     const { nodes } = data.allMdx || {}
 
     return (
-        // <SheetContentContainer container spacing={12}>
-        <SheetContentContainer>
-            {(nodes || []).length > 0 ? (
-                <ul>
-                    {nodes.map((node: NodeFromQuery): React.ReactElement => (
-                        <SheetLineItem key={node.slug}>
-                            {/*
-                                TODO: add thumbnails!
-                                maybe using devicon? https://devicon.dev/
-                            */}
-                            <Link to={`/sheet/${node.slug}`}>
-                                {(node.frontmatter || {}).title || node.slug}
-                            </Link>
-                        </SheetLineItem>
-                    ))}
-                </ul>) : (
-                <Typography variant="h2">
-                    {`Some day, I'll have content 🙂`}
-                </Typography>
-            )}
-        </SheetContentContainer>
+        <ThemeProvider theme={defaultTheme}>
+            {/* <SheetContentContainer container spacing={12}> */}
+            <SheetContentContainer>
+                {(nodes || []).length > 0 ? (
+                    <StyledUl>
+                        {(nodes || []).map((node: NodeFromQuery): React.ReactElement => (
+                            <SheetLineItem key={node.slug}>
+                                {/*
+                                    TODO: add thumbnails!
+                                    maybe using devicon? https://devicon.dev/
+                                */}
+                                <SheetLineItemLink to={`/sheet/${node.slug}`}>
+                                    {(node.frontmatter || {}).title || node.slug}
+                                </SheetLineItemLink>
+                            </SheetLineItem>
+                        ))}
+                    </StyledUl>) : (
+                    <Typography variant="h2">
+                        {`Some day, I'll have content 🙂`}
+                    </Typography>
+                )}
+            </SheetContentContainer>
+        </ThemeProvider>
     );
 };
 

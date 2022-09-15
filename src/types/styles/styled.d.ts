@@ -23,4 +23,9 @@ declare module 'styled-components' {
         textAlign: string;
         width: string;
     }
+
+    export interface MenuTheme extends DefaultTheme {
+        backgroundColor: string;
+        color: string;
+    }
 }

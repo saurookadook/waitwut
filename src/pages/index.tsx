@@ -8,18 +8,18 @@ const ParagraphLines = styled.span`
 
 // data
 const links = [
-  {
-    text: "placeholder",
-    url: "/",
-    description:
-      "TODO",
-    color: "#E95800",
-    // color: "#1099A8",
-    // color: "#BC027F",
-    // color: "#0D96F2",
-    // color: "#8EB814",
-    // color: "#663399",
-  },
+    {
+        text: "placeholder",
+        url: "/",
+        description:
+        "TODO",
+        color: "#E95800",
+        // color: "#1099A8",
+        // color: "#BC027F",
+        // color: "#0D96F2",
+        // color: "#8EB814",
+        // color: "#663399",
+    },
 ]
 
 const IndexPage = () => {
