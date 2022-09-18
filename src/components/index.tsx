@@ -4,4 +4,4 @@ import Layout from './Layout';
 export {
     Header,
     Layout
-}
+};

@@ -17,7 +17,7 @@ import {
 // TODO: maybe move this elsewhere to clean up this file?
 const GlobalStyles = createGlobalStyle`
     html {
-        background-color: ${props => props?.theme?.backgroundColor};
+        background-color: ${(props) => props?.theme?.backgroundColor};
     }
 
     body {
@@ -114,7 +114,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const StyledContainer = styled(Container)`
-    background-color: ${props => props?.theme?.backgroundColor};
+    background-color: ${(props) => props?.theme?.backgroundColor};
     height: 100vh;
     margin-top: 4em;
     max-width: 100vw !important;
@@ -122,10 +122,10 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledBox = styled(Box)`
-    background-color: ${props => props?.theme?.backgroundColor};
+    background-color: ${(props) => props?.theme?.backgroundColor};
     display: flex;
     flex-direction: column;
-    height: ${props => props.theme?.height};
+    height: ${(props) => props.theme?.height};
     min-height: 50vh;
     overflow-y: scroll;
     padding-right: 10vw;
@@ -152,7 +152,7 @@ const Layout = ({ pageTitle, children }: any) => {
 
     return (
         <ThemeProvider theme={baseTheme}>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
             <CssBaseline />
             <GlobalStyles />
             <title>😬 {title || ''} | {data.site.siteMetadata.title}</title>
@@ -166,6 +166,6 @@ const Layout = ({ pageTitle, children }: any) => {
             </ThemeProvider>
         </ThemeProvider>
     );
-}
+};
 
 export default Layout;

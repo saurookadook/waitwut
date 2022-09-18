@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import * as React from 'react';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import Layout from '../../components/Layout'
+import Layout from '../../components/Layout';
 
 
 const DocSheet = ({ data }: DocSheetProps) => {
@@ -18,8 +18,8 @@ const DocSheet = ({ data }: DocSheetProps) => {
                 {data.mdx.body}
             </MDXRenderer>
         </>
-    )
-}
+    );
+};
 
 export const query = graphql`
     query ($id: String) {
@@ -33,4 +33,4 @@ export const query = graphql`
     }
 `;
 
-export default DocSheet
+export default DocSheet;

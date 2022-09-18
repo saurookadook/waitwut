@@ -3,7 +3,7 @@
 
 require("prismjs/themes/prism-tomorrow.css"); // closest one to Atom One Dark, I think?
 
-var React = require('react'); // const causes a conflict?
+const React = require('react'); // const causes a conflict?
 const { Layout: GatsbyBrowserLayout } = require('./src/components');
 
 // Logs when the client route changes

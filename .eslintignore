@@ -1,2 +1,9 @@
+.cache
+node_modules/
 **/node_modules
+public/
+
+# TODO: these _should_ be linted
+gatsby-browser.tsx
 gatsby-config.ts
+gatsby-ssr.tsx

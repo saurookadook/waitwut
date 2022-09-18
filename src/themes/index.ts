@@ -56,7 +56,7 @@ const containerTheme: ContainerTheme = {
 const menuTheme: MenuTheme = {
     backgroundColor: themeColors.commentGray,
     color: themeColors.graphite,
-}
+};
 
 export {
     defaultTheme,

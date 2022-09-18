@@ -115,8 +115,8 @@
         {
             "files": ["*.{ts,tsx}"],
             "parser": "@typescript-eslint/parser",
-            "plugins": ["@typescript-eslint"],
-            "extends": ["plugin:@typescript-eslint/recommended"]
+            "plugins": ["prettier", "@typescript-eslint"],
+            "extends": ["prettier", "plugin:@typescript-eslint/recommended"]
         }
     ]
 }

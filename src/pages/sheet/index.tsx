@@ -25,7 +25,7 @@ const SheetLineItem = styled.li`
 `;
 
 const SheetLineItemLink = styled(Link)`
-    color: ${props => props?.theme?.color};
+    color: ${(props) => props?.theme?.color};
     text-decoration: none;
 
     &:hover {
@@ -34,8 +34,8 @@ const SheetLineItemLink = styled(Link)`
 `;
 
 const SheetPage = ({ data }: SheetPageProps) => {
-    console.log('SheetPage - data: ', data)
-    const { nodes } = data.allMdx || {}
+    console.log('SheetPage - data: ', data);
+    const { nodes } = data.allMdx || {};
 
     return (
         <ThemeProvider theme={defaultTheme}>
