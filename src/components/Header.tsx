@@ -55,7 +55,7 @@ const navLinks: NavLinkItem[] = [
 
 const drawerWidth = 240;
 
-export const useSheetsQuery = () => {
+export const useSheetsQuery = (): MdxNodes => {
     const { allMdx } = useStaticQuery(
         graphql`
             query {
@@ -87,7 +87,7 @@ const MenuNavLink = ({ depth, navLink }: MenuNavLinkArgs): React.ReactElement =>
     </>
 );
 
-const Header = ({ data }: HeaderProps) => {
+const Header = ({ data }: HeaderProps): React.ReactElement => {
     const theme = useTheme();
     const { nodes } = useSheetsQuery();
 
@@ -123,7 +123,11 @@ const Header = ({ data }: HeaderProps) => {
                             }}
                         >
                             {navLinks.map((navLink, index) => (
-                                <MenuNavLink depth={0} key={`${index}:${navLink.slug}`} navLink={navLink} />
+                                <MenuNavLink
+                                    depth={0}
+                                    key={`${index}:${navLink.slug}`}
+                                    navLink={navLink}
+                                />
                             ))}
                         </StyledDrawer>
                     </ThemeProvider>

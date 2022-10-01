@@ -1,17 +1,26 @@
 {
     "root": true,
-    "parser": "@babel/eslint-parser",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "requireConfigFile": false,
         "babelOptions": {
             "presets": ["@babel/preset-react"]
-        }
+        },
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
     },
     "extends": [
-        "prettier",
+        "prettier/prettier",
+        "prettier/react",
+        "prettier/@typescript-eslint",
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended"
+        "plugin:prettier/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
     "env": {
         "es6": true,
@@ -22,15 +31,26 @@
     "globals": {
         "expect": false,
         "assert": false,
-        "__DEVTOOLS__": false
+        "__DEVTOOLS__": false,
+        "window": true
     },
     "plugins": [
+        "import",
         "prettier",
         "babel",
         "react",
-        "jsx-a11y"
+        "@typescript-eslint",
+        "jsx-a11y",
+        "react-hooks"
     ],
     "rules": {
+        "@typescript-eslint/no-shadow": ["error"],
+        "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            {
+                "allowExpressions": true
+            }
+        ],
         "array-bracket-newline": [1, "consistent"],
         "array-bracket-spacing": [
             1,
@@ -65,6 +85,14 @@
                 }
             }
         ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
         "import/no-extraneous-dependencies": 0,
         "import/no-named-as-default": 0,
         "import/prefer-default-export": 0,
@@ -80,7 +108,12 @@
         "operator-linebreak": 0,
         "prettier/prettier": 0,
         "react/destructuring-assignment": 0,
-        "react/jsx-filename-extension": 0,
+        "react/jsx-filename-extension": [
+            "warn",
+            {
+                "extensions": [".tsx"]
+            }
+        ],
         "react/jsx-fragments": 0,
         "react/jsx-one-expression-per-line": 0,
         "react/forbid-prop-types": 0,
@@ -91,6 +124,8 @@
                 "ignore": ["css"]
             }
         ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "semi": [1, "always"],
         "space-before-function-paren": 0,
         "wrap-iife": [2, "inside"]

@@ -33,7 +33,7 @@ const SheetLineItemLink = styled(Link)`
     }
 `;
 
-const SheetPage = ({ data }: SheetPageProps) => {
+const SheetPage = ({ data }: SheetPageProps): React.ReactElement => {
     console.log('SheetPage - data: ', data);
     const { nodes } = data.allMdx || {};
 
@@ -44,7 +44,9 @@ const SheetPage = ({ data }: SheetPageProps) => {
                 {(nodes || []).length > 0 ? (
                     <StyledUl>
                         {(nodes || []).map((node: NodeFromQuery): React.ReactElement => (
-                            <SheetLineItem key={node.slug}>
+                            <SheetLineItem
+                                key={node.slug}
+                            >
                                 {/*
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
