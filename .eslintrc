@@ -150,7 +150,11 @@
         {
             "files": ["*.{ts,tsx}"],
             "parser": "@typescript-eslint/parser",
-            "plugins": ["prettier", "@typescript-eslint"],
+            "plugins": [
+                "import",
+                "prettier",
+                "@typescript-eslint"
+            ],
             "extends": ["prettier", "plugin:@typescript-eslint/recommended"]
         }
     ]
