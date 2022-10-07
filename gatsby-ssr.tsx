@@ -9,7 +9,7 @@ const { Layout } = require('./src/components');
 // Adds a class name to the body element
 exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
     setBodyAttributes({
-        className: "my-body-class",
+        id: "waitwut-body",
     });
 };
 

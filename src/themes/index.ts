@@ -15,6 +15,8 @@ const themeColors = {
     // prism-tomorrow
     commentGray: "#999999",
     keywordPurple: "#cc99cd",
+    darkerPurpleRgb: "rgb(85, 26, 139)",
+    darkerPurpleHex: "#551a8b",
     numberOrange: "#f08d49",
     operatorAqua: "#67cdcc",
     stringGreen: "#7ec699",
@@ -59,6 +61,7 @@ const menuTheme: MenuTheme = {
 };
 
 export {
+    themeColors,
     defaultTheme,
     appBarTheme,
     baseTheme,

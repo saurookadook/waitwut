@@ -21,7 +21,7 @@ const links = [
     },
 ];
 
-const IndexPage = () => {
+const IndexPage = (): React.ReactElement => {
     return (
         <main>
             <title>Home Page</title>

@@ -3,6 +3,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 import styled, { ThemeProvider, useTheme } from 'styled-components';
 import { AppBar, Box, Drawer, Toolbar, Typography } from '@mui/material';
 
+import { MenuNavLink } from './nav';
 import { appBarTheme, menuTheme } from '../themes';
 
 const StyledAppBar = styled(AppBar)`
@@ -21,39 +22,17 @@ const NavLink = styled(Link)`
 `;
 
 const StyledDrawer = styled(Drawer)`
-    background-color: ${(props) => props?.theme?.backgroundColor} !important;
-    color: ${(props) => props.theme?.color} !important;
+    background-color: ${(props) => props?.theme?.backgroundColor};
+    color: ${(props) => props.theme?.color};
 
-    & .MuiDrawer-paper {
-        background-color: ${(props) => props?.theme?.backgroundColor} !important;
+    & > .MuiDrawer-paper {
+        background-color: ${(props) => props?.theme?.backgroundColor};
         border: none;
-        color: ${(props) => props.theme?.color} !important;
+        color: ${(props) => props.theme?.color};
         padding-top: 6em;
+        padding-left: 1em;
     }
 `;
-
-const StyledNavLink = styled(Link)`
-    color: ${(props) => props?.theme?.color};
-    font-size: 1.5rem;
-    padding: 0 1em;
-    text-align: left;
-    text-decoration: none;
-`;
-
-const ChildLinkWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-const navLinks: NavLinkItem[] = [
-    {
-        slug: 'sheet',
-        label: 'Sheets',
-        children: [],
-    },
-];
-
-const drawerWidth = 240;
 
 export const useSheetsQuery = (): MdxNodes => {
     const { allMdx } = useStaticQuery(
@@ -63,6 +42,7 @@ export const useSheetsQuery = (): MdxNodes => {
                     nodes {
                         frontmatter {
                             title
+                            fullPath
                         }
                         id
                         slug
@@ -74,18 +54,15 @@ export const useSheetsQuery = (): MdxNodes => {
     return allMdx;
 };
 
-const MenuNavLink = ({ depth, navLink }: MenuNavLinkArgs): React.ReactElement => (
-    <>
-        <StyledNavLink to={`/${navLink.slug}`}>{navLink.label}</StyledNavLink>
-        {(navLink.children || []).length > 0 ? (
-            <ChildLinkWrapper style={{ marginLeft: `${(depth + 1) * 1}em` }}>
-                {(navLink.children || []).map((childNavLink, childIndex) => (
-                    <MenuNavLink depth={depth + 1} key={`${childIndex}:${navLink.slug}`} navLink={childNavLink} />
-                ))}
-            </ChildLinkWrapper>
-        ) : null}
-    </>
-);
+const navLinks: NavLinkItem[] = [
+    {
+        slug: 'sheet',
+        label: 'Sheets',
+        children: [],
+    },
+];
+
+const drawerWidth = 240;
 
 const Header = ({ data }: HeaderProps): React.ReactElement => {
     const theme = useTheme();
@@ -95,12 +72,14 @@ const Header = ({ data }: HeaderProps): React.ReactElement => {
         navLinks[0].children = (nodes || []).map((node: NodeFromQuery): NavLinkItem => {
             return {
                 slug: node.slug,
-                label: (node.frontmatter || {}).title || node.slug,
+                label: node.frontmatter?.title || node.slug,
+                // path: node.frontmatter?.fullPath
             };
         });
     }
 
     console.log('---------- data: ', data);
+    console.log('---------- nodes: ', nodes);
 
     return (
         <ThemeProvider theme={theme}>

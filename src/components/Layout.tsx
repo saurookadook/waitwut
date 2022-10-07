@@ -11,7 +11,8 @@ import { Header } from '../components';
 
 import {
     baseTheme,
-    containerTheme
+    containerTheme,
+    themeColors
 } from '../themes';
 
 // TODO: maybe move this elsewhere to clean up this file?
@@ -20,7 +21,8 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor};
     }
 
-    body {
+    body#waitwut-body {
+        font-size: 12px;
         min-height: 100vh;
     }
 
@@ -44,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     li {
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 300;
         margin-bottom: 30px;
         /* max-width: 560px; */
@@ -56,6 +58,21 @@ const GlobalStyles = createGlobalStyle`
         background-color: #FFF4DB;
         font-size: 1.25rem;
         border-radius: 4px;
+    }
+
+
+    /* https://css-tricks.com/examples/hrs/ */
+    hr {
+        border: 0 none;
+        opacity: 1;
+        width: 100%;
+
+        border-top: 1px solid ${themeColors.darkerPurpleHex};
+
+        /* height: 1px; */
+        /* color: ${themeColors.darkerPurpleHex}; */
+        /* background: ${themeColors.darkerPurpleHex}; */
+        /* background-image: linear-gradient(to right, ${themeColors.keywordPurple}, ${themeColors.darkerPurpleHex}, ${themeColors.keywordPurple}); */
     }
 
     .heading-accent {
@@ -129,10 +146,15 @@ const StyledBox = styled(Box)`
     min-height: 50vh;
     overflow-y: scroll;
     padding-right: 10vw;
-    padding-left: 10vw;
+    padding-left: 12vw;
 `;
 
-const Layout = ({ pageTitle, children }: any) => {
+interface LayoutProps {
+    pageTitle?: string;
+    children: React.ReactElement
+}
+
+const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -145,17 +167,19 @@ const Layout = ({ pageTitle, children }: any) => {
 
     const title = pageTitle || data?.site?.siteMetadata?.title;
 
-    console.log('------------------------------------------------------------------------ Layout ------------------------------------------------------------------------');
-    console.log(' - pageTitle: ', title);
-    console.log(' - children: ', children);
-    console.log(' - data: ', data);
+    // console.log('------------------------------------------------------------------------ Layout ------------------------------------------------------------------------');
+    // console.log(' - pageTitle: ', pageTitle);
+    // console.log(' - title: ', data?.site?.siteMetadata?.title);
+    // console.log(' - children: ', children);
+    // console.log(' - data: ', data);
 
     return (
         <ThemeProvider theme={baseTheme}>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
             <CssBaseline />
             <GlobalStyles />
-            <title>😬 {title || ''} | {data.site.siteMetadata.title}</title>
+            {/* TODO: generate title based on page (i.e. for python, "wait, wut? | Python") */}
+            <title>😬 {title}</title>
             <Header />
             <ThemeProvider theme={containerTheme}>
                 <StyledContainer disableGutters={true}>

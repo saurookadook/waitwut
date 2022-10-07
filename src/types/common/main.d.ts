@@ -21,6 +21,7 @@ interface NavLinkItem {
 interface NodeFrontmatter {
     date?: Date;
     title: string;
+    fullPath: string;
 }
 
 interface NodeFromQuery {
@@ -37,6 +38,7 @@ interface MenuNavLinkArgs {
     depth: Integer;
     key?: string;
     navLink: NavLinkItem;
+    parentPath?: string;
 }
 
 interface SheetPageData {
