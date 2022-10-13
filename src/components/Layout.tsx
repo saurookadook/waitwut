@@ -133,7 +133,7 @@ const GlobalStyles = createGlobalStyle`
 const StyledContainer = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
     height: 100vh;
-    margin-top: 4em;
+    margin-top: 6em;
     max-width: 100vw !important;
     padding: 0 2.5em 1.5em;
 `;

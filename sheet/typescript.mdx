@@ -2,8 +2,26 @@
 title: "TypeScript"
 date: "2022-07-24"
 fullPath: "/sheet/typescript"
+iconComponentName: "typescript_icon"
 ---
 
 # Table of Contents
 
 _TODO_ 🙃
+
+## Simple Types
+
+Using a [type alias](https://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html#reusable-types-type-aliases)
+
+```typescript
+type Foo = string | (() => string);
+```
+
+## Interfaces
+
+```typescript
+interface Dog {
+    bark: Function;
+    name: string;
+}
+```

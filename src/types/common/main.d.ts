@@ -3,25 +3,27 @@
 // export {}
 
 interface CheatSheet {
-    name: string,
-    language: string,
-    content: string
+    name: string;
+    language: string;
+    content: string;
 }
 
 interface AllCheatSheets {
-    allCheatSheets: CheatSheet[]
+    allCheatSheets: CheatSheet[];
 }
 
 interface NavLinkItem {
-    slug?: string,
-    label?: string,
-    children?: NavLinkItem[]
+    slug?: string;
+    label?: string;
+    iconName?: string;
+    children?: NavLinkItem[];
 }
 
 interface NodeFrontmatter {
     date?: Date;
     title: string;
-    fullPath: string;
+    fullPath?: string;
+    iconComponentName?: string;
 }
 
 interface NodeFromQuery {
@@ -67,9 +69,13 @@ interface DocSheetMdx {
 }
 
 interface DocSheetData {
-    mdx: DocSheetMdx
+    mdx: DocSheetMdx;
 }
 
 interface DocSheetProps {
     data: DocSheetData;
+}
+
+type IconComponents = {
+    [key: string]: (() => React.ReactElement)
 }

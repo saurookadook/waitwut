@@ -43,6 +43,7 @@ export const useSheetsQuery = (): MdxNodes => {
                         frontmatter {
                             title
                             fullPath
+                            iconComponentName
                         }
                         id
                         slug
@@ -73,6 +74,7 @@ const Header = ({ data }: HeaderProps): React.ReactElement => {
             return {
                 slug: node.slug,
                 label: node.frontmatter?.title || node.slug,
+                iconName: node.frontmatter?.iconComponentName
                 // path: node.frontmatter?.fullPath
             };
         });
