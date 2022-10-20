@@ -1,19 +1,46 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import styled from 'styled-components';
 
-import Layout from '../../components/Layout';
+import icons from '../../components/icons';
 
+const DocTitle = styled.h1`
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 
-const DocSheet = ({ data }: DocSheetProps) => {
+    & > svg {
+        height: 1.75em;
+        margin-right: 0.25em;
+        width: 1.75em;
+    }
+
+    & > span {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 200px;
+    }
+`;
+
+const DocSheet = ({ data }: DocSheetProps): React.ReactElement => {
     console.log('DocSheet - data: ', data);
+    const { iconComponentName, title } = data?.mdx?.frontmatter || {}
+
+    const iconComponent = (): React.ReactElement | undefined => {
+        if (iconComponentName && typeof icons[iconComponentName] === "function") {
+            return icons[iconComponentName]();
+        }
+    };
 
     return (
-        // <Layout pageTitle="Super Cool Blog Posts">
-        //   <p>My blog post contents will go here (eventually).</p>
-        // </Layout>
         <>
-            <h1>{data.mdx.frontmatter.title}</h1>
+            <DocTitle>
+                {iconComponent() || null}
+                <span>{title}</span>
+            </DocTitle>
             <MDXRenderer>
                 {data.mdx.body}
             </MDXRenderer>
@@ -25,8 +52,9 @@ export const query = graphql`
     query ($id: String) {
         mdx(id: {eq: $id}) {
             frontmatter {
-                title
                 date(formatString: "MMMM D, YYYY")
+                iconComponentName
+                title
             }
             body
         }
