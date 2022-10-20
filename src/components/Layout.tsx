@@ -151,7 +151,7 @@ const StyledContainer = styled(Container)`
     height: 100vh;
     margin-top: 6em;
     max-width: 100vw !important;
-    padding: 0 2.5em 1.5em;
+    padding: 0 2.5em;
 `;
 
 const StyledBox = styled(Box)`
@@ -162,6 +162,7 @@ const StyledBox = styled(Box)`
     min-height: 50vh;
     overflow-y: scroll;
     padding-right: 10vw;
+    padding-bottom: 1.5em;
     padding-left: 12vw;
 `;
 
