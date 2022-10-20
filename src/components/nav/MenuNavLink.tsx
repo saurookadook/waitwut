@@ -8,8 +8,7 @@ const StyledNavLink = styled(Link)`
     display: flex;
     flex-direction: row;
     font-size: 1.25rem;
-    margin-bottom: 0.5em;
-    padding-left: 1em;
+    padding: 0.25em 0 0.25em 1em;
     text-align: left;
     text-decoration: none;
 
