@@ -59,8 +59,9 @@ interface SheetPageProps {
 
 /* DocSheet */
 interface DocSheetMdxFrontmatter {
+    date?: Date;
+    iconComponentName?: string;
     title: string;
-    date: Date;
 }
 
 interface DocSheetMdx {
