@@ -7,7 +7,7 @@ import {
     Container
 } from '@mui/material';
 
-import { Header } from '../components';
+import { Footer, Header } from '../components';
 
 import {
     baseTheme,
@@ -188,6 +188,7 @@ const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
                     </StyledBox>
                 </StyledContainer>
             </ThemeProvider>
+            <Footer />
         </ThemeProvider>
     );
 };

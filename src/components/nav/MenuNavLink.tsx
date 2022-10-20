@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import icons from '../icons';
-
 const StyledNavLink = styled(Link)`
     align-items: center;
     color: ${(props) => props?.theme?.color};
@@ -39,18 +37,10 @@ const ChildLinkWrapper = styled.div`
 const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkArgs): React.ReactElement => {
     const fullPath = `${parentPath || ''}/${navLink.slug}`;
     const { children, iconName, label, slug } = navLink || {}
-    const iconComponent = (): React.ReactElement | undefined => {
-        if (iconName && typeof icons[iconName] === "function") {
-            return icons[iconName]()
-        }
-    };
-
-    console.log({ icons, iconName, navLink });
 
     return (
         <>
             <StyledNavLink to={fullPath}>
-                {iconComponent() || null}
                 <span>
                     {label}
                 </span>
