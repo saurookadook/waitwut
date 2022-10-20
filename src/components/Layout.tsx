@@ -36,12 +36,29 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1 {
+        font-size: 3em;
         margin-top: 0;
         margin-bottom: 0.5em;
     }
 
     h1:first-of-type {
         margin-top: 1em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    h3 {
+        font-size: 2em;
+    }
+
+    h4 {
+        font-size: 1.75em;
+    }
+
+    h5 {
+        font-size: 1.5em;
     }
 
     a {

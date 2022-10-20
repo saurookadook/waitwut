@@ -21,7 +21,6 @@ const DocTitle = styled.h1`
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        max-width: 200px;
     }
 `;
 
