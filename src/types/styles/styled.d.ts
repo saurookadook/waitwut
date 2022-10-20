@@ -3,6 +3,7 @@ import 'styled-components';
 declare module 'styled-components' {
     export interface DefaultTheme {
         backgroundColor?: string;
+        backgroundColorRgb?: Record<string, Integer>;
         color?: string;
         height?: string;
         width?: string;

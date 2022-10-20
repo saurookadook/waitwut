@@ -19,6 +19,11 @@ const themeColors = {
     plBackgroundYellow: "#fdfaea",
     // prism-tomorrow
     commentGray: "#999999",
+    commentGrayRgb: {
+        r: 153,
+        g: 153,
+        b: 153,
+    },
     keywordPurple: "#cc99cd",
     darkerPurpleRgb: "rgb(85, 26, 139)",
     darkerPurpleHex: "#551a8b",
@@ -33,6 +38,7 @@ const defaultTheme: DefaultTheme = {
     // backgroundColor: themeColors.plBackgroundYellow,
     // color: themeColors.plBlue,
     backgroundColor: themeColors.commentGray,
+    backgroundColorRgb: themeColors.commentGrayRgb,
     // color: themeColors.keywordPurple,
     color: themeColors.graphite,
     height: "100%",
