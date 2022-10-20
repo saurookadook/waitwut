@@ -25,7 +25,7 @@ const codeStyles = {
     borderRadius: 4,
 };
 
-const NotFoundPage = () => {
+const NotFoundPage = (): React.ReactElement => {
     return (
         <main style={pageStyles}>
             <title>Not found</title>
