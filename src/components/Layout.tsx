@@ -22,6 +22,9 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body#waitwut-body {
+        background-color: ${(props) => props?.theme?.backgroundColor};
+        color: ${themeColors.graphite};
+        font-family: "-apple-system, Roboto, sans-serif, serif";
         font-size: 12px;
         min-height: 100vh;
     }
@@ -41,6 +44,14 @@ const GlobalStyles = createGlobalStyle`
         margin-top: 1em;
     }
 
+    a {
+        text-decoration: none;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+
     p {
         margin-bottom: 48px;
     }
@@ -48,8 +59,12 @@ const GlobalStyles = createGlobalStyle`
     li {
         font-size: 18px;
         font-weight: 300;
-        margin-bottom: 30px;
+        margin-bottom: 0.25em;
         /* max-width: 560px; */
+
+        & a {
+            color: ${themeColors.darkerPurpleHex};
+        }
     }
 
     code {
@@ -64,6 +79,7 @@ const GlobalStyles = createGlobalStyle`
     /* https://css-tricks.com/examples/hrs/ */
     hr {
         border: 0 none;
+        margin: 2em 0;
         opacity: 1;
         width: 100%;
 

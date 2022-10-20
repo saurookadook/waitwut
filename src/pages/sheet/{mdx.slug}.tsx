@@ -25,6 +25,16 @@ const DocTitle = styled.h1`
     }
 `;
 
+const MDXRendererWrapper = styled.div`
+    & #table-of-contents {
+        margin-top: 0;
+    }
+
+    & h1#table-of-contents + ul > li:hover {
+        transform: scale(1.01);
+    }
+`
+
 const DocSheet = ({ data }: DocSheetProps): React.ReactElement => {
     console.log('DocSheet - data: ', data);
     const { iconComponentName, title } = data?.mdx?.frontmatter || {}
@@ -41,9 +51,12 @@ const DocSheet = ({ data }: DocSheetProps): React.ReactElement => {
                 {iconComponent() || null}
                 <span>{title}</span>
             </DocTitle>
-            <MDXRenderer>
-                {data.mdx.body}
-            </MDXRenderer>
+            <hr />
+            <MDXRendererWrapper>
+                <MDXRenderer>
+                    {data.mdx.body}
+                </MDXRenderer>
+            </MDXRendererWrapper>
         </>
     );
 };
