@@ -10,6 +10,7 @@ declare module 'styled-components' {
 
     export interface AppBarTheme extends DefaultTheme {
         backgroundColor: string;
+        backgroundColorRgb?: Record<string, Integer>;
         color: string;
     }
 

@@ -8,6 +8,11 @@ import {
 
 const themeColors = {
     graphite: "#282c34",
+    graphiteRgb: {
+        r: 40,
+        g: 44,
+        b: 52
+    },
     honeycombOrange: "#ffbd33",
     honeycombYellow: "#ffeb3b",
     plBlue: "#003472",
@@ -38,6 +43,7 @@ const appBarTheme: AppBarTheme = {
     // backgroundColor: themeColors.honeycombOrange,
     // color: themeColors.plBlue,
     backgroundColor: themeColors.graphite,
+    backgroundColorRgb: themeColors.graphiteRgb,
     color: themeColors.white,
 };
 
