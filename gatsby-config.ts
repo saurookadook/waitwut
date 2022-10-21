@@ -11,11 +11,14 @@ const config: GatsbyConfig = {
     graphqlTypegen: true,
     pathPrefix: '/waitwut',
     plugins: [
+        'gatsby-plugin-image',
+        'gatsby-plugin-sharp',
+        'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-source-filesystem',
             options: {
-                name: `sheet`,
-                path: `${__dirname}/sheet`,
+                name: `sheets`,
+                path: `${__dirname}/sheets`,
             },
         },
         {

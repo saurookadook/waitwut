@@ -15,7 +15,7 @@ exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
 
 // Wraps every page in a component
 exports.wrapPageElement = ({ element, props }) => {
-    console.log('ssr - wrapPageElement props: ', props);
+    // console.log('ssr - wrapPageElement props: ', props);
     return (
         <Layout {...props}>{element}</Layout>
     );
