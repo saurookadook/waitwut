@@ -1,10 +1,30 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
 
 import pageMap from '../constants/pageMap';
+import { themeColors } from '../themes';
+
+const HeadingAccent = styled.span`
+    color: #663399;
+    font-size: 0.75em;
+`;
 
 const ParagraphLines = styled.span`
     display: block;
+`;
+
+const PageItem = styled.li`
+    color: ${props => props.color};
+    margin-bottom: 1em;
+`;
+
+const Description = styled.p`
+    color: #232129;
+    font-size: 14px;
+    line-height: 1.25;
+    margin-top: 10px;
+    margin-bottom: 0px;
 `;
 
 const IndexPage = (): React.ReactElement => {
@@ -16,9 +36,9 @@ const IndexPage = (): React.ReactElement => {
             <h1>
                 Has this ever happened to you?
                 <br />
-                <span className="heading-accent">
+                <HeadingAccent>
                     {`You start to write something and think, "Oh 💩, how do you write that thing in <blank> again!?"`}
-                </span>
+                </HeadingAccent>
             </h1>
             <p>
                 <ParagraphLines>Well, this little site is dedicated to helping you through those kind of moments. 🤓</ParagraphLines>
@@ -28,27 +48,27 @@ const IndexPage = (): React.ReactElement => {
                 {pageMap.map((pageData) => {
                     const { color, description, path, title } = pageData;
                     return (
-                        <li
+                        <PageItem
                             key={path}
-                            style={{ color: color || theme.color }}
+                            color={`${color || theme.color}`}
                         >
                             <span>
-                                <a
+                                <Link
                                     className="basic-link"
-                                    href={`${path}`}
+                                    to={`${path}`}
                                 >
                                     {title}
-                                </a>
+                                </Link>
                                 {description
-                                    ? <p className="description">{description}</p>
+                                    ? <Description>{description}</Description>
                                     : null
                                 }
                             </span>
-                        </li>
+                        </PageItem>
                     );
                 })}
             </ul>
-        </main>
+        </main >
     );
 };
 

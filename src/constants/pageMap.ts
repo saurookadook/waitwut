@@ -3,8 +3,14 @@ const pageMap: Record<string, string>[] = [ // TODO: better typing :)
     {
         color: '#E95800',
         description: 'Mix of notes and cheat sheets 🙂',
-        path: '/sheet',
+        path: '/sheets',
         title: 'Sheets',
+    },
+    {
+        color: '#E95800',
+        description: 'My Library-of-Alexandria-sized collection of bookmarks. 🤓',
+        path: '/bookmarks',
+        title: 'Bookmarks',
     },
 ];
 

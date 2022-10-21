@@ -43,18 +43,18 @@ interface MenuNavLinkArgs {
     parentPath?: string;
 }
 
-interface SheetPageData {
+interface ListPageData {
     allMdx?: MdxNodes;
 }
 
 interface HeaderProps {
-    data?: SheetPageData;
+    data?: ListPageData;
 }
 
-/* SheetPage */
+/* ListPages */
 
-interface SheetPageProps {
-    data: SheetPageData;
+interface ListPageProps {
+    data: ListPageData;
 }
 
 /* DocSheet */

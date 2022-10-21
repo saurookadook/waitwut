@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
         font-family: "-apple-system, Roboto, sans-serif, serif";
         font-size: 14px;
         min-height: 100vh;
+        overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
     }
 
     main {
@@ -94,11 +95,6 @@ const GlobalStyles = createGlobalStyle`
         /* background-image: linear-gradient(to right, ${themeColors.keywordPurple}, ${themeColors.darkerPurpleHex}, ${themeColors.keywordPurple}); */
     }
 
-    .heading-accent {
-        color: #663399;
-        font-size: 0.75em;
-    }
-
     .doc-list {
         padding-left: 0;
     }
@@ -115,15 +111,6 @@ const GlobalStyles = createGlobalStyle`
         vertical-align: 5%;
     }
 
-    .doc-link {
-        .basic-link
-
-        display: inline-block;
-        list-style-type: none;
-        margin-right: 12px;
-        margin-bottom: 24px;
-    }
-
     .badge {
         background-color: #088413;
         border: 1px solid #088413;
@@ -138,14 +125,6 @@ const GlobalStyles = createGlobalStyle`
         padding: 4px 6px;
         position: relative;
         top: -2px;
-    }
-
-    .description {
-        color: #232129;
-        font-size: 14px;
-        line-height: 1.25;
-        margin-top: 10px;
-        margin-bottom: 0px;
     }
 `;
 
