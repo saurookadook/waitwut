@@ -17,8 +17,15 @@ const config: GatsbyConfig = {
         {
             resolve: 'gatsby-source-filesystem',
             options: {
-                name: `sheets`,
-                path: `${__dirname}/sheets`,
+                name: `Sheets`,
+                path: `${__dirname}/docs/sheets`,
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Bookmarks`,
+                path: `${__dirname}/docs/bookmarks`,
             },
         },
         {
