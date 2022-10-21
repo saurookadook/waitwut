@@ -35,7 +35,7 @@ const MDXRendererWrapper = styled.div`
 `
 
 const DocSheet = ({ data }: DocSheetProps): React.ReactElement => {
-    console.log('DocSheet - data: ', data);
+    // console.log('DocSheet - data: ', data);
     const { iconComponentName, title } = data?.mdx?.frontmatter || {}
 
     const iconComponent = (): React.ReactElement | undefined => {

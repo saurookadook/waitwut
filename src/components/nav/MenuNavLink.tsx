@@ -35,7 +35,7 @@ const ChildLinkWrapper = styled.div`
 
 const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkArgs): React.ReactElement => {
     const fullPath = `${parentPath || ''}/${navLink.slug}`;
-    const { children, iconName, label, slug } = navLink || {}
+    const { children, label, slug } = navLink || {}
 
     return (
         <>

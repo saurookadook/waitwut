@@ -4,18 +4,17 @@ import styled, { ThemeProvider } from 'styled-components';
 import {
     Box,
     CssBaseline,
-    Container
+    Container,
 } from '@mui/material';
 
-import { Footer, Header } from '../components';
+import { Footer, Header, LeftSideMenu } from '../components';
 import { GlobalStyles } from '../constants';
+
 
 import {
     baseTheme,
     containerTheme,
 } from '../themes';
-
-// TODO: maybe move this elsewhere to clean up this file?
 
 const StyledContainer = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
@@ -43,7 +42,9 @@ interface LayoutProps {
 }
 
 const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
-    const data = useStaticQuery(graphql`
+
+
+    const staticData = useStaticQuery(graphql`
         query {
             site {
                 siteMetadata {
@@ -53,7 +54,7 @@ const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
         }
     `);
 
-    const title = pageTitle || data?.site?.siteMetadata?.title;
+    const title = pageTitle || staticData?.site?.siteMetadata?.title;
 
     // console.log('------------------------------------------------------------------------ Layout ------------------------------------------------------------------------');
     // console.log(' - pageTitle: ', pageTitle);
@@ -74,6 +75,7 @@ const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
                     <StyledBox>
                         {children}
                     </StyledBox>
+                    <LeftSideMenu />
                 </StyledContainer>
             </ThemeProvider>
             <Footer />
