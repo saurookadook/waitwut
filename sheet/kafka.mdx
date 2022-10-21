@@ -108,7 +108,7 @@ iconComponentName: "kafka_icon"
         - 5 is optimal
         - more than 7 likely results in degradation
     - can opt to run multiple Kafka clusters on same ensemble, using `chroot` to delineate each cluster:
-        ```sh
+        ```shell
         # KafkaCluster1 is `chroot`
         zookeeper.connect = host:port/KafkaCluster1
         ```
