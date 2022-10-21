@@ -1,27 +1,15 @@
 import React from 'react';
+import styled, { useTheme } from 'styled-components';
 
-import styled from 'styled-components';
+import pageMap from '../constants/pageMap';
 
 const ParagraphLines = styled.span`
     display: block;
 `;
 
-// data
-const links = [
-    {
-        text: "placeholder",
-        url: "/",
-        description: "TODO",
-        color: "#E95800",
-        // color: "#1099A8",
-        // color: "#BC027F",
-        // color: "#0D96F2",
-        // color: "#8EB814",
-        // color: "#663399",
-    },
-];
-
 const IndexPage = (): React.ReactElement => {
+    const theme = useTheme();
+
     return (
         <main>
             <title>Home Page</title>
@@ -37,19 +25,28 @@ const IndexPage = (): React.ReactElement => {
                 <ParagraphLines>CHECK IT OUUUUTTTTTTTT</ParagraphLines>
             </p>
             <ul className="link-list">
-                {links.map((link) => (
-                    <li key={link.url} style={{ color: link.color }}>
-                        <span>
-                            <a
-                                className="basic-link"
-                                href={`${link.url}`}
-                            >
-                                {link.text}
-                            </a>
-                            <p className="description">{link.description}</p>
-                        </span>
-                    </li>
-                ))}
+                {pageMap.map((pageData) => {
+                    const { color, description, path, title } = pageData;
+                    return (
+                        <li
+                            key={path}
+                            style={{ color: color || theme.color }}
+                        >
+                            <span>
+                                <a
+                                    className="basic-link"
+                                    href={`${path}`}
+                                >
+                                    {title}
+                                </a>
+                                {description
+                                    ? <p className="description">{description}</p>
+                                    : null
+                                }
+                            </span>
+                        </li>
+                    );
+                })}
             </ul>
         </main>
     );
