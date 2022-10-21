@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
 
 import pageMap from '../constants/pageMap';
-import { themeColors } from '../themes';
 
 const HeadingAccent = styled.span`
     color: #663399;
