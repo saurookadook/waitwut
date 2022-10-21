@@ -57,24 +57,23 @@ interface ListPageProps {
     data: ListPageData;
 }
 
-/* DocSheet */
-interface DocSheetMdxFrontmatter {
+interface BaseMdxFrontmatter {
     date?: Date;
     iconComponentName?: string;
     title: string;
 }
 
-interface DocSheetMdx {
+interface BaseMdx {
     body: string;
-    frontmatter: DocSheetMdxFrontmatter
+    frontmatter: BaseMdxFrontmatter
 }
 
-interface DocSheetData {
-    mdx: DocSheetMdx;
+interface BaseMdxData {
+    mdx: BaseMdx;
 }
 
-interface DocSheetProps {
-    data: DocSheetData;
+interface BaseMdxProps {
+    data: BaseData;
 }
 
 type IconComponents = {

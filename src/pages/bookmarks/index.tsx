@@ -33,7 +33,7 @@ const SheetLineItemLink = styled(Link)`
     }
 `;
 
-const BookmarksPage = ({ data }: ListPageProps): React.ReactElement => {
+const BookmarksListPage = ({ data }: ListPageProps): React.ReactElement => {
     const { nodes } = data.allMdx || {};
 
     return (
@@ -80,4 +80,4 @@ export const query = graphql`
     }
 `;
 
-export default BookmarksPage;
+export default BookmarksListPage;
