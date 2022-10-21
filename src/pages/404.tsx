@@ -1,53 +1,54 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import styled from 'styled-components';
 
-// styles
-const pageStyles = {
-    color: "#232129",
-    padding: "96px",
-    fontFamily: "-apple-system, Roboto, sans-serif, serif",
-};
-const headingStyles = {
-    marginTop: 0,
-    marginBottom: 64,
-    maxWidth: 320,
-};
+const Main = styled.main`
+    color: "#232129";
+    padding: "96px";
+    font-family: "-apple-system, Roboto, sans-serif, serif";
+`;
 
-const paragraphStyles = {
-    marginBottom: 48,
-};
+const Heading = styled.h1`
+    margin-top: 0;
+    margin-bottom: 64;
+    max-width: 320;
+`;
 
-const codeStyles = {
-    color: "#8A6534",
-    padding: 4,
-    backgroundColor: "#FFF4DB",
-    fontSize: "1.25rem",
-    borderRadius: 4,
-};
+const Paragraph = styled.p`
+    margin-bottom: 48;
+`;
+
+const Code = styled.code`
+    background-color: #FFF4DB;
+    border-radius: 4;
+    color: #8A6534;
+    font-size: 1.25rem;
+    padding: 4;
+`;
 
 const NotFoundPage = (): React.ReactElement => {
     return (
-        <main style={pageStyles}>
+        <Main >
             <title>Not found</title>
-            <h1 style={headingStyles}>Page not found</h1>
-            <p style={paragraphStyles}>
+            <Heading>Page not found</Heading>
+            <Paragraph>
                 Sorry{" "}
                 <span role="img" aria-label="Pensive emoji">
                     😔
                 </span>{" "}
                 we couldn’t find what you were looking for.
                 <br />
-                {process.env.NODE_ENV === "development" ? (
+                {(process.env || {}).NODE_ENV === "development" ? (
                     <>
                         <br />
-                        Try creating a page in <code style={codeStyles}>src/pages/</code>.
+                        Try creating a page in <Code>src/pages/</Code>.
                         <br />
                     </>
                 ) : null}
                 <br />
                 <Link to="/">Go home</Link>.
-            </p>
-        </main>
+            </Paragraph>
+        </Main>
     );
 };
 
