@@ -3,11 +3,13 @@ title: "Amazon Web Services (AWS)"
 date: "2022-10-10"
 fullPath: "/sheet/aws"
 iconComponentName: "aws_icon"
+sectionSlug: "sheets"
 ---
+
+_TODO_ 🙃
 
 # Table of Contents
 
-_TODO_ 🙃
 - [Benefits](#benefits)
 - [Services](#services)
 
@@ -79,6 +81,54 @@ _**NOTE**: Important whitepaper -> [Overview of Amazon Web Services](https://d1.
 - [Amazon EC2 FAQs](https://aws.amazon.com/ec2/faqs/)
 - [Amazon EC2 Auto Scaling FAQs](https://aws.amazon.com/ec2/autoscaling/faqs/)
 
+### Lambda
+
+- [Lambda Sample Code](https://github.com/linuxacademy/content-aws-certified-cloud-practioner/blob/main/lessons/exploring-compute-services-lambda/index.js)
+
+#### Pricing Model
+
+Charged based on **duration** and **number of requests**
+
+1. Compute time
+    - pay only for compute time used
+    - no charge if code is not running
+    - duration calculated from `time code begins running` to `time code returns or terminates`
+2. Request count
+    - request is counted each time execution starts
+    - **NOTE**: tests invoked in the console count as well
+3. Always free
+    - includes 1 million free requests each month
+
+### Additional Services
+
+#### Containers
+
+- [Containers at AWS](https://aws.amazon.com/containers/)
+- [Amazon Elastic Container Service FAQs](https://aws.amazon.com/ecs/faqs/)
+- [Amazon EKS FAQs](https://aws.amazon.com/eks/faqs/)
+- [AWS Fargate FAQs](https://aws.amazon.com/fargate/faqs/)
+
+- **Fargate**
+    - serverless compute engine for containers
+    - allows you to manage containers, like Docker
+    - scales automatically
+    - serverless === no worrying about provisioning, configuring, or scaling servers
+- **Amazon Lightsail**
+    - allows for quickly launching all necessary resources for small projects
+    - deploy preconfigured applications _(like Wordpress site)_ with click of button
+    - simple screens for people with no cloud experience
+    - includes virtual machine, SSD-based storage, data transfer, DNS management, and static IP
+    - low, predictable monthly fee _(as low as $3.50)_
+- **AWS Outposts**
+    - allows for running cloud services in internal data centers
+    - supports workloads that need to remain on-premises _(due to latency or data sovereignty needs)_
+    - AWS delivers and installs servers in your internal data center
+    - used for hybrid experience
+    - have access to cloud services and APIs to develop apps on-premises
+- **AWS Batch**
+    - allows for processing large workloads in smaller chunks _(or batches)_
+    - runs hundreds and thousands of smaller batch processing jobs
+    - dynamically provisions instances based on volume
 
 ---
 
@@ -99,3 +149,31 @@ _**NOTE**: Important whitepaper -> [Overview of Amazon Web Services](https://d1.
     - [Section Introduction](https://acloudguru.visme.co/view/mxzyovkn-s03-l01-section-introduction)
     - [Exploring Compute Services: EC2](https://acloudguru.visme.co/view/g78j6m9o-s03-l02-exploring-compute-services-ec2)
     - [Exploring Compute Services: EC2 in Action](https://acloudguru.visme.co/view/ojnynzdy-s03-l03-exploring-compute-services-ec2-in-action)
+    - [Exploring Compute Services: Lambda](https://acloudguru.visme.co/view/31y6oge4-s03-l04-exploring-compute-services-lambda)
+    - [Create a Lambda Function Using the AWS Management Console](https://labkeep-assets-production.s3.amazonaws.com/01ycxhishl0x7rt1izfpohz2fnyw?response-content-disposition=inline%3B%20filename%3D%221147%20AWS%20Essentials%20S09%20HoL%20Create%20a%20Lambda%20Function%20using%20AWS%20managment%20Console.png%22%3B%20filename%2A%3DUTF-8%27%271147%2520AWS%2520Essentials%2520S09%2520HoL%2520Create%2520a%2520Lambda%2520Function%2520using%2520AWS%2520managment%2520Console.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVKPCGNLNXWFTXQO3%2F20221031%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221031T185837Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEI%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQCAOqZC9wslvnYW8VE8s012Rt9b6FAE%2BbmTeHAe%2F2yP8gIgQSWI%2Bf2fnrJEE9aGMBt%2B3Z4skTbg5KfGEkWP0vlOBecqgwQIeBACGgwzNjYwODM0Njc5OTUiDL3OGpubWFqDOgn1rCrgA%2BzKdJpYPFu67frjmZ705Yh044SjwnqEwKwOMV48Mg%2FIde08UlMJMHGS7zPW8dmw1Cm5GwsMdJgTna42Ogfhw6hPRHM4NXXiVUywUCiEZEHgXvFje5Tu3cY0y7AgwTdgQVnfhPvTNVEqEgRU5jgKVQjpvY2ynSuLxZncAW21gLmFvNmvtkwokVAoThWrOk4bXPw%2F%2Fyg%2FAzRrvIzEWH5adBb%2ByZt76G24uWuYiyFa4fpu1dcKIHoMdB%2Fs2ELHWdfkW7K6fCCb8A8V%2Bwn45Qbahyv2v57Q0odQYJliMyNlNuFHxOE3GRdeuUoBVZLK8OKHy89HQMg%2BkQX87HUmz1dSQft40Kq5cB6m7ALplmlmrKqSDXxtKpzhM%2Fx0MbWwamidch1AoL57xkoKLGCrgq2Bqut62Z%2BtlRHr3rU7TWhMllF1BmsdDjC4BIObNehRPV9HDAB2ly%2BkZ85h3qllRRR2TWDB91J2cPh8872h3FGtic%2BaY0Yt%2F0iRDv%2BBRhQ%2F%2FmLh00NHKFFrKXnUPdnJ0k7BIKgRrMi74AKvyQeRyjOrD9R07ZT5KVEvQ58WXYmfJMwhA7rHxdlEFYAnaYG9R5Z9zG8RvCJNx3BOhM%2FY11VRa20G%2FS3eW37cbRxpbWpW9z1k3DDWtf%2BaBjqlAVpArpWUyQdIF05%2BCAmKuLYTC%2Fhd4F81qHClnHJb11PXtZpfTy8v9aVc0qU1PcJgCVX045jDKbs3u%2FE4j7yztNtjZMzPVFPnOPENur0mWtDb%2FA5d%2FVdaJ79dfkssmOmpB74SLWqF%2BOQk9kgeOvaS9uZ7prFgiuMHMiHEN0AvBePwFdZPQeRww1MS%2BkXTybSY4gsTBeGgWy%2B1wH1lBQjaMnlno9KmOA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=a7c342387d99db48d9c18d140ea88080f0aa54860ba986a8e8fc7dd0698ffa09)
+    - [Exploring Compute Services: Additional Compute Services](https://acloudguru.visme.co/view/kk981z70-s03-l05-exploring-compute-services-additional-compute-services)
+
+    <!--
+
+    - [Leveraging Storage Services: S3]()
+    - [Leveraging Storage Services: S3 in Action]()
+    - [Leveraging Storage Services: Additional Storage Services]()
+    - [Understanding Content Delivery Services]()
+    - [Understanding Networking Services: VPC and Subcomponents]()
+    - [Launch an EC2 Instance in a Virtual Private Cloud (VPC)]()
+    - [Understanding Networking Services: Additional Networking Services ]()
+    - [Utilizing Databases]()
+    - [Exploring Migration and Transfer Services]()
+    - [Leveraging Analytics Services]()
+    - [Leveraging Machine Learning Services]()
+    - [Understanding Developer Tools]()
+    - [Exploring Deployment and Infrastructure Management Services]()
+    - [Create a DynamoDB Table Using CloudFormation]()
+    - [Utilizing Messaging and Integration Services: SQS]()
+    - [Utilizing Messaging and Integration Services: SNS and SES ]()
+    - [Exploring Auditing, Monitoring, and Logging Services]()
+    - [Exploring Additional Services]()
+    - [Section Review]()
+    - [CCP QUIZ: Technology]()
+
+    -->
