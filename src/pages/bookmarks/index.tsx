@@ -67,7 +67,10 @@ const BookmarksListPage = ({ data }: ListPageProps): React.ReactElement => {
 
 export const query = graphql`
     query {
-        allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+        allMdx(
+            sort: {fields: frontmatter___date, order: DESC},
+            filter: {frontmatter: {sectionSlug: {eq: "bookmarks"}}}
+        ) {
             nodes {
                 frontmatter {
                     date(formatString: "MMMM D, YYYY")

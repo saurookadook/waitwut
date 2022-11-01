@@ -68,7 +68,10 @@ const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
 
 export const query = graphql`
     query {
-        allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+        allMdx(
+            sort: {fields: frontmatter___date, order: DESC},
+            filter: {frontmatter: {sectionSlug: {eq: "sheets"}}}
+        ) {
             nodes {
                 frontmatter {
                     date(formatString: "MMMM D, YYYY")

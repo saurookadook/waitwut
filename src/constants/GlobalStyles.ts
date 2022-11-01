@@ -48,6 +48,11 @@ const GlobalStyles = createGlobalStyle`
         font-size: 1.5em;
     }
 
+    summary > * {
+        display: inline-block;
+        margin-left: 0.5em;
+    }
+
     a {
         text-decoration: none;
 
