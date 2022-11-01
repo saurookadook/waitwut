@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 import { Drawer } from '@mui/material';
 
 import { MenuNavLink } from './nav';
+import { PageMapContext } from '../common/contexts';
 
 import { menuTheme } from '../themes';
 
 const StyledDrawer = styled(Drawer)`
-background-color: ${(props) => props?.theme?.backgroundColor};
-color: ${(props) => props.theme?.color};
-
-& > .MuiDrawer-paper {
     background-color: ${(props) => props?.theme?.backgroundColor};
-    border: none;
     color: ${(props) => props.theme?.color};
-    padding-top: 6em;
-    padding-left: 1em;
-}
+
+    & > .MuiDrawer-paper {
+        background-color: ${(props) => props?.theme?.backgroundColor};
+        border: none;
+        color: ${(props) => props.theme?.color};
+        padding-top: 6em;
+        padding-left: 1em;
+    }
 `;
 
 export const useSheetsQuery = (): MdxNodes => {
@@ -41,18 +42,19 @@ export const useSheetsQuery = (): MdxNodes => {
     return allMdx;
 };
 
-const navLinks: NavLinkItem[] = [
-    {
-        slug: 'sheet',
-        label: 'Sheets',
-        children: [],
-    },
-];
-
 const drawerWidth = 240;
 
 const LeftSideMenu = (): React.ReactElement => {
     const { nodes } = useSheetsQuery();
+    const pageMapContext = useContext(PageMapContext);
+
+    const navLinks: NavLinkItem[] = pageMapContext.pageMap.map((record) => {
+        return {
+            slug: record.sectionSlug,
+            label: record.title,
+            children: []
+        }
+    })
 
     if ((nodes || []).length > 0) {
         navLinks[0].children = (nodes || []).map((node: NodeFromQuery): NavLinkItem => {

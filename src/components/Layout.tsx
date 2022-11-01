@@ -8,8 +8,7 @@ import {
 } from '@mui/material';
 
 import { Footer, Header, LeftSideMenu } from '../components';
-import { GlobalStyles } from '../constants';
-
+import { GlobalStyles, pageMap } from '../constants';
 
 import {
     baseTheme,
@@ -41,8 +40,9 @@ interface LayoutProps {
     children: React.ReactElement
 }
 
-const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
+export const PageMapContext = React.createContext({ pageMap });
 
+const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
 
     const staticData = useStaticQuery(graphql`
         query {
@@ -63,23 +63,25 @@ const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
     // console.log(' - data: ', data);
 
     return (
-        <ThemeProvider theme={baseTheme}>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
-            <CssBaseline />
-            <GlobalStyles />
-            {/* TODO: generate title based on page (i.e. for python, "wait, wut? | Python") */}
-            <title>😬 {title}</title>
-            <Header />
-            <ThemeProvider theme={containerTheme}>
-                <StyledContainer disableGutters={true}>
-                    <StyledBox>
-                        {children}
-                    </StyledBox>
-                    <LeftSideMenu />
-                </StyledContainer>
+        <PageMapContext.Provider value={{ pageMap }}>
+            <ThemeProvider theme={baseTheme}>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+                <CssBaseline />
+                <GlobalStyles />
+                {/* TODO: generate title based on page (i.e. for python, "wait, wut? | Python") */}
+                <title>😬 {title}</title>
+                <Header />
+                <ThemeProvider theme={containerTheme}>
+                    <StyledContainer disableGutters={true}>
+                        <StyledBox>
+                            {children}
+                        </StyledBox>
+                        <LeftSideMenu />
+                    </StyledContainer>
+                </ThemeProvider>
+                <Footer />
             </ThemeProvider>
-            <Footer />
-        </ThemeProvider>
+        </PageMapContext.Provider>
     );
 };
 

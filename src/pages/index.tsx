@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
 
-import pageMap from '../constants/pageMap';
+import { PageMapContext } from '../common/contexts';
 
 const HeadingAccent = styled.span`
     color: #663399;
@@ -28,6 +28,7 @@ const Description = styled.p`
 
 const IndexPage = (): React.ReactElement => {
     const theme = useTheme();
+    const pageMapContext = useContext(PageMapContext);
 
     return (
         <main>
@@ -44,17 +45,17 @@ const IndexPage = (): React.ReactElement => {
                 <ParagraphLines>CHECK IT OUUUUTTTTTTTT</ParagraphLines>
             </p>
             <ul className="link-list">
-                {pageMap.map((pageData) => {
-                    const { color, description, path, title } = pageData;
+                {(pageMapContext?.pageMap || []).map((pageData) => {
+                    const { color, description, sectionSlug, title } = pageData;
                     return (
                         <PageItem
-                            key={path}
+                            key={sectionSlug}
                             color={`${color || theme.color}`}
                         >
                             <span>
                                 <Link
                                     className="basic-link"
-                                    to={`${path}`}
+                                    to={`/${sectionSlug}`}
                                 >
                                     {title}
                                 </Link>
