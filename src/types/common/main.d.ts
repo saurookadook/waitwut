@@ -32,7 +32,13 @@ interface NodeFromQuery {
     frontmatter: NodeFrontmatter;
 }
 
+interface GroupFromQuery {
+    nodes: NodeFromQuery[];
+    fieldValue: TopLevelPageSlugs;
+}
+
 interface MdxNodes {
+    group: GroupFromQuery[];
     nodes?: NodeFromQuery[];
 }
 
@@ -78,4 +84,9 @@ interface BaseMdxProps {
 
 type IconComponents = {
     [key: string]: (() => React.ReactElement)
+}
+
+enum TopLevelPageSlugs {
+    BOOKMARKS = "bookmarks",
+    SHEETS = "sheets"
 }

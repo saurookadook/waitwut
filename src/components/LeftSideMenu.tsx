@@ -24,20 +24,23 @@ const StyledDrawer = styled(Drawer)`
 export const useSheetsQuery = (): MdxNodes => {
     const { allMdx } = useStaticQuery(
         graphql`
-        query {
-            allMdx(sort: { fields: frontmatter___title, order: DESC }) {
-                nodes {
-                    frontmatter {
-                        title
-                        fullPath
-                        iconComponentName
+            query {
+                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
+                    group(field: frontmatter___sectionSlug) {
+                        nodes {
+                            frontmatter {
+                                title
+                                fullPath
+                                iconComponentName
+                            }
+                            id
+                            slug
+                        }
+                        fieldValue
                     }
-                    id
-                    slug
                 }
             }
-        }
-    `,
+        `,
     );
     return allMdx;
 };
@@ -45,27 +48,34 @@ export const useSheetsQuery = (): MdxNodes => {
 const drawerWidth = 240;
 
 const LeftSideMenu = (): React.ReactElement => {
-    const { nodes } = useSheetsQuery();
-    const pageMapContext = useContext(PageMapContext);
+    const { group: nodesGroups } = useSheetsQuery();
+    // const { pagesBySectionSlug } = useContext(PageMapContext);
+    const { pageMap } = useContext(PageMapContext);
 
-    const navLinks: NavLinkItem[] = pageMapContext.pageMap.map((record) => {
-        return {
-            slug: record.sectionSlug,
-            label: record.title,
-            children: []
+    const navLinks: NavLinkItem[] = pageMap.map((record) => {
+        const navLinkItem = {
+            slug: record.sectionSlug || "",
+            label: record.title || "",
+            children: [] as NavLinkItem[]
         }
-    })
 
-    if ((nodes || []).length > 0) {
-        navLinks[0].children = (nodes || []).map((node: NodeFromQuery): NavLinkItem => {
-            return {
-                slug: node.slug,
-                label: node.frontmatter?.title || node.slug,
-                iconName: node.frontmatter?.iconComponentName
-                // path: node.frontmatter?.fullPath
-            };
+        const nodeGroup = nodesGroups.find((node) => {
+            return node.fieldValue === record.sectionSlug
         });
-    }
+
+        if (((nodeGroup || {}).nodes || []).length > 0) {
+            nodeGroup?.nodes.forEach((node: NodeFromQuery) => {
+                navLinkItem.children.push({
+                    slug: node.slug,
+                    label: node.frontmatter?.title || node.slug,
+                    iconName: node.frontmatter?.iconComponentName
+                    // path: node.frontmatter?.fullPath
+                });
+            });
+        }
+
+        return navLinkItem;
+    });
 
     return (
         <ThemeProvider theme={menuTheme}>

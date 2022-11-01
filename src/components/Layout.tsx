@@ -7,6 +7,7 @@ import {
     Container,
 } from '@mui/material';
 
+import { PageMapContext } from '../common/contexts';
 import { Footer, Header, LeftSideMenu } from '../components';
 import { GlobalStyles, pageMap } from '../constants';
 
@@ -39,8 +40,6 @@ interface LayoutProps {
     pageTitle?: string;
     children: React.ReactElement
 }
-
-export const PageMapContext = React.createContext({ pageMap });
 
 const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
 
