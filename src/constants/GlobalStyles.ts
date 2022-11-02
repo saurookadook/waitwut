@@ -22,10 +22,13 @@ const GlobalStyles = createGlobalStyle`
         padding: 96px;
     }
 
+    h1, h2, h3, h4, h5 {
+        margin-bottom: 0.5em;
+    }
+
     h1 {
         font-size: 3em;
         margin-top: 0;
-        margin-bottom: 0.5em;
     }
 
     h1:first-of-type {
@@ -63,6 +66,14 @@ const GlobalStyles = createGlobalStyle`
 
     p {
         /* margin-bottom: 48px; */
+    }
+
+    ol li::marker {
+        font-weight: 900;
+    }
+
+    ul {
+        margin-top: 0.5em;
     }
 
     li {
