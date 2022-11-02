@@ -12,6 +12,9 @@ _TODO_ 🙃
 
 - [Benefits](#benefits)
 - [Services](#services)
+- [Compute Services](#compute-services)
+- [Storage Services](#storage-services)
+- [Content Delivery Services](#content-delivery-services)
 
 ## Benefits
 _...of cloud computing_
@@ -35,7 +38,7 @@ _...of cloud computing_
 - Networking
     - VPC
     - Direct Connect
-- Storage
+- [Storage Services](#storage-services)
     - S3
     - EBS
 - Analytics
@@ -132,8 +135,165 @@ Charged based on **duration** and **number of requests**
 
 ---
 
+## Storage Services
+
+### S3
+
+- highly-available object storage service for cloud
+- **objects** _(files)_ stored in **buckets** _(directories)_
+- essentially unlimited storage _(can hold millions of objects per bucket)_
+- objects can be public or private
+- can upload objects via console, CLI, or from within code using SDKs
+- can set security at bucket level or individual object level using access control lists _(ACLs)_, bucket policies, or access point policies
+- can enable versioning to create multiple versions of file
+- can use S3 access logs to track access to buckets and objects
+- regional service but bucket names must be globally unique
+
+#### S3 Storage Classes
+
+- S3 Standard
+- S3 Intelligent-Tiering
+- S3 Standard-Infrequent Access _(IA)_
+- S3 One Zone-Infrequent Access _(IA)_
+- S3 Glacier
+- S3 Glacier Deep Archive
+- S3 Outposts
+
+#### S3 in the Real World
+
+- Static sites
+- Data archive
+- Analytics systems
+- Mobile applications
+    - users can upload files to S3 bucket and then leverage S3 Transfer Acceleration to make process _very_ fast
+
+### EC2 Storage
+
+- EC2 instances hosted on host computer _(or rack)_ in AWS data center
+- these instances can be split up virtually into many EC2 instances
+- all EC2 instances **must** have a root drive
+    - could be EBS volume or instance store volume
+    - EBS drives are persistent, while instance store drives are ephemeral
+
+#### Amazon Elastic Block Store (EBS)
+
+- storage device _(called a volume)_ that can be attached to (or removed from) your instance
+- data persists when instance is not running
+- can only be attached to one instance in same AZ
+- tied to one AZ
+- recommended for:
+    - quickly accessible data
+    - running a database on an instance
+    - long-term data storage
+
+#### EC2 Instance Store
+
+- instance store is local storage that is physically attached to host computer and cannot be removed
+- storage on disks physically attached to an instance
+- storage is temporary since data loss occurs when EC2 instance is stopped
+- faster with higher I/O speeds
+- recommended for:
+    - temporary storage needs
+    - data replicated across multiple instances
+
+#### Amazon Elastic File System (EFS)
+
+- serverless network file system for sharing files
+    - _think "Dropbox for your EC2 instances"_
+- only supports Linux file system
+- accessibility across different AZs in same Region
+- more expensive than EBS
+- recommended for:
+    - main directories for business-critical apps
+    - lift-and-shift existing enterprise apps
+
+#### Storage Gateway
+
+- hybrid storage service
+- connect on-premises and cloud data
+- recommended for:
+    - moving backups to cloud
+    - reducing costs for hybrid cloud storage
+    - low latency access to data
+
+#### AWS Backup
+
+- integrates with resources like EC2, EBS, EFS, and more
+- create backup plan that includes frequency and retention
+
+---
+
+## Content Delivery Services
+
+- CDN is mechanism to deliver content quickly and efficiently based on geographic location
+
+### [Amazon CloudFront](https://aws.amazon.com/cloudfront/)
+
+- a CDN that delivers data and applications globally with low latency
+- makes content available globally or restricts it based on location
+- speeds up delivery of static and dynamic web content
+- uses egde locations to cache content
+
+**NOTE**: If content is already in the edge location, CloudFront delivers it immediately. Otherwise, CloudFront retrieves files from original source of content.
+
+'CloudFront distribution' === collection of edge locations
+
+#### CloudFront in the Real World
+
+- S3 static websites
+- Prevent attacks
+    - can stop certain web attacks like DDoS
+- IP address blocking
+
+### [Amazon Global Accelerator](https://aws.amazon.com/global-accelerator)
+
+- sends users through AWS global network when accessing content, thereby speeding up delivery
+- improves latency and availability of single-Region applications
+- sends traffic through AWS global network infrastructure
+- 60% performance boost
+- automatically re-routes traffic to healthy available regional endpoints
+
+### [Amazon S3 Transfer Acceleration](https://aws.amazon.com/s3/transfer-acceleration/)
+
+- improves content uploads and downloads to and from S3 buckets
+- fast transfer of files over long distances
+- customers around the world can upload to a central bucket
+- uses CloudFront's globally distributed edge locations
+
+## Networking Services
+
+- connects computers together and allows for sharing of data and applications around the globe, in a secure manner using virtual routers, firewalls, and network management services
+
+### [Amazon Virtual Private Cloud (VPC)](https://aws.amazon.com/vpc/)
+
+- foundational service that allows you to create secure private network in AWS cloud where you launch your resources
+- private virtual network
+- isolate and protect resources
+- launch resources like EC2 instances inside VPC
+- VPC spans Availability Zones in a Region
+
+_aside: "Internet Gateway" and "Peering Connection"_
+
+- **Subnet**
+    - allows you to split network inside the VPC
+    - where you launch resources like EC2 instances
+- **Network ACL**
+    - access control lists ensure proper traffic is allowed into subnet
+- **Router and Route Table**
+    - defines where network traffic is routed
+- **Internet Gateway**
+    - allows public traffic to the internet from a VPC
+- **VPC peering**
+    - allows for connecting 2 VPCs together
+    - facilitates transfer of data in secure manner
+
+[What is a correct IP4 CIDR for AWS?](https://serverfault.com/questions/1025033/what-is-a-correct-ip4-cidr-for-aws)
+
+---
+
 ### Resources
 - [AWS Terminology Cheat Sheet](https://acloudguru.com/blog/engineering/your-aws-terminology-cheat-sheet)
+- [How to choose the CIDR block for your VPC](https://blogs.mulesoft.com/api-integration/security/how-to-choose-the-cidr-block-for-your-vpc/)
 
 ## ACG Courses
 
@@ -150,17 +310,28 @@ Charged based on **duration** and **number of requests**
     - [Exploring Compute Services: EC2](https://acloudguru.visme.co/view/g78j6m9o-s03-l02-exploring-compute-services-ec2)
     - [Exploring Compute Services: EC2 in Action](https://acloudguru.visme.co/view/ojnynzdy-s03-l03-exploring-compute-services-ec2-in-action)
     - [Exploring Compute Services: Lambda](https://acloudguru.visme.co/view/31y6oge4-s03-l04-exploring-compute-services-lambda)
-    - [Create a Lambda Function Using the AWS Management Console](https://labkeep-assets-production.s3.amazonaws.com/01ycxhishl0x7rt1izfpohz2fnyw?response-content-disposition=inline%3B%20filename%3D%221147%20AWS%20Essentials%20S09%20HoL%20Create%20a%20Lambda%20Function%20using%20AWS%20managment%20Console.png%22%3B%20filename%2A%3DUTF-8%27%271147%2520AWS%2520Essentials%2520S09%2520HoL%2520Create%2520a%2520Lambda%2520Function%2520using%2520AWS%2520managment%2520Console.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVKPCGNLNXWFTXQO3%2F20221031%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221031T185837Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEI%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQCAOqZC9wslvnYW8VE8s012Rt9b6FAE%2BbmTeHAe%2F2yP8gIgQSWI%2Bf2fnrJEE9aGMBt%2B3Z4skTbg5KfGEkWP0vlOBecqgwQIeBACGgwzNjYwODM0Njc5OTUiDL3OGpubWFqDOgn1rCrgA%2BzKdJpYPFu67frjmZ705Yh044SjwnqEwKwOMV48Mg%2FIde08UlMJMHGS7zPW8dmw1Cm5GwsMdJgTna42Ogfhw6hPRHM4NXXiVUywUCiEZEHgXvFje5Tu3cY0y7AgwTdgQVnfhPvTNVEqEgRU5jgKVQjpvY2ynSuLxZncAW21gLmFvNmvtkwokVAoThWrOk4bXPw%2F%2Fyg%2FAzRrvIzEWH5adBb%2ByZt76G24uWuYiyFa4fpu1dcKIHoMdB%2Fs2ELHWdfkW7K6fCCb8A8V%2Bwn45Qbahyv2v57Q0odQYJliMyNlNuFHxOE3GRdeuUoBVZLK8OKHy89HQMg%2BkQX87HUmz1dSQft40Kq5cB6m7ALplmlmrKqSDXxtKpzhM%2Fx0MbWwamidch1AoL57xkoKLGCrgq2Bqut62Z%2BtlRHr3rU7TWhMllF1BmsdDjC4BIObNehRPV9HDAB2ly%2BkZ85h3qllRRR2TWDB91J2cPh8872h3FGtic%2BaY0Yt%2F0iRDv%2BBRhQ%2F%2FmLh00NHKFFrKXnUPdnJ0k7BIKgRrMi74AKvyQeRyjOrD9R07ZT5KVEvQ58WXYmfJMwhA7rHxdlEFYAnaYG9R5Z9zG8RvCJNx3BOhM%2FY11VRa20G%2FS3eW37cbRxpbWpW9z1k3DDWtf%2BaBjqlAVpArpWUyQdIF05%2BCAmKuLYTC%2Fhd4F81qHClnHJb11PXtZpfTy8v9aVc0qU1PcJgCVX045jDKbs3u%2FE4j7yztNtjZMzPVFPnOPENur0mWtDb%2FA5d%2FVdaJ79dfkssmOmpB74SLWqF%2BOQk9kgeOvaS9uZ7prFgiuMHMiHEN0AvBePwFdZPQeRww1MS%2BkXTybSY4gsTBeGgWy%2B1wH1lBQjaMnlno9KmOA%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=a7c342387d99db48d9c18d140ea88080f0aa54860ba986a8e8fc7dd0698ffa09)
+    - Create a Lambda Function Using the AWS Management Console _(Hands-on Lab)_
+    ```python
+    def lambda_handler(event, context):
+        message = f"Hello {event['first_name']} {event['last_name']}! Keep being awesome!"
+
+        # print to CloudWatch logs
+        print(message)
+
+        return {
+            status: 200,
+            'message': message
+        }
+    ```
     - [Exploring Compute Services: Additional Compute Services](https://acloudguru.visme.co/view/kk981z70-s03-l05-exploring-compute-services-additional-compute-services)
+    - [Leveraging Storage Services: S3](https://acloudguru.visme.co/view/01ypw1gr-s03-l06-leveraging-storage-services-s3)
+    - [Leveraging Storage Services: S3 in Action](https://acloudguru.visme.co/view/q6x8oz1r-s03-l07-leveraging-storage-services-s3-in-action)
+    - [Leveraging Storage Services: Additional Storage Services](https://acloudguru.visme.co/view/ojny1jzy-s03-l08-leveraging-storage-services-additional-storage-services)
+    - [Understanding Content Delivery Services](https://acloudguru.visme.co/view/w48r7ygo-s03-l09-understanding-content-delivery-services)
+    - [Understanding Networking Services: VPC and Subcomponents](https://acloudguru.visme.co/view/y4mnz11g-s03-l10-understanding-networking-services-vpc-and-subcomponents)
+    - Launch an EC2 Instance in a Virtual Private Cloud (VPC) _(Hands-on Lab)_
 
-    <!--
-
-    - [Leveraging Storage Services: S3]()
-    - [Leveraging Storage Services: S3 in Action]()
-    - [Leveraging Storage Services: Additional Storage Services]()
-    - [Understanding Content Delivery Services]()
-    - [Understanding Networking Services: VPC and Subcomponents]()
-    - [Launch an EC2 Instance in a Virtual Private Cloud (VPC)]()
+<!--
     - [Understanding Networking Services: Additional Networking Services ]()
     - [Utilizing Databases]()
     - [Exploring Migration and Transfer Services]()
@@ -175,5 +346,4 @@ Charged based on **duration** and **number of requests**
     - [Exploring Additional Services]()
     - [Section Review]()
     - [CCP QUIZ: Technology]()
-
-    -->
+-->
