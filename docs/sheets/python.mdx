@@ -1,10 +1,13 @@
 ---
 title: "Python"
 date: "2022-07-23"
-fullPath: "/sheet/python"
+fullPath: "/sheets/python"
 iconComponentName: "python_icon"
 sectionSlug: "sheets"
 ---
+
+![function vs lambda](./docs/sheets/images/python/function-vs-lambda.png)
+
 
 # Table of Contents
 - [Tools](#tools)
@@ -15,7 +18,7 @@ sectionSlug: "sheets"
 - [Modules](#modules)
 - [Statements](#statements)
 - [Conditionals](#conditionals)
-- [Lamdas](#lamdas)
+- [Lambdas](#lambdas)
 - [Those other things that are good to know](#those-other-things-that-are-good-to-know)
 - [Functions](#functions)
 - [Closures](#closures)
@@ -427,9 +430,9 @@ result = true_value if condition else false_value
 
 ---
 
-## Lamdas
+## Lambdas
 
-- named after lamda calculus, developed by Alonzo Church in 1936
+- named after lambda calculus, developed by Alonzo Church in 1936
 
 ```python
 scientists = [
@@ -444,10 +447,10 @@ scientists = [
     'Charles Darwin'
 ]
 
-sorted(scientists, key=lamda scientist_name: scientist_name.split()[-1])
+sorted(scientists, key=lambda scientist_name: scientist_name.split()[-1])
 ```
 
-![`function` vs `lamda`](/images/python/function-vs-lamda.png)
+![`function` vs `lambda`](../src/images/python/function-vs-lambda.png)
 
 ---
 
@@ -1277,7 +1280,7 @@ for x in range(10):
     - `map` object is an iterator object
 - can accept any number of input sequences
     - **NOTE**: number of input sequences _**must**_ match number of functional arguments
-![map-with-multiple-input-sequences](/images/python/map-with-multiple-input-sequences.png)
+![map-with-multiple-input-sequences](../src/images/python/function-vs-lambda.png)
 - map will terminate as soon as _any_ of the input sequences are terminated
 
 ```python
@@ -1336,7 +1339,7 @@ list(map(combine, itertools.count(), sizes, colors, animals))
 - **NOTE**: can pass `None` as first argument to remove elements which evaluate to `False`
 
 ```python
-positives = filter(lamda x: x > 0, [1, -5, 0, 6, -2, 8])
+positives = filter(lambda x: x > 0, [1, -5, 0, 6, -2, 8])
 #=> <filter object at 0x101576d90>
 list(positives)
 #=> [1, 6, 8]

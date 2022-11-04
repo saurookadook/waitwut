@@ -1,7 +1,7 @@
 ---
 title: "Kafka"
 date: "2022-08-23"
-fullPath: "/sheet/kafka"
+fullPath: "/sheets/kafka"
 iconComponentName: "kafka_icon"
 sectionSlug: "sheets"
 ---
@@ -88,6 +88,7 @@ sectionSlug: "sheets"
     - other metadata-based tasks _(including dealing with offsets)_
 - usually exists as group of Brokers as a cluster _(for scalability)_
 - number of Brokers should be based on:
+    - ![How many Brokers?](../src/images/kafka/how-many-brokers.png)
     - storage needs and growth
     - replication requirements _(since that effectively serves as a multiplier)_
         - for example:
@@ -117,9 +118,9 @@ sectionSlug: "sheets"
         - sensitive to latency and timeouts
         - connection hiccups can make brokers act unpredictably
 - role in Kafka
-    1) when Broker starts up, registers itself in ZooKeeper by creating ephemeral node using its unique ID
-    2) controller is simply the first Broker to create ephemeral node named controller
-    3) subsequent Brokers will attempt to do the same, but will instead create a watch on current controller node
+    1. when Broker starts up, registers itself in ZooKeeper by creating ephemeral node using its unique ID
+    2. controller is simply the first Broker to create ephemeral node named controller
+    3. subsequent Brokers will attempt to do the same, but will instead create a watch on current controller node
 
 
 ---
@@ -143,6 +144,7 @@ sectionSlug: "sheets"
     - _in that sense, a Consumer is also a Producer_
 - more than one is usually needed
 - _Consumer groups_ consist of Consumers working together in coordinated system
+    - ![Consumer Group Diagram](../src/images/kafka/consumer-groups.png)
     - each Consumer shares Consumer group ID
     - coordinate which Consumers get which Paritions of data
     - since Partition cannot be split, max Consumers in group _**should not**_ equal more than total available Partitions
@@ -177,13 +179,16 @@ _TODO_ 🙃
 
 ---
 
+#### Resources
 
+- [Apache Avro™ 1.8.1 Getting Started (Python)](https://avro.apache.org/docs/1.8.1/gettingstartedpython.html)
 
----
+<!--
 
-##
+## TODO
 
 _TODO_ 🙃
 
 ---
 
+-->
