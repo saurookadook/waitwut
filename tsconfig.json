@@ -114,6 +114,7 @@
         "./plugins/**/*"
     ],
     "exclude": [
+        "_bookmkarks_data",
         "node_modules",
         "public",
         ".cache"
