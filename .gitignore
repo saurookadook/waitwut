@@ -107,3 +107,5 @@ src/gatsby-types.d.ts
 
 # TernJS port file
 .tern-port
+
+_bookmarks_data
