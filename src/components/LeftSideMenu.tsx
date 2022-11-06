@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Drawer } from '@mui/material';
 
 import { MenuNavLink } from './nav';
+import { createNavLinks } from './nav/utils';
 import { PageMapContext } from '../common/contexts';
 
 import { menuTheme } from '../themes';
@@ -47,35 +48,14 @@ export const useSheetsQuery = (): MdxNodes => {
 
 const drawerWidth = 240;
 
+
+
 const LeftSideMenu = (): React.ReactElement => {
     const { group: nodesGroups } = useSheetsQuery();
     // const { pagesBySectionSlug } = useContext(PageMapContext);
     const { pageMap } = useContext(PageMapContext);
 
-    const navLinks: NavLinkItem[] = pageMap.map((record) => {
-        const navLinkItem = {
-            slug: record.sectionSlug || "",
-            label: record.title || "",
-            children: [] as NavLinkItem[]
-        }
-
-        const nodeGroup = nodesGroups.find((node) => {
-            return node.fieldValue === record.sectionSlug
-        });
-
-        if (((nodeGroup || {}).nodes || []).length > 0) {
-            nodeGroup?.nodes.forEach((node: NodeFromQuery) => {
-                navLinkItem.children.push({
-                    slug: node.slug,
-                    label: node.frontmatter?.title || node.slug,
-                    iconName: node.frontmatter?.iconComponentName
-                    // path: node.frontmatter?.fullPath
-                });
-            });
-        }
-
-        return navLinkItem;
-    });
+    const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
 
     return (
         <ThemeProvider theme={menuTheme}>

@@ -44,6 +44,7 @@ const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkArgs): React.Rea
                     {label}
                 </span>
             </StyledNavLink>
+
             {(children || []).length > 0 ? (
                 <ChildLinkWrapper style={{ marginLeft: `${(depth + 1) * 1}em` }}>
                     {(children || []).map((childNavLink, childIndex) => (
