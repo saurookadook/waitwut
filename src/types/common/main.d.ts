@@ -42,7 +42,7 @@ interface MdxNodes {
     nodes?: NodeFromQuery[];
 }
 
-interface MenuNavLinkArgs {
+interface MenuNavLinkProps {
     depth: Integer;
     key?: string;
     navLink: NavLinkItem;

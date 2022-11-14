@@ -33,7 +33,7 @@ const ChildLinkWrapper = styled.div`
     flex-direction: column;
 `;
 
-const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkArgs): React.ReactElement => {
+const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkProps): React.ReactElement => {
     const fullPath = `${parentPath || ''}/${navLink.slug}`;
     const { children, label, slug } = navLink || {}
 
