@@ -11,7 +11,7 @@ const config: GatsbyConfig = {
     graphqlTypegen: true,
     pathPrefix: '/waitwut',
     plugins: [
-        'gatsby-plugin-image',
+        `gatsby-plugin-image`,
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
