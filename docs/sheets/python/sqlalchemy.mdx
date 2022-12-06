@@ -1,0 +1,17 @@
+---
+title: "SQL Alchemy"
+date: "2022-12-01"
+fullPath: "/sheets/python/sqlalchemy"
+iconComponentName: ""
+sectionSlug: "sheets"
+---
+
+
+### Log Query
+
+```python
+from sqlalchemy.dialects import postgresql
+
+query = ...
+print(str(query.compile(dialect=postgresql.dialect())))
+```
