@@ -7,7 +7,7 @@ import {
     Container,
 } from '@mui/material';
 
-import { PageMapContext } from '../common/contexts';
+import { HeadMetaContext, PageMapContext } from '../common/contexts';
 import { Footer, Header, LeftSideMenu } from '../components';
 import { GlobalStyles, pageMap } from '../constants';
 
@@ -62,25 +62,24 @@ const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
     // console.log(' - data: ', data);
 
     return (
-        <PageMapContext.Provider value={{ pageMap }}>
-            <ThemeProvider theme={baseTheme}>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
-                <CssBaseline />
-                <GlobalStyles />
-                {/* TODO: generate title based on page (i.e. for python, "wait, wut? | Python") */}
-                <title>😬 {title}</title>
-                <Header />
-                <ThemeProvider theme={containerTheme}>
-                    <StyledContainer disableGutters={true}>
-                        <StyledBox>
-                            {children}
-                        </StyledBox>
-                        <LeftSideMenu />
-                    </StyledContainer>
+        <HeadMetaContext.Provider value={{ children, title }}>
+            <PageMapContext.Provider value={{ pageMap }}>
+                <ThemeProvider theme={baseTheme}>
+                    <CssBaseline />
+                    <GlobalStyles />
+                    <Header />
+                    <ThemeProvider theme={containerTheme}>
+                        <StyledContainer disableGutters={true}>
+                            <StyledBox>
+                                {children}
+                            </StyledBox>
+                            <LeftSideMenu />
+                        </StyledContainer>
+                    </ThemeProvider>
+                    <Footer />
                 </ThemeProvider>
-                <Footer />
-            </ThemeProvider>
-        </PageMapContext.Provider>
+            </PageMapContext.Provider>
+        </HeadMetaContext.Provider>
     );
 };
 

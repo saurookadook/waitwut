@@ -32,7 +32,6 @@ const IndexPage = (): React.ReactElement => {
 
     return (
         <main>
-            <title>Home Page</title>
             <h1>
                 Has this ever happened to you?
                 <br />
