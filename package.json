@@ -35,6 +35,7 @@
         "@types/node": "^17.0.45",
         "@types/react": "^18.0.15",
         "@types/react-dom": "^18.0.6",
+        "@types/react-helmet": "^6.1.6",
         "@types/styled-components": "^5.1.24",
         "gatsby": "^4.18.2",
         "gatsby-plugin-image": "^2.24.0",
@@ -48,6 +49,7 @@
         "prismjs": "^1.28.0",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
+        "react-helmet": "^6.1.0",
         "styled-components": "^5.3.5"
     },
     "devDependencies": {
