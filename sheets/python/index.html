@@ -826,7 +826,629 @@ tracer <span class="token operator">=</span> Trace<span class="token punctuation
 <span class="token decorator annotation punctuation">@check_non_negative</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token keyword">def</span> <span class="token function">create_list</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token punctuation">[</span>value<span class="token punctuation">]</span> <span class="token operator">*</span> size
-</code></pre></div><hr/><h2 id="strings-and-representations" style="position:relative"><a href="#strings-and-representations" aria-label="strings and representations permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Strings and Representations</h2><h3 id="code-classlanguage-textreprcode" style="position:relative"><a href="#code-classlanguage-textreprcode" aria-label="code classlanguage textreprcode permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code class="language-text">repr()</code></h3><ul><li>built-in function</li><li>produces unambiguous string representation of an object</li><li>often suggested that <code class="language-text">repr()</code> should return legitimate source code (i.e. can be copy/pasted and run to recreate the object)</li></ul><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Point2D</span><span class="token punctuation">:</span>
+</code></pre></div><hr/><h2 id="properties-and-class-methods" style="position:relative"><a href="#properties-and-class-methods" aria-label="properties and class methods permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties and Class Methods</h2><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>owner_code <span class="token operator">=</span> owner_code
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+</code></pre></div></p></details><h3 id="class-attributes" style="position:relative"><a href="#class-attributes" aria-label="class attributes permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Class Attributes</h3><p>Class attributes created within scope of class</p><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>owner_code <span class="token operator">=</span> owner_code
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>serial <span class="token operator">=</span> ShippingContainer<span class="token punctuation">.</span>next_serial
+        ShippingContainer<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre></div></p></details><p><strong>NOTE</strong>: assignment via <code class="language-text">self.attr = something</code> <em>always</em> creates instance attribute</p><h3 id="static-methods" style="position:relative"><a href="#static-methods" aria-label="static methods permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Static Methods</h3><ul><li>created with use of <code class="language-text">@staticmethod</code> decorator</li></ul><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> ShippingContainer<span class="token punctuation">.</span>next_serial
+        ShippingContainer<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>owner_code <span class="token operator">=</span> owner_code
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>serial <span class="token operator">=</span> ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></p></details><h3 id="class-methods" style="position:relative"><a href="#class-methods" aria-label="class methods permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Class Methods</h3><ul><li>created with use of <code class="language-text">@classmethod</code> decorator</li></ul><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>owner_code <span class="token operator">=</span> owner_code
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>serial <span class="token operator">=</span> ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></p></details><h4 id="class-methods-for-named-constructors" style="position:relative"><a href="#class-methods-for-named-constructors" aria-label="class methods for named constructors permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Class Methods for Named Constructors</h4><ul><li>&quot;named constructors&quot; also known as &quot;factory functions&quot;<ul><li>construct objects with certain configurations</li><li>allows support for multiple functions which behave similarly to constructors but:<ul><li>with different behaviors</li><li>without needing to change <code class="language-text">__init__</code> to handle different forms of argument lists</li></ul></li></ul></li></ul><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> items<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>owner_code <span class="token operator">=</span> owner_code
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>serial <span class="token operator">=</span> ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></p></details><h5 id="aside---iso-6346-bic-code" style="position:relative"><a href="#aside---iso-6346-bic-code" aria-label="aside   iso 6346 bic code permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>Aside - ISO 6346 BIC code</em></h5><ul><li><em>BIC === Bureau International des Containers (International Container Bureau)</em></li><li><em>Full example: <strong>CSQU3054383</strong></em><em>consists of:</em><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">- _owner code (**CSQ**)_
+- _category identifier (**U**)_
+- _serial number (**305438**)_
+- _check digit (**3**)_</code></pre></div></li></ul><details><summary><p><em>Provided helper module</em></p></summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token triple-quoted-string string">&quot;&quot;&quot;
+ISO 6346 shipping container codes.
+&quot;&quot;&quot;</span>
+
+
+<span class="token keyword">def</span> <span class="token function">create</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">,</span> category<span class="token operator">=</span><span class="token string">&#x27;U&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;Create an ISO 6346 shipping container code.
+
+    Args:
+        owner_code (str): Three character alphabetic container code.
+        serial (str): Six digit numeric serial number.
+        category (str): Equipment category identifier.
+
+    Returns:
+        An ISO 6346 container code including a check digit.
+
+    Raises:
+        ValueError: If incorrect values are provided.
+    &quot;&quot;&quot;</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3</span> <span class="token keyword">and</span> owner_code<span class="token punctuation">.</span>isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Invalid ISO 6346 owner code &#x27;{}&#x27;&quot;</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> category <span class="token keyword">not</span> <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">&#x27;U&#x27;</span><span class="token punctuation">,</span> <span class="token string">&#x27;J&#x27;</span><span class="token punctuation">,</span> <span class="token string">&#x27;Z&#x27;</span><span class="token punctuation">,</span> <span class="token string">&#x27;R&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Invalid ISO 6346 category identifier &#x27;{}&#x27;&quot;</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>category<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">6</span> <span class="token keyword">and</span> serial<span class="token punctuation">.</span>isdigit<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Invalid ISO 6346 serial number&quot;</span><span class="token punctuation">)</span>
+
+    raw_code <span class="token operator">=</span> owner_code <span class="token operator">+</span> category <span class="token operator">+</span> serial
+    full_code <span class="token operator">=</span> raw_code <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>check_digit<span class="token punctuation">(</span>raw_code<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> full_code
+
+
+<span class="token keyword">def</span> <span class="token function">check_digit</span><span class="token punctuation">(</span>raw_code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;Compute the check digit for an ISO 6346 code without that digit
+
+    Args:
+        raw_code (str): An ISO 6346 code lacking a check digit.
+
+    Returns:
+        An integer check digit between 0 and 9 inclusive.
+    &quot;&quot;&quot;</span>
+    s <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>code<span class="token punctuation">(</span>char<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token operator">**</span>index <span class="token keyword">for</span> index<span class="token punctuation">,</span> char <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>raw_code<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> s <span class="token operator">%</span> <span class="token number">11</span> <span class="token operator">%</span> <span class="token number">10</span>
+
+
+<span class="token keyword">def</span> <span class="token function">code</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;Determine the ISO 6346 numeric equivalent of a character.
+
+    Args:
+        char (str): A single character string.
+
+    Return:
+        An integer code equivalent to the supplied character.
+    &quot;&quot;&quot;</span>
+    <span class="token keyword">return</span> <span class="token builtin">int</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span> <span class="token keyword">if</span> char<span class="token punctuation">.</span>isdigit<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> letter_code<span class="token punctuation">(</span>char<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">letter_code</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;Determine the ISO 6346 numeric code for a letter.
+
+    Args:
+        letter (str): A single letter.
+
+    Returns:
+        An integer character code equivalent to the supplied letter.
+    &quot;&quot;&quot;</span>
+    value <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>letter<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">&#x27;a&#x27;</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">10</span>
+    <span class="token keyword">return</span> value <span class="token operator">+</span> value <span class="token operator">//</span> <span class="token number">11</span>
+</code></pre></div></p></details><h4 id="static-method-example-using-bic-code-helper" style="position:relative"><a href="#static-method-example-using-bic-code-helper" aria-label="static method example using bic code helper permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Static Method Example Using BIC Code Helper</h4><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> iso6346
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> items<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>bic <span class="token operator">=</span> ShippingContainer<span class="token punctuation">.</span>_make_bic_code<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span>ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+</code></pre></div></p></details><h3 id="static-methods-with-inheritance" style="position:relative"><a href="#static-methods-with-inheritance" aria-label="static methods with inheritance permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Static Methods with Inheritance</h3><ul><li>in Python, static methods can be overridden in subclasses</li></ul><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> iso6346
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> items<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>bic <span class="token operator">=</span> self<span class="token punctuation">.</span>_make_bic_code<span class="token punctuation">(</span>  <span class="token comment"># need to reference &#x27;self&#x27; instead so that the overriden method is called instead of the method from the base class</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span>ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">RefrigeratedShippingContainer</span><span class="token punctuation">(</span>ShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            category<span class="token operator">=</span><span class="token string">&#x27;R&#x27;</span>
+        <span class="token punctuation">)</span></code></pre></div></p></details><h3 id="class-methods-with-inheritance" style="position:relative"><a href="#class-methods-with-inheritance" aria-label="class methods with inheritance permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Class Methods with Inheritance</h3><ul><li>distinguishing feature of Python is ability to have class methods behave polymorphically</li></ul><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> iso6346
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token comment"># NOTE: added *args and **kwargs to accomodate use of these methods in derived subclasses</span>
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> items<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>bic <span class="token operator">=</span> self<span class="token punctuation">.</span>_make_bic_code<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span>ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">RefrigeratedShippingContainer</span><span class="token punctuation">(</span>ShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    MAX_CELSIUS <span class="token operator">=</span> <span class="token number">4.0</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            category<span class="token operator">=</span><span class="token string">&#x27;R&#x27;</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">,</span> celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> celsius <span class="token operator">&gt;</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>MAX_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Temperature too hot!&quot;</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>celsius <span class="token operator">=</span> celsius
+</code></pre></div></p></details><h3 id="properties" style="position:relative"><a href="#properties" aria-label="properties permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties</h3><ul><li>encapsulation using the <code class="language-text">@property</code> decorator
+<a href="/waitwut/src/images/python/property-decorator-diagram.png">Property Decorator Diagram</a></li></ul><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> iso6346
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> items<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>bic <span class="token operator">=</span> self<span class="token punctuation">.</span>_make_bic_code<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span>ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">RefrigeratedShippingContainer</span><span class="token punctuation">(</span>ShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    MAX_CELSIUS <span class="token operator">=</span> <span class="token number">4.0</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            category<span class="token operator">=</span><span class="token string">&#x27;R&#x27;</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">,</span> celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> celsius <span class="token operator">&gt;</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>MAX_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Temperature too hot!&quot;</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_celsius <span class="token operator">=</span> celsius
+
+    <span class="token decorator annotation punctuation">@property</span>  <span class="token comment"># celsius getter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_celsius
+
+    <span class="token decorator annotation punctuation">@celsius<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> value <span class="token operator">&gt;</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>MAX_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Temperature too hot!&quot;</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_celsius <span class="token operator">=</span> value
+</code></pre></div></p></details><details><summary>Extended example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> iso6346
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>  <span class="token comment"># lolz</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> items<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>bic <span class="token operator">=</span> self<span class="token punctuation">.</span>_make_bic_code<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span>ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">RefrigeratedShippingContainer</span><span class="token punctuation">(</span>ShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    MAX_CELSIUS <span class="token operator">=</span> <span class="token number">4.0</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            category<span class="token operator">=</span><span class="token string">&#x27;R&#x27;</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_c_to_f</span><span class="token punctuation">(</span>celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> celsius <span class="token operator">*</span> <span class="token number">9</span><span class="token operator">/</span><span class="token number">5</span> <span class="token operator">+</span> <span class="token number">32</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_f_to_c</span><span class="token punctuation">(</span>fahrenheit<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>fahrenheit <span class="token operator">-</span> <span class="token number">32</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">5</span><span class="token operator">/</span><span class="token number">9</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">,</span> celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> contents<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>celsius <span class="token operator">=</span> celsius
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_celsius
+
+    <span class="token decorator annotation punctuation">@celsius<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> value <span class="token operator">&gt;</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>MAX_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Temperature too hot!&quot;</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_celsius <span class="token operator">=</span> value
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>_c_to_f<span class="token punctuation">(</span>self<span class="token punctuation">.</span>celsius<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@fahrenheit<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>celsius <span class="token operator">=</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>_f_to_c<span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+</code></pre></div></p></details><h3 id="properties-and-inheritance" style="position:relative"><a href="#properties-and-inheritance" aria-label="properties and inheritance permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties and Inheritance</h3><ul><li>inheritance interaction with the <code class="language-text">@property</code> decorator</li></ul><details><summary>Code example</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> iso6346
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    HEIGHT_FT <span class="token operator">=</span> <span class="token number">8.5</span>
+    WIDTH_FT <span class="token operator">=</span> <span class="token number">8.0</span>
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft items<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>length_ft <span class="token operator">=</span> length_ft
+        self<span class="token punctuation">.</span>bic <span class="token operator">=</span> self<span class="token punctuation">.</span>_make_bic_code<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span>ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">volume_in_cubic_feet</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> ShippingContainer<span class="token punctuation">.</span>HEIGHT_FT <span class="token operator">*</span> ShippingContainer<span class="token punctuation">.</span>WIDTH_FT <span class="token operator">*</span> self<span class="token punctuation">.</span>length_ft
+
+
+<span class="token keyword">class</span> <span class="token class-name">RefrigeratedShippingContainer</span><span class="token punctuation">(</span>ShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    MAX_CELSIUS <span class="token operator">=</span> <span class="token number">4.0</span>
+
+    FRIDGE_VOLUME_IN_CUBIC_FEET <span class="token operator">=</span> <span class="token number">100</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            category<span class="token operator">=</span><span class="token string">&#x27;R&#x27;</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_c_to_f</span><span class="token punctuation">(</span>celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> celsius <span class="token operator">*</span> <span class="token number">9</span><span class="token operator">/</span><span class="token number">5</span> <span class="token operator">+</span> <span class="token number">32</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_f_to_c</span><span class="token punctuation">(</span>fahrenheit<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>fahrenheit <span class="token operator">-</span> <span class="token number">32</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">5</span><span class="token operator">/</span><span class="token number">9</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token punctuation">,</span> celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>celsius <span class="token operator">=</span> celsius
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_celsius
+
+    <span class="token decorator annotation punctuation">@celsius<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> value <span class="token operator">&gt;</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>MAX_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;Temperature too hot!&quot;</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_celsius <span class="token operator">=</span> value
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>_c_to_f<span class="token punctuation">(</span>self<span class="token punctuation">.</span>celsius<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@fahrenheit<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>celsius <span class="token operator">=</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>_f_to_c<span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">volume_in_cubic_feet</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>volume_in_cubic_feet <span class="token operator">-</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>FRIDGE_VOLUME_IN_CUBIC_FEET
+</code></pre></div></p></details><details><summary>Extended example (overriding setter)</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> iso6346
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShippingContainer</span><span class="token punctuation">:</span>
+
+    HEIGHT_FT <span class="token operator">=</span> <span class="token number">8.5</span>
+    WIDTH_FT <span class="token operator">=</span> <span class="token number">8.0</span>
+    next_serial <span class="token operator">=</span> <span class="token number">1337</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_get_next_serial</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> cls<span class="token punctuation">.</span>next_serial
+        cls<span class="token punctuation">.</span>next_serial <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_empty</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">create_with_items</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft items<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>contents <span class="token operator">=</span> contents
+        self<span class="token punctuation">.</span>length_ft <span class="token operator">=</span> length_ft
+        self<span class="token punctuation">.</span>bic <span class="token operator">=</span> self<span class="token punctuation">.</span>_make_bic_code<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span>ShippingContainer<span class="token punctuation">.</span>_get_next_serial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">volume_in_cubic_feet</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> ShippingContainer<span class="token punctuation">.</span>HEIGHT_FT <span class="token operator">*</span> ShippingContainer<span class="token punctuation">.</span>WIDTH_FT <span class="token operator">*</span> self<span class="token punctuation">.</span>length_ft
+
+
+<span class="token keyword">class</span> <span class="token class-name">RefrigeratedShippingContainer</span><span class="token punctuation">(</span>ShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    MAX_CELSIUS <span class="token operator">=</span> <span class="token number">4.0</span>
+
+    FRIDGE_VOLUME_IN_CUBIC_FEET <span class="token operator">=</span> <span class="token number">100</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_make_bic_code</span><span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> iso6346<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+            owner_code<span class="token operator">=</span>owner_code<span class="token punctuation">,</span>
+            serial<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            category<span class="token operator">=</span><span class="token string">&#x27;R&#x27;</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_c_to_f</span><span class="token punctuation">(</span>celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> celsius <span class="token operator">*</span> <span class="token number">9</span><span class="token operator">/</span><span class="token number">5</span> <span class="token operator">+</span> <span class="token number">32</span>
+
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">_f_to_c</span><span class="token punctuation">(</span>fahrenheit<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>fahrenheit <span class="token operator">-</span> <span class="token number">32</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">5</span><span class="token operator">/</span><span class="token number">9</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token punctuation">,</span> celsius<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>owner_code<span class="token punctuation">,</span> length_ft<span class="token punctuation">,</span> contents<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>celsius <span class="token operator">=</span> celsius
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_celsius
+
+    <span class="token decorator annotation punctuation">@celsius<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> value <span class="token operator">&gt;</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>MAX_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Temperature of </span><span class="token interpolation"><span class="token punctuation">{</span>value<span class="token punctuation">}</span></span><span class="token string"> is too hot!&quot;</span></span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_celsius <span class="token operator">=</span> value
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>_c_to_f<span class="token punctuation">(</span>self<span class="token punctuation">.</span>celsius<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@fahrenheit<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>celsius <span class="token operator">=</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>_f_to_c<span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">volume_in_cubic_feet</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>volume_in_cubic_feet <span class="token operator">-</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>FRIDGE_VOLUME_IN_CUBIC_FEET
+
+
+<span class="token keyword">class</span> <span class="token class-name">HeatedRefrigeratedShippingContainer</span><span class="token punctuation">(</span>RefrigeratedShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    MIN_CELSIUS <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">20.0</span>
+
+    <span class="token decorator annotation punctuation">@RefrigeratedShippingContainer<span class="token punctuation">.</span>celsius<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token punctuation">(</span>HeatedRefrigeratedShippingContainer<span class="token punctuation">.</span>MIN_CELSIUS
+                <span class="token operator">&lt;=</span> value
+                <span class="token operator">&lt;=</span> RefrigeratedShippingContainer<span class="token punctuation">.</span>MAX_CELSIUS<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Temperature </span><span class="token interpolation"><span class="token punctuation">{</span>value<span class="token punctuation">}</span></span><span class="token string"> is out of range!&quot;</span></span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_celsius <span class="token operator">=</span> value
+</code></pre></div></p></details><p><em>Aside - chained relational operators</em></p><p>Python allows for chaining relational operators, so that one can write <code class="language-text">a &lt; b &lt; c</code> in place of <code class="language-text">(a &lt; b) and (b &lt; c)</code></p><details><summary>Example with pitfalls</summary><p><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">
+<span class="token keyword">class</span> <span class="token class-name">HeatedRefrigeratedShippingContainer</span><span class="token punctuation">(</span>RefrigeratedShippingContainer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    MIN_CELSIUS <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">20.0</span>
+
+    <span class="token comment"># NOTE: this doesn&#x27;t work</span>
+    <span class="token decorator annotation punctuation">@RefrigeratedShippingContainer<span class="token punctuation">.</span>celsius<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> value <span class="token operator">&lt;</span> HeatedRefrigeratedShippingContainer<span class="token punctuation">.</span>MIN_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Temperature </span><span class="token interpolation"><span class="token punctuation">{</span>value<span class="token punctuation">}</span></span><span class="token string"> is out of range!&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>celsius <span class="token operator">=</span> value  <span class="token comment"># throws AttributeError: &#x27;super&#x27; object has no attribute &#x27;celsius&#x27;</span>
+
+    <span class="token comment"># This works</span>
+    <span class="token decorator annotation punctuation">@RefrigeratedShippingContainer<span class="token punctuation">.</span>celsius<span class="token punctuation">.</span>setter</span>
+    <span class="token keyword">def</span> <span class="token function">celsius</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> value <span class="token operator">&lt;</span> HeatedRefrigeratedShippingContainer<span class="token punctuation">.</span>MIN_CELSIUS<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Temperature </span><span class="token interpolation"><span class="token punctuation">{</span>value<span class="token punctuation">}</span></span><span class="token string"> is out of range!&quot;</span></span><span class="token punctuation">)</span>
+        RefrigeratedShippingContainer<span class="token punctuation">.</span>celsius<span class="token punctuation">.</span>fset<span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+</code></pre></div></p></details><h3 id="template-method-pattern" style="position:relative"><a href="#template-method-pattern" aria-label="template method pattern permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Template Method Pattern</h3><ul><li>implement skeletal operations in base classes while deferring some details to subclasses</li></ul><p><a href="/waitwut/src/images/python/template-method-overview.png">Template Method</a></p><hr/><h2 id="strings-and-representations" style="position:relative"><a href="#strings-and-representations" aria-label="strings and representations permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Strings and Representations</h2><h3 id="code-classlanguage-textreprcode" style="position:relative"><a href="#code-classlanguage-textreprcode" aria-label="code classlanguage textreprcode permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code class="language-text">repr()</code></h3><ul><li>built-in function</li><li>produces unambiguous string representation of an object</li><li>often suggested that <code class="language-text">repr()</code> should return legitimate source code (i.e. can be copy/pasted and run to recreate the object)</li></ul><div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Point2D</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>x <span class="token operator">=</span> x
         self<span class="token punctuation">.</span>y <span class="token operator">=</span> y
