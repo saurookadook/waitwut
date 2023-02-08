@@ -430,6 +430,47 @@ _TODO_ 🙃
         - `year`, `month`, `day`
     - `time`: time within ideal day, ignoring leap seconds
         - `hour`, `minute`, `second`, `microsecond`
+    - `datetime`: composite of `date` and `time`
+        - `year`, `month`, `day`, `hour`, `minute`, `second`, `microsecond`
+    - "time" components in both `time` and `datetime` can be used in so-called "naïve" or "aware" modes
+        - naïve mode
+            - values lack time zone and daylight saving time
+            - meaning with respect to other time values is purely by convention within particular program _(i.e. part of meaning of time is implicit)_
+        - aware mode
+            - have knowledge of both time zone and daylight saving time
+    - abstract classes `tzinfo` and concrete `timezone`
+        - used for representing time zone info required for aware time objects
+    - `timedelta`: duration expressing difference between 2 date or datetime instances
+        - constructor accepts `days`, `seconds`, `microseconds`, `milliseconds`, `minutes`, `hours`, `weeks`
+        - instances store **only** `days`, `seconds`, `microseconds`
+    - **all objects of the above types are immutable**
+
+#### Basic time zone examples using `timezone` and `tzinfo`
+
+```python
+# in repl
+>>> import datetime
+>>>
+>>> cet = datetime.timezone(datetime.timedelta(hours=1), "CET")
+>>> cet
+#=> datetime.timezone(datetime.timedelta(0, 3600), 'CET')
+>>>
+>>> departure = datetime.datetime(year=2014, month=1, day=7,
+...                               hour=11, minute=30, tzinfo=cet)
+>>>
+>>> arrival = datetime.datetime(year=2014, month=1, day=7,
+...                             hour=13, minute=5,
+...                             tzinfo=datetime.timezone.utc)
+>>> arrival - departure
+#=> datetime.datetime(0, 9300)
+>>> str(arrival - departure)
+#=> '2:35:00'
+
+```
+
+### Misc.
+
+**Important takeaway**: use `Fraction` for handling numbers in complex, precise computations
 
 ---
 
@@ -2620,6 +2661,71 @@ for stamp, value in itertools.islice(zip(timestamps, sensor), 10):
     time.sleep(1)
 ```
 
+---
+
+## Inheritance and Subtype Polymorphism
+
+Useful built-in functions:
+- **`isinstance()`**
+    - determines if object is of a specified type
+    - will also return `True` if object is a subclass of specified type
+    - second argument can also be a tuple of types
+    -   ```python
+        # in repl
+        >>> isinstance(3, int)
+        #=> True
+        >>> isinstance('hello!', str)
+        #=> True
+        >>> x = []
+        >>> isinstance(x, (float, dict, list))
+        #=> True
+        ```
+- **`issubclass()`**
+    - determines if one type is subclass of another
+    -   ```python
+        class BaseClass:
+
+            def __init__(self, foo):
+                self.foo = foo
+
+        class SubClass(BaseClass):
+
+            def __init__(self, foo, bar):
+                super().__init__(foo)
+                self.bar = bar
+
+        class SubSubClass(SubClass):
+
+            def __init__(self, foo, bar, baz):
+                super().__init__(foo, bar)
+                self.baz = baz
+
+        issubclass(BaseClass, SubClass)
+        #=> False
+        issubclass(SubClass, BaseClass)
+        #=> True
+        issubclass(SubSubClass, BaseClass)
+        #=> True
+        ```
+
+- **Single inheritance**
+    -   ```python
+        class SubClass(BaseClass):
+            pass
+        ```
+    - **NOTE**: base class initializer will _only_ be called automatically if subclass initializer is _undefined_
+- **Multiple inheritance**
+    - defining class with more than one base class
+    -   ```python
+        class SubClass(Base1, Base2, . . .):
+            pass
+        ```
+
+
+
+```python
+# _TODO_ 🙃
+```
 
 ---
 
