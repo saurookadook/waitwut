@@ -39,9 +39,11 @@ const StyledBox = styled(Box)`
 interface LayoutProps {
     pageTitle?: string;
     children: React.ReactElement
+    location: Record<string, string>
 }
 
-const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
+const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElement => {
+    const containerOnly = (): boolean => /\/resume(?=(\/)?([?&#].*$|$))/gim.test(location.pathname)
 
     const staticData = useStaticQuery(graphql`
         query {
@@ -64,20 +66,29 @@ const Layout = ({ pageTitle, children }: LayoutProps): React.ReactElement => {
     return (
         <HeadMetaContext.Provider value={{ children, title }}>
             <PageMapContext.Provider value={{ pageMap }}>
-                <ThemeProvider theme={baseTheme}>
-                    <CssBaseline />
-                    <GlobalStyles />
-                    <Header />
-                    <ThemeProvider theme={containerTheme}>
-                        <StyledContainer disableGutters={true}>
-                            <StyledBox>
-                                {children}
-                            </StyledBox>
-                            <LeftSideMenu />
-                        </StyledContainer>
+                {containerOnly() ? (
+                    <StyledContainer disableGutters={true}>
+                        <StyledBox>
+                            {children}
+                        </StyledBox>
+                    </StyledContainer>
+                ) : (
+                    <ThemeProvider theme={baseTheme}>
+                        <CssBaseline />
+                        <GlobalStyles />
+                        <Header />
+                        <ThemeProvider theme={containerTheme}>
+                            <StyledContainer disableGutters={true}>
+                                <StyledBox>
+                                    {children}
+                                </StyledBox>
+                                <LeftSideMenu />
+                            </StyledContainer>
+                        </ThemeProvider>
+                        <Footer />
                     </ThemeProvider>
-                    <Footer />
-                </ThemeProvider>
+                )}
+
             </PageMapContext.Provider>
         </HeadMetaContext.Provider>
     );

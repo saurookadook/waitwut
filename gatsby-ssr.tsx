@@ -13,6 +13,7 @@ exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
 };
 
 exports.wrapPageElement = ({ element, props }) => {
+    // console.log('ssr - wrapPageElement element: ', element);
     // console.log('ssr - wrapPageElement props: ', props);
     return (
         <Layout {...props}>{element}</Layout>
