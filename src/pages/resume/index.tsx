@@ -2,7 +2,59 @@ import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
 
-const employmentHistory = [
+const headingDetails = {
+    firstName: 'Andrew',
+    lastName: 'Maskiell',
+    contactInfo: {
+        phone: '585-410-5179',
+        email: 'maskiella@gmail.com',
+        sites: [
+            {
+                type: 'GitHub',
+                displayText: 'saurookadook',
+                url: 'https://github.com/saurookadook'
+            },
+            {
+                type: 'Medium',
+                displayText: 'blog',
+                url: 'https://medium.com/@andymaskiell'
+            },
+            {
+                type: 'LinkedIn',
+                displayText: 'LinkedIn',
+                url: 'https://www.linkedin.com/in/andrew-maskiell'
+            }
+        ]
+    },
+    introBlurb: 'Full-stack web developer and software engineer possessing a background in music with a passion for composing code. My ability to work in a fast-paced environment, detail-oriented nature, and honed communication skills make me valuable in providing quality work. Besides that, I’m always good for a laugh.'
+}
+
+const TechnicalSkills = [
+    'JavaScript (ES5 and ES6)',
+    'TypeScript',
+    'Node.js',
+    'Gatsby.js',
+    'React',
+    'Redux',
+    'RegEx',
+    'HTML',
+    'CSS',
+    'SASS',
+    'Jest',
+    'Express',
+    'Java',
+    'MongoDB',
+    'Ruby',
+    'Rails',
+    'SQL',
+    'PHP',
+    'Twig',
+    'CraftCMS',
+    'Wordpress',
+    'Docker'
+]
+
+const EmploymentHistory = [
     {
         company: {
             name: 'Salesforce',
@@ -101,11 +153,133 @@ const employmentHistory = [
     }
 ]
 
+const VolunteerWork = [
+    {
+        organization: {
+            name: 'Hack.Diversity',
+            location: {
+                city: 'Boston',
+                state: 'MA'
+            },
+        },
+        roles: [
+            {
+                title: 'Member of de.Hackathon Team',
+                startDate: 'February 2020',
+                endDate: 'Present'
+            },
+            {
+                title: 'Mentor',
+                startDate: 'January 2019',
+                endDate: 'Present'
+            },
+        ]
+    }
+]
+
+const TechnicalProjects = [
+    {
+        displayName: 'Hack.Diversity React/Redux Template',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/Hack-Diversity/template-react-express-monorepo'
+            }
+        ],
+        description: 'A simple CRUD app built using the MERN tech-stack',
+        startDate: 'January 2020',
+        endDate: 'Present'
+    },
+    {
+        displayName: '8-bit Discourse (WIP)',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/eight-bit-discourse-app'
+            }
+        ],
+        description: 'Forum for open discussion of video games',
+        startDate: 'June 2018',
+        endDate: 'Present'
+    },
+    {
+        displayName: 'Adopt Don’t Shop',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/adopt-dont-shop-rails-js-app'
+            }
+        ],
+        description: 'Web app for helping provide home for animals in adoption shelters',
+        startDate: 'March 2018',
+        endDate: 'July 2018'
+    },
+    {
+        displayName: 'GameJournal',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/gamejournal-sinatra-app'
+            }
+        ],
+        description: 'Web app that serves as place for users to document their library of games',
+        startDate: 'February 2018',
+        endDate: 'March 2018'
+    }
+]
+
+const Education = [
+    {
+        institution: 'Flatiron School',
+        completionText: 'June 2018',
+        certification: 'Full Stack Web Development, Ruby on Rails and JavaScript program'
+    },
+    {
+        institution: 'Eastman School of Music ',
+        location: {
+            city: 'Rochester',
+            state: 'NY'
+        },
+        completionText: 'Class of 2015',
+        certification: 'BA in Viola Performance'
+    }
+]
+
+const sections: Record<string, (string | Record<string, unknown>)[]>[] = [
+    { 'TechnicalSkills': TechnicalSkills },
+    { 'EmploymentHistory': EmploymentHistory },
+    { 'VolunteerWork': VolunteerWork },
+    { 'TechnicalProjects': TechnicalProjects },
+    { 'Education': Education }
+]
+
+const toTitleCase = (string: string): string => {
+    return string.replace(/[A-Z]\w*?(?=[A-Z]|$)/gm, (match, ...args) => {
+        const offsetIndex = typeof args.at(-1) === "object" ? args.at(-3) : args.at(-2);
+        return offsetIndex === 0 ? `${match}` : ` ${match}`;
+    })
+}
+
 const Resume = (): React.ReactElement => {
     return (
         <main>
             <h1>Andy Maskiell</h1>
-        </main>
+            {sections.map((section, i): React.ReactElement => {
+                const key = Object.keys(section)[0];
+                return (
+                    <ul key={`${key}-${i}`}>
+                        <h3>{toTitleCase(key)}</h3>
+                        {(section[key]).map((record, j) => {
+                            return (
+                                <li key={`${i}-${j}`}>
+                                    {(typeof record === 'string') ? record : JSON.stringify(record, null, 4)}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                );
+            })}
+        </main >
     );
 }
 
