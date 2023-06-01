@@ -2,6 +2,13 @@ import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
 import { HeadingDetails } from '../../components/resume';
+import { AbstractSection } from '../../components/resume/sections';
+import { toTitleCase } from '../../utils';
+
+const colors = {
+    pluralsightBgHex: '#393b6b',
+    salesforceBgHex: '#ffffff'
+}
 
 const headingDetails = {
     firstName: 'Andrew',
@@ -254,13 +261,6 @@ const sections: Record<string, (string | Record<string, unknown>)[]>[] = [
     { 'Education': Education }
 ]
 
-const toTitleCase = (string: string): string => {
-    return string.replace(/[A-Z]\w*?(?=[A-Z]|$)/gm, (match, ...args) => {
-        const offsetIndex = typeof args.at(-1) === "object" ? args.at(-3) : args.at(-2);
-        return offsetIndex === 0 ? `${match}` : ` ${match}`;
-    })
-}
-
 const Resume = (): React.ReactElement => {
     return (
         <main>
@@ -269,24 +269,27 @@ const Resume = (): React.ReactElement => {
                 const key = Object.keys(section)[0];
                 if (key === "TechnicalSkills") {
                     return (
-                        <>
-                            <h3>{toTitleCase(key)}</h3>
-                            <p>{section[key].join(', ')}</p>
-                        </>
+                        <AbstractSection
+                            key={`${key}-${i}`}
+                            sectionKey={key}
+                            sectionData={section[key]}
+                        />
                     );
                 }
 
                 return (
-                    <ul key={`${key}-${i}`}>
+                    <section key={`${key}-${i}`}>
                         <h3>{toTitleCase(key)}</h3>
-                        {section[key].map((record, j) => {
-                            return (
-                                <li key={`${i}-${j}`}>
-                                    {(typeof record === 'string') ? record : <pre>{JSON.stringify(record, null, 4)}</pre>}
-                                </li>
-                            );
-                        })}
-                    </ul>
+                        <ul>
+                            {section[key].map((record, j) => {
+                                return (
+                                    <li key={`${i}-${j}`}>
+                                        {(typeof record === 'string') ? record : <pre>{JSON.stringify(record, null, 4)}</pre>}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </section>
                 );
             })}
         </main >
