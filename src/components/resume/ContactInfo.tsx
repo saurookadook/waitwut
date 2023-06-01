@@ -18,8 +18,12 @@ const SiteLink = ({ siteData }: SiteLinkProps): React.ReactElement => {
 const ContactInfo = ({ phone, email, sites }: ContactInfo): React.ReactElement => {
     return (
         <p>
-            <InfoItem>{phone}</InfoItem>
-            <InfoItem>{email}</InfoItem>
+            <InfoItem>
+                <a href={`tel:+1-${phone}`} target="_blank" rel="noreferrer">{phone}</a>
+            </InfoItem>
+            <InfoItem>
+                <a href={`mailto:${email}`} target="_blank" rel="noreferrer">{email}</a>
+            </InfoItem>
             {sites.map((site, i) => (
                 <InfoItem key={`${site.type}-${i}`}>
                     <SiteLink siteData={site} />
