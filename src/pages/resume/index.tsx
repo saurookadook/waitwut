@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
+import { HeadingDetails } from '../../components/resume';
 
 const headingDetails = {
     firstName: 'Andrew',
@@ -16,7 +17,7 @@ const headingDetails = {
             },
             {
                 type: 'Medium',
-                displayText: 'blog',
+                displayText: 'Blog',
                 url: 'https://medium.com/@andymaskiell'
             },
             {
@@ -263,16 +264,25 @@ const toTitleCase = (string: string): string => {
 const Resume = (): React.ReactElement => {
     return (
         <main>
-            <h1>Andy Maskiell</h1>
+            <HeadingDetails headingData={headingDetails} />
             {sections.map((section, i): React.ReactElement => {
                 const key = Object.keys(section)[0];
+                if (key === "TechnicalSkills") {
+                    return (
+                        <>
+                            <h3>{toTitleCase(key)}</h3>
+                            <p>{section[key].join(', ')}</p>
+                        </>
+                    );
+                }
+
                 return (
                     <ul key={`${key}-${i}`}>
                         <h3>{toTitleCase(key)}</h3>
-                        {(section[key]).map((record, j) => {
+                        {section[key].map((record, j) => {
                             return (
                                 <li key={`${i}-${j}`}>
-                                    {(typeof record === 'string') ? record : JSON.stringify(record, null, 4)}
+                                    {(typeof record === 'string') ? record : <pre>{JSON.stringify(record, null, 4)}</pre>}
                                 </li>
                             );
                         })}

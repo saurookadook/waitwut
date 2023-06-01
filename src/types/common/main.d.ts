@@ -90,3 +90,15 @@ enum TopLevelPageSlugs {
     BOOKMARKS = "bookmarks",
     SHEETS = "sheets"
 }
+
+/* Resume */
+
+interface Site {
+    [key: string]: string
+}
+
+interface ContactInfo {
+    phone: string
+    email: string
+    sites: Site[]
+}
