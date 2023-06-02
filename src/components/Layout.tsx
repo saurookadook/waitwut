@@ -16,6 +16,24 @@ import {
     containerTheme,
 } from '../themes';
 
+const StyledContainerOnly = styled(Container)`
+    background-color: ${(props) => props?.theme?.backgroundColor};
+    height: 100vh;
+    max-width: 100vw !important;
+    padding: 0 2.5em;
+    padding-top: 4em;
+`;
+
+const StyledBoxOnly = styled(Box)`
+    background-color: ${(props) => props?.theme?.backgroundColor};
+    display: flex;
+    flex-direction: column;
+    height: ${(props) => props.theme?.height};
+    min-height: 50vh;
+    overflow-y: scroll;
+    padding: 0 10vw;
+`;
+
 const StyledContainer = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
     height: 100vh;
@@ -67,11 +85,11 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
         <HeadMetaContext.Provider value={{ children, title }}>
             <PageMapContext.Provider value={{ pageMap }}>
                 {containerOnly() ? (
-                    <StyledContainer disableGutters={true}>
-                        <StyledBox>
+                    <StyledContainerOnly disableGutters={true}>
+                        <StyledBoxOnly>
                             {children}
-                        </StyledBox>
-                    </StyledContainer>
+                        </StyledBoxOnly>
+                    </StyledContainerOnly>
                 ) : (
                     <ThemeProvider theme={baseTheme}>
                         <CssBaseline />
