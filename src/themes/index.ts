@@ -72,11 +72,17 @@ const menuTheme: MenuTheme = {
     color: themeColors.graphite,
 };
 
+// TODO: :)
+const resumeTheme = {
+    backgroundColor: '#ffffff'
+}
+
 export {
     themeColors,
     defaultTheme,
     appBarTheme,
     baseTheme,
     containerTheme,
-    menuTheme
+    menuTheme,
+    resumeTheme
 };

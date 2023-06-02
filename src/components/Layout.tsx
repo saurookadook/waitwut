@@ -14,14 +14,14 @@ import { GlobalStyles, pageMap } from '../constants';
 import {
     baseTheme,
     containerTheme,
+    resumeTheme,
 } from '../themes';
 
 const StyledContainerOnly = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
     height: 100vh;
     max-width: 100vw !important;
-    padding: 0 2.5em;
-    padding-top: 4em;
+    padding: 0;
 `;
 
 const StyledBoxOnly = styled(Box)`
@@ -31,7 +31,7 @@ const StyledBoxOnly = styled(Box)`
     height: ${(props) => props.theme?.height};
     min-height: 50vh;
     overflow-y: scroll;
-    padding: 0 10vw;
+    padding: 0;
 `;
 
 const StyledContainer = styled(Container)`
@@ -85,11 +85,14 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
         <HeadMetaContext.Provider value={{ children, title }}>
             <PageMapContext.Provider value={{ pageMap }}>
                 {containerOnly() ? (
-                    <StyledContainerOnly disableGutters={true}>
-                        <StyledBoxOnly>
-                            {children}
-                        </StyledBoxOnly>
-                    </StyledContainerOnly>
+                    <ThemeProvider theme={resumeTheme}>
+                        <GlobalStyles />
+                        <StyledContainerOnly disableGutters={true}>
+                            <StyledBoxOnly>
+                                {children}
+                            </StyledBoxOnly>
+                        </StyledContainerOnly>
+                    </ThemeProvider>
                 ) : (
                     <ThemeProvider theme={baseTheme}>
                         <CssBaseline />
@@ -106,7 +109,6 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                         <Footer />
                     </ThemeProvider>
                 )}
-
             </PageMapContext.Provider>
         </HeadMetaContext.Provider>
     );

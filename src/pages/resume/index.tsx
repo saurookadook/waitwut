@@ -7,7 +7,8 @@ import { toTitleCase } from '../../utils';
 
 const colors = {
     pluralsightBgHex: '#393b6b',
-    salesforceBgHex: '#ffffff'
+    salesforceBgHex: '#ffffff',
+    psSuccessTextWeak: '#43fd84'
 }
 
 const headingDetails = {
@@ -261,10 +262,16 @@ const sections: Record<string, (string | Record<string, unknown>)[]>[] = [
     { 'Education': Education }
 ]
 
+const StyledMain = styled.main`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+`
+
 const Resume = (): React.ReactElement => {
     return (
-        <main>
-            <HeadingDetails headingData={headingDetails} />
+        <StyledMain>
+            <HeadingDetails bgColor={colors.psSuccessTextWeak} headingData={headingDetails} />
             {sections.map((section, i): React.ReactElement => {
                 const key = Object.keys(section)[0];
                 if (key === "TechnicalSkills") {
@@ -292,7 +299,7 @@ const Resume = (): React.ReactElement => {
                     </section>
                 );
             })}
-        </main >
+        </StyledMain >
     );
 }
 

@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
         color: ${themeColors.graphite};
         font-family: "-apple-system, Roboto, sans-serif, serif";
         font-size: 14px;
+        margin: 0;
         min-height: 100vh;
         overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
     }
@@ -19,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
     main {
         color: #232129;
         font-family: "-apple-system, Roboto, sans-serif, serif";
-        padding: 96px;
+        /* padding: 96px; */
     }
 
     h1, h2, h3, h4, h5 {

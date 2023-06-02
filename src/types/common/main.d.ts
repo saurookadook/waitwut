@@ -102,3 +102,10 @@ interface ContactInfo {
     email: string
     sites: Site[]
 }
+
+interface HeadingData {
+    firstName: string
+    lastName: string
+    contactInfo: ContactInfo
+    introBlurb: string
+}
