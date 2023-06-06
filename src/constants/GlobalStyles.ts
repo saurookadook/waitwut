@@ -109,7 +109,11 @@ const GlobalStyles = createGlobalStyle`
         /* height: 1px; */
         /* color: ${themeColors.darkerPurpleHex}; */
         /* background: ${themeColors.darkerPurpleHex}; */
-        /* background-image: linear-gradient(to right, ${themeColors.keywordPurple}, ${themeColors.darkerPurpleHex}, ${themeColors.keywordPurple}); */
+        /* background-image: linear-gradient(to right,
+            ${themeColors.keywordPurple},
+            ${themeColors.darkerPurpleHex},
+            ${themeColors.keywordPurple}
+        ); */
     }
 
     .doc-list {
