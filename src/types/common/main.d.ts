@@ -109,3 +109,8 @@ interface HeadingData {
     contactInfo: ContactInfo
     introBlurb: string
 }
+
+interface SectionComponentProps {
+    heading: string
+    data: Array<any>
+}
