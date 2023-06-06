@@ -283,6 +283,13 @@ const StyledMain = styled.main`
     font-family: 'Arial Black', Arial, Helvetica, sans-serif;
     justify-content: flex-start;
 
+    & h1,
+    & h2,
+    & p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     & h1 {
         font-size: 4rem;
     }

@@ -71,7 +71,7 @@ interface BaseMdxFrontmatter {
 
 interface BaseMdx {
     body: string;
-    frontmatter: BaseMdxFrontmatter
+    frontmatter: BaseMdxFrontmatter;
 }
 
 interface BaseMdxData {
@@ -83,34 +83,56 @@ interface BaseMdxProps {
 }
 
 type IconComponents = {
-    [key: string]: (() => React.ReactElement)
-}
+    [key: string]: () => React.ReactElement;
+};
 
 enum TopLevelPageSlugs {
-    BOOKMARKS = "bookmarks",
-    SHEETS = "sheets"
+    BOOKMARKS = 'bookmarks',
+    SHEETS = 'sheets',
 }
 
 /* Resume */
 
 interface Site {
-    [key: string]: string
+    [key: string]: string;
 }
 
 interface ContactInfo {
-    phone: string
-    email: string
-    sites: Site[]
+    phone: string;
+    email: string;
+    sites: Site[];
 }
 
 interface HeadingData {
-    firstName: string
-    lastName: string
-    contactInfo: ContactInfo
-    introBlurb: string
+    firstName: string;
+    lastName: string;
+    contactInfo: ContactInfo;
+    introBlurb: string;
 }
 
 interface SectionComponentProps {
-    heading: string
-    data: Array<any>
+    heading: string;
+    data: Array<any>;
+}
+
+interface Location {
+    city: string;
+    state: string;
+}
+
+interface Role {
+    title: string;
+    startDate: string;
+    endDate: string;
+}
+
+interface Company {
+    name: string;
+    location: Location;
+}
+
+interface EmploymentRecord {
+    company: Company;
+    roles: Role[];
+    responsibilities: string[];
 }

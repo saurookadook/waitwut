@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { resumeTheme } from '../../themes';
 
+const InfoContainer = styled.div`
+    font-size: 1.5rem;
+    margin: 1rem 0;
+`;
+
 const InfoItem = styled.span`
     display: inline-block;
 
@@ -46,7 +51,7 @@ const SiteLink = ({ siteData }: SiteLinkProps): React.ReactElement => {
 
 const ContactInfo = ({ phone, email, sites }: ContactInfo): React.ReactElement => {
     return (
-        <p>
+        <InfoContainer>
             <InfoItem>
                 <a href={`tel:+1-${phone}`} target="_blank" rel="noreferrer">
                     {phone}
@@ -62,7 +67,7 @@ const ContactInfo = ({ phone, email, sites }: ContactInfo): React.ReactElement =
                     <SiteLink siteData={site} />
                 </InfoItem>
             ))}
-        </p>
+        </InfoContainer>
     );
 };
 

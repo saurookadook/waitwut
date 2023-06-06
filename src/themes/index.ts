@@ -76,6 +76,7 @@ const resumeTheme = {
     // from Pando
     psSuccessTextWeakHex: '#43fd84',
     psTextInverseHex: '#130f25',
+    psWarningTextMediumHex: '#ffd262',
 };
 
 export {
