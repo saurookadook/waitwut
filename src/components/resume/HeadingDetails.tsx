@@ -1,41 +1,38 @@
 import React from 'react';
-import styled, { ThemedStyledProps } from 'styled-components';
-import { ContactInfo } from '../resume'
-
-interface StyledHeaderProps extends ThemedStyledProps<any, any> {
-    bgColor?: string
-}
+import styled from 'styled-components';
+import { ContactInfo } from '../resume';
+import { resumeTheme } from '../../themes';
 
 const StyledHeader = styled.header`
-    background-color: ${(props: StyledHeaderProps) => props.bgColor};
+    background-color: ${resumeTheme.psSuccessTextWeakHex};
+    padding-bottom: 2rem;
     text-align: center;
-`
-
-const StyledNameHeading = styled.h1`
-    font-size: 4rem;
 `;
+
+const StyledNameHeading = styled.h1``;
 
 const StyledContactInfo = styled(ContactInfo)``;
 
 const StyledIntroBlurb = styled.p`
     margin: 0 10vw;
     text-align: left;
-`
+`;
 
 interface HeadingDetailsProps {
-    bgColor?: string
-    headingData: HeadingData
+    headingData: HeadingData;
 }
 
-const HeadingDetails = ({ bgColor, headingData }: HeadingDetailsProps): React.ReactElement => {
+const HeadingDetails = ({ headingData }: HeadingDetailsProps): React.ReactElement => {
     // const { phone, email, sites } = headingData.contactInfo;
     return (
-        <StyledHeader bgColor={bgColor}>
-            <StyledNameHeading>{headingData.firstName} {headingData.lastName}</StyledNameHeading>
+        <StyledHeader>
+            <StyledNameHeading>
+                {headingData.firstName} {headingData.lastName}
+            </StyledNameHeading>
             <StyledContactInfo {...headingData.contactInfo} />
             <StyledIntroBlurb>{headingData.introBlurb}</StyledIntroBlurb>
         </StyledHeader>
-    )
-}
+    );
+};
 
 export default HeadingDetails;
