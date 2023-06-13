@@ -1,46 +1,40 @@
 import React from 'react';
-import * as sections from '../sections'
+import * as sections from '../sections';
 import { toTitleCase } from '../../../utils';
 
 interface AbstractSectionProps {
-    sectionKey: string
-    sectionData: any
+    sectionKey: string;
+    sectionData: any;
 }
 
 const componentNameFromSectionKey = (sectionKey: string): string => {
     switch (sectionKey) {
         case 'Education':
-            return 'Education'
+            return 'Education';
         case 'EmploymentHistory':
-            return 'Employment'
+            return 'Employment';
         case 'TechnicalProjects':
-            return 'TechnicalProjects'
+            return 'TechnicalProjects';
         case 'TechnicalSkills':
-            return 'TechnicalSkills'
+            return 'TechnicalSkills';
         case 'VolunteerWork':
-            return 'Volunteer'
+            return 'Volunteer';
         default:
             // because the type can't correctly be inferred otherwise?
-            return ''
+            return '';
     }
-}
+};
 
-const AbstractSection = ({
-    sectionKey,
-    sectionData
-}: AbstractSectionProps): React.ReactElement => {
+const AbstractSection = ({ sectionKey, sectionData }: AbstractSectionProps): React.ReactElement => {
     const componentName = componentNameFromSectionKey(sectionKey);
     // const SectionComponent = await import(`./${componentName}.tsx`)
     const SectionComponent = (sections as Record<string, any>)[componentName];
 
     return (
         <section>
-            <SectionComponent
-                heading={toTitleCase(sectionKey)}
-                data={sectionData}
-            />
+            <SectionComponent heading={toTitleCase(sectionKey)} data={sectionData} />
         </section>
-    )
-}
+    );
+};
 
 export default AbstractSection;
