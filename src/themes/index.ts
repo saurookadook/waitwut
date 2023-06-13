@@ -72,7 +72,17 @@ const resumeTheme = {
     oldResumeLinkHex: '#0097a7',
     oldResumeLinkRgb: 'rgb(0, 151, 167)',
     pluralsightBgHex: '#393b6b',
+    // Salesforce
     salesforceBgHex: '#ffffff',
+    salesforceBeigeBgRgb: 'rgb(255, 241, 234)',
+    salesforceShadyBeigeBgRgb: 'rgb(243, 243, 243)',
+    salesforceLightBlueHex: '#36a1e0',
+    salesforceMidBlueRgb: 'rgb(1, 118, 211)',
+    salesforceDarkBlueRgb: 'rgb(3, 45, 96)',
+    // Evergage
+    evergageBlueHex: '#2e8cc8',
+    evergageGreenHex: '#7bb93d',
+    evergageGrayHex: '#7a7c7c',
     // from Pando
     psSuccessTextWeakHex: '#43fd84',
     psTextInverseHex: '#130f25',
