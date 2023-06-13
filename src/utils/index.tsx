@@ -4,3 +4,7 @@ export const toTitleCase = (string: string): string => {
         return offsetIndex === 0 ? `${match}` : ` ${match}`;
     });
 };
+
+export const toKebabCase = (string: string): string => {
+    return string.trim().replace(/\s+/gim, '-');
+}
