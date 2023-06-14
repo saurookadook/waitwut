@@ -280,7 +280,6 @@ const sections: Record<string, (string | Record<string, unknown>)[]>[] = [
 const StyledMain = styled.main`
     display: flex;
     flex-direction: column;
-    font-family: 'Arial Black', Arial, Helvetica, sans-serif;
     justify-content: flex-start;
 
     & h1,
@@ -290,11 +289,17 @@ const StyledMain = styled.main`
         margin-bottom: 0;
     }
 
+    & h1,
+    & h2 {
+        font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+    }
+
     & h1 {
         font-size: 4rem;
     }
 
     & p {
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 1.5rem;
     }
 `;
