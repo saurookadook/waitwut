@@ -30,7 +30,11 @@ const EmploymentItemContainer = styled.div`
         }
 
         &.evergage {
-            background-color: ${themeColors.white};
+            background-color: ${themeColors.whiteRgb};
+        }
+
+        &.upstatement {
+            background-color: ${themeColors.blackRgb};
         }
     }
 `;
@@ -49,6 +53,11 @@ const CompanyName = styled.h3`
 
     .expanded.evergage & {
         color: ${resumeTheme.evergageBlueHex};
+    }
+
+    .expanded.upstatement & {
+        color: ${themeColors.whiteRgb};
+        font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
     }
 `;
 
@@ -80,6 +89,10 @@ const ExpandableDetails = styled.div`
 
         .evergage & {
             color: ${resumeTheme.evergageGrayHex};
+        }
+
+        .upstatement & {
+            color: ${themeColors.whiteRgb};
         }
     }
 `;

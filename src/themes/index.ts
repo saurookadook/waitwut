@@ -1,6 +1,8 @@
 import { DefaultTheme, AppBarTheme, BaseTheme, ContainerTheme, MenuTheme } from 'styled-components';
 
 const themeColors = {
+    blackHex: '#000000',
+    blackRgb: 'rgb(0, 0, 0)',
     graphite: '#282c34',
     graphiteRgb: {
         r: 40,
@@ -25,6 +27,7 @@ const themeColors = {
     operatorAqua: '#67cdcc',
     stringGreen: '#7ec699',
     white: '#ffffff',
+    whiteRgb: 'rgb(255, 255, 255)',
 };
 
 // TODO: better naming scheme for these schemes? Something more generalized?
