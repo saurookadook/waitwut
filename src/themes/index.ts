@@ -74,7 +74,6 @@ const resumeTheme = {
     oldResumeBgHex: '#f3f3f3',
     oldResumeLinkHex: '#0097a7',
     oldResumeLinkRgb: 'rgb(0, 151, 167)',
-    pluralsightBgHex: '#393b6b',
     // Salesforce
     salesforceBgHex: '#ffffff',
     salesforceBeigeBgRgb: 'rgb(255, 241, 234)',
@@ -87,9 +86,10 @@ const resumeTheme = {
     evergageGreenHex: '#7bb93d',
     evergageGrayHex: '#7a7c7c',
     // from Pando
-    psSuccessTextWeakHex: '#43fd84',
-    psTextInverseHex: '#130f25',
-    psWarningTextMediumHex: '#ffd262',
+    psBackgroundHex: 'var(--ps-background)',
+    psSuccessTextWeakHex: 'var(--ps-success-text-weak)',
+    psTextInverseHex: 'var(--ps-text-inverse)',
+    psWarningTextMediumHex: 'var(--ps-warning-text-medium)',
 };
 
 export {
