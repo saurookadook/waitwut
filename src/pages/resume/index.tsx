@@ -34,6 +34,7 @@ const headingDetails = {
         'Full-stack web developer and software engineer possessing a background in music with a passion for composing code. My ability to work in a fast-paced environment, detail-oriented nature, and honed communication skills make me valuable in providing quality work. Besides that, I’m always good for a laugh.',
 };
 
+// TODO: separate these into categories?
 const TechnicalSkills = [
     'JavaScript (ES5 and ES6)',
     'TypeScript',
@@ -98,11 +99,11 @@ const EmploymentHistory = [
             },
         ],
         responsibilities: [
-            'Took ownership of the creation and documentation of the Flicker Defender gear',
-            'Built several global templates for the new Campaign and Template system',
-            'Contributed to Interaction Studio’s Web SDK, including tests in Jest',
+            `Took ownership of the creation and documentation of the <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/flicker-defender.html" target="_blank" rel="noreferrer">Flicker Defender gear</a>`,
+            `Built several <a href="https://github.com/evergage/evergage-global-templates" target="_blank" rel="noreferrer">global templates</a> for the <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/campaign-development.html" target="_blank" rel="noreferrer">new Campaign and Template system</a>`,
+            'Contributed to Interaction Studio’s <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/web-integration.html" target="_blank" rel="noreferrer">Web SDK</a>, including tests in Jest',
             'Implemented the redesign of UI screens using Angular 1.5 and KendoUI as part of the release for a major feature',
-            'Deploy, review, and contribute code for Interaction Studio’s Developer Documentation built with Gatsby.js',
+            `Deploy, review, and contribute code for Interaction Studio’s <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/get-started.html" target="_blank" rel="noreferrer">Developer Documentation</a> built with Gatsby.js`,
             'Led weekly office hours to facilitate quickly training support agents',
         ],
     },
@@ -143,7 +144,7 @@ const EmploymentHistory = [
             },
         ],
         responsibilities: [
-            'Contributed to Center for Public Integrity, Boston Society for Architecture, upstatement.com, and other internal projects',
+            `Contributed to <a href="https://publicintegrity.org/" target="_blank" rel="noreferrer">Center for Public Integrity</a>, <a href="https://www.architects.org/" target="_blank" rel="noreferrer">Boston Society for Architecture</a>, <a href="https://upstatement.com/" target="_blank" rel="noreferrer">upstatement.com</a>, and other internal projects`,
             'Configured complex web scraping robots to migrate thousands of articles and metadata during a content migration',
             'Extensive use of Regular Expressions to address a variety of issues in migration process',
             'Provided informed information architecture recommendations',

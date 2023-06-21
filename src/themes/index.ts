@@ -91,7 +91,11 @@ const resumeTheme = {
     evergageBlueHex: '#2e8cc8',
     evergageGreenHex: '#7bb93d',
     evergageGrayHex: '#7a7c7c',
+    // BSO
+    bsoBgHex: '#ffda81',
+    bsoTextHex: '#000000',
     // from Pando
+    psActionTextHex: 'var(--ps-action-text)',
     psBackgroundHex: 'var(--ps-background)',
     psSuccessTextWeakHex: 'var(--ps-success-text-weak)',
     psTextInverseHex: 'var(--ps-text-inverse)',

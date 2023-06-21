@@ -7,23 +7,30 @@ const EmploymentItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
-    padding: 0 10vw;
+    padding-right: 10vw;
+    padding-left: 10vw;
     z-index: 1;
-
-    &:hover {
-        cursor: pointer;
-    }
 
     &.collapsed {
         flex: 0;
         max-height: min-content;
+        /* padding: 0.5em 10vw; */
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
         transition: all 300ms ease-out;
     }
 
     &.expanded {
         flex: 1;
         max-height: 100%;
+        /* padding: 1em 10vw; */
+        padding-top: 1em;
+        padding-bottom: 1em;
         transition: all 300ms ease-in;
+
+        &.pluralsight {
+            background-color: ${resumeTheme.psBackgroundHex};
+        }
 
         &.salesforce {
             background-color: ${resumeTheme.salesforceBeigeBgRgb};
@@ -36,15 +43,24 @@ const EmploymentItemContainer = styled.div`
         &.upstatement {
             background-color: ${themeColors.blackRgb};
         }
+
+        &.boston-symphony-orchestra {
+            background-color: ${resumeTheme.bsoBgHex};
+        }
     }
 `;
 
 const CompanyName = styled.h3`
+    margin-bottom: 0;
     transition: all 300ms ease-in;
     z-index: 1;
 
     &:hover {
         cursor: pointer;
+    }
+
+    .expanded.pluralsight & {
+        color: ${resumeTheme.psActionTextHex};
     }
 
     .expanded.salesforce & {
@@ -58,6 +74,10 @@ const CompanyName = styled.h3`
     .expanded.upstatement & {
         color: ${themeColors.whiteRgb};
         font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
+    }
+
+    .expanded.boston-symphony-orchestra & {
+        color: ${resumeTheme.bsoTextHex};
     }
 `;
 
@@ -83,6 +103,10 @@ const ExpandableDetails = styled.div`
         max-height: 100%;
         opacity: 1;
 
+        .pluralsight & {
+            color: ${resumeTheme.psActionTextHex};
+        }
+
         .salesforce & {
             color: ${resumeTheme.salesforceLightBlueHex};
         }
@@ -94,6 +118,28 @@ const ExpandableDetails = styled.div`
         .upstatement & {
             color: ${themeColors.whiteRgb};
         }
+
+        .boston-symphony-orchestra & {
+            color: ${resumeTheme.bsoTextHex};
+        }
+    }
+`;
+
+const ExpandableDetailsItemWrapper = styled.div`
+    display: flex;
+    width: fit-content;
+
+    &.location-wrapper {
+        margin-bottom: 0.5em;
+    }
+
+    &.flex-column {
+        flex-direction: column;
+    }
+
+    & a,
+    & a:hover {
+        text-decoration: underline;
     }
 `;
 
@@ -111,48 +157,43 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
     const companyNameClass = toKebabCase(company.name).toLowerCase();
 
     return (
-        <EmploymentItemContainer
-            onClick={handleToggleOnClick as MouseEventHandler}
-            className={`${isCollapsed ? 'collapsed' : 'expanded'} ${companyNameClass}`}
-        >
-            <CompanyName>{company.name}</CompanyName>
+        <EmploymentItemContainer className={`${isCollapsed ? 'collapsed' : 'expanded'} ${companyNameClass}`}>
+            <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
             <ExpandableDetails className={`${isCollapsed ? 'hidden' : 'visible'}`}>
-                <div>
-                    <span>
-                        <b>Location:</b> {company.location.city}, {company.location.state}
-                    </span>
-                    <span>
-                        {roles.map(
-                            (role, i): React.ReactElement => (
-                                <span key={`role-item-${i}`}>
-                                    <b>{role.title}</b> :: <em>{`${role.startDate} - ${role.endDate}`}</em>
-                                </span>
-                            ),
-                        )}
-                    </span>
-                    {responsibilities == null ? null : (
-                        <span>
-                            <ul>
-                                {responsibilities.map((responsibility, j) => (
-                                    <li key={`responsibility-${j}`}>{responsibility}</li>
-                                ))}
-                            </ul>
-                        </span>
+                <ExpandableDetailsItemWrapper className="location-wrapper">
+                    <b>Location:</b>&nbsp;{company.location.city}, {company.location.state}
+                </ExpandableDetailsItemWrapper>
+                <ExpandableDetailsItemWrapper className="flex-column">
+                    {roles.map(
+                        (role, i): React.ReactElement => (
+                            <span key={`role-item-${i}`}>
+                                <b>{role.title}</b> :: <em>{`${role.startDate} - ${role.endDate}`}</em>
+                            </span>
+                        ),
                     )}
-                </div>
+                </ExpandableDetailsItemWrapper>
+                {responsibilities?.length >= 1 ? (
+                    <ExpandableDetailsItemWrapper>
+                        <ul>
+                            {responsibilities.map((responsibility, j) => (
+                                <li key={`responsibility-${j}`} dangerouslySetInnerHTML={{ __html: responsibility }} />
+                            ))}
+                        </ul>
+                    </ExpandableDetailsItemWrapper>
+                ) : null}
             </ExpandableDetails>
         </EmploymentItemContainer>
     );
 };
 
 const EmploymentHeading = styled.h2`
-    padding: 0 10vw;
+    padding: 0 10vw 0.5em;
 `;
 
 const EmploymentContainer = styled.div`
     background-color: ${themeColors.darkerPurpleHex};
     color: ${themeColors.white};
-    padding: 1em 0;
+    padding: 2em 0;
 `;
 
 const Employment = ({ heading, data }: SectionComponentProps): React.ReactElement => {

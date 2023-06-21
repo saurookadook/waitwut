@@ -7,8 +7,9 @@ const React = require('react'); // const causes a conflict?
 const { Layout } = require('./src/components');
 
 const HeadComponents = [
-    <meta name="viewport" content="initial-scale=1, width=device-width" />,
+    <meta key={'head-component-1'} name="viewport" content="initial-scale=1, width=device-width" />,
     <link
+        key={'head-component-2'}
         rel="preload"
         href="https://fonts.pluralsight.com/ps-tt-commons/v1/ps-tt-commons-variable-roman.woff2"
         as="font"
@@ -16,10 +17,12 @@ const HeadComponents = [
         crossOrigin="true"
     />,
     <link
+        key={'head-component-3'}
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@pluralsight/design-tokens@0.4.1/fonts.css"
     />,
     <link
+        key={'head-component-4'}
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@pluralsight/design-tokens@0.4.1/npm/normalize/normalize.css"
     />
