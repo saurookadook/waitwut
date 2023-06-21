@@ -1,4 +1,10 @@
-import { DefaultTheme, AppBarTheme, BaseTheme, ContainerTheme, MenuTheme } from 'styled-components';
+import {
+    DefaultTheme, // <- to force formatting
+    AppBarTheme,
+    BaseTheme,
+    ContainerTheme,
+    MenuTheme,
+} from 'styled-components';
 
 const themeColors = {
     blackHex: '#000000',
