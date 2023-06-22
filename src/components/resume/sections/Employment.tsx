@@ -3,6 +3,53 @@ import styled from 'styled-components';
 import { themeColors, resumeTheme } from '../../../themes';
 import { toKebabCase } from '../../../utils';
 
+// TODO: pull out as common component?
+const NameAndLocationWrapper = styled.div`
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+
+    & i {
+        margin-left: 1em;
+    }
+`;
+
+const LocationText = styled.i`
+    margin-bottom: 0.2em;
+
+    &.hidden {
+        color: transparent;
+        opacity: 0;
+        transition: all 300ms ease-out;
+    }
+
+    &.visible {
+        opacity: 1;
+        transition: all 300ms ease-in;
+    }
+
+    .expanded.pluralsight & {
+        color: ${resumeTheme.psActionTextHex};
+    }
+
+    .expanded.salesforce & {
+        color: ${resumeTheme.salesforceDarkBlueRgb};
+    }
+
+    .expanded.evergage & {
+        color: ${resumeTheme.evergageBlueHex};
+    }
+
+    .expanded.upstatement & {
+        color: ${themeColors.whiteRgb};
+        font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
+    }
+
+    .expanded.boston-symphony-orchestra & {
+        color: ${resumeTheme.bsoTextHex};
+    }
+`;
+
 const EmploymentItemContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -158,16 +205,18 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
 
     return (
         <EmploymentItemContainer className={`${isCollapsed ? 'collapsed' : 'expanded'} ${companyNameClass}`}>
-            <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
+            <NameAndLocationWrapper>
+                <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
+                <LocationText className={`${isCollapsed ? 'hidden' : 'visible'}`}>
+                    {company.location.city}, {company.location.state}
+                </LocationText>
+            </NameAndLocationWrapper>
             <ExpandableDetails className={`${isCollapsed ? 'hidden' : 'visible'}`}>
-                <ExpandableDetailsItemWrapper className="location-wrapper">
-                    <b>Location:</b>&nbsp;{company.location.city}, {company.location.state}
-                </ExpandableDetailsItemWrapper>
                 <ExpandableDetailsItemWrapper className="flex-column">
                     {roles.map(
                         (role, i): React.ReactElement => (
                             <span key={`role-item-${i}`}>
-                                <b>{role.title}</b> :: <em>{`${role.startDate} - ${role.endDate}`}</em>
+                                <b>{role.title}</b> :: <i>{`${role.startDate} - ${role.endDate}`}</i>
                             </span>
                         ),
                     )}

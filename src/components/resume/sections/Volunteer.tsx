@@ -6,6 +6,10 @@ const NameAndLocationWrapper = styled.div`
     align-items: flex-end;
     display: flex;
     flex-direction: row;
+
+    & i {
+        margin-left: 1em;
+    }
 `;
 
 const OrganizationName = styled.h3`
@@ -36,7 +40,7 @@ const VolunteerItem = ({ volunteerRecord }: VolunteerItemProps): React.ReactElem
                 {roles.map(
                     (role, i): React.ReactElement => (
                         <span key={`role-item-${i}`}>
-                            <b>{role.title}</b> :: <em>{`${role.startDate} - ${role.endDate}`}</em>
+                            <b>{role.title}</b> :: <i>{`${role.startDate} - ${role.endDate}`}</i>
                         </span>
                     ),
                 )}
@@ -46,7 +50,7 @@ const VolunteerItem = ({ volunteerRecord }: VolunteerItemProps): React.ReactElem
 };
 
 const VolunteerHeading = styled.h2`
-    padding-bottom: 0.5em;
+    padding-bottom: 0.25em;
 `;
 
 const VolunteerContainer = styled.div`
