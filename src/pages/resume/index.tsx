@@ -35,7 +35,7 @@ const headingDetails = {
 };
 
 // TODO: separate these into categories?
-const TechnicalSkills = [
+const TechnicalSkills: string[] = [
     'JavaScript (ES5 and ES6)',
     'TypeScript',
     'Node.js',
@@ -60,7 +60,7 @@ const TechnicalSkills = [
     'Docker',
 ];
 
-const EmploymentHistory = [
+const EmploymentHistory: EmploymentRecord[] = [
     {
         company: {
             name: 'Pluralsight',
@@ -178,7 +178,7 @@ const EmploymentHistory = [
     },
 ];
 
-const VolunteerWork = [
+const VolunteerWork: VolunteerRecord[] = [
     {
         organization: {
             name: 'Hack.Diversity',
@@ -202,7 +202,7 @@ const VolunteerWork = [
     },
 ];
 
-const TechnicalProjects = [
+const TechnicalProjects: TechnicalProjectRecord[] = [
     {
         displayName: 'Hack.Diversity React/Redux Template',
         links: [
@@ -253,7 +253,7 @@ const TechnicalProjects = [
     },
 ];
 
-const Education = [
+const Education: EducationRecord[] = [
     {
         institution: 'Flatiron School',
         completionText: 'June 2018',
@@ -270,7 +270,7 @@ const Education = [
     },
 ];
 
-const sections: Record<string, (string | Record<string, unknown>)[]>[] = [
+const sections: ResumeSection[] = [
     { TechnicalSkills: TechnicalSkills },
     { EmploymentHistory: EmploymentHistory },
     { VolunteerWork: VolunteerWork },
@@ -311,7 +311,13 @@ const Resume = (): React.ReactElement => {
             <HeadingDetails headingData={headingDetails} />
             {sections.map((section, i): React.ReactElement => {
                 const key = Object.keys(section)[0];
-                if (['TechnicalSkills', 'EmploymentHistory'].includes(key)) {
+                if (
+                    [
+                        'TechnicalSkills',
+                        'EmploymentHistory',
+                        'VolunteerWork',
+                    ].includes(key)
+                ) {
                     return <AbstractSection key={`${key}-${i}`} sectionKey={key} sectionData={section[key]} />;
                 }
 

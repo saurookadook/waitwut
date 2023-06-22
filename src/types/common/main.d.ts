@@ -93,6 +93,15 @@ enum TopLevelPageSlugs {
 
 /* Resume */
 
+interface SectionComponentProps {
+    heading: string;
+    data: Array<any>;
+}
+
+interface ResumeSection {
+    [key: string]: string[] | EmploymentRecord[] | VolunteerRecord[] | TechnicalProjectRecord[] | EducationRecord[];
+}
+
 interface Site {
     [key: string]: string;
 }
@@ -110,12 +119,7 @@ interface HeadingData {
     introBlurb: string;
 }
 
-interface SectionComponentProps {
-    heading: string;
-    data: Array<any>;
-}
-
-interface Location {
+interface GeoLocation {
     city: string;
     state: string;
 }
@@ -128,11 +132,36 @@ interface Role {
 
 interface Company {
     name: string;
-    location: Location;
+    location: GeoLocation;
 }
 
 interface EmploymentRecord {
     company: Company;
     roles: Role[];
-    responsibilities: string[];
+    responsibilities?: string[];
+}
+
+interface VolunteerRecord {
+    organization: Company;
+    roles: Role[];
+}
+
+interface ProjectLink {
+    type: string;
+    url: string;
+}
+
+interface TechnicalProjectRecord {
+    displayName: string;
+    links: ProjectLink[];
+    description: string;
+    startDate: string;
+    endDate: string;
+}
+
+interface EducationRecord {
+    institution: string;
+    location?: GeoLocation;
+    completionText: string;
+    certification: string;
 }
