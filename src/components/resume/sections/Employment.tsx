@@ -172,10 +172,10 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
                         ),
                     )}
                 </ExpandableDetailsItemWrapper>
-                {responsibilities?.length >= 1 ? (
+                {(responsibilities || []).length >= 1 ? (
                     <ExpandableDetailsItemWrapper>
                         <ul>
-                            {responsibilities.map((responsibility, j) => (
+                            {responsibilities?.map((responsibility, j) => (
                                 <li key={`responsibility-${j}`} dangerouslySetInnerHTML={{ __html: responsibility }} />
                             ))}
                         </ul>
@@ -201,7 +201,7 @@ const Employment = ({ heading, data }: SectionComponentProps): React.ReactElemen
         <EmploymentContainer>
             <EmploymentHeading>{heading}</EmploymentHeading>
             {data.map((record, i) => (
-                <EmploymentItem key={`${record.company.name}-${i}`} employmentRecord={record} />
+                <EmploymentItem key={`employment-item-${i}`} employmentRecord={record} />
             ))}
         </EmploymentContainer>
     );
