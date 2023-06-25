@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
-import { Link } from 'gatsby';
-import styled, { useTheme } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { HeadingDetails } from '../../components/resume';
 import { AbstractSection } from '../../components/resume/sections';
-import { toTitleCase } from '../../utils';
-import { resumeTheme } from '../../themes';
 
 const headingDetails = {
     firstName: 'Andrew',
@@ -311,33 +308,12 @@ const Resume = (): React.ReactElement => {
             <HeadingDetails headingData={headingDetails} />
             {sections.map((section, i): React.ReactElement => {
                 const key = Object.keys(section)[0];
-                if (
-                    [
-                        'TechnicalSkills',
-                        'EmploymentHistory',
-                        'VolunteerWork',
-                    ].includes(key)
-                ) {
-                    return <AbstractSection key={`${key}-${i}`} sectionKey={key} sectionData={section[key]} />;
-                }
-
                 return (
-                    <section key={`${key}-${i}`}>
-                        <h3>{toTitleCase(key)}</h3>
-                        <ul>
-                            {section[key].map((record, j) => {
-                                return (
-                                    <li key={`${i}-${j}`}>
-                                        {typeof record === 'string' ? (
-                                            record
-                                        ) : (
-                                            <pre>{JSON.stringify(record, null, 4)}</pre>
-                                        )}
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </section>
+                    <AbstractSection // <- to force formatting
+                        key={`${key}-${i}`}
+                        sectionKey={key}
+                        sectionData={section[key]}
+                    />
                 );
             })}
         </StyledMain>
