@@ -95,11 +95,16 @@ const resumeTheme = {
     bsoBgHex: '#ffda81',
     bsoTextHex: '#000000',
     // from Pando
-    psActionTextHex: 'var(--ps-action-text)',
-    psBackgroundHex: 'var(--ps-background)',
-    psSuccessTextWeakHex: 'var(--ps-success-text-weak)',
-    psTextInverseHex: 'var(--ps-text-inverse)',
-    psWarningTextMediumHex: 'var(--ps-warning-text-medium)',
+    // psActionTextHex: 'var(--ps-action-text)',
+    psActionTextHex: '#e1ddf7',
+    // psBackgroundHex: 'var(--ps-background)',
+    psBackgroundHex: '#393b6b',
+    // psSuccessTextWeakHex: 'var(--ps-success-text-weak)',
+    psSuccessTextWeakHex: '#43fd84',
+    // psTextInverseHex: 'var(--ps-text-inverse)',
+    psTextInverseHex: '#130f25',
+    // psWarningTextMediumHex: 'var(--ps-warning-text-medium)',
+    psWarningTextMediumHex: '#ffd262',
 };
 
 export {
