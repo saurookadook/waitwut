@@ -165,3 +165,8 @@ interface EducationRecord {
     completionText: string;
     certification: string;
 }
+
+/* Components */
+interface GenericStyledProps {
+    readonly overrides?: Record<string, string | number>;
+}
