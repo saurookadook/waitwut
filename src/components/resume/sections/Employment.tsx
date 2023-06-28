@@ -1,5 +1,7 @@
 import React, { MouseEventHandler, useState } from 'react';
 import styled from 'styled-components';
+
+import { GenericHeading, GenericContainer } from '../components';
 import { themeColors, resumeTheme } from '../../../themes';
 import { toKebabCase } from '../../../utils';
 
@@ -235,24 +237,21 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
     );
 };
 
-const EmploymentHeading = styled.h2`
-    padding: 0 10vw 0.5em;
-`;
-
-const EmploymentContainer = styled.div`
-    background-color: ${themeColors.darkerPurpleHex};
-    color: ${themeColors.white};
-    padding: 2em 0;
-`;
-
 const Employment = ({ heading, data }: SectionComponentProps): React.ReactElement => {
     return (
-        <EmploymentContainer>
-            <EmploymentHeading>{heading}</EmploymentHeading>
+        <GenericContainer
+            overrides={{
+                // <- to force formatting
+                bgColor: themeColors.darkerPurpleHex,
+                padding: '2em 0',
+                textColor: themeColors.white,
+            }}
+        >
+            <GenericHeading>{heading}</GenericHeading>
             {data.map((record, i) => (
                 <EmploymentItem key={`employment-item-${i}`} employmentRecord={record} />
             ))}
-        </EmploymentContainer>
+        </GenericContainer>
     );
 };
 
