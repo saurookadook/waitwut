@@ -167,6 +167,10 @@ interface EducationRecord {
 }
 
 /* Components */
+interface StyleOverrides {
+    [key: string]: string | number;
+}
+
 interface GenericStyledProps {
-    readonly overrides?: Record<string, string | number>;
+    readonly overrides?: StyleOverrides;
 }
