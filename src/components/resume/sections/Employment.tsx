@@ -1,56 +1,9 @@
 import React, { MouseEventHandler, useState } from 'react';
 import styled from 'styled-components';
 
-import { GenericHeading, GenericContainer } from '../components';
+import { GenericHeading, GenericContainer, LocationText, NameAndLocationWrapper } from '../components';
 import { themeColors, resumeTheme } from '../../../themes';
 import { toKebabCase } from '../../../utils';
-
-// TODO: pull out as common component?
-const NameAndLocationWrapper = styled.div`
-    align-items: flex-end;
-    display: flex;
-    flex-direction: row;
-
-    & i {
-        margin-left: 1em;
-    }
-`;
-
-const LocationText = styled.i`
-    margin-bottom: 0.2em;
-
-    &.hidden {
-        color: transparent;
-        opacity: 0;
-        transition: all 300ms ease-out;
-    }
-
-    &.visible {
-        opacity: 1;
-        transition: all 300ms ease-in;
-    }
-
-    .expanded.pluralsight & {
-        color: ${resumeTheme.psActionTextHex};
-    }
-
-    .expanded.salesforce & {
-        color: ${resumeTheme.salesforceDarkBlueRgb};
-    }
-
-    .expanded.evergage & {
-        color: ${resumeTheme.evergageBlueHex};
-    }
-
-    .expanded.upstatement & {
-        color: ${themeColors.whiteRgb};
-        font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
-    }
-
-    .expanded.boston-symphony-orchestra & {
-        color: ${resumeTheme.bsoTextHex};
-    }
-`;
 
 const EmploymentItemContainer = styled.div`
     display: flex;
@@ -247,7 +200,7 @@ const Employment = ({ heading, data }: SectionComponentProps): React.ReactElemen
                 textColor: themeColors.white,
             }}
         >
-            <GenericHeading>{heading}</GenericHeading>
+            <GenericHeading overrides={{ padding: '0 10vw 0.25em' }}>{heading}</GenericHeading>
             {data.map((record, i) => (
                 <EmploymentItem key={`employment-item-${i}`} employmentRecord={record} />
             ))}
