@@ -195,9 +195,9 @@ const Employment = ({ heading, data }: SectionComponentProps): React.ReactElemen
         <GenericContainer
             overrides={{
                 // <- to force formatting
-                bgColor: themeColors.darkerPurpleHex,
+                backgroundColor: themeColors.darkerPurpleHex,
+                color: themeColors.white,
                 padding: '2em 0',
-                textColor: themeColors.white,
             }}
         >
             <GenericHeading overrides={{ padding: '0 10vw 0.25em' }}>{heading}</GenericHeading>

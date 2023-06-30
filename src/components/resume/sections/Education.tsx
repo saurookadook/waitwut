@@ -1,32 +1,56 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import {
+    GenericContainer,
+    GenericHeading,
+    GenericGridContainer,
+    LocationText,
+    NameAndLocationWrapper,
+} from '../components';
 import { themeColors } from '../../../themes';
 
-const EducationHeading = styled.h2`
-    padding-bottom: 0.25em;
+const InstitutionName = styled.h3`
+    margin-bottom: 0%;
 `;
 
-const EducationContainer = styled.div`
-    background-color: ${themeColors.plBlue};
-    color: ${themeColors.white};
-    padding: 2em 10vw;
-`;
+interface EducationItemProps {
+    educationRecord: EducationRecord;
+}
+
+const EducationItem = ({ educationRecord }: EducationItemProps): React.ReactElement => {
+    const { certification, completionText, institution, location } = educationRecord;
+    return (
+        <div>
+            <NameAndLocationWrapper>
+                <InstitutionName>{institution}</InstitutionName>
+                {location ? ( // <- to force formatting
+                    <LocationText>{`${location.city}, ${location.state}`}</LocationText>
+                ) : null}
+            </NameAndLocationWrapper>
+            <p>{completionText}</p>
+            <p>{certification}</p>
+        </div>
+    );
+};
 
 const Education = ({ heading, data }: SectionComponentProps): React.ReactElement => {
     return (
-        <EducationContainer>
-            <EducationHeading>{heading}</EducationHeading>
-            <span>Under Construction 🚧</span>
-            <ul>
-                {data.map((record, i) => {
-                    return (
-                        <li key={`education-record-${i}`}>
-                            <pre>{JSON.stringify(record, null, 4)}</pre>
-                        </li>
-                    );
-                })}
-            </ul>
-        </EducationContainer>
+        <GenericContainer
+            overrides={{
+                // <- to force formatting
+                backgroundColor: themeColors.plBlue,
+                color: themeColors.white,
+                padding: '2em 10vw',
+            }}
+        >
+            <GenericHeading overrides={{ paddingBottom: '0.25em' }}>{heading}</GenericHeading>
+            <GenericGridContainer>
+                {data.map((record, i) => (
+                    <EducationItem key={`education-record-${i}`} educationRecord={record} />
+                ))}
+            </GenericGridContainer>
+        </GenericContainer>
     );
 };
 
