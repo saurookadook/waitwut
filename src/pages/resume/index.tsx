@@ -298,7 +298,6 @@ const StyledMain = styled.main`
 
     & p {
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.5rem;
     }
 `;
 

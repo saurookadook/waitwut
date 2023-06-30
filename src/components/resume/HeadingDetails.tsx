@@ -14,6 +14,7 @@ const StyledNameHeading = styled.h1``;
 const StyledContactInfo = styled(ContactInfo)``;
 
 const StyledIntroBlurb = styled.p`
+    font-size: 1.5rem;
     margin: 0 10vw;
     text-align: left;
 `;
