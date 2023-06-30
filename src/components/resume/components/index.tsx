@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { toKebabCase } from '../../../utils';
 import { resumeTheme, themeColors } from '../../../themes';
 
 const PADDING_PROPERTIES = [
@@ -22,20 +23,27 @@ function addPadding(overrides: StyleOverrides, defaultPadding: string): string {
     return Object.keys(overrides).reduce((acc, curKey) => {
         const curValue = (overrides || {})[curKey];
         if (PADDING_PROPERTIES.includes(curKey) && curValue) {
-            acc += `${curKey}: ${curValue};`;
+            acc += `${toKebabCase(curKey)}: ${curValue};`;
         }
         return acc;
     }, '');
 }
 
 const GenericContainer = styled.div<GenericStyledProps>`
-    color: ${(props) => props.overrides?.textColor || themeColors.blackHex};
-    background-color: ${(props) => props.overrides?.bgColor || themeColors.white};
+    background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
+    color: ${(props) => props.overrides?.color || themeColors.blackHex};
     ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5em')}
 `;
 
 const GenericHeading = styled.h2<GenericStyledProps>`
+    background-color: ${(props) => props.overrides?.backgroundColor || 'inherit'};
+    color: ${(props) => props.overrides?.color || 'inherit'};
     ${(props) => addPadding(props.overrides || {}, '0 0 0.5em')}
+`;
+
+const GenericGridContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 `;
 
 const LocationText = styled.i`
@@ -84,4 +92,11 @@ const NameAndLocationWrapper = styled.div`
     }
 `;
 
-export { GenericContainer, GenericHeading, LocationText, NameAndLocationWrapper };
+export {
+    // <- to force formatting
+    GenericContainer,
+    GenericHeading,
+    GenericGridContainer,
+    LocationText,
+    NameAndLocationWrapper,
+};
