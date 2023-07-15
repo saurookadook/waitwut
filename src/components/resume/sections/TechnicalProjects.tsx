@@ -103,6 +103,26 @@ const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemPr
 };
 
 const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.ReactElement => {
+    const RequestHeaders = new Headers({
+        Accept: 'text/plain',
+        'Access-Control-Allow-Origin': 'https://github.com',
+        'Access-Control-Request-Method': 'GET',
+        // 'Content-Type': 'text/html',
+        Origin: window.location.hostname,
+    });
+    const pinnedRepos = fetch('https://github.com/saurookadook', {
+        method: 'GET',
+        headers: RequestHeaders,
+        // mode: 'no-cors',
+    })
+        .then((resp) => resp.text())
+        .then((textResp) => {
+            console.log(textResp);
+        })
+        .catch((e) => {
+            console.error('--------------------------------- YA DUN FUCKED IT ---------------------------------\n', e);
+        });
+
     return (
         <GenericContainer
             overrides={{
