@@ -2709,6 +2709,76 @@ for stamp, value in itertools.islice(zip(timestamps, sensor), 10):
 
 ## Inheritance and Subtype Polymorphism
 
+<details>
+
+<summary>
+
+### Realistic example: `SortedList`
+
+</summary>
+
+<p>
+
+```python
+class SimpleList:
+    def __init__(self, items):
+        self._items = list(items)
+
+    def add(self, item):
+        self._items.append(item)
+
+    def __getitem__(self, index):
+        return self._items[index]
+
+    def sort(self):
+        self._items.sort()
+
+    def __len__(self):
+        return len(self._items)
+
+    def __repr__(self):
+        return "SimpleList({!r})".format(self._items)
+
+
+class SortedList(SimpleList):
+    def __init__(self, items=()):  # optional sequence argument
+        super().__init__(items)
+        self.sort()
+
+    def add(self, item):
+        super().add(item)
+        self.sort()
+
+    def __repr__(self):
+        return "SortedList({!r})".format(list(self))
+
+
+class IntList(SimpleList):
+    def __init__(self, items=()):
+        for x in items: self._validate(x)
+        super().__init__(items)
+
+    @staticmethod
+    def _validate(x):
+        if not isinstance(x, int):
+            raise TypeError('IntList only supports integer values.')
+
+    def add(self, item):
+        self._validate(item)
+        super().add(item)
+
+    def __repr__(self):
+        return "IntList({!r})".format(list(self))
+
+
+class SortedIntList(IntList, SortedList):
+    def __repr__(self):
+        return "SortedIntList({!r})".format(list(self))
+```
+
+</p>
+</details>
+
 Useful built-in functions:
 - **`isinstance()`**
     - determines if object is of a specified type
@@ -2819,6 +2889,61 @@ _**Explanation of above**:_
 
 ### Built-in `super()` Function
 
+**Short, albeit incomplete, definition**: given a method resolution order and a class `C`, `super()` gives you an object which resolves methods using only the part of the MRO which comes after `C`
+
+- `super()` returns a proxy object which routes method calls
+    - **bound proxy**: bound to specific class or instance
+    - **unbound proxy**: not bound to specific class or instance
+        - _primarily an implementation detail for other Python features_
+
+### Class-Bound Super Proxies
+
+two types of bound proxies:
+- instance-bound
+- class-bound
+
+#### Class-bound proxy
+
+`super(base-class, derived-class)`
+- `base-class` is class object
+- `derived-class` is subclass of first argument
+- when invoke method on proxy...
+    1. finds MRO for derived-class
+    2. then finds base-class in that MRO
+    3. takes everything **after** base-class in MRO and finds first class in _that_ sequence with matching method name
+
+**Explanation using [`SortedList` example](#realistic-example-SortedList)
+
+```python
+>>> from sorted_list import *
+>>> SortedIntList.mro()
+#=> [
+#=>     <class 'sorted_list.SortedIntList'>,
+#=>     <class 'sorted_list.IntList'>,
+#=>     <class 'sorted_list.SortedList'>,
+#=>     <class 'sorted_list.SimpleList'>,
+#=>     <class 'object'>,
+#=> ]
+>>> super(SortedList, SortedIntList)
+#=> <super: <class 'SortedList'>, <SortedIntList object>>
+#=> --------- NAME RESOLUTION ---------
+#=> 1. gets MRO for 'SortedIntList'
+#=> 2. finds 'SortedList' in that MRO
+#=> 3. takes everything after 'SortedList', giving us an MRO of containing just 'SimpleList' and 'object'
+#=> 4. finds first class in that smaller MRO which has an 'add' method
+>>> super(SortedList, SortedIntList).add
+#=> <function SimpleList.add at 0x10436a050>
+>>> super(SortedList, SortedIntList).add(4)
+#=> TypeError: add() missing 1 required positional argument: 'item'
+#   ^^^^^^^^ raised because our proxy is bound to a class, not an instance
+#
+#   However, we could invoke the method with our proxy if it's a static method or class method, like so:
+>>> super(SortedList, SortedIntList)._validate(5)
+>>> super(SortedList, SortedIntList)._validate('hello')
+#=> TypeError: IntList only supports integer values.
+```
+
+### Instance-bound proxy
 
 ```python
 # _TODO_ 🙃
