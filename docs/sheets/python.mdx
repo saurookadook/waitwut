@@ -1494,7 +1494,7 @@ def create_list(value, size):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1505,7 +1505,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Class Attributes
@@ -1516,7 +1516,7 @@ Class attributes created within scope of class
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1531,7 +1531,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 **NOTE**: assignment via `self.attr = something` _always_ creates instance attribute
@@ -1544,7 +1544,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1564,7 +1564,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Class Methods
@@ -1575,7 +1575,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1595,7 +1595,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 #### Class Methods for Named Constructors
@@ -1610,7 +1610,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1638,7 +1638,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ##### _Aside - ISO 6346 BIC code_
@@ -1658,7 +1658,7 @@ _Provided helper module_
 
 </summary>
 
-<p>
+<span>
 
 ```python
 """
@@ -1733,7 +1733,7 @@ def letter_code(letter):
 
 ```
 
-</p>
+</span>
 </details>
 
 #### Static Method Example Using BIC Code Helper
@@ -1742,7 +1742,7 @@ def letter_code(letter):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1782,7 +1782,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Static Methods with Inheritance
@@ -1793,7 +1793,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1843,7 +1843,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
         )
 ```
 
-</p>
+</span>
 </details>
 
 ### Class Methods with Inheritance
@@ -1854,7 +1854,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1915,7 +1915,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Properties
@@ -1927,7 +1927,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1997,14 +1997,14 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 <details>
 
 <summary>Extended example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -2087,7 +2087,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Properties and Inheritance
@@ -2098,7 +2098,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -2194,14 +2194,14 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 <details>
 
 <summary>Extended example (overriding setter)</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -2310,7 +2310,7 @@ class HeatedRefrigeratedShippingContainer(RefrigeratedShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 _Aside - chained relational operators_
@@ -2321,7 +2321,7 @@ Python allows for chaining relational operators, so that one can write `a < b < 
 
 <summary>Example with pitfalls</summary>
 
-<p>
+<span>
 
 ```python
 
@@ -2345,7 +2345,7 @@ class HeatedRefrigeratedShippingContainer(RefrigeratedShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Template Method Pattern
@@ -2717,7 +2717,7 @@ for stamp, value in itertools.islice(zip(timestamps, sensor), 10):
 
 </summary>
 
-<p>
+<span>
 
 ```python
 class SimpleList:
@@ -2776,7 +2776,7 @@ class SortedIntList(IntList, SortedList):
         return "SortedIntList({!r})".format(list(self))
 ```
 
-</p>
+</span>
 </details>
 
 Useful built-in functions:
