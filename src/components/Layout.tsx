@@ -1,21 +1,13 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
-import {
-    Box,
-    CssBaseline,
-    Container,
-} from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 import { HeadMetaContext, PageMapContext } from '../common/contexts';
 import { Footer, Header, LeftSideMenu } from '../components';
 import { GlobalStyles, pageMap } from '../constants';
 
-import {
-    baseTheme,
-    containerTheme,
-    resumeTheme,
-} from '../themes';
+import { baseTheme, containerTheme, resumeTheme } from '../themes';
 
 const StyledContainerOnly = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
@@ -56,12 +48,12 @@ const StyledBox = styled(Box)`
 
 interface LayoutProps {
     pageTitle?: string;
-    children: React.ReactElement
-    location: Record<string, string>
+    children: React.ReactElement;
+    location: Record<string, string>;
 }
 
 const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElement => {
-    const containerOnly = (): boolean => /\/resume(?=(\/)?([?&#].*$|$))/gim.test(location.pathname)
+    const containerOnly = (): boolean => /\/resume(?=(\/)?([?&#].*$|$))/gim.test(location.pathname);
 
     const staticData = useStaticQuery(graphql`
         query {
@@ -88,21 +80,16 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                     <ThemeProvider theme={resumeTheme}>
                         <GlobalStyles />
                         <StyledContainerOnly disableGutters={true}>
-                            <StyledBoxOnly>
-                                {children}
-                            </StyledBoxOnly>
+                            <StyledBoxOnly>{children}</StyledBoxOnly>
                         </StyledContainerOnly>
                     </ThemeProvider>
                 ) : (
                     <ThemeProvider theme={baseTheme}>
-                        <CssBaseline />
                         <GlobalStyles />
                         <Header />
                         <ThemeProvider theme={containerTheme}>
                             <StyledContainer disableGutters={true}>
-                                <StyledBox>
-                                    {children}
-                                </StyledBox>
+                                <StyledBox>{children}</StyledBox>
                                 <LeftSideMenu />
                             </StyledContainer>
                         </ThemeProvider>
