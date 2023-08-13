@@ -103,6 +103,13 @@ const config: GatsbyConfig = {
         //     },
         // },
     ],
+    developMiddleware: app => {
+        app.use((req: Request, res: Response, next: Function) => {
+            // @ts-ignore
+            res.set('X-Frame-Options', 'DENY');
+            next();
+        });
+    },
 
     /**
      * misc devDependencies

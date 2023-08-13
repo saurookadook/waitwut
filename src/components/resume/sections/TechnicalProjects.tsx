@@ -103,13 +103,15 @@ const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemPr
 };
 
 const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.ReactElement => {
-    const RequestHeaders = new Headers({
+    const hostname = typeof window !== 'undefined' ? window?.location?.hostname : 'localhost';
+
+    const RequestHeaders = {
         Accept: 'text/plain',
         'Access-Control-Allow-Origin': 'https://github.com',
         'Access-Control-Request-Method': 'GET',
         // 'Content-Type': 'text/html',
-        Origin: window.location.hostname,
-    });
+        Origin: hostname,
+    };
     const pinnedRepos = fetch('https://github.com/saurookadook', {
         method: 'GET',
         headers: RequestHeaders,

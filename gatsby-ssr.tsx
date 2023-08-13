@@ -4,6 +4,7 @@
 require("prismjs/themes/prism-tomorrow.css"); // closest one to Atom One Dark, I think?
 
 const React = require('react'); // const causes a conflict?
+const { CssBaseline } = require('@mui/material')
 const { Layout } = require('./src/components');
 
 const HeadComponents = [
@@ -25,6 +26,15 @@ const HeadComponents = [
         key="head-component-4"
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@pluralsight/design-tokens@0.4.1/npm/normalize/normalize.css"
+    />,
+    <link
+        key="head-component-5"
+        id="devicon-sheet"
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />,
+    <CssBaseline
+        key="head-component-6"
     />
 ]
 
