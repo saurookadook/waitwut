@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
+import { CssBaseline } from '@mui/material';
 
+import { GlobalStyles } from '../constants';
 
 interface HeadProps {
     children?: React.ReactElement;
@@ -19,9 +21,15 @@ const Head = ({ data, location, pageContext, params, title }: HeadProps): React.
         <Helmet>
             {/* TODO: generate title based on page (i.e. for python, "wait, wut? | Python") */}
             <title>{`😬 ${constructedTitle}`}</title>
-            <link id="devicon-sheet" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+            <link
+                id="devicon-sheet"
+                rel="stylesheet"
+                href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+            />
+            <CssBaseline />
+            <GlobalStyles />
         </Helmet>
     );
-}
+};
 
 export default Head;
