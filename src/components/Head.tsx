@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 
-
 interface HeadProps {
     children?: React.ReactElement;
     title?: string;
@@ -11,7 +10,13 @@ interface HeadProps {
     params?: any;
 }
 
-const Head = ({ data, location, pageContext, params, title }: HeadProps): React.ReactElement => {
+const Head = ({
+    data, // <- to force formatting
+    location,
+    pageContext,
+    params,
+    title,
+}: HeadProps): React.ReactElement => {
     console.log('Head props: ', { data, location, pageContext, params, title });
     const metaTitle = data?.mdx?.frontmatter?.title || '';
     const constructedTitle = metaTitle ? `wait, wut? | ${metaTitle}` : 'wait, wut?';
@@ -19,9 +24,13 @@ const Head = ({ data, location, pageContext, params, title }: HeadProps): React.
         <Helmet>
             {/* TODO: generate title based on page (i.e. for python, "wait, wut? | Python") */}
             <title>{`😬 ${constructedTitle}`}</title>
-            <link id="devicon-sheet" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+            <link
+                id="devicon-sheet"
+                rel="stylesheet"
+                href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+            />
         </Helmet>
     );
-}
+};
 
 export default Head;
