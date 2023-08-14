@@ -1,7 +1,15 @@
 import React, { MouseEventHandler, useState } from 'react';
 import styled from 'styled-components';
+import classNames from 'classnames';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
-import { GenericHeading, GenericContainer, LocationText, NameAndLocationWrapper } from '../components';
+import {
+    GenericHeading, // <- to force formatting
+    GenericContainer,
+    LocationText,
+    NameAndLocationWrapper,
+    ToggleIcon,
+} from '../components';
 import { themeColors, resumeTheme } from '../../../themes';
 import { toKebabCase } from '../../../utils';
 
@@ -158,15 +166,21 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
 
     const companyNameClass = toKebabCase(company.name).toLowerCase();
 
+    const collapsedOrExpanded = (): 'collapsed' | 'expanded' => (isCollapsed ? 'collapsed' : 'expanded');
+    const hiddenOrVisible = (): 'hidden' | 'visible' => (isCollapsed ? 'hidden' : 'visible');
+
     return (
-        <EmploymentItemContainer className={`${isCollapsed ? 'collapsed' : 'expanded'} ${companyNameClass}`}>
+        <EmploymentItemContainer className={classNames(collapsedOrExpanded(), companyNameClass)}>
             <NameAndLocationWrapper>
+                <ToggleIcon onClick={handleToggleOnClick as MouseEventHandler}>
+                    {isCollapsed ? <ExpandLess /> : <ExpandMore />}
+                </ToggleIcon>
                 <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
-                <LocationText className={`${isCollapsed ? 'hidden' : 'visible'}`}>
+                <LocationText className={hiddenOrVisible()}>
                     {company.location.city}, {company.location.state}
                 </LocationText>
             </NameAndLocationWrapper>
-            <ExpandableDetails className={`${isCollapsed ? 'hidden' : 'visible'}`}>
+            <ExpandableDetails className={hiddenOrVisible()}>
                 <ExpandableDetailsItemWrapper className="flex-column">
                     {roles.map(
                         (role, i): React.ReactElement => (

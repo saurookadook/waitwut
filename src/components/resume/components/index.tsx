@@ -92,6 +92,19 @@ const NameAndLocationWrapper = styled.div`
     }
 `;
 
+const ToggleIcon = styled.span`
+    align-self: center;
+    display: flex;
+    font-size: 18px;
+    height: 24px;
+    line-height: 1;
+    width: 24px;
+
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
 export {
     // <- to force formatting
     GenericContainer,
@@ -99,4 +112,5 @@ export {
     GenericGridContainer,
     LocationText,
     NameAndLocationWrapper,
+    ToggleIcon,
 };
