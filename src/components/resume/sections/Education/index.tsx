@@ -7,8 +7,8 @@ import {
     GenericGridContainer,
     LocationText,
     NameAndLocationWrapper,
-} from '../components';
-import { themeColors } from '../../../themes';
+} from '../../components';
+import { themeColors } from '../../../../themes';
 
 const InstitutionName = styled.h3`
     margin-bottom: 0%;

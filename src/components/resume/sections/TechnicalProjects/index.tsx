@@ -1,76 +1,20 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { MouseEventHandler, useState } from 'react';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
-import { GenericContainer, GenericHeading, GenericGridContainer } from '../components';
-import { themeColors } from '../../../themes';
-
-const ProjectItemContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    margin: 0.5rem 0;
-    z-index: 1;
-
-    &.collapsed {
-        flex: 0;
-        max-height: min-content;
-        transition: all 300ms ease-out;
-    }
-
-    &.expanded {
-        flex: 1;
-        max-height: 100%;
-        transition: all 300ms ease-in;
-    }
-`;
-
-const ProjectDisplayName = styled.h3`
-    margin-bottom: 0;
-
-    &:hover {
-        cursor: pointer;
-    }
-`;
-
-const ProjectDetails = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    z-index: 0;
-
-    &.hidden,
-    &.hidden * {
-        color: transparent;
-        flex: 0;
-        height: 0;
-        max-height: 0;
-        opacity: 0;
-    }
-
-    &.visible,
-    &.visible * {
-        flex: 1;
-        height: auto;
-        max-height: 100%;
-        opacity: 1;
-    }
-`;
-
-const ProjectLink = styled.a`
-    color: ${themeColors.darkerPurpleHex};
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    margin-bottom: 0.25rem;
-
-    &:hover {
-        text-decoration: underline;
-    }
-`;
-
-const SubText = styled.p`
-    font-size: 1rem;
-    line-height: 1.5rem;
-`;
+import {
+    GenericContainer, // <- to force formatting
+    GenericHeading,
+    GenericGridContainer,
+    ToggleIcon,
+} from '../../components';
+import { themeColors } from '../../../../themes';
+import {
+    ProjectItemContainer, // <- to force formatting
+    ProjectDisplayName,
+    ProjectDetails,
+    ProjectLink,
+    SubText,
+} from './styled';
 
 interface TechnicalProjectItemProps {
     technicalProjectRecord: TechnicalProjectRecord;
@@ -79,10 +23,16 @@ interface TechnicalProjectItemProps {
 const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemProps): React.ReactElement => {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
+    const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
+
     const { description, displayName, endDate, links, startDate } = technicalProjectRecord;
+
     return (
         <ProjectItemContainer className={`${isCollapsed ? 'collapsed' : 'expanded'}`}>
-            <ProjectDisplayName onClick={() => setIsCollapsed(!isCollapsed)}>{displayName}</ProjectDisplayName>
+            <ToggleIcon onClick={handleToggleOnClick as MouseEventHandler}>
+                {isCollapsed ? <ExpandLess /> : <ExpandMore />}
+            </ToggleIcon>
+            <ProjectDisplayName onClick={handleToggleOnClick as MouseEventHandler}>{displayName}</ProjectDisplayName>
             <ProjectDetails className={`${isCollapsed ? 'hidden' : 'visible'}`}>
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { GenericHeading, GenericContainer } from '../components';
-import { resumeTheme } from '../../../themes';
+import { GenericHeading, GenericContainer } from '../../components';
+import { resumeTheme } from '../../../../themes';
 
 const SkillsList = styled.p`
     font-size: 1.5rem;
@@ -11,7 +11,13 @@ const SkillsList = styled.p`
 const TechnicalSkills = ({ heading, data }: SectionComponentProps): React.ReactElement => {
     const skillsAsCsv = data.join(', ');
     return (
-        <GenericContainer overrides={{ backgroundColor: resumeTheme.psWarningTextMediumHex, padding: '1em 10vw' }}>
+        <GenericContainer
+            overrides={{
+                // <- to force formatting
+                backgroundColor: resumeTheme.psWarningTextMediumHex,
+                padding: '1em 10vw',
+            }}
+        >
             <GenericHeading>{heading}</GenericHeading>
             <SkillsList>{skillsAsCsv}</SkillsList>
         </GenericContainer>
