@@ -26,13 +26,14 @@ const componentNameFromSectionKey = (sectionKey: string): string => {
 };
 
 const AbstractSection = ({ sectionKey, sectionData }: AbstractSectionProps): React.ReactElement => {
+    const sectionHeading = toTitleCase(sectionKey);
     const componentName = componentNameFromSectionKey(sectionKey);
     // const SectionComponent = await import(`./${componentName}.tsx`)
     const SectionComponent = (sections as Record<string, any>)[componentName];
 
     return (
         <section>
-            <SectionComponent heading={toTitleCase(sectionKey)} data={sectionData} />
+            <SectionComponent heading={sectionHeading} data={sectionData} />
         </section>
     );
 };
