@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor};
         color: ${themeColors.graphite};
         font-family: "-apple-system, Roboto, sans-serif, serif";
-        font-size: 14px;
+        font-size: var(--base-font-size);
         margin: 0;
         min-height: 100vh;
         overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
@@ -24,37 +24,37 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1, h2, h3, h4, h5 {
-        margin-bottom: 0.5em;
+        margin-bottom: 0.5rem;
     }
 
     h1 {
-        font-size: 3em;
+        font-size: 3rem;
         margin-top: 0;
     }
 
     h1:first-of-type {
-        margin-top: 1em;
+        margin-top: 1rem;
     }
 
     h2 {
-        font-size: 2.5em;
+        font-size: 2.5rem;
     }
 
     h3 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 
     h4 {
-        font-size: 1.75em;
+        font-size: 1.75rem;
     }
 
     h5 {
-        font-size: 1.5em;
+        font-size: 1.5rem;
     }
 
     summary > * {
         display: inline-block;
-        margin-left: 0.5em;
+        margin-left: 0.5rem;
     }
 
     a {
@@ -74,13 +74,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ul {
-        margin-top: 0.5em;
+        margin-top: 0.5rem;
     }
 
     li {
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 300;
-        margin-bottom: 0.25em;
+        margin-bottom: 0.25rem;
         /* max-width: 560px; */
 
         & a {
@@ -100,7 +100,7 @@ const GlobalStyles = createGlobalStyle`
     /* https://css-tricks.com/examples/hrs/ */
     hr {
         border: 0 none;
-        margin: 2em 0;
+        margin: 2rem 0;
         opacity: 1;
         width: 100%;
 
