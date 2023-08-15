@@ -1,67 +1,22 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled, { ThemeProvider } from 'styled-components';
-import {
-    Box,
-    CssBaseline,
-    Container,
-} from '@mui/material';
+import { ThemeProvider } from 'styled-components';
+import { CssBaseline } from '@mui/material';
 
-import { HeadMetaContext, PageMapContext } from '../common/contexts';
-import { Footer, Header, LeftSideMenu } from '../components';
-import { GlobalStyles, pageMap } from '../constants';
-
-import {
-    baseTheme,
-    containerTheme,
-    resumeTheme,
-} from '../themes';
-
-const StyledContainerOnly = styled(Container)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    height: 100vh;
-    max-width: 100vw !important;
-    padding: 0;
-`;
-
-const StyledBoxOnly = styled(Box)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    display: flex;
-    flex-direction: column;
-    height: ${(props) => props.theme?.height};
-    min-height: 50vh;
-    overflow-y: scroll;
-    padding: 0;
-`;
-
-const StyledContainer = styled(Container)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    height: 100vh;
-    margin-top: 6em;
-    max-width: 100vw !important;
-    padding: 0 2.5em;
-`;
-
-const StyledBox = styled(Box)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    display: flex;
-    flex-direction: column;
-    height: ${(props) => props.theme?.height};
-    min-height: 50vh;
-    overflow-y: scroll;
-    padding-right: 10vw;
-    padding-bottom: 1.5em;
-    padding-left: 12vw;
-`;
+import { HeadMetaContext, PageMapContext } from '../../common/contexts';
+import { Footer, Header, LeftSideMenu } from '../../components';
+import { GlobalStyles, pageMap } from '../../constants';
+import { baseTheme, containerTheme, resumeTheme } from '../../themes';
+import { StyledContainerOnly, StyledBoxOnly, StyledContainer, StyledBox } from './styled';
 
 interface LayoutProps {
     pageTitle?: string;
-    children: React.ReactElement
-    location: Record<string, string>
+    children: React.ReactElement;
+    location: Record<string, string>;
 }
 
 const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElement => {
-    const containerOnly = (): boolean => /\/resume(?=(\/)?([?&#].*$|$))/gim.test(location.pathname)
+    const containerOnly = (): boolean => /\/resume(?=(\/)?([?&#].*$|$))/gim.test(location.pathname);
 
     const staticData = useStaticQuery(graphql`
         query {
@@ -88,9 +43,7 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                     <ThemeProvider theme={resumeTheme}>
                         <GlobalStyles />
                         <StyledContainerOnly disableGutters={true}>
-                            <StyledBoxOnly>
-                                {children}
-                            </StyledBoxOnly>
+                            <StyledBoxOnly>{children}</StyledBoxOnly>
                         </StyledContainerOnly>
                     </ThemeProvider>
                 ) : (
@@ -100,9 +53,7 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                         <Header />
                         <ThemeProvider theme={containerTheme}>
                             <StyledContainer disableGutters={true}>
-                                <StyledBox>
-                                    {children}
-                                </StyledBox>
+                                <StyledBox>{children}</StyledBox>
                                 <LeftSideMenu />
                             </StyledContainer>
                         </ThemeProvider>
