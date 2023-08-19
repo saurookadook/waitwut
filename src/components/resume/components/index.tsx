@@ -103,6 +103,7 @@ const ToggleIcon = styled.span`
     height: 24px;
     line-height: 1;
     width: 24px;
+    z-index: 100;
 
     &:hover {
         cursor: pointer;
