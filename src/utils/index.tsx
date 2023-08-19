@@ -22,3 +22,6 @@ export const toKebabCase = (string: string): string => {
 // String.prototype.__proto__.toKebabCase = (string: string): string => {
 //     return string.trim().replace(/\s+/gim, '-');
 // };
+
+export const collapsedOrExpanded = (predicate: boolean): 'collapsed' | 'expanded' =>
+    predicate ? 'collapsed' : 'expanded';
