@@ -30,15 +30,18 @@ function addPadding(overrides: StyleOverrides, defaultPadding: string): string {
 }
 
 const GenericContainer = styled.div<GenericStyledProps>`
+    ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5em')}
+
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
     color: ${(props) => props.overrides?.color || themeColors.blackHex};
-    ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5em')}
 `;
 
 const GenericHeading = styled.h2<GenericStyledProps>`
+    ${(props) => addPadding(props.overrides || {}, '0 0 0.5em')}
+
     background-color: ${(props) => props.overrides?.backgroundColor || 'inherit'};
     color: ${(props) => props.overrides?.color || 'inherit'};
-    ${(props) => addPadding(props.overrides || {}, '0 0 0.5em')}
+    font-size: 3.5rem;
 `;
 
 const GenericGridContainer = styled.div`
@@ -49,13 +52,14 @@ const GenericGridContainer = styled.div`
 const LocationText = styled.i`
     margin-bottom: 0.2em;
 
-    &.hidden {
+    .collapsed & {
         color: transparent;
         opacity: 0;
         transition: all 300ms ease-out;
     }
 
-    &.visible {
+    .expanded & {
+        color: initial;
         opacity: 1;
         transition: all 300ms ease-in;
     }
@@ -95,7 +99,7 @@ const NameAndLocationWrapper = styled.div`
 const ToggleIcon = styled.span`
     align-self: center;
     display: flex;
-    font-size: 18px;
+    font-size: 1.125rem;
     height: 24px;
     line-height: 1;
     width: 24px;
