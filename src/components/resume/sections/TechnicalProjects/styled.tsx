@@ -21,6 +21,11 @@ const ProjectItemContainer = styled.div`
     }
 `;
 
+const ProjectNameWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
 const ProjectDisplayName = styled.h3`
     margin-top: 0;
     margin-bottom: 0;
@@ -36,21 +41,22 @@ const ProjectDetails = styled.div`
     margin: 0;
     z-index: 0;
 
-    &.hidden,
-    &.hidden * {
+    .collapsed & {
         color: transparent;
         flex: 0;
         height: 0;
         max-height: 0;
         opacity: 0;
+        transition: all 300ms ease-out;
     }
 
-    &.visible,
-    &.visible * {
+    .expanded & {
+        color: initial;
         flex: 1;
         height: auto;
         max-height: 100%;
         opacity: 1;
+        transition: all 300ms ease-in;
     }
 `;
 
@@ -72,6 +78,7 @@ const SubText = styled.p`
 
 export {
     ProjectItemContainer, // <- to force formatting
+    ProjectNameWrapper,
     ProjectDisplayName,
     ProjectDetails,
     ProjectLink,

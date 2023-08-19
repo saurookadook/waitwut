@@ -28,55 +28,41 @@ const EmploymentItemContainer = styled.div`
 
         &.pluralsight {
             background-color: ${resumeTheme.psBackgroundHex};
+            color: ${resumeTheme.psActionTextHex};
         }
 
         &.salesforce {
             background-color: ${resumeTheme.salesforceBeigeBgRgb};
+            color: ${resumeTheme.salesforceDarkBlueRgb};
         }
 
         &.evergage {
             background-color: ${themeColors.whiteRgb};
+            color: ${resumeTheme.evergageBlueHex};
         }
 
         &.upstatement {
             background-color: ${themeColors.blackRgb};
+            color: ${themeColors.whiteRgb};
+            font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
         }
 
         &.boston-symphony-orchestra {
             background-color: ${resumeTheme.bsoBgHex};
+            color: ${resumeTheme.bsoTextHex};
         }
     }
 `;
 
 const CompanyName = styled.h3`
+    font-size: 2.75rem;
     margin-top: 0;
     margin-bottom: 0;
-    transition: all 300ms ease-in;
+    /* transition: all 300ms ease-in; */
     z-index: 1;
 
     &:hover {
         cursor: pointer;
-    }
-
-    .expanded.pluralsight & {
-        color: ${resumeTheme.psActionTextHex};
-    }
-
-    .expanded.salesforce & {
-        color: ${resumeTheme.salesforceDarkBlueRgb};
-    }
-
-    .expanded.evergage & {
-        color: ${resumeTheme.evergageBlueHex};
-    }
-
-    .expanded.upstatement & {
-        color: ${themeColors.whiteRgb};
-        font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
-    }
-
-    .expanded.boston-symphony-orchestra & {
-        color: ${resumeTheme.bsoTextHex};
     }
 `;
 
@@ -86,21 +72,21 @@ const ExpandableDetails = styled.div`
     margin: 0;
     z-index: 0;
 
-    &.hidden,
-    &.hidden * {
+    .collapsed & {
         color: transparent;
         flex: 0;
         height: 0;
         max-height: 0;
         opacity: 0;
+        transition: all 300ms ease-out;
     }
 
-    &.visible,
-    &.visible * {
+    .expanded & {
         flex: 1;
         height: auto;
         max-height: 100%;
         opacity: 1;
+        transition: all 300ms ease-in;
 
         .pluralsight & {
             color: ${resumeTheme.psActionTextHex};
