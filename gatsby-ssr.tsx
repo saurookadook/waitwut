@@ -28,10 +28,10 @@ const HeadComponents = [
     />
 ]
 
-exports.onRenderBody = ({ setHeadComponents, setBodyAttributes }, pluginOptions) => {
+exports.onRenderBody = ({ pathname, setHeadComponents, setBodyAttributes }, pluginOptions) => {
     setHeadComponents(HeadComponents)
     setBodyAttributes({
-        id: "waitwut-body",
+        id: pathname.indexOf('/resume') >= 0 ? "waitwut-body" : "resume",
     });
 };
 

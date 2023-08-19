@@ -25,3 +25,5 @@ export const toKebabCase = (string: string): string => {
 
 export const collapsedOrExpanded = (predicate: boolean): 'collapsed' | 'expanded' =>
     predicate ? 'collapsed' : 'expanded';
+
+export const isResumePage = (pathUri: string): boolean => /\/resume(?=(\/)?([?&#].*$|$))/gim.test(pathUri);
