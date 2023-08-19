@@ -9,6 +9,7 @@ import {
     ToggleIcon,
 } from '../../components';
 import { themeColors } from '../../../../themes';
+import { collapsedOrExpanded } from '../../../../utils';
 import {
     VolunteerItemContainer, // <- to force formatting
     OrganizationName,
@@ -21,13 +22,12 @@ interface VolunteerItemProps {
 
 const VolunteerItem = ({ volunteerRecord }: VolunteerItemProps): React.ReactElement => {
     const [isCollapsed, setIsCollapsed] = useState(true);
-
     const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
 
     const { organization, roles } = volunteerRecord;
 
     return (
-        <VolunteerItemContainer className={`${isCollapsed ? 'collapsed' : 'expanded'}`}>
+        <VolunteerItemContainer className={collapsedOrExpanded(isCollapsed)}>
             <NameAndLocationWrapper>
                 <ToggleIcon onClick={handleToggleOnClick as MouseEventHandler}>
                     {isCollapsed ? <ExpandLess /> : <ExpandMore />}
@@ -35,11 +35,11 @@ const VolunteerItem = ({ volunteerRecord }: VolunteerItemProps): React.ReactElem
                 <OrganizationName onClick={handleToggleOnClick as MouseEventHandler}>
                     {organization.name}
                 </OrganizationName>
-                <LocationText className={`${isCollapsed ? 'hidden' : 'visible'}`}>
+                <LocationText className={'togglable'}>
                     {organization.location.city}, {organization.location.state}
                 </LocationText>
             </NameAndLocationWrapper>
-            <VolunteerItemDetailWrapper className={`${isCollapsed ? 'hidden' : 'visible'}`}>
+            <VolunteerItemDetailWrapper className={'togglable'}>
                 {roles.map(
                     (role, i): React.ReactElement => (
                         <span key={`role-item-${i}`}>

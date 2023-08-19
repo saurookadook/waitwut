@@ -10,7 +10,7 @@ import {
     ToggleIcon,
 } from '../../components';
 import { themeColors } from '../../../../themes';
-import { toKebabCase } from '../../../../utils';
+import { toKebabCase, collapsedOrExpanded } from '../../../../utils';
 import {
     EmploymentItemContainer, // <- to force formatting
     CompanyName,
@@ -24,28 +24,23 @@ interface EmploymentItemProps {
 
 const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactElement => {
     const [isCollapsed, setIsCollapsed] = useState(true);
-
     const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
 
     const { company, roles, responsibilities } = employmentRecord;
-
     const companyNameClass = toKebabCase(company.name).toLowerCase();
 
-    const collapsedOrExpanded = (): 'collapsed' | 'expanded' => (isCollapsed ? 'collapsed' : 'expanded');
-    const hiddenOrVisible = (): 'hidden' | 'visible' => (isCollapsed ? 'hidden' : 'visible');
-
     return (
-        <EmploymentItemContainer className={classNames(collapsedOrExpanded(), companyNameClass)}>
+        <EmploymentItemContainer className={classNames(collapsedOrExpanded(isCollapsed), companyNameClass)}>
             <NameAndLocationWrapper>
                 <ToggleIcon onClick={handleToggleOnClick as MouseEventHandler}>
                     {isCollapsed ? <ExpandLess /> : <ExpandMore />}
                 </ToggleIcon>
                 <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
-                <LocationText className={hiddenOrVisible()}>
+                <LocationText className={'togglable'}>
                     {company.location.city}, {company.location.state}
                 </LocationText>
             </NameAndLocationWrapper>
-            <ExpandableDetails className={hiddenOrVisible()}>
+            <ExpandableDetails className={'togglable'}>
                 <ExpandableDetailsItemWrapper className="flex-column">
                     {roles.map(
                         (role, i): React.ReactElement => (
@@ -55,7 +50,7 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
                         ),
                     )}
                 </ExpandableDetailsItemWrapper>
-                {(responsibilities || []).length >= 1 ? (
+                {(responsibilities || []).length >= 1 && (
                     <ExpandableDetailsItemWrapper>
                         <ul>
                             {responsibilities?.map((responsibility, j) => (
@@ -63,7 +58,7 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
                             ))}
                         </ul>
                     </ExpandableDetailsItemWrapper>
-                ) : null}
+                )}
             </ExpandableDetails>
         </EmploymentItemContainer>
     );

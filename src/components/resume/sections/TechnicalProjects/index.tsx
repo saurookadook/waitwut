@@ -8,8 +8,10 @@ import {
     ToggleIcon,
 } from '../../components';
 import { themeColors } from '../../../../themes';
+import { collapsedOrExpanded } from '../../../../utils';
 import {
     ProjectItemContainer, // <- to force formatting
+    ProjectNameWrapper,
     ProjectDisplayName,
     ProjectDetails,
     ProjectLink,
@@ -22,18 +24,21 @@ interface TechnicalProjectItemProps {
 
 const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemProps): React.ReactElement => {
     const [isCollapsed, setIsCollapsed] = useState(true);
-
     const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
 
     const { description, displayName, endDate, links, startDate } = technicalProjectRecord;
 
     return (
-        <ProjectItemContainer className={`${isCollapsed ? 'collapsed' : 'expanded'}`}>
-            <ToggleIcon onClick={handleToggleOnClick as MouseEventHandler}>
-                {isCollapsed ? <ExpandLess /> : <ExpandMore />}
-            </ToggleIcon>
-            <ProjectDisplayName onClick={handleToggleOnClick as MouseEventHandler}>{displayName}</ProjectDisplayName>
-            <ProjectDetails className={`${isCollapsed ? 'hidden' : 'visible'}`}>
+        <ProjectItemContainer className={collapsedOrExpanded(isCollapsed)}>
+            <ProjectNameWrapper>
+                <ToggleIcon onClick={handleToggleOnClick as MouseEventHandler}>
+                    {isCollapsed ? <ExpandLess /> : <ExpandMore />}
+                </ToggleIcon>
+                <ProjectDisplayName onClick={handleToggleOnClick as MouseEventHandler}>
+                    {displayName}
+                </ProjectDisplayName>
+            </ProjectNameWrapper>
+            <ProjectDetails className={'togglable'}>
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
                         {link.url.replace('https://', '')}
