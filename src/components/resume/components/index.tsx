@@ -34,6 +34,19 @@ const GenericContainer = styled.div<GenericStyledProps>`
 
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
     color: ${(props) => props.overrides?.color || themeColors.blackHex};
+
+    #resume & .role-item {
+        font-size: 1.5rem;
+    }
+
+    #resume & ul,
+    #resume & li {
+        list-style: '\\21A0\\0020\\0020';
+    }
+
+    #resume & li::marker {
+        margin-right: 1rem;
+    }
 `;
 
 const GenericHeading = styled.h2<GenericStyledProps>`
@@ -50,6 +63,7 @@ const GenericGridContainer = styled.div`
 `;
 
 const LocationText = styled.i`
+    font-size: 1.25rem;
     margin-bottom: 0.2em;
 
     .collapsed & {

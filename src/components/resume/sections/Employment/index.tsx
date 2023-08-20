@@ -44,7 +44,7 @@ const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactE
                 <ExpandableDetailsItemWrapper className="flex-column">
                     {roles.map(
                         (role, i): React.ReactElement => (
-                            <span key={`role-item-${i}`}>
+                            <span className="role-item" key={`role-item-${i}`}>
                                 <b>{role.title}</b> :: <i>{`${role.startDate} - ${role.endDate}`}</i>
                             </span>
                         ),

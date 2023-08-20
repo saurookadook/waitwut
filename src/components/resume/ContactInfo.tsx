@@ -7,8 +7,11 @@ const InfoContainer = styled.div`
     margin: 1rem 0;
 `;
 
+const infoItemHeight = '2.625rem';
+
 const InfoItem = styled.span`
     display: inline-block;
+    height: ${infoItemHeight};
 
     &:hover {
         /* TODO: Make this fancier :) */
@@ -19,10 +22,14 @@ const InfoItem = styled.span`
     & > a,
     & > a:visited {
         color: ${resumeTheme.psTextInverseHex};
+        display: block;
+        height: ${infoItemHeight};
+        line-height: 2;
+        width: 100%;
     }
 
     &:not(:last-child) {
-        margin-right: 1rem;
+        margin-right: 2rem;
 
         a::after {
             background-color: #000000;
