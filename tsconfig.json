@@ -115,8 +115,9 @@
     ],
     "exclude": [
         "_bookmkarks_data",
+        ".cache",
         "node_modules",
         "public",
-        ".cache"
+        "./gatsby-node.js"
     ]
 }
