@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { themeColors, resumeTheme } from '../../../../themes';
+import { themeColors, resumeTheme } from 'themes/index';
 
 const EmploymentItemContainer = styled.div`
     display: flex;

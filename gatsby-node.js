@@ -8,7 +8,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
                 components: path.resolve(__dirname, 'src/components/'),
                 constants: path.resolve(__dirname, 'src/constants/'),
                 pages: path.resolve(__dirname, 'src/pages/'),
-                resume: path.resolve(__dirname, 'src/components/resume/'),
+                resume: path.resolve(__dirname, 'src/resume/'),
                 themes: path.resolve(__dirname, 'src/themes/'),
                 utils: path.resolve(__dirname, 'src/utils/'),
             },

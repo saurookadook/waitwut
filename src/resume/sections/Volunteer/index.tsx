@@ -7,9 +7,9 @@ import {
     LocationText,
     NameAndLocationWrapper,
     ToggleIcon,
-} from '../../components';
-import { themeColors } from '../../../../themes';
-import { collapsedOrExpanded } from '../../../../utils';
+} from 'resume/components';
+import { themeColors } from 'themes/index';
+import { collapsedOrExpanded } from 'utils/index';
 import {
     VolunteerItemContainer, // <- to force formatting
     OrganizationName,

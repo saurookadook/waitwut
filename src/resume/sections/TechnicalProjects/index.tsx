@@ -6,9 +6,9 @@ import {
     GenericHeading,
     GenericGridContainer,
     ToggleIcon,
-} from '../../components';
-import { themeColors } from '../../../../themes';
-import { collapsedOrExpanded } from '../../../../utils';
+} from 'resume/components';
+import { themeColors } from 'themes/index';
+import { collapsedOrExpanded } from 'utils/index';
 import {
     ProjectItemContainer, // <- to force formatting
     ProjectNameWrapper,

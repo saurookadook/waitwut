@@ -8,9 +8,9 @@ import {
     LocationText,
     NameAndLocationWrapper,
     ToggleIcon,
-} from '../../components';
-import { themeColors } from '../../../../themes';
-import { toKebabCase, collapsedOrExpanded } from '../../../../utils';
+} from 'resume/components';
+import { themeColors } from 'themes/index';
+import { toKebabCase, collapsedOrExpanded } from 'utils/index';
 import {
     EmploymentItemContainer, // <- to force formatting
     CompanyName,

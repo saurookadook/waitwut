@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { resumeTheme } from '../../themes';
+import { resumeTheme } from 'themes/index';
 
 const InfoContainer = styled.div`
     font-size: 1.5rem;

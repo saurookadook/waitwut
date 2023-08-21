@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { themeColors } from '../../../../themes';
+import { themeColors } from 'themes/index';
 
 const ProjectItemContainer = styled.div`
     display: flex;

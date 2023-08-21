@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-import { toKebabCase } from '../../../utils';
-import { resumeTheme, themeColors } from '../../../themes';
+import ContactInfo from './ContactInfo';
+import HeadingDetails from './HeadingDetails';
+import { toKebabCase } from 'utils/index';
+import { resumeTheme, themeColors } from 'themes/index';
 
 const PADDING_PROPERTIES = [
     'padding',
@@ -126,6 +128,8 @@ const ToggleIcon = styled.span`
 
 export {
     // <- to force formatting
+    ContactInfo,
+    HeadingDetails,
     GenericContainer,
     GenericHeading,
     GenericGridContainer,

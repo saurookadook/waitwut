@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ContactInfo } from '../resume';
-import { resumeTheme } from '../../themes';
+
+import { ContactInfo } from 'resume/components';
+import { resumeTheme } from 'themes/index';
 
 const StyledHeader = styled.header`
     background-color: ${resumeTheme.psSuccessTextWeakHex};

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { GenericHeading, GenericContainer } from '../../components';
-import { resumeTheme } from '../../../../themes';
+import { GenericHeading, GenericContainer } from 'resume/components';
+import { resumeTheme } from 'themes/index';
 
 const SkillsList = styled.p`
     font-size: 1.5rem;

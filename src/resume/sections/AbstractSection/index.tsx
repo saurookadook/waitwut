@@ -1,6 +1,7 @@
 import React from 'react';
-import * as sections from '../../sections';
-import { toTitleCase } from '../../../../utils';
+
+import * as sections from 'resume/sections';
+import { toTitleCase } from 'utils/index';
 
 interface AbstractSectionProps {
     sectionKey: string;

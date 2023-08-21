@@ -7,20 +7,51 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor};
     }
 
-    body#waitwut-body {
-        background-color: ${(props) => props?.theme?.backgroundColor};
-        color: ${themeColors.graphite};
+    body {
         font-family: "-apple-system, Roboto, sans-serif, serif";
         font-size: var(--base-font-size);
         margin: 0;
         min-height: 100vh;
         overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
+
+        &#waitwut-body {
+            background-color: ${(props) => props?.theme?.backgroundColor};
+            color: ${themeColors.graphite};
+        }
     }
 
     main {
         color: #232129;
         font-family: "-apple-system, Roboto, sans-serif, serif";
         /* padding: 96px; */
+    }
+
+    #resume {
+        & main {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        & h1,
+        & h2,
+        & p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        & h1,
+        & h2 {
+            font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+        }
+
+        & h1 {
+            font-size: 4rem;
+        }
+
+        & p {
+            font-family: Arial, Helvetica, sans-serif;
+        }
     }
 
     h1, h2, h3, h4, h5 {
@@ -30,6 +61,10 @@ const GlobalStyles = createGlobalStyle`
     h1 {
         font-size: 3rem;
         margin-top: 0;
+
+        #resume & {
+            font-size: 4rem;
+        }
     }
 
     h1:first-of-type {
@@ -38,10 +73,18 @@ const GlobalStyles = createGlobalStyle`
 
     h2 {
         font-size: 2.5rem;
+
+        #resume & {
+            font-size: 3.5rem;
+        }
     }
 
     h3 {
         font-size: 2rem;
+
+        #resume & {
+            font-size: 3rem;
+        }
     }
 
     h4 {
@@ -67,6 +110,10 @@ const GlobalStyles = createGlobalStyle`
 
     p {
         /* margin-bottom: 48px; */
+
+        #resume & {
+            font-size: 2rem;
+        }
     }
 
     ol li::marker {
@@ -85,6 +132,10 @@ const GlobalStyles = createGlobalStyle`
 
         & a {
             color: ${themeColors.darkerPurpleHex};
+        }
+
+        #resume & {
+            font-size: 2rem;
         }
     }
 
