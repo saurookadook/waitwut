@@ -36,8 +36,9 @@ const InfoItem = styled.span`
             content: '\\0020';
             display: inline-block;
             height: 2rem;
-            left: 0.5rem;
+            /* left: 0.5rem; */
             position: relative;
+            right: -1rem;
             top: 0.4rem;
             width: 3px;
         }
@@ -59,16 +60,20 @@ const SiteLink = ({ siteData }: SiteLinkProps): React.ReactElement => {
 const ContactInfo = ({ phone, email, sites }: ContactInfo): React.ReactElement => {
     return (
         <InfoContainer>
-            <InfoItem>
-                <a href={`tel:+1-${phone}`} target="_blank" rel="noreferrer">
-                    {phone}
-                </a>
-            </InfoItem>
-            <InfoItem>
-                <a href={`mailto:${email}`} target="_blank" rel="noreferrer">
-                    {email}
-                </a>
-            </InfoItem>
+            {phone != null && (
+                <InfoItem>
+                    <a href={`tel:+1-${phone}`} target="_blank" rel="noreferrer">
+                        {phone}
+                    </a>
+                </InfoItem>
+            )}
+            {email != null && (
+                <InfoItem>
+                    <a href={`mailto:${email}`} target="_blank" rel="noreferrer">
+                        {email}
+                    </a>
+                </InfoItem>
+            )}
             {sites.map((site, i) => (
                 <InfoItem key={`${site.type}-${i}`}>
                     <SiteLink siteData={site} />

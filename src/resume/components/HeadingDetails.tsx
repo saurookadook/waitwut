@@ -25,7 +25,6 @@ interface HeadingDetailsProps {
 }
 
 const HeadingDetails = ({ headingData }: HeadingDetailsProps): React.ReactElement => {
-    // const { phone, email, sites } = headingData.contactInfo;
     return (
         <StyledHeader>
             <StyledNameHeading>

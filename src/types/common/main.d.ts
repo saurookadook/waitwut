@@ -107,8 +107,8 @@ interface Site {
 }
 
 interface ContactInfo {
-    phone: string;
-    email: string;
+    phone?: string;
+    email?: string;
     sites: Site[];
 }
 

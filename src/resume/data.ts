@@ -2,19 +2,19 @@ export const headingDetails = {
     firstName: 'Andrew',
     lastName: 'Maskiell',
     contactInfo: {
-        phone: '585-410-5179',
-        email: 'maskiella@gmail.com',
+        // phone: '585-410-5179',
+        // email: 'maskiella@gmail.com',
         sites: [
             {
                 type: 'GitHub',
                 displayText: 'saurookadook',
                 url: 'https://github.com/saurookadook',
             },
-            {
-                type: 'Medium',
-                displayText: 'Blog',
-                url: 'https://medium.com/@andymaskiell',
-            },
+            // {
+            //     type: 'Medium',
+            //     displayText: 'Blog',
+            //     url: 'https://medium.com/@andymaskiell',
+            // },
             {
                 type: 'LinkedIn',
                 displayText: 'LinkedIn',
@@ -23,8 +23,17 @@ export const headingDetails = {
         ],
     },
     introBlurb:
-        'Full-stack web developer and software engineer possessing a background in music with a passion for composing code. My ability to work in a fast-paced environment, detail-oriented nature, and honed communication skills make me valuable in providing quality work. Besides that, I’m always good for a laugh.',
+        "Full-stack web developer and software engineer possessing a background in music with a passion for composing code. My ability to work in a fast-paced environment, detail-oriented nature, and honed communication skills make me valuable in providing quality work. Besides that, I'm always good for a laugh.",
 };
+
+interface BuildLinkArgs {
+    href: string;
+    text: string;
+}
+
+function buildLink({ href, text }: BuildLinkArgs): string {
+    return `<a href="${href}" target="_blank" rel="noreferrer">${text}</a>`;
+}
 
 // TODO: separate these into categories?
 const TechnicalSkills: string[] = [
@@ -68,7 +77,14 @@ const EmploymentHistory: EmploymentRecord[] = [
                 endDate: 'Present',
             },
         ],
-        responsibilities: ['BUNCHA STUFF'],
+        responsibilities: [
+            'BUNCHA STUFF',
+            "Led migration and refactoring of an application's frontend code from old code base to new one",
+            `Helped maintain native Kafka producers and consumers using ${buildLink({
+                href: 'https://docs.confluent.io/kafka-clients/python/current/overview.html',
+                text: "Confluent's Kafka Python Client",
+            })}`,
+        ],
     },
     {
         company: {
@@ -91,11 +107,26 @@ const EmploymentHistory: EmploymentRecord[] = [
             },
         ],
         responsibilities: [
-            `Took ownership of the creation and documentation of the <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/flicker-defender.html" target="_blank" rel="noreferrer">Flicker Defender gear</a>`,
-            `Built several <a href="https://github.com/evergage/evergage-global-templates" target="_blank" rel="noreferrer">global templates</a> for the <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/campaign-development.html" target="_blank" rel="noreferrer">new Campaign and Template system</a>`,
-            'Contributed to Interaction Studio’s <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/web-integration.html" target="_blank" rel="noreferrer">Web SDK</a>, including tests in Jest',
+            `Took ownership of the creation and documentation of the ${buildLink({
+                href: 'https://developer.salesforce.com/docs/marketing/personalization/guide/flicker-defender.html',
+                text: 'Flicker Defender gear',
+            })}`,
+            `Built several ${buildLink({
+                href: 'https://github.com/evergage/evergage-global-templates',
+                text: 'global templates',
+            })} for the ${buildLink({
+                href: 'https://developer.salesforce.com/docs/marketing/personalization/guide/campaign-development.html',
+                text: 'new Campaign and Template system',
+            })}`,
+            `Contributed to Interaction Studio\'s ${buildLink({
+                href: 'https://developer.salesforce.com/docs/marketing/personalization/guide/web-integration.html',
+                text: 'Web SDK',
+            })}, including tests in Jest`,
             'Implemented the redesign of UI screens using Angular 1.5 and KendoUI as part of the release for a major feature',
-            `Deploy, review, and contribute code for Interaction Studio’s <a href="https://developer.salesforce.com/docs/marketing/personalization/guide/get-started.html" target="_blank" rel="noreferrer">Developer Documentation</a> built with Gatsby.js`,
+            `Deploy, review, and contribute code for Interaction Studio\'s ${buildLink({
+                href: 'https://developer.salesforce.com/docs/marketing/personalization/guide/get-started.html',
+                text: 'Developer Documentation',
+            })} built with Gatsby.js`,
             'Led weekly office hours to facilitate quickly training support agents',
         ],
     },
@@ -115,8 +146,8 @@ const EmploymentHistory: EmploymentRecord[] = [
             },
         ],
         responsibilities: [
-            'Assist in supporting customer web and email integrations for an enterprise, real - time personalization platform',
-            'Devise and create solutions for various types of web campaigns using ES5 JS to deliver personalized content to end - users',
+            'Assist in supporting customer web and email integrations for an enterprise, real-time personalization platform',
+            'Devise and create solutions for various types of web campaigns using ES5 JS to deliver personalized content to end-users',
             'Write and fix sitemaps using ES5 JS which are integral to customer implementations',
         ],
     },
@@ -136,7 +167,16 @@ const EmploymentHistory: EmploymentRecord[] = [
             },
         ],
         responsibilities: [
-            `Contributed to <a href="https://publicintegrity.org/" target="_blank" rel="noreferrer">Center for Public Integrity</a>, <a href="https://www.architects.org/" target="_blank" rel="noreferrer">Boston Society for Architecture</a>, <a href="https://upstatement.com/" target="_blank" rel="noreferrer">upstatement.com</a>, and other internal projects`,
+            `Contributed to ${buildLink({
+                href: 'https://publicintegrity.org/',
+                text: 'Center for Public Integrity',
+            })}, ${buildLink({
+                href: 'https://www.architects.org/',
+                text: 'Boston Society for Architecture',
+            })}, ${buildLink({
+                href: 'https://upstatement.com/',
+                text: 'upstatement.com',
+            })}, and other internal projects`,
             'Configured complex web scraping robots to migrate thousands of articles and metadata during a content migration',
             'Extensive use of Regular Expressions to address a variety of issues in migration process',
             'Provided informed information architecture recommendations',
@@ -220,7 +260,7 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
         endDate: 'Present',
     },
     {
-        displayName: 'Adopt Don’t Shop',
+        displayName: "Adopt Don't Shop",
         links: [
             {
                 type: 'github repository',
