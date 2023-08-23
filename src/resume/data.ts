@@ -147,8 +147,14 @@ const EmploymentHistory: EmploymentRecord[] = [
         ],
         responsibilities: [
             'Assist in supporting customer web and email integrations for an enterprise, real-time personalization platform',
-            'Devise and create solutions for various types of web campaigns using ES5 JS to deliver personalized content to end-users',
-            'Write and fix sitemaps using ES5 JS which are integral to customer implementations',
+            `Devise and create solutions for various types of web campaigns using ${buildLink({
+                href: 'https://kangax.github.io/compat-table/es5/',
+                text: 'ES5&nbsp;JS',
+            })} to deliver personalized content to end-users`,
+            `Write and fix sitemaps using ${buildLink({
+                href: 'https://kangax.github.io/compat-table/es5/',
+                text: 'ES5&nbsp;JS',
+            })} which are integral to customer implementations`,
         ],
     },
     {

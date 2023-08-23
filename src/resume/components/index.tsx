@@ -32,14 +32,10 @@ function addPadding(overrides: StyleOverrides, defaultPadding: string): string {
 }
 
 const GenericContainer = styled.div<GenericStyledProps>`
-    ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5em')}
+    ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5rem')}
 
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
     color: ${(props) => props.overrides?.color || themeColors.blackHex};
-
-    #resume & .role-item {
-        font-size: 1.5rem;
-    }
 
     #resume & ul,
     #resume & li {
@@ -52,7 +48,7 @@ const GenericContainer = styled.div<GenericStyledProps>`
 `;
 
 const GenericHeading = styled.h2<GenericStyledProps>`
-    ${(props) => addPadding(props.overrides || {}, '0 0 0.5em')}
+    ${(props) => addPadding(props.overrides || {}, '0 0 0.5rem')}
 
     background-color: ${(props) => props.overrides?.backgroundColor || 'inherit'};
     color: ${(props) => props.overrides?.color || 'inherit'};
@@ -66,7 +62,7 @@ const GenericGridContainer = styled.div`
 
 const LocationText = styled.i`
     font-size: 1.25rem;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.2rem;
 
     .collapsed & {
         color: transparent;
@@ -108,7 +104,7 @@ const NameAndLocationWrapper = styled.div`
     flex-direction: row;
 
     & i {
-        margin-left: 1em;
+        margin-left: 1rem;
     }
 `;
 

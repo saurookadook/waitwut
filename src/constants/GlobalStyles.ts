@@ -156,7 +156,8 @@ const GlobalStyles = createGlobalStyle`
 
         & p {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
+            line-height: 1.25;
         }
 
         & li {
