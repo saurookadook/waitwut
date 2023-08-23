@@ -13,11 +13,6 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         min-height: 100vh;
         overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
-
-        &#waitwut-body {
-            background-color: ${(props) => props?.theme?.backgroundColor};
-            color: ${themeColors.graphite};
-        }
     }
 
     main {
@@ -26,33 +21,7 @@ const GlobalStyles = createGlobalStyle`
         /* padding: 96px; */
     }
 
-    #resume {
-        & main {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
 
-        & h1,
-        & h2,
-        & p {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        & h1,
-        & h2 {
-            font-family: 'Arial Black', Arial, Helvetica, sans-serif;
-        }
-
-        & h1 {
-            font-size: 4rem;
-        }
-
-        & p {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    }
 
     h1, h2, h3, h4, h5 {
         margin-bottom: 0.5rem;
@@ -61,10 +30,6 @@ const GlobalStyles = createGlobalStyle`
     h1 {
         font-size: 3rem;
         margin-top: 0;
-
-        #resume & {
-            font-size: 4rem;
-        }
     }
 
     h1:first-of-type {
@@ -73,18 +38,10 @@ const GlobalStyles = createGlobalStyle`
 
     h2 {
         font-size: 2.5rem;
-
-        #resume & {
-            font-size: 3.5rem;
-        }
     }
 
     h3 {
         font-size: 2rem;
-
-        #resume & {
-            font-size: 3rem;
-        }
     }
 
     h4 {
@@ -110,10 +67,6 @@ const GlobalStyles = createGlobalStyle`
 
     p {
         /* margin-bottom: 48px; */
-
-        #resume & {
-            font-size: 2rem;
-        }
     }
 
     ol li::marker {
@@ -132,10 +85,6 @@ const GlobalStyles = createGlobalStyle`
 
         & a {
             color: ${themeColors.darkerPurpleHex};
-        }
-
-        #resume & {
-            font-size: 2rem;
         }
     }
 
@@ -165,6 +114,54 @@ const GlobalStyles = createGlobalStyle`
             ${themeColors.darkerPurpleHex},
             ${themeColors.keywordPurple}
         ); */
+    }
+
+    #waitwut-body {
+        &body {
+            background-color: ${(props) => props?.theme?.backgroundColor};
+            color: ${themeColors.graphite};
+        }
+    }
+
+    #resume {
+        & main {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        & h1,
+        & h2,
+        & p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        & h1,
+        & h2 {
+            font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+        }
+
+        & h1 {
+            font-size: 4rem;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+        }
+
+        & p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.75rem;
+        }
+
+        & li {
+            font-size: 1.75rem;
+        }
     }
 
     .doc-list {
