@@ -4,6 +4,7 @@ const VolunteerItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
+    row-gap: 0.5rem;
     z-index: 1;
 
     &.collapsed {
@@ -40,7 +41,12 @@ const VolunteerItemDetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0;
+    row-gap: 0.25rem;
     z-index: 0;
+
+    .expanded & span.role-item {
+        font-size: 1.5rem;
+    }
 
     .collapsed & {
         color: transparent;

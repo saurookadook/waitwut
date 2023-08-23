@@ -15,7 +15,7 @@ const TechnicalSkills = ({ heading, data }: SectionComponentProps): React.ReactE
             overrides={{
                 // <- to force formatting
                 backgroundColor: resumeTheme.psWarningTextMediumHex,
-                padding: '1em 10vw',
+                padding: '1rem 10vw',
             }}
         >
             <GenericHeading>{heading}</GenericHeading>

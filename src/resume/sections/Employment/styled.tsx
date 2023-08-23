@@ -93,24 +93,40 @@ const ExpandableDetails = styled.div`
         color: ${resumeTheme.psActionTextHex};
     }
 
-    .expanded.salesforce & .role-item {
-        color: ${resumeTheme.salesforceMidBlueRgb};
+    .expanded.pluralsight & .role-item {
+        /* color: ${resumeTheme.psSuccessTextWeakHex}; */
     }
 
     .expanded.salesforce & {
         color: ${resumeTheme.salesforceDarkBlueRgb};
     }
 
+    .expanded.salesforce & .role-item {
+        color: ${resumeTheme.salesforceMidBlueRgb};
+    }
+
     .expanded.evergage & {
         color: ${resumeTheme.evergageGrayHex};
+    }
+
+    .expanded.evergage & .role-item {
+        /* color: ''; */
     }
 
     .expanded.upstatement & {
         color: ${themeColors.whiteRgb};
     }
 
-    .expanded.boston-symphony-orchestra & li > a {
+    .expanded.upstatement & .role-item {
+        /* color: ''; */
+    }
+
+    .expanded.boston-symphony-orchestra & {
         color: ${resumeTheme.bsoTextHex};
+    }
+
+    .expanded.boston-symphony-orchestra & .role-item {
+        /* color: ''; */
     }
 `;
 
