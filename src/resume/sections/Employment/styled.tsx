@@ -55,7 +55,6 @@ const EmploymentItemContainer = styled.div`
 `;
 
 const CompanyName = styled.h3`
-    font-size: 2.75rem;
     margin-top: 0;
     margin-bottom: 0;
     /* transition: all 300ms ease-in; */
@@ -72,7 +71,8 @@ const ExpandableDetails = styled.div`
     margin: 0;
     z-index: 0;
 
-    .collapsed & {
+    .collapsed &,
+    .collapsed & a {
         color: transparent;
         flex: 0;
         height: 0;
@@ -87,26 +87,30 @@ const ExpandableDetails = styled.div`
         max-height: 100%;
         opacity: 1;
         transition: all 300ms ease-in;
+    }
 
-        .pluralsight & {
-            color: ${resumeTheme.psActionTextHex};
-        }
+    .expanded.pluralsight & {
+        color: ${resumeTheme.psActionTextHex};
+    }
 
-        .salesforce & {
-            color: ${resumeTheme.salesforceLightBlueHex};
-        }
+    .expanded.salesforce & .role-item {
+        color: ${resumeTheme.salesforceMidBlueRgb};
+    }
 
-        .evergage & {
-            color: ${resumeTheme.evergageGrayHex};
-        }
+    .expanded.salesforce & {
+        color: ${resumeTheme.salesforceDarkBlueRgb};
+    }
 
-        .upstatement & {
-            color: ${themeColors.whiteRgb};
-        }
+    .expanded.evergage & {
+        color: ${resumeTheme.evergageGrayHex};
+    }
 
-        .boston-symphony-orchestra & {
-            color: ${resumeTheme.bsoTextHex};
-        }
+    .expanded.upstatement & {
+        color: ${themeColors.whiteRgb};
+    }
+
+    .expanded.boston-symphony-orchestra & li > a {
+        color: ${resumeTheme.bsoTextHex};
     }
 `;
 
@@ -125,6 +129,44 @@ const ExpandableDetailsItemWrapper = styled.div`
     & a,
     & a:hover {
         text-decoration: underline;
+    }
+
+    .collapsed &,
+    .collapsed & a {
+        color: transparent;
+        flex: 0;
+        height: 0;
+        max-height: 0;
+        opacity: 0;
+        transition: all 300ms ease-out;
+    }
+
+    .expanded & {
+        flex: 1;
+        height: auto;
+        max-height: 100%;
+        opacity: 1;
+        transition: all 300ms ease-in;
+    }
+
+    .expanded.pluralsight & li > a {
+        color: ${resumeTheme.psActionTextHex};
+    }
+
+    .expanded.salesforce & li > a {
+        color: ${resumeTheme.salesforceLightBlueHex};
+    }
+
+    .expanded.evergage & li > a {
+        color: ${resumeTheme.evergageGrayHex};
+    }
+
+    .expanded.upstatement & li > a {
+        color: ${themeColors.whiteRgb};
+    }
+
+    .expanded.boston-symphony-orchestra & li > a {
+        color: ${resumeTheme.bsoTextHex};
     }
 `;
 
