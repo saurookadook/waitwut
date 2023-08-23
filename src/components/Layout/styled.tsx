@@ -21,9 +21,9 @@ const StyledBoxOnly = styled(Box)`
 const StyledContainer = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
     height: 100vh;
-    margin-top: 6em;
+    margin-top: 6rem;
     max-width: 100vw !important;
-    padding: 0 2.5em;
+    padding: 0 2.5rem;
 `;
 
 const StyledBox = styled(Box)`
@@ -34,7 +34,7 @@ const StyledBox = styled(Box)`
     min-height: 50vh;
     overflow-y: scroll;
     padding-right: 10vw;
-    padding-bottom: 1.5em;
+    padding-bottom: 1.5rem;
     padding-left: 12vw;
 `;
 

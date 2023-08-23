@@ -9,8 +9,8 @@ const StyledDrawer = styled(Drawer)`
         background-color: ${(props) => props?.theme?.backgroundColor};
         border: none;
         color: ${(props) => props.theme?.color};
-        padding-top: 6em;
-        padding-left: 1em;
+        padding-top: 6rem;
+        padding-left: 1rem;
     }
 `;
 

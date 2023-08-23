@@ -36,6 +36,7 @@ const Head = ({
     title,
 }: HeadProps): React.ReactElement => {
     console.log('Head props: ', { data, location, pageContext, params, title });
+
     const metaTitle = data?.mdx?.frontmatter?.title || '';
     const waitWutTitle = metaTitle ? `wait, wut? | ${metaTitle}` : 'wait, wut?';
     const constructedTitle = isResumePage(location.pathname) ? 'AM Resume' : `😬 ${waitWutTitle}`;
