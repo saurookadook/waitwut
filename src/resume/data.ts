@@ -240,7 +240,58 @@ const VolunteerWork: VolunteerRecord[] = [
     },
 ];
 
+/**
+ * TODO: get these dynamically using GitHub's GraphQL API
+ * - https://stackoverflow.com/a/60123976
+ * - https://docs.github.com/en/graphql/guides/forming-calls-with-graphql
+ *
+ * Example query:
+ * {
+ *     user(login: "saurookadook") {
+ *       pinnedItems(first: 6, types: REPOSITORY) {
+ *         nodes {
+ *           ... on Repository {
+ *             name
+ *             url
+ *           }
+ *         }
+ *       }
+ *     }
+ * }
+ *
+ * Example curl request:
+ * curl -L -X POST 'https://api.github.com/graphql' \
+ * -H 'Authorization: bearer <token>' \
+ * --data-raw '{"query":"{\n  user(login: \"GabrielBB\") {\n pinnedItems(first: 6, types: REPOSITORY) {\n nodes {\n ... on Repository {\n name\n }\n }\n }\n }\n}"
+ * '
+ */
 const TechnicalProjects: TechnicalProjectRecord[] = [
+    {
+        displayName: 'EV3 Brick Program - Basically-A-Tank',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/ev3-basically-a-tank',
+            },
+        ],
+        description:
+            'Some kinda program for some kind of tank-like creation of mine with LEGO, the EV3Brick, and Python',
+        startDate: 'February 2023',
+        endDate: 'Present',
+    },
+    {
+        displayName: 'waitwut',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/waitwut',
+            },
+        ],
+        description:
+            'A little Gatsby-fueled site with a bunch of programming cheatsheets, notes, and all other sorts of resources 🙃',
+        startDate: 'July 2022',
+        endDate: 'Present',
+    },
     {
         displayName: 'Hack.Diversity React/Redux Template',
         links: [
