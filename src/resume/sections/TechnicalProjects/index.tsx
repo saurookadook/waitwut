@@ -38,7 +38,7 @@ const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemPr
                     {displayName}
                 </ProjectDisplayName>
             </ProjectNameWrapper>
-            <ProjectDetails className={'togglable'}>
+            <ProjectDetails className={'togglable list-item'}>
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
                         {link.url.replace('https://', '')}

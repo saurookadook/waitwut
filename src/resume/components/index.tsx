@@ -102,6 +102,7 @@ const NameAndLocationWrapper = styled.div`
     align-items: flex-end;
     display: flex;
     flex-direction: row;
+    grid-row: 1;
 
     & i {
         margin-left: 1rem;
@@ -122,6 +123,8 @@ const ToggleIcon = styled.span`
     }
 `;
 
+const listItemPadding = '40px';
+
 export {
     // <- to force formatting
     ContactInfo,
@@ -132,4 +135,5 @@ export {
     LocationText,
     NameAndLocationWrapper,
     ToggleIcon,
+    listItemPadding,
 };

@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { themeColors, resumeTheme } from 'themes/index';
 
+const EmploymentItemGrid = styled.div`
+    display: grid;
+    grid-template-columns: 80% 20%;
+`;
+
 const EmploymentItemContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -68,6 +73,7 @@ const CompanyName = styled.h3`
 const ExpandableDetails = styled.div`
     display: flex;
     flex-direction: column;
+    grid-row: 2;
     margin: 0;
     z-index: 0;
 
@@ -186,9 +192,42 @@ const ExpandableDetailsItemWrapper = styled.div`
     }
 `;
 
+const EmploymentIconWrapper = styled.span`
+    display: flex;
+    grid-row: 1 / span 2;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+
+    & svg,
+    & img {
+        height: 100%;
+        width: auto;
+    }
+
+    .collapsed & {
+        flex: 0;
+        height: 0;
+        max-height: 0;
+        opacity: 0;
+        transition: all 300ms ease-out;
+    }
+
+    .expanded & {
+        flex: 1;
+        height: auto;
+        max-height: 100%;
+        opacity: 1;
+        transition: all 300ms ease-in;
+    }
+`;
+
 export {
-    EmploymentItemContainer, // <- to force formatting
+    // <- to force formatting
+    EmploymentItemGrid,
+    EmploymentItemContainer,
     CompanyName,
     ExpandableDetails,
     ExpandableDetailsItemWrapper,
+    EmploymentIconWrapper,
 };
