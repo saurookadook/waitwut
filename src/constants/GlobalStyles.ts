@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { themeColors } from '../themes';
+import { listItemPadding } from 'resume/components';
+import { themeColors } from 'themes/index';
 
 const GlobalStyles = createGlobalStyle`
     html {
@@ -151,7 +152,7 @@ const GlobalStyles = createGlobalStyle`
         }
 
         h3 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
         }
 
         & p {
@@ -162,6 +163,10 @@ const GlobalStyles = createGlobalStyle`
 
         & li {
             font-size: 1.75rem;
+        }
+
+        & .list-item {
+            padding-left: ${listItemPadding};
         }
     }
 
