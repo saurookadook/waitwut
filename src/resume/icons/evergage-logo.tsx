@@ -15,6 +15,10 @@ const StylesWrapper = styled.span`
     }
 `;
 
+/**
+ * SVG from:
+ * - https://findlogovector.com/evergage-logo-vector-svg/
+ */
 const EvergageLogoVector = (): React.ReactElement => (
     <StylesWrapper>
         <svg

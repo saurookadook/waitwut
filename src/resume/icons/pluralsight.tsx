@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * {@link https://seeklogo.com/vector-logo/441812/pluralsight | SVG Source}
+ */
 const PluralsightLogo = (): React.ReactElement => (
     <svg
         width="256px"

@@ -28,6 +28,9 @@ const StylesWrapper = styled.span`
     }
 `;
 
+/**
+ * {@link https://commons.wikimedia.org/wiki/File:Logo_Boston_Symphony_Orchestra.svg | SVG Source}
+ */
 const BSOLogo = (): React.ReactElement => (
     <svg
         version="1.0"
@@ -199,6 +202,9 @@ const BSOLogo = (): React.ReactElement => (
     </svg>
 );
 
+/**
+ * {@link https://en.wikipedia.org/wiki/Tanglewood#/media/File:Tanglewood_Music_Center_logo.svg | SVG Source}
+ */
 const TanglewoodLogo = (): React.ReactElement => (
     <svg
         id="TwdLogo"
