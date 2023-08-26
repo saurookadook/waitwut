@@ -82,8 +82,10 @@ interface BaseMdxProps {
     data: BaseData;
 }
 
+type IconComponent = (props: (React.ComponentPropsWithoutRef & Record<any, any>)?) => React.ReactElement;
+
 type IconComponents = {
-    [key: string]: () => React.ReactElement;
+    [key: string]: IconComponent;
 };
 
 enum TopLevelPageSlugs {
