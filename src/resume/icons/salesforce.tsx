@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 const SalesforceIcon = (): React.ReactElement => (
     <svg xmlns="http://www.w3.org/2000/svg" width="92" height="64" viewBox="0 0 92 64">
@@ -15,6 +15,4 @@ const SalesforceIcon = (): React.ReactElement => (
     </svg>
 );
 
-export default {
-    salesforce: SalesforceIcon,
-} as IconComponents;
+export default SalesforceIcon;
