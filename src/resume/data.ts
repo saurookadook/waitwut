@@ -308,6 +308,8 @@ const Education: EducationRecord[] = [
     },
 ];
 
+// TODO: revisit this organization? Might be easier to just include sectionKey
+// as part of each section item
 export const sections: ResumeSection[] = [
     { TechnicalSkills: TechnicalSkills },
     { EmploymentHistory: EmploymentHistory },
