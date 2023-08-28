@@ -36,6 +36,7 @@ const GenericContainer = styled.div<GenericStyledProps>`
 
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
     color: ${(props) => props.overrides?.color || themeColors.blackHex};
+    z-index: 10;
 
     #resume & ul,
     #resume & li {
