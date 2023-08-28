@@ -1,4 +1,5 @@
 import React, { MouseEventHandler, useState } from 'react';
+import styled from 'styled-components';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import {
@@ -7,6 +8,7 @@ import {
     GenericGridContainer,
     ToggleIcon,
 } from 'resume/components';
+import GitHubOctocat from 'resume/icons/github';
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded } from 'utils/index';
 import {
@@ -15,6 +17,7 @@ import {
     ProjectDisplayName,
     ProjectDetails,
     ProjectLink,
+    ProjectLinkText,
     SubText,
 } from './styled';
 
@@ -41,15 +44,18 @@ const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemPr
             <ProjectDetails className={'togglable list-item'}>
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
-                        {link.url.replace('https://', '')}
+                        {link.type === 'github repository' && <GitHubOctocat />}
+                        <ProjectLinkText>{link.url.replace('https://', '')}</ProjectLinkText>
                     </ProjectLink>
                 ))}
                 <SubText>
-                    <i>{description}</i>
+                    {/* <i> */}
+                    {description}
+                    {/* </i> */}
                 </SubText>
                 <SubText>
                     <i>
-                        {startDate} - {endDate}
+                        ({startDate} - {endDate})
                     </i>
                 </SubText>
             </ProjectDetails>
@@ -57,7 +63,31 @@ const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemPr
     );
 };
 
+const ProjectsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.ReactElement => {
+    const [
+        left,
+        right,
+    ]: [
+        TechnicalProjectRecord[],
+        TechnicalProjectRecord[],
+    ] = data.reduce(
+        (acc, cur, i) => {
+            if (i % 2 === 0) {
+                acc[0].push(cur);
+            } else {
+                acc[1].push(cur);
+            }
+
+            return acc;
+        },
+        [[], []],
+    );
+
     return (
         <GenericContainer
             overrides={{
@@ -69,9 +99,23 @@ const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.Reac
         >
             <GenericHeading overrides={{ padding: '0' }}>{heading}</GenericHeading>
             <GenericGridContainer>
-                {data.map((record, i) => {
-                    return <TechnicalProjectItem key={`technical-project-${i}`} technicalProjectRecord={record} />;
-                })}
+                <ProjectsWrapper>
+                    {left.map((record, i) => {
+                        return (
+                            <TechnicalProjectItem key={`technical-project-left-${i}`} technicalProjectRecord={record} />
+                        );
+                    })}
+                </ProjectsWrapper>
+                <ProjectsWrapper>
+                    {right.map((record, i) => {
+                        return (
+                            <TechnicalProjectItem
+                                key={`technical-project-right-${i}`}
+                                technicalProjectRecord={record}
+                            />
+                        );
+                    })}
+                </ProjectsWrapper>
             </GenericGridContainer>
         </GenericContainer>
     );

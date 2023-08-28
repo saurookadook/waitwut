@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+
 import { themeColors } from 'themes/index';
 
 const ProjectItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
-    margin: 0.5rem 0;
+    padding: 0.5rem 0;
     z-index: 1;
 
     &.collapsed {
@@ -29,6 +30,7 @@ const ProjectNameWrapper = styled.div`
 const ProjectDisplayName = styled.h3`
     margin-top: 0;
     margin-bottom: 0;
+    z-index: 10;
 
     &:hover {
         cursor: pointer;
@@ -62,13 +64,31 @@ const ProjectDetails = styled.div`
 
 const ProjectLink = styled.a`
     color: ${themeColors.darkerPurpleHex};
-    font-size: 1.25rem;
-    line-height: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
     margin-bottom: 0.25rem;
 
     &:hover {
         text-decoration: underline;
     }
+
+    & > svg {
+        height: 1.5rem;
+        vertical-align: middle;
+        width: auto;
+    }
+
+    .collapsed & {
+        z-index: 0;
+    }
+
+    .expanded & {
+        z-index: 11;
+    }
+`;
+
+const ProjectLinkText = styled.span`
+    margin-left: 0.5rem;
 `;
 
 const SubText = styled.p`
@@ -82,5 +102,6 @@ export {
     ProjectDisplayName,
     ProjectDetails,
     ProjectLink,
+    ProjectLinkText,
     SubText,
 };
