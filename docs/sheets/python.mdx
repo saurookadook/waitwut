@@ -2907,7 +2907,7 @@ two types of bound proxies:
 `super(base-class, derived-class)`
 - `base-class` is class object
 - `derived-class` is subclass of first argument
-- when invoke method on proxy...
+- when invoking method on proxy...
     1. finds MRO for derived-class
     2. then finds base-class in that MRO
     3. takes everything **after** base-class in MRO and finds first class in _that_ sequence with matching method name
@@ -2916,7 +2916,8 @@ two types of bound proxies:
 
 ```python
 >>> from sorted_list import *
->>> SortedIntList.mro()
+>>> from pprint import pprint as pp
+>>> pp(SortedIntList.mro())
 #=> [
 #=>     <class 'sorted_list.SortedIntList'>,
 #=>     <class 'sorted_list.IntList'>,
@@ -2945,11 +2946,59 @@ two types of bound proxies:
 
 ### Instance-bound proxy
 
+`super(class, instance-of-class)`
+- similar to class-bound proxies except that they are instead bound to an instance of a class
+- `class` is class object
+- `instance-of-class` must be instance of `class` or any class derived from it
+- when invoking method on proxy...
+    1. finds MRO for type of second argument
+    2. then finds location of first argument in that MRO
+    3. uses everything **after** location from step 2 for resolving methods
+
 ```python
-# _TODO_ 🙃
+>>> from sorted_list import *
+>>> from pprint import pprint as pp
+>>> pp(SortedIntList.mro())
+#=> [
+#=>     <class 'sorted_list.SortedIntList'>,
+#=>     <class 'sorted_list.IntList'>,
+#=>     <class 'sorted_list.SortedList'>,
+#=>     <class 'sorted_list.SimpleList'>,
+#=>     <class 'object'>,
+#=> ]
+>>> sil = SortedIntList([5, 15, 10])
+>>> sil
+#=> SortedIntList([5, 10, 15])
+>>> super(SortedList, sil)
+#=> <super: <class 'SortedList'>, <SortedIntList object>>
+>>> super(SortedList, sil).add(6)
+>>> sil
+#=> SortedIntList([5, 10, 15, 6]) --- Not quite 🙃
 ```
 
+### Calling `super()` Without Arguments
+
+When calling `super()` without arguments, Python will sort out arguments for you
+- in an **instance method**:
+```
+super(class-of-method, self)
+```
+- in a **class method**:
+```
+super(class-of-method, class)
+```
+
+### The `object` Class
+
+- core of Python's **object model**
+- **ultimate** base class of every class
+- **automatically added** as base class of every class
+
+
 ---
+
+### Collections
+
 
 {/* TEMPLATE
 
