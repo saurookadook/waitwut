@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import { listItemPadding } from 'resume/components';
-import { themeColors } from 'themes/index';
+import { resumeTheme, themeColors } from 'themes/index';
 
 const GlobalStyles = createGlobalStyle`
     html {
@@ -126,9 +126,11 @@ const GlobalStyles = createGlobalStyle`
 
     #resume {
         & main {
+            background: linear-gradient(${resumeTheme.psSuccessTextWeakHex} 0 50%, ${themeColors.plBlue} 50% 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            padding: 2.5rem 0;
         }
 
         & h1,

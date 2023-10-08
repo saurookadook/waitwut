@@ -48,15 +48,15 @@ const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemPr
                         <ProjectLinkText>{link.url.replace('https://', '')}</ProjectLinkText>
                     </ProjectLink>
                 ))}
+                <SubText className="project-dates">
+                    <i>
+                        ({startDate} - {endDate})
+                    </i>
+                </SubText>
                 <SubText>
                     {/* <i> */}
                     {description}
                     {/* </i> */}
-                </SubText>
-                <SubText>
-                    <i>
-                        ({startDate} - {endDate})
-                    </i>
                 </SubText>
             </ProjectDetails>
         </ProjectItemContainer>

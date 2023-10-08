@@ -7,7 +7,7 @@ const ProjectItemContainer = styled.div`
     flex-direction: column;
     height: auto;
     padding: 0.5rem 0;
-    z-index: 1;
+    z-index: 5;
 
     &.collapsed {
         flex: 0;
@@ -25,11 +25,14 @@ const ProjectItemContainer = styled.div`
 const ProjectNameWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    position: relative;
+    z-index: 10;
 `;
 
 const ProjectDisplayName = styled.h3`
     margin-top: 0;
     margin-bottom: 0;
+    position: relative;
     z-index: 10;
 
     &:hover {
@@ -41,6 +44,7 @@ const ProjectDetails = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0;
+    row-gap: 0.25rem;
     z-index: 0;
 
     .collapsed & {
@@ -66,7 +70,8 @@ const ProjectLink = styled.a`
     color: ${themeColors.darkerPurpleHex};
     font-size: 1.5rem;
     line-height: 2rem;
-    margin-bottom: 0.25rem;
+    /* margin-bottom: 0.25rem; */
+    width: fit-content;
 
     &:hover {
         text-decoration: underline;
@@ -78,22 +83,58 @@ const ProjectLink = styled.a`
         width: auto;
     }
 
-    .collapsed & {
+    .collapsed &,
+    .collapsed & * {
+        max-height: 0;
         z-index: 0;
     }
 
-    .expanded & {
+    .expanded &,
+    .expanded & * {
+        max-height: auto;
         z-index: 11;
     }
 `;
 
 const ProjectLinkText = styled.span`
+    display: inline-block;
     margin-left: 0.5rem;
+    position: relative;
+
+    .collapsed & {
+        height: 0;
+    }
+
+    .expanded & {
+        height: auto;
+    }
 `;
 
 const SubText = styled.p`
-    font-size: 1rem;
-    line-height: 1.5rem;
+    #resume & {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        width: fit-content;
+
+        &.project-dates {
+            display: block;
+            /* font-size: 0.78125rem; */
+            /* font-size: 0.875rem; */
+            font-size: 1rem;
+            height: 100%;
+            line-height: 1.25rem;
+            padding-bottom: 0.25rem;
+        }
+
+        & i {
+            display: block;
+            /* font-size: 0.78125rem; */
+            /* font-size: 0.875rem; */
+            font-size: 1rem;
+            height: 100%;
+            line-height: 1.25rem;
+        }
+    }
 `;
 
 export {

@@ -24,9 +24,9 @@ const EducationItem = ({ educationRecord }: EducationItemProps): React.ReactElem
         <div>
             <NameAndLocationWrapper>
                 <InstitutionName>{institution}</InstitutionName>
-                {location ? ( // <- to force formatting
+                {!!location && ( // <- to force formatting
                     <LocationText>{`${location.city}, ${location.state}`}</LocationText>
-                ) : null}
+                )}
             </NameAndLocationWrapper>
             <p>{completionText}</p>
             <p>{certification}</p>

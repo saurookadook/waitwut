@@ -36,6 +36,7 @@ const GenericContainer = styled.div<GenericStyledProps>`
 
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
     color: ${(props) => props.overrides?.color || themeColors.blackHex};
+    position: relative;
     z-index: 10;
 
     #resume & ul,
@@ -59,6 +60,8 @@ const GenericHeading = styled.h2<GenericStyledProps>`
 const GenericGridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    z-index: 10;
 `;
 
 const LocationText = styled.i`
