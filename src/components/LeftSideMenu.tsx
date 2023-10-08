@@ -48,8 +48,6 @@ export const useSheetsQuery = (): MdxNodes => {
 
 const drawerWidth = 240;
 
-
-
 const LeftSideMenu = (): React.ReactElement => {
     const { group: nodesGroups } = useSheetsQuery();
     // const { pagesBySectionSlug } = useContext(PageMapContext);
@@ -68,11 +66,7 @@ const LeftSideMenu = (): React.ReactElement => {
                 }}
             >
                 {navLinks.map((navLink, index) => (
-                    <MenuNavLink
-                        depth={0}
-                        key={`${index}:${navLink.slug}`}
-                        navLink={navLink}
-                    />
+                    <MenuNavLink depth={0} key={`${index}:${navLink.slug}`} navLink={navLink} />
                 ))}
             </StyledDrawer>
         </ThemeProvider>
