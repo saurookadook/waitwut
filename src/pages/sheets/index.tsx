@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
-import {
-    Container,
-    Typography
-} from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 import { defaultTheme } from '../../themes';
 
@@ -33,8 +30,9 @@ const SheetLineItemLink = styled(Link)`
     }
 `;
 
+// TODO: this and the bookmarks list page component could be the same lol
 const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
-    console.log('SheetsPage - data: ', data);
+    // console.log('SheetsPage - data: ', data);
     const { nodes } = data.allMdx || {};
 
     return (
@@ -43,23 +41,22 @@ const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
             <SheetContentContainer>
                 {(nodes || []).length > 0 ? (
                     <StyledUl>
-                        {(nodes || []).map((node: NodeFromQuery): React.ReactElement => (
-                            <SheetLineItem
-                                key={node.slug}
-                            >
-                                {/*
+                        {(nodes || []).map(
+                            (node: NodeFromQuery): React.ReactElement => (
+                                <SheetLineItem key={node.slug}>
+                                    {/*
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
                                 */}
-                                <SheetLineItemLink to={`/sheet/${node.slug}`}>
-                                    {(node.frontmatter || {}).title || node.slug}
-                                </SheetLineItemLink>
-                            </SheetLineItem>
-                        ))}
-                    </StyledUl>) : (
-                    <Typography variant="h2">
-                        {`Some day, I'll have content 🙂`}
-                    </Typography>
+                                    <SheetLineItemLink to={`/sheet/${node.slug}`}>
+                                        {(node.frontmatter || {}).title || node.slug}
+                                    </SheetLineItemLink>
+                                </SheetLineItem>
+                            ),
+                        )}
+                    </StyledUl>
+                ) : (
+                    <Typography variant="h2">{`Some day, I'll have content 🙂`}</Typography>
                 )}
             </SheetContentContainer>
         </ThemeProvider>
@@ -69,8 +66,8 @@ const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
 export const query = graphql`
     query {
         allMdx(
-            sort: {fields: frontmatter___date, order: DESC},
-            filter: {frontmatter: {sectionSlug: {eq: "sheets"}}}
+            sort: { fields: frontmatter___date, order: DESC }
+            filter: { frontmatter: { sectionSlug: { eq: "sheets" } } }
         ) {
             nodes {
                 frontmatter {
