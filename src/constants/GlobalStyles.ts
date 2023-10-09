@@ -1,17 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { themeColors } from '../themes';
+import { listItemPadding } from 'resume/components';
+import { resumeTheme, themeColors } from 'themes/index';
 
 const GlobalStyles = createGlobalStyle`
     html {
         background-color: ${(props) => props?.theme?.backgroundColor};
     }
 
-    body#waitwut-body {
-        background-color: ${(props) => props?.theme?.backgroundColor};
-        color: ${themeColors.graphite};
+    body {
         font-family: "-apple-system, Roboto, sans-serif, serif";
-        font-size: 14px;
+        font-size: var(--base-font-size);
+        margin: 0;
         min-height: 100vh;
         overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
     }
@@ -19,41 +19,43 @@ const GlobalStyles = createGlobalStyle`
     main {
         color: #232129;
         font-family: "-apple-system, Roboto, sans-serif, serif";
-        padding: 96px;
+        /* padding: 96px; */
     }
 
+
+
     h1, h2, h3, h4, h5 {
-        margin-bottom: 0.5em;
+        margin-bottom: 0.5rem;
     }
 
     h1 {
-        font-size: 3em;
+        font-size: 3rem;
         margin-top: 0;
     }
 
     h1:first-of-type {
-        margin-top: 1em;
+        margin-top: 1rem;
     }
 
     h2 {
-        font-size: 2.5em;
+        font-size: 2.5rem;
     }
 
     h3 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 
     h4 {
-        font-size: 1.75em;
+        font-size: 1.75rem;
     }
 
     h5 {
-        font-size: 1.5em;
+        font-size: 1.5rem;
     }
 
     summary > * {
         display: inline-block;
-        margin-left: 0.5em;
+        margin-left: 0.5rem;
     }
 
     a {
@@ -73,13 +75,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ul {
-        margin-top: 0.5em;
+        margin-top: 0.5rem;
     }
 
     li {
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 300;
-        margin-bottom: 0.25em;
+        margin-bottom: 0.25rem;
         /* max-width: 560px; */
 
         & a {
@@ -99,7 +101,7 @@ const GlobalStyles = createGlobalStyle`
     /* https://css-tricks.com/examples/hrs/ */
     hr {
         border: 0 none;
-        margin: 2em 0;
+        margin: 2rem 0;
         opacity: 1;
         width: 100%;
 
@@ -108,7 +110,66 @@ const GlobalStyles = createGlobalStyle`
         /* height: 1px; */
         /* color: ${themeColors.darkerPurpleHex}; */
         /* background: ${themeColors.darkerPurpleHex}; */
-        /* background-image: linear-gradient(to right, ${themeColors.keywordPurple}, ${themeColors.darkerPurpleHex}, ${themeColors.keywordPurple}); */
+        /* background-image: linear-gradient(to right,
+            ${themeColors.keywordPurple},
+            ${themeColors.darkerPurpleHex},
+            ${themeColors.keywordPurple}
+        ); */
+    }
+
+    #waitwut-body {
+        &body {
+            background-color: ${(props) => props?.theme?.backgroundColor};
+            color: ${themeColors.graphite};
+        }
+    }
+
+    #resume {
+        & main {
+            background: linear-gradient(${resumeTheme.psSuccessTextWeakHex} 0 50%, ${themeColors.plBlue} 50% 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 2.5rem 0;
+        }
+
+        & h1,
+        & h2,
+        & p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        & h1,
+        & h2 {
+            font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+        }
+
+        & h1 {
+            font-size: 4rem;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+        }
+
+        h3 {
+            font-size: 2.75rem;
+        }
+
+        & p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.25;
+        }
+
+        & li {
+            font-size: 1.75rem;
+        }
+
+        & .list-item {
+            padding-left: ${listItemPadding};
+        }
     }
 
     .doc-list {
