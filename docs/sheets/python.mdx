@@ -359,9 +359,53 @@ _For more, suggested reading: "What Every Computer Scientist Should Know About F
 
 ### Rational Numbers
 
-_TODO_ 🙃
+#### The `fractions` Module
+
+- standard library module
+- contains `Fraction` class
+    - _for rational numbers_
+    - can be constructed directly from floats
+        - _**NOTE**: if value you expect can't be exactly represented by the binary float (such as `0.1`), then you may not get the result you want_
+        - in this case, better to construct the fraction using `Decimal`
+    - most mathematical operators work as expected
+        - **does not support** methods for things like square roots
+            - _simply: because square root of fraction may be an irrational number_
+
+```python
+>>> from fractions import Fraction
+>>> two_thirds = Fraction(2, 3)
+>>> two_thirds
+#=> Fraction(2, 3)
+>>> four_fifths = Fraction(4, 5)
+>>> four_fifths
+Fraction(4, 5)
+>>> Fraction(0.5)
+#=> Fraction(1, 2)
+>>> Fraction(0.1)
+#=> Fraction(3602879701896397, 3602879701896398)
+>>> Fraction(Decimal('0.1'))
+#=> Fraction(1, 10)
+>>> Fraction('22/7')
+#=> Fraction(22, 7)
+
+>>> Fraction(2, 3) + Fraction(4, 5)
+#=> Fraction(22, 15)
+>>> Fraction(2, 3) - Fraction(4, 5)
+#=> Fraction(-2, 15)
+>>> Fraction(2, 3) * Fraction(4, 5)
+#=> Fraction(8, 15)
+>>> Fraction(2, 3) / Fraction(4, 5)
+#=> Fraction(5, 6)
+>>> Fraction(2, 3) // Fraction(4, 5)
+#=> 0
+>>> Fraction(2, 3) % Fraction(4, 5)
+#=> Fraction(2, 3)
+```
+
 
 ### Complex Type and `cmath` Module
+
+{/* _[course link](https://app.pluralsight.com/course-player?clipId=bc027a0e-d20c-4499-aa6f-0197ec931965)_ */}
 
 _TODO_ 🙃
 
@@ -1450,7 +1494,7 @@ def create_list(value, size):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1461,7 +1505,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Class Attributes
@@ -1472,7 +1516,7 @@ Class attributes created within scope of class
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1487,7 +1531,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 **NOTE**: assignment via `self.attr = something` _always_ creates instance attribute
@@ -1500,7 +1544,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1520,7 +1564,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Class Methods
@@ -1531,7 +1575,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1551,7 +1595,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 #### Class Methods for Named Constructors
@@ -1566,7 +1610,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 class ShippingContainer:
@@ -1594,7 +1638,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ##### _Aside - ISO 6346 BIC code_
@@ -1614,7 +1658,7 @@ _Provided helper module_
 
 </summary>
 
-<p>
+<span>
 
 ```python
 """
@@ -1689,7 +1733,7 @@ def letter_code(letter):
 
 ```
 
-</p>
+</span>
 </details>
 
 #### Static Method Example Using BIC Code Helper
@@ -1698,7 +1742,7 @@ def letter_code(letter):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1738,7 +1782,7 @@ class ShippingContainer:
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Static Methods with Inheritance
@@ -1749,7 +1793,7 @@ class ShippingContainer:
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1799,7 +1843,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
         )
 ```
 
-</p>
+</span>
 </details>
 
 ### Class Methods with Inheritance
@@ -1810,7 +1854,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1871,7 +1915,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Properties
@@ -1883,7 +1927,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -1953,14 +1997,14 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 <details>
 
 <summary>Extended example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -2043,7 +2087,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Properties and Inheritance
@@ -2054,7 +2098,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 <summary>Code example</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -2150,14 +2194,14 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 <details>
 
 <summary>Extended example (overriding setter)</summary>
 
-<p>
+<span>
 
 ```python
 import iso6346
@@ -2266,7 +2310,7 @@ class HeatedRefrigeratedShippingContainer(RefrigeratedShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 _Aside - chained relational operators_
@@ -2277,7 +2321,7 @@ Python allows for chaining relational operators, so that one can write `a < b < 
 
 <summary>Example with pitfalls</summary>
 
-<p>
+<span>
 
 ```python
 
@@ -2301,7 +2345,7 @@ class HeatedRefrigeratedShippingContainer(RefrigeratedShippingContainer):
 
 ```
 
-</p>
+</span>
 </details>
 
 ### Template Method Pattern
@@ -2665,6 +2709,76 @@ for stamp, value in itertools.islice(zip(timestamps, sensor), 10):
 
 ## Inheritance and Subtype Polymorphism
 
+<details>
+
+<summary>
+
+### Realistic example: `SortedList`
+
+</summary>
+
+<span>
+
+```python
+class SimpleList:
+    def __init__(self, items):
+        self._items = list(items)
+
+    def add(self, item):
+        self._items.append(item)
+
+    def __getitem__(self, index):
+        return self._items[index]
+
+    def sort(self):
+        self._items.sort()
+
+    def __len__(self):
+        return len(self._items)
+
+    def __repr__(self):
+        return "SimpleList({!r})".format(self._items)
+
+
+class SortedList(SimpleList):
+    def __init__(self, items=()):  # optional sequence argument
+        super().__init__(items)
+        self.sort()
+
+    def add(self, item):
+        super().add(item)
+        self.sort()
+
+    def __repr__(self):
+        return "SortedList({!r})".format(list(self))
+
+
+class IntList(SimpleList):
+    def __init__(self, items=()):
+        for x in items: self._validate(x)
+        super().__init__(items)
+
+    @staticmethod
+    def _validate(x):
+        if not isinstance(x, int):
+            raise TypeError('IntList only supports integer values.')
+
+    def add(self, item):
+        self._validate(item)
+        super().add(item)
+
+    def __repr__(self):
+        return "IntList({!r})".format(list(self))
+
+
+class SortedIntList(IntList, SortedList):
+    def __repr__(self):
+        return "SortedIntList({!r})".format(list(self))
+```
+
+</span>
+</details>
+
 Useful built-in functions:
 - **`isinstance()`**
     - determines if object is of a specified type
@@ -2720,16 +2834,173 @@ Useful built-in functions:
         class SubClass(Base1, Base2, . . .):
             pass
         ```
+    - subclasses inherit methods of all bases
+    - names resolve in the obvious way (_assuming there are no conflicts_)
+    - **Method Resolution Order** (MRO) determines name lookup in all cases
+    - if the class
+        - A. has multiple base classes
+        - B. defines no initializer
+        then only the initializer of the first base class is automatically called
+    - `__bases__` member of class objects
+        - a tuple of base classes
 
+### Method Resolution Order
 
+- ordering that determines method name lookup
+    - _more precisely: ordering of a class's inheritance graph used to determine which implementation to use when a method is invoked_
+- MRO of a class determines order in which inheritance graph is searched to find the correct implementation of the method
+- class's MRO is stored on `__mro__` member
+    - returns tuple of classes defining method resolution order
+- can also call `mro()` to get the order as a list rather than a tuple
+
+#### How is MRO used to dispatch method calls?
+
+When you call a method on an object in Python...
+
+1. looks at MRO for object's type
+2. for each entry in MRO (_from front to back_), check if that class has requested method
+3. as soon as a class is found with matching method, that method is used and search stops
+
+#### How is Method Resolution Order Calculated?
+
+**C3**
+    - algorithm for calculating MRO in Python
+    - ensures that
+        - subclasses come before base classes
+        - base class order from class definition is preserved
+        - first two qualities are preserved no matter where you start in the inheritance graph
+    - because of the above criteria, **not all inheritance declarations are allowed!**
 
 ```python
-# _TODO_ 🙃
+# Example of multiple inheritance that violates C3
+>>> class A:
+...     pass
+>>> class B(A):
+...     pass
+>>> class C(A):
+...     pass
+>>> class D(B, A, C):
+...     pass
+#=> TypeError: Cannot create a consistent method resolution order (MRO) for bases A, C
 ```
+_**Explanation of above**:_
+    - _since `B` and `C` both inherit from `A`, `B` and `C` must both come before `A` in any MRO_
+    - _however, since `D`'s base class declaration puts `A` before `C`, **and** since C3 also guarantees that base class declaration order is preserved, C3 cannot produce a consistent MRO, as it can't put `A` **both before and after** `C`_
+
+### Built-in `super()` Function
+
+**Short, albeit incomplete, definition**: given a method resolution order and a class `C`, `super()` gives you an object which resolves methods using only the part of the MRO which comes after `C`
+
+- `super()` returns a proxy object which routes method calls
+    - **bound proxy**: bound to specific class or instance
+    - **unbound proxy**: not bound to specific class or instance
+        - _primarily an implementation detail for other Python features_
+
+### Class-Bound Super Proxies
+
+two types of bound proxies:
+- instance-bound
+- class-bound
+
+#### Class-bound proxy
+
+`super(base-class, derived-class)`
+- `base-class` is class object
+- `derived-class` is subclass of first argument
+- when invoking method on proxy...
+    1. finds MRO for derived-class
+    2. then finds base-class in that MRO
+    3. takes everything **after** base-class in MRO and finds first class in _that_ sequence with matching method name
+
+**Explanation using [`SortedList` example](#realistic-example-SortedList)
+
+```python
+>>> from sorted_list import *
+>>> from pprint import pprint as pp
+>>> pp(SortedIntList.mro())
+#=> [
+#=>     <class 'sorted_list.SortedIntList'>,
+#=>     <class 'sorted_list.IntList'>,
+#=>     <class 'sorted_list.SortedList'>,
+#=>     <class 'sorted_list.SimpleList'>,
+#=>     <class 'object'>,
+#=> ]
+>>> super(SortedList, SortedIntList)
+#=> <super: <class 'SortedList'>, <SortedIntList object>>
+#=> --------- NAME RESOLUTION ---------
+#=> 1. gets MRO for 'SortedIntList'
+#=> 2. finds 'SortedList' in that MRO
+#=> 3. takes everything after 'SortedList', giving us an MRO of containing just 'SimpleList' and 'object'
+#=> 4. finds first class in that smaller MRO which has an 'add' method
+>>> super(SortedList, SortedIntList).add
+#=> <function SimpleList.add at 0x10436a050>
+>>> super(SortedList, SortedIntList).add(4)
+#=> TypeError: add() missing 1 required positional argument: 'item'
+#   ^^^^^^^^ raised because our proxy is bound to a class, not an instance
+#
+#   However, we could invoke the method with our proxy if it's a static method or class method, like so:
+>>> super(SortedList, SortedIntList)._validate(5)
+>>> super(SortedList, SortedIntList)._validate('hello')
+#=> TypeError: IntList only supports integer values.
+```
+
+### Instance-bound proxy
+
+`super(class, instance-of-class)`
+- similar to class-bound proxies except that they are instead bound to an instance of a class
+- `class` is class object
+- `instance-of-class` must be instance of `class` or any class derived from it
+- when invoking method on proxy...
+    1. finds MRO for type of second argument
+    2. then finds location of first argument in that MRO
+    3. uses everything **after** location from step 2 for resolving methods
+
+```python
+>>> from sorted_list import *
+>>> from pprint import pprint as pp
+>>> pp(SortedIntList.mro())
+#=> [
+#=>     <class 'sorted_list.SortedIntList'>,
+#=>     <class 'sorted_list.IntList'>,
+#=>     <class 'sorted_list.SortedList'>,
+#=>     <class 'sorted_list.SimpleList'>,
+#=>     <class 'object'>,
+#=> ]
+>>> sil = SortedIntList([5, 15, 10])
+>>> sil
+#=> SortedIntList([5, 10, 15])
+>>> super(SortedList, sil)
+#=> <super: <class 'SortedList'>, <SortedIntList object>>
+>>> super(SortedList, sil).add(6)
+>>> sil
+#=> SortedIntList([5, 10, 15, 6]) --- Not quite 🙃
+```
+
+### Calling `super()` Without Arguments
+
+When calling `super()` without arguments, Python will sort out arguments for you
+- in an **instance method**:
+```
+super(class-of-method, self)
+```
+- in a **class method**:
+```
+super(class-of-method, class)
+```
+
+### The `object` Class
+
+- core of Python's **object model**
+- **ultimate** base class of every class
+- **automatically added** as base class of every class
+
 
 ---
 
-<!-- TEMPLATE
+### Collections
+
+
+{/* TEMPLATE
 
 ## header
 _TODO_ 🙃
@@ -2740,4 +3011,4 @@ _TODO_ 🙃
 
 ---
 
--->
+*/}
