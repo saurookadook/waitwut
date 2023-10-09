@@ -1,10 +1,10 @@
 {
     "presets": [["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3 }], "@babel/preset-react"],
     "plugins": [
+        ["module-resolver", { "root": ["./src"] }],
+        ["@babel/transform-runtime", { "corejs": 3 }],
         "@babel/plugin-proposal-optional-chaining",
         "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-transform-modules-commonjs",
-        ["@babel/transform-runtime", { "corejs": 3 }],
-        ["module-resolver", { "root": ["./src"] }]
+        "@babel/plugin-transform-modules-commonjs"
     ]
 }

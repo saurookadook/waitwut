@@ -1,10 +1,8 @@
-import * as React from 'react';
+import styled from 'styled-components';
 import { Link } from 'gatsby';
-import styled, { ThemeProvider, useTheme } from 'styled-components';
-import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, IconButton } from '@mui/material';
 
-import { minWidth600, minWidth870, minWidth1024 } from '../styles/mq';
-import { appBarTheme } from '../themes';
+import { minWidth600, minWidth870, minWidth1024 } from '../../styles/mq';
 
 const StyledAppBar = styled(AppBar)`
     background-color: ${(props) => props?.theme?.backgroundColor} !important;
@@ -89,9 +87,8 @@ const CustomMenuIcon = styled.span`
 
 const NavLink = styled(Link)`
     color: ${(props) => props?.theme?.color};
-    display: flex;
     font-size: 1.5rem;
-    min-width: 7rem;
+    margin-left: 12em;
     padding: 0 1em;
     text-align: center;
     text-decoration: none;
@@ -105,31 +102,4 @@ const NavLink = styled(Link)`
     }
 `;
 
-const Header = ({ data }: HeaderProps): React.ReactElement => {
-    const [menuOpen, setMenuOpen] = React.useState(false);
-    const theme = useTheme();
-
-    // console.log('---------- data: ', data);
-    // console.log('---------- nodes: ', nodes);
-
-    return (
-        <ThemeProvider theme={theme}>
-            <Box sx={{ flexGrow: 1 }}>
-                <ThemeProvider theme={appBarTheme}>
-                    <StyledAppBar>
-                        <Toolbar className="header-items-wrapper">
-                            <MenuButton onClick={() => setMenuOpen(!menuOpen)}>
-                                <CustomMenuIcon className={menuOpen ? 'menu-open' : 'menu-closed'} />
-                            </MenuButton>
-                            <Typography variant="h4" component="div">
-                                <NavLink to="/">wait, wut?</NavLink>
-                            </Typography>
-                        </Toolbar>
-                    </StyledAppBar>
-                </ThemeProvider>
-            </Box>
-        </ThemeProvider>
-    );
-};
-
-export default Header;
+export { StyledAppBar, MenuButton, CustomMenuIcon, NavLink };

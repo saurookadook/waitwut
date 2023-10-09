@@ -1,26 +1,13 @@
 import React, { useContext } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled, { ThemeProvider } from 'styled-components';
-import { Drawer } from '@mui/material';
+import { ThemeProvider } from 'styled-components';
 
-import { MenuNavLink } from './nav';
-import { createNavLinks } from './nav/utils';
-import { PageMapContext } from '../common/contexts';
+import { MenuNavLink } from '../nav';
+import { createNavLinks } from '../nav/utils';
+import { PageMapContext } from '../../common/contexts';
 
-import { menuTheme } from '../themes';
-
-const StyledDrawer = styled(Drawer)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    color: ${(props) => props.theme?.color};
-
-    & > .MuiDrawer-paper {
-        background-color: ${(props) => props?.theme?.backgroundColor};
-        border: none;
-        color: ${(props) => props.theme?.color};
-        padding-top: 6em;
-        padding-left: 1em;
-    }
-`;
+import { menuTheme } from '../../themes';
+import { StyledDrawer } from './styled';
 
 export const useSheetsQuery = (): MdxNodes => {
     const { allMdx } = useStaticQuery(
