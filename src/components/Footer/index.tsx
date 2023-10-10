@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { appBarTheme } from '../../themes';
+import { appBarTheme } from 'themes';
 import { FooterContainer, GatsbyWrapper } from './styled';
 
 const Footer = (): React.ReactElement => {

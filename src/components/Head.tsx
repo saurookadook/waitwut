@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { css } from 'styled-components';
 
-import { themeColors } from '../themes';
-import { isResumePage } from '../utils';
+import { themeColors } from 'themes';
+import { isResumePage } from 'utils';
 
 const BaseStyles = css`
     :root {

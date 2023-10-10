@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
-import { MenuNavLink } from '../nav';
-import { createNavLinks } from '../nav/utils';
-import { PageMapContext } from '../../common/contexts';
+import { MenuNavLink } from 'components/nav';
+import { createNavLinks } from 'components/nav/utils';
+import { PageMapContext } from 'common/contexts';
 
-import { menuTheme } from '../../themes';
+import { menuTheme } from 'themes';
 import { StyledDrawer } from './styled';
 
 export const useSheetsQuery = (): MdxNodes => {

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 
-import icons from '../../components/icons';
+import icons from 'components/icons';
 
 const DocTitle = styled.h1`
     align-items: center;
@@ -32,14 +32,14 @@ const MDXRendererWrapper = styled.div`
     & h1#table-of-contents + ul > li:hover {
         transform: scale(1.01);
     }
-`
+`;
 
 const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
     // console.log('DocSheet - data: ', data);
-    const { iconComponentName, title } = data?.mdx?.frontmatter || {}
+    const { iconComponentName, title } = data?.mdx?.frontmatter || {};
 
     const iconComponent = (): React.ReactElement | undefined => {
-        if (iconComponentName && typeof icons[iconComponentName] === "function") {
+        if (iconComponentName && typeof icons[iconComponentName] === 'function') {
             return icons[iconComponentName]();
         }
     };
@@ -52,9 +52,7 @@ const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
             </DocTitle>
             <hr />
             <MDXRendererWrapper>
-                <MDXRenderer>
-                    {data.mdx.body}
-                </MDXRenderer>
+                <MDXRenderer>{data.mdx.body}</MDXRenderer>
             </MDXRendererWrapper>
         </>
     );
@@ -62,7 +60,7 @@ const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
 
 export const query = graphql`
     query ($id: String) {
-        mdx(id: {eq: $id}) {
+        mdx(id: { eq: $id }) {
             frontmatter {
                 date(formatString: "MMMM D, YYYY")
                 iconComponentName

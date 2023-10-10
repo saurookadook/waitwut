@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ThemeProvider, useTheme } from 'styled-components';
 import { Box, Toolbar, Typography } from '@mui/material';
 
-import { appBarTheme } from '../../themes';
+import { appBarTheme } from 'themes';
 import { StyledAppBar, NavLink } from './styled';
 
 const Header = ({ data }: HeaderProps): React.ReactElement => {
