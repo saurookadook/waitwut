@@ -3,7 +3,7 @@ import { ThemeProvider, useTheme } from 'styled-components';
 import { Box, Toolbar, Typography } from '@mui/material';
 
 import { StyledAppBar, MenuButton, CustomMenuIcon, NavLink } from './styled';
-import { appBarTheme } from '../../themes';
+import { appBarTheme } from 'themes';
 
 const Header = ({ data }: HeaderProps): React.ReactElement => {
     const [menuOpen, setMenuOpen] = React.useState(false);

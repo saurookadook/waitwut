@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
 
-import { PageMapContext } from '../common/contexts';
+import { PageMapContext } from 'common/contexts';
 
 const HeadingAccent = styled.span`
     color: #663399;
@@ -14,7 +14,7 @@ const ParagraphLines = styled.span`
 `;
 
 const PageItem = styled.li`
-    color: ${props => props.color};
+    color: ${(props) => props.color};
     margin-bottom: 1em;
 `;
 
@@ -40,34 +40,27 @@ const IndexPage = (): React.ReactElement => {
                 </HeadingAccent>
             </h1>
             <p>
-                <ParagraphLines>Well, this little site is dedicated to helping you through those kind of moments. 🤓</ParagraphLines>
+                <ParagraphLines>
+                    Well, this little site is dedicated to helping you through those kind of moments. 🤓
+                </ParagraphLines>
                 <ParagraphLines>CHECK IT OUUUUTTTTTTTT</ParagraphLines>
             </p>
             <ul className="link-list">
                 {(pageMapContext?.pageMap || []).map((pageData) => {
                     const { color, description, sectionSlug, title } = pageData;
                     return (
-                        <PageItem
-                            key={sectionSlug}
-                            color={`${color || theme.color}`}
-                        >
+                        <PageItem key={sectionSlug} color={`${color || theme.color}`}>
                             <span>
-                                <Link
-                                    className="basic-link"
-                                    to={`/${sectionSlug}`}
-                                >
+                                <Link className="basic-link" to={`/${sectionSlug}`}>
                                     {title}
                                 </Link>
-                                {description
-                                    ? <Description>{description}</Description>
-                                    : null
-                                }
+                                {description ? <Description>{description}</Description> : null}
                             </span>
                         </PageItem>
                     );
                 })}
             </ul>
-        </main >
+        </main>
     );
 };
 

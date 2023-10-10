@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 
-import { pageMap } from '../constants';
+import { pageMap } from 'common/constants';
 
 // interface PagesBySectionSlug {
 //     [key: string]: Record<string, unknown>

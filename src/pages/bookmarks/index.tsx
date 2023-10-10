@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 import { Container, Typography } from '@mui/material';
 
-import { defaultTheme } from '../../themes';
+import { defaultTheme } from 'themes';
 
 const SheetContentContainer = styled(Container)`
     text-align: center;
