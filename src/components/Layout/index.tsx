@@ -3,9 +3,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 import { CssBaseline } from '@mui/material';
 
+import { GlobalStyles, pageMap } from 'common/constants';
 import { HeadMetaContext, PageMapContext } from 'common/contexts';
 import { Footer, Header, LeftSideMenu } from 'components/index';
-import { GlobalStyles, pageMap } from 'constants/index';
 import { baseTheme, containerTheme, resumeTheme } from 'themes/index';
 import { StyledContainerOnly, StyledBoxOnly, StyledContainer, StyledBox } from './styled';
 
