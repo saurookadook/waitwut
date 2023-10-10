@@ -46,6 +46,7 @@
             "pages/*": ["pages/*"],
             "resume/*": ["resume/*"],
             "styles/*": ["styles/*"],
+            "store/*": ["store/*"],
             "themes/*": ["themes/*"],
             "utils/*": ["utils/*"]
         },
