@@ -16,8 +16,11 @@ export interface HeadMeta {
 }
 
 const InitialHeadMeta: HeadMeta = {
-    title: 'wait wut?'
-}
+    title: 'wait wut?',
+};
 
 export const HeadMetaContext = createContext(InitialHeadMeta);
 export const PageMapContext = createContext({ pageMap });
+
+export const StateContext = createContext({});
+export const DispatchContext = createContext({});

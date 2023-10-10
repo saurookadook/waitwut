@@ -176,3 +176,13 @@ interface StyleOverrides {
 interface GenericStyledProps {
     readonly overrides?: StyleOverrides;
 }
+
+/* Store */
+interface MenuStateSlice {
+    drawerVisible: boolean;
+}
+
+interface BaseReducerAction {
+    type: string;
+    payload?: MenuStateSlice;
+}
