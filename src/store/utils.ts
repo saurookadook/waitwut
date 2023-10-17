@@ -4,9 +4,9 @@
  * and a single, combined state.
  *
  * @function combineReducers
- * @param {Object} reducers Map of state slices to their reducer functions
+ * @param {StateSliceReducers} reducers Map of state slices to their reducer functions
  *      (i.e. feedback: feedbackReducer, question: questionReducer)
- * @returns {Array} Array with a combinedReducer function and combinedState
+ * @returns {CombinedStateSliceReducers} Array with a combinedReducer function and combinedState
  *
  * @see {@link https://gitlab.com/pluralsight/experience/learner/a-team/skill-assessments/-/tree/master/web/src/common/utils/WEB_UTILS.md#combineReducers|the Web Utilities doc} for example usage
  */
