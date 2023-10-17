@@ -1,6 +1,7 @@
 /// <reference types="react-scripts" />
 
 // export {}
+type AmbiguousObject = Record<string, unknown>;
 
 interface CheatSheet {
     name: string;
@@ -182,7 +183,31 @@ interface MenuStateSlice {
     drawerVisible: boolean;
 }
 
+type StateSlice = {
+    [key: string]: MenuStateSlice | AmbiguousObject;
+};
+
+interface CombinedState extends StateSlice {
+    menu?: MenuStateSlice;
+}
+
 interface BaseReducerAction {
     type: string;
     payload?: MenuStateSlice;
+}
+
+type GenericReducerFunc<S, A> = (state: S, action: A) => S;
+
+type StateSliceReducerFunc = (state: StateSlice, action: BaseReducerAction) => StateSlice;
+
+type GenericStateSliceReducer = [StateSliceReducerFunc, StateSlice];
+
+interface StateSliceReducers {
+    [key: string]: GenericStateSliceReducer;
+}
+
+type CombinedStateSliceReducers = [GenericReducerFunc, CombinedState];
+
+interface FinalReducers {
+    [key: string]: GenericReducerFunc;
 }

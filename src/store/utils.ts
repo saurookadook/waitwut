@@ -10,10 +10,10 @@
  *
  * @see {@link https://gitlab.com/pluralsight/experience/learner/a-team/skill-assessments/-/tree/master/web/src/common/utils/WEB_UTILS.md#combineReducers|the Web Utilities doc} for example usage
  */
-function combineReducers(reducers) {
+function combineReducers(reducers: StateSliceReducers): CombinedStateSliceReducers {
     const reducerKeys = Object.keys(reducers);
-    const globalState = {};
-    const finalReducers = {};
+    const globalState: CombinedState = {};
+    const finalReducers: FinalReducers = {};
 
     reducerKeys.forEach((key) => {
         const [reducerFunction, reducerInitialState] = reducers[key];
@@ -27,8 +27,8 @@ function combineReducers(reducers) {
     const finalReducerKeys = Object.keys(finalReducers);
 
     return [
-        (state, action) => {
-            const newState = {};
+        (state: StateSlice, action: BaseReducerAction): StateSlice => {
+            const newState: CombinedState = {};
             let newStateForCurrentKey = {};
             let hasStateChanged = false;
 
