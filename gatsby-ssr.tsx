@@ -31,7 +31,7 @@ const HeadComponents = [
 exports.onRenderBody = ({ pathname, setHeadComponents, setBodyAttributes }, pluginOptions) => {
     setHeadComponents(HeadComponents)
     setBodyAttributes({
-        id: pathname.indexOf('/resume') >= 0 ? "waitwut-body" : "resume",
+        id: pathname.indexOf('/resume') < 0 ? "waitwut-body" : "resume",
     });
 };
 
