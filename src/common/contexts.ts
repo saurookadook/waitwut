@@ -22,5 +22,5 @@ const InitialHeadMeta: HeadMeta = {
 export const HeadMetaContext = createContext(InitialHeadMeta);
 export const PageMapContext = createContext({ pageMap });
 
-export const StateContext = createContext({});
-export const DispatchContext = createContext({});
+export const StateContext = createContext<StateSlice>({});
+export const DispatchContext = createContext<React.Dispatch<BaseReducerAction>>((a) => null);
