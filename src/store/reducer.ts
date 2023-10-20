@@ -1,11 +1,13 @@
-const menu = {
-    reducer: (stateSlice: MenuStateSlice, action: BaseReducerAction) => {
+import { combineReducers } from './utils';
+
+const menu: GenericStateSliceReducer<MenuStateSlice, BaseReducerAction> = [
+    (stateSlice, action) => {
         switch (action.type) {
             default:
                 return stateSlice;
         }
     },
-    initialStateSlice: { drawerVisible: false },
-};
+    { drawerVisible: false },
+];
 
-export { menu };
+export default combineReducers({ menu });

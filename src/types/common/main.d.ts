@@ -200,13 +200,13 @@ type GenericReducerFunc<S, A> = (state: S, action: A) => S;
 
 type StateSliceReducerFunc = (state: StateSlice, action: BaseReducerAction) => StateSlice;
 
-type GenericStateSliceReducer = [StateSliceReducerFunc, StateSlice];
+type GenericStateSliceReducer<S, A> = [GenericReducerFunc<S, A>, S];
 
-interface StateSliceReducers {
+interface StateSliceReducer {
     [key: string]: GenericStateSliceReducer;
 }
 
-type CombinedStateSliceReducers = [GenericReducerFunc, CombinedState];
+type CombinedStateSliceReducer = [GenericReducerFunc, CombinedState];
 
 interface FinalReducers {
     [key: string]: GenericReducerFunc;

@@ -4,13 +4,13 @@
  * and a single, combined state.
  *
  * @function combineReducers
- * @param {StateSliceReducers} reducers Map of state slices to their reducer functions
+ * @param {StateSliceReducer} reducers Map of state slices to their reducer functions
  *      (i.e. feedback: feedbackReducer, question: questionReducer)
- * @returns {CombinedStateSliceReducers} Array with a combinedReducer function and combinedState
+ * @returns {CombinedStateSliceReducer} Array with a combinedReducer function and combinedState
  *
  * @see {@link https://gitlab.com/pluralsight/experience/learner/a-team/skill-assessments/-/tree/master/web/src/common/utils/WEB_UTILS.md#combineReducers|the Web Utilities doc} for example usage
  */
-function combineReducers(reducers: StateSliceReducers): CombinedStateSliceReducers {
+function combineReducers(reducers: StateSliceReducer): CombinedStateSliceReducer {
     const reducerKeys = Object.keys(reducers);
     const globalState: CombinedState = {};
     const finalReducers: FinalReducers = {};
