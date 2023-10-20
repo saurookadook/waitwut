@@ -1,11 +1,13 @@
-import * as React from 'react';
+import React, { useReducer } from 'react';
 
 import { StateContext, DispatchContext } from 'common/contexts';
-import { menu } from 'store/reducer';
+import combinedReducer from 'store/reducer';
 
 // TODO: fix type - React.Provider<typeof StateContext>
-const Provider = ({ children }: any): any => {
-    const [state, dispatch] = React.useReducer(menu.reducer, menu.initialStateSlice);
+const AppStateProvider = ({ children, initialState }: any): any => {
+    const [combinedReducerFunc, combinedInitialState] = combinedReducer;
+
+    const [state, dispatch] = useReducer(combinedReducerFunc, combinedInitialState);
 
     return (
         <StateContext.Provider value={state}>
@@ -14,4 +16,4 @@ const Provider = ({ children }: any): any => {
     );
 };
 
-export default Provider;
+export default AppStateProvider;
