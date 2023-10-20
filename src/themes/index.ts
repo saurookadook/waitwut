@@ -36,19 +36,24 @@ const themeColors = {
     whiteRgb: 'rgb(255, 255, 255)',
 };
 
-// TODO: better naming scheme for these schemes? Something more generalized?
-const defaultTheme: DefaultTheme = {
-    // backgroundColor: themeColors.plBackgroundYellow,
-    // color: themeColors.plBlue,
+const defaultColors = {
     backgroundColor: themeColors.commentGray,
     backgroundColorRgb: themeColors.commentGrayRgb,
-    // color: themeColors.keywordPurple,
     color: themeColors.graphite,
+};
+
+// TODO: better naming scheme for these schemes? Something more generalized?
+const defaultTheme: DefaultTheme = {
+    ...defaultColors,
+    // backgroundColor: themeColors.plBackgroundYellow,
+    // color: themeColors.plBlue,
+    // color: themeColors.keywordPurple,
     height: '100%',
     width: '100%',
 };
 
 const appBarTheme: AppBarTheme = {
+    ...defaultColors,
     // backgroundColor: themeColors.honeycombOrange,
     // color: themeColors.plBlue,
     backgroundColor: themeColors.graphite,
@@ -109,6 +114,7 @@ const resumeTheme = {
 
 export {
     themeColors, // <- to force formatting
+    defaultColors,
     defaultTheme,
     appBarTheme,
     baseTheme,
