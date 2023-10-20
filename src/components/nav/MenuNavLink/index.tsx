@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { DispatchContext } from 'common/contexts';
+import { closeMenuDrawer } from 'store/actions';
 import { StyledNavLink, ChildLinkWrapper } from './styled';
 
 const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkProps): React.ReactElement => {
+    const dispatch = useContext(DispatchContext);
+
     const fullPath = `${parentPath || ''}/${navLink.slug}`;
-    const { children, label, slug } = navLink || {}
+    const { children, label, slug } = navLink || {};
 
     return (
         <>
-            <StyledNavLink to={fullPath}>
-                <span>
-                    {label}
-                </span>
+            <StyledNavLink to={fullPath} onClick={() => closeMenuDrawer({ dispatch })}>
+                <span>{label}</span>
             </StyledNavLink>
 
-            {(children || []).length > 0 ? (
+            {(children || []).length > 0 && (
                 <ChildLinkWrapper style={{ marginLeft: `${(depth + 1) * 1}em` }}>
                     {(children || []).map((childNavLink, childIndex) => (
                         <MenuNavLink
@@ -25,7 +27,7 @@ const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkProps): React.Re
                         />
                     ))}
                 </ChildLinkWrapper>
-            ) : null}
+            )}
         </>
     );
 };

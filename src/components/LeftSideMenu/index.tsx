@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
@@ -40,13 +40,30 @@ const LeftSideMenu = (): React.ReactElement => {
     const { pageMap } = useContext(PageMapContext);
     const { menu } = useContext(StateContext);
 
+    const [drawerProps, setDrawerProps] = useState<'temporary' | 'permanent'>(
+        window.outerWidth > 600 ? 'permanent' : 'temporary',
+    );
+    const mediaQuery = window.matchMedia('(min-width: 600px)');
+
+    useEffect(() => {
+        const onChangeCallback = (event: MediaQueryListEvent): void => {
+            setDrawerProps(event.matches ? 'permanent' : 'temporary');
+        };
+
+        mediaQuery.addEventListener('change', onChangeCallback);
+
+        return () => {
+            mediaQuery.removeEventListener('change', onChangeCallback);
+        };
+    });
+
     const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
 
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
                 open={!!menu.drawerVisible}
-                variant="temporary"
+                variant={drawerProps}
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
