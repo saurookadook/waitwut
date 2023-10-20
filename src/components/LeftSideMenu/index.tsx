@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { MenuNavLink } from 'components/nav';
 import { createNavLinks } from 'components/nav/utils';
-import { PageMapContext } from 'common/contexts';
+import { PageMapContext, StateContext } from 'common/contexts';
 
 import { menuTheme } from 'themes';
 import { StyledDrawer } from './styled';
@@ -37,15 +37,16 @@ const drawerWidth = 240;
 
 const LeftSideMenu = (): React.ReactElement => {
     const { group: nodesGroups } = useSheetsQuery();
-    // const { pagesBySectionSlug } = useContext(PageMapContext);
     const { pageMap } = useContext(PageMapContext);
+    const { menu } = useContext(StateContext);
 
     const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
 
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
-                variant="permanent"
+                className={menu.drawerVisible ? 'drawer-open' : 'drawer-closed'}
+                variant="temporary"
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
