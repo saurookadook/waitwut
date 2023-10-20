@@ -45,7 +45,7 @@ const LeftSideMenu = (): React.ReactElement => {
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
-                className={menu.drawerVisible ? 'drawer-open' : 'drawer-closed'}
+                open={!!menu.drawerVisible}
                 variant="temporary"
                 sx={{
                     width: drawerWidth,
