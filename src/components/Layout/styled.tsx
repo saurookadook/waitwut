@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Box, Container } from '@mui/material';
 
+import { minWidth600 } from 'styles/mq';
+
 const StyledContainerOnly = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
     height: 100vh;
@@ -23,7 +25,11 @@ const StyledContainer = styled(Container)`
     height: 100vh;
     margin-top: 6rem;
     max-width: 100vw !important;
-    padding: 0 2.5rem;
+    padding: 0;
+
+    ${minWidth600} {
+        padding: 0 2.5rem;
+    }
 `;
 
 const StyledBox = styled(Box)`
@@ -33,9 +39,14 @@ const StyledBox = styled(Box)`
     height: ${(props) => props.theme?.height};
     min-height: 50vh;
     overflow-y: scroll;
-    padding-right: 10vw;
+    padding-right: 2rem;
     padding-bottom: 1.5rem;
-    padding-left: 12vw;
+    padding-left: 2rem;
+
+    ${minWidth600} {
+        padding-right: 10vw;
+        padding-left: 12vw;
+    }
 `;
 
 export { StyledContainerOnly, StyledBoxOnly, StyledContainer, StyledBox };

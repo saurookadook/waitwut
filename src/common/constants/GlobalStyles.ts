@@ -127,6 +127,11 @@ const GlobalStyles = createGlobalStyle`
             background-color: ${(props) => props?.theme?.backgroundColor};
             color: ${themeColors.graphite};
         }
+
+        & [role='presentation'],
+        & [role='presentation'] .MuiDrawer-paper {
+            width: 100vw;
+        }
     }
 
     #resume {

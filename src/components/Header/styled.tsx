@@ -16,6 +16,13 @@ const MenuButton = styled(IconButton)`
         padding: 0px;
         width: 24px;
     }
+
+    ${minWidth600} {
+        display: none;
+        height: 0;
+        visibility: hidden;
+        width: 0;
+    }
 `;
 
 const CustomMenuIcon = styled.span`
@@ -88,7 +95,7 @@ const CustomMenuIcon = styled.span`
 const NavLink = styled(Link)`
     color: ${(props) => props?.theme?.color};
     font-size: 1.5rem;
-    margin-left: 12em;
+    margin-left: 0;
     padding: 0 1em;
     text-align: center;
     text-decoration: none;
