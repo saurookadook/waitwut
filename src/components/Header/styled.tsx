@@ -17,7 +17,7 @@ const MenuButton = styled(IconButton)`
         width: 24px;
     }
 
-    ${minWidth600} {
+    ${minWidth1024} {
         display: none;
         height: 0;
         visibility: hidden;
@@ -94,11 +94,13 @@ const CustomMenuIcon = styled.span`
 
 const NavLink = styled(Link)`
     color: ${(props) => props?.theme?.color};
+    display: inline-block;
     font-size: 1.5rem;
     margin-left: 0;
     padding: 0 1em;
     text-align: center;
     text-decoration: none;
+    width: max-content;
 
     ${minWidth600} {
         margin-left: 5%;

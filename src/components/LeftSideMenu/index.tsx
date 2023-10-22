@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
+import { PageMapContext, StateContext } from 'common/contexts';
 import { MenuNavLink } from 'components/nav';
 import { createNavLinks } from 'components/nav/utils';
-import { PageMapContext, StateContext } from 'common/contexts';
+import { isWindowDefined } from 'utils/index';
 
 import { menuTheme } from 'themes';
 import { StyledDrawer } from './styled';
@@ -41,20 +42,26 @@ const LeftSideMenu = (): React.ReactElement => {
     const { menu } = useContext(StateContext);
 
     const [drawerProps, setDrawerProps] = useState<'temporary' | 'permanent'>(
-        window.outerWidth > 600 ? 'permanent' : 'temporary',
+        isWindowDefined() && window.outerWidth > 1024 ? 'permanent' : 'temporary',
     );
-    const mediaQuery = window.matchMedia('(min-width: 600px)');
+
+    let mediaQuery: MediaQueryList | null = null;
+    if (isWindowDefined()) {
+        mediaQuery = window.matchMedia('(min-width: 600px)');
+    }
 
     useEffect(() => {
-        const onChangeCallback = (event: MediaQueryListEvent): void => {
-            setDrawerProps(event.matches ? 'permanent' : 'temporary');
-        };
+        if (mediaQuery != null) {
+            const onChangeCallback = (event: MediaQueryListEvent): void => {
+                setDrawerProps(event.matches ? 'permanent' : 'temporary');
+            };
 
-        mediaQuery.addEventListener('change', onChangeCallback);
+            mediaQuery.addEventListener('change', onChangeCallback);
 
-        return () => {
-            mediaQuery.removeEventListener('change', onChangeCallback);
-        };
+            return () => {
+                (mediaQuery as MediaQueryList).removeEventListener('change', onChangeCallback);
+            };
+        }
     });
 
     const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
