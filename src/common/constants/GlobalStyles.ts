@@ -1,11 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
 import { listItemPadding } from 'resume/components';
-import { resumeTheme, themeColors } from 'themes/index';
+import { defaultColors, resumeTheme, themeColors } from 'themes/index';
 
 const GlobalStyles = createGlobalStyle`
+    :root,
     html {
-        background-color: ${(props) => props?.theme?.backgroundColor};
+        background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor} !important;
+    }
+
+    body,
+    main {
+        background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor};
     }
 
     body {
@@ -21,8 +27,6 @@ const GlobalStyles = createGlobalStyle`
         font-family: "-apple-system, Roboto, sans-serif, serif";
         /* padding: 96px; */
     }
-
-
 
     h1, h2, h3, h4, h5 {
         margin-bottom: 0.5rem;
@@ -118,9 +122,15 @@ const GlobalStyles = createGlobalStyle`
     }
 
     #waitwut-body {
-        &body {
+        &body,
+        & main {
             background-color: ${(props) => props?.theme?.backgroundColor};
             color: ${themeColors.graphite};
+        }
+
+        & [role='presentation'],
+        & [role='presentation'] .MuiDrawer-paper {
+            width: 100vw;
         }
     }
 

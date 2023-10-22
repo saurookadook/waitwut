@@ -3,9 +3,10 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 import { CssBaseline } from '@mui/material';
 
+import { GlobalStyles, pageMap } from 'common/constants';
 import { HeadMetaContext, PageMapContext } from 'common/contexts';
 import { Footer, Header, LeftSideMenu } from 'components/index';
-import { GlobalStyles, pageMap } from 'constants/index';
+import { AppStateProvider } from 'store';
 import { baseTheme, containerTheme, resumeTheme } from 'themes/index';
 import { StyledContainerOnly, StyledBoxOnly, StyledContainer, StyledBox } from './styled';
 
@@ -37,31 +38,33 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
     // console.log(' - data: ', data);
 
     return (
-        <HeadMetaContext.Provider value={{ children, title }}>
-            <PageMapContext.Provider value={{ pageMap }}>
-                {containerOnly() ? (
-                    <ThemeProvider theme={resumeTheme}>
-                        <GlobalStyles />
-                        <StyledContainerOnly disableGutters={true}>
-                            <StyledBoxOnly>{children}</StyledBoxOnly>
-                        </StyledContainerOnly>
-                    </ThemeProvider>
-                ) : (
-                    <ThemeProvider theme={baseTheme}>
-                        <CssBaseline />
-                        <GlobalStyles />
-                        <Header />
-                        <ThemeProvider theme={containerTheme}>
-                            <StyledContainer disableGutters={true}>
-                                <StyledBox>{children}</StyledBox>
-                                <LeftSideMenu />
-                            </StyledContainer>
+        <AppStateProvider>
+            <HeadMetaContext.Provider value={{ children, title }}>
+                <PageMapContext.Provider value={{ pageMap }}>
+                    {containerOnly() ? (
+                        <ThemeProvider theme={resumeTheme}>
+                            <GlobalStyles />
+                            <StyledContainerOnly disableGutters={true}>
+                                <StyledBoxOnly>{children}</StyledBoxOnly>
+                            </StyledContainerOnly>
                         </ThemeProvider>
-                        <Footer />
-                    </ThemeProvider>
-                )}
-            </PageMapContext.Provider>
-        </HeadMetaContext.Provider>
+                    ) : (
+                        <ThemeProvider theme={baseTheme}>
+                            <CssBaseline />
+                            <GlobalStyles />
+                            <Header />
+                            <ThemeProvider theme={containerTheme}>
+                                <StyledContainer disableGutters={true}>
+                                    <StyledBox>{children}</StyledBox>
+                                    <LeftSideMenu />
+                                </StyledContainer>
+                            </ThemeProvider>
+                            <Footer />
+                        </ThemeProvider>
+                    )}
+                </PageMapContext.Provider>
+            </HeadMetaContext.Provider>
+        </AppStateProvider>
     );
 };
 

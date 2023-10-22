@@ -30,8 +30,9 @@ const SheetLineItemLink = styled(Link)`
     }
 `;
 
+// TODO: this and the bookmarks list page component could be the same lol
 const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
-    console.log('SheetsPage - data: ', data);
+    // console.log('SheetsPage - data: ', data);
     const { nodes } = data.allMdx || {};
 
     return (

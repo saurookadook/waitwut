@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
+import { PageMapContext, StateContext } from 'common/contexts';
 import { MenuNavLink } from 'components/nav';
 import { createNavLinks } from 'components/nav/utils';
-import { PageMapContext } from 'common/contexts';
+import { isWindowDefined } from 'utils/index';
 
 import { menuTheme } from 'themes';
 import { StyledDrawer } from './styled';
@@ -37,15 +38,39 @@ const drawerWidth = 240;
 
 const LeftSideMenu = (): React.ReactElement => {
     const { group: nodesGroups } = useSheetsQuery();
-    // const { pagesBySectionSlug } = useContext(PageMapContext);
     const { pageMap } = useContext(PageMapContext);
+    const { menu } = useContext(StateContext);
+
+    const [drawerProps, setDrawerProps] = useState<'temporary' | 'permanent'>(
+        isWindowDefined() && window.outerWidth > 1024 ? 'permanent' : 'temporary',
+    );
+
+    let mediaQuery: MediaQueryList | null = null;
+    if (isWindowDefined()) {
+        mediaQuery = window.matchMedia('(min-width: 600px)');
+    }
+
+    useEffect(() => {
+        if (mediaQuery != null) {
+            const onChangeCallback = (event: MediaQueryListEvent): void => {
+                setDrawerProps(event.matches ? 'permanent' : 'temporary');
+            };
+
+            mediaQuery.addEventListener('change', onChangeCallback);
+
+            return () => {
+                (mediaQuery as MediaQueryList).removeEventListener('change', onChangeCallback);
+            };
+        }
+    });
 
     const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
 
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
-                variant="permanent"
+                open={!!menu.drawerVisible}
+                variant={drawerProps}
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
