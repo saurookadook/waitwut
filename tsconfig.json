@@ -19,7 +19,7 @@
             "esnext"
         ],
         "typeRoots": [".node_modules/@types", "./types/*"],
-        "types": ["@types/jest"],
+        // "types": ["@types/jest"],
         // "jsx": "react-jsx" /* Specify what JSX code is generated. */,
         "jsx": "preserve",
         // "experimentalDecorators": true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
@@ -36,8 +36,20 @@
         "module": "commonjs",
         // "rootDir": "./",                                  /* Specify the root folder within your source files. */
         "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
-        // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
-        // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+        "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
+        "paths": {
+            /* Specify a set of entries that re-map imports to additional lookup locations. */
+            "common/*": ["common/*"],
+            "components/*": ["components/*"],
+            "constants/*": ["constants/*"],
+            "images/*": ["images/*"],
+            "pages/*": ["pages/*"],
+            "resume/*": ["resume/*"],
+            "styles/*": ["styles/*"],
+            "store/*": ["store/*"],
+            "themes/*": ["themes/*"],
+            "utils/*": ["utils/*"]
+        },
         // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
         // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */
         // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
@@ -115,8 +127,9 @@
     ],
     "exclude": [
         "_bookmkarks_data",
+        ".cache",
         "node_modules",
         "public",
-        ".cache"
+        "./gatsby-node.js"
     ]
 }

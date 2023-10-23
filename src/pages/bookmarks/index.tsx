@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
-import {
-    Container,
-    Typography
-} from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
-import { defaultTheme } from '../../themes';
+import { defaultTheme } from 'themes';
 
 const SheetContentContainer = styled(Container)`
     text-align: center;
@@ -42,23 +39,22 @@ const BookmarksListPage = ({ data }: ListPageProps): React.ReactElement => {
             <SheetContentContainer>
                 {(nodes || []).length > 0 ? (
                     <StyledUl>
-                        {(nodes || []).map((node: NodeFromQuery): React.ReactElement => (
-                            <SheetLineItem
-                                key={node.slug}
-                            >
-                                {/*
+                        {(nodes || []).map(
+                            (node: NodeFromQuery): React.ReactElement => (
+                                <SheetLineItem key={node.slug}>
+                                    {/*
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
                                 */}
-                                <SheetLineItemLink to={`/sheet/${node.slug}`}>
-                                    {(node.frontmatter || {}).title || node.slug}
-                                </SheetLineItemLink>
-                            </SheetLineItem>
-                        ))}
-                    </StyledUl>) : (
-                    <Typography variant="h2">
-                        {`Some day, I'll have content 🙂`}
-                    </Typography>
+                                    <SheetLineItemLink to={`/sheet/${node.slug}`}>
+                                        {(node.frontmatter || {}).title || node.slug}
+                                    </SheetLineItemLink>
+                                </SheetLineItem>
+                            ),
+                        )}
+                    </StyledUl>
+                ) : (
+                    <Typography variant="h2">{`Some day, I'll have content 🙂`}</Typography>
                 )}
             </SheetContentContainer>
         </ThemeProvider>
@@ -68,8 +64,8 @@ const BookmarksListPage = ({ data }: ListPageProps): React.ReactElement => {
 export const query = graphql`
     query {
         allMdx(
-            sort: {fields: frontmatter___date, order: DESC},
-            filter: {frontmatter: {sectionSlug: {eq: "bookmarks"}}}
+            sort: { fields: frontmatter___date, order: DESC }
+            filter: { frontmatter: { sectionSlug: { eq: "bookmarks" } } }
         ) {
             nodes {
                 frontmatter {

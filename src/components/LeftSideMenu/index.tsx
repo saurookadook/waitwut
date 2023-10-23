@@ -1,26 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled, { ThemeProvider } from 'styled-components';
-import { Drawer } from '@mui/material';
+import { ThemeProvider } from 'styled-components';
 
-import { MenuNavLink } from './nav';
-import { createNavLinks } from './nav/utils';
-import { PageMapContext } from '../common/contexts';
+import { PageMapContext, StateContext } from 'common/contexts';
+import { MenuNavLink } from 'components/nav';
+import { createNavLinks } from 'components/nav/utils';
+import { isWindowDefined } from 'utils/index';
 
-import { menuTheme } from '../themes';
-
-const StyledDrawer = styled(Drawer)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    color: ${(props) => props.theme?.color};
-
-    & > .MuiDrawer-paper {
-        background-color: ${(props) => props?.theme?.backgroundColor};
-        border: none;
-        color: ${(props) => props.theme?.color};
-        padding-top: 6em;
-        padding-left: 1em;
-    }
-`;
+import { menuTheme } from 'themes';
+import { StyledDrawer } from './styled';
 
 export const useSheetsQuery = (): MdxNodes => {
     const { allMdx } = useStaticQuery(
@@ -48,19 +36,41 @@ export const useSheetsQuery = (): MdxNodes => {
 
 const drawerWidth = 240;
 
-
-
 const LeftSideMenu = (): React.ReactElement => {
     const { group: nodesGroups } = useSheetsQuery();
-    // const { pagesBySectionSlug } = useContext(PageMapContext);
     const { pageMap } = useContext(PageMapContext);
+    const { menu } = useContext(StateContext);
+
+    const [drawerProps, setDrawerProps] = useState<'temporary' | 'permanent'>(
+        isWindowDefined() && window.outerWidth > 1024 ? 'permanent' : 'temporary',
+    );
+
+    let mediaQuery: MediaQueryList | null = null;
+    if (isWindowDefined()) {
+        mediaQuery = window.matchMedia('(min-width: 600px)');
+    }
+
+    useEffect(() => {
+        if (mediaQuery != null) {
+            const onChangeCallback = (event: MediaQueryListEvent): void => {
+                setDrawerProps(event.matches ? 'permanent' : 'temporary');
+            };
+
+            mediaQuery.addEventListener('change', onChangeCallback);
+
+            return () => {
+                (mediaQuery as MediaQueryList).removeEventListener('change', onChangeCallback);
+            };
+        }
+    });
 
     const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
 
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
-                variant="permanent"
+                open={!!menu.drawerVisible}
+                variant={drawerProps}
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
@@ -68,11 +78,7 @@ const LeftSideMenu = (): React.ReactElement => {
                 }}
             >
                 {navLinks.map((navLink, index) => (
-                    <MenuNavLink
-                        depth={0}
-                        key={`${index}:${navLink.slug}`}
-                        navLink={navLink}
-                    />
+                    <MenuNavLink depth={0} key={`${index}:${navLink.slug}`} navLink={navLink} />
                 ))}
             </StyledDrawer>
         </ThemeProvider>
