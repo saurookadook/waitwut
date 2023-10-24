@@ -1,0 +1,82 @@
+---
+title: "Python: Tuples"
+date: "2023-10-24"
+fullPath: "/sheets/python/tuples"
+iconComponentName: "python_icon"
+sectionSlug: "sheets"
+---
+
+# tuples
+```python
+simple_tuple = ("Norway", 4.953, 3)
+simple_tuple[0] #=> 'Norway'
+simple_tuple[2] #=> 3
+
+len(simple_tuple) #=> 3
+
+for item in simple_tuple:
+    print(item)
+
+#=> Norway
+#=> 4.953
+#=> 3
+
+simple_tuple + (338186.0, 265e9)
+#=> ('Norway', 4.953, 3, 338186.0, 265000000000.0)
+simple_tuple * 3
+#=> ('Norway', 4.953, 3, 'Norway', 4.953, 3, 'Norway', 4.953, 3)
+```
+
+## creating tuple with single element
+```python
+tuple_with_one_element = (391,)
+```
+
+## creating empty tuple
+```python
+empty_tuple = ()
+```
+
+**NOTE**: in many cases, parentheses of literal tuples may be omitted
+_(feature often used when returning multiple values from a function)_
+```py
+p = 1, 1, 1, 4, 6, 19
+p #=> (1, 1, 1, 4, 6, 19)
+```
+
+## tuple unpacking
+```python
+def minmax(items):
+    return min(items), max(items)
+
+minmax([83, 33, 84, 32, 85, 31, 86])
+#=> (31, 86)
+
+lower, upper = minmax([83, 33, 84, 32, 85, 31, 86])
+lower #=> 31
+upper #=> 86
+
+(a, (b, (c, d))) = (4, (3, (2, 1)))
+a #=> 4
+b #=> 3
+c #=> 2
+d #=> 1
+
+########## NOTE: beautiful Python idiom for swapping two or more variables ##########
+a = 'jelly'
+b = 'bean'
+a, b = b, a
+### explanation
+# first packs `a` and `b` on right side of assignment into tuple
+# then unpacks tuple on left, reusing names `a` and `b`
+```
+
+## using tuple constructor
+```python
+tuple([561, 1105, 1729, 2465])
+tuple("Carmichael")
+
+# testing containment
+5 in (3, 5, 17, 257, 65537) #=> True
+5 not in (3, 5, 17, 257, 65537) #=> False
+```

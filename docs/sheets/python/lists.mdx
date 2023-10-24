@@ -1,0 +1,82 @@
+---
+title: "Python: lists"
+date: "2023-10-24"
+fullPath: "/sheets/python/lists"
+iconComponentName: "python_icon"
+sectionSlug: "sheets"
+---
+
+# lists
+
+```python
+integers = [3, 186, 4431, 74400, 1048443]
+```
+
+## slicing
+```python
+integers[1:3] #=> [186, 4431]
+integers[1:-1] #=> [186, 4431, 74400]
+
+### using only stop index
+integers[2:] #=> [4431, 74400, 1048443]
+
+### using only the start
+integers[:2] #=> [3, 186]
+
+### using neither (import idiom for copying a list, since it results in a new object)
+integers[:] #=> [3, 186, 4431, 74400, 1048443]
+
+integers_copy = integers
+integers_copy is integers #=> True
+
+integers_sliced_copy = integers[:]
+integers_sliced_copy is integers #=> False
+integers_sliced_copy == integers #=> True
+```
+
+### copying with `slice`:
+```py
+s = [1, 2, 3, 4, 5]
+r = s[:]
+```
+- new `list` object is created
+- however, elements within it are references to same objects referred to by original
+- if list's objects are _**mutable and modified**_, the changes will be observed in both lists
+
+### other ways to copy
+```py
+s = [3, 186, 4431, 74400, 1048443]
+
+u = s.copy()
+u is s #=> False
+
+v = list(s)
+v is s #=> False
+```
+
+**IMPORTANT**: all of above copying techniques perform _shallow copies_
+- example:
+```py
+a = [[1, 2], [3, 4]]
+b = a[:]
+a is b #=> False
+a == b #=> True
+
+a[0] is b[0] #=> True
+
+### rebinding value of first element
+a[0] = [8, 9]
+a #=> [8, 9]
+b #=> [1, 2]
+
+### mutating object at second element
+a[1].append(5)
+a[1] #=> [3, 4, 5]
+b[1] #=> [3, 4, 5]
+
+# final state of each list
+a #=> [[8, 9], [3, 4, 5]]
+b #=> [[1, 2], [3, 4, 5]]
+```
+
+_Note: for making deep copies, look to use `copy` module in Python standard library_
