@@ -11,13 +11,14 @@
         "yarn": "^1.22.19"
     },
     "scripts": {
-        "install:clean": "gatsby clean && rm -rf node_modules/ && yarn cache clean && yarn install && yarn build",
+        "install:clean": "yarn clean:cache && yarn install && yarn build",
         "develop": "gatsby develop",
         "start": "gatsby develop",
         "build": "gatsby build",
         "serve": "gatsby serve",
         "deploy": "yarn clean && gatsby build --prefix-paths && gh-pages -d public",
         "clean": "gatsby clean",
+        "clean:cache": "yarn clean && rm -rf node_modules/ && yarn cache clean",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx ./ --fix",
         "typecheck": "tsc --noEmit"
     },
