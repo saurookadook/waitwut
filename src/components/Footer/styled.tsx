@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { themeColors } from 'themes';
+
 const FooterContainer = styled.div`
     background-color: ${(props) => {
         if (props.theme.backgroundColorRgb) {
@@ -9,10 +11,11 @@ const FooterContainer = styled.div`
             return props.theme.backgroundColor;
         }
     }};
+    box-shadow: 0 -1px 5px ${themeColors.graphite};
     color: ${(props) => props.theme?.color};
     /* margin: 0 12vw 2em; */
-    min-height: 5em;
-    padding-top: 1em;
+    height: 5rem;
+    padding-top: 1rem;
     position: relative;
     z-index: 1000001 !important;
 `;
@@ -20,7 +23,7 @@ const FooterContainer = styled.div`
 const GatsbyWrapper = styled.div`
     align-items: center;
     display: flex;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     justify-content: center;
     /* padding-left: 0; */
 `;
