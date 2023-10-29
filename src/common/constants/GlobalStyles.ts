@@ -193,7 +193,6 @@ const GlobalStyles = createGlobalStyle`
 
     .basic-link {
         color: #8954A8;
-        font-size: 16px;
         font-weight: bold;
         vertical-align: 5%;
     }

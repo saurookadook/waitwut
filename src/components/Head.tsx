@@ -2,17 +2,15 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { css } from 'styled-components';
 
-import { themeColors } from 'themes';
+import { defaultColors } from 'themes';
 import { isResumePage } from 'utils';
 
-const BaseStyles = css`
+const baseStyles = css`
     :root {
-        --base-font-size: 16px;
-
-        background-color: ${themeColors.white};
-        color: ${themeColors.graphite};
+        background-color: ${defaultColors.backgroundColor};
+        color: ${defaultColors.color};
         font-family: '-apple-system, Roboto, sans-serif, serif';
-        font-size: var(--base-font-size);
+        font-size: 112.5%;
         margin: 0;
         min-height: 100vh;
         overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
@@ -49,7 +47,7 @@ const Head = ({
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
             />
-            <style>{BaseStyles.toString().replace(/,/g, '')}</style>
+            <style>{baseStyles.toString().replace(/,/g, '')}</style>
         </Helmet>
     );
 };
