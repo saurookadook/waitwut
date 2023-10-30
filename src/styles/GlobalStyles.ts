@@ -14,9 +14,9 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor};
     }
 
-    #waitwut,
-    #resume {
-        body {
+    body#waitwut,
+    body#resume {
+        & {
             font-family: "-apple-system, Roboto, sans-serif, serif";
             font-size: var(--base-font-size);
             margin: 0;
@@ -71,17 +71,34 @@ const GlobalStyles = createGlobalStyle`
                 transform: scale(1.02);
             }
         }
+    }
+`;
 
-        p {
-            /* margin-bottom: 48px; */
+const WaitwutStyles = createGlobalStyle`
+    #waitwut {
+        &body,
+        & main {
+            background-color: ${(props) => props?.theme?.backgroundColor};
+            color: ${themeColors.graphite};
         }
 
-        ol li::marker {
-            font-weight: 900;
+        & [role='presentation'],
+        & [role='presentation'] .MuiDrawer-paper {
+            width: 100vw;
+        }
+
+        ul,
+        ol {
+            list-style: initial;
         }
 
         ul {
             margin-top: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        ol li::marker {
+            font-weight: 900;
         }
 
         li {
@@ -95,12 +112,16 @@ const GlobalStyles = createGlobalStyle`
             }
         }
 
+        p {
+            margin-bottom: 0.5rem;
+        }
+
         code {
-            color: #8A6534;
-            padding: 4px;
-            background-color: #FFF4DB;
-            font-size: 1.25rem;
+            /* background-color: #FFF4DB; */
             border-radius: 4px;
+            /* color: #8A6534; */
+            font-size: 1.25rem;
+            padding: 4px;
         }
 
 
@@ -152,21 +173,6 @@ const GlobalStyles = createGlobalStyle`
             padding: 4px 6px;
             position: relative;
             top: -2px;
-        }
-    }
-`;
-
-const WaitwutStyles = createGlobalStyle`
-    #waitwut {
-        &body,
-        & main {
-            background-color: ${(props) => props?.theme?.backgroundColor};
-            color: ${themeColors.graphite};
-        }
-
-        & [role='presentation'],
-        & [role='presentation'] .MuiDrawer-paper {
-            width: 100vw;
         }
     }
 `;
