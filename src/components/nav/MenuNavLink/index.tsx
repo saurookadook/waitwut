@@ -10,6 +10,10 @@ const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkProps): React.Re
     const fullPath = `${parentPath || ''}/${navLink.slug}`;
     const { children, label, slug } = navLink || {};
 
+    // if ((children || []).length > 0) {
+    //     console.log({ navLink });
+    // }
+
     return (
         <>
             <StyledNavLink to={fullPath} onClick={() => closeMenuDrawer({ dispatch })}>

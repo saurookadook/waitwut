@@ -17,6 +17,7 @@ interface NavLinkItem {
     slug?: string;
     label?: string;
     iconName?: string;
+    pathComponents?: string[];
     children?: NavLinkItem[];
 }
 

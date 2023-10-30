@@ -65,6 +65,7 @@ const LeftSideMenu = (): React.ReactElement => {
     });
 
     const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
+    console.log('LeftSideMenu: ', { navLinks, nodesGroups });
 
     return (
         <ThemeProvider theme={menuTheme}>
