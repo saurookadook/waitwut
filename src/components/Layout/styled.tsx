@@ -40,7 +40,7 @@ const StyledBox = styled(Box)`
     min-height: 50vh;
     overflow-y: scroll;
     padding-right: 2rem;
-    padding-bottom: 1.5rem;
+    /* padding-bottom: 1.5rem; */
     padding-left: 2rem;
 
     ${minWidth600} {
