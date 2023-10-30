@@ -157,7 +157,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const WaitwutStyles = createGlobalStyle`
-    #waitwut-body {
+    #waitwut {
         &body,
         & main {
             background-color: ${(props) => props?.theme?.backgroundColor};
