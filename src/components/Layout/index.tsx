@@ -61,8 +61,8 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                                     <StyledBox>{children}</StyledBox>
                                     <LeftSideMenu />
                                 </StyledContainer>
+                                <Footer />
                             </ThemeProvider>
-                            <Footer />
                         </ThemeProvider>
                     )}
                 </PageMapContext.Provider>

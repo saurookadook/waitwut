@@ -22,7 +22,8 @@ const StyledBoxOnly = styled(Box)`
 
 const StyledContainer = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
-    height: 100vh;
+    height: auto;
+    min-height: ${(props) => props?.theme?.height};
     margin-top: 6rem;
     max-width: 100vw !important;
     padding: 0;
@@ -36,9 +37,10 @@ const StyledBox = styled(Box)`
     background-color: ${(props) => props?.theme?.backgroundColor};
     display: flex;
     flex-direction: column;
-    height: ${(props) => props.theme?.height};
+    /* height: ${(props) => props.theme?.height}; */
+    height: auto;
     min-height: 50vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     padding-right: 2rem;
     /* padding-bottom: 1.5rem; */
     padding-left: 2rem;

@@ -15,8 +15,9 @@ const FooterContainer = styled.div`
     color: ${(props) => props.theme?.color};
     /* margin: 0 12vw 2em; */
     height: 5rem;
-    padding-top: 1rem;
+    padding: 1rem 0;
     position: relative;
+    width: 100vw;
     z-index: 1000001 !important;
 `;
 
