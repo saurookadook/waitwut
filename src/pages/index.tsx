@@ -20,7 +20,6 @@ const PageItem = styled.li`
 
 const Description = styled.p`
     color: #232129;
-    font-size: 14px;
     line-height: 1.25;
     margin-top: 10px;
     margin-bottom: 0px;
