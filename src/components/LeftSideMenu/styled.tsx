@@ -8,8 +8,8 @@ const StyledDrawer = styled(Drawer)`
     & > .MuiDrawer-paper {
         background-color: transparent;
         border: none;
+        box-shadow: inset -1px 0 5px ${(props) => props.theme?.color};
         color: ${(props) => props.theme?.color};
-        max-height: calc(100vh - 6rem);
         padding-top: 6rem;
         padding-left: 1rem;
     }

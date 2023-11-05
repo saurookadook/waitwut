@@ -6,7 +6,7 @@ const FooterContainer = styled.div`
     background-color: ${(props) => {
         if (props.theme.backgroundColorRgb) {
             const { r, g, b } = props.theme?.backgroundColorRgb || {};
-            return `rgb(${r} ${g} ${b})`;
+            return `rgb(${r} ${g} ${b} / 0.65)`;
         } else {
             return props.theme.backgroundColor;
         }
