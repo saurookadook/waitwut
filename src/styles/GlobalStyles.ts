@@ -35,7 +35,11 @@ const GlobalStyles = createGlobalStyle`
             /* padding: 96px; */
         }
 
-        h1, h2, h3, h4, h5 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             margin-bottom: 0.5rem;
         }
 
@@ -85,6 +89,14 @@ const WaitwutStyles = createGlobalStyle`
         & main {
             background-color: ${(props) => props?.theme?.backgroundColor};
             color: ${themeColors.graphite};
+        }
+
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5 {
+            margin-top: 1rem;
         }
 
         & [role='presentation'],
