@@ -5,6 +5,20 @@ import styled from 'styled-components';
 
 import icons from 'components/icons';
 
+const MDXRendererWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    & #table-of-contents {
+        margin-top: 0;
+    }
+
+    & h1#table-of-contents + ul > li:hover {
+        transform: scale(1.01);
+    }
+`;
+
 const DocTitle = styled.h1`
     align-items: center;
     display: flex;
@@ -24,16 +38,6 @@ const DocTitle = styled.h1`
     }
 `;
 
-const MDXRendererWrapper = styled.div`
-    & #table-of-contents {
-        margin-top: 0;
-    }
-
-    & h1#table-of-contents + ul > li:hover {
-        transform: scale(1.01);
-    }
-`;
-
 const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
     // console.log('DocSheet - data: ', data);
     const { iconComponentName, title } = data?.mdx?.frontmatter || {};
@@ -45,16 +49,14 @@ const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
     };
 
     return (
-        <>
+        <MDXRendererWrapper id="sheet-page-content">
             <DocTitle>
-                {iconComponent() || null}
+                {iconComponent()}
                 <span>{title}</span>
             </DocTitle>
             <hr />
-            <MDXRendererWrapper>
-                <MDXRenderer>{data.mdx.body}</MDXRenderer>
-            </MDXRendererWrapper>
-        </>
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+        </MDXRendererWrapper>
     );
 };
 

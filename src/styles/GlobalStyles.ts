@@ -22,8 +22,6 @@ const GlobalStyles = createGlobalStyle`
         }
 
         & {
-            font-family: "-apple-system, Roboto, sans-serif, serif";
-            font-size: var(--base-font-size);
             margin: 0;
             overflow-x: clip;
             overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
@@ -46,10 +44,6 @@ const GlobalStyles = createGlobalStyle`
         h1 {
             font-size: 3rem;
             margin-top: 0;
-        }
-
-        h1:first-of-type {
-            margin-top: 1rem;
         }
 
         h2 {
@@ -89,14 +83,6 @@ const WaitwutStyles = createGlobalStyle`
         & main {
             background-color: ${(props) => props?.theme?.backgroundColor};
             color: ${themeColors.graphite};
-        }
-
-        & h1,
-        & h2,
-        & h3,
-        & h4,
-        & h5 {
-            margin-top: 1rem;
         }
 
         & [role='presentation'],

@@ -11,25 +11,21 @@ const MDXRendererWrapper = styled.div`
     & h1#table-of-contents + ul > li:hover {
         transform: scale(1.01);
     }
-`
+`;
 
 const BookmarkPage = ({ data }: BaseMdxProps): React.ReactElement => {
     // console.log('BookmarkPage - data: ', data);
 
     return (
-        <>
-            <MDXRendererWrapper>
-                <MDXRenderer>
-                    {data.mdx.body}
-                </MDXRenderer>
-            </MDXRendererWrapper>
-        </>
+        <MDXRendererWrapper id="bookmark-page-content">
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+        </MDXRendererWrapper>
     );
 };
 
 export const query = graphql`
     query ($id: String) {
-        mdx(id: {eq: $id}) {
+        mdx(id: { eq: $id }) {
             frontmatter {
                 date(formatString: "MMMM D, YYYY")
                 iconComponentName

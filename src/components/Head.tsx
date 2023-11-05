@@ -10,7 +10,7 @@ const baseStyles = css`
         background-color: ${defaultColors.backgroundColor};
         color: ${defaultColors.color};
         font-family: '-apple-system, Roboto, sans-serif, serif';
-        font-size: 112.5%;
+        font-size: 100%;
         margin: 0;
         min-height: 100vh;
         overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
