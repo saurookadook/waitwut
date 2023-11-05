@@ -16,11 +16,15 @@ const GlobalStyles = createGlobalStyle`
 
     body#waitwut,
     body#resume {
+        &,
+        & main {
+            min-height: 100vh;
+        }
+
         & {
             font-family: "-apple-system, Roboto, sans-serif, serif";
             font-size: var(--base-font-size);
             margin: 0;
-            min-height: 100vh;
             overflow-x: clip;
             overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
         }
