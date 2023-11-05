@@ -4,20 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 
 import icons from 'components/icons';
-
-const MDXRendererWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-
-    & #table-of-contents {
-        margin-top: 0;
-    }
-
-    & h1#table-of-contents + ul > li:hover {
-        transform: scale(1.01);
-    }
-`;
+import { MDXRendererWrapper } from 'components/pages/styled';
 
 const DocTitle = styled.h1`
     align-items: center;

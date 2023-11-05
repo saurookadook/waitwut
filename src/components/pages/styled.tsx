@@ -21,4 +21,18 @@ const Description = styled.p`
     margin-bottom: 0px;
 `;
 
-export { HeadingAccent, ParagraphLines, PageItem, Description };
+const MDXRendererWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    & #table-of-contents {
+        margin-top: 0;
+    }
+
+    & h1#table-of-contents + ul > li:hover {
+        transform: scale(1.01);
+    }
+`;
+
+export { HeadingAccent, ParagraphLines, PageItem, Description, MDXRendererWrapper };
