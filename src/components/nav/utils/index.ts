@@ -1,21 +1,19 @@
-import { PageMap } from "../../../constants/pageMap";
+import { PageMap } from 'common/constants/pageMap';
 
 interface AddNodesToChildrenArgs {
     nodes: NodeFromQuery[];
     children: NavLinkItem[];
 }
 
-function addNodesToChildren({
-    nodes,
-    children
-}: AddNodesToChildrenArgs): void {
+function addNodesToChildren({ nodes, children }: AddNodesToChildrenArgs): void {
     nodes.forEach((node: NodeFromQuery) => {
-        children && children.push({
-            slug: node.slug.replace(/(\w+?\/){1,}/g, ""),
-            label: node.frontmatter?.title || node.slug,
-            iconName: node.frontmatter?.iconComponentName
-            // path: node.frontmatter?.fullPath
-        });
+        children &&
+            children.push({
+                slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
+                label: node.frontmatter?.title || node.slug,
+                iconName: node.frontmatter?.iconComponentName,
+                // path: node.frontmatter?.fullPath
+            });
     });
 }
 
@@ -30,14 +28,13 @@ function createNavLinks({
     nodesGroups,
     pageMap,
     parentNavLink,
-    navLinksResult = []
+    navLinksResult = [],
 }: CreateNavLinksArgs): NavLinkItem[] {
-
     for (const page of pageMap) {
         const navLink = {
             slug: page.sectionSlug,
             label: page.title,
-            children: [] as NavLinkItem[]
+            children: [] as NavLinkItem[],
         };
 
         const nodeGroup = nodesGroups.find((node) => node.fieldValue === page.sectionSlug);
@@ -45,7 +42,7 @@ function createNavLinks({
         if (nodeGroup && nodeGroup.nodes) {
             addNodesToChildren({
                 nodes: nodeGroup?.nodes,
-                children: navLink.children
+                children: navLink.children,
             });
         }
 
@@ -60,7 +57,7 @@ function createNavLinks({
                 nodesGroups,
                 pageMap: page.childSections,
                 parentNavLink: navLink,
-                navLinksResult
+                navLinksResult,
             });
         }
     }
@@ -68,6 +65,4 @@ function createNavLinks({
     return navLinksResult;
 }
 
-export {
-    createNavLinks
-}
+export { createNavLinks };

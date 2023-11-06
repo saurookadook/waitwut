@@ -33,7 +33,16 @@ const config: GatsbyConfig = {
         {
             resolve: 'gatsby-plugin-mdx',
             options: {
-                gatsbyRemarkPlugins: ['gatsby-remark-prismjs', 'gatsby-remark-autolink-headers'],
+                gatsbyRemarkPlugins: [
+                    'gatsby-remark-prismjs',
+                    'gatsby-remark-autolink-headers',
+                    {
+                        resolve: 'gatsby-remark-images',
+                        options: {
+                            maxWidth: 1200
+                        }
+                    }
+                ],
             },
         },
         {

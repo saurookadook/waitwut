@@ -6,8 +6,9 @@ const StyledDrawer = styled(Drawer)`
     color: ${(props) => props.theme?.color};
 
     & > .MuiDrawer-paper {
-        background-color: ${(props) => props?.theme?.backgroundColor};
+        background-color: transparent;
         border: none;
+        box-shadow: inset -1px 0 5px ${(props) => props.theme?.color};
         color: ${(props) => props.theme?.color};
         padding-top: 6rem;
         padding-left: 1rem;
