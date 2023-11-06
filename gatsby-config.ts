@@ -14,6 +14,7 @@ const config: GatsbyConfig = {
         'gatsby-plugin-tsconfig-paths',
         `gatsby-plugin-image`,
         'gatsby-plugin-sharp',
+        'gatsby-plugin-styled-components',
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-source-filesystem',
@@ -32,7 +33,16 @@ const config: GatsbyConfig = {
         {
             resolve: 'gatsby-plugin-mdx',
             options: {
-                gatsbyRemarkPlugins: ['gatsby-remark-prismjs', 'gatsby-remark-autolink-headers'],
+                gatsbyRemarkPlugins: [
+                    'gatsby-remark-prismjs',
+                    'gatsby-remark-autolink-headers',
+                    {
+                        resolve: 'gatsby-remark-images',
+                        options: {
+                            maxWidth: 1200
+                        }
+                    }
+                ],
             },
         },
         {

@@ -16,14 +16,13 @@ function addNodesToChildren({ children, nodes, parentPath = '' }: AddNodesToChil
             console.log({ node, children, pathComponents });
         }
         if (pathComponents.length)
-
-        children &&
-            children.push({
-                slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
-                label: node.frontmatter?.title || node.slug,
-                iconName: node.frontmatter?.iconComponentName,
-                pathComponents: pathComponents,
-            });
+            children &&
+                children.push({
+                    slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
+                    label: node.frontmatter?.title || node.slug,
+                    iconName: node.frontmatter?.iconComponentName,
+                    pathComponents: pathComponents,
+                });
     });
 
     return nodes;

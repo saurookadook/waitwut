@@ -3,10 +3,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 import { CssBaseline } from '@mui/material';
 
-import { GlobalStyles, pageMap } from 'common/constants';
+import { pageMap } from 'common/constants';
 import { HeadMetaContext, PageMapContext } from 'common/contexts';
 import { Footer, Header, LeftSideMenu } from 'components/index';
 import { AppStateProvider } from 'store';
+import { GlobalStyles, WaitwutStyles, ResumeStyles } from 'styles';
 import { baseTheme, containerTheme, resumeTheme } from 'themes/index';
 import { StyledContainerOnly, StyledBoxOnly, StyledContainer, StyledBox } from './styled';
 
@@ -44,6 +45,7 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                     {containerOnly() ? (
                         <ThemeProvider theme={resumeTheme}>
                             <GlobalStyles />
+                            <ResumeStyles />
                             <StyledContainerOnly disableGutters={true}>
                                 <StyledBoxOnly>{children}</StyledBoxOnly>
                             </StyledContainerOnly>
@@ -52,14 +54,15 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                         <ThemeProvider theme={baseTheme}>
                             <CssBaseline />
                             <GlobalStyles />
+                            <WaitwutStyles />
                             <Header />
                             <ThemeProvider theme={containerTheme}>
                                 <StyledContainer disableGutters={true}>
                                     <StyledBox>{children}</StyledBox>
                                     <LeftSideMenu />
                                 </StyledContainer>
+                                <Footer />
                             </ThemeProvider>
-                            <Footer />
                         </ThemeProvider>
                     )}
                 </PageMapContext.Provider>
