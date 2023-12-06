@@ -45,6 +45,8 @@ const LeftSideMenu = (): React.ReactElement => {
         isWindowDefined() && window.outerWidth > 1024 ? 'permanent' : 'temporary',
     );
 
+    const [navLinks, setNavLinks] = useState<NavLinkItem[]>([]);
+
     let mediaQuery: MediaQueryList | null = null;
     if (isWindowDefined()) {
         mediaQuery = window.matchMedia('(min-width: 600px)');
@@ -64,9 +66,15 @@ const LeftSideMenu = (): React.ReactElement => {
         }
     });
 
-    const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
-    console.log('LeftSideMenu: ', { navLinks, nodesGroups });
+    useEffect(() => {
+        console.log(' LeftSideMenu - createNavLinks '.padStart(80, '=').padEnd(160, '='));
+        // const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
+        setNavLinks(createNavLinks({ nodesGroups, pageMap }));
+        // console.log('LeftSideMenu: ', { navLinks, nodesGroups });
+    }, [nodesGroups, pageMap]);
 
+    console.log(' LeftSideMenu - navLinks '.padStart(80, '=').padEnd(160, '='));
+    console.log(JSON.parse(JSON.stringify(navLinks)));
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer

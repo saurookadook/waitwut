@@ -7,24 +7,59 @@ interface AddNodesToChildrenArgs {
 }
 
 function addNodesToChildren({ children, nodes, parentPath = '' }: AddNodesToChildrenArgs): NodeFromQuery[] {
-    console.log('addNodesToChildren: ', { nodes, children });
+    if (parentPath.includes('bookmarks')) {
+        console.log(' addNodesToChildren '.padStart(80, '=').padEnd(160, '='));
+        console.log(JSON.parse(JSON.stringify({ nodes, children, parentPath })));
+    }
+
+    const nodeParents: any = {};
 
     nodes.forEach((node: NodeFromQuery) => {
         let nodeChildren;
-        const pathComponents = (node.frontmatter?.fullPath || node.slug).match(/[^\/]+[^\/]/g) || [];
-        if (node.slug === 'python') {
-            console.log({ node, children, pathComponents });
+        const pathComponents: string[] = node.slug.match(/[^\/]+[^\/]/g) || [];
+        if (node.frontmatter.fullPath?.includes('bookmarks')) {
+            console.log(JSON.parse(JSON.stringify({ children, node, parentPath, pathComponents })));
         }
-        if (pathComponents.length)
-            children &&
-                children.push({
-                    slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
-                    label: node.frontmatter?.title || node.slug,
-                    iconName: node.frontmatter?.iconComponentName,
-                    pathComponents: pathComponents,
-                });
+        let parentSlug;
+        if (pathComponents.length > 1) {
+            parentSlug = pathComponents[0];
+        } else {
+            parentSlug = parentPath;
+        }
+
+        if (!nodeParents[parentSlug]) {
+            nodeParents[parentSlug] = {
+                slug: parentSlug,
+                label: parentSlug[0].toUpperCase() + parentSlug.slice(1), // TODO: capitlize it
+                children: [],
+            };
+        }
+
+        nodeParents[parentSlug].children.push({
+            slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
+            fullPath: node.frontmatter?.fullPath,
+            label: node.frontmatter?.title || node.slug,
+            iconName: node.frontmatter?.iconComponentName,
+            pathComponents: pathComponents,
+        });
+
+        // if (nodeParents[node.slug]) {
+        //     nodeParents[node.slug].children.push({
+        //         slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
+        //         fullPath: node.frontmatter?.fullPath,
+        //         label: node.frontmatter?.title || node.slug,
+        //         iconName: node.frontmatter?.iconComponentName,
+        //         pathComponents: pathComponents,
+        //     });
+        // }
     });
 
+    Object.values(nodeParents).forEach((nodeParent) => {
+        children && children.push(nodeParent as NavLinkItem);
+    });
+
+    console.log(' addNodesToChildren - END '.padStart(80, '=').padEnd(160, '='));
+    console.log(JSON.parse(JSON.stringify({ children, nodes })));
     return nodes;
 }
 
@@ -41,7 +76,8 @@ function createNavLinks({
     parentNavLink,
     navLinksResult = [],
 }: CreateNavLinksArgs): NavLinkItem[] {
-    console.log('createNavLinks: ', { nodesGroups, pageMap, parentNavLink, navLinksResult });
+    console.log(' createNavLinks '.padStart(80, '=').padEnd(160, '='));
+    console.log(JSON.parse(JSON.stringify({ nodesGroups, pageMap, parentNavLink, navLinksResult })));
     for (const page of pageMap) {
         const navLink = {
             slug: page.sectionSlug,
@@ -53,9 +89,11 @@ function createNavLinks({
         console.log({ nodeGroup, page });
 
         if (nodeGroup && nodeGroup.nodes) {
+            console.log(` addNodesToChildren for ${nodeGroup.fieldValue} `.padStart(80, '=').padEnd(160, '='));
             addNodesToChildren({
                 nodes: nodeGroup.nodes,
                 children: navLink.children,
+                parentPath: nodeGroup.fieldValue,
             });
         }
 
