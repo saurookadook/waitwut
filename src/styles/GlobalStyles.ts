@@ -9,7 +9,12 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor} !important;
     }
 
-    body,
+    html {
+        height: 100vh;
+    }
+
+    /* TODO: can maybe remove this? */
+    body[id],
     main {
         background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor};
     }
@@ -18,7 +23,14 @@ const GlobalStyles = createGlobalStyle`
     body#resume {
         &,
         & main {
-            min-height: 100vh;
+            /* 5rem is height of footer */
+            height: calc(100% - 5rem);
+            max-height: 100vh;
+        }
+
+        & #___gatsby,
+        & #gatsby-focus-wrapper {
+            height: 100%;
         }
 
         & {
@@ -79,7 +91,9 @@ const GlobalStyles = createGlobalStyle`
 
 const WaitwutStyles = createGlobalStyle`
     #waitwut {
-        &body,
+        padding-top: 6rem;
+
+        &,
         & main {
             background-color: ${(props) => props?.theme?.backgroundColor};
             color: ${themeColors.graphite};
