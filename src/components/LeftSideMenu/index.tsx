@@ -77,6 +77,8 @@ const LeftSideMenu = (): React.ReactElement => {
         pageMap,
     ]);
 
+    // console.log(' LeftSideMenu - navLinks '.padStart(80, '=').padEnd(160, '='));
+    // console.log(JSON.parse(JSON.stringify(navLinks)));
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
