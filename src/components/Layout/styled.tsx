@@ -24,7 +24,6 @@ const StyledContainer = styled(Container)`
     background-color: ${(props) => props?.theme?.backgroundColor};
     height: auto;
     min-height: ${(props) => props?.theme?.height};
-    margin-top: 6rem;
     max-width: 100vw !important;
     padding: 0;
 
