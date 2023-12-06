@@ -23,6 +23,15 @@ const pageMap: PageMap[] = [
         description: 'Buncha notes 🗒️',
         sectionSlug: 'notes',
         title: 'Notes',
+        childSections: [
+            {
+                color: '#E95800',
+                description: 'TODO 🙃',
+                sectionSlug: 'python',
+                title: 'Python',
+                topParentSlug: 'notes',
+            },
+        ],
     },
     {
         color: themeColors.honeycombOrange,
