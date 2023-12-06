@@ -7,25 +7,32 @@ interface AddNodesToChildrenArgs {
 }
 
 function addNodesToChildren({ children, nodes, parentPath = '' }: AddNodesToChildrenArgs): NodeFromQuery[] {
-    if (parentPath.includes('bookmarks')) {
-        console.log(' addNodesToChildren '.padStart(80, '=').padEnd(160, '='));
-        console.log(JSON.parse(JSON.stringify({ nodes, children, parentPath })));
-    }
+    // if (parentPath.includes('bookmarks')) {
+    //     console.log(' addNodesToChildren '.padStart(80, '=').padEnd(160, '='));
+    //     console.log(JSON.parse(JSON.stringify({ nodes, children, parentPath })));
+    // }
 
     const nodeParents: any = {};
+    let parentSlug;
 
     nodes.forEach((node: NodeFromQuery) => {
-        let nodeChildren;
         const pathComponents: string[] = node.slug.match(/[^\/]+[^\/]/g) || [];
-        if (node.frontmatter.fullPath?.includes('bookmarks')) {
-            console.log(JSON.parse(JSON.stringify({ children, node, parentPath, pathComponents })));
+        // if (node.frontmatter.fullPath?.includes('bookmarks')) {
+        //     console.log(JSON.parse(JSON.stringify({ children, node, parentPath, pathComponents })));
+        // }
+
+        if (pathComponents.length === 1) {
+            children.push({
+                slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
+                fullPath: node.frontmatter?.fullPath,
+                label: node.frontmatter?.title || node.slug,
+                iconName: node.frontmatter?.iconComponentName,
+                pathComponents: pathComponents,
+            });
+            return;
         }
-        let parentSlug;
-        if (pathComponents.length > 1) {
-            parentSlug = pathComponents[0];
-        } else {
-            parentSlug = parentPath;
-        }
+
+        parentSlug = pathComponents[0];
 
         if (!nodeParents[parentSlug]) {
             nodeParents[parentSlug] = {
@@ -42,24 +49,14 @@ function addNodesToChildren({ children, nodes, parentPath = '' }: AddNodesToChil
             iconName: node.frontmatter?.iconComponentName,
             pathComponents: pathComponents,
         });
-
-        // if (nodeParents[node.slug]) {
-        //     nodeParents[node.slug].children.push({
-        //         slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
-        //         fullPath: node.frontmatter?.fullPath,
-        //         label: node.frontmatter?.title || node.slug,
-        //         iconName: node.frontmatter?.iconComponentName,
-        //         pathComponents: pathComponents,
-        //     });
-        // }
     });
 
     Object.values(nodeParents).forEach((nodeParent) => {
         children && children.push(nodeParent as NavLinkItem);
     });
 
-    console.log(' addNodesToChildren - END '.padStart(80, '=').padEnd(160, '='));
-    console.log(JSON.parse(JSON.stringify({ children, nodes })));
+    // console.log(' addNodesToChildren - END '.padStart(80, '=').padEnd(160, '='));
+    // console.log(JSON.parse(JSON.stringify({ children, nodes })));
     return nodes;
 }
 
@@ -76,8 +73,8 @@ function createNavLinks({
     parentNavLink,
     navLinksResult = [],
 }: CreateNavLinksArgs): NavLinkItem[] {
-    console.log(' createNavLinks '.padStart(80, '=').padEnd(160, '='));
-    console.log(JSON.parse(JSON.stringify({ nodesGroups, pageMap, parentNavLink, navLinksResult })));
+    // console.log(' createNavLinks '.padStart(80, '=').padEnd(160, '='));
+    // console.log(JSON.parse(JSON.stringify({ nodesGroups, pageMap, parentNavLink, navLinksResult })));
     for (const page of pageMap) {
         const navLink = {
             slug: page.sectionSlug,

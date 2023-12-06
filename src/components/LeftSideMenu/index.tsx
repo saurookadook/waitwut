@@ -67,14 +67,16 @@ const LeftSideMenu = (): React.ReactElement => {
     });
 
     useEffect(() => {
-        console.log(' LeftSideMenu - createNavLinks '.padStart(80, '=').padEnd(160, '='));
-        // const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
-        setNavLinks(createNavLinks({ nodesGroups, pageMap }));
-        // console.log('LeftSideMenu: ', { navLinks, nodesGroups });
-    }, [nodesGroups, pageMap]);
+        if (navLinks.length === 0) {
+            // TODO: maybe a hook like useMemo would be better for this?
+            // const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
+            setNavLinks(createNavLinks({ nodesGroups, pageMap }));
+        }
+    }, [
+        nodesGroups,
+        pageMap,
+    ]);
 
-    console.log(' LeftSideMenu - navLinks '.padStart(80, '=').padEnd(160, '='));
-    console.log(JSON.parse(JSON.stringify(navLinks)));
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
