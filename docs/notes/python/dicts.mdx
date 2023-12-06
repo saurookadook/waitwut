@@ -1,0 +1,39 @@
+---
+title: "dicts"
+date: "2023-10-24"
+fullPath: "/sheets/python/dicts"
+iconComponentName: "python_icon"
+sectionSlug: "sheets"
+---
+
+# dicts
+```python
+basic_dict = dict(foo='bar', baz='beep')
+'foo' in basic_dict #=> True
+del basic_dict['foo']
+```
+
+## Common/Useful Methods
+
+### [`get()`](https://python-reference.readthedocs.io/en/latest/docs/dict/get.html)
+
+```python
+basic_dict = dict(foo='bar', baz='beep')
+basic_dict.get('foo')
+#=> 'bar'
+basic_dict.get('meow', 'DEFAULT')
+#=> 'DEFAULT'
+
+counts_by_letter = {'a': 1, 'b': 2}
+counts_by_letter['c'] = counts_by_letter.get('c', 0) + 1
+counts_by_letter
+#=> {'a': 1, 'b': 2, 'c': 1}
+
+```
+
+## pretty-printing using `pprint` module from Python standard library
+```python
+from pprint import pprint as pp
+pp(basic_dict)
+```
+

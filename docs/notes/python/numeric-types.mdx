@@ -1,0 +1,208 @@
+---
+title: "Numeric Types"
+date: "2023-10-24"
+fullPath: "/sheets/python/numeric-types"
+iconComponentName: "python_icon"
+sectionSlug: "sheets"
+---
+
+# Numeric Types
+
+## `int`
+
+- unlimited precision signed integer
+
+## `float`
+
+- IEEE-754 double precision (64-bit)
+    - _in C-based languages, commonly known as a `double`_
+- 53 bits of binary precision
+- 15 to 17 bits of decimal precision
+
+**NOTE:**
+- generally, shouldn't assume that any Python `int` can be converted to a Python `float` without loss of information
+    - _usually fine for smaller numbers_
+```python
+# in repl
+>>> 2**53
+#=> 9007199254740992
+>>> float(2**53)
+#=> 9007199254740992.0
+>>> float(2**53 + 1) # loss of precision here
+#=> 9007199254740992.0
+>>> float(2**53 + 2) # but this is correct
+#=> 9007199254740994.0
+>>> float(2**53 + 3) # loss of precision here again
+#=> 9007199254740996.0
+>>> float(2**53 + 4) # but then this is correct
+#=> 9007199254740996.0
+```
+
+_For more, suggested reading: "What Every Computer Scientist Should Know About Floating-Point Arithmetic" by David Goldberg_
+
+## The `decimal` Module
+
+- standard library module
+- contains `Decimal` class
+    - decimal floating point
+    - configurable (although finite) precision
+    - defaults to 28 digits of decimal precision
+
+## Rational Numbers
+
+### The `fractions` Module
+
+- standard library module
+- contains `Fraction` class
+    - _for rational numbers_
+    - can be constructed directly from floats
+        - _**NOTE**: if value you expect can't be exactly represented by the binary float (such as `0.1`), then you may not get the result you want_
+        - in this case, better to construct the fraction using `Decimal`
+    - most mathematical operators work as expected
+        - **does not support** methods for things like square roots
+            - _simply: because square root of fraction may be an irrational number_
+
+```python
+>>> from fractions import Fraction
+>>> two_thirds = Fraction(2, 3)
+>>> two_thirds
+#=> Fraction(2, 3)
+>>> four_fifths = Fraction(4, 5)
+>>> four_fifths
+Fraction(4, 5)
+>>> Fraction(0.5)
+#=> Fraction(1, 2)
+>>> Fraction(0.1)
+#=> Fraction(3602879701896397, 3602879701896398)
+>>> Fraction(Decimal('0.1'))
+#=> Fraction(1, 10)
+>>> Fraction('22/7')
+#=> Fraction(22, 7)
+
+>>> Fraction(2, 3) + Fraction(4, 5)
+#=> Fraction(22, 15)
+>>> Fraction(2, 3) - Fraction(4, 5)
+#=> Fraction(-2, 15)
+>>> Fraction(2, 3) * Fraction(4, 5)
+#=> Fraction(8, 15)
+>>> Fraction(2, 3) / Fraction(4, 5)
+#=> Fraction(5, 6)
+>>> Fraction(2, 3) // Fraction(4, 5)
+#=> 0
+>>> Fraction(2, 3) % Fraction(4, 5)
+#=> Fraction(2, 3)
+```
+
+
+## Complex Type and `cmath` Module
+
+{/* _[course link](https://app.pluralsight.com/course-player?clipId=bc027a0e-d20c-4499-aa6f-0197ec931965)_ */}
+
+_TODO_ 🙃
+
+## `abs()`
+
+- built-in function
+- gives distance from zero
+
+```python
+# in repl
+>>> abs(-5)
+#=> 5
+>>> abs(-5.0)
+#=> 5.0
+>>> abs(Decimal(-5))
+#=> Decimal('5')
+>>> abs(Fraction(-5, 1))
+#=> Fraction(5, 1)
+>>> abs(complex(0, -5))
+#=> 5.0
+
+
+```
+
+## `round()`
+
+- built-in function
+- performs **decimal** rounding for all scalar number types
+- when there are equally close alternatives, rounding is done towards even numbers
+- **NOTE**:
+    - not supported for `complex`
+    - can show surprising results with `float` values (since they can't be represented _exactly_ in binary)
+
+```python
+# in repl
+>>> round(0.2812, 3)
+#=> 0.281
+>>> round(0.625, 1)
+#=> 0.6
+
+### equally close alternatives
+>>> round(1.5)
+#=> 2
+>>> round(2.5)
+#=> 2
+
+>>> round(Decimal('3.25'), 1)
+#=> Decimal('3.2')
+>>> round(Fraction(57, 100), 2)
+#=> Fraction(57, 100)
+>>> round(Fraction(57, 100), 1)
+#=> Fraction(3, 5)
+>>> round(Fraction(57, 100), 0)
+#=> Fraction(1, 1)
+```
+
+## Number Base Conversions
+
+_TODO_ 🙃
+
+## The `datetime` Module
+
+- standard library module
+- **types**
+    - `date`: Gregorian Calendar date _(assumes **proleptic** Gregorian calendar that extends into the infinite past and future)_
+        - `year`, `month`, `day`
+    - `time`: time within ideal day, ignoring leap seconds
+        - `hour`, `minute`, `second`, `microsecond`
+    - `datetime`: composite of `date` and `time`
+        - `year`, `month`, `day`, `hour`, `minute`, `second`, `microsecond`
+    - "time" components in both `time` and `datetime` can be used in so-called "naïve" or "aware" modes
+        - naïve mode
+            - values lack time zone and daylight saving time
+            - meaning with respect to other time values is purely by convention within particular program _(i.e. part of meaning of time is implicit)_
+        - aware mode
+            - have knowledge of both time zone and daylight saving time
+    - abstract classes `tzinfo` and concrete `timezone`
+        - used for representing time zone info required for aware time objects
+    - `timedelta`: duration expressing difference between 2 date or datetime instances
+        - constructor accepts `days`, `seconds`, `microseconds`, `milliseconds`, `minutes`, `hours`, `weeks`
+        - instances store **only** `days`, `seconds`, `microseconds`
+    - **all objects of the above types are immutable**
+
+### Basic time zone examples using `timezone` and `tzinfo`
+
+```python
+# in repl
+>>> import datetime
+>>>
+>>> cet = datetime.timezone(datetime.timedelta(hours=1), "CET")
+>>> cet
+#=> datetime.timezone(datetime.timedelta(0, 3600), 'CET')
+>>>
+>>> departure = datetime.datetime(year=2014, month=1, day=7,
+...                               hour=11, minute=30, tzinfo=cet)
+>>>
+>>> arrival = datetime.datetime(year=2014, month=1, day=7,
+...                             hour=13, minute=5,
+...                             tzinfo=datetime.timezone.utc)
+>>> arrival - departure
+#=> datetime.datetime(0, 9300)
+>>> str(arrival - departure)
+#=> '2:35:00'
+
+```
+
+## Misc.
+
+**Important takeaway**: use `Fraction` for handling numbers in complex, precise computations

@@ -1,0 +1,101 @@
+---
+title: "Control Flow"
+date: "2023-10-23"
+fullPath: "/sheets/python/control-flow"
+iconComponentName: "python_icon"
+sectionSlug: "sheets"
+---
+
+# Control Flow
+
+- [Conditional Statements](#conditional-statements)
+- [Loops](#loops)
+
+## Conditional Statements
+
+### `if`
+- branch execution based on value of expression
+- expression used in `if` statement will be converted to a boolean as if `bool()` constructor had been used
+- basic syntax:
+```py
+if expression:
+    block # block is terminated by blank line
+
+
+if True:
+    print("It's true!")
+
+#=> It's true!
+```
+
+### `else` clause
+```py
+h = 42
+if h > 50:
+    print("Greater than 50")
+else:
+    print("50 or smaller")
+
+#=> 50 or smaller
+```
+
+### `elif` clause
+```py
+h = 42
+if h > 50:
+    print("Greater than 50")
+elif h < 20:
+    print("Less than 20")
+else:
+    print("Between 20 and 50")
+
+#=> Between 20 and 50
+```
+
+---
+
+## Loops
+
+### `while` Loop
+- similarly as in `if` statements, passed expression is implicitly converted to boolean
+- basic syntax:
+```py
+while expression:
+    block # block is terminated by blank line
+
+
+c = 5
+while c != 0:
+    print(c)
+    c -= 1 # augmented assignment operator
+
+#=> 5
+#=> 4
+#=> 3
+#=> 2
+#=> 1
+
+# because `c` will eventually equal 0, can replace above example with:
+c = 5
+while c:
+    print(c)
+    c -= 1
+
+# however, this is probably not preferable because "explicit is better than implicit"
+```
+
+### `break` keyword
+- many languages support loop construct ending in predicate test
+- C, C++, C#, Java, Ruby, and others have `do-while`
+- other languages have "repeat until" loops instead
+- NOTE: does not exist in Python; idiom is to use `while True` and `break` (using `break` to facilitate early exit)
+    - `break` jumps out of inner-most executing loop to line immediately after it
+- basic usage:
+```py
+while True:
+    response = input() # built-in `input` function used to request string from user
+    if int(response) % 7 == 0:
+        break
+
+
+```

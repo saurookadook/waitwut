@@ -15,8 +15,10 @@ interface AllCheatSheets {
 
 interface NavLinkItem {
     slug?: string;
+    fullPath?: string;
     label?: string;
     iconName?: string;
+    pathComponents?: string[];
     children?: NavLinkItem[];
 }
 
@@ -31,6 +33,7 @@ interface NodeFromQuery {
     name: string;
     slug: string;
     frontmatter: NodeFrontmatter;
+    pathComponents?: string[];
 }
 
 interface GroupFromQuery {

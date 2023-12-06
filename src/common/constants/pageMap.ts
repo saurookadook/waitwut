@@ -14,9 +14,24 @@ const pageMap: PageMap[] = [
     // TODO: better typing :)
     {
         color: themeColors.plBlue,
-        description: 'Mix of notes and cheat sheets 🙂',
+        description: 'Some cheat sheets and quick references 🙂',
         sectionSlug: 'sheets',
         title: 'Sheets',
+    },
+    {
+        color: themeColors.plBlue,
+        description: 'Buncha notes 🗒️',
+        sectionSlug: 'notes',
+        title: 'Notes',
+        childSections: [
+            {
+                color: '#E95800',
+                description: 'TODO 🙃',
+                sectionSlug: 'python',
+                title: 'Python',
+                topParentSlug: 'notes',
+            },
+        ],
     },
     {
         color: themeColors.honeycombOrange,
