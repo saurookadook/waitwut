@@ -7,3 +7,182 @@ sectionSlug: "notes"
 ---
 
 # Functions
+
+
+## Detecting callable objects:
+```python
+def is_even(x):
+    return x % 2 == 0
+
+callable(is_even)
+#=> True
+```
+
+## Making instances of classes callable(?)
+```python
+class CallMe:
+    def __call__(self):
+        print("Called!")
+
+call_me = CallMe()
+callable(call_me)
+#=> True
+```
+
+## Extended formal argument syntax
+
+```python
+def extended(*args, **kwargs):
+```
+
+1. 'star args' _must_ come before 'k w args'
+2. any arguments preceding 'star args' will be considered positional arguments
+3. any arguments after 'star args' will be mandatory keyword arguments
+4. if 'k w args' is present, it _must_ be last in arguments list
+
+### 'star args'
+- handles positional arguments
+
+```python
+def hypervolume(*lengths):
+    print(f"lengths: {lengths}")
+    print(f"type: {type(lengths)}")
+
+    i = iter(lengths)
+    v = next(i)
+    for length in i:
+        v *= length
+    return v
+
+### or better yet, making sure a meaningful
+# exception gets thrown if called without arguments
+def hypervolume(length, *lengths):
+    print(f"lengths: {lengths}")
+    print(f"type: {type(lengths)}")
+
+    v = length
+    for item in lengths:
+        v *= item
+    return v
+
+```
+
+### 'k w args' (KWARGS)
+- handles keyword arguments
+- keyword args passed to `kwargs` as dictionary
+
+```python
+def example(name, **kwargs):
+    print(f"name: {name}")
+    print("kwargs: ")
+    print(kwargs)
+    print(f"type of kwargs: {type(kwargs)}")
+
+
+def tag(name, **attributes):
+    result = '<' + name
+    for key, value in attributes.items():
+        result += ' {k}="{v}"'.format(k=key, v=str(value))
+    result += '/>'
+    return result
+
+```
+
+## Extended actual argument syntax
+
+### 'star args'
+
+```python
+def print_args(arg1, arg2, *args):
+    print(arg1)
+    print(arg2)
+    print(arg3)
+
+t = (11, 12, 13, 14)
+print(*t)
+#=> 11
+#=> 12
+#=> (13, 14)
+```
+
+### 'k w args'
+
+```python
+def color(red, green, blue, **kwargs):
+    print("r = ", red)
+    print("g = ", green)
+    print("b = ", blue)
+    print(kwargs)
+
+k = {'red': 21, 'green': 68, 'blue': 120, 'alpha': 52}
+color(**k)
+#=> r = 21
+#=> g = 68
+#=> b = 120
+#=> {'alpha': 52}
+```
+
+## Forwarding Arguments using `*args` and `**kwargs`
+
+```python
+def trace(f, *args, **kwargs):
+    print("args = ", args)
+    print("kwargs = ", kwargs)
+    result = f(*args, **kwargs)
+    print("result = ", result)
+    return result
+```
+
+## Example using `zip()`
+
+```python
+sunday = [2, 3, 4, 5, 6]
+monday =[11, 12, 13, 14, 15]
+tuesday = [5, 4, 3, 2, 1]
+daily = [sunday, monday, tuesday]
+
+### all do the same thing
+for item in zip(sunday, monday, tuesday):
+    print(item)
+
+for item in zip(daily[0], daily[1], daily[2]):
+    print(item)
+
+for item in zip(*daily):
+    print(item)
+
+### result from `print` in `for` loop as single data structure
+transposed = list(zip(*daily)) #=> list of tuples
+```
+
+## Local Functions
+
+- generally refers to functions defined inside of other functions
+
+```python
+def func():
+    def local_func():
+        a = 'hello'
+        b = 'world'
+        return a + b
+
+    x = 1
+    y = 2
+    return x + y
+```
+
+## Returning Function from Function
+
+```python
+def outer():
+    def inner():
+        print('inner')
+    return inner
+
+example = outer()
+example()
+#=> inner
+```
+
+## First-class Functions
+- functions can be treated like any other object

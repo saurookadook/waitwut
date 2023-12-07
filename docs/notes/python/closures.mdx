@@ -7,3 +7,133 @@ sectionSlug: "notes"
 ---
 
 # Closures
+- formed by local functions
+- maintain references to objects from earlier scopes
+- implemented in Python with special attribute `__closure__`
+
+```python
+def enclosing():
+    x = 'closed over'
+    def local_func():
+        print(x)
+    return local_func
+
+lf = enclosing()
+lf()
+#=> closed over
+lf.__closure__
+#=> (<cell at 0x10ea95cc8: str object at 0x10eac19f0>,)
+```
+
+## Function Factory
+- function that returns new, specialized functions
+- simple example
+```python
+def raise_to(exp):
+    def raise_to_exp(x):
+        return pow(x, exp)
+    return raise_to_exp
+
+```
+
+## The `nonlocal` Keyword
+- LEGB does not apply when making new bindings
+- `nonlocal` keyword introduces names from enclosing namespace into local namespace
+    - **IMPORTANT**: using `nonlocal` with a name that doesn't exist will result in error
+
+```python
+message = 'global'
+
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        # does not affect `global` or `enclosing` bindings
+        message = 'local'
+
+    print('enclosing message before `local()` call: ', message)
+    local()
+    print('enclosing message after `local()` call: ', message)
+
+print('global message before `enclosing()` call: ', message)
+enclosing()
+print('global message after `enclosing()` call: ', message)
+
+#=> global message before `enclosing()` call: global
+#=> enclosing message before `local()` call: enclosing
+#=> enclosing message after `local()` call: enclosing
+#=> global message after `enclosing()` call: global
+```
+
+### Changing `local` binding using `global` keyword
+```python
+message = 'global'
+
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        global message
+        message = 'local'
+
+    print('enclosing message before `local()` call: ', message)
+    local()
+    print('enclosing message after `local()` call: ', message)
+
+print('enclosing message before `enclosing()` call: ', message)
+enclosing()
+print('enclosing message after `enclosing()` call: ', message)
+
+#=> global message before `enclosing()` call: global
+#=> enclosing message before `local()` call: enclosing
+#=> enclosing message after `local()` call: enclosing
+#=> global message after `enclosing()` call: local
+```
+
+### Changing `local` binding using `nonlocal` keyword
+```python
+message = 'global'
+
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        nonlocal message
+        message = 'local'
+
+    print('enclosing message before `local()` call: ', message)
+    local()
+    print('enclosing message after `local()` call: ', message)
+
+print('enclosing message before `enclosing()` call: ', message)
+enclosing()
+print('enclosing message after `enclosing()` call: ', message)
+
+#=> global message before `enclosing()` call: global
+#=> enclosing message before `local()` call: enclosing
+#=> enclosing message after `local()` call: local
+#=> global message after `enclosing()` call: global
+```
+
+### Practical Example
+```python
+# make_timer.py
+import time
+
+
+def make_timer():
+    last_called = None
+
+    def elapsed():
+        nonlocal last_called
+        now = time.time()
+        if last_called is None:
+            last_called = now
+            return None
+        result = now - last_called
+        last_called = now
+        return result
+
+    return elapsed
+
+```

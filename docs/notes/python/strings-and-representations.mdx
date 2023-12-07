@@ -7,3 +7,84 @@ sectionSlug: "notes"
 ---
 
 # Strings and Representations
+
+## `repr()`
+
+- built-in function
+- produces unambiguous string representation of an object
+- often suggested that `repr()` should return legitimate source code (i.e. can be copy/pasted and run to recreate the object)
+
+```python
+class Point2D:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return '({}, {})'.format(self.x, self.y)
+
+    def __repr__(self):
+        return 'Point2D(x={}, y={})'.format(self.x, self.y)
+
+point = Point2D(x=12, y=24)
+point.repr()
+#=> 'Point2D(x=12, y=24)'
+str(point)
+#=> '(12, 24)'
+```
+
+### Other considerations
+
+- exactness more important than human-friendliness
+- suited for debugging
+- includes identifying information
+- generally best for logging
+- generally, result of `repr()` should contain **more information** than result of `str()`
+- as a rule, should **always write** a `repr()` for your classes
+
+## `str()`
+
+- built-in function
+- produces readable, human-friendly representation of an object
+- used in situations where it might be integrated into normal text or where programming-level details might be meaningless
+
+## `repr()` and `str()` details
+
+- by default, `str()` calls `repr()`
+    - _i.e. if `__str__` is not defined on a class but `__repr__` is, then `__repr__` will be called when `str()` is called on an instance of that class_
+- however, `repr()` _does not_ call `str()`
+- `repr()` is used when showing elements of a collection
+
+## Interaction with `format()`
+
+- `__format__()` is special class method which is invoked by `str.format()`
+- simple example
+```python
+class MyClass:
+    def __init__(self, foo, bar):
+        self.foo = foo
+        self.bar = bar
+
+    def __format__(self, f): # `f` contains any special formatting options specified in original format string
+        return '[Formatted representation of class: {}, {}, {}]'.format(self.foo, self.bar, f)
+```
+- can force the use of a class's methods:
+    - force use of `__repr__()` by using `!r` in the format string: `'{!r}.format()`
+    - force use of `__str__()` by using `!s` in the format string: `'{!s}.format()`
+
+## `reprlib`
+
+- standard library module
+- supports alternative implementations of `repr()`
+- often used for things like limiting how many elements of a large list is printed
+- primary usage is simply `reprlib.repr()`
+- [reprlib docs](https://docs.python.org/3/library/reprlib.html)
+
+## Other built-in functions
+
+- `ascii()`
+    - takes string as argument and replaces non-ASCII characters with escape sequences
+- `ord()`
+    - takes single character string and converts it to **integer** Unicode codepoint
+- `chr()`
+    - takes single **integer** Unicode codepoint and converts it to single character string
