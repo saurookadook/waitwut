@@ -48,7 +48,7 @@ const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
                                 */}
-                                    <SheetLineItemLink to={`/sheet/${node.slug}`}>
+                                    <SheetLineItemLink to={`/sheets/${node.slug}`}>
                                         {(node.frontmatter || {}).title || node.slug}
                                     </SheetLineItemLink>
                                 </SheetLineItem>

@@ -46,7 +46,7 @@ const BookmarksListPage = ({ data }: ListPageProps): React.ReactElement => {
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
                                 */}
-                                    <SheetLineItemLink to={`/sheet/${node.slug}`}>
+                                    <SheetLineItemLink to={`/bookmarks/${node.slug}`}>
                                         {(node.frontmatter || {}).title || node.slug}
                                     </SheetLineItemLink>
                                 </SheetLineItem>
