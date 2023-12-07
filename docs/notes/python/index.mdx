@@ -23,3 +23,102 @@ sectionSlug: "notes"
 - [Closures](./closures)
 - [decorators](./decorators)
 - [Strings and Representations](./strings-and-representations)
+
+## General
+
+### Significant Whitespace
+
+- Python uses whitespace to demarcate code blocks
+- by convention, 4 spaces are used per depth
+- end blocks with blank lines(?)
+
+#### Significant Whitespace Rules
+
+1. Prefer four spaces
+2. NEVER mix spaces and tabs
+3. Be consistent on consecutive lines
+4. Only deviate to improve readability
+
+
+_"Programming as Guido ~~intended~~ indented it"_
+
+### Python Culture
+
+[Python Enhancement Proposals (pep)](https://peps.python.org/)
+
+#### Pep 20: The Zen of Python
+
+```python
+import this
+```
+### The Python Standard Library
+
+- often referred to as "Batteries Included"
+- gain access to standard library modules using `import` keyword
+- `import module_name`
+
+```python
+import math
+
+math.sqrt(81)
+# => 9.0
+math.factorial(5)
+# => 120
+
+n = 5
+k = 3
+
+math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
+10.0
+```
+
+- can use `help` in REPL environment to retrieve any embedded documentation from objects
+    - _for example:_ `help(math)`, `help(math.factorial)`
+
+#### Typical uses of `import`
+
+```python
+n = 5
+k = 3
+
+# simplest import
+import math
+
+math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
+# => 10.0
+
+
+# can import specific function from module into namespace
+from math import factorial
+
+factorial(n) / (factorial(k) * factorial(n - k))
+# => 10.0
+
+
+# can rename imported function as well
+from math import factorial as fac
+
+fac(n) / (fac(k) * fac(n - k))
+# => 10.0
+```
+_NOTE: can return integer using Python's integer division operator_
+
+```py
+from math import factorial as fac
+
+n = 5
+k = 3
+
+fac(n) // (fac(k) * fac(n - k))
+# => 10
+```
+_NOTE: Python can compute arbitrarily large numbers, limited only by the memory in your computer_
+
+### Relational Operators
+
+- `==`: value equality/equivalence
+- `!=`: value inequality/inequivalence
+- `<`: less-than
+- `>`: greater-than
+- `<=`: less-than or equal
+- `>=`: greater-than or equal
