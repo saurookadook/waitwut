@@ -2,34 +2,37 @@ import styled from 'styled-components';
 import { Box, Container } from '@mui/material';
 
 import { minWidth600 } from 'styles/mq';
+import { resumeTheme, themeColors } from 'themes';
 
 const StyledContainerOnly = styled(Container)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    height: 100vh;
-    max-width: 100vw !important;
-    padding: 0;
+    &#resume-content {
+        background: linear-gradient(to bottom, ${resumeTheme.psSuccessTextWeakHex} 50%, ${themeColors.plBlue} 50%);
+        height: 100vh;
+        max-width: 100vw;
+        padding: 0;
+    }
 `;
 
 const StyledBoxOnly = styled(Box)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
     display: flex;
     flex-direction: column;
     height: ${(props) => props.theme?.height};
     min-height: 50vh;
     overflow-y: scroll;
-    padding: 0;
+    padding: 2rem 0;
 `;
 
 const StyledContainer = styled(Container)`
-    background-color: ${(props) => props?.theme?.backgroundColor};
-    height: auto;
-    min-height: ${(props) => props?.theme?.height};
-    margin-top: 6rem;
-    max-width: 100vw !important;
-    padding: 0;
+    &#content-container {
+        background-color: ${(props) => props?.theme?.backgroundColor};
+        height: auto;
+        min-height: ${(props) => props?.theme?.height};
+        max-width: 100vw;
+        padding: 0 0 1rem;
 
-    ${minWidth600} {
-        padding: 0 2.5rem;
+        ${minWidth600} {
+            padding: 0 2.5rem 1rem;
+        }
     }
 `;
 

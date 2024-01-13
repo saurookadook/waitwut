@@ -46,7 +46,7 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                         <ThemeProvider theme={resumeTheme}>
                             <GlobalStyles />
                             <ResumeStyles />
-                            <StyledContainerOnly disableGutters={true}>
+                            <StyledContainerOnly id="resume-content" disableGutters={true}>
                                 <StyledBoxOnly>{children}</StyledBoxOnly>
                             </StyledContainerOnly>
                         </ThemeProvider>
@@ -57,7 +57,7 @@ const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElem
                             <WaitwutStyles />
                             <Header />
                             <ThemeProvider theme={containerTheme}>
-                                <StyledContainer disableGutters={true}>
+                                <StyledContainer id="content-container" disableGutters={true}>
                                     <StyledBox>{children}</StyledBox>
                                     <LeftSideMenu />
                                 </StyledContainer>
