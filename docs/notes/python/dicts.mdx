@@ -6,6 +6,8 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
+import { ExternalLinkWrapper } from 'common/components';
+
 # dicts
 ```python
 basic_dict = dict(foo='bar', baz='beep')
@@ -15,7 +17,11 @@ del basic_dict['foo']
 
 ## Common/Useful Methods
 
-### [`get()`](https://python-reference.readthedocs.io/en/latest/docs/dict/get.html)
+### `get()`
+
+<ExternalLinkWrapper href="https://python-reference.readthedocs.io/en/latest/docs/dict/get.html">
+    <em>Official Python docs for <code>get()</code></em>
+</ExternalLinkWrapper>
 
 ```python
 basic_dict = dict(foo='bar', baz='beep')
