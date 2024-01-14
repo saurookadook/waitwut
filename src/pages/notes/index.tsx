@@ -30,8 +30,8 @@ const SheetLineItemLink = styled(Link)`
     }
 `;
 
-const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
-    // console.log('SheetsPage - data: ', data);
+const NotesListPage = ({ data }: ListPageProps): React.ReactElement => {
+    // console.log('NotesListPage - data: ', data);
     const { nodes } = data.allMdx || {};
 
     return (
@@ -47,7 +47,7 @@ const SheetsPage = ({ data }: ListPageProps): React.ReactElement => {
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
                                 */}
-                                    <SheetLineItemLink to={`/sheet/${node.slug}`}>
+                                    <SheetLineItemLink to={`/notes/${node.slug}`}>
                                         {(node.frontmatter || {}).title || node.slug}
                                     </SheetLineItemLink>
                                 </SheetLineItem>
@@ -66,7 +66,7 @@ export const query = graphql`
     query {
         allMdx(
             sort: { fields: frontmatter___date, order: DESC }
-            filter: { frontmatter: { sectionSlug: { eq: "sheets" } } }
+            filter: { frontmatter: { sectionSlug: { eq: "notes" } } }
         ) {
             nodes {
                 frontmatter {
@@ -80,4 +80,4 @@ export const query = graphql`
     }
 `;
 
-export default SheetsPage;
+export default NotesListPage;

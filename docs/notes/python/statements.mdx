@@ -7,3 +7,23 @@ sectionSlug: "notes"
 ---
 
 # Statements
+
+`assert`
+- [The `assert` Statement](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement)
+- [assert (The Right Way)](https://python-reference.readthedocs.io/en/latest/docs/statements/assert.html)
+- [Python `assert` Statement](https://realpython.com/python-assert-statement/)
+
+```python
+assert expression
+
+# equivalent to
+if __debug__:
+    if not expression: raise AssertionError
+
+assert expression, other_expression
+
+# equivalent to
+if __debug__:
+    if not expression: raise AssertionError(other_expression)
+
+```

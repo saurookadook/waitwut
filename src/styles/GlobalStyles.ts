@@ -39,51 +39,52 @@ const GlobalStyles = createGlobalStyle`
             overscroll-behavior-y: none; /* TODO: only apply this for "desktop"? */
         }
 
-        main {
+        & main {
             color: #232129;
             font-family: "-apple-system, Roboto, sans-serif, serif";
             /* padding: 96px; */
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5 {
             margin-bottom: 0.5rem;
         }
 
-        h1 {
+        & h1 {
             font-size: 3rem;
             margin-top: 0;
         }
 
-        h2 {
+        & h2 {
             font-size: 2.5rem;
         }
 
-        h3 {
+        & h3 {
             font-size: 2rem;
         }
 
-        h4 {
+        & h4 {
             font-size: 1.75rem;
         }
 
-        h5 {
+        & h5 {
             font-size: 1.5rem;
         }
 
-        summary > * {
+        & summary > * {
             display: inline-block;
             margin-left: 0.5rem;
         }
 
-        a {
+        & a {
             text-decoration: none;
 
             &:hover {
                 transform: scale(1.02);
+                transform-origin: left;
             }
         }
     }
@@ -104,36 +105,37 @@ const WaitwutStyles = createGlobalStyle`
             width: 100vw;
         }
 
-        ul,
-        ol {
+        & ul,
+        & ol {
             list-style: initial;
         }
 
-        ul {
+        & li,
+        & a {
+            height: auto;
+            width: fit-content;
+        }
+
+        & ul {
             margin-top: 0.5rem;
             margin-bottom: 0.75rem;
         }
 
-        ol li::marker {
+        & ol li::marker {
             font-weight: 900;
         }
 
-        li {
+        & li {
             font-size: 1.125rem;
             font-weight: 300;
             margin-bottom: 0.25rem;
-            /* max-width: 560px; */
-
-            & a {
-                color: ${themeColors.darkerPurpleHex};
-            }
         }
 
-        p {
+        & p {
             margin-bottom: 0.5rem;
         }
 
-        code {
+        & code {
             /* background-color: #FFF4DB; */
             border-radius: 4px;
             /* color: #8A6534; */
@@ -143,7 +145,7 @@ const WaitwutStyles = createGlobalStyle`
 
 
         /* https://css-tricks.com/examples/hrs/ */
-        hr {
+        & hr {
             border: 0 none;
             margin: 2rem 0;
             opacity: 1;
@@ -161,22 +163,22 @@ const WaitwutStyles = createGlobalStyle`
             ); */
         }
 
-        .doc-list {
+        & .doc-list {
             padding-left: 0;
         }
 
-        .link-list {
+        & .link-list {
             margin-bottom: 96px;
             padding-left: 0;
         }
 
-        .basic-link {
+        & .basic-link {
             color: #8954A8;
             font-weight: bold;
             vertical-align: 5%;
         }
 
-        .badge {
+        & .badge {
             background-color: #088413;
             border: 1px solid #088413;
             border-radius: 4px;
@@ -190,6 +192,13 @@ const WaitwutStyles = createGlobalStyle`
             padding: 4px 6px;
             position: relative;
             top: -2px;
+        }
+
+        & #sheet-page-content {
+            & a {
+                color: ${themeColors.darkerPurpleHex};
+                display: inline-block;
+            }
         }
     }
 `;

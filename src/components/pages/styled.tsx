@@ -30,8 +30,12 @@ const MDXRendererWrapper = styled.div`
         margin-top: 0;
     }
 
+    & h1#table-of-contents + ul > li {
+        width: fit-content;
+    }
+
     & h1#table-of-contents + ul > li:hover {
-        transform: scale(1.01);
+        transform: scale(1.1);
     }
 `;
 
