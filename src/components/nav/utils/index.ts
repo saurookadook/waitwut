@@ -21,7 +21,7 @@ function addNodesToChildren({ children, nodes, parentPath = '' }: AddNodesToChil
                 slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
                 label: node.frontmatter?.title || node.slug,
                 iconName: node.frontmatter?.iconComponentName,
-                // path: node.frontmatter?.fullPath
+                fullPath: node.frontmatter?.fullPath,
             });
     });
 

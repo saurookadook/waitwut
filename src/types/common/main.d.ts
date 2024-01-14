@@ -34,6 +34,7 @@ interface NodeFromQuery {
     slug: string;
     frontmatter: NodeFrontmatter;
     pathComponents?: string[];
+    path: string;
 }
 
 interface GroupFromQuery {
