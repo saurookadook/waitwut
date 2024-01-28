@@ -24,6 +24,9 @@ export const useSheetsQuery = (): MdxNodes => {
                             }
                             id
                             slug
+                            fields {
+                                pathComponents
+                            }
                         }
                         fieldValue
                     }
