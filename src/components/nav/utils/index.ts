@@ -1,73 +1,112 @@
 import { PageMap } from 'common/constants/pageMap';
 
-interface AddNodesToChildrenArgs {
-    children: NavLinkItem[];
-    nodes: NodeFromQuery[];
-    parentPath?: string;
+type NodeParent = {
+    [key: string]: NodeFromQuery | EmptyObject;
+};
+
+interface FindOrCreateSectionChildArgs {
+    nodeParentMap: NodeParent | AmbiguousObject;
+    pathSteps: string[];
+    childSectionSlugs?: string[];
+    currentParent?: NavLinkItem | EmptyObject;
+    sectionChild?: NavLinkItem | EmptyObject;
 }
 
-function addNodesToChildren({ children, nodes, parentPath = '' }: AddNodesToChildrenArgs): NodeFromQuery[] {
-    // if (parentPath.includes('bookmarks')) {
-    //     console.log(' addNodesToChildren '.padStart(80, '=').padEnd(160, '='));
-    //     console.log(JSON.parse(JSON.stringify({ nodes, children, parentPath })));
-    // }
+function findOrCreateSectionChild({
+    nodeParentMap,
+    pathSteps,
+    childSectionSlugs,
+    currentParent = {},
+    sectionChild = {},
+}: FindOrCreateSectionChildArgs): NavLinkItem | null {
+    const pathStep = pathSteps.shift();
+    if (!pathStep) {
+        return null;
+    }
 
-    const nodeParents: any = {};
-    let parentSlug;
+    if (childSectionSlugs && childSectionSlugs.includes(pathStep)) {
+        if (!nodeParentMap[pathStep]) {
+            nodeParentMap[pathStep] = {
+                slug: `${pathStep}/`,
+                children: [],
+            };
+        }
+
+        currentParent = nodeParentMap[pathStep] as NavLinkItem;
+    }
+
+    if (pathSteps.length > 0) {
+        return findOrCreateSectionChild({
+            nodeParentMap,
+            pathSteps: pathSteps,
+            childSectionSlugs,
+            currentParent,
+            sectionChild,
+        });
+    }
+
+    return currentParent;
+}
+
+function addMissingFieldsToSection(section: NavLinkItem, node: NodeFromQuery): void {
+    Object.assign(section, {
+        label: node.frontmatter?.title || node.slug,
+        iconName: node.frontmatter?.iconComponentName,
+        fullPath: node.frontmatter?.fullPath,
+    });
+}
+
+function addNodeToChildren(children: NavLinkItem[], node: NodeFromQuery): void {
+    children.push({
+        slug: node.slug,
+        label: node.frontmatter?.title || node.slug,
+        iconName: node.frontmatter?.iconComponentName,
+        fullPath: node.frontmatter?.fullPath,
+    });
+}
+
+interface PopulateNavLinkChildren {
+    children: NavLinkItem[];
+    childSectionSlugs?: string[];
+    nodes: NodeFromQuery[];
+}
+
+function populateNavLinkChildren({ children, childSectionSlugs, nodes }: PopulateNavLinkChildren): NodeFromQuery[] {
+    const nodeParentMap: NodeParent = {};
+    let pathSteps;
 
     nodes.forEach((node: NodeFromQuery) => {
-        children &&
-            children.push({
-                slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
-                label: node.frontmatter?.title || node.slug,
-                iconName: node.frontmatter?.iconComponentName,
-                fullPath: node.frontmatter?.fullPath,
-            });
+        const { pathComponents } = node.fields;
+
+        pathSteps = pathComponents.slice(1, pathComponents.length - 1);
+
+        const sectionChild = findOrCreateSectionChild({
+            nodeParentMap,
+            pathSteps,
+            childSectionSlugs,
+        });
+
+        if (sectionChild == null) {
+            const trimmedSlug = node.slug.replace('/', '');
+            if (nodeParentMap[trimmedSlug]) {
+                return addMissingFieldsToSection(nodeParentMap[trimmedSlug], node);
+            }
+
+            return addNodeToChildren(children, node);
+        }
+
+        if (node.slug === sectionChild?.slug) {
+            addMissingFieldsToSection(sectionChild, node);
+        } else if (Array.isArray(sectionChild?.children)) {
+            addNodeToChildren(sectionChild.children, node);
+        }
     });
 
-    // nodes.forEach((node: NodeFromQuery) => {
-    //     const pathComponents: string[] = node.slug.match(/[^\/]+[^\/]/g) || [];
-    //     // if (node.frontmatter.fullPath?.includes('bookmarks')) {
-    //     //     console.log(JSON.parse(JSON.stringify({ children, node, parentPath, pathComponents })));
-    //     // }
-
-    //     if (pathComponents.length === 1) {
-    //         children.push({
-    //             slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
-    //             fullPath: node.frontmatter?.fullPath,
-    //             label: node.frontmatter?.title || node.slug,
-    //             iconName: node.frontmatter?.iconComponentName,
-    //             pathComponents: pathComponents,
-    //         });
-    //         return;
-    //     }
-
-    //     parentSlug = pathComponents[0];
-
-    //     if (pathComponents.length > 0 && !nodeParents[parentSlug]) {
-    //         nodeParents[parentSlug] = {
-    //             slug: parentSlug,
-    //             label: parentSlug[0].toUpperCase() + parentSlug.slice(1), // TODO: capitlize it
-    //             children: [],
-    //         };
-    //     }
-
-    //     nodeParents[parentSlug].children.push({
-    //         slug: node.slug.replace(/(\w+?\/){1,}/g, ''),
-    //         fullPath: node.frontmatter?.fullPath,
-    //         label: node.frontmatter?.title || node.slug,
-    //         iconName: node.frontmatter?.iconComponentName,
-    //         pathComponents: pathComponents,
-    //     });
-    // });
-
-    // Object.values(nodeParents).forEach((nodeParent) => {
-    //     children && children.push(nodeParent as NavLinkItem);
-    // });
-
-    // console.log(' addNodesToChildren - END '.padStart(80, '=').padEnd(160, '='));
-    // console.log(JSON.parse(JSON.stringify({ children, nodes })));
     return nodes;
+}
+
+function getNodeGroupBySectionSlug(nodesGroups: GroupFromQuery[], sectionSlug: string): GroupFromQuery | undefined {
+    return nodesGroups.find((node) => node.fieldValue === sectionSlug);
 }
 
 interface CreateNavLinksArgs {
@@ -79,47 +118,28 @@ interface CreateNavLinksArgs {
 
 // TODO: figure out better way to handle childSections
 // - childSections are currently defined in pageMap, which is a static constant
-function createNavLinks({
-    nodesGroups,
-    pageMap,
-    parentNavLink,
-    navLinksResult = [],
-}: CreateNavLinksArgs): NavLinkItem[] {
-    // console.log(' createNavLinks '.padStart(80, '=').padEnd(160, '='));
-    // console.log(JSON.parse(JSON.stringify({ nodesGroups, pageMap, parentNavLink, navLinksResult })));
-    for (const page of pageMap) {
+function createNavLinks({ nodesGroups, pageMap }: CreateNavLinksArgs): NavLinkItem[] {
+    const navLinksResult = [];
+
+    for (const pageConfig of pageMap) {
         const navLink = {
-            slug: page.sectionSlug,
-            label: page.title,
+            slug: pageConfig.sectionSlug,
+            label: pageConfig.title,
             children: [] as NavLinkItem[],
         };
 
-        const nodeGroup = nodesGroups.find((node) => node.fieldValue === page.sectionSlug);
+        const nodeGroup = getNodeGroupBySectionSlug(nodesGroups, pageConfig.sectionSlug);
 
         if (nodeGroup && nodeGroup.nodes) {
-            // console.log(` addNodesToChildren for ${nodeGroup.fieldValue} `.padStart(80, '=').padEnd(160, '='));
-            // console.log(JSON.parse(JSON.stringify({ nodeGroup: nodeGroup, page: page })));
-            addNodesToChildren({
-                nodes: nodeGroup.nodes,
+            const childSectionSlugs = pageConfig.childSections?.map((sectionConfig) => sectionConfig.sectionSlug);
+            populateNavLinkChildren({
                 children: navLink.children,
-                parentPath: nodeGroup.fieldValue,
+                childSectionSlugs: childSectionSlugs,
+                nodes: nodeGroup.nodes,
             });
         }
 
-        if (parentNavLink && parentNavLink.children) {
-            parentNavLink.children.push(navLink);
-        } else {
-            navLinksResult.push(navLink);
-        }
-
-        if (page.childSections) {
-            navLinksResult = createNavLinks({
-                nodesGroups,
-                pageMap: page.childSections,
-                parentNavLink: navLink,
-                navLinksResult,
-            });
-        }
+        navLinksResult.push(navLink);
     }
 
     return navLinksResult;
