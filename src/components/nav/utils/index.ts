@@ -1,11 +1,11 @@
 import { PageMap } from 'common/constants/pageMap';
 
-type NodeParent = {
-    [key: string]: NodeFromQuery | EmptyObject;
+type NavChildSectionMap = {
+    [key: string]: NavLinkItem | EmptyObject;
 };
 
 interface FindOrCreateSectionChildArgs {
-    nodeParentMap: NodeParent | AmbiguousObject;
+    navChildSectionMap: NavChildSectionMap | AmbiguousObject;
     pathSteps: string[];
     childSectionSlugs?: string[];
     currentParent?: NavLinkItem | EmptyObject;
@@ -13,7 +13,7 @@ interface FindOrCreateSectionChildArgs {
 }
 
 function findOrCreateSectionChild({
-    nodeParentMap,
+    navChildSectionMap,
     pathSteps,
     childSectionSlugs,
     currentParent = {},
@@ -25,19 +25,19 @@ function findOrCreateSectionChild({
     }
 
     if (childSectionSlugs && childSectionSlugs.includes(pathStep)) {
-        if (!nodeParentMap[pathStep]) {
-            nodeParentMap[pathStep] = {
+        if (!navChildSectionMap[pathStep]) {
+            navChildSectionMap[pathStep] = {
                 slug: `${pathStep}/`,
-                children: [],
+                children: [] as NavLinkItem[],
             };
         }
 
-        currentParent = nodeParentMap[pathStep] as NavLinkItem;
+        currentParent = navChildSectionMap[pathStep] as NavLinkItem;
     }
 
     if (pathSteps.length > 0) {
         return findOrCreateSectionChild({
-            nodeParentMap,
+            navChildSectionMap,
             pathSteps: pathSteps,
             childSectionSlugs,
             currentParent,
@@ -71,8 +71,8 @@ interface PopulateNavLinkChildren {
     nodes: NodeFromQuery[];
 }
 
-function populateNavLinkChildren({ children, childSectionSlugs, nodes }: PopulateNavLinkChildren): NodeFromQuery[] {
-    const nodeParentMap: NodeParent = {};
+function populateNavLinkChildren({ children, childSectionSlugs, nodes }: PopulateNavLinkChildren): NavLinkItem[] {
+    const navChildSectionMap: NavChildSectionMap = {};
     let pathSteps;
 
     nodes.forEach((node: NodeFromQuery) => {
@@ -81,28 +81,47 @@ function populateNavLinkChildren({ children, childSectionSlugs, nodes }: Populat
         pathSteps = pathComponents.slice(1, pathComponents.length - 1);
 
         const sectionChild = findOrCreateSectionChild({
-            nodeParentMap,
+            navChildSectionMap,
             pathSteps,
             childSectionSlugs,
         });
 
         if (sectionChild == null) {
             const trimmedSlug = node.slug.replace('/', '');
-            if (nodeParentMap[trimmedSlug]) {
-                return addMissingFieldsToSection(nodeParentMap[trimmedSlug], node);
+            if (navChildSectionMap[trimmedSlug]) {
+                return addMissingFieldsToSection(navChildSectionMap[trimmedSlug], node);
             }
 
             return addNodeToChildren(children, node);
         }
 
         if (node.slug === sectionChild?.slug) {
-            addMissingFieldsToSection(sectionChild, node);
-        } else if (Array.isArray(sectionChild?.children)) {
-            addNodeToChildren(sectionChild.children, node);
+            return addMissingFieldsToSection(sectionChild, node);
+        }
+
+        return addNodeToChildren(sectionChild.children as NavLinkItem[], node);
+    });
+
+    Object.values(navChildSectionMap).forEach((navChildSection) => {
+        const targetChildNode = children.find(function (child) {
+            return child.slug === navChildSection.slug;
+        });
+
+        if (!targetChildNode) {
+            children && children.push(navChildSection as NavLinkItem);
+            return;
+        }
+
+        if (navChildSection.children) {
+            if (targetChildNode.children == null) {
+                targetChildNode.children = [];
+            }
+
+            targetChildNode.children.push(navChildSection.children);
         }
     });
 
-    return nodes;
+    return children;
 }
 
 function getNodeGroupBySectionSlug(nodesGroups: GroupFromQuery[], sectionSlug: string): GroupFromQuery | undefined {
