@@ -4,21 +4,19 @@ type NavChildSectionMap = {
     [key: string]: NavLinkItem | EmptyObject;
 };
 
-interface FindOrCreateSectionChildArgs {
-    navChildSectionMap: NavChildSectionMap | AmbiguousObject;
-    pathSteps: string[];
-    childSectionSlugs?: string[];
-    currentParent?: NavLinkItem | EmptyObject;
-    sectionChild?: NavLinkItem | EmptyObject;
-}
-
 function findOrCreateSectionChild({
     navChildSectionMap,
     pathSteps,
     childSectionSlugs,
     currentParent = {},
     sectionChild = {},
-}: FindOrCreateSectionChildArgs): NavLinkItem | null {
+}: {
+    navChildSectionMap: NavChildSectionMap | AmbiguousObject;
+    pathSteps: string[];
+    childSectionSlugs?: string[];
+    currentParent?: NavLinkItem | EmptyObject;
+    sectionChild?: NavLinkItem | EmptyObject;
+}): NavLinkItem | null {
     const pathStep = pathSteps.shift();
     if (!pathStep) {
         return null;
@@ -65,13 +63,15 @@ function addNodeToChildren(children: NavLinkItem[], node: NodeFromQuery): void {
     });
 }
 
-interface PopulateNavLinkChildren {
+function populateNavLinkChildren({
+    children,
+    childSectionSlugs,
+    nodes,
+}: {
     children: NavLinkItem[];
     childSectionSlugs?: string[];
     nodes: NodeFromQuery[];
-}
-
-function populateNavLinkChildren({ children, childSectionSlugs, nodes }: PopulateNavLinkChildren): NavLinkItem[] {
+}): NavLinkItem[] {
     const navChildSectionMap: NavChildSectionMap = {};
     let pathSteps;
 
@@ -128,16 +128,15 @@ function getNodeGroupBySectionSlug(nodesGroups: GroupFromQuery[], sectionSlug: s
     return nodesGroups.find((node) => node.fieldValue === sectionSlug);
 }
 
-interface CreateNavLinksArgs {
-    nodesGroups: GroupFromQuery[];
-    pageMap: PageMap[];
-    parentNavLink?: NavLinkItem;
-    navLinksResult?: NavLinkItem[];
-}
-
 // TODO: figure out better way to handle childSections
 // - childSections are currently defined in pageMap, which is a static constant
-function createNavLinks({ nodesGroups, pageMap }: CreateNavLinksArgs): NavLinkItem[] {
+function createNavLinks({
+    nodesGroups,
+    pageMap,
+}: {
+    nodesGroups: GroupFromQuery[];
+    pageMap: PageMap[];
+}): NavLinkItem[] {
     const navLinksResult = [];
 
     for (const pageConfig of pageMap) {
