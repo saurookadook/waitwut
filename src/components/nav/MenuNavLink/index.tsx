@@ -4,15 +4,20 @@ import { DispatchContext } from 'common/contexts';
 import { closeMenuDrawer } from 'store/actions';
 import { StyledNavLink, ChildLinkWrapper } from './styled';
 
-const MenuNavLink = ({ depth, navLink, parentPath }: MenuNavLinkProps): React.ReactElement => {
+const MenuNavLink = ({
+    depth,
+    navLink,
+    parentPath,
+}: {
+    depth: number;
+    key?: string;
+    navLink: NavLinkItem;
+    parentPath?: string;
+}): React.ReactElement => {
     const dispatch = useContext(DispatchContext);
 
-    const fullPath = `${parentPath || ''}/${navLink.slug}`;
+    const fullPath = navLink.fullPath || `${parentPath || ''}/${navLink.slug}`;
     const { children, label, slug } = navLink || {};
-
-    // if ((children || []).length > 0) {
-    //     console.log({ navLink });
-    // }
 
     return (
         <>

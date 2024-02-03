@@ -1,5 +1,17 @@
 const path = require('path');
 
+exports.onCreateNode = ({ node, actions }) => {
+    const { createNodeField } = actions;
+
+    if (node?.frontmatter?.fullPath) {
+        createNodeField({
+            node,
+            name: 'pathComponents',
+            value: node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim),
+        });
+    }
+};
+
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
     actions.setWebpackConfig({
         resolve: {

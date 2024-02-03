@@ -1,7 +1,8 @@
 /// <reference types="react-scripts" />
 
 // export {}
-type AmbiguousObject = Record<string, unknown>;
+type EmptyObject = Record<string, unknown>;
+type AmbiguousObject = Record<string, unknown> | EmptyObject;
 
 interface CheatSheet {
     name: string;
@@ -29,11 +30,15 @@ interface NodeFrontmatter {
     iconComponentName?: string;
 }
 
+interface NodeFields {
+    pathComponents: string[];
+}
+
 interface NodeFromQuery {
     name: string;
     slug: string;
     frontmatter: NodeFrontmatter;
-    pathComponents?: string[];
+    fields: NodeFields;
     path: string;
 }
 
@@ -45,13 +50,6 @@ interface GroupFromQuery {
 interface MdxNodes {
     group: GroupFromQuery[];
     nodes?: NodeFromQuery[];
-}
-
-interface MenuNavLinkProps {
-    depth: Integer;
-    key?: string;
-    navLink: NavLinkItem;
-    parentPath?: string;
 }
 
 interface ListPageData {
