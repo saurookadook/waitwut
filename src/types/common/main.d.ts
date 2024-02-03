@@ -52,13 +52,6 @@ interface MdxNodes {
     nodes?: NodeFromQuery[];
 }
 
-interface MenuNavLinkProps {
-    depth: Integer;
-    key?: string;
-    navLink: NavLinkItem;
-    parentPath?: string;
-}
-
 interface ListPageData {
     allMdx?: MdxNodes;
 }
