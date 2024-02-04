@@ -7,9 +7,10 @@
         "gatsby"
     ],
     "engines": {
-        "node": "^16.16.0",
-        "yarn": "^1.22.19"
+        "node": "^18.19.0",
+        "yarn": "^4.1.0"
     },
+    "packageManager": "yarn@4.1.0",
     "scripts": {
         "install:clean": "yarn clean:cache && yarn install && yarn build",
         "develop": "gatsby develop",
@@ -92,13 +93,6 @@
         "prettier-plugin-multiline-arrays": "^1.1.0",
         "typescript": "^4.7.4",
         "webpack": "^5.0.0"
-    },
-    "resolutions": {
-        "**/react-is": ">= 16.8.0",
-        "**/@testing-library/dom": ">=7.21.4",
-        "**/@parcel/core": "^2.6.2",
-        "**/@babel/plugin-syntax-flow": "^7.14.5",
-        "**/@babel/plugin-transform-react-jsx": "^7.14.9"
     },
     "eslintConfig": {
         "extends": [
