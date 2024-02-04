@@ -30,7 +30,11 @@ const SheetLineItemLink = styled(Link)`
     }
 `;
 
-const NotesListPage = ({ data }: ListPageProps): React.ReactElement => {
+const NotesListPage = ({
+    data, // <- to force formatting
+}: {
+    data: ListPageData;
+}): React.ReactElement => {
     // console.log('NotesListPage - data: ', data);
     const { nodes } = data.allMdx || {};
 

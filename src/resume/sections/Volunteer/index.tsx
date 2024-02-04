@@ -16,11 +16,11 @@ import {
     VolunteerItemDetailWrapper,
 } from './styled';
 
-interface VolunteerItemProps {
+const VolunteerItem = ({
+    volunteerRecord, // <- to force formatting
+}: {
     volunteerRecord: VolunteerRecord;
-}
-
-const VolunteerItem = ({ volunteerRecord }: VolunteerItemProps): React.ReactElement => {
+}): React.ReactElement => {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
 

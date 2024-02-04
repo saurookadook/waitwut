@@ -14,11 +14,11 @@ const InstitutionName = styled.h3`
     margin-bottom: 0%;
 `;
 
-interface EducationItemProps {
+const EducationItem = ({
+    educationRecord, // <- to force formatting
+}: {
     educationRecord: EducationRecord;
-}
-
-const EducationItem = ({ educationRecord }: EducationItemProps): React.ReactElement => {
+}): React.ReactElement => {
     const { certification, completionText, institution, location } = educationRecord;
     return (
         <div>

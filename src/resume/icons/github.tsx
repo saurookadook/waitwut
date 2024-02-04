@@ -1,14 +1,15 @@
 import React from 'react';
 
-interface GitHubOctocatProps {
-    fillColor?: string;
-}
-
 /**
  * {@link https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg | SVG Source}
  */
-const GitHubOctocat = ({ fillColor = '#181616' }: GitHubOctocatProps): React.ReactElement => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+const GitHubOctocat = ({
+    fillColor = '#181616', // <- to force formatting
+    ...props
+}: {
+    fillColor?: string;
+}): React.ReactElement => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" {...props}>
         <g fill={fillColor}>
             <path
                 fillRule="evenodd"

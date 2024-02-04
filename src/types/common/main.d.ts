@@ -56,16 +56,7 @@ interface ListPageData {
     allMdx?: MdxNodes;
 }
 
-interface HeaderProps {
-    data?: ListPageData;
-}
-
 /* ListPages */
-
-interface ListPageProps {
-    data: ListPageData;
-}
-
 interface BaseMdxFrontmatter {
     date?: Date;
     iconComponentName?: string;

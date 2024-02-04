@@ -3,11 +3,6 @@ import React from 'react';
 import * as sections from 'resume/sections';
 import { toTitleCase } from 'utils/index';
 
-interface AbstractSectionProps {
-    sectionKey: string;
-    sectionData: any;
-}
-
 const componentNameFromSectionKey = (sectionKey: string): string => {
     switch (sectionKey) {
         case 'Education':
@@ -26,7 +21,13 @@ const componentNameFromSectionKey = (sectionKey: string): string => {
     }
 };
 
-const AbstractSection = ({ sectionKey, sectionData }: AbstractSectionProps): React.ReactElement => {
+const AbstractSection = ({
+    sectionKey, // <- to force formatting
+    sectionData,
+}: {
+    sectionKey: string;
+    sectionData: any;
+}): React.ReactElement => {
     const sectionHeading = toTitleCase(sectionKey);
     const componentName = componentNameFromSectionKey(sectionKey);
     // const SectionComponent = await import(`./${componentName}.tsx`)

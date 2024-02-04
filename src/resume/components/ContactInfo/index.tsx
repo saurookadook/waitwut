@@ -2,11 +2,11 @@ import React from 'react';
 
 import { InfoContainer, InfoItem } from './styled';
 
-interface SiteLinkProps {
+const SiteLink = ({
+    siteData, // <- to force formatting
+}: {
     siteData: Site;
-}
-
-const SiteLink = ({ siteData }: SiteLinkProps): React.ReactElement => {
+}): React.ReactElement => {
     return (
         <a href={siteData.url} target="_blank" rel="noreferrer">
             {siteData.displayText}

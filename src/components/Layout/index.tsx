@@ -11,13 +11,15 @@ import { GlobalStyles, WaitwutStyles, ResumeStyles } from 'styles';
 import { baseTheme, containerTheme, resumeTheme } from 'themes/index';
 import { StyledContainerOnly, StyledBoxOnly, StyledContainer, StyledBox } from './styled';
 
-interface LayoutProps {
+const Layout = ({
+    pageTitle,
+    children,
+    location,
+}: {
     pageTitle?: string;
     children: React.ReactElement;
     location: Record<string, string>;
-}
-
-const Layout = ({ pageTitle, children, location }: LayoutProps): React.ReactElement => {
+}): React.ReactElement => {
     const containerOnly = (): boolean => /\/resume(?=(\/)?([?&#].*$|$))/gim.test(location.pathname);
 
     const staticData = useStaticQuery(graphql`

@@ -21,11 +21,11 @@ import {
     EmploymentIconWrapper,
 } from './styled';
 
-interface EmploymentItemProps {
+const EmploymentItem = ({
+    employmentRecord, // <- to force formatting
+}: {
     employmentRecord: EmploymentRecord;
-}
-
-const EmploymentItem = ({ employmentRecord }: EmploymentItemProps): React.ReactElement => {
+}): React.ReactElement => {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
 

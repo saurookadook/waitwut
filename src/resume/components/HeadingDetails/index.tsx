@@ -7,11 +7,11 @@ import {
     StyledIntroBlurb,
 } from './styled';
 
-interface HeadingDetailsProps {
+const HeadingDetails = ({
+    headingData, // <- to force formatting
+}: {
     headingData: HeadingData;
-}
-
-const HeadingDetails = ({ headingData }: HeadingDetailsProps): React.ReactElement => {
+}): React.ReactElement => {
     return (
         <StyledHeader>
             <StyledNameHeading>

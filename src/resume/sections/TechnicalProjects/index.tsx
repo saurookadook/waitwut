@@ -21,11 +21,11 @@ import {
     SubText,
 } from './styled';
 
-interface TechnicalProjectItemProps {
+const TechnicalProjectItem = ({
+    technicalProjectRecord, // <- to force formatting
+}: {
     technicalProjectRecord: TechnicalProjectRecord;
-}
-
-const TechnicalProjectItem = ({ technicalProjectRecord }: TechnicalProjectItemProps): React.ReactElement => {
+}): React.ReactElement => {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
 

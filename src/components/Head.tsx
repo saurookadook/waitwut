@@ -17,22 +17,20 @@ const baseStyles = css`
     }
 `;
 
-interface HeadProps {
-    children?: React.ReactElement;
-    title?: string;
-    data?: any;
-    location?: any;
-    pageContext?: any;
-    params?: any;
-}
-
 const Head = ({
     data, // <- to force formatting
     location,
     pageContext,
     params,
     title,
-}: HeadProps): React.ReactElement => {
+}: {
+    children?: React.ReactElement;
+    title?: string;
+    data?: any;
+    location?: any;
+    pageContext?: any;
+    params?: any;
+}): React.ReactElement => {
     console.log('Head props: ', { data, location, pageContext, params, title });
 
     const metaTitle = data?.mdx?.frontmatter?.title || '';

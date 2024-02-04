@@ -7,7 +7,11 @@ import { closeMenuDrawer, toggleMenuDrawer } from 'store/actions';
 import { appBarTheme } from 'themes';
 import { StyledAppBar, MenuButton, CustomMenuIcon, NavLink } from './styled';
 
-const Header = ({ data }: HeaderProps): React.ReactElement => {
+const Header = ({
+    data, // <- to force formatting
+}: {
+    data?: ListPageData;
+}): React.ReactElement => {
     const { menu } = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
     const theme = useTheme();

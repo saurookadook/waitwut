@@ -30,7 +30,11 @@ const SheetLineItemLink = styled(Link)`
     }
 `;
 
-const BookmarksListPage = ({ data }: ListPageProps): React.ReactElement => {
+const BookmarksListPage = ({
+    data, // <- to force formatting
+}: {
+    data: ListPageData;
+}): React.ReactElement => {
     const { nodes } = data.allMdx || {};
 
     return (
