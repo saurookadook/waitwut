@@ -1,6 +1,7 @@
 const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
     const { createNodeField } = actions;
 
     if (node?.frontmatter?.fullPath) {
@@ -8,6 +9,14 @@ exports.onCreateNode = ({ node, actions }) => {
             node,
             name: 'pathComponents',
             value: node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim),
+        });
+    }
+
+    if (node.internal.type === 'Mdx') {
+        createNodeField({
+            node,
+            name: 'slug',
+            value: createFilePath({ node, getNode }),
         });
     }
 };

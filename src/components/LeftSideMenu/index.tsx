@@ -10,12 +10,13 @@ import { isWindowDefined } from 'utils/index';
 import { menuTheme } from 'themes';
 import { StyledDrawer } from './styled';
 
+// prettier-ignore
 export const useSheetsQuery = (): MdxNodes => {
     const { allMdx } = useStaticQuery(
         graphql`
             query {
-                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
-                    group(field: frontmatter___sectionSlug) {
+                allMdx(sort: {frontmatter: {title: DESC}}) {
+                    group(field: {frontmatter: {sectionSlug: SELECT}}) {
                         nodes {
                             frontmatter {
                                 title
@@ -23,9 +24,9 @@ export const useSheetsQuery = (): MdxNodes => {
                                 iconComponentName
                             }
                             id
-                            slug
                             fields {
                                 pathComponents
+                                slug
                             }
                         }
                         fieldValue

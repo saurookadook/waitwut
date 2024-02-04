@@ -32,11 +32,11 @@ interface NodeFrontmatter {
 
 interface NodeFields {
     pathComponents: string[];
+    slug: string;
 }
 
 interface NodeFromQuery {
     name: string;
-    slug: string;
     frontmatter: NodeFrontmatter;
     fields: NodeFields;
     path: string;
@@ -72,8 +72,8 @@ interface BaseMdxData {
     mdx: BaseMdx;
 }
 
-interface BaseMdxProps {
-    data: BaseData;
+interface BaseMdxProps extends React.PropsWithChildren {
+    data: BaseMdxData;
 }
 
 type IconComponent = (props: (React.ComponentPropsWithoutRef & Record<any, any>)?) => React.ReactElement;

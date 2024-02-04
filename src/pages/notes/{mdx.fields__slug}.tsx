@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 
 import icons from 'components/icons';
@@ -25,9 +24,9 @@ const DocTitle = styled.h1`
     }
 `;
 
-const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
+const DocSheet = ({ data: { mdx }, children }: BaseMdxProps): React.ReactElement => {
     // console.log('DocSheet - data: ', data);
-    const { iconComponentName, title } = data?.mdx?.frontmatter || {};
+    const { iconComponentName, title } = mdx.frontmatter || {};
 
     const iconComponent = (): React.ReactElement | undefined => {
         if (iconComponentName && typeof icons[iconComponentName] === 'function') {
@@ -42,7 +41,8 @@ const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
                 <span>{title}</span>
             </DocTitle>
             <hr />
-            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+            {/* <MDXRenderer>{data.mdx.body}</MDXRenderer> */}
+            {children}
         </MDXRendererWrapper>
     );
 };

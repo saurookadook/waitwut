@@ -46,13 +46,13 @@ const NotesListPage = ({
                     <StyledUl>
                         {(nodes || []).map(
                             (node: NodeFromQuery): React.ReactElement => (
-                                <SheetLineItem key={node.slug}>
+                                <SheetLineItem key={node.fields.slug}>
                                     {/*
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
                                 */}
-                                    <SheetLineItemLink to={`/notes/${node.slug}`}>
-                                        {(node.frontmatter || {}).title || node.slug}
+                                    <SheetLineItemLink to={`/notes/${node.fields.slug}`}>
+                                        {(node.frontmatter || {}).title || node.fields.slug}
                                     </SheetLineItemLink>
                                 </SheetLineItem>
                             ),
@@ -66,10 +66,11 @@ const NotesListPage = ({
     );
 };
 
+// prettier-ignore
 export const query = graphql`
     query {
         allMdx(
-            sort: { fields: frontmatter___date, order: DESC }
+            sort: { frontmatter: { date: DESC } }
             filter: { frontmatter: { sectionSlug: { eq: "notes" } } }
         ) {
             nodes {
@@ -78,7 +79,9 @@ export const query = graphql`
                     title
                 }
                 id
-                slug
+                fields {
+                    slug
+                }
             }
         }
     }

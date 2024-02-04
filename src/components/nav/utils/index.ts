@@ -48,7 +48,7 @@ function findOrCreateSectionChild({
 
 function addMissingFieldsToSection(section: NavLinkItem, node: NodeFromQuery): void {
     Object.assign(section, {
-        label: node.frontmatter?.title || node.slug,
+        label: node.frontmatter?.title || node.fields.slug,
         iconName: node.frontmatter?.iconComponentName,
         fullPath: node.frontmatter?.fullPath,
     });
@@ -56,8 +56,8 @@ function addMissingFieldsToSection(section: NavLinkItem, node: NodeFromQuery): v
 
 function addNodeToChildren(children: NavLinkItem[], node: NodeFromQuery): void {
     children.push({
-        slug: node.slug,
-        label: node.frontmatter?.title || node.slug,
+        slug: node.fields.slug,
+        label: node.frontmatter?.title || node.fields.slug,
         iconName: node.frontmatter?.iconComponentName,
         fullPath: node.frontmatter?.fullPath,
     });
@@ -87,7 +87,7 @@ function populateNavLinkChildren({
         });
 
         if (sectionChild == null) {
-            const trimmedSlug = node.slug.replace('/', '');
+            const trimmedSlug = node.fields.slug.replace('/', '');
             if (navChildSectionMap[trimmedSlug]) {
                 return addMissingFieldsToSection(navChildSectionMap[trimmedSlug], node);
             }
@@ -95,7 +95,7 @@ function populateNavLinkChildren({
             return addNodeToChildren(children, node);
         }
 
-        if (node.slug === sectionChild?.slug) {
+        if (node.fields.slug === sectionChild?.slug) {
             return addMissingFieldsToSection(sectionChild, node);
         }
 
