@@ -20564,6 +20564,7 @@ __metadata:
     gatsby-plugin-eslint: "npm:^4.0.4"
     gatsby-plugin-image: "npm:^3.13.1"
     gatsby-plugin-mdx: "npm:^5.13.1"
+    gatsby-plugin-page-creator: "npm:^5.13.1"
     gatsby-plugin-sharp: "npm:^5.13.1"
     gatsby-plugin-styled-components: "npm:^6.13.1"
     gatsby-plugin-tsconfig-paths: "npm:^1.0.6"

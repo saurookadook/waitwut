@@ -24,6 +24,12 @@ const config: GatsbyConfig = {
             },
         },
         {
+            resolve: 'gatsby-plugin-page-creator',
+            options: {
+                path: `${__dirname}/docs/bookmarks`,
+            },
+        },
+        {
             resolve: 'gatsby-source-filesystem',
             options: {
                 name: `Notes`,
@@ -31,9 +37,21 @@ const config: GatsbyConfig = {
             },
         },
         {
+            resolve: 'gatsby-plugin-page-creator',
+            options: {
+                path: `${__dirname}/docs/notes`,
+            },
+        },
+        {
             resolve: 'gatsby-source-filesystem',
             options: {
                 name: `Sheets`,
+                path: `${__dirname}/docs/sheets`,
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-page-creator',
+            options: {
                 path: `${__dirname}/docs/sheets`,
             },
         },
