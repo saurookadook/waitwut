@@ -9,7 +9,7 @@ export const LinkWrapper = ({ ...props }): React.ReactElement => {
 
 export const ExternalLinkWrapper = ({ ...props }): React.ReactElement => {
     return (
-        <LinkWrapper {...props} target="_blank" rel="noreferrer">
+        <LinkWrapper {...props} target="_blank" rel="noopener noreferrer">
             {props.children}
         </LinkWrapper>
     );
