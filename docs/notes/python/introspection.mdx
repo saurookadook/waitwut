@@ -16,6 +16,7 @@ import { ExternalLinkWrapper } from 'common/components';
 - returns special `__class__` method
 
 ```python
+# in repl
 >>> i = 7
 >>> type(i)
 #=> <class 'int'>
@@ -72,17 +73,17 @@ import { ExternalLinkWrapper } from 'common/components';
 ```python
 # in repl
 >>> globals()
-#=> {'__doc__': None, '__name__': '__main__', '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__package__': None, '__builtins__': <module 'builtins' (built-in)>}
+#=> {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__builtins__': <module 'builtins' (built-in)>}
 >>> a = 42
 >>> globals()
-{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 42}
+#=> {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 42}
 >>> globals()['tau'] = 6.283185
 >>> tau
 6.283185
 >>> tau / 2
 3.1415925
 >>> locals()
-{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 42, 'tau': 6.283185}
+#=> {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 42, 'tau': 6.283185}
 >>> def report_scope(arg):
 ...     from pprint import pprint as pp
 ...     x = 496
