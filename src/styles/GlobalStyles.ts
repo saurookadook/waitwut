@@ -9,8 +9,10 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor} !important;
     }
 
-    html {
-        height: 100vh;
+    html,
+    body,
+    main {
+        min-height: 100vh;
     }
 
     /* TODO: can maybe remove this? */
@@ -25,7 +27,6 @@ const GlobalStyles = createGlobalStyle`
         & main {
             /* 5rem is height of footer */
             height: calc(100% - 5rem);
-            max-height: 100vh;
         }
 
         & #___gatsby,
@@ -43,14 +44,6 @@ const GlobalStyles = createGlobalStyle`
             color: #232129;
             font-family: "-apple-system, Roboto, sans-serif, serif";
             /* padding: 96px; */
-        }
-
-        & h1,
-        & h2,
-        & h3,
-        & h4,
-        & h5 {
-            margin-bottom: 0.5rem;
         }
 
         & h1 {
@@ -131,6 +124,11 @@ const WaitwutStyles = createGlobalStyle`
             margin-bottom: 0.25rem;
         }
 
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5,
         & p {
             margin-bottom: 0.5rem;
         }
@@ -215,6 +213,7 @@ const ResumeStyles = createGlobalStyle`
 
         & h1,
         & h2,
+        & h3,
         & p {
             margin-top: 0;
             margin-bottom: 0;
