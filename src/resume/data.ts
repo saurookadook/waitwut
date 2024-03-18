@@ -26,13 +26,14 @@ export const headingDetails = {
         "Full-stack web developer and software engineer possessing a background in music with a passion for composing code. My ability to work in a fast-paced environment, detail-oriented nature, and honed communication skills make me valuable in providing quality work. Besides that, I'm always good for a laugh.",
 };
 
-interface BuildLinkArgs {
+function buildLink({
+    href, // <- to force formatting
+    text,
+}: {
     href: string;
     text: string;
-}
-
-function buildLink({ href, text }: BuildLinkArgs): string {
-    return `<a href="${href}" target="_blank" rel="noreferrer">${text}</a>`;
+}): string {
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
 }
 
 // TODO: separate these into categories?
@@ -59,6 +60,88 @@ const TechnicalSkills: string[] = [
     'CraftCMS',
     'Wordpress',
     'Docker',
+];
+
+const technologies = [
+    {
+        domain: 'Backend',
+        Python: [
+            'alembic',
+            'arrow',
+            'boto3',
+            'click',
+            'confluent-kafka',
+            'fastapi',
+            'launchdarkly-server-sdk',
+            'newrelic',
+            'requests',
+            'snowflake-sqlalchemy',
+            'sqlalchemy',
+            'uvicorn',
+            // DEV
+            'black',
+            'flake8',
+            'mypy',
+            'pytest',
+            'pytest-watch',
+            'requests-mock',
+            'factory-boy',
+            'pytest-sugar',
+            'pytest-xdist',
+            'Pygments',
+            'rich',
+        ],
+    },
+    {
+        domain: 'Frontend',
+        languagelibrariesMap: {
+            'JavaScript/Node.js': [
+                'ES5 and ES6',
+                'TypeScript',
+                'Express',
+                'Jest',
+                'Gatsby.js',
+                'React',
+                'Redux',
+                'babel (7.21)',
+                'classnames',
+                'convict',
+                'cookie',
+                'dompurify',
+                'express',
+                'express-handlebars',
+                'launchdarkly-js-client-sdk',
+                'lodash-es',
+                'newrelic',
+                'react',
+                'react-dom',
+                'react-helmet',
+                'react-router-dom',
+                'styled-components',
+                'validator',
+                'winston',
+                // DEV
+                'eslint',
+                'jest',
+                'jsdom',
+                'msw',
+                'nodemon',
+                'prettier',
+                'storybook',
+                'testing-library/dom',
+                'testing-library/jest-dom',
+                'testing-library/react',
+                'testing-library/user-event',
+                'webpack',
+            ],
+        },
+    },
+    {
+        domain: 'Infrastructure', // TODO: more accurate name...?
+    },
+    {
+        domain: 'Misc',
+    },
 ];
 
 const EmploymentHistory: EmploymentRecord[] = [
