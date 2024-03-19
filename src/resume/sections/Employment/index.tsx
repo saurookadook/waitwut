@@ -8,7 +8,7 @@ import {
     LocationText,
     NameAndLocationWrapper,
     ToggleIcon,
-} from 'resume/components';
+} from 'resume/components/styled';
 import resumeIconsMap from 'resume/icons';
 import { themeColors } from 'themes/index';
 import { toKebabCase, collapsedOrExpanded } from 'utils/index';
@@ -41,12 +41,12 @@ const EmploymentItem = ({
                         {isCollapsed ? <ExpandLess /> : <ExpandMore />}
                     </ToggleIcon>
                     <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
-                    <LocationText className={'togglable'}>
+                    <LocationText className="togglable">
                         {company.location.city}, {company.location.state}
                     </LocationText>
                 </NameAndLocationWrapper>
-                <ExpandableDetails className={'togglable'}>
-                    <ExpandableDetailsItemWrapper className="flex-column">
+                <ExpandableDetails className="togglable">
+                    <ExpandableDetailsItemWrapper className="role flex-column">
                         {roles.map(
                             (role, i): React.ReactElement => (
                                 <span className="role-item" key={`role-item-${i}`}>
@@ -56,7 +56,7 @@ const EmploymentItem = ({
                         )}
                     </ExpandableDetailsItemWrapper>
                     {(responsibilities || []).length >= 1 && (
-                        <ExpandableDetailsItemWrapper>
+                        <ExpandableDetailsItemWrapper className="responsibilities">
                             <ul>
                                 {responsibilities?.map((responsibility, j) => (
                                     <li

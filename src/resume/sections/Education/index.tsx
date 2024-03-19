@@ -7,7 +7,7 @@ import {
     GenericGridContainer,
     LocationText,
     NameAndLocationWrapper,
-} from 'resume/components';
+} from 'resume/components/styled';
 import { themeColors } from 'themes/index';
 
 const InstitutionName = styled.h3`

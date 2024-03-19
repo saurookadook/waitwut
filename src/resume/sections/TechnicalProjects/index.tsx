@@ -7,7 +7,7 @@ import {
     GenericHeading,
     GenericGridContainer,
     ToggleIcon,
-} from 'resume/components';
+} from 'resume/components/styled';
 import GitHubOctocat from 'resume/icons/github';
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded } from 'utils/index';
