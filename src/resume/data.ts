@@ -161,12 +161,21 @@ const EmploymentHistory: EmploymentRecord[] = [
             },
         ],
         responsibilities: [
-            'BUNCHA STUFF',
-            "Led migration and refactoring of an application's frontend code from old code base to new one",
+            `Worked on the
+            ${buildLink({
+                href: 'https://www.pluralsight.com/product/skills-assessment',
+                text: 'Skill IQ assessments product',
+            })}`,
             `Helped maintain native Kafka producers and consumers using ${buildLink({
                 href: 'https://docs.confluent.io/kafka-clients/python/current/overview.html',
                 text: "Confluent's Kafka Python Client",
             })}`,
+            "Led migration and refactoring of an application's frontend code from legacy codebase to new one",
+            `Drove early adoption of ${buildLink({
+                href: 'https://github.com/pluralsight/pando',
+                text: 'Pando design system library',
+            })}`,
+            'Created cron jobs to alert issues in data integrity between PostgreSQL database tables and reflected tables in Snowflake',
         ],
     },
     {
