@@ -1,10 +1,7 @@
 import styled from 'styled-components';
-import { themeColors, resumeTheme } from 'themes/index';
+import classNames from 'classnames';
 
-const EmploymentItemGrid = styled.div`
-    display: grid;
-    grid-template-columns: 80% 20%;
-`;
+import { themeColors, resumeTheme } from 'themes/index';
 
 const EmploymentItemContainer = styled.div`
     display: flex;
@@ -59,6 +56,23 @@ const EmploymentItemContainer = styled.div`
     }
 `;
 
+const EmploymentItemGrid = styled.div`
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 3.25rem auto;
+
+    .collapsed .name-and-location-wrapper .togglable i,
+    .collapsed .expandable-details.togglable,
+    .collapsed .expandable-details.togglable a {
+        color: transparent;
+        flex: 0;
+        height: 0;
+        max-height: 0;
+        opacity: 0;
+        transition: all 300ms ease-out;
+    }
+`;
+
 const CompanyName = styled.h3`
     margin-top: 0;
     margin-bottom: 0;
@@ -70,7 +84,9 @@ const CompanyName = styled.h3`
     }
 `;
 
-const ExpandableDetails = styled.div`
+const ExpandableDetails = styled.div.attrs((props) => {
+    return { className: classNames('expandable-details', props.className) };
+})`
     display: flex;
     flex-direction: column;
     grid-row: 2;
@@ -140,9 +156,9 @@ const ExpandableDetailsItemWrapper = styled.div`
     display: flex;
     width: fit-content;
 
-    &.location-wrapper {
+    /* &.location-wrapper {
         margin-bottom: 0.5em;
-    }
+    } */
 
     &.flex-column {
         flex-direction: column;
@@ -164,11 +180,20 @@ const ExpandableDetailsItemWrapper = styled.div`
     }
 
     .expanded & {
-        flex: 1;
+        /* flex: 1; */
         height: auto;
         max-height: 100%;
         opacity: 1;
         transition: all 300ms ease-in;
+
+        &:not(.role, .responsibilities) {
+            flex: 1;
+        }
+
+        &.responsibilities {
+            /* flex: 1; */
+            padding-top: 0.5rem;
+        }
     }
 
     .expanded.pluralsight & li > a {

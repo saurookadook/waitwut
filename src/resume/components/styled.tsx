@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import classNames from 'classnames';
 
 import { addPadding } from 'resume/utils';
 import { resumeTheme, themeColors } from 'themes/index';
@@ -39,7 +40,7 @@ const GenericGridContainer = styled.div`
 const LocationText = styled.i`
     align-self: flex-end;
     font-size: 1.25rem;
-    margin-bottom: 0.2rem;
+    /* margin-bottom: 0.2rem; */
 
     .collapsed & {
         color: transparent;
@@ -75,15 +76,23 @@ const LocationText = styled.i`
     }
 `;
 
-const NameAndLocationWrapper = styled.div`
+const NameAndLocationWrapper = styled.div.attrs((props) => {
+    return { className: classNames('name-and-location-wrapper', props.className) };
+})`
     align-items: center;
     display: flex;
     flex-direction: row;
     grid-row: 1;
 
     & i {
+        line-height: 2.5rem;
         margin-left: 1rem;
     }
+`;
+
+const NameAndLocationTextWrapper = styled.span`
+    align-items: baseline;
+    display: inline-flex;
 `;
 
 const ToggleIcon = styled.span`
@@ -108,6 +117,7 @@ export {
     GenericGridContainer,
     LocationText,
     NameAndLocationWrapper,
+    NameAndLocationTextWrapper,
     ToggleIcon,
     listItemPadding,
 };
