@@ -7,8 +7,8 @@ import { resumeTheme, themeColors } from 'themes';
 const StyledContainerOnly = styled(Container)`
     &#resume-content {
         background: linear-gradient(to bottom, ${resumeTheme.psSuccessTextWeakHex} 50%, ${themeColors.plBlue} 50%);
-        height: 100vh;
         max-width: 100vw;
+        min-height: 100vh;
         padding: 0;
     }
 `;

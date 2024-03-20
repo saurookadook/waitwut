@@ -197,7 +197,8 @@ const ExpandableDetailsItemWrapper = styled.div`
     }
 
     .expanded.pluralsight & li > a {
-        color: ${resumeTheme.psActionTextHex};
+        color: ${resumeTheme.pluralsightPinkHex};
+        text-shadow: 1px 1px 2px ${resumeTheme.psSurfaceHex};
     }
 
     .expanded.salesforce & li > a {

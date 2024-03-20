@@ -85,6 +85,22 @@ const resumeTheme = {
     oldResumeBgHex: '#f3f3f3',
     oldResumeLinkHex: '#0097a7',
     oldResumeLinkRgb: 'rgb(0, 151, 167)',
+    // Pluralsight
+    pluralsightPinkHex: '#fe1676',
+    pluralsightPinkRgb: 'rgb(254, 22, 118)',
+    // from Pando
+    // psActionTextHex: 'var(--ps-action-text)',
+    psActionTextHex: '#e1ddf7',
+    // psBackgroundHex: 'var(--ps-background)',
+    psBackgroundHex: '#393b6b',
+    // psSuccessTextWeakHex: 'var(--ps-success-text-weak)',
+    psSuccessTextWeakHex: '#43fd84',
+    // psTextInverseHex: 'var(--ps-text-inverse)',
+    psTextInverseHex: '#130f25',
+    // psSurfaceHex: 'var(--ps-surface)',
+    psSurfaceHex: '#130f25',
+    // psWarningTextMediumHex: 'var(--ps-warning-text-medium)',
+    psWarningTextMediumHex: '#ffd262',
     // Salesforce
     salesforceBgHex: '#ffffff',
     salesforceBeigeBgRgb: 'rgb(255, 241, 234)',
@@ -99,17 +115,6 @@ const resumeTheme = {
     // BSO
     bsoBgHex: '#ffda81',
     bsoTextHex: '#000000',
-    // from Pando
-    // psActionTextHex: 'var(--ps-action-text)',
-    psActionTextHex: '#e1ddf7',
-    // psBackgroundHex: 'var(--ps-background)',
-    psBackgroundHex: '#393b6b',
-    // psSuccessTextWeakHex: 'var(--ps-success-text-weak)',
-    psSuccessTextWeakHex: '#43fd84',
-    // psTextInverseHex: 'var(--ps-text-inverse)',
-    psTextInverseHex: '#130f25',
-    // psWarningTextMediumHex: 'var(--ps-warning-text-medium)',
-    psWarningTextMediumHex: '#ffd262',
 };
 
 export {

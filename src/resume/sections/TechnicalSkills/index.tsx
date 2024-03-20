@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { GenericHeading, GenericContainer } from 'resume/components/styled';
+import { GenericHeading, GenericContainer } from 'resume/styled';
 import { resumeTheme } from 'themes/index';
 
 const SkillsList = styled.p`

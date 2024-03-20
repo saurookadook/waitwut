@@ -79,13 +79,13 @@ const LocationText = styled.i`
 const NameAndLocationWrapper = styled.div.attrs((props) => {
     return { className: classNames('name-and-location-wrapper', props.className) };
 })`
-    align-items: center;
+    align-items: flex-end;
     display: flex;
     flex-direction: row;
     grid-row: 1;
 
     & i {
-        line-height: 2.5rem;
+        /* line-height: 2.5rem; */
         margin-left: 1rem;
     }
 `;

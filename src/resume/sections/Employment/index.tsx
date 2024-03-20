@@ -8,7 +8,7 @@ import {
     LocationText,
     NameAndLocationWrapper,
     ToggleIcon,
-} from 'resume/components/styled';
+} from 'resume/styled';
 import resumeIconsMap from 'resume/icons';
 import { themeColors } from 'themes/index';
 import { toKebabCase, collapsedOrExpanded } from 'utils/index';

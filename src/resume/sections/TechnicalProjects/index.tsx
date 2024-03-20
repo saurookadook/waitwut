@@ -1,5 +1,6 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { MouseEventHandler, useRef, useState } from 'react';
 import styled from 'styled-components';
+import classNames from 'classnames';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import {
@@ -7,7 +8,7 @@ import {
     GenericHeading,
     GenericGridContainer,
     ToggleIcon,
-} from 'resume/components/styled';
+} from 'resume/styled';
 import GitHubOctocat from 'resume/icons/github';
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded } from 'utils/index';
@@ -26,8 +27,23 @@ const TechnicalProjectItem = ({
 }: {
     technicalProjectRecord: TechnicalProjectRecord;
 }): React.ReactElement => {
+    const projectDetailsRef = useRef<HTMLDivElement>(null);
     const [isCollapsed, setIsCollapsed] = useState(true);
-    const handleToggleOnClick = (): void => setIsCollapsed(!isCollapsed);
+    const handleToggleOnClick = (): void => {
+        setIsCollapsed(!isCollapsed)
+
+        if (!isCollapsed) {
+            setTimeout(() => {
+                console.log({ projectDetailsRef });
+                // console.dir(projectDetailsRef.current);
+                if (typeof projectDetailsRef.current?.hidden === "boolean" && !projectDetailsRef.current?.hidden) {
+                    // projectDetailsRef.current.style.display = 'none';
+                    projectDetailsRef.current.hidden = true
+                    console.log({ projectDetailsRef });
+                }
+            }, 500);
+        }
+    };
 
     const { description, displayName, endDate, links, startDate } = technicalProjectRecord;
 
@@ -41,7 +57,7 @@ const TechnicalProjectItem = ({
                     {displayName}
                 </ProjectDisplayName>
             </ProjectNameWrapper>
-            <ProjectDetails className={'togglable list-item'}>
+            <ProjectDetails className={classNames('togglable', 'list-item')} ref={projectDetailsRef}>
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
                         {link.type === 'github repository' && <GitHubOctocat />}

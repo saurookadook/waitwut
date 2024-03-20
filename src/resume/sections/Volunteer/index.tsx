@@ -7,7 +7,7 @@ import {
     LocationText,
     NameAndLocationWrapper,
     ToggleIcon,
-} from 'resume/components/styled';
+} from 'resume/styled';
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded } from 'utils/index';
 import {
