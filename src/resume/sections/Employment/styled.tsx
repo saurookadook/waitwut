@@ -3,6 +3,29 @@ import classNames from 'classnames';
 
 import { themeColors, resumeTheme } from 'themes/index';
 
+const collapsedStyles = `
+    flex: 0;
+    height: 0;
+    max-height: 0;
+    opacity: 0;
+    transition:
+        color 300ms ease-out,
+        height 150ms ease-out,
+        max-height 150ms ease-out,
+        opacity 300ms ease-out 100ms;
+`;
+
+const expandedStyles = `
+    height: auto;
+    max-height: 100%;
+    opacity: 1;
+    transition:
+        color 300ms ease-in,
+        height 150ms ease-in,
+        max-height 150ms ease-in,
+        opacity 300ms ease-in 100ms;
+`;
+
 const EmploymentItemContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -61,15 +84,17 @@ const EmploymentItemGrid = styled.div`
     grid-template-columns: 80% 20%;
     grid-template-rows: 3.25rem auto;
 
-    .collapsed .name-and-location-wrapper .togglable i,
-    .collapsed .expandable-details.togglable,
-    .collapsed .expandable-details.togglable a {
+    .collapsed & .name-and-location-wrapper .togglable,
+    .collapsed & .expandable-details.togglable,
+    .collapsed & .expandable-details.togglable a {
         color: transparent;
-        flex: 0;
-        height: 0;
-        max-height: 0;
-        opacity: 0;
-        transition: all 300ms ease-out;
+        ${collapsedStyles}
+    }
+
+    .expanded & .name-and-location-wrapper .togglable,
+    .expanded & .expandable-details.togglable,
+    .expanded & .expandable-details.togglable a {
+        ${expandedStyles}
     }
 `;
 
@@ -96,19 +121,16 @@ const ExpandableDetails = styled.div.attrs((props) => {
     .collapsed &,
     .collapsed & a {
         color: transparent;
-        flex: 0;
-        height: 0;
-        max-height: 0;
-        opacity: 0;
-        transition: all 300ms ease-out;
+        ${collapsedStyles}
     }
 
     .expanded & {
         flex: 1;
-        height: auto;
+        /* height: auto;
         max-height: 100%;
         opacity: 1;
-        transition: all 300ms ease-in;
+        transition: all 300ms ease-in; */
+        ${expandedStyles}
     }
 
     .expanded.pluralsight & {
@@ -172,19 +194,12 @@ const ExpandableDetailsItemWrapper = styled.div`
     .collapsed &,
     .collapsed & a {
         color: transparent;
-        flex: 0;
-        height: 0;
-        max-height: 0;
-        opacity: 0;
-        transition: all 300ms ease-out;
+        ${collapsedStyles}
     }
 
     .expanded & {
         /* flex: 1; */
-        height: auto;
-        max-height: 100%;
-        opacity: 1;
-        transition: all 300ms ease-in;
+        ${expandedStyles}
 
         &:not(.role, .responsibilities) {
             flex: 1;
@@ -232,19 +247,12 @@ const EmploymentIconWrapper = styled.span`
     }
 
     .collapsed & {
-        flex: 0;
-        height: 0;
-        max-height: 0;
-        opacity: 0;
-        transition: all 300ms ease-out;
+        ${collapsedStyles}
     }
 
     .expanded & {
         flex: 1;
-        height: auto;
-        max-height: 100%;
-        opacity: 1;
-        transition: all 300ms ease-in;
+        ${expandedStyles}
     }
 `;
 
