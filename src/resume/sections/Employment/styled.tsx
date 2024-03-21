@@ -4,15 +4,13 @@ import classNames from 'classnames';
 import { themeColors, resumeTheme } from 'themes/index';
 
 const collapsedStyles = `
-    flex: 0;
     height: 0;
     max-height: 0;
     opacity: 0;
     transition:
-        color 300ms ease-out,
-        height 150ms ease-out,
-        max-height 150ms ease-out,
-        opacity 300ms ease-out 100ms;
+        height 300ms ease-out 100ms,
+        max-height 300ms ease-out 100ms,
+        opacity 150ms ease-out;
 `;
 
 const expandedStyles = `
@@ -20,7 +18,6 @@ const expandedStyles = `
     max-height: 100%;
     opacity: 1;
     transition:
-        color 300ms ease-in,
         height 150ms ease-in,
         max-height 150ms ease-in,
         opacity 300ms ease-in 100ms;
@@ -121,15 +118,12 @@ const ExpandableDetails = styled.div.attrs((props) => {
     .collapsed &,
     .collapsed & a {
         color: transparent;
+        /* flex: 0; */
         ${collapsedStyles}
     }
 
     .expanded & {
-        flex: 1;
-        /* height: auto;
-        max-height: 100%;
-        opacity: 1;
-        transition: all 300ms ease-in; */
+        /* flex: 1; */
         ${expandedStyles}
     }
 
