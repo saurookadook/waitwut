@@ -1,9 +1,9 @@
 ---
-title: "Exceptions and Error Handling"
-date: "2024-02-28"
-fullPath: "/notes/python/exceptions-and-error-handling"
-iconComponentName: "python_icon"
-sectionSlug: "notes"
+title: 'Exceptions and Error Handling'
+date: '2024-02-28'
+fullPath: '/notes/python/exceptions-and-error-handling'
+iconComponentName: 'python_icon'
+sectionSlug: 'notes'
 ---
 
 # Exceptions and Error Handling
@@ -16,7 +16,7 @@ In Python, exceptions are arranged in an **inheritance** hierarchy
 
 ### Standard Exception Hierarchy
 
-- In the code, can easily be viewed by looking at the `mro`:
+-   In the code, can easily be viewed by looking at the `mro`:
 
 ```python
 # in repl
@@ -26,12 +26,13 @@ In Python, exceptions are arranged in an **inheritance** hierarchy
 #=> [<class 'KeyError'>, <class 'LookupError'>, <class 'Exception'>, <class 'BaseException'>, <class 'object'>]
 ```
 
-- Full class hierarchy for built-in exceptions can be found in Python's docs: [Exception hierarchy](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)
+-   Full class hierarchy for built-in exceptions can be found in Python's docs:
+    [Exception hierarchy](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)
 
 ### Exception Payloads
 
-- Most exception types simply receive a string in their constructor
-- Can also get payload info from `args` attribute
+-   Most exception types simply receive a string in their constructor
+-   Can also get payload info from `args` attribute
 
 ```python
 def boomboom(matchstick):
@@ -43,7 +44,9 @@ except LookupError as e:
     print("boomboom exploded:", e.args)
 
 ```
-- specific exception classes may provide additional specific named attributes that contain further information about cause
+
+-   specific exception classes may provide additional specific named attributes that contain further information about
+    cause
 
 ```python
 def main():
@@ -65,8 +68,8 @@ if __name__ == '__main__':
 
 ### Defining New Exceptions
 
-- for the most part, they should inherit from `Exception` (_**not** `BaseException`_)
-- can override `__init__`, `__str__`, and `__repr__` to provide better output
+-   for the most part, they should inherit from `Exception` (_**not** `BaseException`_)
+-   can override `__init__`, `__str__`, and `__repr__` to provide better output
 
 ```python
 import math
@@ -105,12 +108,14 @@ def triangle_area(a, b, c):
 
 ### Chaining Exceptions
 
-- allows for associating one exception with another
-- two main use cases
-    - 1. **implicit chaining**: when another exception occurs during proceessing of one exception, usually in way incidental to first exception
-        - original exception is associated with new exception through `__context__` attribute of most recent exception
-    - 2. **explicit chaining**: when we wish to deliberately handle exception by translating it into different exception type
-        - original exception is associated with new exception through `__cause__` attribute of most recent exception
+-   allows for associating one exception with another
+-   two main use cases
+    -   1. **implicit chaining**: when another exception occurs during proceessing of one exception, usually in way
+           incidental to first exception
+        -   original exception is associated with new exception through `__context__` attribute of most recent exception
+    -   2. **explicit chaining**: when we wish to deliberately handle exception by translating it into different
+           exception type
+        -   original exception is associated with new exception through `__cause__` attribute of most recent exception
 
 #### Implicit Chaining Example
 
@@ -193,15 +198,18 @@ if __name__ == '__main__':
 
 ### Tracebacks
 
-- each exception has `__traceback__` special attribute which contains reference to traceback object associated with exception
-- should use `traceback` module from Python standard library when working with traceback objects
+-   each exception has `__traceback__` special attribute which contains reference to traceback object associated with
+    exception
+-   should use `traceback` module from Python standard library when working with traceback objects
 
 **CAUTION**:
-- if at all possible, **do not** keep references to value of `__traceback__` beyond scope of except block
-- if references are needed outside of the block's scope, they should be rendered to a string
+
+-   if at all possible, **do not** keep references to value of `__traceback__` beyond scope of except block
+-   if references are needed outside of the block's scope, they should be rendered to a string
 
 ```python
 import math
+import traceback
 
 
 class InclinationError(Exception):
@@ -234,17 +242,19 @@ if __name__ == '__main__':
 
 ### `assert` statement
 
-- basic syntax: `assert condition [,message]`
-- useful for checking [invariants](https://en.wikipedia.org/wiki/Invariant_(mathematics))
-- if `condition` evaluates to `False`, an `AssertionError` is raised
-    - if `message` is supplied, it is used as payload for `AssertionError`
-- in the command line, the `-O` flag can be used to **disable active `assert` statements** when running programs
+-   basic syntax: `assert condition [,message]`
+-   useful for checking [invariants](<https://en.wikipedia.org/wiki/Invariant_(mathematics)>)
+-   if `condition` evaluates to `False`, an `AssertionError` is raised
+    -   if `message` is supplied, it is used as payload for `AssertionError`
+-   in the command line, the `-O` flag can be used to **disable active `assert` statements** when running programs
+
 ```bash
 $ python3 -m timeit -n 1 -s "from random import randrange; from sorted_set import SortedSet; s = SortedSet(randrange(1000) for _ in range(2000))" "[s.count(i)] for i in range(1000)]"
 #=> 1 loops best of 3: 3.11 sec per loop
 $ python3 -O -m timeit -n 1 -s "from random import randrange; from sorted_set import SortedSet; s = SortedSet(randrange(1000) for _ in range(2000))" "[s.count(i)] for i in range(1000)]"
 #=> 1 loops best of 3: 3.26 msec per loop
 ```
+
     - with active assertions (_without `-O` flag_) => 3.11 **sec** per loop
     - without active assertions (_with `-O` flag_) => 3.26 **msec** per loop
 
@@ -368,4 +378,3 @@ class SortedSet(Sequence, Set):
         return self - SortedSet(iterable)
 
 ```
-
