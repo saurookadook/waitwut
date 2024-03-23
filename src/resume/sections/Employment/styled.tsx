@@ -1,52 +1,28 @@
 import styled from 'styled-components';
 import classNames from 'classnames';
 
+import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { themeColors, resumeTheme } from 'themes/index';
-
-const collapsedStyles = `
-    height: 0;
-    max-height: 0;
-    opacity: 0;
-    transition:
-        height 300ms ease-out 100ms,
-        max-height 300ms ease-out 100ms,
-        opacity 150ms ease-out;
-`;
-
-const expandedStyles = `
-    height: auto;
-    max-height: 100%;
-    opacity: 1;
-    transition:
-        height 150ms ease-in,
-        max-height 150ms ease-in,
-        opacity 300ms ease-in 100ms;
-`;
 
 const EmploymentItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
-    padding-right: 10vw;
-    padding-left: 10vw;
+    padding: 0.5rem 10vw;
     z-index: 1;
 
     &.collapsed {
-        flex: 0;
-        max-height: min-content;
-        /* padding: 0.5em 10vw; */
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-        transition: all 300ms ease-out;
+        max-height: 4.25rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        transition: all 250ms ease-in 400ms;
     }
 
     &.expanded {
-        flex: 1;
-        max-height: 100%;
-        /* padding: 1em 10vw; */
-        padding-top: 1em;
-        padding-bottom: 1em;
-        transition: all 300ms ease-in;
+        max-height: 40rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        transition: all 500ms ease-in;
 
         &.pluralsight {
             background-color: ${resumeTheme.psBackgroundHex};
@@ -80,6 +56,14 @@ const EmploymentItemGrid = styled.div`
     display: grid;
     grid-template-columns: 80% 20%;
     grid-template-rows: 3.25rem auto;
+
+    .collapsed & {
+        transition: all 250ms linear 400ms;
+    }
+
+    .expanded & {
+        transition: all 250ms linear 400ms;
+    }
 
     .collapsed & .name-and-location-wrapper .togglable,
     .collapsed & .expandable-details.togglable,
