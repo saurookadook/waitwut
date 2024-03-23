@@ -12,6 +12,7 @@ const EmploymentItemContainer = styled.div`
     z-index: 1;
 
     &.collapsed {
+        color: ${themeColors.white};
         max-height: 4.25rem;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
@@ -58,11 +59,11 @@ const EmploymentItemGrid = styled.div`
     grid-template-rows: 3.25rem auto;
 
     .collapsed & {
-        transition: all 250ms linear 400ms;
+        transition: all 200ms ease-out;
     }
 
     .expanded & {
-        transition: all 250ms linear 400ms;
+        transition: all 200ms ease-out;
     }
 
     .collapsed & .name-and-location-wrapper .togglable,
@@ -102,12 +103,10 @@ const ExpandableDetails = styled.div.attrs((props) => {
     .collapsed &,
     .collapsed & a {
         color: transparent;
-        /* flex: 0; */
         ${collapsedStyles}
     }
 
     .expanded & {
-        /* flex: 1; */
         ${expandedStyles}
     }
 
@@ -156,10 +155,6 @@ const ExpandableDetailsItemWrapper = styled.div`
     display: flex;
     width: fit-content;
 
-    /* &.location-wrapper {
-        margin-bottom: 0.5em;
-    } */
-
     &.flex-column {
         flex-direction: column;
     }
@@ -176,7 +171,6 @@ const ExpandableDetailsItemWrapper = styled.div`
     }
 
     .expanded & {
-        /* flex: 1; */
         ${expandedStyles}
 
         &:not(.role, .responsibilities) {
@@ -184,14 +178,13 @@ const ExpandableDetailsItemWrapper = styled.div`
         }
 
         &.responsibilities {
-            /* flex: 1; */
             padding-top: 0.5rem;
         }
     }
 
     .expanded.pluralsight & li > a {
         color: ${resumeTheme.pluralsightPinkHex};
-        text-shadow: 1px 1px 2px ${resumeTheme.psSurfaceHex};
+        /* text-shadow: 1px 1px 2px ${resumeTheme.psSurfaceHex}; */
     }
 
     .expanded.salesforce & li > a {
@@ -214,14 +207,15 @@ const ExpandableDetailsItemWrapper = styled.div`
 const EmploymentIconWrapper = styled.span`
     display: flex;
     grid-row: 1 / span 2;
-    justify-content: center;
     height: 100%;
+    justify-content: center;
+    overflow-y: hidden;
     width: auto;
 
     & svg,
     & img {
-        height: 100%;
-        width: auto;
+        margin: auto;
+        width: 100%;
     }
 
     .collapsed & {
