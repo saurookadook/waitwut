@@ -9,6 +9,7 @@ import {
     NameAndLocationWrapper,
 } from 'resume/styled';
 import { themeColors } from 'themes/index';
+import { EducationItemContainer } from './styled';
 
 const InstitutionName = styled.h3`
     margin-bottom: 0%;
@@ -21,7 +22,7 @@ const EducationItem = ({
 }): React.ReactElement => {
     const { certification, completionText, institution, location } = educationRecord;
     return (
-        <div>
+        <EducationItemContainer>
             <NameAndLocationWrapper>
                 <InstitutionName>{institution}</InstitutionName>
                 {!!location && ( // <- to force formatting
@@ -30,7 +31,7 @@ const EducationItem = ({
             </NameAndLocationWrapper>
             <p>{completionText}</p>
             <p>{certification}</p>
-        </div>
+        </EducationItemContainer>
     );
 };
 
