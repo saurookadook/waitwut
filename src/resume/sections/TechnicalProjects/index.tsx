@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useRef, useState } from 'react';
+import React, { MouseEventHandler, useState } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
@@ -27,22 +27,17 @@ const TechnicalProjectItem = ({
 }: {
     technicalProjectRecord: TechnicalProjectRecord;
 }): React.ReactElement => {
-    const projectDetailsRef = useRef<HTMLDivElement>(null);
     const [isCollapsed, setIsCollapsed] = useState(true);
-    const handleToggleOnClick = (): void => {
-        setIsCollapsed(!isCollapsed)
+    const [isClickable, setIsClickable] = useState(false);
 
+    const handleToggleOnClick = (): void => {
         if (!isCollapsed) {
-            setTimeout(() => {
-                console.log({ projectDetailsRef });
-                // console.dir(projectDetailsRef.current);
-                if (typeof projectDetailsRef.current?.hidden === "boolean" && !projectDetailsRef.current?.hidden) {
-                    // projectDetailsRef.current.style.display = 'none';
-                    projectDetailsRef.current.hidden = true
-                    console.log({ projectDetailsRef });
-                }
-            }, 500);
+            setTimeout(() => setIsClickable(!isClickable), 500);
+        } else {
+            setIsClickable(!isClickable);
         }
+
+        setTimeout(() => setIsCollapsed(!isCollapsed), 0);
     };
 
     const { description, displayName, endDate, links, startDate } = technicalProjectRecord;
@@ -57,7 +52,13 @@ const TechnicalProjectItem = ({
                     {displayName}
                 </ProjectDisplayName>
             </ProjectNameWrapper>
-            <ProjectDetails className={classNames('togglable', 'list-item')} ref={projectDetailsRef}>
+            <ProjectDetails
+                className={classNames(
+                    'togglable', // <- to force formatting
+                    'list-item',
+                    isClickable && 'clickable',
+                )}
+            >
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
                         {link.type === 'github repository' && <GitHubOctocat />}

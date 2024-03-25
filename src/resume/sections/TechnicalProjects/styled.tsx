@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { themeColors } from 'themes/index';
 
 const ProjectItemContainer = styled.div`
@@ -41,28 +42,26 @@ const ProjectDisplayName = styled.h3`
 `;
 
 const ProjectDetails = styled.div`
-    display: flex;
+    display: none;
     flex-direction: column;
     margin: 0;
-    row-gap: 0.25rem;
+    row-gap: 0.375rem;
     z-index: 0;
+
+    &.clickable {
+        display: flex;
+    }
 
     .collapsed & {
         color: transparent;
         flex: 0;
-        height: 0;
-        max-height: 0;
-        opacity: 0;
-        transition: all 300ms ease-out;
+        ${collapsedStyles}
     }
 
     .expanded & {
         color: initial;
         flex: 1;
-        height: auto;
-        max-height: 100%;
-        opacity: 1;
-        transition: all 300ms ease-in;
+        ${expandedStyles}
     }
 `;
 
@@ -85,13 +84,11 @@ const ProjectLink = styled.a`
 
     .collapsed &,
     .collapsed & * {
-        max-height: 0;
         z-index: 0;
     }
 
     .expanded &,
     .expanded & * {
-        max-height: auto;
         z-index: 11;
     }
 `;
@@ -123,6 +120,7 @@ const SubText = styled.p`
             font-size: 1rem;
             height: 100%;
             line-height: 1.25rem;
+            padding-top: 0.25rem;
             padding-bottom: 0.25rem;
         }
 

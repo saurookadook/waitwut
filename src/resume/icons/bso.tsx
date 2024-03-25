@@ -1,33 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StylesWrapper = styled.span`
-    display: flex;
-    height: 8rem;
-
-    & :first-child {
-        align-self: flex-start;
-        height: 6rem;
-    }
-
-    & :last-child {
-        align-self: flex-end;
-        height: 6rem;
-    }
-
-    & .cls-1 {
-        fill: none;
-    }
-
-    & .cls-2 {
-        fill: #337d58;
-    }
-
-    & .cls-3 {
-        clip-path: url(#clip-path);
-    }
-`;
-
 /**
  * {@link https://commons.wikimedia.org/wiki/File:Logo_Boston_Symphony_Orchestra.svg | SVG Source}
  */
@@ -295,6 +268,34 @@ const TanglewoodLogo = (): React.ReactElement => (
         </g>
     </svg>
 );
+
+const StylesWrapper = styled.span`
+    display: flex;
+    flex-direction: column;
+    min-height: 8rem;
+
+    & #BSOLogo {
+        align-self: flex-start;
+        height: 6rem;
+    }
+
+    & #TwdLogo {
+        align-self: flex-end;
+        height: 6rem;
+    }
+
+    & .cls-1 {
+        fill: none;
+    }
+
+    & .cls-2 {
+        fill: #337d58;
+    }
+
+    & .cls-3 {
+        clip-path: url(#clip-path);
+    }
+`;
 
 const BSOCombinedLogo = (): React.ReactElement => {
     return (

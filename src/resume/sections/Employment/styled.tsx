@@ -1,52 +1,29 @@
 import styled from 'styled-components';
 import classNames from 'classnames';
 
+import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { themeColors, resumeTheme } from 'themes/index';
-
-const collapsedStyles = `
-    height: 0;
-    max-height: 0;
-    opacity: 0;
-    transition:
-        height 300ms ease-out 100ms,
-        max-height 300ms ease-out 100ms,
-        opacity 150ms ease-out;
-`;
-
-const expandedStyles = `
-    height: auto;
-    max-height: 100%;
-    opacity: 1;
-    transition:
-        height 150ms ease-in,
-        max-height 150ms ease-in,
-        opacity 300ms ease-in 100ms;
-`;
 
 const EmploymentItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
-    padding-right: 10vw;
-    padding-left: 10vw;
+    padding: 0.5rem 10vw;
     z-index: 1;
 
     &.collapsed {
-        flex: 0;
-        max-height: min-content;
-        /* padding: 0.5em 10vw; */
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-        transition: all 300ms ease-out;
+        color: ${themeColors.white};
+        max-height: 4.25rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        transition: all 250ms ease-in 400ms;
     }
 
     &.expanded {
-        flex: 1;
-        max-height: 100%;
-        /* padding: 1em 10vw; */
-        padding-top: 1em;
-        padding-bottom: 1em;
-        transition: all 300ms ease-in;
+        max-height: 40rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        transition: all 500ms ease-in;
 
         &.pluralsight {
             background-color: ${resumeTheme.psBackgroundHex};
@@ -81,6 +58,14 @@ const EmploymentItemGrid = styled.div`
     grid-template-columns: 80% 20%;
     grid-template-rows: 3.25rem auto;
 
+    .collapsed & {
+        transition: all 200ms ease-out;
+    }
+
+    .expanded & {
+        transition: all 200ms ease-out;
+    }
+
     .collapsed & .name-and-location-wrapper .togglable,
     .collapsed & .expandable-details.togglable,
     .collapsed & .expandable-details.togglable a {
@@ -112,18 +97,17 @@ const ExpandableDetails = styled.div.attrs((props) => {
     display: flex;
     flex-direction: column;
     grid-row: 2;
+    justify-content: center;
     margin: 0;
     z-index: 0;
 
     .collapsed &,
     .collapsed & a {
         color: transparent;
-        /* flex: 0; */
         ${collapsedStyles}
     }
 
     .expanded & {
-        /* flex: 1; */
         ${expandedStyles}
     }
 
@@ -172,10 +156,6 @@ const ExpandableDetailsItemWrapper = styled.div`
     display: flex;
     width: fit-content;
 
-    /* &.location-wrapper {
-        margin-bottom: 0.5em;
-    } */
-
     &.flex-column {
         flex-direction: column;
     }
@@ -192,7 +172,6 @@ const ExpandableDetailsItemWrapper = styled.div`
     }
 
     .expanded & {
-        /* flex: 1; */
         ${expandedStyles}
 
         &:not(.role, .responsibilities) {
@@ -200,14 +179,13 @@ const ExpandableDetailsItemWrapper = styled.div`
         }
 
         &.responsibilities {
-            /* flex: 1; */
             padding-top: 0.5rem;
         }
     }
 
     .expanded.pluralsight & li > a {
         color: ${resumeTheme.pluralsightPinkHex};
-        text-shadow: 1px 1px 2px ${resumeTheme.psSurfaceHex};
+        /* text-shadow: 1px 1px 2px ${resumeTheme.psSurfaceHex}; */
     }
 
     .expanded.salesforce & li > a {
@@ -230,13 +208,15 @@ const ExpandableDetailsItemWrapper = styled.div`
 const EmploymentIconWrapper = styled.span`
     display: flex;
     grid-row: 1 / span 2;
+    height: auto;
     justify-content: center;
-    height: 100%;
-    width: auto;
+    overflow-y: hidden;
+    width: 100%;
 
     & svg,
     & img {
         height: 100%;
+        margin: auto;
         width: auto;
     }
 

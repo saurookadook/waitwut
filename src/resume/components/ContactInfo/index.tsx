@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ExternalLinkWrapper } from 'common/components';
 import { InfoContainer, InfoItem } from './styled';
 
 const SiteLink = ({
@@ -7,11 +8,7 @@ const SiteLink = ({
 }: {
     siteData: Site;
 }): React.ReactElement => {
-    return (
-        <a href={siteData.url} target="_blank" rel="noreferrer">
-            {siteData.displayText}
-        </a>
-    );
+    return <ExternalLinkWrapper href={siteData.url}>{siteData.displayText}</ExternalLinkWrapper>;
 };
 
 const ContactInfo = ({ phone, email, sites }: ContactInfo): React.ReactElement => {
@@ -19,16 +16,12 @@ const ContactInfo = ({ phone, email, sites }: ContactInfo): React.ReactElement =
         <InfoContainer>
             {phone != null && (
                 <InfoItem>
-                    <a href={`tel:+1-${phone}`} target="_blank" rel="noreferrer">
-                        {phone}
-                    </a>
+                    <ExternalLinkWrapper href={`tel:+1-${phone}`}>{phone}</ExternalLinkWrapper>
                 </InfoItem>
             )}
             {email != null && (
                 <InfoItem>
-                    <a href={`mailto:${email}`} target="_blank" rel="noreferrer">
-                        {email}
-                    </a>
+                    <ExternalLinkWrapper href={`mailto:${email}`}>{email}</ExternalLinkWrapper>
                 </InfoItem>
             )}
             {sites.map((site, i) => (
