@@ -97,6 +97,7 @@ const ExpandableDetails = styled.div.attrs((props) => {
     display: flex;
     flex-direction: column;
     grid-row: 2;
+    justify-content: center;
     margin: 0;
     z-index: 0;
 
@@ -207,15 +208,16 @@ const ExpandableDetailsItemWrapper = styled.div`
 const EmploymentIconWrapper = styled.span`
     display: flex;
     grid-row: 1 / span 2;
-    height: 100%;
+    height: auto;
     justify-content: center;
     overflow-y: hidden;
-    width: auto;
+    width: 100%;
 
     & svg,
     & img {
+        height: 100%;
         margin: auto;
-        width: 100%;
+        width: auto;
     }
 
     .collapsed & {
