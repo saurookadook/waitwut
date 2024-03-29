@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { listItemPadding } from 'resume/styled';
 import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { themeColors } from 'themes/index';
 
@@ -11,13 +12,11 @@ const ProjectItemContainer = styled.div`
     z-index: 5;
 
     &.collapsed {
-        flex: 0;
         max-height: min-content;
         transition: all 300ms ease-out;
     }
 
     &.expanded {
-        flex: 1;
         max-height: 100%;
         transition: all 300ms ease-in;
     }
@@ -45,6 +44,8 @@ const ProjectDetails = styled.div`
     display: none;
     flex-direction: column;
     margin: 0;
+    padding-right: 4rem;
+    /* padding-left: calc(${listItemPadding} / 2); */
     row-gap: 0.375rem;
     z-index: 0;
 
@@ -54,13 +55,11 @@ const ProjectDetails = styled.div`
 
     .collapsed & {
         color: transparent;
-        flex: 0;
         ${collapsedStyles}
     }
 
     .expanded & {
         color: initial;
-        flex: 1;
         ${expandedStyles}
     }
 `;
@@ -78,7 +77,7 @@ const ProjectLink = styled.a`
 
     & > svg {
         height: 1.5rem;
-        vertical-align: middle;
+        vertical-align: text-bottom;
         width: auto;
     }
 
@@ -118,7 +117,7 @@ const SubText = styled.p`
             /* font-size: 0.78125rem; */
             /* font-size: 0.875rem; */
             font-size: 1rem;
-            height: 100%;
+            /* height: 100%; */
             line-height: 1.25rem;
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;

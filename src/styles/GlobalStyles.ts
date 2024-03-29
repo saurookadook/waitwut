@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { listItemPadding } from 'resume/components';
 import { defaultColors, resumeTheme, themeColors } from 'themes/index';
 
 const GlobalStyles = createGlobalStyle`
@@ -243,11 +242,7 @@ const ResumeStyles = createGlobalStyle`
         }
 
         & li {
-            font-size: 1.75rem;
-        }
-
-        & .list-item {
-            padding-left: ${listItemPadding};
+            font-size: 1.5rem;
         }
     }
 `;

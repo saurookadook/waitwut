@@ -55,7 +55,7 @@ const TechnicalProjectItem = ({
             <ProjectDetails
                 className={classNames(
                     'togglable', // <- to force formatting
-                    'list-item',
+                    'project-details',
                     isClickable && 'clickable',
                 )}
             >
@@ -70,11 +70,7 @@ const TechnicalProjectItem = ({
                         ({startDate} - {endDate})
                     </i>
                 </SubText>
-                <SubText>
-                    {/* <i> */}
-                    {description}
-                    {/* </i> */}
-                </SubText>
+                <SubText>{description}</SubText>
             </ProjectDetails>
         </ProjectItemContainer>
     );

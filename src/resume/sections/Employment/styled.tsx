@@ -197,7 +197,12 @@ const ExpandableDetailsItemWrapper = styled.div`
     }
 
     .expanded.upstatement & li > a {
-        color: ${themeColors.whiteRgb};
+        box-shadow: 0 -1px ${resumeTheme.upstatementLinkUnderline} inset;
+        color: ${themeColors.white};
+
+        &:hover {
+            box-shadow: 0 -1px ${themeColors.white} inset;
+        }
     }
 
     .expanded.boston-symphony-orchestra & li > a {
