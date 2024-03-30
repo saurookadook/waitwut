@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 
 import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
+import { minWidth600 } from 'styles/mq';
 import { themeColors, resumeTheme } from 'themes/index';
 
 const EmploymentItemContainer = styled.div`
@@ -9,18 +10,19 @@ const EmploymentItemContainer = styled.div`
     flex-direction: column;
     height: auto;
     padding: 0.5rem 10vw;
+    position: relative;
     z-index: 1;
 
     &.collapsed {
         color: ${themeColors.white};
-        max-height: 4.25rem;
+        /* max-height: 4.25rem; */
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         transition: all 250ms ease-in 400ms;
     }
 
     &.expanded {
-        max-height: 40rem;
+        /* max-height: 40rem; */
         padding-top: 1rem;
         padding-bottom: 1rem;
         transition: all 500ms ease-in;
@@ -56,7 +58,13 @@ const EmploymentItemContainer = styled.div`
 const EmploymentItemGrid = styled.div`
     display: grid;
     grid-template-columns: 80% 20%;
-    grid-template-rows: 3.25rem auto;
+    /* grid-template-rows: 1fr auto; */
+
+    ${minWidth600} {
+        & .name-and-location-wrapper {
+            max-height: 3.25rem;
+        }
+    }
 
     .collapsed & {
         transition: all 200ms ease-out;
@@ -99,6 +107,7 @@ const ExpandableDetails = styled.div.attrs((props) => {
     grid-row: 2;
     justify-content: center;
     margin: 0;
+    padding-right: 10rem;
     z-index: 0;
 
     .collapsed &,
