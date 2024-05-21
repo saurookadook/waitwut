@@ -10,3 +10,102 @@ sectionSlug: "notes"
 
 - `==` tests "value equality"
 - `is` tests "identity equality"
+
+## The Python Execution Model
+
+- `def` is actually a statement
+    - when executed in sequence with other top-level model scope code, causes code within function to be bound to name of function
+- top-level functions are defined when a module is imported or run
+    - when modules are imported or run, all top-level statements are run, which is what results in function(s) within module namespace being defined
+
+### Module, Script, or Program
+- **Python module**: convenient import with API
+- **Python script**: convenient execution from from command line
+- **Python program**: perhaps composed of many modules(?)
+
+It is _**strongly**_ suggested that scripts are importable as modules and that modules can be executable.
+
+For this reason, most modules adhere to form of defining one or more importable functions, followed by a postscript to facilitate execution as a script
+
+## Command Line Arguments
+
+```python
+import sys
+from urllib.request import urlopen
+
+# 'http://sixty-north.com/c/t.txt'
+
+
+def fetch_words(url):
+    story = urlopen(url)
+    story_words = []
+
+    for line in story:
+        line_words = line.decode('utf8').split()
+        for word in line_words:
+            story_words.append(word)
+    story.close()
+    return story_words
+
+
+def print_items(items):
+    for item in items:
+        print(item)
+
+
+def main(url):
+    words = fetch_words(url)
+    print_items(words)
+
+
+if __name__ == '__main__':
+    main(sys.argv[1])
+
+```
+
+- more `import` examples
+```py
+# importing multiple objects from module
+from cli_args_words import (fetch_words, print_words)
+
+# import everything from module
+from cli_args_words import *
+```
+
+- access of command-line arguments through attribute of `sys` module called `argv` (a list of strings)
+- after first refactor, can run from shell with:
+```bash
+$ python /_demos/story_words/cli_args_words.py http://sixty-north.com/c/t.txt
+```
+- however, can no longer be run from REPL env, since `url` in `main()` is unlikely to get any value from `sys.argv[1]`
+- 2nd refactor fixes this issue to make `main()` accept the `url` param
+
+- Additional inspiration:
+    - arg parse module
+    - doc opt module (third-party)
+
+> _**Moment of Zen**_
+> _"Sparse is better than dense"_
+>     _Two between functions_
+>     _That is the number of lines_
+>     _PEP8 recommends_
+
+## Docstrings
+- literal strings which document functions, modules, and classes
+- must be FIRST statement in blocks for these constructs
+
+- convention for docstrings is documented in PEP257, though not widely adopted
+- **Sphinx**: tool for creating HTML documentation from Python docstrings
+- form from Google's Python Style Guide is used in this course
+
+
+## Shebang
+
+```bash
+#!/usr/bin/env python
+```
+
+- mark script as executable
+```bash
+$ chmod +x /path/to/script.py
+```
