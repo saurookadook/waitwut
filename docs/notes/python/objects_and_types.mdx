@@ -67,10 +67,10 @@ t+= 2
 - then adds `int 5` with `int 2` to create `int 7`
 - finally, assigns `t` to newly-created `int 7` and remaining `int` objects are garbage collected
 
-**IMPORTANT**
-- Python objects show this behavior for all types
-- core rule is that assignment operator _**only**_ ever binds objects to names
-    - NEVER copies object to a value
+> 💡 **IMPORTANT** 💡
+> - Python objects show this behavior for all types
+> - core rule is that assignment operator _**only**_ ever binds objects to names
+>     - NEVER copies object to a value
 
 ## Mutable Objects
 Given:
@@ -291,8 +291,9 @@ add("The answer is", 42)
 #=> TypeError
 ```
 
-**IMPORTANT**: generally, Python will _not_ perform implicit conversions between types
-    - exceptions being conversion of `if` statement and `while` loop predicates to `bool`
+> 💡 **IMPORTANT** 💡
+> generally, Python will _not_ perform implicit conversions between types
+>     - exceptions being conversion of `if` statement and `while` loop predicates to `bool`
 
 ## Scopes
 
@@ -359,7 +360,7 @@ show_count()
 #=> 5
 ```
 
-> _**Moment of Zen**_
+> ☯️ _**Moment of Zen**_ ☯️
 > _"Special cases aren't special enough to break the rules"_
 >     _We follow patterns_
 >     _Not to kill complexity_
