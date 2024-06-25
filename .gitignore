@@ -71,7 +71,7 @@ typings/
 
 # Yarn Integrity file
 .cache/
-.yarn
+.yarn/!install-state.gz
 .yarn-integrity
 
 # dotenv environment variables file
