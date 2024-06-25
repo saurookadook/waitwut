@@ -70,15 +70,14 @@ typings/
 *.tgz
 
 # Yarn Integrity file
-.yarn
+.cache/
+.yarn/
+.yarn/!install-state.gz
 .yarn-integrity
 
 # dotenv environment variables file
 .env
 .env.test
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
 
 # Next.js build output
 .next
@@ -88,7 +87,6 @@ typings/
 dist
 
 # Gatsby files
-.cache/
 # Comment in the public line in if your project uses Gatsby and *not* Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
 public
