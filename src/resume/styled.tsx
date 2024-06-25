@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 
 import { addPadding } from 'resume/utils';
+import { minWidth600 } from 'styles/mq';
 import { resumeTheme, themeColors } from 'themes/index';
 
 const GenericContainer = styled.div<GenericStyledProps>`
@@ -32,15 +33,23 @@ const GenericHeading = styled.h2<GenericStyledProps>`
 
 const GenericGridContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     position: relative;
     z-index: 10;
+
+    ${minWidth600} {
+        grid-template-columns: repeat(2, 1fr);
+    }
 `;
 
 const LocationText = styled.i`
-    align-self: flex-end;
-    font-size: 1.25rem;
-    /* margin-bottom: 0.2rem; */
+    align-self: flex-start;
+
+    ${minWidth600} {
+        align-self: flex-end;
+        font-size: 1.25rem;
+        /* margin-bottom: 0.2rem; */
+    }
 
     .collapsed & {
         color: transparent;
@@ -79,14 +88,23 @@ const LocationText = styled.i`
 const NameAndLocationWrapper = styled.div.attrs((props) => {
     return { className: classNames('name-and-location-wrapper', props.className) };
 })`
-    align-items: flex-end;
+    align-items: flex-start;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     grid-row: 1;
 
     & i {
-        /* line-height: 2.5rem; */
-        margin-left: 1rem;
+        margin-left: 0;
+    }
+
+    ${minWidth600} {
+        align-items: flex-end;
+        flex-direction: row;
+
+        & i {
+            /* line-height: 2.5rem; */
+            margin-left: 1rem;
+        }
     }
 `;
 

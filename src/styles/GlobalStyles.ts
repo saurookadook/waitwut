@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { minWidth600 } from 'styles/mq';
 import { defaultColors, resumeTheme, themeColors } from 'themes/index';
 
 const GlobalStyles = createGlobalStyle`
@@ -20,17 +21,25 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor};
     }
 
-    body#waitwut,
-    body#resume {
+    body {
         &,
         & main {
-            /* 5rem is height of footer */
-            height: calc(100% - 5rem);
+            max-height: 100%;
+
+            ${minWidth600} {
+                /* 5rem is height of footer */
+                height: calc(100% - 5rem);
+            }
         }
 
         & #___gatsby,
         & #gatsby-focus-wrapper {
-            height: 100%;
+            /* height: calc(100% - 5rem); */
+            height: auto;
+
+            ${minWidth600} {
+                height: 100%;
+            }
         }
 
         & {
@@ -207,7 +216,11 @@ const ResumeStyles = createGlobalStyle`
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding: 2.5rem 0;
+            padding: 1.5rem 0;
+
+            ${minWidth600} {
+                padding: 2.5rem 0;
+            }
         }
 
         & h1,
@@ -224,25 +237,46 @@ const ResumeStyles = createGlobalStyle`
         }
 
         & h1 {
-            font-size: 4rem;
+            font-size: 2.5rem;
+
+            ${minWidth600} {
+                font-size: 4rem;
+            }
         }
 
         h2 {
-            font-size: 3.5rem;
+            font-size: 2rem;
+
+            ${minWidth600} {
+                font-size: 3.5rem;
+            }
         }
 
         h3 {
-            font-size: 2.75rem;
+            font-size: 1.5rem;
+
+            ${minWidth600} {
+                font-size: 2.75rem;
+            }
         }
 
         & p {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             line-height: 1.25;
+
+            ${minWidth600} {
+                font-size: 1.5rem;
+                line-height: 1.25;
+            }
         }
 
         & li {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+
+            ${minWidth600} {
+                font-size: 1.5rem;
+            }
         }
     }
 `;

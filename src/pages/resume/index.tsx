@@ -1,12 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { HeadingDetails } from 'resume/components/';
 import { AbstractSection } from 'resume/sections/';
 import { headingDetails, sections } from 'resume/data';
 
+const StyledResume = styled.main`
+    overflow: hidden;
+`;
+
 const Resume = (): React.ReactElement => {
     return (
-        <main>
+        <StyledResume>
             <HeadingDetails headingData={headingDetails} />
             {sections.map((section, i): React.ReactElement => {
                 const key = Object.keys(section)[0];
@@ -18,7 +23,7 @@ const Resume = (): React.ReactElement => {
                     />
                 );
             })}
-        </main>
+        </StyledResume>
     );
 };
 

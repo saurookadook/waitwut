@@ -41,8 +41,13 @@ const EmploymentItem = ({
                         {isCollapsed ? <ExpandLess /> : <ExpandMore />}
                     </ToggleIcon>
                     <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
-                    <LocationText className="togglable">
+                    <LocationText
+                        // as="span"
+                        className="togglable"
+                    >
+                        {/* <i> */}
                         {company.location.city}, {company.location.state}
+                        {/* </i> */}
                     </LocationText>
                 </NameAndLocationWrapper>
                 <ExpandableDetails className="togglable">
