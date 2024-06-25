@@ -8,6 +8,94 @@ sectionSlug: "notes"
 
 # Functions
 
+- simple example:
+```py
+def square(x):
+    return x * x
+
+square(5)
+```
+
+- `None` is returned when using `return` without parameter and implicit return value at end of function
+```py
+def even_or_odd(n):
+    if n % 2 == 0:
+        print("even")
+        return
+    print("odd")
+
+w = even_or_odd(31)
+#=> odd
+w is None
+#=> True
+```
+
+- longer example
+```py
+def nth_root(radicand, n):
+    return radicand ** (1/n)
+
+def ordinal_suffix(value):
+    s = str(value)
+    if s.endswith('11'):
+        return 'th'
+    elif s.endswith('12'):
+        return 'th'
+    elif s.endswith('13'):
+        return 'th'
+    elif s.endswith('1'):
+        return 'st'
+    elif s.endswith('2'):
+        return 'nd'
+    elif s.endswith('3'):
+        return 'rd'
+    return 'th'
+
+def ordinal(value):
+    return str(value) + ordinal_suffix(value)
+
+def display_nth_root(radicand, n):
+    root = nth_root(radicand, n)
+    message = "The " + ordinal(n) + " root of " \
+        + str(radicand) + " is " + str(root)
+    print(message)
+```
+
+- special functions follow naming procedure: `__<function_name>__`
+    - referred to as `dunder` (portmanteau of "double underscore")
+    - given function `__init__`, it would be referred to as "dunder init"
+
+## `__name__`
+
+Python idiom of `__name__`
+- specially named variable that allows us to determine if module is run as script or imported into another module
+- module code is only executed once on initial import
+
+```python
+from urllib.request import urlopen
+
+def fetch_words():
+    story = urlopen('http://sixty-north.com/c/t.txt')
+    story_words = []
+
+    for line in story:
+        line_words = line.decode('utf8').split()
+        for word in line_words:
+            story_words.append(word)
+    story.close()
+
+    for word in story_words:
+        print(word)
+
+print(__name__)
+# prints `words` in Python REPL env
+# prints `__main__` in shell env
+
+if __name__ == '__main__':
+    fetch_words()
+
+```
+
 ## Detecting callable objects:
 ```python
 def is_even(x):
