@@ -43,12 +43,13 @@ const GenericGridContainer = styled.div`
 `;
 
 const LocationText = styled.i`
-    align-self: flex-start;
+    align-self: center;
+    margin-left: 0.5rem;
 
     ${minWidth600} {
         align-self: flex-end;
         font-size: 1.25rem;
-        /* margin-bottom: 0.2rem; */
+        margin-bottom: 0.4rem;
     }
 
     .collapsed & {
@@ -92,17 +93,6 @@ const NameAndLocationWrapper = styled.div.attrs((props) => {
     display: flex;
     flex-direction: row;
     grid-row: 1;
-
-    & i {
-        margin-left: 0;
-    }
-
-    ${minWidth600} {
-        & i {
-            /* line-height: 2.5rem; */
-            margin-left: 1rem;
-        }
-    }
 `;
 
 const NameAndLocationTextWrapper = styled.span`

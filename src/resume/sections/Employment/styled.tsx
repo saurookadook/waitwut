@@ -65,7 +65,7 @@ const EmploymentItemGrid = styled.div`
 
         & i {
             align-self: center;
-            margin-left: 0.5rem;
+            /* margin-left: 0.5rem; */
         }
     }
 
@@ -74,8 +74,8 @@ const EmploymentItemGrid = styled.div`
             max-height: 3.25rem;
 
             & i {
-                align-self: flex-start;
-                margin-left: 0;
+                align-self: flex-end;
+                /* margin-bottom: 0.25rem; */
             }
         }
     }
@@ -116,6 +116,7 @@ const CompanyName = styled.h3`
 const ExpandableDetails = styled.div.attrs((props) => {
     return { className: classNames('expandable-details', props.className) };
 })`
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
     grid-column: 1 / span 2;
@@ -128,6 +129,21 @@ const ExpandableDetails = styled.div.attrs((props) => {
     ${minWidth600} {
         grid-column: 1 / span 1;
         padding-right: 10rem;
+    }
+
+    & .role-item {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+
+        &:nth-last-child(n + 2) {
+            margin-bottom: 0.5rem;
+        }
+
+        ${minWidth600} {
+            flex-direction: row;
+            margin-bottom: 0;
+        }
     }
 
     .collapsed &,
@@ -208,7 +224,7 @@ const ExpandableDetailsItemWrapper = styled.div`
         }
 
         &.responsibilities {
-            padding-top: 0.5rem;
+            padding: 0.5rem 0;
         }
     }
 

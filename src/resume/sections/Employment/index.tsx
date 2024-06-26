@@ -55,7 +55,10 @@ const EmploymentItem = ({
                         {roles.map(
                             (role, i): React.ReactElement => (
                                 <span className="role-item" key={`role-item-${i}`}>
-                                    <b>{role.title}</b> :: <i>{`${role.startDate} - ${role.endDate}`}</i>
+                                    <b>{role.title}</b>{' '}
+                                    <span className="role-item-dates">
+                                        :: <i>{`${role.startDate} - ${role.endDate}`}</i>
+                                    </span>
                                 </span>
                             ),
                         )}

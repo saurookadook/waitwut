@@ -82,6 +82,8 @@ const GlobalStyles = createGlobalStyle`
 
         & ul,
         & ol {
+            margin-block-end: 0;
+            margin-block-start: 0;
             padding-inline-start: 1.5rem;
 
             ${minWidth600} {
@@ -281,7 +283,7 @@ const ResumeStyles = createGlobalStyle`
         }
 
         & li {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
 
             ${minWidth600} {
                 font-size: 1.5rem;
