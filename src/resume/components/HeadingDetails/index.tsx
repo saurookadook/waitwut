@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {
-    StyledHeader, // <- to force formatting
+    StyledHeader, // force formatting
     StyledNameHeading,
     StyledContactInfo,
     StyledIntroBlurb,
 } from './styled';
 
 const HeadingDetails = ({
-    headingData, // <- to force formatting
+    headingData, // force formatting
 }: {
     headingData: HeadingData;
 }): React.ReactElement => {

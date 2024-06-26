@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { listItemPadding } from 'resume/components';
+import { minWidth600 } from 'styles/mq';
 import { defaultColors, resumeTheme, themeColors } from 'themes/index';
 
 const GlobalStyles = createGlobalStyle`
@@ -21,17 +21,25 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor};
     }
 
-    body#waitwut,
-    body#resume {
+    body {
         &,
         & main {
-            /* 5rem is height of footer */
-            height: calc(100% - 5rem);
+            max-height: 100%;
+
+            ${minWidth600} {
+                /* 5rem is height of footer */
+                height: calc(100% - 5rem);
+            }
         }
 
         & #___gatsby,
         & #gatsby-focus-wrapper {
-            height: 100%;
+            /* height: calc(100% - 5rem); */
+            height: auto;
+
+            ${minWidth600} {
+                height: 100%;
+            }
         }
 
         & {
@@ -70,6 +78,17 @@ const GlobalStyles = createGlobalStyle`
         & summary > * {
             display: inline-block;
             margin-left: 0.5rem;
+        }
+
+        & ul,
+        & ol {
+            margin-block-end: 0;
+            margin-block-start: 0;
+            padding-inline-start: 1.5rem;
+
+            ${minWidth600} {
+                padding-inline-start: 2.5rem;
+            }
         }
 
         & a {
@@ -208,7 +227,26 @@ const ResumeStyles = createGlobalStyle`
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding: 2.5rem 0;
+            padding: 1.5rem 0;
+
+            ${minWidth600} {
+                padding: 2.5rem 0;
+            }
+        }
+
+        section .generic-container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+
+            & .generic-heading {
+                padding-right: 5vw;
+                padding-left: 5vw;
+
+                ${minWidth600} {
+                    padding-right: 10vw;
+                    padding-left: 10vw;
+                }
+            }
         }
 
         & h1,
@@ -225,29 +263,46 @@ const ResumeStyles = createGlobalStyle`
         }
 
         & h1 {
-            font-size: 4rem;
+            font-size: 2.5rem;
+
+            ${minWidth600} {
+                font-size: 4rem;
+            }
         }
 
         h2 {
-            font-size: 3.5rem;
+            font-size: 1.75rem;
+
+            ${minWidth600} {
+                font-size: 3.5rem;
+            }
         }
 
         h3 {
-            font-size: 2.75rem;
+            font-size: 1.5rem;
+
+            ${minWidth600} {
+                font-size: 2.75rem;
+            }
         }
 
         & p {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             line-height: 1.25;
+
+            ${minWidth600} {
+                font-size: 1.5rem;
+                line-height: 1.25;
+            }
         }
 
         & li {
-            font-size: 1.75rem;
-        }
+            font-size: 1.2rem;
 
-        & .list-item {
-            padding-left: ${listItemPadding};
+            ${minWidth600} {
+                font-size: 1.5rem;
+            }
         }
     }
 `;

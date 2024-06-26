@@ -22,7 +22,7 @@ const componentNameFromSectionKey = (sectionKey: string): string => {
 };
 
 const AbstractSection = ({
-    sectionKey, // <- to force formatting
+    sectionKey, // force formatting
     sectionData,
 }: {
     sectionKey: string;

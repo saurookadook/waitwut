@@ -6,7 +6,13 @@ export const toTitleCase = (string: string): string => {
 };
 
 export const toKebabCase = (string: string): string => {
-    return string.trim().replace(/\s+/gim, '-');
+    return string.trim().replace(/^[A-Z]|(\s+)?([A-Z])/gm, (match, p1, p2) => {
+        if (p1 == null && p2 == null) {
+            return match.toLowerCase();
+        }
+
+        return p2 != null ? `-${p2.toLowerCase()}` : '-';
+    });
 };
 
 // TODO: I feel like this would be nicer :)

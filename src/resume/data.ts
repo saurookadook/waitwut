@@ -27,7 +27,7 @@ export const headingDetails = {
 };
 
 function buildLink({
-    href, // <- to force formatting
+    href, // force formatting
     text,
 }: {
     href: string;
@@ -155,6 +155,11 @@ const EmploymentHistory: EmploymentRecord[] = [
         },
         roles: [
             {
+                title: 'Tech Lead',
+                startDate: 'October 2023',
+                endDate: 'Present',
+            },
+            {
                 title: 'Software Engineer III',
                 startDate: 'June 2022',
                 endDate: 'Present',
@@ -166,16 +171,62 @@ const EmploymentHistory: EmploymentRecord[] = [
                 href: 'https://www.pluralsight.com/product/skills-assessment',
                 text: 'Skill IQ assessments product',
             })}`,
+            `As tech lead, managed and contributed to development of the ${buildLink({
+                href: 'https://app.pluralsight.com/skilliq/my-skills',
+                text: 'My SKills tab',
+            })}`,
+            `Collaborated on feature development and maintenance of Python backend, utilizing packages such as
+            ${buildLink({
+                href: 'https://fastapi.tiangolo.com/',
+                text: 'FastAPI',
+            })},
+            ${buildLink({
+                href: 'https://www.uvicorn.org/',
+                text: 'Uvicorn',
+            })},
+            ${buildLink({
+                href: 'https://docs.pydantic.dev/latest/',
+                text: 'Pydantic',
+            })},
+            ${buildLink({
+                href: 'https://www.sqlalchemy.org/',
+                text: 'SQLAlchemy',
+            })}, ${buildLink({
+                href: 'https://aws.amazon.com/sdk-for-python/',
+                text: 'Boto3',
+            })}`,
+            `Actively wrote and improved backend tests using
+            ${buildLink({
+                href: 'https://docs.pytest.org/en/8.0.x/',
+                text: 'pytest',
+            })} and frontend tests using
+            ${buildLink({
+                href: 'https://jestjs.io/',
+                text: 'Jest',
+            })} and
+            ${buildLink({
+                href: 'https://testing-library.com/',
+                text: 'Testing Library',
+            })}`,
             `Helped maintain native Kafka producers and consumers using ${buildLink({
                 href: 'https://docs.confluent.io/kafka-clients/python/current/overview.html',
                 text: "Confluent's Kafka Python Client",
             })}`,
-            "Led migration and refactoring of an application's frontend code from legacy codebase to new one",
+            `Led ${buildLink({
+                href: 'https://www.pluralsight.com/tech-blog/frontend-migration-a-journey-through-time-and-space/',
+                text: 'migration and refactoring of legacy frontend code',
+            })} for Skill IQ experience`,
             `Drove early adoption of ${buildLink({
                 href: 'https://github.com/pluralsight/pando',
                 text: 'Pando design system library',
             })}`,
-            'Created cron jobs to alert issues in data integrity between PostgreSQL database tables and reflected tables in Snowflake',
+            `Created cron jobs to trigger alerts for issues in data integrity between ${buildLink({
+                href: 'https://www.postgresql.org/',
+                text: 'PostgreSQL',
+            })} database tables and reflected tables in ${buildLink({
+                href: 'https://www.snowflake.com/en/',
+                text: 'Snowflake',
+            })}`,
         ],
     },
     {

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import {
-    GenericHeading, // <- to force formatting
+    GenericHeading, // force formatting
     GenericContainer,
     LocationText,
     NameAndLocationWrapper,
@@ -13,7 +13,7 @@ import resumeIconsMap from 'resume/icons';
 import { themeColors } from 'themes/index';
 import { toKebabCase, collapsedOrExpanded } from 'utils/index';
 import {
-    EmploymentItemGrid, // <- to force formatting
+    EmploymentItemGrid, // force formatting
     EmploymentItemContainer,
     CompanyName,
     ExpandableDetails,
@@ -22,7 +22,7 @@ import {
 } from './styled';
 
 const EmploymentItem = ({
-    employmentRecord, // <- to force formatting
+    employmentRecord, // force formatting
 }: {
     employmentRecord: EmploymentRecord;
 }): React.ReactElement => {
@@ -41,8 +41,13 @@ const EmploymentItem = ({
                         {isCollapsed ? <ExpandLess /> : <ExpandMore />}
                     </ToggleIcon>
                     <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
-                    <LocationText className="togglable">
+                    <LocationText
+                        // as="span"
+                        className="togglable"
+                    >
+                        {/* <i> */}
                         {company.location.city}, {company.location.state}
+                        {/* </i> */}
                     </LocationText>
                 </NameAndLocationWrapper>
                 <ExpandableDetails className="togglable">
@@ -50,7 +55,10 @@ const EmploymentItem = ({
                         {roles.map(
                             (role, i): React.ReactElement => (
                                 <span className="role-item" key={`role-item-${i}`}>
-                                    <b>{role.title}</b> :: <i>{`${role.startDate} - ${role.endDate}`}</i>
+                                    <b>{role.title}</b>{' '}
+                                    <span className="role-item-dates">
+                                        :: <i>{`${role.startDate} - ${role.endDate}`}</i>
+                                    </span>
                                 </span>
                             ),
                         )}
@@ -69,7 +77,7 @@ const EmploymentItem = ({
                     )}
                 </ExpandableDetails>
                 {Icon && (
-                    <EmploymentIconWrapper>
+                    <EmploymentIconWrapper className={companyNameClass}>
                         <Icon />
                     </EmploymentIconWrapper>
                 )}
@@ -82,13 +90,12 @@ const Employment = ({ heading, data }: SectionComponentProps): React.ReactElemen
     return (
         <GenericContainer
             overrides={{
-                // <- to force formatting
+                // force formatting
                 backgroundColor: themeColors.darkerPurpleHex,
                 color: themeColors.white,
-                padding: '2em 0',
             }}
         >
-            <GenericHeading overrides={{ padding: '0 10vw 0.25em' }}>{heading}</GenericHeading>
+            <GenericHeading overrides={{ paddingBottom: '0.25em' }}>{heading}</GenericHeading>
             {data.map((record, i) => (
                 <EmploymentItem key={`employment-item-${i}`} employmentRecord={record} />
             ))}

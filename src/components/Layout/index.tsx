@@ -9,7 +9,7 @@ import { Footer, Header, LeftSideMenu } from 'components/index';
 import { AppStateProvider } from 'store';
 import { GlobalStyles, WaitwutStyles, ResumeStyles } from 'styles';
 import { baseTheme, containerTheme, resumeTheme } from 'themes/index';
-import { StyledContainerOnly, StyledBoxOnly, StyledContainer, StyledBox } from './styled';
+import { StyledContainer, StyledBox } from './styled';
 
 const Layout = ({
     pageTitle,
@@ -48,9 +48,9 @@ const Layout = ({
                         <ThemeProvider theme={resumeTheme}>
                             <GlobalStyles />
                             <ResumeStyles />
-                            <StyledContainerOnly id="resume-content" disableGutters={true}>
-                                <StyledBoxOnly>{children}</StyledBoxOnly>
-                            </StyledContainerOnly>
+                            <StyledContainer id="resume-content" disableGutters={true}>
+                                <StyledBox>{children}</StyledBox>
+                            </StyledContainer>
                         </ThemeProvider>
                     ) : (
                         <ThemeProvider theme={baseTheme}>

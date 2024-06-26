@@ -31,7 +31,7 @@ const SheetLineItemLink = styled(Link)`
 `;
 
 const NotesListPage = ({
-    data, // <- to force formatting
+    data, // force formatting
 }: {
     data: ListPageData;
 }): React.ReactElement => {

@@ -1,5 +1,5 @@
 import {
-    DefaultTheme, // <- to force formatting
+    DefaultTheme, // force formatting
     AppBarTheme,
     BaseTheme,
     ContainerTheme,
@@ -112,13 +112,15 @@ const resumeTheme = {
     evergageBlueHex: '#2e8cc8',
     evergageGreenHex: '#7bb93d',
     evergageGrayHex: '#7a7c7c',
+    // Upstatement
+    upstatementLinkUnderline: '#858585',
     // BSO
     bsoBgHex: '#ffda81',
     bsoTextHex: '#000000',
 };
 
 export {
-    themeColors, // <- to force formatting
+    themeColors, // force formatting
     defaultColors,
     defaultTheme,
     appBarTheme,

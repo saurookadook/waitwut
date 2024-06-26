@@ -1,10 +1,10 @@
-import React, { MouseEventHandler, useRef, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import {
-    GenericContainer, // <- to force formatting
+    GenericContainer, // force formatting
     GenericHeading,
     GenericGridContainer,
     ToggleIcon,
@@ -13,7 +13,7 @@ import GitHubOctocat from 'resume/icons/github';
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded } from 'utils/index';
 import {
-    ProjectItemContainer, // <- to force formatting
+    ProjectItemContainer, // force formatting
     ProjectNameWrapper,
     ProjectDisplayName,
     ProjectDetails,
@@ -23,26 +23,21 @@ import {
 } from './styled';
 
 const TechnicalProjectItem = ({
-    technicalProjectRecord, // <- to force formatting
+    technicalProjectRecord, // force formatting
 }: {
     technicalProjectRecord: TechnicalProjectRecord;
 }): React.ReactElement => {
-    const projectDetailsRef = useRef<HTMLDivElement>(null);
     const [isCollapsed, setIsCollapsed] = useState(true);
-    const handleToggleOnClick = (): void => {
-        setIsCollapsed(!isCollapsed)
+    const [isClickable, setIsClickable] = useState(false);
 
+    const handleToggleOnClick = (): void => {
         if (!isCollapsed) {
-            setTimeout(() => {
-                console.log({ projectDetailsRef });
-                // console.dir(projectDetailsRef.current);
-                if (typeof projectDetailsRef.current?.hidden === "boolean" && !projectDetailsRef.current?.hidden) {
-                    // projectDetailsRef.current.style.display = 'none';
-                    projectDetailsRef.current.hidden = true
-                    console.log({ projectDetailsRef });
-                }
-            }, 500);
+            setTimeout(() => setIsClickable(!isClickable), 500);
+        } else {
+            setIsClickable(!isClickable);
         }
+
+        setTimeout(() => setIsCollapsed(!isCollapsed), 0);
     };
 
     const { description, displayName, endDate, links, startDate } = technicalProjectRecord;
@@ -57,11 +52,19 @@ const TechnicalProjectItem = ({
                     {displayName}
                 </ProjectDisplayName>
             </ProjectNameWrapper>
-            <ProjectDetails className={classNames('togglable', 'list-item')} ref={projectDetailsRef}>
+            <ProjectDetails
+                className={classNames(
+                    'togglable', // force formatting
+                    'project-details',
+                    isClickable && 'clickable',
+                )}
+            >
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
-                        {link.type === 'github repository' && <GitHubOctocat />}
-                        <ProjectLinkText>{link.url.replace('https://', '')}</ProjectLinkText>
+                        <ProjectLinkText>
+                            {link.type === 'github repository' && <GitHubOctocat height={24} width={24} />}
+                            {link.url.replace('https://github.com/', '')}
+                        </ProjectLinkText>
                     </ProjectLink>
                 ))}
                 <SubText className="project-dates">
@@ -69,11 +72,7 @@ const TechnicalProjectItem = ({
                         ({startDate} - {endDate})
                     </i>
                 </SubText>
-                <SubText>
-                    {/* <i> */}
-                    {description}
-                    {/* </i> */}
-                </SubText>
+                <SubText>{description}</SubText>
             </ProjectDetails>
         </ProjectItemContainer>
     );
@@ -84,14 +83,12 @@ const ProjectsWrapper = styled.div`
     flex-direction: column;
 `;
 
-const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.ReactElement => {
-    const [
-        left,
-        right,
-    ]: [
-        TechnicalProjectRecord[],
-        TechnicalProjectRecord[],
-    ] = data.reduce(
+const MobileGridContainer = ({
+    data, // force formatting
+}: {
+    data: TechnicalProjectRecord[];
+}): React.ReactElement => {
+    const [left, right] = data.reduce(
         (acc, cur, i) => {
             if (i % 2 === 0) {
                 acc[0].push(cur);
@@ -101,38 +98,77 @@ const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.Reac
 
             return acc;
         },
-        [[], []],
+        [[], []] as [TechnicalProjectRecord[], TechnicalProjectRecord[]],
     );
+
+    return (
+        <GenericGridContainer>
+            <ProjectsWrapper>
+                {left.map((record, i) => {
+                    return <TechnicalProjectItem key={`technical-project-left-${i}`} technicalProjectRecord={record} />;
+                })}
+            </ProjectsWrapper>
+            <ProjectsWrapper>
+                {right.map((record, i) => {
+                    return (
+                        <TechnicalProjectItem key={`technical-project-right-${i}`} technicalProjectRecord={record} />
+                    );
+                })}
+            </ProjectsWrapper>
+        </GenericGridContainer>
+    );
+};
+
+const DefalutGridContainer = ({
+    data, // force formatting
+}: {
+    data: TechnicalProjectRecord[];
+}): React.ReactElement => {
+    return (
+        <GenericGridContainer>
+            <ProjectsWrapper>
+                {data.map((record, i) => {
+                    return (
+                        <TechnicalProjectItem // force formatting
+                            key={`technical-project-left-${i}`}
+                            technicalProjectRecord={record}
+                        />
+                    );
+                })}
+            </ProjectsWrapper>
+        </GenericGridContainer>
+    );
+};
+
+const TechnicalProjects = ({
+    heading,
+    data,
+}: {
+    heading: string;
+    data: TechnicalProjectRecord[];
+}): React.ReactElement => {
+    const media = window.matchMedia('(min-width: 600px)');
+    const [isMobile, setIsMobile] = useState<boolean>(media.matches);
+
+    useEffect(() => {
+        if (media.matches !== isMobile) {
+            setIsMobile(media.matches);
+        }
+    }, [media.matches, isMobile]);
 
     return (
         <GenericContainer
             overrides={{
-                // <- to force
-                backgroundColor: themeColors.stringGreen,
+                backgroundColor: themeColors.stringGreen, // force formatting
                 color: themeColors.blackHex,
-                padding: '2em 10vw',
             }}
         >
             <GenericHeading overrides={{ padding: '0' }}>{heading}</GenericHeading>
-            <GenericGridContainer>
-                <ProjectsWrapper>
-                    {left.map((record, i) => {
-                        return (
-                            <TechnicalProjectItem key={`technical-project-left-${i}`} technicalProjectRecord={record} />
-                        );
-                    })}
-                </ProjectsWrapper>
-                <ProjectsWrapper>
-                    {right.map((record, i) => {
-                        return (
-                            <TechnicalProjectItem
-                                key={`technical-project-right-${i}`}
-                                technicalProjectRecord={record}
-                            />
-                        );
-                    })}
-                </ProjectsWrapper>
-            </GenericGridContainer>
+            {isMobile ? ( // force formatting
+                <MobileGridContainer data={data} />
+            ) : (
+                <DefalutGridContainer data={data} />
+            )}
         </GenericContainer>
     );
 };

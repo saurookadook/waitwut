@@ -9,28 +9,29 @@ import {
     NameAndLocationWrapper,
 } from 'resume/styled';
 import { themeColors } from 'themes/index';
+import { EducationItemContainer } from './styled';
 
 const InstitutionName = styled.h3`
     margin-bottom: 0%;
 `;
 
 const EducationItem = ({
-    educationRecord, // <- to force formatting
+    educationRecord, // force formatting
 }: {
     educationRecord: EducationRecord;
 }): React.ReactElement => {
     const { certification, completionText, institution, location } = educationRecord;
     return (
-        <div>
+        <EducationItemContainer>
             <NameAndLocationWrapper>
                 <InstitutionName>{institution}</InstitutionName>
-                {!!location && ( // <- to force formatting
+                {!!location && ( // force formatting
                     <LocationText>{`${location.city}, ${location.state}`}</LocationText>
                 )}
             </NameAndLocationWrapper>
             <p>{completionText}</p>
             <p>{certification}</p>
-        </div>
+        </EducationItemContainer>
     );
 };
 
@@ -38,10 +39,9 @@ const Education = ({ heading, data }: SectionComponentProps): React.ReactElement
     return (
         <GenericContainer
             overrides={{
-                // <- to force formatting
+                // force formatting
                 backgroundColor: themeColors.plBlue,
                 color: themeColors.white,
-                padding: '2em 10vw',
             }}
         >
             <GenericHeading overrides={{ paddingBottom: '0.25em' }}>{heading}</GenericHeading>

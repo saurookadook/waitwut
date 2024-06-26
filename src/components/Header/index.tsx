@@ -8,7 +8,7 @@ import { appBarTheme } from 'themes';
 import { StyledAppBar, MenuButton, CustomMenuIcon, NavLink } from './styled';
 
 const Header = ({
-    data, // <- to force formatting
+    data, // force formatting
 }: {
     data?: ListPageData;
 }): React.ReactElement => {

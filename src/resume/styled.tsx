@@ -2,10 +2,16 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 
 import { addPadding } from 'resume/utils';
+import { minWidth600 } from 'styles/mq';
+import { allButLastChild } from 'styles/selectors';
 import { resumeTheme, themeColors } from 'themes/index';
 
-const GenericContainer = styled.div<GenericStyledProps>`
-    ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5rem')}
+const GenericContainer = styled.div.attrs((props) => {
+    return {
+        className: classNames('generic-container', props.className),
+    };
+})<GenericStyledProps>`
+    ${(props) => addPadding(props.overrides || {}, '0 0 0.5rem')}
 
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
     color: ${(props) => props.overrides?.color || themeColors.blackHex};
@@ -17,12 +23,20 @@ const GenericContainer = styled.div<GenericStyledProps>`
         list-style: '\\21A0\\0020\\0020';
     }
 
-    #resume & li::marker {
-        margin-right: 1rem;
+    #resume & li {
+        &${allButLastChild} {
+            margin-bottom: 0.25rem;
+        }
+
+        &::marker {
+            margin-right: 1rem;
+        }
     }
 `;
 
-const GenericHeading = styled.h2<GenericStyledProps>`
+const GenericHeading = styled.h2.attrs({
+    className: 'generic-heading',
+})<GenericStyledProps>`
     ${(props) => addPadding(props.overrides || {}, '0 0 0.5rem')}
 
     background-color: ${(props) => props.overrides?.backgroundColor || 'inherit'};
@@ -32,15 +46,34 @@ const GenericHeading = styled.h2<GenericStyledProps>`
 
 const GenericGridContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     position: relative;
     z-index: 10;
+
+    ${minWidth600} {
+        grid-template-columns: repeat(2, 1fr);
+    }
+`;
+
+const GenericItemContainer = styled.div.attrs((props) => {
+    return { className: classNames('generic-item-container', props.className) };
+})`
+    padding: 0.5rem 5vw;
+
+    ${minWidth600} {
+        padding: 0.5rem 10vw;
+    }
 `;
 
 const LocationText = styled.i`
     align-self: flex-end;
-    font-size: 1.25rem;
-    /* margin-bottom: 0.2rem; */
+    margin-bottom: 0.0625rem;
+    margin-left: 0.5rem;
+
+    ${minWidth600} {
+        font-size: 1.25rem;
+        margin-bottom: 0.2rem;
+    }
 
     .collapsed & {
         color: transparent;
@@ -83,11 +116,6 @@ const NameAndLocationWrapper = styled.div.attrs((props) => {
     display: flex;
     flex-direction: row;
     grid-row: 1;
-
-    & i {
-        /* line-height: 2.5rem; */
-        margin-left: 1rem;
-    }
 `;
 
 const NameAndLocationTextWrapper = styled.span`
@@ -112,9 +140,10 @@ const ToggleIcon = styled.span`
 const listItemPadding = '40px';
 
 export {
-    GenericContainer, // <- to force formatting
+    GenericContainer, // force formatting
     GenericHeading,
     GenericGridContainer,
+    GenericItemContainer,
     LocationText,
     NameAndLocationWrapper,
     NameAndLocationTextWrapper,
