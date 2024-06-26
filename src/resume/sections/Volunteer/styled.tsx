@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 
+import { GenericItemContainer } from 'resume/styled';
 import { minWidth600 } from 'styles/mq';
 
-const VolunteerItemContainer = styled.div`
+const VolunteerItemContainer = styled(GenericItemContainer)`
     display: flex;
     flex-direction: column;
     height: auto;
-    padding: 2rem 5vw;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     row-gap: 0.5rem;
     z-index: 1;
-
-    ${minWidth600} {
-        padding: 2rem 10vw;
-    }
 
     &.collapsed {
         flex: 0;

@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
-import { listItemPadding } from 'resume/styled';
+import { GenericItemContainer, listItemPadding } from 'resume/styled';
 import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { themeColors } from 'themes/index';
 
-const ProjectItemContainer = styled.div`
+const ProjectItemContainer = styled(GenericItemContainer)`
     display: flex;
     flex-direction: column;
     height: auto;
-    padding: 0.5rem 0;
     z-index: 5;
 
     &.collapsed {

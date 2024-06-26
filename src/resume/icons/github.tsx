@@ -5,11 +5,21 @@ import React from 'react';
  */
 const GitHubOctocat = ({
     fillColor = '#181616', // force formatting
+    height = 128,
+    width = 128,
     ...props
 }: {
     fillColor?: string;
+    height?: number;
+    width?: number;
 }): React.ReactElement => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" {...props}>
+    <svg // force formatting
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={`0 0 128 128`}
+        height={height}
+        width={width}
+        {...props}
+    >
         <g fill={fillColor}>
             <path
                 fillRule="evenodd"

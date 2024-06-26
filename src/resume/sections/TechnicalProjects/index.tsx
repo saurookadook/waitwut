@@ -61,8 +61,10 @@ const TechnicalProjectItem = ({
             >
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
-                        {link.type === 'github repository' && <GitHubOctocat />}
-                        <ProjectLinkText>{link.url.replace('https://', '')}</ProjectLinkText>
+                        <ProjectLinkText>
+                            {link.type === 'github repository' && <GitHubOctocat height={24} width={24} />}
+                            {link.url.replace('https://github.com/', '')}
+                        </ProjectLinkText>
                     </ProjectLink>
                 ))}
                 <SubText className="project-dates">

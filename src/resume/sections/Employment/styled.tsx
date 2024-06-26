@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import classNames from 'classnames';
 
+import { GenericItemContainer } from 'resume/styled';
 import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { minWidth600 } from 'styles/mq';
 import { allButLastChild } from 'styles/selectors';
 import { themeColors, resumeTheme } from 'themes/index';
 
-const EmploymentItemContainer = styled.div`
+const EmploymentItemContainer = styled(GenericItemContainer)`
     display: flex;
     flex-direction: column;
     height: auto;
