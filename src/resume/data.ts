@@ -27,7 +27,7 @@ export const headingDetails = {
 };
 
 function buildLink({
-    href, // <- to force formatting
+    href, // force formatting
     text,
 }: {
     href: string;

@@ -20,7 +20,7 @@ const StyledIntroBlurb = styled.p`
 `;
 
 export {
-    StyledHeader, // <- to force formatting
+    StyledHeader, // force formatting
     StyledNameHeading,
     StyledContactInfo,
     StyledIntroBlurb,

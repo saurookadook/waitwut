@@ -4,7 +4,7 @@ import React from 'react';
  * {@link https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg | SVG Source}
  */
 const GitHubOctocat = ({
-    fillColor = '#181616', // <- to force formatting
+    fillColor = '#181616', // force formatting
     ...props
 }: {
     fillColor?: string;

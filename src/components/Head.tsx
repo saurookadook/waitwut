@@ -18,7 +18,7 @@ const baseStyles = css`
 `;
 
 const Head = ({
-    data, // <- to force formatting
+    data, // force formatting
     location,
     pageContext,
     params,

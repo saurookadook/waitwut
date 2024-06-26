@@ -1,5 +1,5 @@
 import {
-    DefaultTheme, // <- to force formatting
+    DefaultTheme, // force formatting
     AppBarTheme,
     BaseTheme,
     ContainerTheme,
@@ -120,7 +120,7 @@ const resumeTheme = {
 };
 
 export {
-    themeColors, // <- to force formatting
+    themeColors, // force formatting
     defaultColors,
     defaultTheme,
     appBarTheme,

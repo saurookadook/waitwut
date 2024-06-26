@@ -32,7 +32,7 @@ const SheetLineItemLink = styled(Link)`
 
 // TODO: this and the bookmarks list page component could be the same lol
 const SheetsPage = ({
-    data, // <- to force formatting
+    data, // force formatting
 }: {
     data: ListPageData;
 }): React.ReactElement => {

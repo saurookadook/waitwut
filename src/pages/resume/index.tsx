@@ -16,7 +16,7 @@ const Resume = (): React.ReactElement => {
             {sections.map((section, i): React.ReactElement => {
                 const key = Object.keys(section)[0];
                 return (
-                    <AbstractSection // <- to force formatting
+                    <AbstractSection // force formatting
                         key={`${key}-${i}`}
                         sectionKey={key}
                         sectionData={section[key]}

@@ -4,7 +4,7 @@ import { ExternalLinkWrapper } from 'common/components';
 import { InfoContainer, InfoItem } from './styled';
 
 const SiteLink = ({
-    siteData, // <- to force formatting
+    siteData, // force formatting
 }: {
     siteData: Site;
 }): React.ReactElement => {
