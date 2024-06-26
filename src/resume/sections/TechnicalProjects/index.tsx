@@ -147,7 +147,7 @@ const TechnicalProjects = ({
     heading: string;
     data: TechnicalProjectRecord[];
 }): React.ReactElement => {
-    const media = window.matchMedia('(min-width: 600px)');
+    const media = typeof window !== 'undefined' ? window.matchMedia('(min-width: 600px)') : { matches: false };
     const [isMobile, setIsMobile] = useState<boolean>(media.matches);
 
     useEffect(() => {
