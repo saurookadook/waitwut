@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledU = styled.span`
+const StyledU = styled.span.attrs({
+    className: 'upstatement-u',
+})`
     font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
     font-size: 200px;
     height: 100px;

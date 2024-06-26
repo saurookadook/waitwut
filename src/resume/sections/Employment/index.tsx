@@ -77,7 +77,7 @@ const EmploymentItem = ({
                     )}
                 </ExpandableDetails>
                 {Icon && (
-                    <EmploymentIconWrapper>
+                    <EmploymentIconWrapper className={companyNameClass}>
                         <Icon />
                     </EmploymentIconWrapper>
                 )}

@@ -18,8 +18,14 @@ const GenericContainer = styled.div<GenericStyledProps>`
         list-style: '\\21A0\\0020\\0020';
     }
 
-    #resume & li::marker {
-        margin-right: 1rem;
+    #resume & li {
+        &:nth-last-child(n + 2) {
+            margin-bottom: 0.25rem;
+        }
+
+        &::marker {
+            margin-right: 1rem;
+        }
     }
 `;
 

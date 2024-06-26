@@ -9,9 +9,13 @@ const EmploymentItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
-    padding: 0.5rem 10vw;
+    padding: 0.5rem 5vw;
     position: relative;
     z-index: 1;
+
+    ${minWidth600} {
+        padding: 0.5rem 10vw;
+    }
 
     &.collapsed {
         color: ${themeColors.white};
@@ -124,11 +128,13 @@ const ExpandableDetails = styled.div.attrs((props) => {
     justify-content: center;
     margin: 0;
     padding-right: 0;
-    z-index: 0;
+    padding-top: 0.5rem;
+    z-index: 1;
 
     ${minWidth600} {
         grid-column: 1 / span 1;
         padding-right: 10rem;
+        padding-top: 0;
     }
 
     & .role-item {
@@ -257,11 +263,14 @@ const ExpandableDetailsItemWrapper = styled.div`
 
 const EmploymentIconWrapper = styled.span`
     display: flex;
-    grid-row: 1 / span 1;
-    height: auto;
-    justify-content: center;
+    /* grid-row: 1 / span 1; */
+    height: 6.5rem;
+    /* justify-content: center; */
     overflow-y: hidden;
-    width: 100%;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    width: auto;
 
     & svg,
     & img {
@@ -271,7 +280,13 @@ const EmploymentIconWrapper = styled.span`
     }
 
     ${minWidth600} {
+        display: flex;
         grid-row: 1 / span 2;
+        height: auto;
+        justify-content: center;
+        overflow-y: hidden;
+        position: relative;
+        width: 100%;
     }
 
     .collapsed & {
@@ -279,8 +294,22 @@ const EmploymentIconWrapper = styled.span`
     }
 
     .expanded & {
-        flex: 1;
         ${expandedStyles}
+        flex: 1;
+        opacity: 0.5;
+
+        ${minWidth600} {
+            opacity: 1;
+        }
+    }
+
+    &.upstatement {
+        overflow-y: visible;
+    }
+
+    &.boston-symphony-orchestra {
+        /* TODO: this still looks shitty but for now, it's good enough for jazz */
+        right: -1.5rem;
     }
 `;
 
