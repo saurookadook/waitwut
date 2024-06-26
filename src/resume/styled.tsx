@@ -9,7 +9,7 @@ import { resumeTheme, themeColors } from 'themes/index';
 const GenericContainer = styled.div.attrs({
     className: 'generic-container',
 })<GenericStyledProps>`
-    ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5rem')}
+    ${(props) => addPadding(props.overrides || {}, '0 0 0.5rem')}
 
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
     color: ${(props) => props.overrides?.color || themeColors.blackHex};
@@ -50,6 +50,16 @@ const GenericGridContainer = styled.div`
 
     ${minWidth600} {
         grid-template-columns: repeat(2, 1fr);
+    }
+`;
+
+const GenericItemContainer = styled.div.attrs((props) => {
+    return { className: classNames('generic-item-container', props.className) };
+})`
+    padding: 0.5rem 5vw;
+
+    ${minWidth600} {
+        padding: 0.5rem 10vw;
     }
 `;
 
@@ -131,6 +141,7 @@ export {
     GenericContainer, // force formatting
     GenericHeading,
     GenericGridContainer,
+    GenericItemContainer,
     LocationText,
     NameAndLocationWrapper,
     NameAndLocationTextWrapper,

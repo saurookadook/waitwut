@@ -235,10 +235,17 @@ const ResumeStyles = createGlobalStyle`
         }
 
         section .generic-container {
-            padding: 2em 5vw;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
 
-            ${minWidth600} {
-                padding: 2em 10vw;
+            & .generic-heading {
+                padding-right: 5vw;
+                padding-left: 5vw;
+
+                ${minWidth600} {
+                    padding-right: 10vw;
+                    padding-left: 10vw;
+                }
             }
         }
 
