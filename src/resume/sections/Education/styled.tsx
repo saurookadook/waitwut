@@ -15,7 +15,16 @@ const EducationItemContainer = styled.div`
     }
 
     & .name-and-location-wrapper {
+        align-items: flex-start;
+        flex-direction: column;
         margin-bottom: 0.5rem;
+    }
+
+    ${minWidth600} {
+        & .name-and-location-wrapper {
+            align-items: flex-end;
+            flex-direction: row;
+        }
     }
 `;
 

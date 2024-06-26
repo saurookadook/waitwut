@@ -60,9 +60,23 @@ const EmploymentItemGrid = styled.div`
     grid-template-columns: 80% 20%;
     /* grid-template-rows: 1fr auto; */
 
+    & .name-and-location-wrapper {
+        align-items: center;
+
+        & i {
+            align-self: center;
+            margin-left: 0.5rem;
+        }
+    }
+
     ${minWidth600} {
         & .name-and-location-wrapper {
             max-height: 3.25rem;
+
+            & i {
+                align-self: flex-start;
+                margin-left: 0;
+            }
         }
     }
 
@@ -104,11 +118,17 @@ const ExpandableDetails = styled.div.attrs((props) => {
 })`
     display: flex;
     flex-direction: column;
+    grid-column: 1 / span 2;
     grid-row: 2;
     justify-content: center;
     margin: 0;
-    padding-right: 10rem;
+    padding-right: 0;
     z-index: 0;
+
+    ${minWidth600} {
+        grid-column: 1 / span 1;
+        padding-right: 10rem;
+    }
 
     .collapsed &,
     .collapsed & a {
@@ -221,7 +241,7 @@ const ExpandableDetailsItemWrapper = styled.div`
 
 const EmploymentIconWrapper = styled.span`
     display: flex;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 1;
     height: auto;
     justify-content: center;
     overflow-y: hidden;
@@ -232,6 +252,10 @@ const EmploymentIconWrapper = styled.span`
         height: 100%;
         margin: auto;
         width: auto;
+    }
+
+    ${minWidth600} {
+        grid-row: 1 / span 2;
     }
 
     .collapsed & {

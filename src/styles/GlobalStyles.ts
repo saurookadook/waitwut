@@ -80,6 +80,15 @@ const GlobalStyles = createGlobalStyle`
             margin-left: 0.5rem;
         }
 
+        & ul,
+        & ol {
+            padding-inline-start: 1.5rem;
+
+            ${minWidth600} {
+                padding-inline-start: 2.5rem;
+            }
+        }
+
         & a {
             text-decoration: none;
 

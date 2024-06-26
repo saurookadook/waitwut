@@ -88,9 +88,9 @@ const LocationText = styled.i`
 const NameAndLocationWrapper = styled.div.attrs((props) => {
     return { className: classNames('name-and-location-wrapper', props.className) };
 })`
-    align-items: flex-start;
+    align-items: flex-end;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     grid-row: 1;
 
     & i {
@@ -98,9 +98,6 @@ const NameAndLocationWrapper = styled.div.attrs((props) => {
     }
 
     ${minWidth600} {
-        align-items: flex-end;
-        flex-direction: row;
-
         & i {
             /* line-height: 2.5rem; */
             margin-left: 1rem;
