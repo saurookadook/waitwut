@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import {
-    GenericHeading, // <- to force formatting
+    GenericHeading, // force formatting
     GenericContainer,
     LocationText,
     NameAndLocationWrapper,
@@ -13,7 +13,7 @@ import resumeIconsMap from 'resume/icons';
 import { themeColors } from 'themes/index';
 import { toKebabCase, collapsedOrExpanded } from 'utils/index';
 import {
-    EmploymentItemGrid, // <- to force formatting
+    EmploymentItemGrid, // force formatting
     EmploymentItemContainer,
     CompanyName,
     ExpandableDetails,
@@ -22,7 +22,7 @@ import {
 } from './styled';
 
 const EmploymentItem = ({
-    employmentRecord, // <- to force formatting
+    employmentRecord, // force formatting
 }: {
     employmentRecord: EmploymentRecord;
 }): React.ReactElement => {
@@ -90,13 +90,12 @@ const Employment = ({ heading, data }: SectionComponentProps): React.ReactElemen
     return (
         <GenericContainer
             overrides={{
-                // <- to force formatting
+                // force formatting
                 backgroundColor: themeColors.darkerPurpleHex,
                 color: themeColors.white,
-                padding: '2em 0',
             }}
         >
-            <GenericHeading overrides={{ padding: '0 10vw 0.25em' }}>{heading}</GenericHeading>
+            <GenericHeading overrides={{ paddingBottom: '0.25em' }}>{heading}</GenericHeading>
             {data.map((record, i) => (
                 <EmploymentItem key={`employment-item-${i}`} employmentRecord={record} />
             ))}

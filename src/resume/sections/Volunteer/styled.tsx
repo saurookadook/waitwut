@@ -1,16 +1,22 @@
 import styled from 'styled-components';
 
+import { minWidth600 } from 'styles/mq';
+
 const VolunteerItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
+    padding: 2rem 5vw;
     row-gap: 0.5rem;
     z-index: 1;
+
+    ${minWidth600} {
+        padding: 2rem 10vw;
+    }
 
     &.collapsed {
         flex: 0;
         max-height: min-content;
-        /* padding: 0.5em 10vw; */
         padding-top: 0.5em;
         padding-bottom: 0.5em;
         transition: all 300ms ease-out;
@@ -44,8 +50,21 @@ const VolunteerItemDetailWrapper = styled.div`
     row-gap: 0.25rem;
     z-index: 0;
 
-    .expanded & span.role-item {
-        font-size: 1.5rem;
+    .expanded & .role-item {
+        font-size: 1.2rem;
+
+        ${minWidth600} {
+            font-size: 1.5rem;
+        }
+    }
+
+    & .role-item {
+        display: flex;
+        flex-direction: column;
+
+        ${minWidth600} {
+            flex-direction: row;
+        }
     }
 
     .collapsed & {
@@ -67,7 +86,7 @@ const VolunteerItemDetailWrapper = styled.div`
 `;
 
 export {
-    VolunteerItemContainer, // <- to force formatting
+    VolunteerItemContainer, // force formatting
     OrganizationName,
     VolunteerItemDetailWrapper,
 };

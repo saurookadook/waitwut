@@ -13,7 +13,7 @@ const TechnicalSkills = ({ heading, data }: SectionComponentProps): React.ReactE
     return (
         <GenericContainer
             overrides={{
-                // <- to force formatting
+                // force formatting
                 backgroundColor: resumeTheme.psWarningTextMediumHex,
                 padding: '1rem 10vw',
             }}

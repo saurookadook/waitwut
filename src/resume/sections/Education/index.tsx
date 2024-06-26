@@ -16,7 +16,7 @@ const InstitutionName = styled.h3`
 `;
 
 const EducationItem = ({
-    educationRecord, // <- to force formatting
+    educationRecord, // force formatting
 }: {
     educationRecord: EducationRecord;
 }): React.ReactElement => {
@@ -25,7 +25,7 @@ const EducationItem = ({
         <EducationItemContainer>
             <NameAndLocationWrapper>
                 <InstitutionName>{institution}</InstitutionName>
-                {!!location && ( // <- to force formatting
+                {!!location && ( // force formatting
                     <LocationText>{`${location.city}, ${location.state}`}</LocationText>
                 )}
             </NameAndLocationWrapper>
@@ -39,10 +39,9 @@ const Education = ({ heading, data }: SectionComponentProps): React.ReactElement
     return (
         <GenericContainer
             overrides={{
-                // <- to force formatting
+                // force formatting
                 backgroundColor: themeColors.plBlue,
                 color: themeColors.white,
-                padding: '2em 10vw',
             }}
         >
             <GenericHeading overrides={{ paddingBottom: '0.25em' }}>{heading}</GenericHeading>

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 import { minWidth600 } from 'styles/mq';
+import { allButLastChild } from 'styles/selectors';
 
 const EducationItemContainer = styled.div`
     /* all but last child */
-    &:nth-last-child(n + 2) {
+    &${allButLastChild} {
         margin-bottom: 2rem;
     }
 

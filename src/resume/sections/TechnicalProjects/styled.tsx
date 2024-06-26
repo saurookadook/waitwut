@@ -135,7 +135,7 @@ const SubText = styled.p`
 `;
 
 export {
-    ProjectItemContainer, // <- to force formatting
+    ProjectItemContainer, // force formatting
     ProjectNameWrapper,
     ProjectDisplayName,
     ProjectDetails,

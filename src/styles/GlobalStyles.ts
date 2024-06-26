@@ -234,6 +234,14 @@ const ResumeStyles = createGlobalStyle`
             }
         }
 
+        section .generic-container {
+            padding: 2em 5vw;
+
+            ${minWidth600} {
+                padding: 2em 10vw;
+            }
+        }
+
         & h1,
         & h2,
         & h3,
@@ -256,7 +264,7 @@ const ResumeStyles = createGlobalStyle`
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.75rem;
 
             ${minWidth600} {
                 font-size: 3.5rem;

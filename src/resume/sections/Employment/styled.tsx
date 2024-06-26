@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { minWidth600 } from 'styles/mq';
+import { allButLastChild } from 'styles/selectors';
 import { themeColors, resumeTheme } from 'themes/index';
 
 const EmploymentItemContainer = styled.div`
@@ -127,8 +128,9 @@ const ExpandableDetails = styled.div.attrs((props) => {
     grid-row: 2;
     justify-content: center;
     margin: 0;
-    padding-right: 0;
     padding-top: 0.5rem;
+    padding-right: 0;
+    padding-left: 0.5rem;
     z-index: 1;
 
     ${minWidth600} {
@@ -142,7 +144,7 @@ const ExpandableDetails = styled.div.attrs((props) => {
         flex-direction: column;
         font-size: 1.2rem;
 
-        &:nth-last-child(n + 2) {
+        &${allButLastChild} {
             margin-bottom: 0.5rem;
         }
 
@@ -314,7 +316,7 @@ const EmploymentIconWrapper = styled.span`
 `;
 
 export {
-    // <- to force formatting
+    // force formatting
     EmploymentItemGrid,
     EmploymentItemContainer,
     CompanyName,

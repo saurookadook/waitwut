@@ -2,7 +2,7 @@ import React, { MouseEventHandler, useState } from 'react';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import {
-    GenericHeading, // <- to force formatting
+    GenericHeading, // force formatting
     GenericContainer,
     LocationText,
     NameAndLocationWrapper,
@@ -11,13 +11,13 @@ import {
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded } from 'utils/index';
 import {
-    VolunteerItemContainer, // <- to force formatting
+    VolunteerItemContainer, // force formatting
     OrganizationName,
     VolunteerItemDetailWrapper,
 } from './styled';
 
 const VolunteerItem = ({
-    volunteerRecord, // <- to force formatting
+    volunteerRecord, // force formatting
 }: {
     volunteerRecord: VolunteerRecord;
 }): React.ReactElement => {
@@ -35,15 +35,18 @@ const VolunteerItem = ({
                 <OrganizationName onClick={handleToggleOnClick as MouseEventHandler}>
                     {organization.name}
                 </OrganizationName>
-                <LocationText className={'togglable'}>
+                <LocationText className="togglable">
                     {organization.location.city}, {organization.location.state}
                 </LocationText>
             </NameAndLocationWrapper>
-            <VolunteerItemDetailWrapper className={'togglable'}>
+            <VolunteerItemDetailWrapper className="togglable">
                 {roles.map(
                     (role, i): React.ReactElement => (
                         <span className="role-item" key={`role-item-${i}`}>
-                            <b>{role.title}</b> :: <i>{`${role.startDate} - ${role.endDate}`}</i>
+                            <b>{role.title}</b>{' '}
+                            <span className="role-item-dates">
+                                :: <i>{`${role.startDate} - ${role.endDate}`}</i>
+                            </span>
                         </span>
                     ),
                 )}
@@ -58,7 +61,6 @@ const Volunteer = ({ heading, data }: SectionComponentProps): React.ReactElement
             overrides={{
                 backgroundColor: themeColors.operatorAqua,
                 color: themeColors.blackHex,
-                padding: '2em 10vw',
             }}
         >
             <GenericHeading overrides={{ paddingBottom: '0.25em' }}>{heading}</GenericHeading>

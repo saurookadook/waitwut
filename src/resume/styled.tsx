@@ -3,9 +3,12 @@ import classNames from 'classnames';
 
 import { addPadding } from 'resume/utils';
 import { minWidth600 } from 'styles/mq';
+import { allButLastChild } from 'styles/selectors';
 import { resumeTheme, themeColors } from 'themes/index';
 
-const GenericContainer = styled.div<GenericStyledProps>`
+const GenericContainer = styled.div.attrs({
+    className: 'generic-container',
+})<GenericStyledProps>`
     ${(props) => addPadding(props.overrides || {}, '0 10vw 0.5rem')}
 
     background-color: ${(props) => props.overrides?.backgroundColor || themeColors.white};
@@ -19,7 +22,7 @@ const GenericContainer = styled.div<GenericStyledProps>`
     }
 
     #resume & li {
-        &:nth-last-child(n + 2) {
+        &${allButLastChild} {
             margin-bottom: 0.25rem;
         }
 
@@ -29,7 +32,9 @@ const GenericContainer = styled.div<GenericStyledProps>`
     }
 `;
 
-const GenericHeading = styled.h2<GenericStyledProps>`
+const GenericHeading = styled.h2.attrs({
+    className: 'generic-heading',
+})<GenericStyledProps>`
     ${(props) => addPadding(props.overrides || {}, '0 0 0.5rem')}
 
     background-color: ${(props) => props.overrides?.backgroundColor || 'inherit'};
@@ -123,7 +128,7 @@ const ToggleIcon = styled.span`
 const listItemPadding = '40px';
 
 export {
-    GenericContainer, // <- to force formatting
+    GenericContainer, // force formatting
     GenericHeading,
     GenericGridContainer,
     LocationText,

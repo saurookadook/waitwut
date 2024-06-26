@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import {
-    GenericContainer, // <- to force formatting
+    GenericContainer, // force formatting
     GenericHeading,
     GenericGridContainer,
     ToggleIcon,
@@ -13,7 +13,7 @@ import GitHubOctocat from 'resume/icons/github';
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded } from 'utils/index';
 import {
-    ProjectItemContainer, // <- to force formatting
+    ProjectItemContainer, // force formatting
     ProjectNameWrapper,
     ProjectDisplayName,
     ProjectDetails,
@@ -23,7 +23,7 @@ import {
 } from './styled';
 
 const TechnicalProjectItem = ({
-    technicalProjectRecord, // <- to force formatting
+    technicalProjectRecord, // force formatting
 }: {
     technicalProjectRecord: TechnicalProjectRecord;
 }): React.ReactElement => {
@@ -54,7 +54,7 @@ const TechnicalProjectItem = ({
             </ProjectNameWrapper>
             <ProjectDetails
                 className={classNames(
-                    'togglable', // <- to force formatting
+                    'togglable', // force formatting
                     'project-details',
                     isClickable && 'clickable',
                 )}
@@ -104,10 +104,9 @@ const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.Reac
     return (
         <GenericContainer
             overrides={{
-                // <- to force
+                // force formatting
                 backgroundColor: themeColors.stringGreen,
                 color: themeColors.blackHex,
-                padding: '2em 10vw',
             }}
         >
             <GenericHeading overrides={{ padding: '0' }}>{heading}</GenericHeading>
