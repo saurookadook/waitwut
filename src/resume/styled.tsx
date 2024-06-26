@@ -6,8 +6,10 @@ import { minWidth600 } from 'styles/mq';
 import { allButLastChild } from 'styles/selectors';
 import { resumeTheme, themeColors } from 'themes/index';
 
-const GenericContainer = styled.div.attrs({
-    className: 'generic-container',
+const GenericContainer = styled.div.attrs((props) => {
+    return {
+        className: classNames('generic-container', props.className),
+    };
 })<GenericStyledProps>`
     ${(props) => addPadding(props.overrides || {}, '0 0 0.5rem')}
 
@@ -64,13 +66,13 @@ const GenericItemContainer = styled.div.attrs((props) => {
 `;
 
 const LocationText = styled.i`
-    align-self: center;
+    align-self: flex-end;
+    margin-bottom: 0.0625rem;
     margin-left: 0.5rem;
 
     ${minWidth600} {
-        align-self: flex-end;
         font-size: 1.25rem;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.2rem;
     }
 
     .collapsed & {

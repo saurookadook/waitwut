@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
@@ -83,14 +83,12 @@ const ProjectsWrapper = styled.div`
     flex-direction: column;
 `;
 
-const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.ReactElement => {
-    const [
-        left,
-        right,
-    ]: [
-        TechnicalProjectRecord[],
-        TechnicalProjectRecord[],
-    ] = data.reduce(
+const MobileGridContainer = ({
+    data, // force formatting
+}: {
+    data: TechnicalProjectRecord[];
+}): React.ReactElement => {
+    const [left, right] = data.reduce(
         (acc, cur, i) => {
             if (i % 2 === 0) {
                 acc[0].push(cur);
@@ -100,37 +98,77 @@ const TechnicalProjects = ({ heading, data }: SectionComponentProps): React.Reac
 
             return acc;
         },
-        [[], []],
+        [[], []] as [TechnicalProjectRecord[], TechnicalProjectRecord[]],
     );
+
+    return (
+        <GenericGridContainer>
+            <ProjectsWrapper>
+                {left.map((record, i) => {
+                    return <TechnicalProjectItem key={`technical-project-left-${i}`} technicalProjectRecord={record} />;
+                })}
+            </ProjectsWrapper>
+            <ProjectsWrapper>
+                {right.map((record, i) => {
+                    return (
+                        <TechnicalProjectItem key={`technical-project-right-${i}`} technicalProjectRecord={record} />
+                    );
+                })}
+            </ProjectsWrapper>
+        </GenericGridContainer>
+    );
+};
+
+const DefalutGridContainer = ({
+    data, // force formatting
+}: {
+    data: TechnicalProjectRecord[];
+}): React.ReactElement => {
+    return (
+        <GenericGridContainer>
+            <ProjectsWrapper>
+                {data.map((record, i) => {
+                    return (
+                        <TechnicalProjectItem // force formatting
+                            key={`technical-project-left-${i}`}
+                            technicalProjectRecord={record}
+                        />
+                    );
+                })}
+            </ProjectsWrapper>
+        </GenericGridContainer>
+    );
+};
+
+const TechnicalProjects = ({
+    heading,
+    data,
+}: {
+    heading: string;
+    data: TechnicalProjectRecord[];
+}): React.ReactElement => {
+    const media = window.matchMedia('(min-width: 600px)');
+    const [isMobile, setIsMobile] = useState<boolean>(media.matches);
+
+    useEffect(() => {
+        if (media.matches !== isMobile) {
+            setIsMobile(media.matches);
+        }
+    }, [media.matches, isMobile]);
 
     return (
         <GenericContainer
             overrides={{
-                // force formatting
-                backgroundColor: themeColors.stringGreen,
+                backgroundColor: themeColors.stringGreen, // force formatting
                 color: themeColors.blackHex,
             }}
         >
             <GenericHeading overrides={{ padding: '0' }}>{heading}</GenericHeading>
-            <GenericGridContainer>
-                <ProjectsWrapper>
-                    {left.map((record, i) => {
-                        return (
-                            <TechnicalProjectItem key={`technical-project-left-${i}`} technicalProjectRecord={record} />
-                        );
-                    })}
-                </ProjectsWrapper>
-                <ProjectsWrapper>
-                    {right.map((record, i) => {
-                        return (
-                            <TechnicalProjectItem
-                                key={`technical-project-right-${i}`}
-                                technicalProjectRecord={record}
-                            />
-                        );
-                    })}
-                </ProjectsWrapper>
-            </GenericGridContainer>
+            {isMobile ? ( // force formatting
+                <MobileGridContainer data={data} />
+            ) : (
+                <DefalutGridContainer data={data} />
+            )}
         </GenericContainer>
     );
 };

@@ -288,7 +288,7 @@ const ResumeStyles = createGlobalStyle`
 
         & p {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             line-height: 1.25;
 
             ${minWidth600} {

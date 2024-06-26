@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { GenericItemContainer, listItemPadding } from 'resume/styled';
 import { collapsedStyles, expandedStyles } from 'resume/sections/styled';
 import { themeColors } from 'themes/index';
+import { minWidth600 } from 'styles/mq';
 
 const ProjectItemContainer = styled(GenericItemContainer)`
     display: flex;
@@ -43,10 +44,15 @@ const ProjectDetails = styled.div`
     display: none;
     flex-direction: column;
     margin: 0;
-    padding-right: 4rem;
+    margin-top: 0.5rem;
+    padding-right: 0;
     /* padding-left: calc(${listItemPadding} / 2); */
     row-gap: 0.375rem;
     z-index: 0;
+
+    ${minWidth600} {
+        padding-right: 4rem;
+    }
 
     &.clickable {
         display: flex;
@@ -66,9 +72,13 @@ const ProjectDetails = styled.div`
 const ProjectLink = styled.a`
     color: ${themeColors.darkerPurpleHex};
     font-size: 1.5rem;
-    line-height: 2rem;
+    line-height: 1;
     /* margin-bottom: 0.25rem; */
     width: fit-content;
+
+    ${minWidth600} {
+        line-height: initial;
+    }
 
     &:hover {
         text-decoration: underline;
@@ -92,9 +102,18 @@ const ProjectLink = styled.a`
 `;
 
 const ProjectLinkText = styled.span`
-    display: inline-block;
+    align-items: center;
+    column-gap: 0.5rem;
+    display: inline-flex;
+    font-size: 1.25rem;
+    line-height: 1;
     margin-left: 0.5rem;
     position: relative;
+
+    ${minWidth600} {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
 
     .collapsed & {
         height: 0;
@@ -107,9 +126,14 @@ const ProjectLinkText = styled.span`
 
 const SubText = styled.p`
     #resume & {
-        font-size: 1.25rem;
-        line-height: 1.5rem;
+        font-size: 1.125rem;
+        line-height: 1.25rem;
         width: fit-content;
+
+        ${minWidth600} {
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+        }
 
         &.project-dates {
             display: block;

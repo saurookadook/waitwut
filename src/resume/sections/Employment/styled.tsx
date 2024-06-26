@@ -68,21 +68,11 @@ const EmploymentItemGrid = styled.div`
 
     & .name-and-location-wrapper {
         align-items: center;
-
-        & i {
-            align-self: center;
-            /* margin-left: 0.5rem; */
-        }
     }
 
     ${minWidth600} {
         & .name-and-location-wrapper {
             max-height: 3.25rem;
-
-            & i {
-                align-self: flex-end;
-                /* margin-bottom: 0.25rem; */
-            }
         }
     }
 

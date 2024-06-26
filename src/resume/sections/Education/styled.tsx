@@ -25,17 +25,6 @@ const EducationItemContainer = styled(GenericItemContainer)`
         &:nth-child(2n + 1) {
             padding-right: 7.5rem;
         }
-
-        & .name-and-location-wrapper {
-            align-items: flex-end;
-            flex-direction: row;
-
-            & i {
-                align-self: center;
-                /* line-height: 2.5rem; */
-                margin-left: 1rem;
-            }
-        }
     }
 `;
 
