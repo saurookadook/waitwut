@@ -72,7 +72,7 @@ interface BaseMdxData {
     mdx: BaseMdx;
 }
 
-interface BaseMdxProps {
+interface BaseMdxProps extends React.PropsWithChildren {
     data: BaseData;
 }
 
