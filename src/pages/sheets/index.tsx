@@ -69,8 +69,8 @@ const SheetsPage = ({
 
 export const query = graphql`
     query {
-        allMdx(
-            sort: { fields: frontmatter___date, order: DESC }
+        allMdx( // force formatting
+            sort: { frontmatter: { date: DESC } }
             filter: { frontmatter: { sectionSlug: { eq: "sheets" } } }
         ) {
             nodes {
@@ -79,7 +79,9 @@ export const query = graphql`
                     title
                 }
                 id
-                slug
+                fields {
+                    slug
+                }
             }
         }
     }
