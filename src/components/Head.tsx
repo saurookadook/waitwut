@@ -24,7 +24,7 @@ const Head = ({
     params,
     title,
 }: {
-    children?: React.ReactElement;
+    children?: React.ReactElement | React.ReactNode;
     title?: string;
     data?: any;
     location?: any;
