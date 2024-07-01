@@ -1,7 +1,17 @@
 const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ actions, getNode, node, reporter }) => {
     const { createNodeField } = actions;
+
+    reporter.info(`internalType: ${node.internal?.type}`);
+    if (node.internal?.type === 'Mdx') {
+        createNodeField({
+            node,
+            name: 'slug',
+            value: createFilePath({ node, getNode }),
+        });
+    }
 
     if (node?.frontmatter?.fullPath) {
         createNodeField({
@@ -9,6 +19,57 @@ exports.onCreateNode = ({ node, actions }) => {
             name: 'pathComponents',
             value: node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim),
         });
+    }
+};
+
+exports.createPages = async ({ actions, graphql, reporter }) => {
+    const { createPage, createRedirect } = actions;
+    let queryResult;
+
+    try {
+        queryResult = await graphql(`
+            query {
+                allMdx {
+                    nodes {
+                        id
+                        fields {
+                            slug
+                        }
+                        internal {
+                            contentFilePath
+                        }
+                    }
+                }
+            }
+        `);
+    } catch (e) {
+        reporter.panic('ERROR with graphql query', e);
+    }
+
+    if (typeof queryResult == null) {
+        reporter.warn(`Error encountered with GraphQL query; skipping 'createPage' calls for allMdx.nodes...`);
+    }
+
+    if (queryResult.errors) {
+        reporter.panicOnBuild('Error loading MDX result', queryResult.errors);
+    }
+
+    try {
+        const {
+            data: { allMdx },
+        } = queryResult;
+
+        allMdx.nodes.forEach((node) => {
+            if (node.internal?.contentFilePath != null) {
+                createPage({
+                    path: node.fields.slug,
+                    component: node.internal.contentFilePath,
+                    context: { id: node.id },
+                });
+            }
+        });
+    } catch (e) {
+        reporter.panicOnBuild('ERROR creating pages for nodes', e);
     }
 };
 

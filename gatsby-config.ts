@@ -17,29 +17,9 @@ const config: GatsbyConfig = {
         'gatsby-plugin-styled-components',
         'gatsby-transformer-sharp',
         {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Bookmarks`,
-                path: `${__dirname}/docs/bookmarks`,
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Notes`,
-                path: `${__dirname}/docs/notes`,
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Sheets`,
-                path: `${__dirname}/docs/sheets`,
-            },
-        },
-        {
             resolve: 'gatsby-plugin-mdx',
             options: {
+                extensions: ['.mdx'],
                 gatsbyRemarkPlugins: [
                     'gatsby-remark-prismjs',
                     'gatsby-remark-autolink-headers',
@@ -75,6 +55,27 @@ const config: GatsbyConfig = {
                         },
                     },
                 ],
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Bookmarks`,
+                path: `${__dirname}/docs/bookmarks`,
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Notes`,
+                path: `${__dirname}/docs/notes`,
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Sheets`,
+                path: `${__dirname}/docs/sheets`,
             },
         },
         // TODO: https://github.com/andreabreu-me/gatsby-plugin-prettier-eslint/issues/11
