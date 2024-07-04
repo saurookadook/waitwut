@@ -26,6 +26,7 @@ const config = {
     plugins: [
         `gatsby-plugin-image`,
         'gatsby-plugin-styled-components',
+        // NOTE: config that should supposedly work with gatsby-plugin-mdx@^5.13.1
         {
             resolve: 'gatsby-plugin-mdx',
             options: {
@@ -111,14 +112,40 @@ const config = {
                 path: path.resolve(__dirname, `docs/sheets`),
             },
         },
+        // NOTE: functional configs with gatsby-plugin-mdx@^3.19.0
+        // {
+        //     resolve: 'gatsby-plugin-mdx',
+        //     options: {
+        //         gatsbyRemarkPlugins: [
+        //             {
+        //                 resolve: `gatsby-remark-prismjs`,
+        //                 options: {
+        //                     // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+        //                     classPrefix: 'language-',
+        //                     // This is used to allow setting a language for inline code
+        //                     // (i.e. single backticks) by creating a separator.
+        //                     // This separator is a string and will do no white-space
+        //                     // stripping.
+        //                     // A suggested value for English speakers is the non-ascii
+        //                     // character '›'.
+        //                     inlineCodeMarker: null,
+        //                     aliases: {
+        //                         sh: 'bash',
+        //                     },
+        //                     showLineNumbers: true,
+        //                 },
+        //             },
+        //             'gatsby-remark-autolink-headers',
+        //             {
+        //                 resolve: 'gatsby-remark-images',
+        //                 options: {
+        //                     maxWidth: 1200,
+        //                 },
+        //             },
+        //         ],
+        //     },
+        // },
     ],
-
-    /**
-     * misc devDependencies
-     * "@babel/core": "^7.0.0-0",
-     * "@babel/plugin-syntax-flow": "^7.14.5",
-     * "@babel/plugin-transform-react-jsx": "^7.14.9",
-     */
 };
 
 export default config;

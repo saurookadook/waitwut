@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { compile, run } from '@mdx-js/mdx';
-// import type { MDXModule } from '@mdx-js/mdx/lib/run';
 import { MDXProvider } from '@mdx-js/react';
 import * as runtime from 'react/jsx-runtime';
+import remarkGfm from 'remark-gfm';
+import remarkExternalLinks from 'remark-external-links';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 // import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 
+import { ExternalLinkWrapper, LinkWrapper } from 'common/components';
 import icons from 'components/icons';
 import { MDXRendererWrapper } from 'components/pages/styled';
 
@@ -45,22 +49,23 @@ const NotePage = ({ children, data, ...props }: BaseMdxProps & { pageResources: 
     };
 
     useEffect(() => {
-        if (data.mdx.body != null) {
+        if (data.mdx.body != null && mdxModule == null) {
             (async function () {
                 const compiledMdxContent = String(
                     await compile(data.mdx.body, {
                         outputFormat: 'function-body',
-                        providerImportSource: '@mdx-js/react',
+                        // providerImportSource: '@mdx-js/react',
+                        // remarkPlugins: [remarkGfm, remarkExternalLinks],
+                        // rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
                     }),
                 );
-                // @ts-expect-error: `runtime` types are currently broken
                 setMdxModule(await run(compiledMdxContent, { ...runtime, baseUrl: import.meta.url }));
             })();
         }
-    }, [data.mdx.body]);
+    }, []);
 
-    // @ts-expect-error: can't import the necessary types :]
-    const Content = mdxModule ? mdxModule.default : React.Fragment;
+    // @ts-expect-error: `runtime` types are currently broken
+    const Content = mdxModule ? mdxModule.default : null;
 
     return (
         <MDXRendererWrapper id="sheet-page-content">
@@ -70,10 +75,10 @@ const NotePage = ({ children, data, ...props }: BaseMdxProps & { pageResources: 
             </DocTitle>
             <hr />
             {/* <MDXRenderer>{data.mdx.body}</MDXRenderer> */}
-            <MDXProvider>
-                {/* {children || data.mdx.body} */}
-                <Content />
-            </MDXProvider>
+            {/* <MDXProvider components={{ ExternalLinkWrapper, LinkWrapper }}>
+                {children || data.mdx.body}
+            </MDXProvider> */}
+            {Content != null && <Content components={{ ExternalLinkWrapper, LinkWrapper }} />}
         </MDXRendererWrapper>
     );
 };
