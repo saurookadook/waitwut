@@ -1,11 +1,15 @@
+import { createRequire } from 'module';
 import path from 'path';
-import type { GatsbyConfig } from 'gatsby';
+import { fileURLToPath } from 'url';
 import netlifyAdapter from 'gatsby-adapter-netlify';
 
-console.log(`      gatsby-config: ${__dirname}      `.padStart(120, "=").padEnd(240, "="))
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 
-const config: GatsbyConfig = {
-    adapter: netlifyAdapter({
+console.log(`      gatsby-config: ${__dirname}      `.padStart(120, '=').padEnd(240, '='));
+
+const config = {
+    adapter: netlifyAdapter.default({
         excludeDatastoreFromEngineFunction: false,
     }),
     // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -16,7 +20,7 @@ const config: GatsbyConfig = {
         siteUrl: 'https://saurookadook.github.io',
     },
     pathPrefix: '/waitwut',
-    trailingSlash: "always",
+    trailingSlash: 'always',
     plugins: [
         `gatsby-plugin-image`,
         'gatsby-plugin-styled-components',
@@ -30,8 +34,8 @@ const config: GatsbyConfig = {
                     {
                         resolve: 'gatsby-remark-images',
                         options: {
-                            maxWidth: 1200
-                        }
+                            maxWidth: 1200,
+                        },
                     },
                     {
                         resolve: `gatsby-remark-prismjs`,

@@ -122,7 +122,7 @@
     "include": [
         "./src/**/*",
         "./gatsby-node.ts",
-        "./gatsby-config.ts",
+        // "./gatsby-config.ts",
         "./plugins/**/*"
     ],
     "exclude": [
@@ -130,6 +130,7 @@
         ".cache",
         "node_modules",
         "public",
+        "./gatsby-config.mjs",
         "./gatsby-node.js"
     ]
 }
