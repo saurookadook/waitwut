@@ -1,10 +1,13 @@
 import type { GatsbyConfig } from 'gatsby';
+import netlifyAdapter from 'gatsby-adapter-netlify';
 
 const config: GatsbyConfig = {
+    adapter: netlifyAdapter({
+        excludeDatastoreFromEngineFunction: false,
+    }),
     // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
     // If you use VSCode you can also use the GraphQL plugin
     // Learn more at: https://gatsby.dev/graphql-typegen
-    graphqlTypegen: true,
     siteMetadata: {
         title: 'wait, wut?',
         siteUrl: 'https://saurookadook.github.io',
