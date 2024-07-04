@@ -68,10 +68,7 @@ const NotesListPage = ({
 
 export const query = graphql`
     query {
-        allMdx( // force formatting
-            sort: { frontmatter: { date: DESC } }
-            filter: { frontmatter: { sectionSlug: { eq: "notes" } } }
-        ) {
+        allMdx(sort: { frontmatter: { date: DESC } }, filter: { frontmatter: { sectionSlug: { eq: "notes" } } }) {
             nodes {
                 frontmatter {
                     date(formatString: "MMMM D, YYYY")
