@@ -1,21 +1,43 @@
 import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
-    siteMetadata: {
-        title: 'wait, wut?',
-        siteUrl: 'https://saurookadook.github.io',
-    },
     // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
     // If you use VSCode you can also use the GraphQL plugin
     // Learn more at: https://gatsby.dev/graphql-typegen
     graphqlTypegen: true,
+    siteMetadata: {
+        title: 'wait, wut?',
+        siteUrl: 'https://saurookadook.github.io',
+    },
     pathPrefix: '/waitwut',
+    trailingSlash: "always",
     plugins: [
         'gatsby-plugin-tsconfig-paths',
         `gatsby-plugin-image`,
         'gatsby-plugin-sharp',
         'gatsby-plugin-styled-components',
         'gatsby-transformer-sharp',
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Bookmarks`,
+                path: `${__dirname}/docs/bookmarks`,
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Notes`,
+                path: `${__dirname}/docs/notes`,
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Sheets`,
+                path: `${__dirname}/docs/sheets`,
+            },
+        },
         {
             resolve: 'gatsby-plugin-mdx',
             options: {
@@ -55,27 +77,6 @@ const config: GatsbyConfig = {
                         },
                     },
                 ],
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Bookmarks`,
-                path: `${__dirname}/docs/bookmarks`,
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Notes`,
-                path: `${__dirname}/docs/notes`,
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Sheets`,
-                path: `${__dirname}/docs/sheets`,
             },
         },
         // TODO: https://github.com/andreabreu-me/gatsby-plugin-prettier-eslint/issues/11

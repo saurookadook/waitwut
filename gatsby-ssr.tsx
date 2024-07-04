@@ -14,7 +14,7 @@ const HeadComponents = [
         href="https://fonts.pluralsight.com/ps-tt-commons/v1/ps-tt-commons-variable-roman.woff2"
         as="font"
         type="font/woff2"
-        crossOrigin="true"
+        crossOrigin="anonymous"
     />,
     <link
         key="head-component-3"

@@ -1,23 +1,44 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
+const bookmarkPageTemplate = path.resolve(`./src/pages/bookmarks/{mdx.fields__slug}.tsx`);
+// const bookmarkPageTemplate = path.resolve(`./src/pages/bookmarks/single-page.tsx`);
+const bookmarksListPageTemplate = path.resolve(`./src/pages/bookmarks/index.tsx`);
+const notePageTemplate = path.resolve(`./src/pages/notes/{mdx.fields__slug}.tsx`);
+// const notePageTemplate = path.resolve(`./src/pages/notes/single-page.tsx`);
+const notesListPageTemplate = path.resolve(`./src/pages/notes/index.tsx`);
+const sheetPageTemplate = path.resolve(`./src/pages/sheets/{mdx.fields__slug}.tsx`);
+// const sheetPageTemplate = path.resolve(`./src/pages/sheets/single-page.tsx`);
+const sheetsListPageTemplate = path.resolve(`./src/pages/sheets/index.tsx`);
+
+// exports.createSchemaCustomization = ({ actions }) => {
+//     const { createTypes } = actions;
+
+//     const typeDefs = `
+
+//     `;
+// }
+
 exports.onCreateNode = ({ actions, getNode, node, reporter }) => {
     const { createNodeField } = actions;
 
     reporter.info(`internalType: ${node.internal?.type}`);
-    if (node.internal?.type === 'Mdx') {
-        createNodeField({
-            node,
-            name: 'slug',
-            value: createFilePath({ node, getNode }),
-        });
-    }
 
     if (node?.frontmatter?.fullPath) {
         createNodeField({
             node,
             name: 'pathComponents',
             value: node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim),
+        });
+    }
+
+    if (node.internal?.type === 'Mdx') {
+        const filePath = createFilePath({ node, getNode });
+        reporter.info(`    MDX file path: ${filePath}    `.padStart(120, '=').padEnd(240, '='));
+        createNodeField({
+            node,
+            name: 'slug',
+            value: filePath,
         });
     }
 };
@@ -60,13 +81,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         } = queryResult;
 
         allMdx.nodes.forEach((node) => {
-            if (node.internal?.contentFilePath != null) {
-                createPage({
-                    path: node.fields.slug,
-                    component: node.internal.contentFilePath,
-                    context: { id: node.id },
-                });
-            }
+            const templateComponent = (function () {
+                if (node.fields.slug.indexOf('/bookmarks') === 0) {
+                    return /^\/bookmarks(\/)?/gim.test(node.fields.slug)
+                        ? bookmarksListPageTemplate
+                        : bookmarkPageTemplate;
+                } else if (node.fields.slug.indexOf('/notes') === 0) {
+                    return /^\/notes(\/)?/gim.test(node.fields.slug) ? notesListPageTemplate : notePageTemplate;
+                } else if (node.fields.slug.indexOf('/sheets') === 0) {
+                    return /^\/sheets(\/)?/gim.test(node.fields.slug) ? sheetsListPageTemplate : sheetPageTemplate;
+                }
+            })();
+
+            createPage({
+                path: node.fields.slug,
+                component: templateComponent
+                    ? `${templateComponent}?__contentFilePath=${node.internal.contentFilePath}`
+                    : node.internal.contentFilePath,
+                context: { id: node.id },
+            });
+
+            // if (node.internal?.contentFilePath != null) {
+            //     createPage({
+            //         path: node.fields.slug,
+            //         component: node.internal.contentFilePath,
+            //         context: { id: node.id },
+            //     });
+            // }
         });
     } catch (e) {
         reporter.panicOnBuild('ERROR creating pages for nodes', e);
