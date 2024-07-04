@@ -45,13 +45,13 @@ const BookmarksListPage = ({
                     <StyledUl>
                         {(nodes || []).map(
                             (node: NodeFromQuery): React.ReactElement => (
-                                <SheetLineItem key={node.slug}>
+                                <SheetLineItem key={node.fields.slug}>
                                     {/*
                                     TODO: add thumbnails!
                                     maybe using devicon? https://devicon.dev/
                                 */}
-                                    <SheetLineItemLink to={`/bookmarks/${node.slug}`}>
-                                        {(node.frontmatter || {}).title || node.slug}
+                                    <SheetLineItemLink to={`/bookmarks/${node.fields.slug}`}>
+                                        {(node.frontmatter || {}).title || node.fields.slug}
                                     </SheetLineItemLink>
                                 </SheetLineItem>
                             ),
