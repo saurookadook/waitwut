@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { MDXProvider } from '@mdx-js/react';
 // import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { MDXRendererWrapper } from 'components/pages/styled';
@@ -10,7 +11,7 @@ const BookmarkPage = ({ children, data }: BaseMdxProps): React.ReactElement => {
     return (
         <MDXRendererWrapper id="bookmark-page-content">
             {/* <MDXRenderer>{data.mdx.body}</MDXRenderer> */}
-            {children}
+            <MDXProvider>{children || data.mdx.body}</MDXProvider>
         </MDXRendererWrapper>
     );
 };
@@ -23,6 +24,7 @@ export const query = graphql`
                 iconComponentName
                 title
             }
+            body
         }
     }
 `;
