@@ -22,7 +22,7 @@ const sheetsListPageTemplate = path.resolve(`./src/pages/sheets/index.tsx`);
 exports.onCreateNode = ({ actions, getNode, node, reporter }) => {
     const { createNodeField } = actions;
 
-    reporter.info(`internalType: ${node.internal?.type}`);
+    // reporter.info(`internalType: ${node.internal?.type}`);
 
     if (node?.frontmatter?.fullPath) {
         createNodeField({
@@ -34,7 +34,7 @@ exports.onCreateNode = ({ actions, getNode, node, reporter }) => {
 
     if (node.internal?.type === 'Mdx') {
         const filePath = createFilePath({ node, getNode });
-        reporter.info(`    MDX file path: ${filePath}    `.padStart(120, '=').padEnd(240, '='));
+        // reporter.info(`    MDX file path: ${filePath}    `.padStart(120, '=').padEnd(240, '='));
         createNodeField({
             node,
             name: 'slug',
