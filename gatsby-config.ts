@@ -1,5 +1,8 @@
+import path from 'path';
 import type { GatsbyConfig } from 'gatsby';
 import netlifyAdapter from 'gatsby-adapter-netlify';
+
+console.log(`      gatsby-config: ${__dirname}      `.padStart(120, "=").padEnd(240, "="))
 
 const config: GatsbyConfig = {
     adapter: netlifyAdapter({
@@ -15,36 +18,12 @@ const config: GatsbyConfig = {
     pathPrefix: '/waitwut',
     trailingSlash: "always",
     plugins: [
-        'gatsby-plugin-tsconfig-paths',
         `gatsby-plugin-image`,
-        'gatsby-plugin-sharp',
         'gatsby-plugin-styled-components',
-        'gatsby-transformer-sharp',
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Bookmarks`,
-                path: `${__dirname}/docs/bookmarks`,
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Notes`,
-                path: `${__dirname}/docs/notes`,
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: `Sheets`,
-                path: `${__dirname}/docs/sheets`,
-            },
-        },
         {
             resolve: 'gatsby-plugin-mdx',
             options: {
-                extensions: ['.mdx'],
+                extensions: ['.mdx', '.md'],
                 gatsbyRemarkPlugins: [
                     'gatsby-remark-prismjs',
                     'gatsby-remark-autolink-headers',
@@ -53,14 +32,7 @@ const config: GatsbyConfig = {
                         options: {
                             maxWidth: 1200
                         }
-                    }
-                ],
-            },
-        },
-        {
-            resolve: `gatsby-transformer-remark`,
-            options: {
-                plugins: [
+                    },
                     {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
@@ -80,6 +52,72 @@ const config: GatsbyConfig = {
                         },
                     },
                 ],
+            },
+        },
+        // {
+        //     resolve: `gatsby-transformer-remark`,
+        //     options: {
+        //         plugins: [
+        //             {
+        //                 resolve: `gatsby-remark-prismjs`,
+        //                 options: {
+        //                     // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+        //                     classPrefix: 'language-',
+        //                     // This is used to allow setting a language for inline code
+        //                     // (i.e. single backticks) by creating a separator.
+        //                     // This separator is a string and will do no white-space
+        //                     // stripping.
+        //                     // A suggested value for English speakers is the non-ascii
+        //                     // character '›'.
+        //                     inlineCodeMarker: null,
+        //                     aliases: {
+        //                         sh: 'bash',
+        //                     },
+        //                     showLineNumbers: true,
+        //                 },
+        //             },
+        //         ],
+        //     },
+        // },
+        'gatsby-transformer-sharp',
+        'gatsby-plugin-sharp',
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Bookmarks`,
+                path: path.resolve(__dirname, `docs/bookmarks`),
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-page-creator',
+            options: {
+                path: path.resolve(__dirname, `docs/bookmarks`),
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Notes`,
+                path: path.resolve(__dirname, `docs/notes`),
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-page-creator',
+            options: {
+                path: path.resolve(__dirname, `docs/notes`),
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: `Sheets`,
+                path: path.resolve(__dirname, `docs/sheets`),
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-page-creator',
+            options: {
+                path: path.resolve(__dirname, `docs/sheets`),
             },
         },
         // TODO: https://github.com/andreabreu-me/gatsby-plugin-prettier-eslint/issues/11
