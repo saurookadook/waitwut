@@ -32,11 +32,11 @@ interface NodeFrontmatter {
 
 interface NodeFields {
     pathComponents: string[];
+    slug: string;
 }
 
 interface NodeFromQuery {
     name: string;
-    slug: string;
     frontmatter: NodeFrontmatter;
     fields: NodeFields;
     path: string;
