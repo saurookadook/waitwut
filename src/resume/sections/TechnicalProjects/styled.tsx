@@ -23,6 +23,7 @@ const ProjectItemContainer = styled(GenericItemContainer)`
 `;
 
 const ProjectNameWrapper = styled.div`
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     position: relative;
@@ -34,10 +35,6 @@ const ProjectDisplayName = styled.h3`
     margin-bottom: 0;
     position: relative;
     z-index: 10;
-
-    &:hover {
-        cursor: pointer;
-    }
 `;
 
 const ProjectDetails = styled.div`
