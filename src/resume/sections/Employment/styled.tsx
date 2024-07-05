@@ -64,16 +64,20 @@ const EmploymentItemContainer = styled(GenericItemContainer)`
 const EmploymentItemGrid = styled.div`
     display: grid;
     grid-template-columns: 80% 20%;
-    /* grid-template-rows: 1fr auto; */
+    grid-template-rows: 1fr auto;
+    height: min-content;
 
     & .name-and-location-wrapper {
         align-items: center;
+        cursor: pointer;
     }
 
     ${minWidth600} {
-        & .name-and-location-wrapper {
+        grid-template-rows: 3.25rem auto;
+
+        /* & .name-and-location-wrapper {
             max-height: 3.25rem;
-        }
+        } */
     }
 
     .collapsed & {
@@ -99,14 +103,11 @@ const EmploymentItemGrid = styled.div`
 `;
 
 const CompanyName = styled.h3`
+    cursor: pointer;
     margin-top: 0;
     margin-bottom: 0;
     /* transition: all 300ms ease-in; */
     z-index: 1;
-
-    &:hover {
-        cursor: pointer;
-    }
 `;
 
 const ExpandableDetails = styled.div.attrs((props) => {
@@ -267,6 +268,7 @@ const EmploymentIconWrapper = styled.span`
 
     & svg,
     & img {
+        flex-grow: 1;
         height: 100%;
         margin: auto;
         width: auto;
@@ -275,7 +277,6 @@ const EmploymentIconWrapper = styled.span`
     ${minWidth600} {
         display: flex;
         grid-row: 1 / span 2;
-        height: auto;
         justify-content: center;
         overflow-y: hidden;
         position: relative;
@@ -292,6 +293,9 @@ const EmploymentIconWrapper = styled.span`
         opacity: 0.5;
 
         ${minWidth600} {
+            align-self: flex-start;
+            height: auto;
+            min-height: 15rem;
             opacity: 1;
         }
     }

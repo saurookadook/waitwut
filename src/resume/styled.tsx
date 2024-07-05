@@ -72,6 +72,7 @@ const LocationText = styled.i`
 
     ${minWidth600} {
         font-size: 1.25rem;
+        /* margin-bottom: 0.625rem; */
         margin-bottom: 0.2rem;
     }
 
