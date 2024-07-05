@@ -20,6 +20,11 @@ export const headingDetails = {
                 displayText: 'LinkedIn',
                 url: 'https://www.linkedin.com/in/andrew-maskiell',
             },
+            {
+                type: 'Blog',
+                displayText: 'Pluralsight Tech Blog',
+                url: 'https://www.pluralsight.com/tech-blog/author/andy-maskiell',
+            },
         ],
     },
     introBlurb:
@@ -173,9 +178,12 @@ const EmploymentHistory: EmploymentRecord[] = [
             })}`,
             `As tech lead, managed and contributed to development of the ${buildLink({
                 href: 'https://app.pluralsight.com/skilliq/my-skills',
-                text: 'My SKills tab',
+                text: 'My Skills tab',
             })}`,
-            `Collaborated on feature development and maintenance of Python backend, utilizing packages such as
+            `Collaborated on feature development and maintenance of ${buildLink({
+                href: 'https://docs.python.org/3.10/',
+                text: 'Python',
+            })} backend, utilizing packages such as
             ${buildLink({
                 href: 'https://fastapi.tiangolo.com/',
                 text: 'FastAPI',
@@ -208,7 +216,10 @@ const EmploymentHistory: EmploymentRecord[] = [
                 href: 'https://testing-library.com/',
                 text: 'Testing Library',
             })}`,
-            `Helped maintain native Kafka producers and consumers using ${buildLink({
+            `Helped maintain native ${buildLink({
+                href: 'https://kafka.apache.org/documentation/',
+                text: 'Kafka',
+            })} producers and consumers using ${buildLink({
                 href: 'https://docs.confluent.io/kafka-clients/python/current/overview.html',
                 text: "Confluent's Kafka Python Client",
             })}`,
