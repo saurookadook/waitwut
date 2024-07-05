@@ -11,7 +11,7 @@ import {
 } from 'resume/styled';
 import GitHubOctocat from 'resume/icons/github';
 import { themeColors } from 'themes/index';
-import { collapsedOrExpanded } from 'utils/index';
+import { collapsedOrExpanded, isWindowDefined } from 'utils/index';
 import {
     ProjectItemContainer, // force formatting
     ProjectNameWrapper,
@@ -147,7 +147,7 @@ const TechnicalProjects = ({
     heading: string;
     data: TechnicalProjectRecord[];
 }): React.ReactElement => {
-    const media = typeof window !== 'undefined' ? window.matchMedia('(min-width: 600px)') : { matches: false };
+    const media = isWindowDefined() ? window.matchMedia('(min-width: 600px)') : { matches: false };
     const [isMobile, setIsMobile] = useState<boolean>(media.matches);
 
     useEffect(() => {
