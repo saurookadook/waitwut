@@ -12,6 +12,11 @@ const VolunteerItemContainer = styled(GenericItemContainer)`
     row-gap: 0.5rem;
     z-index: 1;
 
+    & .name-and-location-wrapper {
+        /* align-items: center; */
+        cursor: pointer;
+    }
+
     &.collapsed {
         flex: 0;
         max-height: min-content;
@@ -31,14 +36,11 @@ const VolunteerItemContainer = styled(GenericItemContainer)`
 `;
 
 const OrganizationName = styled.h3`
+    cursor: pointer;
     margin-top: 0;
     margin-bottom: 0;
     transition: all 300ms ease-in;
     z-index: 1;
-
-    &:hover {
-        cursor: pointer;
-    }
 `;
 
 const VolunteerItemDetailWrapper = styled.div`
