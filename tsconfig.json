@@ -35,7 +35,7 @@
         "module": "esnext" /* Specify what module code is generated. */,
         // "module": "commonjs",
         // "rootDir": "./",                                  /* Specify the root folder within your source files. */
-        "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+        "moduleResolution": "Node10" /* Specify how TypeScript looks up a file from a given module specifier. */,
         "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
         "paths": {
             /* Specify a set of entries that re-map imports to additional lookup locations. */
@@ -121,7 +121,7 @@
     },
     "include": [
         "./src/**/*",
-        "./gatsby-node.ts",
+        // "./gatsby-node.ts",
         "./gatsby-config.ts",
         "./plugins/**/*"
     ],
@@ -130,6 +130,7 @@
         ".cache",
         "node_modules",
         "public",
-        "./gatsby-node.js"
+        "./gatsby-node.js",
+        "./gatsby-node.mjs"
     ]
 }
