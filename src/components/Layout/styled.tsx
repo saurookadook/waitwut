@@ -8,7 +8,8 @@ const StyledContainer = styled(Container)`
     &#content-container {
         background-color: ${(props) => props?.theme?.backgroundColor};
         height: auto;
-        min-height: ${(props) => props?.theme?.height};
+        /* min-height: ${(props) => props?.theme?.height}; */
+        min-height: calc(100vh - 11rem);
         max-width: 100vw;
         padding: 0 0 1rem;
 

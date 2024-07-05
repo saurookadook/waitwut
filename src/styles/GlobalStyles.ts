@@ -36,6 +36,7 @@ const GlobalStyles = createGlobalStyle`
         & #gatsby-focus-wrapper {
             /* height: calc(100% - 5rem); */
             height: auto;
+            min-height: calc(100vh - 9rem); /* 100vh - (header + footer) */
 
             ${minWidth600} {
                 height: 100%;
