@@ -15,9 +15,9 @@
         "safe-rm-ycache": "rm -rf .yarn/ || true",
         "safe-rm-node-modules": "rm -rf node_modules/ || true",
         "safe-rm-public": "rm -rf public/ || true",
-        "clean": "yarn safe-rm-ycache && yarn safe-rm-node-modules && yarn safe-rm-public && gatsby clean",
+        "clean": "yarn safe-rm-ycache && yarn safe-rm-public && gatsby clean",
         "clean:cache": "yarn clean && yarn cache clean",
-        "install:clean": "yarn clean:cache && yarn install && yarn build",
+        "install:clean": "yarn clean:cache && yarn safe-rm-node-modules && yarn install && yarn build",
         "develop": "gatsby develop",
         "start": "gatsby develop",
         "build": "gatsby build",
@@ -68,12 +68,10 @@
         "@babel/core": "^7.17.2",
         "@babel/eslint-parser": "^7.18.9",
         "@babel/node": "^7.16.8",
-        "@babel/plugin-proposal-class-properties": "^7.16.7",
-        "@babel/plugin-proposal-optional-chaining": "^7.16.7",
-        "@babel/plugin-transform-modules-commonjs": "^7.16.8",
         "@babel/plugin-transform-runtime": "^7.17.0",
         "@babel/preset-env": "^7.16.11",
         "@babel/preset-react": "^7.18.6",
+        "@babel/preset-typescript": "^7.24.6",
         "@types/express": "^4.17.17",
         "@typescript-eslint/eslint-plugin": "^5.38.1",
         "@typescript-eslint/parser": "^5.38.1",
@@ -97,12 +95,6 @@
         "prettier-plugin-multiline-arrays": "^1.1.0",
         "typescript": "^4.7.4",
         "webpack": "^5.0.0"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
     },
     "browserslist": {
         "production": [
