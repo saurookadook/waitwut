@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StylesWrapper = styled.span`
+    display: flex;
+    flex-grow: 1;
+    min-width: 10rem;
+
     & .st0 {
         fill: #1590d0;
     }
@@ -20,10 +24,10 @@ const StylesWrapper = styled.span`
  * - https://findlogovector.com/evergage-logo-vector-svg/
  */
 const EvergageLogoVector = (): React.ReactElement => (
-    <StylesWrapper>
+    <StylesWrapper id="evergage-logo-wrapper">
         <svg
             version="1.1"
-            id="layer"
+            id="evergage-logo"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             x="0px"
