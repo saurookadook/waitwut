@@ -285,6 +285,7 @@ const EmploymentIconWrapper = styled.span`
 
     .collapsed & {
         ${collapsedStyles}
+        min-height: 0;
     }
 
     .expanded & {
