@@ -129,11 +129,6 @@ const WaitwutStyles = createGlobalStyle`
             width: fit-content;
         }
 
-        & ul {
-            margin-top: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
         & ol li::marker {
             font-weight: 900;
         }
@@ -141,7 +136,6 @@ const WaitwutStyles = createGlobalStyle`
         & li {
             font-size: 1.125rem;
             font-weight: 300;
-            margin-bottom: 0.25rem;
         }
 
         & h1,
@@ -149,8 +143,12 @@ const WaitwutStyles = createGlobalStyle`
         & h3,
         & h4,
         & h5,
-        & p {
-            margin-bottom: 0.5rem;
+        & p,
+        & ul,
+        & ol,
+        & pre  {
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         & code {
@@ -186,7 +184,6 @@ const WaitwutStyles = createGlobalStyle`
         }
 
         & .link-list {
-            margin-bottom: 96px;
             padding-left: 0;
         }
 

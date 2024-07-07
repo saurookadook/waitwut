@@ -8,13 +8,12 @@ const StyledContainer = styled(Container)`
     &#content-container {
         background-color: ${(props) => props?.theme?.backgroundColor};
         height: auto;
-        /* min-height: ${(props) => props?.theme?.height}; */
         min-height: calc(100vh - 11rem);
         max-width: 100vw;
-        padding: 0 0 1rem;
+        margin: 0 0 1.5rem;
 
         ${minWidth600} {
-            padding: 0 2.5rem 1rem;
+            margin-bottom: 2.5rem;
         }
     }
 
@@ -31,17 +30,17 @@ const StyledBox = styled(Box)`
         background-color: ${(props) => props?.theme?.backgroundColor};
         display: flex;
         flex-direction: column;
-        /* height: ${(props) => props.theme?.height}; */
         height: auto;
         min-height: 50vh;
+        margin-right: 0;
+        margin-left: 0;
         /* overflow-y: scroll; */
         padding-right: 2rem;
-        /* padding-bottom: 1.5rem; */
         padding-left: 2rem;
 
         ${minWidth600} {
-            padding-right: 10vw;
-            padding-left: 12vw;
+            margin-right: 12.5vw;
+            margin-left: 12.5vw;
         }
     }
 

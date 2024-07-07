@@ -76,6 +76,7 @@ const LeftSideMenu = (): React.ReactElement => {
             setNavLinks(createNavLinks({ nodesGroups, pageMap }));
         }
     }, [
+        navLinks.length,
         nodesGroups,
         pageMap,
     ]);
@@ -87,6 +88,7 @@ const LeftSideMenu = (): React.ReactElement => {
             <StyledDrawer
                 open={!!menu.drawerVisible}
                 variant={drawerProps}
+                // TODO: add another breakpoint for tablet?
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
