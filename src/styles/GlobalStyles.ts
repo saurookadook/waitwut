@@ -115,7 +115,11 @@ const WaitwutStyles = createGlobalStyle`
 
         & [role='presentation'],
         & [role='presentation'] .MuiDrawer-paper {
-            width: 100vw;
+            max-width: 100vw;
+        }
+
+        & [role='presentation'] .MuiDrawer-paper {
+            min-width: max-content;
         }
 
         & ul,

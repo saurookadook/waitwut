@@ -38,27 +38,28 @@ export const useSheetsQuery = (): MdxNodes => {
 };
 
 const drawerWidth = 240;
+const drawerVariantBreakpoint = 1024;
 
 const LeftSideMenu = (): React.ReactElement => {
     const { group: nodesGroups } = useSheetsQuery();
     const { pageMap } = useContext(PageMapContext);
     const { menu } = useContext(StateContext);
 
-    const [drawerProps, setDrawerProps] = useState<'temporary' | 'permanent'>(
-        isWindowDefined() && window.outerWidth > 1024 ? 'permanent' : 'temporary',
+    const [drawerVariant, setDrawerVariant] = useState<'temporary' | 'permanent'>(
+        isWindowDefined() && window.outerWidth > drawerVariantBreakpoint ? 'permanent' : 'temporary',
     );
 
     const [navLinks, setNavLinks] = useState<NavLinkItem[]>([]);
 
     let mediaQuery: MediaQueryList | null = null;
     if (isWindowDefined()) {
-        mediaQuery = window.matchMedia('(min-width: 600px)');
+        mediaQuery = window.matchMedia(`(min-width: ${drawerVariantBreakpoint}px)`);
     }
 
     useEffect(() => {
         if (mediaQuery != null) {
             const onChangeCallback = (event: MediaQueryListEvent): void => {
-                setDrawerProps(event.matches ? 'permanent' : 'temporary');
+                setDrawerVariant(event.matches ? 'permanent' : 'temporary');
             };
 
             mediaQuery.addEventListener('change', onChangeCallback);
@@ -87,7 +88,7 @@ const LeftSideMenu = (): React.ReactElement => {
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
                 open={!!menu.drawerVisible}
-                variant={drawerProps}
+                variant={drawerVariant}
                 // TODO: add another breakpoint for tablet?
                 sx={{
                     width: drawerWidth,
