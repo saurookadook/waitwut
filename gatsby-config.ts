@@ -40,17 +40,9 @@ const config: GatsbyConfig = {
             },
         },
         {
-            resolve: 'gatsby-plugin-mdx',
+            resolve: `gatsby-transformer-remark`,
             options: {
-                gatsbyRemarkPlugins: [
-                    'gatsby-remark-prismjs',
-                    'gatsby-remark-autolink-headers',
-                    {
-                        resolve: 'gatsby-remark-images',
-                        options: {
-                            maxWidth: 1200
-                        }
-                    },
+                plugins: [
                     {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
@@ -73,9 +65,17 @@ const config: GatsbyConfig = {
             },
         },
         {
-            resolve: `gatsby-transformer-remark`,
+            resolve: 'gatsby-plugin-mdx',
             options: {
-                plugins: [
+                gatsbyRemarkPlugins: [
+                    'gatsby-remark-prismjs',
+                    'gatsby-remark-autolink-headers',
+                    {
+                        resolve: 'gatsby-remark-images',
+                        options: {
+                            maxWidth: 1200
+                        }
+                    },
                     {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
