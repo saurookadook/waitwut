@@ -4,7 +4,7 @@ import { DispatchContext } from 'common/contexts';
 import { closeMenuDrawer } from 'store/actions';
 import { StyledNavLink, ChildLinkWrapper } from './styled';
 
-const MenuNavLink = ({
+const MenuNavLinkGroup = ({
     depth,
     navLink,
     parentPath,
@@ -28,7 +28,7 @@ const MenuNavLink = ({
             {(children || []).length > 0 && (
                 <ChildLinkWrapper style={{ marginLeft: `${(depth + 1) * 1}em` }}>
                     {(children || []).map((childNavLink, childIndex) => (
-                        <MenuNavLink
+                        <MenuNavLinkGroup
                             depth={depth + 1}
                             key={`${childIndex}:${slug}`}
                             navLink={childNavLink}
@@ -41,4 +41,4 @@ const MenuNavLink = ({
     );
 };
 
-export default MenuNavLink;
+export default MenuNavLinkGroup;

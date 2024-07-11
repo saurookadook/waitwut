@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
 import { PageMapContext, StateContext } from 'common/contexts';
-import { MenuNavLink } from 'components/nav';
+import { MenuNavLinkGroup } from 'components/nav';
 import { createNavLinks } from 'components/nav/utils';
 import { isWindowDefined } from 'utils/index';
 
@@ -96,7 +96,7 @@ const LeftSideMenu = (): React.ReactElement => {
             >
                 <aside>
                     {navLinks.map((navLink, index) => (
-                        <MenuNavLink // force formatting
+                        <MenuNavLinkGroup // force formatting
                             key={`${index}:${navLink.slug}`}
                             depth={0}
                             navLink={navLink}
