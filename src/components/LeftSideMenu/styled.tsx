@@ -33,6 +33,11 @@ const StyledDrawer = styled(Drawer)<StyledDrawerProps>`
     }
 `;
 
-const StyledAside = styled.aside``;
+const StyledAside = styled.aside`
+    #waitwut & ul {
+        padding-inline-start: 1.5rem;
+        list-style-type: disclosure-open;
+    }
+`;
 
 export { StyledDrawer, StyledAside };

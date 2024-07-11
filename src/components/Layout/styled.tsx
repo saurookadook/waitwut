@@ -45,7 +45,7 @@ const StyledBox = styled(Box)`
 
         ${minWidth1024} {
             margin-right: 12.5vw;
-            margin-left: 12.5vw;
+            margin-left: 20rem;
         }
     }
 

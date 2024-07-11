@@ -3,13 +3,17 @@ import styled from 'styled-components';
 
 import { minWidth600 } from 'styles/mq';
 
+const LinkGroupWrapper = styled.li``;
+
 const StyledNavLink = styled(Link)`
     align-items: center;
     color: ${(props) => props?.theme?.color};
     display: flex;
     flex-direction: row;
     font-size: 1.25rem;
-    padding: 0.25em 0 0.25em 1em;
+
+    padding: 0.25rem 0 0.25rem 0.5rem;
+    /* padding: 0.25em 0 0.25em 1em; */
     text-align: left;
     text-decoration: none;
 
@@ -32,9 +36,9 @@ const StyledNavLink = styled(Link)`
     }
 `;
 
-const ChildLinkWrapper = styled.div`
+const ChildLinkGroupWrapper = styled.ul`
     display: flex;
     flex-direction: column;
 `;
 
-export { StyledNavLink, ChildLinkWrapper };
+export { StyledNavLink, LinkGroupWrapper, ChildLinkGroupWrapper };

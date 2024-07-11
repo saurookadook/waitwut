@@ -8,7 +8,7 @@ import { createNavLinks } from 'components/nav/utils';
 import { isWindowDefined } from 'utils/index';
 
 import { menuTheme } from 'themes';
-import { StyledDrawer } from './styled';
+import { StyledDrawer, StyledAside } from './styled';
 
 export const useSheetsQuery = (): MdxNodes => {
     const { allMdx } = useStaticQuery(
@@ -37,7 +37,7 @@ export const useSheetsQuery = (): MdxNodes => {
     return allMdx;
 };
 
-const drawerWidth = 304;
+const drawerWidth = 320;
 const drawerVariantBreakpoint = 1024;
 
 const LeftSideMenu = (): React.ReactElement => {
@@ -82,27 +82,28 @@ const LeftSideMenu = (): React.ReactElement => {
         pageMap,
     ]);
 
-    // console.log(' LeftSideMenu - navLinks '.padStart(80, '=').padEnd(160, '='));
-    // console.log(JSON.parse(JSON.stringify(navLinks)));
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
+                $drawerWidth={drawerWidth}
                 id="side-nav-drawer"
                 role="complementary"
                 open={!!menu.drawerVisible}
                 variant={drawerVariant}
-                // TODO: add another breakpoint for tablet?
-                $drawerWidth={drawerWidth}
             >
-                <aside>
-                    {navLinks.map((navLink, index) => (
-                        <MenuNavLinkGroup // force formatting
-                            key={`${index}:${navLink.slug}`}
-                            depth={0}
-                            navLink={navLink}
-                        />
-                    ))}
-                </aside>
+                <StyledAside>
+                    <nav>
+                        <ul>
+                            {navLinks.map((navLink, index) => (
+                                <MenuNavLinkGroup // force formatting
+                                    key={`${index}:${navLink.slug}`}
+                                    depth={0}
+                                    navLink={navLink}
+                                />
+                            ))}
+                        </ul>
+                    </nav>
+                </StyledAside>
             </StyledDrawer>
         </ThemeProvider>
     );
