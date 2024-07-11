@@ -27,6 +27,13 @@ const pageMap: PageMap[] = [
             {
                 color: '#E95800',
                 description: 'TODO 🙃',
+                sectionSlug: 'dsa',
+                title: 'DSA',
+                topParentSlug: 'notes',
+            },
+            {
+                color: '#E95800',
+                description: 'TODO 🙃',
                 sectionSlug: 'python',
                 title: 'Python',
                 topParentSlug: 'notes',
