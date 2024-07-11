@@ -1,6 +1,8 @@
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
+import { minWidth600 } from 'styles/mq';
+
 const StyledNavLink = styled(Link)`
     align-items: center;
     color: ${(props) => props?.theme?.color};
@@ -20,9 +22,13 @@ const StyledNavLink = styled(Link)`
     & > span {
         display: block;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         max-width: 200px;
+        white-space: break-spaces;
+
+        ${minWidth600} {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 `;
 

@@ -113,15 +113,6 @@ const WaitwutStyles = createGlobalStyle`
             color: ${themeColors.graphite};
         }
 
-        & [role='presentation'],
-        & [role='presentation'] .MuiDrawer-paper {
-            max-width: 100vw;
-        }
-
-        & [role='presentation'] .MuiDrawer-paper {
-            min-width: max-content;
-        }
-
         & ul,
         & ol {
             list-style: initial;

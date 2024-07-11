@@ -37,7 +37,7 @@ export const useSheetsQuery = (): MdxNodes => {
     return allMdx;
 };
 
-const drawerWidth = 240;
+const drawerWidth = 304;
 const drawerVariantBreakpoint = 1024;
 
 const LeftSideMenu = (): React.ReactElement => {
@@ -87,18 +87,22 @@ const LeftSideMenu = (): React.ReactElement => {
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
+                id="side-nav-drawer"
+                role="complementary"
                 open={!!menu.drawerVisible}
                 variant={drawerVariant}
                 // TODO: add another breakpoint for tablet?
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                }}
+                $drawerWidth={drawerWidth}
             >
-                {navLinks.map((navLink, index) => (
-                    <MenuNavLink depth={0} key={`${index}:${navLink.slug}`} navLink={navLink} />
-                ))}
+                <aside>
+                    {navLinks.map((navLink, index) => (
+                        <MenuNavLink // force formatting
+                            key={`${index}:${navLink.slug}`}
+                            depth={0}
+                            navLink={navLink}
+                        />
+                    ))}
+                </aside>
             </StyledDrawer>
         </ThemeProvider>
     );

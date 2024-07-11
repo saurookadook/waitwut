@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box, Container } from '@mui/material';
 
-import { minWidth600 } from 'styles/mq';
+import { minWidth600, minWidth1024 } from 'styles/mq';
 import { resumeTheme, themeColors } from 'themes';
 
 const StyledContainer = styled(Container)`
@@ -39,6 +39,11 @@ const StyledBox = styled(Box)`
         padding-left: 2rem;
 
         ${minWidth600} {
+            margin-right: 5vw;
+            margin-left: 5vw;
+        }
+
+        ${minWidth1024} {
             margin-right: 12.5vw;
             margin-left: 12.5vw;
         }
