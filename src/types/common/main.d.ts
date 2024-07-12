@@ -3,6 +3,7 @@
 // export {}
 type EmptyObject = Record<string, unknown>;
 type AmbiguousObject = Record<string, unknown> | EmptyObject;
+type DynamicObject<T> = Record<string, T>;
 
 interface CheatSheet {
     name: string;
@@ -25,9 +26,10 @@ interface NavLinkItem {
 
 interface NodeFrontmatter {
     date?: Date;
-    title: string;
     fullPath?: string;
     iconComponentName?: string;
+    sectionSlug?: string;
+    title: string;
 }
 
 interface NodeFields {
@@ -49,11 +51,17 @@ interface GroupFromQuery {
 
 interface MdxNodes {
     group: GroupFromQuery[];
-    nodes?: NodeFromQuery[];
+    nodes: NodeFromQuery[];
+}
+
+interface SideMenuData {
+    allMdx: MdxNodes;
+    allMarkdownRemark: MdxNodes;
 }
 
 interface ListPageData {
-    allMdx?: MdxNodes;
+    allMdx: MdxNodes;
+    allMarkdownRemark: MdxNodes;
 }
 
 /* ListPages */
@@ -82,8 +90,10 @@ type IconComponents = {
     [key: string]: IconComponent;
 };
 
+// TODO: is this even necessary?
 enum TopLevelPageSlugs {
     BOOKMARKS = 'bookmarks',
+    NOTES = 'notes',
     SHEETS = 'sheets',
 }
 

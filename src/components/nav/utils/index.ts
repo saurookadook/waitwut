@@ -1,4 +1,4 @@
-import { PageMap } from 'common/constants/pageMap';
+import { type PageMap } from 'common/constants/pageMap';
 
 type NavChildSectionMap = {
     [key: string]: NavLinkItem | EmptyObject;
@@ -87,7 +87,10 @@ function populateNavLinkChildren({
         });
 
         if (sectionChild == null) {
-            const trimmedSlug = node.slug.replace('/', '');
+            const trimmedSlug =
+                node.slug != null // force formatting
+                    ? node.slug.replace('/', '')
+                    : `/${pathComponents.slice(1).join('/')}`;
             if (navChildSectionMap[trimmedSlug]) {
                 return addMissingFieldsToSection(navChildSectionMap[trimmedSlug], node);
             }
