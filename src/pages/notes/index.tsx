@@ -36,7 +36,10 @@ const NotesListPage = ({
     data: ListPageData;
 }): React.ReactElement => {
     // console.log('NotesListPage - data: ', data);
-    const { nodes } = data.allMdx || {};
+    const { nodes: mdxNodes } = data.allMdx || {};
+    const { nodes: markdownNodes } = data.allMarkdownRemark || {};
+
+    const nodes = ([] as NodeFromQuery[]).concat(mdxNodes, markdownNodes);
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -46,13 +49,13 @@ const NotesListPage = ({
                     <StyledUl>
                         {(nodes || []).map(
                             (node: NodeFromQuery): React.ReactElement => (
-                                <SheetLineItem key={node.slug}>
+                                <SheetLineItem key={node.frontmatter.fullPath || node.slug}>
                                     {/*
-                                    TODO: add thumbnails!
-                                    maybe using devicon? https://devicon.dev/
-                                */}
-                                    <SheetLineItemLink to={`/notes/${node.slug}`}>
-                                        {(node.frontmatter || {}).title || node.slug}
+                                        TODO: add thumbnails!
+                                        maybe using devicon? https://devicon.dev/
+                                    */}
+                                    <SheetLineItemLink to={node.frontmatter.fullPath || `/notes/${node.slug}`}>
+                                        {node.frontmatter.title || node.slug}
                                     </SheetLineItemLink>
                                 </SheetLineItem>
                             ),
@@ -75,10 +78,25 @@ export const query = graphql`
             nodes {
                 frontmatter {
                     date(formatString: "MMMM D, YYYY")
+                    fullPath
+                    sectionSlug
                     title
                 }
                 id
                 slug
+            }
+        }
+        allMarkdownRemark(filter: { frontmatter: { sectionSlug: { eq: "notes" } } }) {
+            nodes {
+                fields {
+                    pathComponents
+                }
+                frontmatter {
+                    date(formatString: "MMMM D, YYYY")
+                    fullPath
+                    sectionSlug
+                    title
+                }
             }
         }
     }
