@@ -44,6 +44,13 @@ const config: GatsbyConfig = {
             options: {
                 plugins: [
                     {
+                        resolve: "gatsby-remark-external-links",
+                        options: {
+                            target: "_blank",
+                            rel: "noopener noreferrer"
+                        }
+                    },
+                    {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
                             // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
