@@ -6,109 +6,133 @@ sectionSlug: 'notes'
 ---
 
 # [Tree Data Structure](https://www.programiz.com/dsa/trees)
+
 - non-linear, hierarchical data structure consisting of nodes connected by edges
 
 ## Why [use a] Tree Data Structure?
+
 - different tree data structures allow quicker and easier access to data
 
-<br>
+<br />
 
 ---
 
 ## Tree Terminologies
 
 ### Node
+
 - entity that contains key or value and pointers to child nodes
 - last nodes of each path called **leaf nodes** or **external nodes**
     - do not contain link/pointer to child nodes
 - any node having at least 1 child node called **internal node**
 
 ### Edge
+
 - link between any two nodes
 
 ### Root
+
 - topmost node of tree
 
 ### Height of a Node
+
 - number of edges from the node to the deepest leaf (i.e. the longest path from the node to a leaf node)
 
 ### Depth of a Node
+
 - number of edges from root to the node
 
 ### Height of a Tree
+
 - height of root node (or depth of deepest node)
 
 ### Degree of a Node
+
 - total number of branches of that node
 
 ### Forest
+
 - collection of disjoint trees
 
-<br>
+<br />
 
 ---
 
 ## Types of Tree
+
 - [Binary Tree](https://www.programiz.com/dsa/binary-tree)
 - [Binary Search Tree](https://www.programiz.com/dsa/binary-search-tree)
 - [AVL Tree](https://www.programiz.com/dsa/avl-tree)
 - [B-Tree](https://www.programiz.com/dsa/b-tree)
 
 ## Tree Traversal
+
 - tree traversal algorithm helps visit required node in tree
 - see [tree traversal](https://www.programiz.com/dsa/tree-traversal)
 
 ## Tree Applications
+
 - Binary Search Trees used to quickly check whether element is present in a set or not
 - Heap is kind of tree used for heap sort
 - modified version of tree called Tries used in modern routers to store routing information
 - Most popular databases use B-Trees and T-Trees to store data
 - Compilers use a syntax tree to validate syntax of every program you write
 
-<br>
+<br />
 
 ---
 
 # [Tree Traversal](https://www.programiz.com/dsa/tree-traversal)
+
 **_inorder, preorder, postorder_**
 
-- Traversing tree means visiting every node in tree (might want to add all values in tree or find largest one)
-- Basic structure of tree:
-```c++
+Traversing tree means visiting every node in tree (might want to add all values in tree or find largest one)
+
+{/*
+    TODO: specifying C++ for the block seems to break
+    syntax highlighting for rest of file?
+*/}
+**Basic structure of tree:**
+```c
 struct node {
     int data;
     struct node* left;
     struct node* right;
 }
 ```
+
 - node pointed to by `left` and `right` might have other left and right children, so should be thought of as "sub-trees" instead of "sub-nodes"
 - according to structure, every tree is combination of:
     - node carrying data
     - two sub-trees
 
-<br>
+<br />
 
 ---
 
 ## Types of Tree Traversal
 
 ### Inorder Traversal
+
 1. visit all nodes in left sub-tree
 2. then visit root node
 3. visit all nodes in right sub-tree
 
 ### Preorder Traversal
+
 1. visit root node
 2. visit all nodes in left sub-tree
 3. visit all nodes in right sub-tree
 
 ### Postorder Traversal
+
 1. visit all nodes in left sub-tree
 2. visit all nodes in right sub-tree
 3. visit root node
 
 
 #### Explanation of inorder traversal
+
 ```js
 const tree = {
     root: {
@@ -134,7 +158,6 @@ const tree = {
     },
 };
 ```
-
 
 1. from root node, traverse left sub-tree
 2. visit root node
@@ -219,7 +242,6 @@ class Node:
 
 
 def inorder(root):
-
     if root:
         # Traverse left
         inorder(root.left)
@@ -230,7 +252,6 @@ def inorder(root):
 
 
 def postorder(root):
-
     if root:
         # Traverse left
         postorder(root.left)
@@ -241,7 +262,6 @@ def postorder(root):
 
 
 def preorder(root):
-
     if root:
         # Traverse root
         print(str(root.val) + "->", end='')
@@ -432,11 +452,12 @@ class BinaryTree {
 
 </details>
 
-<br>
+<br />
 
 ---
 
 # [Binary Tree](https://www.programiz.com/dsa/binary-tree)
+
 - binary tree is data structure in which each parent node can have at most two children
 - each node consists of:
     - data item
@@ -444,31 +465,32 @@ class BinaryTree {
     - address of right child
 
 ## Types of Binary Tree
-1. Full Binary Tree
+
+1. **Full Binary Tree**
 - type of binary tree in which _every_ parent node/internal node has either two or no children
 - see [full binary tree](https://www.programiz.com/dsa/full-binary-tree)
 
-2. Perfect Binary Tree
+2. **Perfect Binary Tree**
 - type of binary tree in which _every_ internal node has exactly two nodes and all leaf nodes are at same level
 - see [complete binary tree](https://www.programiz.com/dsa/perfect-binary-tree)
 
-3. Complete Binary Tree
+3. **Complete Binary Tree**
 - like a full binary tree but with a few major differences:
     a. every level must be completely filled
     b. all leaf elements must lean towards left
     c. last leaf element might not have right sibling (i.e. a complete binary tree doesn't have to be a full binary tree)
 - see [complete binary tree](https://www.programiz.com/dsa/complete-binary-tree)
 
-4. Degenerate or Pathological Tree
+4. **Degenerate or Pathological Tree**
 - tree where nodes have a single child, either left or right
 
-5. Skewed Binary Tree
+5. **Skewed Binary Tree**
 - a pathological/degenerate tree in which tree is either dominated by left nodes or right nodes
 - two types:
     a. left-skewed binary tree
     b. right-skewed binary tree
 
-6. Balanced Binary Tree
+6. **Balanced Binary Tree**
 - type of binary tree in which difference between height of left and right sub-tree for each node is either 0 or 1
 - see [balanced binary tree](https://www.programiz.com/dsa/balanced-binary-tree)
 
@@ -679,7 +701,7 @@ class BinaryTree {
 
 </details>
 
-<br>
+<br />
 
 ---
 
