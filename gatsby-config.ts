@@ -43,6 +43,13 @@ const config: GatsbyConfig = {
             resolve: `gatsby-transformer-remark`,
             options: {
                 plugins: [
+                    'gatsby-remark-autolink-headers',
+                    {
+                        resolve: 'gatsby-remark-images',
+                        options: {
+                            maxWidth: 1200
+                        }
+                    },
                     {
                         resolve: "gatsby-remark-external-links",
                         options: {
@@ -75,7 +82,7 @@ const config: GatsbyConfig = {
             resolve: 'gatsby-plugin-mdx',
             options: {
                 gatsbyRemarkPlugins: [
-                    'gatsby-remark-prismjs',
+                    // 'gatsby-remark-prismjs',
                     'gatsby-remark-autolink-headers',
                     {
                         resolve: 'gatsby-remark-images',
