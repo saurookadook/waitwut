@@ -17,6 +17,7 @@ const config: GatsbyConfig = {
         `gatsby-plugin-image`,
         'gatsby-plugin-sharp',
         'gatsby-plugin-styled-components',
+        'gatsby-plugin-catch-links',
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-source-filesystem',

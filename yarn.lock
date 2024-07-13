@@ -12382,6 +12382,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-catch-links@npm:^5.13.1":
+  version: 5.13.1
+  resolution: "gatsby-plugin-catch-links@npm:5.13.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.13"
+    escape-string-regexp: "npm:^1.0.5"
+  peerDependencies:
+    gatsby: ^5.0.0-next
+  checksum: 10c0/1e841aa903a54a43e9a602c23dd7dae434a43e96fa6e6b4b6bcdd8a4568bb1944314477e168cbb42bc7c8635bb0a4d0f969a5ce08bc71560757f7f3768dbaa58
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-eslint@npm:^4.0.2":
   version: 4.0.2
   resolution: "gatsby-plugin-eslint@npm:4.0.2"
@@ -22753,6 +22765,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.2.0"
     eslint-webpack-plugin: "npm:^3.2.0"
     gatsby: "npm:^4.18.2"
+    gatsby-plugin-catch-links: "npm:^5.13.1"
     gatsby-plugin-eslint: "npm:^4.0.2"
     gatsby-plugin-image: "npm:^2.24.0"
     gatsby-plugin-mdx: "npm:^3.19.0"
