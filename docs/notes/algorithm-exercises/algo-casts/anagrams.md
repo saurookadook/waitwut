@@ -1,7 +1,7 @@
 ---
 title: 'Anagrams'
-date: '2024-07-12'
-fullPath: '/notes/algorithm-exercises/anagrams'
+date: '2024-07-13'
+fullPath: '/notes/algorithm-exercises/algo-casts/anagrams'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---
@@ -27,7 +27,46 @@ anagrams('Hi there', 'Bye there') //--> false
 
 <summary>
 
-**?**
+**My Solution(s)**
+
+</summary>
+
+```javascript
+function buildLetterCountMap(string) {
+    return string.match(/[A-Z]/gi).reduce((map, char) => {
+        map[char] = map[char] + 1 || 1;
+
+        return map;
+    }, {});
+}
+
+function anagrams(stringA, stringB) {
+    let judgement = false; // lol
+
+    if (stringA.length === stringB.length) {
+        const letterMapOne = stringA.length >= stringB.length ? buildLetterCountMap(stringA) : buildLetterCountMap(stringB);
+        const letterMapTwo = stringA.length <= stringB.length ? buildLetterCountMap(stringB) : buildLetterCountMap(stringA);
+
+        for (const key of Object.keys(letterMapOne)) {
+            judgement = letterMapOne[key] === letterMapTwo[key]
+
+            if (!judgement) {
+                break;
+            }
+        }
+    }
+
+    return judgement;
+}
+```
+
+</details>
+
+<details>
+
+<summary>
+
+**SG Solution 1**
 
 </summary>
 
@@ -41,21 +80,7 @@ anagrams('Hi there', 'Bye there') //--> false
 
 <summary>
 
-**?**
-
-</summary>
-
-```javascript
-
-```
-
-</details>
-
-<details>
-
-<summary>
-
-**?**
+**SG Solution 2**
 
 </summary>
 
