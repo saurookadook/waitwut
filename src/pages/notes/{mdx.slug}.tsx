@@ -36,7 +36,7 @@ const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
     };
 
     return (
-        <MDXRendererWrapper id="sheet-page-content">
+        <MDXRendererWrapper id="note-page-content">
             <DocTitle>
                 {iconComponent()}
                 <span>{title}</span>

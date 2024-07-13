@@ -35,7 +35,7 @@ const NotePage = ({ data }) => {
     };
 
     return (
-        <MDXRendererWrapper id="markdown-only-note-content">
+        <MDXRendererWrapper id="markdown-only-note-page-content">
             <DocTitle>
                 {iconComponent()}
                 <span>{title}</span>
