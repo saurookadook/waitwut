@@ -4,11 +4,21 @@ exports.onCreateNode = ({ node, actions }) => {
     const { createNodeField } = actions;
 
     if (node?.frontmatter?.fullPath) {
+        const pathComponents = node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim);
+
         createNodeField({
             node,
             name: 'pathComponents',
-            value: node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim),
+            value: pathComponents,
         });
+
+        if (node?.slug == null && node?.frontmatter?.slug == null) {
+            createNodeField({
+                node,
+                name: 'slug',
+                value: pathComponents[pathComponents.length - 1],
+            });
+        }
     }
 };
 
