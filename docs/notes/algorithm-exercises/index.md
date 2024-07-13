@@ -2,6 +2,7 @@
 title: 'Algorithm Exercises'
 date: '2024-07-12'
 fullPath: '/notes/algorithm-exercises'
+iconComponentName: ''
 sectionSlug: 'notes'
 ---
 

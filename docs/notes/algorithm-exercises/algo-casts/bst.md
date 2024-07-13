@@ -2,6 +2,7 @@
 title: 'Binary Search Tree'
 date: '2024-07-13'
 fullPath: '/notes/algorithm-exercises/algo-casts'
+iconComponentName: ''
 sectionSlug: 'notes'
 ---
 

@@ -2,6 +2,7 @@
 title: 'AlgoCasts: Exercises and Solutions'
 date: '2024-07-13'
 fullPath: '/notes/algorithm-exercises/algo-casts'
+iconComponentName: ''
 sectionSlug: 'notes'
 ---
 

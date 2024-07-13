@@ -2,6 +2,7 @@
 title: 'Anagrams'
 date: '2024-07-12'
 fullPath: '/notes/algorithm-exercises/anagrams'
+iconComponentName: ''
 sectionSlug: 'notes'
 ---
 
