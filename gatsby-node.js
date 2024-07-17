@@ -12,12 +12,17 @@ exports.onCreateNode = ({ node, actions }) => {
             value: pathComponents,
         });
 
-        if (node?.slug == null && node?.frontmatter?.slug == null) {
-            createNodeField({
-                node,
-                name: 'slug',
-                value: pathComponents[pathComponents.length - 1],
-            });
+        if (node?.slug == null || node?.frontmatter?.slug == null) {
+            const slugFromPathComponents =
+                pathComponents.length < 2 ? pathComponents[0] : pathComponents.slice(1).join('/');
+
+            if (slugFromPathComponents != null) {
+                createNodeField({
+                    node,
+                    name: 'slug',
+                    value: slugFromPathComponents,
+                });
+            }
         }
     }
 };
