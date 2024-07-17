@@ -86,7 +86,10 @@ export const query = graphql`
                 slug
             }
         }
-        allMarkdownRemark(filter: { frontmatter: { sectionSlug: { eq: "notes" } } }) {
+        allMarkdownRemark(
+            sort: { fields: frontmatter___date, order: DESC }
+            filter: { frontmatter: { sectionSlug: { eq: "notes" } } }
+        ) {
             nodes {
                 fields {
                     pathComponents

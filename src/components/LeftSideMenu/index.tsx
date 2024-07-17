@@ -32,11 +32,12 @@ export const useSheetsQuery = (): SideMenuData => {
                         fieldValue
                     }
                 }
-                allMarkdownRemark(filter: { frontmatter: { sectionSlug: { eq: "notes" } } }) {
+                allMarkdownRemark(sort: { fields: frontmatter___title, order: DESC }) {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
                                 pathComponents
+                                slug
                             }
                             frontmatter {
                                 date(formatString: "MMMM D, YYYY")
