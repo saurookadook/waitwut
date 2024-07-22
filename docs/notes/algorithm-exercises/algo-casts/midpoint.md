@@ -1,30 +1,26 @@
 ---
-title: 'Linked List: circular'
+title: 'Midpoint'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/linkedlist-circular'
+fullPath: '/notes/algorithm-exercises/algo-casts/midpoint'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---
 
 # Directions
 
-- Given a linked list, return `true` if the list is circular, `false` if it is not.
+- Return the 'middle' `Node` of a `LinkedList`.
+- If the list has an even number of elements, return the `Node` at the end of the first half of the list.
+- **Do not** use a counter variable, **do not** retrieve the size of the list, and only iterate through the list one time.
 - examples:
 ```js
-const l = new List();
-const a = new Node('a');
-const b = new Node('b');
-const c = new Node('c');
-l.head = a;
-a.next = b;
-b.next = c;
-c.next = b;
-circular(l) // true
+const l = new LinkedList();
+l.insertLast('a');
+l.insertLast('b');
+l.insertLast('c');
+midpoint(l); // return { data: 'b' }
 ```
 
 ## Solutions
-
-### JS
 
 <details>
 
@@ -51,19 +47,23 @@ class LinkedList {
         }
     }
 
+    isNodeNullish(targetNode) {
+        return targetNode == null;
+    }
+
     getFirst() {
         return this.head;
     }
 
     getLast() {
-        if (!this.head) {
+        if (this.isNodeNullish(this.head)) {
             return null;
         }
 
         let node = this.head;
 
-        while (node) {
-            if (!node.next) {
+        while (!this.isNodeNullish(node)) {
+            if (this.isNodeNullish(node.next)) {
                 return node;
             }
 
@@ -200,6 +200,7 @@ class LinkedList {
         }
     }
 }
+
 ```
 
 </details>
@@ -208,35 +209,33 @@ class LinkedList {
 
 <summary>
 
-**`circular` function**
+**JS**
 
 </summary>
 
 ```javascript
-// If the `LinkedList` class doesn't have the `isNullish` method implemented
 function isNodeNullish(targetNode) {
     return targetNode == null;
 }
 
-function circular(list) {
-    if (list.getFirst()) {
-        return false;
-    }
+function midpoint(list) {
+    let slow = list.head;
+    let fast = list.head;
 
-    let slow = list.getFirst();
-    let fast = list.getFirst();
+    while (!isNodeNullish(fast.next)) {
+        if (isNodeNullish(fast.next.next)) {
+            return slow;
+        }
 
-    while (!isNodeNullish(fast.next) && !isNodeNullish(fast.next.next)) {
         slow = slow.next;
         fast = fast.next.next;
 
-        if (slow === fast) {
-            return true;
+        if (isNodeNullish(fast.next) || isNodeNullish(fast.next.next)) {
+            return slow;
         }
     }
-
-    return false;
 }
+
 ```
 
 </details>

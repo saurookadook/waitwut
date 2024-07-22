@@ -39,6 +39,81 @@ matrix(4)
 </summary>
 
 ```javascript
+// 1
+function matrix(n) {
+    // NOTE: this could also be a constant and we could skip assigning the `safeAssignCounter` calls to `result` in the `for` loops
+    let result = [];
+    let counter = 1;
+    let startRowIndex = 0;
+    let endRowIndex = n - 1;
+    let startColumnIndex = 0;
+    let endColumnIndex = n - 1;
+
+    while (startRowIndex <= endRowIndex && startColumnIndex <= endColumnIndex) {
+        for (let i = startColumnIndex; i <= endColumnIndex; i++) {
+            result = safeAssignCounter({
+                result: result,
+                rowIndex: startRowIndex,
+                columnIndex: i,
+                counter: counter
+            });
+            counter++;
+        }
+        startRowIndex++;
+
+        for (let i = startRowIndex; i <= endRowIndex; i++) {
+            result = safeAssignCounter({
+                result: result,
+                rowIndex: i,
+                columnIndex: endColumnIndex,
+                counter: counter
+            });
+            counter++;
+        }
+        endColumnIndex--;
+
+        for (let i = endColumnIndex; i >= startColumnIndex; i--) {
+            result = safeAssignCounter({
+                result: result,
+                rowIndex: endRowIndex,
+                columnIndex: i,
+                counter: counter
+            });
+            counter++;
+        }
+        endRowIndex--;
+
+        for (let i = endRowIndex; i >= startRowIndex; i--) {
+            result = safeAssignCounter({
+                result: result,
+                rowIndex: i,
+                columnIndex: startColumnIndex,
+                counter: counter
+            });
+            counter++;
+        }
+        startColumnIndex++;
+    }
+
+    return result;
+}
+
+function safeAssignCounter({
+    result,
+    rowIndex,
+    columnIndex,
+    counter
+}) {
+    if (!Array.isArray(result[rowIndex])) {
+        result[rowIndex] = [];
+    }
+
+    result[rowIndex][columnIndex] = counter;
+
+    return result;
+}
+
+// 2
 function buildEmptyMatrix(n, arr = []) {
     for (let i = 0; i < n; i++) {
         arr.push([]);
@@ -60,8 +135,8 @@ function matrix(n) {
         && startRowIndex <= endRowIndex
     ) {
          for (let i = startColumnIndex; i <= endColumnIndex; i++) {
-             result[startRowIndex][i] = counter;
-             counter++;
+            result[startRowIndex][i] = counter;
+            counter++;
          }
         startRowIndex++;
 

@@ -39,6 +39,8 @@ function fib(n) {
     for (let i = 2; i <= n; i++) {
         const earliest = resultsInverseQueue.pop();
         resultsInverseQueue.unshift(resultsInverseQueue[0] + earliest);
+        // NOTE: could even be a one-liner
+        // resultsInverseQueue.unshift(resultsInverseQueue[0] + resultsInverseQueue.pop());
     }
 
     return resultsInverseQueue[0]

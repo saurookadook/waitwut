@@ -409,6 +409,172 @@ node.getAt(1); // returns node with data 11
 
 <summary>
 
+**As Functions**
+
+</summary>
+
+```javascript
+function Node(data, next = null) {
+    this.data = data;
+    this.next = next;
+}
+
+function LinkedList() {
+    this.head = null;
+
+    isNodeNullish(targetNode) {
+        return targetNode == null;
+    }
+
+    getFirst() {
+        return this.head;
+    }
+
+    getLast() {
+        if (this.isNodeNullish(this.head)) {
+            return null;
+        }
+
+        let node = this.head;
+
+        while (!this.isNodeNullish(node) && !this.isNodeNullish(node.next)) {
+            node = node.next;
+        }
+
+        return node;
+    }
+
+    getAt(index) {
+        let iteration = 0;
+        let node = this.head;
+
+        while (!this.isNodeNullish(node)) {
+            if (index === iteration) {
+                return node;
+            }
+
+            iteration++
+            node = node.next;
+        }
+
+        return null;
+    }
+
+    size() {
+        let counter = 0;
+        let node = this.head;
+
+        while (!this.isNodeNullish(node)) {
+            counter++;
+            node = node.next;
+        }
+
+        return counter;
+    }
+
+    insertFirst(data) {
+        this.head = new Node(data, this.head);
+    }
+
+    insertLast(data) {
+        const last = this.getLast();
+
+        if (!this.isNodeNullish(last)) {
+            last.next = new Node(data);
+        } else {
+            this.head = new Node(data);
+        }
+    }
+
+    insertAt(data, index) {
+        if (this.isNodeNullish(this.head) || index === 0) {
+            this.head = new Node(data);
+            return;
+        }
+
+        const previous = this.getAt(index - 1) || this.getLast();
+        previous.next = new Node(data, previous.next);
+    }
+
+    removeFirst() {
+        if (this.isNodeNullish(this.head)) {
+            return;
+        }
+
+        this.head = this.head.next;
+    }
+
+    removeLast() {
+        if (this.isNodeNullish(this.head)) {
+            return;
+        }
+
+        if (this.isNodeNullish(this.head.next)) {
+            this.head = null;
+            return;
+        }
+
+        let previous = this.head;
+        let node = this.head.next;
+
+        while (!this.isNodeNullish(node.next)) {
+            previous = node;
+            node = node.next;
+        }
+
+        previous.next = null;
+    }
+
+    removeAt(index) {
+        if (this.isNodeNullish(this.head)) {
+            return;
+        }
+
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+
+        const previous = this.getAt(index - 1);
+        if (this.isNodeNullish(previous) || this.isNodeNullish(previous.next)) {
+            return;
+        }
+        previous.next = previous.next.next;
+    }
+
+    clear() {
+        this.head = null;
+    }
+
+    forEach(fn) {
+        let node = this.head;
+        let iteration = 0;
+
+        while (!this.isNodeNullish(node)) {
+            fn(node, iteration);
+            node = node.next;
+            iteration++;
+        }
+    }
+
+    *[Symbol.iterator]() {
+        let node = this.head;
+
+        while (!this.isNodeNullish(node)) {
+            yield node;
+            node = node.next;
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+
+<summary>
+
 **As Classes**
 
 </summary>
@@ -567,174 +733,6 @@ class LinkedList {
       node = node.next;
     }
   }
-}
-
-```
-
-</details>
-
-<details>
-
-<summary>
-
-**As Functions**
-
-</summary>
-
-```javascript
-function Node(data, next = null) {
-    this.data = data;
-    this.next = next;
-}
-
-
-function LinkedList() {
-    this.head = null;
-
-    insertFirst(data) {
-        this.head = new Node(data, this.head);
-    }
-
-    size() {
-        let counter = 0;
-        let node = this.head;
-
-        while (node) {
-            counter++;
-            node = node.next;
-        }
-
-        return counter;
-    }
-
-    getFirst() {
-        return this.head;
-    }
-
-    getLast() {
-        if (!this.head) {
-            return null;
-        }
-
-        let node = this.head;
-
-        while (node && node.next != null) {
-            node = node.next;
-        }
-
-        return node;
-    }
-
-    clear() {
-        this.head = null;
-    }
-
-    removeFirst() {
-        if (!this.head) {
-            return;
-        }
-
-        this.head = this.head.next;
-    }
-
-    removeLast() {
-        if (!this.head) {
-            return;
-        }
-
-        if (!this.head.next) {
-            this.head = null;
-            return;
-        }
-
-        let previous = this.head;
-        let node = this.head.next;
-
-        while (node.next) {
-            previous = node;
-            node = node.next;
-        }
-
-        previous.next = null;
-    }
-
-    insertLast(data) {
-        const last = this.getLast();
-
-        if (last) {
-            last.next = new Node(data);
-        } else {
-            this.head = new Node(data);
-        }
-    }
-
-    getAt(index) {
-        let iteration = 0;
-        let node = this.head;
-
-        while (node) {
-            if (index === iteration) {
-                return node;
-            }
-
-            iteration++
-            node = node.next;
-        }
-
-        return null;
-    }
-
-    removeAt(index) {
-        if (!this.head) {
-            return;
-        }
-
-        if (index === 0) {
-            this.head = this.head.next;
-            return;
-        }
-
-        const previous = this.getAt(index - 1);
-        if (!previous || !previous.next) {
-            return;
-        }
-        previous.next = previous.next.next;
-    }
-
-    insertAt(data, index) {
-        if (!this.head) {
-            this.head = new Node(data);
-            return;
-        }
-
-        if (index === 0) {
-            this.head = new Node(data, this.head);
-            return;
-        }
-
-        const previous = this.getAt(index - 1) || this.getLast();
-        previous.next = new Node(data, previous.next);
-    }
-
-    forEach(fn) {
-        let node = this.head;
-        let iteration = 0;
-
-        while (node) {
-            fn(node, iteration);
-            node = node.next;
-            iteration++;
-        }
-    }
-
-    *[Symbol.iterator]() {
-        let node = this.head;
-
-        while (node) {
-            yield node;
-            node = node.next;
-        }
-    }
 }
 
 ```

@@ -15,10 +15,12 @@ sectionSlug: 'notes'
 - examples:
 ```js
 const list = new List();
+
 list.insertLast('a');
 list.insertLast('b');
 list.insertLast('c');
 list.insertLast('d');
+
 fromLast(list, 2).data // 'b'
 ```
 
@@ -43,8 +45,16 @@ class Node {
 }
 
 class LinkedList {
-    constructor() {
+    constructor(values = []) {
         this.head = null;
+
+        for (let value of values) {
+            this.insertLast(value);
+        }
+    }
+
+    isNodeNullish(targetNode) {
+        return targetNode == null;
     }
 
     getFirst() {
@@ -52,14 +62,14 @@ class LinkedList {
     }
 
     getLast() {
-        if (!this.head) {
+        if (this.isNodeNullish(this.head)) {
             return null;
         }
 
         let node = this.head;
 
-        while (node) {
-            if (!node.next) {
+        while (!this.isNodeNullish(node)) {
+            if (this.isNodeNullish(node.next)) {
                 return node;
             }
 
@@ -196,6 +206,7 @@ class LinkedList {
         }
     }
 }
+
 ```
 
 </details>
@@ -209,43 +220,57 @@ class LinkedList {
 </summary>
 
 ```javascript
+// SG Solution
+// - yeahhhhh, this seems much better lol
 function fromLast(list, n) {
-    // TODO
+    let slow = list.getFirst();
+    let fast = list.getFirst();
+
+    while (n > 0) {
+        fast = fast.next;
+        n--;
+    }
+
+    while (fast.next) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+
+    return slow;
 }
+
+// My Solution
+// - feels like it would be reeeeeaaaaaally slow with large lists...
+function fromLast(list, n) {
+    if (n === 0) {
+        return list.getLast();
+    }
+
+    if (isNodeNullish(list.getFirst())) {
+        return null;
+    }
+
+    let i = 1;
+    let previous = list.getFirst();
+    let last = list.getLast();
+
+    while (i <= n) {
+        if (previous.next === last) {
+            last = previous;
+            previous = list.getFirst();
+            i++;
+        } else {
+            previous = previous.next;
+        }
+    }
+
+    return last;
+}
+
+function isNodeNullish(targetNode) {
+    return targetNode == null;
+}
+
 ```
 
 </details>
-
-<details>
-
-<summary>
-
-**?**
-
-</summary>
-
-```javascript
-
-```
-
-</details>
-
----
-
-<!--
-
-<details>
-
-<summary>
-
-**?**
-
-</summary>
-
-```javascript
-
-```
-
-</details>
-
--->
