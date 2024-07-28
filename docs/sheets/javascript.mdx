@@ -46,3 +46,25 @@ if (colors.length) {
 console.log(true - false); // 1
 console.log(false - false); // -0
 ```
+
+## Node.js
+
+### Running a file with debugger enabled
+
+```javascript
+// some/path/to/index.js
+function doTheThing() {
+    debugger;
+    console.log('Doing the thing!');
+}
+
+
+// NOTE: depending on file passed to `node inspect` command, might have to execute the function directly
+doTheThing();
+
+module.exports = doTheThing
+```
+
+```sh
+$ node inspect some/path/to/index.js
+```

@@ -213,6 +213,7 @@ const WaitwutStyles = createGlobalStyle`
             top: -2px;
         }
 
+        & [id*='note-page-content'],
         & #sheet-page-content {
             & a {
                 color: ${themeColors.darkerPurpleHex};

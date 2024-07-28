@@ -11,6 +11,7 @@ const StyledDrawer = styled(Drawer)`
         box-shadow: inset -1px 0 5px ${(props) => props.theme?.color};
         color: ${(props) => props.theme?.color};
         padding-top: 6rem;
+        padding-bottom: 6rem;
         padding-left: 1rem;
     }
 `;

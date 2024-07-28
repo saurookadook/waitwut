@@ -31,7 +31,7 @@ const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
 
     const iconComponent = (): React.ReactElement | undefined => {
         if (iconComponentName && typeof icons[iconComponentName] === 'function') {
-            return icons[iconComponentName]();
+            return icons[iconComponentName]({});
         }
     };
 
