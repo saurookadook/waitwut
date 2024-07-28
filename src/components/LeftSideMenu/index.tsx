@@ -11,52 +11,85 @@ import { isWindowDefined } from 'utils/index';
 import { menuTheme } from 'themes';
 import { StyledDrawer } from './styled';
 
-export const useSheetsQuery = (): SideMenuData => {
-    const { allMdx, allMarkdownRemark } = useStaticQuery(
-        graphql`
-            query {
-                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
-                    group(field: frontmatter___sectionSlug) {
-                        nodes {
-                            fields {
-                                pathComponents
-                            }
-                            frontmatter {
-                                title
-                                fullPath
-                                iconComponentName
-                            }
-                            id
-                            slug
-                        }
-                        fieldValue
-                    }
-                }
-                allMarkdownRemark(sort: { fields: frontmatter___title, order: DESC }) {
-                    group(field: frontmatter___sectionSlug) {
-                        nodes {
-                            fields {
-                                pathComponents
-                                slug
-                            }
-                            frontmatter {
-                                date(formatString: "MMMM D, YYYY")
-                                fullPath
-                                sectionSlug
-                                title
-                            }
-                        }
-                        fieldValue
-                    }
-                }
-            }
-        `,
-    );
-    return { allMdx, allMarkdownRemark };
-};
-
 const drawerWidth = 240;
 const drawerVariantBreakpoint = 1024;
+
+const LeftSideMenu = (): React.ReactElement => {
+    const { allMdx, allMarkdownRemark } = useSheetsQuery();
+    const { group: mdxNodesGroups } = allMdx;
+    const { group: markdownNodesGroups } = allMarkdownRemark;
+    const { pageMap } = useContext(PageMapContext);
+    const { menu } = useContext(StateContext);
+
+    const [drawerVariant, setDrawerVariant] = useState<'temporary' | 'permanent'>(
+        isWindowDefined() && window.outerWidth > drawerVariantBreakpoint ? 'permanent' : 'temporary',
+    );
+
+    const [navLinks, setNavLinks] = useState<NavLinkItem[]>([]);
+
+    let mediaQuery: MediaQueryList | null = null;
+    if (isWindowDefined()) {
+        mediaQuery = window.matchMedia(`(min-width: ${drawerVariantBreakpoint}px)`);
+    }
+
+    useEffect(() => {
+        if (mediaQuery != null) {
+            const onChangeCallback = (event: MediaQueryListEvent): void => {
+                setDrawerVariant(event.matches ? 'permanent' : 'temporary');
+            };
+
+            mediaQuery.addEventListener('change', onChangeCallback);
+
+            return () => {
+                (mediaQuery as MediaQueryList).removeEventListener('change', onChangeCallback);
+            };
+        }
+    });
+
+    useEffect(() => {
+        if (navLinks.length === 0) {
+            // TODO: maybe a hook like useMemo would be better for this?
+            // const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
+            try {
+                const combinedNodesGroups = mergeNodesGroups({
+                    args: [mdxNodesGroups, markdownNodesGroups],
+                    pageMap: pageMap,
+                    target: [],
+                });
+                const _navLinks = createNavLinks({ nodesGroups: combinedNodesGroups, pageMap });
+                setNavLinks(_navLinks);
+            } catch (e) {
+                console.error(`ERROR encountered while creating navLinks for LeftSideMenu: `, e);
+            }
+        }
+    }, [
+        navLinks.length,
+        mdxNodesGroups,
+        markdownNodesGroups,
+        pageMap,
+    ]);
+
+    // console.log(' LeftSideMenu - navLinks '.padStart(80, '=').padEnd(160, '='));
+    // console.log(JSON.parse(JSON.stringify(navLinks)));
+    return (
+        <ThemeProvider theme={menuTheme}>
+            <StyledDrawer
+                open={!!menu.drawerVisible}
+                variant={drawerVariant}
+                // TODO: add another breakpoint for tablet?
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+                }}
+            >
+                {navLinks.map((navLink, index) => (
+                    <MenuNavLink depth={0} key={`${index}:${navLink.slug}`} navLink={navLink} />
+                ))}
+            </StyledDrawer>
+        </ThemeProvider>
+    );
+};
 
 function findNodesGroupBySectionSlug({
     nodesGroups,
@@ -112,80 +145,48 @@ function mergeNodesGroups({
     return target;
 }
 
-const LeftSideMenu = (): React.ReactElement => {
-    const { allMdx, allMarkdownRemark } = useSheetsQuery();
-    const { group: mdxNodesGroups } = allMdx;
-    const { group: markdownNodesGroups } = allMarkdownRemark;
-    const { pageMap } = useContext(PageMapContext);
-    const { menu } = useContext(StateContext);
-
-    const [drawerVariant, setDrawerVariant] = useState<'temporary' | 'permanent'>(
-        isWindowDefined() && window.outerWidth > drawerVariantBreakpoint ? 'permanent' : 'temporary',
-    );
-
-    const [navLinks, setNavLinks] = useState<NavLinkItem[]>([]);
-
-    let mediaQuery: MediaQueryList | null = null;
-    if (isWindowDefined()) {
-        mediaQuery = window.matchMedia(`(min-width: ${drawerVariantBreakpoint}px)`);
-    }
-
-    useEffect(() => {
-        if (mediaQuery != null) {
-            const onChangeCallback = (event: MediaQueryListEvent): void => {
-                setDrawerVariant(event.matches ? 'permanent' : 'temporary');
-            };
-
-            mediaQuery.addEventListener('change', onChangeCallback);
-
-            return () => {
-                (mediaQuery as MediaQueryList).removeEventListener('change', onChangeCallback);
-            };
-        }
-    });
-
-    useEffect(() => {
-        if (navLinks.length === 0) {
-            // TODO: maybe a hook like useMemo would be better for this?
-            // const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
-            try {
-                const combinedNodesGroups = mergeNodesGroups({
-                    args: [mdxNodesGroups, markdownNodesGroups],
-                    pageMap: pageMap,
-                    target: [],
-                });
-                setNavLinks(createNavLinks({ nodesGroups: combinedNodesGroups, pageMap }));
-            } catch (e) {
-                console.error(`ERROR encountered while creating navLinks for LeftSideMenu: `, e);
+export const useSheetsQuery = (): SideMenuData => {
+    const { allMdx, allMarkdownRemark } = useStaticQuery(
+        graphql`
+            query {
+                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
+                    group(field: frontmatter___sectionSlug) {
+                        nodes {
+                            fields {
+                                pathComponents
+                            }
+                            frontmatter {
+                                title
+                                fullPath
+                                iconComponentName
+                            }
+                            id
+                            slug
+                        }
+                        fieldValue
+                    }
+                }
+                allMarkdownRemark(sort: { fields: frontmatter___title, order: DESC }) {
+                    group(field: frontmatter___sectionSlug) {
+                        nodes {
+                            fields {
+                                pathComponents
+                                slug
+                            }
+                            frontmatter {
+                                date(formatString: "MMMM D, YYYY")
+                                fullPath
+                                sectionSlug
+                                title
+                            }
+                        }
+                        fieldValue
+                    }
+                }
             }
-        }
-    }, [
-        navLinks.length,
-        mdxNodesGroups,
-        markdownNodesGroups,
-        pageMap,
-    ]);
-
-    // console.log(' LeftSideMenu - navLinks '.padStart(80, '=').padEnd(160, '='));
-    // console.log(JSON.parse(JSON.stringify(navLinks)));
-    return (
-        <ThemeProvider theme={menuTheme}>
-            <StyledDrawer
-                open={!!menu.drawerVisible}
-                variant={drawerVariant}
-                // TODO: add another breakpoint for tablet?
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                }}
-            >
-                {navLinks.map((navLink, index) => (
-                    <MenuNavLink depth={0} key={`${index}:${navLink.slug}`} navLink={navLink} />
-                ))}
-            </StyledDrawer>
-        </ThemeProvider>
+        `,
     );
+    return { allMdx, allMarkdownRemark };
 };
 
 export default LeftSideMenu;

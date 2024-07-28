@@ -34,6 +34,7 @@ interface NodeFrontmatter {
 
 interface NodeFields {
     pathComponents: string[];
+    slug?: string;
 }
 
 interface NodeFromQuery {

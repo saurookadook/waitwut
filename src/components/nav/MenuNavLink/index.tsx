@@ -27,14 +27,16 @@ const MenuNavLink = ({
 
             {(children || []).length > 0 && (
                 <ChildLinkWrapper style={{ marginLeft: `${(depth + 1) * 1}em` }}>
-                    {(children || []).map((childNavLink, childIndex) => (
-                        <MenuNavLink
-                            depth={depth + 1}
-                            key={`${childIndex}:${slug}`}
-                            navLink={childNavLink}
-                            parentPath={fullPath}
-                        />
-                    ))}
+                    {(children || []).map((childNavLink, childIndex) => {
+                        return (
+                            <MenuNavLink
+                                depth={depth + 1}
+                                key={`${childIndex}:${slug}`}
+                                navLink={childNavLink}
+                                parentPath={fullPath}
+                            />
+                        );
+                    })}
                 </ChildLinkWrapper>
             )}
         </>
