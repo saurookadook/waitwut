@@ -29,6 +29,7 @@ const StyledDrawer = styled(Drawer)<StyledDrawerProps>`
         box-sizing: border-box;
         color: ${(props) => props.theme?.color};
         padding-top: 6rem;
+        padding-bottom: 6rem;
         padding-left: 1rem;
     }
 `;

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
+import { type PageMap } from 'common/constants/pageMap';
 import { PageMapContext, StateContext } from 'common/contexts';
 import { MenuNavLinkGroup } from 'components/nav';
 import { createNavLinks } from 'components/nav/utils';
@@ -10,38 +11,13 @@ import { isWindowDefined } from 'utils/index';
 import { menuTheme } from 'themes';
 import { StyledDrawer, StyledAside } from './styled';
 
-export const useSheetsQuery = (): MdxNodes => {
-    const { allMdx } = useStaticQuery(
-        graphql`
-            query {
-                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
-                    group(field: frontmatter___sectionSlug) {
-                        nodes {
-                            frontmatter {
-                                title
-                                fullPath
-                                iconComponentName
-                            }
-                            id
-                            slug
-                            fields {
-                                pathComponents
-                            }
-                        }
-                        fieldValue
-                    }
-                }
-            }
-        `,
-    );
-    return allMdx;
-};
-
 const drawerWidth = 320;
 const drawerVariantBreakpoint = 1024;
 
 const LeftSideMenu = (): React.ReactElement => {
-    const { group: nodesGroups } = useSheetsQuery();
+    const { allMdx, allMarkdownRemark } = useSheetsQuery();
+    const { group: mdxNodesGroups } = allMdx;
+    const { group: markdownNodesGroups } = allMarkdownRemark;
     const { pageMap } = useContext(PageMapContext);
     const { menu } = useContext(StateContext);
 
@@ -74,11 +50,22 @@ const LeftSideMenu = (): React.ReactElement => {
         if (navLinks.length === 0) {
             // TODO: maybe a hook like useMemo would be better for this?
             // const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
-            setNavLinks(createNavLinks({ nodesGroups, pageMap }));
+            try {
+                const combinedNodesGroups = mergeNodesGroups({
+                    args: [mdxNodesGroups, markdownNodesGroups],
+                    pageMap: pageMap,
+                    target: [],
+                });
+                const _navLinks = createNavLinks({ nodesGroups: combinedNodesGroups, pageMap });
+                setNavLinks(_navLinks);
+            } catch (e) {
+                console.error(`ERROR encountered while creating navLinks for LeftSideMenu: `, e);
+            }
         }
     }, [
         navLinks.length,
-        nodesGroups,
+        mdxNodesGroups,
+        markdownNodesGroups,
         pageMap,
     ]);
 
@@ -107,6 +94,104 @@ const LeftSideMenu = (): React.ReactElement => {
             </StyledDrawer>
         </ThemeProvider>
     );
+};
+
+function findNodesGroupBySectionSlug({
+    nodesGroups,
+    sectionSlug,
+}: {
+    nodesGroups: GroupFromQuery[];
+    sectionSlug: string;
+}): GroupFromQuery | undefined {
+    return nodesGroups.find((group) => group.fieldValue === sectionSlug);
+}
+
+function mergeNodesGroups({
+    args,
+    pageMap,
+    target = [],
+}: {
+    pageMap: PageMap[];
+    target: GroupFromQuery[];
+    args: GroupFromQuery[][];
+}): GroupFromQuery[] {
+    const resultsBySectionSlug = {} as DynamicObject<GroupFromQuery['nodes']>;
+
+    for (const nodesGroupsArg of args) {
+        for (const pageConfig of pageMap) {
+            const pageConfigSlug = pageConfig.sectionSlug;
+            const groupBySectionSlug = findNodesGroupBySectionSlug({
+                nodesGroups: nodesGroupsArg,
+                sectionSlug: pageConfigSlug,
+            });
+
+            if (groupBySectionSlug == null) {
+                continue;
+            }
+
+            if (resultsBySectionSlug[pageConfigSlug] == null) {
+                resultsBySectionSlug[pageConfigSlug] = [...groupBySectionSlug.nodes];
+            } else {
+                resultsBySectionSlug[pageConfigSlug] = resultsBySectionSlug[pageConfigSlug].concat(
+                    groupBySectionSlug.nodes,
+                );
+            }
+        }
+    }
+
+    for (const [key, value] of Object.entries(resultsBySectionSlug)) {
+        // TODO: add logic to get
+        target.push({
+            fieldValue: key as TopLevelPageSlugs,
+            nodes: value,
+        });
+    }
+
+    return target;
+}
+
+export const useSheetsQuery = (): SideMenuData => {
+    const { allMdx, allMarkdownRemark } = useStaticQuery(
+        graphql`
+            query {
+                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
+                    group(field: frontmatter___sectionSlug) {
+                        nodes {
+                            fields {
+                                pathComponents
+                            }
+                            frontmatter {
+                                title
+                                fullPath
+                                iconComponentName
+                            }
+                            id
+                            slug
+                        }
+                        fieldValue
+                    }
+                }
+                allMarkdownRemark(sort: { fields: frontmatter___title, order: DESC }) {
+                    group(field: frontmatter___sectionSlug) {
+                        nodes {
+                            fields {
+                                pathComponents
+                                slug
+                            }
+                            frontmatter {
+                                date(formatString: "MMMM D, YYYY")
+                                fullPath
+                                sectionSlug
+                                title
+                            }
+                        }
+                        fieldValue
+                    }
+                }
+            }
+        `,
+    );
+    return { allMdx, allMarkdownRemark };
 };
 
 export default LeftSideMenu;

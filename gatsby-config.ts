@@ -17,6 +17,7 @@ const config: GatsbyConfig = {
         `gatsby-plugin-image`,
         'gatsby-plugin-sharp',
         'gatsby-plugin-styled-components',
+        'gatsby-plugin-catch-links',
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-source-filesystem',
@@ -40,15 +41,21 @@ const config: GatsbyConfig = {
             },
         },
         {
-            resolve: 'gatsby-plugin-mdx',
+            resolve: `gatsby-transformer-remark`,
             options: {
-                gatsbyRemarkPlugins: [
-                    'gatsby-remark-prismjs',
+                plugins: [
                     'gatsby-remark-autolink-headers',
                     {
                         resolve: 'gatsby-remark-images',
                         options: {
                             maxWidth: 1200
+                        }
+                    },
+                    {
+                        resolve: "gatsby-remark-external-links",
+                        options: {
+                            target: "_blank",
+                            rel: "noopener noreferrer"
                         }
                     },
                     {
@@ -73,9 +80,17 @@ const config: GatsbyConfig = {
             },
         },
         {
-            resolve: `gatsby-transformer-remark`,
+            resolve: 'gatsby-plugin-mdx',
             options: {
-                plugins: [
+                gatsbyRemarkPlugins: [
+                    // 'gatsby-remark-prismjs',
+                    'gatsby-remark-autolink-headers',
+                    {
+                        resolve: 'gatsby-remark-images',
+                        options: {
+                            maxWidth: 1200
+                        }
+                    },
                     {
                         resolve: `gatsby-remark-prismjs`,
                         options: {

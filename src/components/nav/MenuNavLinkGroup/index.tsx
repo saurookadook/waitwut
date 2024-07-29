@@ -34,14 +34,16 @@ const MenuNavLinkGroup = ({
                 <ChildLinkGroupWrapper
                 // style={{ marginLeft: `${(depth + 1) * 1}em` }}
                 >
-                    {(children || []).map((childNavLink, childIndex) => (
-                        <MenuNavLinkGroup
-                            depth={depth + 1}
-                            key={`${childIndex}:${slug}`}
-                            navLink={childNavLink}
-                            parentPath={fullPath}
-                        />
-                    ))}
+                    {(children || []).map((childNavLink, childIndex) => {
+                        return (
+                            <MenuNavLinkGroup
+                                depth={depth + 1}
+                                key={`${childIndex}:${slug}`}
+                                navLink={childNavLink}
+                                parentPath={fullPath}
+                            />
+                        );
+                    })}
                 </ChildLinkGroupWrapper>
             )}
         </LinkGroupWrapper>

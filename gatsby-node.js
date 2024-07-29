@@ -4,11 +4,26 @@ exports.onCreateNode = ({ node, actions }) => {
     const { createNodeField } = actions;
 
     if (node?.frontmatter?.fullPath) {
+        const pathComponents = node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim);
+
         createNodeField({
             node,
             name: 'pathComponents',
-            value: node.frontmatter.fullPath.match(/[^/]+(?=\/|$)/gim),
+            value: pathComponents,
         });
+
+        if (node?.slug == null || node?.frontmatter?.slug == null) {
+            const slugFromPathComponents =
+                pathComponents.length < 2 ? pathComponents[0] : pathComponents.slice(1).join('/');
+
+            if (slugFromPathComponents != null) {
+                createNodeField({
+                    node,
+                    name: 'slug',
+                    value: slugFromPathComponents,
+                });
+            }
+        }
     }
 };
 
