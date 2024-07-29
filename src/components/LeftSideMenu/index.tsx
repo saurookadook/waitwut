@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { type PageMap } from 'common/constants/pageMap';
 import { PageMapContext, StateContext } from 'common/contexts';
 import { MenuNavLinkGroup } from 'components/nav';
-import { createNavLinks } from 'components/nav/utils';
+import { createNavLinks, _createNavLinks } from 'components/nav/utils';
 import { isWindowDefined } from 'utils/index';
 
 import { menuTheme } from 'themes';
@@ -57,6 +57,7 @@ const LeftSideMenu = (): React.ReactElement => {
                     target: [],
                 });
                 const _navLinks = createNavLinks({ nodesGroups: combinedNodesGroups, pageMap });
+                // const _navLinks = _createNavLinks({ nodesGroups: combinedNodesGroups, pageMap });
                 setNavLinks(_navLinks);
             } catch (e) {
                 console.error(`ERROR encountered while creating navLinks for LeftSideMenu: `, e);
@@ -154,7 +155,7 @@ export const useSheetsQuery = (): SideMenuData => {
     const { allMdx, allMarkdownRemark } = useStaticQuery(
         graphql`
             query {
-                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
+                allMdx(sort: { fields: fields___pathComponents, order: ASC }) {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
@@ -171,7 +172,7 @@ export const useSheetsQuery = (): SideMenuData => {
                         fieldValue
                     }
                 }
-                allMarkdownRemark(sort: { fields: frontmatter___title, order: DESC }) {
+                allMarkdownRemark(sort: { fields: fields___pathComponents, order: ASC }) {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
