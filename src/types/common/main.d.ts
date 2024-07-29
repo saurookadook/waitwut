@@ -16,20 +16,20 @@ interface AllCheatSheets {
 }
 
 interface NavLinkItem {
-    slug?: string;
-    fullPath?: string;
-    label?: string;
+    fullPath: string;
+    label: string;
+    slug: string;
+    children?: NavLinkItem[];
     iconName?: string;
     pathComponents?: string[];
-    children?: NavLinkItem[];
 }
 
 interface NodeFrontmatter {
-    date?: Date;
-    fullPath?: string;
-    iconComponentName?: string;
-    sectionSlug?: string;
+    fullPath: string;
+    sectionSlug: string;
     title: string;
+    date?: Date;
+    iconComponentName?: string;
 }
 
 interface NodeFields {
