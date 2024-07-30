@@ -33,8 +33,10 @@ interface NodeFrontmatter {
 }
 
 interface NodeFields {
+    directParent: string;
     pathComponents: string[];
     slug?: string;
+    topLevelParent: string;
 }
 
 interface NodeFromQuery {

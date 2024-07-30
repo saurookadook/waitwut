@@ -159,7 +159,10 @@ export const useSheetsQuery = (): SideMenuData => {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
+                                directParent
                                 pathComponents
+                                slug
+                                topLevelParent
                             }
                             frontmatter {
                                 title
@@ -176,8 +179,10 @@ export const useSheetsQuery = (): SideMenuData => {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
+                                directParent
                                 pathComponents
                                 slug
+                                topLevelParent
                             }
                             frontmatter {
                                 date(formatString: "MMMM D, YYYY")
