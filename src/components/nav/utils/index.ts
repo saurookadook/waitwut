@@ -57,6 +57,22 @@ class NavLinkNode {
 
         return null;
     }
+
+    findChildSection(sectionSlug: string): NavLinkNode | null {
+        const nodesQueue = [...this.children];
+
+        while (nodesQueue.length > 0) {
+            const currentNode = nodesQueue.shift() as NavLinkNode;
+
+            if (currentNode.sectionSlug === sectionSlug) {
+                return currentNode;
+            }
+
+            nodesQueue.push(...currentNode.children);
+        }
+
+        return null;
+    }
 }
 
 // class LinkGroupNode {
@@ -65,6 +81,79 @@ class NavLinkNode {
 //         this.children = [];
 //     }
 // }
+
+class NavLinkSectionTree {
+    root: NavLinkNode;
+    // children: NavLinkNode[];
+
+    constructor({ root, children = [] }: { root: NavLinkNode; children?: NavLinkNode[] }) {
+        this.root = root;
+        // this.children = children;
+    }
+
+    populateNavLinkChildren({
+        childSectionSlugs,
+        nodes,
+        sectionSlug,
+    }: {
+        childSectionSlugs: string[];
+        nodes: NodeFromQuery[];
+        sectionSlug: string;
+    }): void {
+        const navChildSectionMap: NavChildSectionMap = {};
+        let pathSteps;
+
+        nodes.forEach((node: NodeFromQuery, i: number) => {
+            const navLinkNode = new NavLinkNode({
+                fullPath: node.frontmatter.fullPath,
+                label: node.frontmatter.title,
+                pathComponents: node.fields.pathComponents,
+                sectionSlug: sectionSlug,
+                slug: node.fields.slug || node.slug,
+            });
+
+            pathSteps = navLinkNode.pathComponents.slice(1, navLinkNode.pathComponents.length - 1);
+            console.log(`before findOrCreateSectionChild call - ${i}`);
+            console.log(
+                JSON.parse(JSON.stringify({ node, navLinkNode, childSectionSlugs, navChildSectionMap, pathSteps })),
+            );
+            debugger;
+            try {
+                const sectionChild = findOrCreateSectionChild({
+                    childSectionSlugs,
+                    navChildSectionMap,
+                    pathSteps,
+                    penultimatePathStep: navLinkNode.pathComponents[navLinkNode.pathComponents.length - 1],
+                    sectionSlug,
+                });
+                console.log(`sectionChild - ${i}`);
+                console.log(
+                    JSON.parse(
+                        JSON.stringify({
+                            node,
+                            navLinkNode,
+                            sectionChild,
+                            childSectionSlugs,
+                            navChildSectionMap,
+                            pathSteps,
+                        }),
+                    ),
+                );
+                // debugger;
+            } catch (e) {
+                console.groupCollapsed("ERROR in 'findOrCreateSectionChild'");
+                console.error(e);
+                console.error(JSON.parse(JSON.stringify({ childSectionSlugs, navChildSectionMap, pathSteps })));
+                console.groupEnd();
+                throw e;
+            }
+        });
+
+        console.groupCollapsed('populateNavLinkChildren - before return');
+        console.log(JSON.parse(JSON.stringify({ children: this.root.children, navChildSectionMap, nodes })));
+        console.groupEnd();
+    }
+}
 
 function createNavLinks({
     nodesGroups,
@@ -80,25 +169,26 @@ function createNavLinks({
             continue;
         }
 
-        const navLinkNode = new NavLinkNode({
+        const navLinkSectionRoot = new NavLinkNode({
             fullPath: `/${pageConfig.sectionSlug}`,
             label: pageConfig.title,
             slug: pageConfig.sectionSlug,
         });
+        const navLinkSectionTree = new NavLinkSectionTree({ root: navLinkSectionRoot });
 
         const nodeGroup = getNodeGroupBySectionSlug(nodesGroups, pageConfig.sectionSlug);
 
         if (nodeGroup && nodeGroup.nodes) {
             const childSectionSlugs = buildChildSectionSlugs(pageConfig);
             populateNavLinkChildren({
-                children: navLinkNode.children,
+                children: navLinkSectionTree.root.children,
                 childSectionSlugs: childSectionSlugs || [],
                 nodes: nodeGroup.nodes,
                 sectionSlug: pageConfig.sectionSlug,
             });
         }
 
-        navLinksResult.push(navLinkNode);
+        navLinksResult.push(navLinkSectionTree.root);
     }
 
     return navLinksResult;
