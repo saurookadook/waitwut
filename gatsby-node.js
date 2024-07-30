@@ -1,5 +1,8 @@
 const path = require('path');
 
+// 'topLevelParent' and 'directParent' fields are inspired from
+// - https://github.com/gatsbyjs/gatsby/issues/9630
+// - https://github.com/meetup/swarm-design-system/blob/master/gatsby-node.js#L5-L35
 exports.onCreateNode = ({ node, actions }) => {
     const { createNodeField } = actions;
 
@@ -10,6 +13,18 @@ exports.onCreateNode = ({ node, actions }) => {
             node,
             name: 'pathComponents',
             value: pathComponents,
+        });
+
+        createNodeField({
+            node,
+            name: 'topLevelParent',
+            value: pathComponents[0],
+        });
+
+        createNodeField({
+            node,
+            name: 'directParent',
+            value: pathComponents.length > 2 ? pathComponents[pathComponents.length - 2] : '',
         });
 
         if (node?.slug == null || node?.frontmatter?.slug == null) {
