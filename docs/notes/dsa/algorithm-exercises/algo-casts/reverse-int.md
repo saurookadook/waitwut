@@ -1,7 +1,7 @@
 ---
 title: 'Reverse: Integer'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/reverse-integer'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/reverse-integer'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

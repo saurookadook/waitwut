@@ -1,7 +1,7 @@
 ---
 title: 'Tree'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/tree'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/tree'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

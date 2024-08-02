@@ -1,7 +1,7 @@
 ---
 title: 'Matrix'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/matrix'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/matrix'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

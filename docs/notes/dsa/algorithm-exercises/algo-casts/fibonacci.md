@@ -1,7 +1,7 @@
 ---
 title: 'Fibonacci'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/fibonacci'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/fibonacci'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

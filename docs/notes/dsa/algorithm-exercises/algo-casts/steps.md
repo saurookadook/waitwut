@@ -1,7 +1,7 @@
 ---
 title: 'Steps'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/steps'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/steps'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

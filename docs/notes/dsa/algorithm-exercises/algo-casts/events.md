@@ -1,7 +1,7 @@
 ---
 title: 'Events'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/events'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/events'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Anagrams'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/anagrams'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/anagrams'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

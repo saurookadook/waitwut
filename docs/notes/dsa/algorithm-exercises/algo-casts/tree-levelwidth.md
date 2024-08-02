@@ -1,7 +1,7 @@
 ---
 title: 'Tree: Level Width'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/tree-levelwidth'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/tree-levelwidth'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Palindrome'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/palindrome'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/palindrome'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

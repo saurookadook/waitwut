@@ -1,7 +1,7 @@
 ---
 title: 'Find The Vowels'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/find-the-vowels'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/find-the-vowels'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

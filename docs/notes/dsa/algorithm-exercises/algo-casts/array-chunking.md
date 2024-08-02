@@ -1,7 +1,7 @@
 ---
 title: 'Array Chunking'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/array-chunking'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/array-chunking'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

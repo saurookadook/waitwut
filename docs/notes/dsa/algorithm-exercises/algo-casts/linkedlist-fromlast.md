@@ -1,7 +1,7 @@
 ---
 title: 'Linked List: fromLast'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/linkedlist-fromlast'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/linkedlist-fromlast'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

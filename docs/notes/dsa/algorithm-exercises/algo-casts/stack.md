@@ -1,7 +1,7 @@
 ---
 title: 'Stack'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/stack'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/stack'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---

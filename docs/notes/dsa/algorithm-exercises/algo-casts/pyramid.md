@@ -1,7 +1,7 @@
 ---
 title: 'Pyramid (Two-sided Steps)'
 date: '2024-07-13'
-fullPath: '/notes/algorithm-exercises/algo-casts/pyramid'
+fullPath: '/notes/dsa/algorithm-exercises/algo-casts/pyramid'
 iconComponentName: ''
 sectionSlug: 'notes'
 ---
