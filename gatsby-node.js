@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, actions }) => {
         createNodeField({
             node,
             name: 'directParent',
-            value: pathComponents.length > 2 ? pathComponents[pathComponents.length - 2] : '',
+            value: pathComponents.length > 1 ? pathComponents[pathComponents.length - 2] : '',
         });
 
         if (node?.slug == null || node?.frontmatter?.slug == null) {
