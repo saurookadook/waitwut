@@ -4,14 +4,14 @@ import { ThemeProvider } from 'styled-components';
 
 import { type PageMap } from 'common/constants/pageMap';
 import { PageMapContext, StateContext } from 'common/contexts';
-import { MenuNavLink } from 'components/nav';
+import { MenuNavLinkGroup } from 'components/nav';
 import { createNavLinks } from 'components/nav/utils';
 import { isWindowDefined } from 'utils/index';
 
 import { menuTheme } from 'themes';
-import { StyledDrawer } from './styled';
+import { StyledDrawer, StyledAside } from './styled';
 
-const drawerWidth = 240;
+const drawerWidth = 320;
 const drawerVariantBreakpoint = 1024;
 
 const LeftSideMenu = (): React.ReactElement => {
@@ -60,6 +60,7 @@ const LeftSideMenu = (): React.ReactElement => {
                 setNavLinks(_navLinks);
             } catch (e) {
                 console.error(`ERROR encountered while creating navLinks for LeftSideMenu: `, e);
+                // TODO: set some safe fallback with `setNavLinks`?
             }
         }
     }, [
@@ -69,23 +70,28 @@ const LeftSideMenu = (): React.ReactElement => {
         pageMap,
     ]);
 
-    // console.log(' LeftSideMenu - navLinks '.padStart(80, '=').padEnd(160, '='));
-    // console.log(JSON.parse(JSON.stringify(navLinks)));
     return (
         <ThemeProvider theme={menuTheme}>
             <StyledDrawer
+                $drawerWidth={drawerWidth}
+                id="side-nav-drawer"
+                role="complementary"
                 open={!!menu.drawerVisible}
                 variant={drawerVariant}
-                // TODO: add another breakpoint for tablet?
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                }}
             >
-                {navLinks.map((navLink, index) => (
-                    <MenuNavLink depth={0} key={`${index}:${navLink.slug}`} navLink={navLink} />
-                ))}
+                <StyledAside>
+                    <nav>
+                        <ul>
+                            {navLinks.map((navLink, index) => (
+                                <MenuNavLinkGroup // force formatting
+                                    key={`${index}:${navLink.slug}`}
+                                    depth={0}
+                                    navLink={navLink}
+                                />
+                            ))}
+                        </ul>
+                    </nav>
+                </StyledAside>
             </StyledDrawer>
         </ThemeProvider>
     );
@@ -149,11 +155,14 @@ export const useSheetsQuery = (): SideMenuData => {
     const { allMdx, allMarkdownRemark } = useStaticQuery(
         graphql`
             query {
-                allMdx(sort: { fields: frontmatter___title, order: DESC }) {
+                allMdx(sort: { fields: [fields___pathComponents, fields___directParent], order: [ASC, ASC] }) {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
+                                directParent
                                 pathComponents
+                                slug
+                                topLevelParent
                             }
                             frontmatter {
                                 title
@@ -166,12 +175,16 @@ export const useSheetsQuery = (): SideMenuData => {
                         fieldValue
                     }
                 }
-                allMarkdownRemark(sort: { fields: frontmatter___title, order: DESC }) {
+                allMarkdownRemark(
+                    sort: { fields: [fields___pathComponents, fields___directParent], order: [ASC, ASC] }
+                ) {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
+                                directParent
                                 pathComponents
                                 slug
+                                topLevelParent
                             }
                             frontmatter {
                                 date(formatString: "MMMM D, YYYY")

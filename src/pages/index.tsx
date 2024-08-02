@@ -15,7 +15,9 @@ const IndexPage = (): React.ReactElement => {
                 Has this ever happened to you?
                 <br />
                 <HeadingAccent>
-                    {`You start to write something and think, "Oh 💩, how do you write that thing in <blank> again!?"`}
+                    {`You start to write something and think,`}
+                    <br />
+                    {` "Oh 💩, how do you write that thing in <blank> again!?"`}
                 </HeadingAccent>
             </h1>
             <p>

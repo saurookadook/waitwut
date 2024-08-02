@@ -30,6 +30,23 @@ const pageMap: PageMap[] = [
                 sectionSlug: 'dsa',
                 title: 'DSA',
                 topParentSlug: 'notes',
+                // NOTE: this sorta fixes the nav items but feels unnecessary :]
+                childSections: [
+                    {
+                        color: '#E95800',
+                        description: 'TODO 🙃',
+                        sectionSlug: 'algorithm-exercises',
+                        title: 'Algorithm Exercises',
+                        topParentSlug: 'notes',
+                    },
+                    {
+                        color: '#E95800',
+                        description: 'TODO 🙃',
+                        sectionSlug: 'programmiz-course',
+                        title: 'DSA Programmiz Course',
+                        topParentSlug: 'notes',
+                    },
+                ],
             },
             {
                 color: '#E95800',

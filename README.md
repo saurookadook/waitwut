@@ -14,6 +14,16 @@ View it [here](https://waitwut.xyz)!
 
 [GraphQL Typegen Documentation](https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/)
 
+### GraphQL Tips
+
+#### Keyboard shortcuts in GraphiQL Editor
+- **Prettify Query**:  `Shift-Ctrl-P` _(or press the prettify button above)_
+- **Merge Query**:  `Shift-Ctrl-M` _(or press the merge button above)_
+- **Run Query**:  `Ctrl-Enter` _(or press the play button above)_
+- **Auto Complete**:  `Ctrl-Space` _(or just start typing)_
+
+
+
 ### Gatsby Tutorials
 
 [Tutorial](https://www.gatsbyjs.com/docs/tutorial/) _A great place to get started if you're new to web development.

@@ -1,5 +1,3 @@
-import MenuNavLink from "./MenuNavLink";
+import MenuNavLinkGroup from './MenuNavLinkGroup';
 
-export {
-    MenuNavLink,
-};
+export { MenuNavLinkGroup };
