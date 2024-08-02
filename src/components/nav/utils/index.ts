@@ -86,15 +86,6 @@ class NavLinkNode {
 
     findOrCreateChildParent(node: NodeFromQuery): NavLinkNode {
         let childNode = this.findChildParentByPathComponent(node.fields.directParent);
-        // console.log({
-        //     callPoint: 1,
-        //     method: 'findOrCreateChildParent',
-        //     targetChildSlug: node.fields.directParent,
-        //     childNode,
-        //     node,
-        //     nodes,
-        // });
-        // debugger;
         if (childNode != null) {
             return childNode;
         }
@@ -105,36 +96,15 @@ class NavLinkNode {
                 ? node.fields.pathComponents.length - 1
                 : node.fields.pathComponents.length;
         const childParentPathSteps = node.fields.pathComponents.slice(1, finalElementIndex);
-        console.log({
-            method: 'findOrCreateChildParent',
-            childParentPathSteps,
-            targetChildSlug: node.fields.directParent,
-        });
         for (const pathComponent of childParentPathSteps) {
-            // console.log({
-            //     callPoint: 2,
-            //     method: 'findOrCreateChildParent',
-            //     childNode,
-            //     directParentNode,
-            //     pathComponent,
-            // });
             childNode =
                 this.findChildParentByPathComponent(pathComponent) ||
                 new NavLinkNode({
                     directParent: pathComponent,
                     topLevelParent: node.fields.topLevelParent,
                 });
-            // debugger;
             directParentNode.children.push(childNode);
             directParentNode = childNode;
-            // console.log({
-            //     callPoint: 3,
-            //     method: 'findOrCreateChildParent',
-            //     childNode,
-            //     directParentNode,
-            //     pathComponent,
-            // });
-            // debugger;
         }
 
         return directParentNode;
@@ -143,7 +113,6 @@ class NavLinkNode {
     addNodesToChildren({ nodes }: { nodes: NodeFromQuery[] }) {
         nodes.forEach((node: NodeFromQuery, i: number) => {
             const directParent = this.findOrCreateChildParent(node);
-            // debugger;
             const newChildNode = new NavLinkNode({
                 directParent: node.fields.directParent,
                 fullPath: node.frontmatter.fullPath,
@@ -155,9 +124,7 @@ class NavLinkNode {
                 topLevelParent: node.fields.topLevelParent,
             });
             directParent.children.push(newChildNode);
-            console.log({ index: i, directParent, newChildNode });
         });
-        // debugger;
     }
 }
 
@@ -171,10 +138,6 @@ function createNavLinks({
     const navLinksResult = [];
 
     for (const pageConfig of pageMap) {
-        // if (pageConfig.sectionSlug !== 'notes') {
-        //     continue;
-        // }
-
         const navLinkSectionNode = new NavLinkNode({
             directParent: '',
             fullPath: `/${pageConfig.sectionSlug}`,
