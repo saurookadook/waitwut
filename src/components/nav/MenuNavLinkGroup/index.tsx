@@ -1,8 +1,53 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 
 import { DispatchContext } from 'common/contexts';
 import { closeMenuDrawer } from 'store/actions';
-import { LinkGroupWrapper, StyledNavLink, ChildLinkGroupWrapper } from './styled';
+import {
+    LinkGroupWrapper, // force formatting
+    StyledNavLink,
+    ChildLinkGroupWrapper,
+    ChildLinkGroupDetails,
+    ChildLinkGroupSummary,
+} from './styled';
+
+const CollapsibleNavLinkGroup = ({
+    depth,
+    dispatch,
+    fullPath,
+    navLink,
+}: React.PropsWithChildren & {
+    depth: number;
+    dispatch: React.Dispatch<BaseReducerAction>;
+    fullPath: string;
+    navLink: NavLinkItem;
+}) => {
+    return (
+        <ChildLinkGroupDetails open={depth === 0}>
+            <ChildLinkGroupSummary>
+                <StyledNavLink to={fullPath} onClick={() => closeMenuDrawer({ dispatch })}>
+                    <span>{navLink.label}</span>
+                </StyledNavLink>
+            </ChildLinkGroupSummary>
+
+            {(navLink.children || []).length > 0 && (
+                <ChildLinkGroupWrapper
+                // style={{ marginLeft: `${(depth + 1) * 1}em` }}
+                >
+                    {(navLink.children || []).map((childNavLink, childIndex) => {
+                        return (
+                            <MenuNavLinkGroup
+                                depth={depth + 1}
+                                key={`${childIndex}:${navLink.slug}`}
+                                navLink={childNavLink}
+                                parentPath={fullPath}
+                            />
+                        );
+                    })}
+                </ChildLinkGroupWrapper>
+            )}
+        </ChildLinkGroupDetails>
+    );
+};
 
 /**
  * @notes Maybe {@link https://mui.com/material-ui/react-list/|MUI's List component} would be better?
@@ -11,40 +56,23 @@ const MenuNavLinkGroup = ({
     depth,
     navLink,
     parentPath,
-}: {
+}: React.PropsWithChildren & {
     depth: number;
-    key?: string;
     navLink: NavLinkItem;
     parentPath?: string;
 }): React.ReactElement => {
-    // TODO: implement some kind of system for expanding/collapsing items
-    const [isClosed, setIsOpen] = useState(depth > 1);
     const dispatch = useContext(DispatchContext);
 
     const fullPath = navLink.fullPath || `${parentPath || ''}/${navLink.slug}`;
-    const { children, label, slug } = navLink || {};
 
     return (
         <LinkGroupWrapper>
-            <StyledNavLink to={fullPath} onClick={() => closeMenuDrawer({ dispatch })}>
-                <span>{label}</span>
-            </StyledNavLink>
-
-            {(children || []).length > 0 && (
-                <ChildLinkGroupWrapper
-                // style={{ marginLeft: `${(depth + 1) * 1}em` }}
-                >
-                    {(children || []).map((childNavLink, childIndex) => {
-                        return (
-                            <MenuNavLinkGroup
-                                depth={depth + 1}
-                                key={`${childIndex}:${slug}`}
-                                navLink={childNavLink}
-                                parentPath={fullPath}
-                            />
-                        );
-                    })}
-                </ChildLinkGroupWrapper>
+            {(navLink.children || []).length > 0 ? (
+                <CollapsibleNavLinkGroup depth={depth} dispatch={dispatch} fullPath={fullPath} navLink={navLink} />
+            ) : (
+                <StyledNavLink to={fullPath} onClick={() => closeMenuDrawer({ dispatch })}>
+                    <span>{navLink.label}</span>
+                </StyledNavLink>
             )}
         </LinkGroupWrapper>
     );

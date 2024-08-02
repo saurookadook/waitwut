@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 import { minWidth600 } from 'styles/mq';
 
-const LinkGroupWrapper = styled.li``;
+const LinkGroupWrapper = styled.li`
+    list-style: none;
+`;
 
 const StyledNavLink = styled(Link)`
     align-items: center;
@@ -11,9 +13,8 @@ const StyledNavLink = styled(Link)`
     display: flex;
     flex-direction: row;
     font-size: 1.25rem;
-
-    padding: 0.25rem 0 0.25rem 0.5rem;
-    /* padding: 0.25em 0 0.25em 1em; */
+    margin-left: 0;
+    padding: 0.25rem 0.375rem;
     text-align: left;
     text-decoration: none;
 
@@ -41,4 +42,16 @@ const ChildLinkGroupWrapper = styled.ul`
     flex-direction: column;
 `;
 
-export { StyledNavLink, LinkGroupWrapper, ChildLinkGroupWrapper };
+const ChildLinkGroupDetails = styled.details``;
+
+const ChildLinkGroupSummary = styled.summary`
+    list-style-position: outside;
+`;
+
+export {
+    StyledNavLink, // force formatting
+    LinkGroupWrapper,
+    ChildLinkGroupWrapper,
+    ChildLinkGroupDetails,
+    ChildLinkGroupSummary,
+};
