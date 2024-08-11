@@ -68,7 +68,12 @@ const MenuNavLinkGroup = ({
     return (
         <LinkGroupWrapper>
             {(navLink.children || []).length > 0 ? (
-                <CollapsibleNavLinkGroup depth={depth} dispatch={dispatch} fullPath={fullPath} navLink={navLink} />
+                <CollapsibleNavLinkGroup
+                    depth={depth}
+                    dispatch={dispatch}
+                    fullPath={fullPath}
+                    navLink={navLink}
+                />
             ) : (
                 <StyledNavLink to={fullPath} onClick={() => closeMenuDrawer({ dispatch })}>
                     <span>{navLink.label}</span>

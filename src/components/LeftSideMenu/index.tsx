@@ -22,7 +22,9 @@ const LeftSideMenu = (): React.ReactElement => {
     const { menu } = useContext(StateContext);
 
     const [drawerVariant, setDrawerVariant] = useState<'temporary' | 'permanent'>(
-        isWindowDefined() && window.outerWidth > drawerVariantBreakpoint ? 'permanent' : 'temporary',
+        isWindowDefined() && window.outerWidth > drawerVariantBreakpoint
+            ? 'permanent'
+            : 'temporary',
     );
 
     const [navLinks, setNavLinks] = useState<NavLinkItem[]>([]);
@@ -49,12 +51,10 @@ const LeftSideMenu = (): React.ReactElement => {
     useEffect(() => {
         if (navLinks.length === 0) {
             // TODO: maybe a hook like useMemo would be better for this?
-            // const navLinks: NavLinkItem[] = createNavLinks({ nodesGroups, pageMap });
             try {
                 const combinedNodesGroups = mergeNodesGroups({
                     args: [mdxNodesGroups, markdownNodesGroups],
                     pageMap: pageMap,
-                    target: [],
                 });
                 const _navLinks = createNavLinks({ nodesGroups: combinedNodesGroups, pageMap });
                 setNavLinks(_navLinks);
@@ -112,9 +112,9 @@ function mergeNodesGroups({
     pageMap,
     target = [],
 }: {
-    pageMap: PageMap[];
-    target: GroupFromQuery[];
     args: GroupFromQuery[][];
+    pageMap: PageMap[];
+    target?: GroupFromQuery[];
 }): GroupFromQuery[] {
     const resultsBySectionSlug = {} as DynamicObject<GroupFromQuery['nodes']>;
 
@@ -141,7 +141,6 @@ function mergeNodesGroups({
     }
 
     for (const [key, value] of Object.entries(resultsBySectionSlug)) {
-        // TODO: add logic to get
         target.push({
             fieldValue: key as TopLevelPageSlugs,
             nodes: value,
@@ -155,7 +154,12 @@ export const useSheetsQuery = (): SideMenuData => {
     const { allMdx, allMarkdownRemark } = useStaticQuery(
         graphql`
             query {
-                allMdx(sort: { fields: [fields___pathComponents, fields___directParent], order: [ASC, ASC] }) {
+                allMdx(
+                    sort: {
+                        fields: [fields___pathComponents, fields___directParent]
+                        order: [ASC, ASC]
+                    }
+                ) {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
                             fields {
@@ -176,7 +180,10 @@ export const useSheetsQuery = (): SideMenuData => {
                     }
                 }
                 allMarkdownRemark(
-                    sort: { fields: [fields___pathComponents, fields___directParent], order: [ASC, ASC] }
+                    sort: {
+                        fields: [fields___pathComponents, fields___directParent]
+                        order: [ASC, ASC]
+                    }
                 ) {
                     group(field: frontmatter___sectionSlug) {
                         nodes {
