@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Greedy Algorithms'
+title: 'DSA Programiz Course: Greedy Algorithms'
 date: '2024-07-11'
-fullPath: '/notes/dsa/programmiz-course/08-greedy-algorithms'
+fullPath: '/notes/dsa/programiz-course/08-greedy-algorithms'
 sectionSlug: 'notes'
 ---
 
@@ -73,8 +73,8 @@ def greedy_make_change(amount):
 - [Knapsack Problem](https://en.wikipedia.org/wiki/Knapsack_problem)
 - [Minimum Spanning Tree](https://www.programiz.com/dsa/spanning-tree-and-minimum-spanning-tree)
 - [Single-Source Shortest Path Problem](https://en.wikipedia.org/wiki/Shortest_path_problem)
-- [Prim's Minimal Spanning Tree Algorithm](/docs/notes/dsa/programmiz-course/08-greedy-algorithms/prims-algorithm.md)
-- [Kruskal's Minimal Spanning Tree Algorithm](/docs/notes/dsa/programmiz-course/08-greedy-algorithms/kruskals-algorithm.md)
-- [Dijkstra's Minimal Spanning Tree Algorithm](/docs/notes/dsa/programmiz-course/08-greedy-algorithms/dijkstras-algorithm.md)
-- [Huffman Coding](/docs/notes/dsa/programmiz-course/08-greedy-algorithms/huffman-coding.md)
-- [Ford-Fulkerson Algorithm](/docs/notes/dsa/programmiz-course/08-greedy-algorithms/ford-fulkerson-algorithm.md)
+- [Prim's Minimal Spanning Tree Algorithm](/docs/notes/dsa/programiz-course/08-greedy-algorithms/prims-algorithm.md)
+- [Kruskal's Minimal Spanning Tree Algorithm](/docs/notes/dsa/programiz-course/08-greedy-algorithms/kruskals-algorithm.md)
+- [Dijkstra's Minimal Spanning Tree Algorithm](/docs/notes/dsa/programiz-course/08-greedy-algorithms/dijkstras-algorithm.md)
+- [Huffman Coding](/docs/notes/dsa/programiz-course/08-greedy-algorithms/huffman-coding.md)
+- [Ford-Fulkerson Algorithm](/docs/notes/dsa/programiz-course/08-greedy-algorithms/ford-fulkerson-algorithm.md)

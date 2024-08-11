@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Graph-based DSA - Breadth-First Search'
+title: 'DSA Programiz Course: Graph-based DSA - Breadth-First Search'
 date: '2024-08-11'
-fullPath: '/notes/dsa/programmiz-course/06-graph-based-dsa/breadth-first-search'
+fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/breadth-first-search'
 sectionSlug: 'notes'
 ---
 

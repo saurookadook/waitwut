@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Graph-based DSA - Adjacency List'
+title: 'DSA Programiz Course: Graph-based DSA - Adjacency List'
 date: '2024-08-11'
-fullPath: '/notes/dsa/programmiz-course/06-graph-based-dsa/adjacency-list'
+fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/adjacency-list'
 sectionSlug: 'notes'
 ---
 

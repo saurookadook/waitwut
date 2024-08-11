@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Graph-based DSA - Adjacency Matrix'
+title: 'DSA Programiz Course: Graph-based DSA - Adjacency Matrix'
 date: '2024-08-11'
-fullPath: '/notes/dsa/programmiz-course/06-graph-based-dsa/adjacency-matrix'
+fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/adjacency-matrix'
 sectionSlug: 'notes'
 ---
 

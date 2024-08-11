@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Greedy Algorithms - Huffman Coding'
+title: 'DSA Programiz Course: Greedy Algorithms - Huffman Coding'
 date: '2024-08-10'
-fullPath: '/notes/dsa/programmiz-course/08-greedy-algorithms/huffman-coding'
+fullPath: '/notes/dsa/programiz-course/08-greedy-algorithms/huffman-coding'
 sectionSlug: 'notes'
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Graph-based DSA - Spanning Tree'
+title: 'DSA Programiz Course: Graph-based DSA - Spanning Tree'
 date: '2024-08-11'
-fullPath: '/notes/dsa/programmiz-course/06-graph-based-dsa/spanning-tree'
+fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/spanning-tree'
 sectionSlug: 'notes'
 ---
 

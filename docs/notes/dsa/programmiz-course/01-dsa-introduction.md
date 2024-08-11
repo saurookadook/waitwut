@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Introduction'
+title: 'DSA Programiz Course: Introduction'
 date: '2024-07-10'
-fullPath: '/notes/dsa/programmiz-course/01-dsa-introduction'
+fullPath: '/notes/dsa/programiz-course/01-dsa-introduction'
 sectionSlug: 'notes'
 ---
 

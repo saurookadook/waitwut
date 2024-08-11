@@ -1,20 +1,20 @@
 ---
-title: 'DSA Programmiz Course: Graph-based DSA'
+title: 'DSA Programiz Course: Graph-based DSA'
 date: '2024-07-11'
-fullPath: '/notes/dsa/programmiz-course/06-graph-based-dsa'
+fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa'
 sectionSlug: 'notes'
 ---
 
 # [Graph Data Structure](https://www.programiz.com/dsa/graph)
 
 ## Subsections
-- [Spanning Tree](/docs/notes/dsa/programmiz-course/06-graph-based-dsa/spanning-tree.md)
-- [Strongly Connected Components and Kosarajus Algorithm](/docs/notes/dsa/programmiz-course/06-graph-based-dsa/kosarajus-algorithm.md)
-- [Adjacency Matrix](/docs/notes/dsa/programmiz-course/06-graph-based-dsa/adjacency-matrix.md)
-- [Adjacency List](/docs/notes/dsa/programmiz-course/06-graph-based-dsa/adjacency-list.md)
-- [Depth-First Search](/docs/notes/dsa/programmiz-course/06-graph-based-dsa/depth-first-search.md)
-- [Breadth-First Search](/docs/notes/dsa/programmiz-course/06-graph-based-dsa/breadth-first-search.md)
-- [Bellman Ford's Algorithm](/docs/notes/dsa/programmiz-course/06-graph-based-dsa/bellman-fords-algorithm.md)
+- [Spanning Tree](/docs/notes/dsa/programiz-course/06-graph-based-dsa/spanning-tree.md)
+- [Strongly Connected Components and Kosarajus Algorithm](/docs/notes/dsa/programiz-course/06-graph-based-dsa/kosarajus-algorithm.md)
+- [Adjacency Matrix](/docs/notes/dsa/programiz-course/06-graph-based-dsa/adjacency-matrix.md)
+- [Adjacency List](/docs/notes/dsa/programiz-course/06-graph-based-dsa/adjacency-list.md)
+- [Depth-First Search](/docs/notes/dsa/programiz-course/06-graph-based-dsa/depth-first-search.md)
+- [Breadth-First Search](/docs/notes/dsa/programiz-course/06-graph-based-dsa/breadth-first-search.md)
+- [Bellman Ford's Algorithm](/docs/notes/dsa/programiz-course/06-graph-based-dsa/bellman-fords-algorithm.md)
 
 ## Overview
 

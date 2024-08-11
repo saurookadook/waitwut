@@ -1,7 +1,7 @@
 ---
-title: 'DSA Programmiz Course: Greedy Algorithms - Kruskal\'s Algorithm'
+title: 'DSA Programiz Course: Greedy Algorithms - Kruskal\'s Algorithm'
 date: '2024-08-11'
-fullPath: '/notes/dsa/programmiz-course/08-greedy-algorithms/kruskals-algorithm'
+fullPath: '/notes/dsa/programiz-course/08-greedy-algorithms/kruskals-algorithm'
 sectionSlug: 'notes'
 ---
 
