@@ -1,5 +1,5 @@
 ---
-title: 'DSA Programiz Course: Greedy Algorithms - Ford-Fulkerson Algorithm'
+title: 'Ford-Fulkerson Algorithm'
 date: '2024-08-10'
 fullPath: '/notes/dsa/programiz-course/08-greedy-algorithms/ford-fulkerson-algorithm'
 sectionSlug: 'notes'

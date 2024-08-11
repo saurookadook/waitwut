@@ -1,5 +1,5 @@
 ---
-title: "DSA Programiz Course: Greedy Algorithms - Prim's Algorithm"
+title: "Prim's Algorithm"
 date: '2024-08-10'
 fullPath: '/notes/dsa/programiz-course/08-greedy-algorithms/prims-algorithm'
 sectionSlug: 'notes'

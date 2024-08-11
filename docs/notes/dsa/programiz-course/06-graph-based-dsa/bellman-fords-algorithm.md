@@ -1,5 +1,5 @@
 ---
-title: "DSA Programiz Course: Graph-based DSA - Bellman Ford's Algorithm"
+title: "Bellman Ford's Algorithm"
 date: '2024-08-11'
 fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/bellman-fords-algorithm'
 sectionSlug: 'notes'

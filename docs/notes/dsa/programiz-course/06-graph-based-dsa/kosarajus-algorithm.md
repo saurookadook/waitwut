@@ -1,5 +1,5 @@
 ---
-title: "DSA Programiz Course: Graph-based DSA - Strongly Connected Components and Kosaraju's Algorithm"
+title: "Strongly Connected Components and Kosaraju's Algorithm"
 date: '2024-08-11'
 fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/kosarajus-algorithm'
 sectionSlug: 'notes'

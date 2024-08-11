@@ -1,5 +1,5 @@
 ---
-title: 'DSA Programiz Course: Graph-based DSA - Depth-First Search'
+title: 'Depth-First Search'
 date: '2024-08-11'
 fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/depth-first-search'
 sectionSlug: 'notes'
