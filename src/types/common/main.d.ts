@@ -4,6 +4,10 @@
 type EmptyObject = Record<string, unknown>;
 type AmbiguousObject = Record<string, unknown> | EmptyObject;
 type DynamicObject<T> = Record<string, T>;
+type NullableValue<V> = V | null;
+type NullableObject<T> = {
+    [K in keyof T]: NullableValue<T[K]>;
+};
 
 interface CheatSheet {
     name: string;
@@ -87,7 +91,9 @@ interface BaseMdxProps {
     data: BaseData;
 }
 
-type IconComponent = (props: (React.ComponentPropsWithoutRef & Record<any, any>)?) => React.ReactElement;
+type IconComponent = (
+    props: (React.ComponentPropsWithoutRef & Record<any, any>)?,
+) => React.ReactElement;
 
 type IconComponents = {
     [key: string]: IconComponent;
@@ -108,7 +114,12 @@ interface SectionComponentProps {
 }
 
 interface ResumeSection {
-    [key: string]: string[] | EmploymentRecord[] | VolunteerRecord[] | TechnicalProjectRecord[] | EducationRecord[];
+    [key: string]:
+        | string[]
+        | EmploymentRecord[]
+        | VolunteerRecord[]
+        | TechnicalProjectRecord[]
+        | EducationRecord[];
 }
 
 interface Site {

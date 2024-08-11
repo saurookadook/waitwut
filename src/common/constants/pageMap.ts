@@ -42,8 +42,8 @@ const pageMap: PageMap[] = [
                     {
                         color: '#E95800',
                         description: 'TODO 🙃',
-                        sectionSlug: 'programmiz-course',
-                        title: 'DSA Programmiz Course',
+                        sectionSlug: 'programiz-course',
+                        title: 'DSA Programiz Course',
                         topParentSlug: 'notes',
                     },
                 ],
