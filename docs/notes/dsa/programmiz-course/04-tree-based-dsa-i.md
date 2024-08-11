@@ -223,7 +223,7 @@ const traversalStack = [
 ]
 ```
 
-### Implementations
+## Implementations
 
 <details>
 
