@@ -129,7 +129,7 @@ Update `flow/capacity` for each path with minimum capacity between these edges _
 4. Adding all flows gets maximum possible flow: `2 + 3 + 1 = 6`
 > **NOTE**: if capacity for any edge is full, then that path cannot be used
 
-### Implementations
+## Implementations
 
 <details>
 
