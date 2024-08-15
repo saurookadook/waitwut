@@ -14,6 +14,42 @@ sectionSlug: "sheets"
 
 ---
 
+## Debouncing
+
+A technique to ensure that event handler is only called after event has stopped firing for a certain amount of time.
+
+Simple example from [Optimizing window.onresize](https://bencentra.com/code/2015/02/27/optimizing-window-resize.html)
+
+```JavaScript
+var w = document.querySelector("#width");
+var h = document.querySelector("#height");
+var c = document.querySelector("#calls");
+var timeout = null;
+var delay = 250; // delay after event is "complete" to run callback
+var calls = 0;
+
+// window.resize callback function
+function getDimensions() {
+  w.innerHTML = window.innerWidth;
+  h.innerHTML = window.innerHeight;
+  calls += 1;
+  c.innerHTML = calls;
+}
+
+// window.resize event listener
+window.addEventListener('resize', function() {
+  // clear the timeout
+  clearTimeout(timeout);
+  // start timing for event "completion"
+  timeout = setTimeout(getDimensions, delay);
+});
+
+getDimensions();
+
+```
+
+---
+
 ## Asynchronous Stuff
 
 _TODO_ 🙃
