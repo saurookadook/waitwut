@@ -79,39 +79,6 @@ const config: GatsbyConfig = {
                 ],
             },
         },
-        {
-            resolve: 'gatsby-plugin-mdx',
-            options: {
-                gatsbyRemarkPlugins: [
-                    // 'gatsby-remark-prismjs',
-                    'gatsby-remark-autolink-headers',
-                    {
-                        resolve: 'gatsby-remark-images',
-                        options: {
-                            maxWidth: 1200
-                        }
-                    },
-                    {
-                        resolve: `gatsby-remark-prismjs`,
-                        options: {
-                            // https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
-                            classPrefix: 'language-',
-                            // This is used to allow setting a language for inline code
-                            // (i.e. single backticks) by creating a separator.
-                            // This separator is a string and will do no white-space
-                            // stripping.
-                            // A suggested value for English speakers is the non-ascii
-                            // character '›'.
-                            inlineCodeMarker: null,
-                            aliases: {
-                                sh: 'bash',
-                            },
-                            showLineNumbers: true,
-                        },
-                    },
-                ],
-            },
-        },
         // TODO: https://github.com/andreabreu-me/gatsby-plugin-prettier-eslint/issues/11
         // {
         //     resolve: "gatsby-plugin-prettier-eslint",
