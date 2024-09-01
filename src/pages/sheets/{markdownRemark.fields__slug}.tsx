@@ -5,7 +5,7 @@ import icons from 'components/icons';
 import { GenericMarkdownPage } from 'components/pages';
 
 // @ts-expect-error: need to define the type for markdown-only props
-const NotesPage = ({ data }) => {
+const SheetsPage = ({ data }) => {
     const { iconComponentName, title } = data.markdownRemark.frontmatter || {};
 
     const iconComponent = (): React.ReactElement | undefined => {
@@ -16,7 +16,7 @@ const NotesPage = ({ data }) => {
 
     return (
         <GenericMarkdownPage // force formatting
-            id="markdown-only-notes-page-content"
+            id="markdown-only-sheets-page-content"
             iconComponent={iconComponent}
             pageHtml={data.markdownRemark.html}
             title={title}
@@ -37,4 +37,4 @@ export const query = graphql`
     }
 `;
 
-export default NotesPage;
+export default SheetsPage;

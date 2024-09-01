@@ -21,7 +21,7 @@ const Description = styled.p`
     margin-bottom: 0px;
 `;
 
-const MDXRendererWrapper = styled.div`
+const PageContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -39,4 +39,4 @@ const MDXRendererWrapper = styled.div`
     }
 `;
 
-export { HeadingAccent, ParagraphLines, PageItem, Description, MDXRendererWrapper };
+export { HeadingAccent, ParagraphLines, PageItem, Description, PageContentWrapper };
