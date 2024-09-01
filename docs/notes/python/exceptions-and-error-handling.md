@@ -6,8 +6,6 @@ iconComponentName: 'python_icon'
 sectionSlug: 'notes'
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Exceptions and Error Handling
 
 ## Python's Philosophy
@@ -435,7 +433,7 @@ codes['de'] #=> raises KeyError
 #=> [<class 'KeyError'>, <class 'LookupError'>, <class 'Exception'>, <class 'BaseException'>, <class 'object'>]
 ```
 
--   Full class hierarchy for built-in exceptions can be found in Python's docs: <ExternalLinkWrapper href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">Exception hierarchy</ExternalLinkWrapper>
+-   Full class hierarchy for built-in exceptions can be found in Python's docs: <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy" target="_blank" rel="noopener noreferrer">Exception hierarchy</a>
 
 ### Exception Payloads
 

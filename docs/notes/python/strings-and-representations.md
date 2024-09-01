@@ -6,8 +6,6 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Strings and Representations
 
 ## `str`
@@ -56,7 +54,7 @@ print(m)
 
 #### Universal Newlines
 - Python translates `\n` to appropriate newline sequence for your platform
-- can read more at <ExternalLinkWrapper href="https://python.org/dev/peps/pep-0278/">PEP 278</ExternalLinkWrapper>
+- can read more at <a href="https://python.org/dev/peps/pep-0278/" target="_blank" rel="noopener noreferrer">PEP 278</a>
 
 ### Escape Sequences
 ```py
@@ -98,7 +96,7 @@ print(k)
 | `\uxxx` | Character with 16-bit hex value _xxx_ |
 | `\Uxxxxxxxx` | Character with 32-bit hex value _xxxxxxxx_ |
 
-_More info in_ <ExternalLinkWrapper href="https://docs.python.org/3/reference/lexical_analysis.html#strings"><i>Python docs</i></ExternalLinkWrapper>
+_More info in_ <a href="https://docs.python.org/3/reference/lexical_analysis.html#strings" target="_blank" rel="noopener noreferrer"><i>Python docs</i></a>
 
 ### String Features
 
@@ -232,7 +230,7 @@ import math
 
 ### F-string Syntax
 
-Introduced in <ExternalLinkWrapper href="https://peps.python.org/pep-0498/">PEP 498: Literal String Interpolation</ExternalLinkWrapper>
+Introduced in <a href="https://peps.python.org/pep-0498/" target="_blank" rel="noopener noreferrer">PEP 498: Literal String Interpolation</a>
 - commonly called 'f-strings'
 - available in Python >=3.6
 - provide a way to "embed expressions inside literal strings, using a minimal syntax"
@@ -279,7 +277,7 @@ d.split() #=> [b'some', b'bytes']
 
 ### Converting Between Strings and Bytes
 - must know encoding of byte sequence used to represent string's Unicode code points as bytes
-- <ExternalLinkWrapper href="https://docs.python.org/3/library/codecs.html#standard-encodings">full list of supported encodings in Python</ExternalLinkWrapper>
+- <a href="https://docs.python.org/3/library/codecs.html#standard-encodings" target="_blank" rel="noopener noreferrer">full list of supported encodings in Python</a>
 
 ### Encode/Decode
 ```py
@@ -363,7 +361,7 @@ class MyClass:
 - supports alternative implementations of `repr()`
 - often used for things like limiting how many elements of a large list is printed
 - primary usage is simply `reprlib.repr()`
-- <ExternalLinkWrapper href="https://docs.python.org/3/library/reprlib.html">reprlib docs</ExternalLinkWrapper>
+- <a href="https://docs.python.org/3/library/reprlib.html" target="_blank" rel="noopener noreferrer">reprlib docs</a>
 
 ## Other built-in functions
 

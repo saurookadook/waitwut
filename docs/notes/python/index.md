@@ -6,8 +6,6 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 - [General](#general)
 - [Scalar Types](/notes/python/scalar-types)
 - [Control Flow](/notes/python/control-flow)
@@ -51,9 +49,9 @@ _"Programming as Guido ~~intended~~ indented it"_
 
 ### Python Culture
 
-<ExternalLinkWrapper href="https://peps.python.org/">
+<a href="https://peps.python.org/" target="_blank" rel="noopener noreferrer">
     Python Enhancement Proposals (pep)
-</ExternalLinkWrapper>
+</a>
 
 #### Pep 20: The Zen of Python
 

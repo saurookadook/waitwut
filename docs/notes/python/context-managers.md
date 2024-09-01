@@ -6,8 +6,6 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Context Managers
 
 Objects designed to be used in a `with` statement:
@@ -23,7 +21,7 @@ with context_manager:
 
 ## Details
 
-- defined in <ExternalLinkWrapper href="https://www.python.org/dev/peps/pep-0343">PEP343</ExternalLinkWrapper>
+- defined in <a href="https://www.python.org/dev/peps/pep-0343" target="_blank" rel="noopener noreferrer">PEP343</a>
 - must implement at least 2 methods:
     - `enter()`
         - called before `with` statement's code block begins

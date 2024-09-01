@@ -6,8 +6,6 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Introspection
 
 ## Introspecting **types**
@@ -106,7 +104,7 @@ import { ExternalLinkWrapper } from 'common/components';
 
 ## Python Standard Library `inspect` module
 
-- "provides several useful functions to help get information about live objects" (<em> the docs for more: <ExternalLinkWrapper href="https://docs.python.org/3/library/inspect.html"><code>inspect</code></ExternalLinkWrapper></em>)
+- "provides several useful functions to help get information about live objects" (<em> the docs for more: <a href="https://docs.python.org/3/library/inspect.html" target="_blank" rel="noopener noreferrer"><code>inspect</code></a></em>)
 
 ```python
 # in repl

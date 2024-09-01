@@ -6,8 +6,6 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # File IO and Resource Management
 
 **Resources**
@@ -57,7 +55,7 @@ sys.getdefaultencoding()
 #=> 'utf-8'
 ```
 
-More in <ExternalLinkWrapper href="https://docs.python.org/3/library/codecs.html#standard-encodings">Python docs</ExternalLinkWrapper>
+More in <a href="https://docs.python.org/3/library/codecs.html#standard-encodings" target="_blank" rel="noopener noreferrer">Python docs</a>
 
 ---
 

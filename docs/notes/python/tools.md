@@ -6,14 +6,12 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Tools
 
 ## `pdb` Module
 
-- <ExternalLinkWrapper href="https://docs.python.org/3/library/pdb.html">The Python Debugger</ExternalLinkWrapper>
+- <a href="https://docs.python.org/3/library/pdb.html" target="_blank" rel="noopener noreferrer">The Python Debugger</a>
 
 ## `breakpoint()` function
 
-- <ExternalLinkWrapper href="https://docs.python.org/3/library/functions.html#breakpoint">breakpoint built-in function</ExternalLinkWrapper>
+- <a href="https://docs.python.org/3/library/functions.html#breakpoint" target="_blank" rel="noopener noreferrer">breakpoint built-in function</a>

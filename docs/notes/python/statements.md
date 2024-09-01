@@ -6,14 +6,12 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Statements
 
 `assert`
-- <ExternalLinkWrapper href="https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement">The `assert` Statement</ExternalLinkWrapper>
-- <ExternalLinkWrapper href="https://python-reference.readthedocs.io/en/latest/docs/statements/assert.html">assert (The Right Way)</ExternalLinkWrapper>
-- <ExternalLinkWrapper href="https://realpython.com/python-assert-statement/">Python `assert` Statement</ExternalLinkWrapper>
+- <a href="https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement" target="_blank" rel="noopener noreferrer">The `assert` Statement</a>
+- <a href="https://python-reference.readthedocs.io/en/latest/docs/statements/assert.html" target="_blank" rel="noopener noreferrer">assert (The Right Way)</a>
+- <a href="https://realpython.com/python-assert-statement/" target="_blank" rel="noopener noreferrer">Python `assert` Statement</a>
 
 ```python
 assert expression

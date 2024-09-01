@@ -6,8 +6,6 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Collections
 
 ## Protocols
@@ -189,7 +187,7 @@ class SortedSet(Sequence, Set):
 
 #### Other Considerations
 
-- look to utilize Abstract Base Classes from Python standard library, such as <ExternalLinkWrapper href="https://docs.python.org/3/library/collections.abc.html">`collections.abc`</ExternalLinkWrapper>
+- look to utilize Abstract Base Classes from Python standard library, such as <a href="https://docs.python.org/3/library/collections.abc.html" target="_blank" rel="noopener noreferrer">`collections.abc`</a>
 
 ---
 

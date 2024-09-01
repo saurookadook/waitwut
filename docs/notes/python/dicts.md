@@ -6,8 +6,6 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-import { ExternalLinkWrapper } from 'common/components';
-
 # Dictionaries
 
 ![Dictionary Internals](/CorePython3_6-GettingStarted/images/built-in-collections/dictionary-internals.png)
@@ -182,9 +180,9 @@ pp(m)
 
 ### `get()`
 
-<ExternalLinkWrapper href="https://python-reference.readthedocs.io/en/latest/docs/dict/get.html">
+<a href="https://python-reference.readthedocs.io/en/latest/docs/dict/get.html" target="_blank" rel="noopener noreferrer">
     <em>Official Python docs for <code>get()</code></em>
-</ExternalLinkWrapper>
+</a>
 
 ```python
 basic_dict = dict(foo='bar', baz='beep')
