@@ -4,7 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 
 import icons from 'components/icons';
-import { MDXRendererWrapper } from 'components/pages/styled';
+import { PageContentWrapper } from 'components/pages/styled';
 
 const DocTitle = styled.h1`
     align-items: center;
@@ -36,14 +36,14 @@ const DocSheet = ({ data }: BaseMdxProps): React.ReactElement => {
     };
 
     return (
-        <MDXRendererWrapper id="note-page-content">
+        <PageContentWrapper id="note-page-content">
             <DocTitle>
                 {iconComponent()}
                 <span>{title}</span>
             </DocTitle>
             <hr />
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
-        </MDXRendererWrapper>
+        </PageContentWrapper>
     );
 };
 

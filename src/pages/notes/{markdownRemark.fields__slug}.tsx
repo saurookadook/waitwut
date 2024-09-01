@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import icons from 'components/icons';
-import { MDXRendererWrapper } from 'components/pages/styled';
+import { PageContentWrapper } from 'components/pages/styled';
 
 const DocTitle = styled.h1`
     align-items: center;
@@ -35,14 +35,14 @@ const NotePage = ({ data }) => {
     };
 
     return (
-        <MDXRendererWrapper id="markdown-only-note-page-content">
+        <PageContentWrapper id="markdown-only-note-page-content">
             <DocTitle>
                 {iconComponent()}
                 <span>{title}</span>
             </DocTitle>
             <hr />
             <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-        </MDXRendererWrapper>
+        </PageContentWrapper>
     );
 };
 

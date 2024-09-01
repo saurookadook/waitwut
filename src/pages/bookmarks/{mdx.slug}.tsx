@@ -2,15 +2,15 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { MDXRendererWrapper } from 'components/pages/styled';
+import { PageContentWrapper } from 'components/pages/styled';
 
 const BookmarkPage = ({ data }: BaseMdxProps): React.ReactElement => {
     // console.log('BookmarkPage - data: ', data);
 
     return (
-        <MDXRendererWrapper id="bookmark-page-content">
+        <PageContentWrapper id="bookmark-page-content">
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
-        </MDXRendererWrapper>
+        </PageContentWrapper>
     );
 };
 
