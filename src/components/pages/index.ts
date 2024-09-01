@@ -1,3 +1,4 @@
+import GenericListPage from './GenericListPage';
 import GenericMarkdownPage from './GenericMarkdownPage';
 
-export { GenericMarkdownPage };
+export { GenericListPage, GenericMarkdownPage };
