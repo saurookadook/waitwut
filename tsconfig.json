@@ -130,6 +130,7 @@
         ".cache",
         "node_modules",
         "public",
+        "scripts",
         "./gatsby-node.js",
         "./gatsby-node.mjs"
     ]

@@ -155,7 +155,7 @@
             "extends": ["prettier", "plugin:@typescript-eslint/recommended"]
         },
         {
-            "files": ["gatsby-node.js"],
+            "files": ["scripts/**/*\\.js", "gatsby-node.js"],
             "rules": {
                 "@typescript-eslint/no-var-requires": 0
             }
