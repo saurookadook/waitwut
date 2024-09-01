@@ -69,17 +69,20 @@ const SheetsPage = ({
 
 export const query = graphql`
     query {
-        allMdx(
+        allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
             filter: { frontmatter: { sectionSlug: { eq: "sheets" } } }
         ) {
             nodes {
+                fields {
+                    pathComponents
+                }
                 frontmatter {
                     date(formatString: "MMMM D, YYYY")
+                    fullPath
+                    sectionSlug
                     title
                 }
-                id
-                slug
             }
         }
     }

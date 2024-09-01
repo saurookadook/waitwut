@@ -67,17 +67,20 @@ const BookmarksListPage = ({
 
 export const query = graphql`
     query {
-        allMdx(
+        allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
             filter: { frontmatter: { sectionSlug: { eq: "bookmarks" } } }
         ) {
             nodes {
+                fields {
+                    pathComponents
+                }
                 frontmatter {
                     date(formatString: "MMMM D, YYYY")
+                    fullPath
+                    sectionSlug
                     title
                 }
-                id
-                slug
             }
         }
     }

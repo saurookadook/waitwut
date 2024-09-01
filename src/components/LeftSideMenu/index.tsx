@@ -151,34 +151,9 @@ function mergeNodesGroups({
 }
 
 export const useSheetsQuery = (): SideMenuData => {
-    const { allMdx, allMarkdownRemark } = useStaticQuery(
+    const { allMarkdownRemark } = useStaticQuery(
         graphql`
             query {
-                allMdx(
-                    sort: {
-                        fields: [fields___pathComponents, fields___directParent]
-                        order: [ASC, ASC]
-                    }
-                ) {
-                    group(field: frontmatter___sectionSlug) {
-                        nodes {
-                            fields {
-                                directParent
-                                pathComponents
-                                slug
-                                topLevelParent
-                            }
-                            frontmatter {
-                                title
-                                fullPath
-                                iconComponentName
-                            }
-                            id
-                            slug
-                        }
-                        fieldValue
-                    }
-                }
                 allMarkdownRemark(
                     sort: {
                         fields: [fields___pathComponents, fields___directParent]
@@ -206,6 +181,7 @@ export const useSheetsQuery = (): SideMenuData => {
             }
         `,
     );
+    const allMdx = { group: [], nodes: [] };
     return { allMdx, allMarkdownRemark };
 };
 

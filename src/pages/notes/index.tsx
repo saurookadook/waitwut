@@ -54,7 +54,9 @@ const NotesListPage = ({
                                         TODO: add thumbnails!
                                         maybe using devicon? https://devicon.dev/
                                     */}
-                                    <SheetLineItemLink to={node.frontmatter.fullPath || `/notes/${node.slug}`}>
+                                    <SheetLineItemLink
+                                        to={node.frontmatter.fullPath || `/notes/${node.slug}`}
+                                    >
                                         {node.frontmatter.title || node.slug}
                                     </SheetLineItemLink>
                                 </SheetLineItem>
@@ -71,21 +73,6 @@ const NotesListPage = ({
 
 export const query = graphql`
     query {
-        allMdx(
-            sort: { fields: frontmatter___date, order: DESC }
-            filter: { frontmatter: { sectionSlug: { eq: "notes" } } }
-        ) {
-            nodes {
-                frontmatter {
-                    date(formatString: "MMMM D, YYYY")
-                    fullPath
-                    sectionSlug
-                    title
-                }
-                id
-                slug
-            }
-        }
         allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
             filter: { frontmatter: { sectionSlug: { eq: "notes" } } }
