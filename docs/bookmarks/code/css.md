@@ -7,14 +7,7 @@ sectionSlug: "bookmarks"
 
 # CSS Bookmarks
 
-<details>
-<summary>
-
 ## General
-
-</summary>
-
-<p>
 
 - [CSS Guidelines (2.2.5) - High-level advice and guidelines for writing sane, manageable, scalable CSS](https://cssguidelin.es/)
 - [The 30 CSS Selectors You Must Memorize](https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048)
@@ -26,17 +19,7 @@ sectionSlug: "bookmarks"
 - [CSS Grid — Learn all about CSS Grid with Wes Bos in this free video series!](https://cssgrid.io/)
 - [CSS Diner - Where we feast on CSS Selectors!](https://flukeout.github.io/)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Cheat Sheets
-
-</summary>
-
-<p>
 
 - [CSS Cheat Sheet](http://www.simplehtmlguide.com/csscheatsheet.php)
 - [HTML color codes and names](http://www.computerhope.com/htmcolor.htm)
@@ -44,17 +27,7 @@ sectionSlug: "bookmarks"
 - [📙 Emojipedia — 😃 Home of Emoji Meanings 💁👌🎍😍](https://emojipedia.org/)
 
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### How-To's
-
-</summary>
-
-<p>
 
 - [css - Media Queries: How to target desktop, tablet, and mobile? - Stack Overflow](https://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile)
 - [Useful :nth-child Recipes | CSS-Tricks - CSS-Tricks](https://css-tricks.com/useful-nth-child-recipies/)
@@ -63,79 +36,29 @@ sectionSlug: "bookmarks"
 - [4 reasons your z-index isn't working (and how to fix it) - Coder Coder](https://coder-coder.com/z-index-isnt-working/)
 - [Simple Styles for \<hr\>'s](https://css-tricks.com/examples/hrs/)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Fonts
-
-</summary>
-
-<p>
 
 - [Google Fonts](https://fonts.google.com/?query=clicker&selection.family=Clicker+Script)
 - [Axis-Praxis: New font: Selawik Variations by Microsoft](https://www.axis-praxis.org/blog/2016-12-08/16/new-font-selawik-variations-by-microsoft)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Flexbox
-
-</summary>
-
-<p>
 
 - [A Complete Guide to Flexbox | CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox Tutorial | HTML & CSS Is Hard](https://internetingishard.com/html-and-css/flexbox/)
 - [Flexbox Froggy - A game for learning CSS flexbox](https://flexboxfroggy.com/)
 - [thomaspark/flexboxfroggy: A game for learning CSS flexbox 🐸](https://github.com/thomaspark/flexboxfroggy/)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Transform Tricks
-
-</summary>
-
-<p>
 
 - [A Trick: Individual CSS Transform Functions](https://danielcwilson.com/blog/2017/02/individual-transforms/)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Libraries
-
-</summary>
-
-<p>
 
 - [Basic Use | Font Awesome](https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use)
 - [circle | Font Awesome](https://fontawesome.com/icons/circle?style=regular)
 - [Icon Library | Font Awesome](https://fontawesome.com/how-to-use/with-the-api/setup/library)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Animations
-
-</summary>
-
-<p>
 
 - [CSS Animations tips and tricks - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Tips)
 - [animation-fill-mode - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode)
@@ -146,34 +69,14 @@ sectionSlug: "bookmarks"
 - [transition-timing-function - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)
 - [Bézier curve - MDN Web Docs Glossary: Definitions of Web-related terms | MDN](https://developer.mozilla.org/en-US/docs/Glossary/B%C3%A9zier_curve)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 #### Colors/Images/Assets
-
-</summary>
-
-<p>
 
 - [15 Minimalist Color Palettes to Jump Start Your Creative Business — Jordan Prindle Designs | Creative Brand and Squarespace Designer for Entrepreneurs](https://jordan-prindle.squarespace.com/blog/color-palettes?fbclid=IwAR3pAHwhZB75rfxHuiU0olkvO9QaaaLi4FET7ykhvpEoev5md8mZ9I_oH6E)
 - [google webfonts helper](https://google-webfonts-helper.herokuapp.com/fonts/josefin-sans?subsets=latin)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Icons
-
-</summary>
-
-<p>
 
 - [Github Logo - Free social media icons](https://www.flaticon.com/free-icon/github-logo_25231)
 - [Linkedin logo - Free social icons](https://www.flaticon.com/free-icon/linkedin-logo_34227)
@@ -182,19 +85,6 @@ sectionSlug: "bookmarks"
 - [Free vector icons - SVG, PSD, PNG, EPS & Icon Font - Thousands of free icons](https://www.flaticon.com/)
 - [Wirecons Free Vector Icons icons by Timothy Miller](https://www.iconfinder.com/iconsets/wirecons-free-vector-icons)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### SVGs
 
-</summary>
-
-<p>
-
 - [Scaling inline SVG: CSS & other sadnesses by Taylor Hunt on CodePen](https://codepen.io/tigt/post/scaling-inline-svg-css-and-other-sadnesses)
-
-</p>
-</details>

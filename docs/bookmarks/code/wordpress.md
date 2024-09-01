@@ -5,14 +5,7 @@ fullPath: "/bookmarks/code/wordpress"
 sectionSlug: "bookmarks"
 ---
 
-<details>
-<summary>
-
 ## Wordpress
-
-</summary>
-
-<p>
 
 - [The Complete WordPress Website Business Course | Udemy](https://www.udemy.com/the-complete-wordpress-website-business-course/learn/v4/t/lecture/5249312?start=0)
 - [Welcome to sFTP Client](https://www.sftpclient.io/gb)
@@ -30,34 +23,9 @@ sectionSlug: "bookmarks"
 - [Timber Twig and ACF Get image from custom field on taxonomy page - Stack Overflow](https://stackoverflow.com/questions/42725959/timber-twig-and-acf-get-image-from-custom-field-on-taxonomy-page)
 - [Upstatement/skela-wp-theme: Skela is an opinionated but still fairly barebones WordPress theme.](https://github.com/upstatement/skela-wp-theme)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
-
-### Udemy Course Stuff
-
-</summary>
-
-<p>
-
-
-</p>
-</details>
-
----
-
-<details>
-<summary>
 
 ### Gutenberg
-
-</summary>
-
-<p>
 
 - [saurookadook/gutenberg: Printing since 1440. Development hub for the editor focus in core. Beta plugin is available from the official WordPress repository.](https://github.com/saurookadook/gutenberg)
 - [The new Gutenberg editing experience](https://wordpress.org/gutenberg/)
@@ -71,38 +39,18 @@ sectionSlug: "bookmarks"
 - [danielbachhuber/gutenberg-migration-guide: Documents WordPress Classic Editor integration points and their Gutenberg equivalents](https://github.com/danielbachhuber/gutenberg-migration-guide)
 - [ACF | ACF 5.8 - Introducing ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### ACF
-
-</summary>
-
-<p>
 
 - [ACF | Relationship](https://www.advancedcustomfields.com/resources/relationship/)
 - [ACF | acf/fields/relationship/query](https://www.advancedcustomfields.com/resources/acf-fields-relationship-query/)
 - [How can I filter a posts relationship field by the current category edit screen? - ACF Support](https://support.advancedcustomfields.com/forums/topic/how-can-i-filter-a-posts-relationship-field-by-the-current-category-edit-screen/)
 - [ACF: Better Search | WordPress.org](https://wordpress.org/plugins/acf-better-search/)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Filtering Queries
-
-</summary>
-
-<p>
 
 - [how to access value in select field for query acf field wordpress - Google Search](https://www.google.com/search?rlz=1C5CHFA_enUS779US779&ei=SHbQW_rXJ-KMjwSN0Lr4Dw&q=how+to+access+value+in+select+field+for+query+acf+field+wordpress&oq=how+to+access+value+in+select+field+for+query+acf+field+wordpress&gs_l=psy-ab.3...35658.41210..44082...4.0..0.117.392.2j2......0....1..gws-wiz.......0i71.yx6uC2LNAU0)
 - [Class Reference/WP Query « WordPress Codex](https://codex.wordpress.org/Class_Reference/WP_Query#Return_Fields_Parameter)
@@ -112,55 +60,22 @@ sectionSlug: "bookmarks"
 - [acf select field search by title wordpress - Google Search](https://www.google.com/search?q=acf+select+field+search+by+title+wordpress&rlz=1C5CHFA_enUS779US779&oq=acf+select+field+search+by+title+wordpress&aqs=chrome..69i57.104397j0j1&sourceid=chrome&ie=UTF-8)
 - [get select value in meta query - ACF Support](https://support.advancedcustomfields.com/forums/topic/get-select-value-in-meta-query/)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 ### Relevant Issues
 
-</summary>
-
-<p>
-
 - [#11302 (Bulk editing posts should pre-fill fields with the same value / allow for removal) – WordPress Trac](https://core.trac.wordpress.org/ticket/11302)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 ### Plugins
 
-</summary>
-
-<p>
-
 - [Bulk Move | WordPress.org](https://wordpress.org/plugins/bulk-move/)
-
-</p>
-</details>
 
 ---
 
-<details>
-<summary>
-
 ### Composer
 
-</summary>
-
-<p>
-
 - [composer cheatsheet](https://devhints.io/composer)
-
-</p>
-</details>
 
 ---

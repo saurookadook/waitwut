@@ -5,14 +5,7 @@ fullPath: "/bookmarks/code/docker"
 sectionSlug: "bookmarks"
 ---
 
-<details>
-<summary>
-
 ### Docker
-
-</summary>
-
-<p>
 
 - [Logs and troubleshooting | Docker Documentation](https://docs.docker.com/docker-for-mac/troubleshoot/#docker-knowledge-hub)
 - [BretFisher/udemy-docker-mastery: Udemy Course to build, compose, deploy, and manage containers from local development to high-availability in the cloud](https://github.com/bretfisher/udemy-docker-mastery)
@@ -20,23 +13,10 @@ sectionSlug: "bookmarks"
 - [Error starting userland proxy: Bind for 0.0.0.0:3306 failed: port is already allocated — Docker](https://medium.com/code-wave/error-starting-userland-proxy-bind-for-0-0-0-0-3306-failed-port-is-already-allocated-docker-f2e430f68346)
 - [Error starting userland proxy: Bind for 0.0.0.0:3306 failed: port is already allocated — Docker](https://medium.com/code-wave/error-starting-userland-proxy-bind-for-0-0-0-0-3306-failed-port-is-already-allocated-docker-f2e430f68346)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 #### Docker Compose
 
-</summary>
-
-<p>
-
 - [Docker-compose up failing because "port is already allocated" · Issue #4950 · docker/compose](https://github.com/docker/compose/issues/4950)
-
-</p>
-</details>
 
 ---

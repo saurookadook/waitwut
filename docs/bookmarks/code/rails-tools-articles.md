@@ -7,14 +7,7 @@ sectionSlug: "bookmarks"
 
 <!-- Original path slug: rails-tools_articles -->
 
-<details>
-<summary>
-
 ## Rails Tools/Articles
-
-</summary>
-
-<p>
 
 - [twbs/bootstrap-rubygem: Bootstrap 4 Ruby Gem for Rails / Sprockets and Compass.](https://github.com/twbs/bootstrap-rubygem)
 - [varvet/pundit: Minimal authorization through OO design and pure Ruby classes](https://github.com/varvet/pundit)
@@ -40,19 +33,9 @@ sectionSlug: "bookmarks"
 - [ruby on rails - What is the behaviour of create_join_table of ActiveRecord::Migration? - Stack Overflow](https://stackoverflow.com/questions/32201949/what-is-the-behaviour-of-create-join-table-of-activerecordmigration)
 - [jweslley/rails_completion: Bash completion support for Ruby on Rails.](https://github.com/jweslley/rails_completion)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Rails w/ React
-
-</summary>
-
-<p>
 
 - [How to find and kill port processes on a Mac using Bash](https://medium.freecodecamp.org/find-and-kill-port-processes-on-a-mac-using-bash-c5e95b9e704e)
 - [Rails 5 API + Create React App: Full Stack Heaven – Nick Hartunian – Medium](https://medium.com/@nick.hartunian/rails-5-api-create-react-app-full-stack-heaven-2b2160b5ce6b)
@@ -65,19 +48,9 @@ sectionSlug: "bookmarks"
 - [ReactJS + Ruby on Rails API + Heroku App – Bruno Boehm – Medium](https://medium.com/@bruno_boehm/reactjs-ruby-on-rails-api-heroku-app-2645c93f0814)
 - [instacart/redux-rails: Redux and your server talking without fuss.](https://github.com/instacart/redux-rails)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### CSRF issues w/ single-page apps
-
-</summary>
-
-<p>
 
 - [Update CSRF docs to better explain API usage scenarios by chrisnicola · Pull Request #9405 · rails/rails](https://github.com/rails/rails/pull/9405)
 - [angularjs - Rails CSRF Protection + Angular.js: protect_from_forgery makes me to log out on POST - Stack Overflow](https://stackoverflow.com/questions/14734243/rails-csrf-protection-angular-js-protect-from-forgery-makes-me-to-log-out-on)
@@ -89,19 +62,9 @@ sectionSlug: "bookmarks"
 - [cyu/rack-cors: Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.](https://github.com/cyu/rack-cors)
 - [CultureHQ.com - A Better Workplace Community](https://engineering.culturehq.com/posts/2018-12-11-skipping-preflight-checks)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Knock/JWT Auth
-
-</summary>
-
-<p>
 
 - [Issue JWT token on user create · Issue #189 · nsarno/knock](https://github.com/nsarno/knock/issues/189)
 - [How to Authenticate a Rails 5 API with Knock and JSON Web Tokens | callahanrts](https://codycallahan.com/blog/authenticate-rails-api-with-knock-jwt)
@@ -118,73 +81,33 @@ sectionSlug: "bookmarks"
 - [Filter chain halted as :authenticate_user! rendered or redirected · Issue #603 · lynndylanhurley/devise_token_auth](https://github.com/lynndylanhurley/devise_token_auth/issues/603)
 - [authentication - Rails 5 and Knock gem: can't authenticate users - Stack Overflow](https://stackoverflow.com/questions/49980389/rails-5-and-knock-gem-cant-authenticate-users)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Tutorial Projects
-
-</summary>
-
-<p>
 
 - [superhighfives/list-of-ingredients: An example of using create-react-app with Rails 5 API, ActiveAdmin, and Heroku](https://github.com/superhighfives/list-of-ingredients)
 - [A Rock Solid, Modern Web Stack—Rails 5 API + ActiveAdmin + Create React App on Heroku | Heroku](https://blog.heroku.com/a-rock-solid-modern-web-stack)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Heroku Troubleshooting
-
-</summary>
-
-<p>
 
 - [ruby on rails - ActionController::RoutingError: No route matches [GET] "/" - Stack Overflow](https://stackoverflow.com/questions/50805483/actioncontrollerroutingerror-no-route-matches-get)
 - [ruby on rails 5.1 - ActionController::RoutingError (Couldn't find..., expected it to be defined in...) - Stack Overflow](https://stackoverflow.com/questions/45662462/actioncontrollerroutingerror-couldnt-find-expected-it-to-be-defined-in)
 - [Logging | Heroku Dev Center](https://devcenter.heroku.com/articles/logging)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Misc. Reading
-
-</summary>
-
-<p>
 
 - [Unlimited Novelty: Why critics of Rails have it all wrong (and Ruby's bright multicore future)](http://www.unlimitednovelty.com/2012/03/why-critics-of-rails-have-it-all-wrong.html)
 - [Mailing Lists](https://www.ruby-lang.org/en/community/mailing-lists/)
 - [How to set-up jquery-ui autocomplete in Rails - Stack Overflow](https://stackoverflow.com/questions/3188157/how-to-set-up-jquery-ui-autocomplete-in-rails)
 - [Nokogiri 1.8.4 installation challenges on macOS Mojave · Issue #1801 · sparklemotion/nokogiri](https://github.com/sparklemotion/nokogiri/issues/1801)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Devise
-
-</summary>
-
-<p>
 
 - [plataformatec/devise: Flexible authentication solution for Rails with Warden.](https://github.com/plataformatec/devise)
 - [Devise cheatsheet](https://devhints.io/devise)
@@ -195,19 +118,9 @@ sectionSlug: "bookmarks"
 - [Setting up Users and Authentication for our API - Thinkster](https://thinkster.io/tutorials/rails-json-api/setting-up-users-and-authentication-for-our-api)
 - [Devise Nested Resources - Ruby on Rails - Ruby-Forum](https://www.ruby-forum.com/t/devise-nested-resources/193340)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Rails API w/ Frontend Framework
-
-</summary>
-
-<p>
 
 - [frontend-fun/app at master · ejdraper/frontend-fun](https://github.com/ejdraper/frontend-fun/tree/master/app)
 - [Frontend Fun with Rails 5.1 and Webpacker | Codementor](https://www.codementor.io/ejdraper/frontend-fun-with-rails-5-1-and-webpacker-fkx8bpykj)
@@ -216,22 +129,9 @@ sectionSlug: "bookmarks"
 - [VueJS as a Frontend for Rails - via @codeship | via @codeship](https://blog.codeship.com/vuejs-as-a-frontend-for-rails/)
 - [Using Rails and Vue JS, Part 1](https://www.engineyard.com/blog/rails-and-vue-js-part-1)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 ### Heroku
 
-</summary>
-
-<p>
-
 - [caching - How can I clear rails cache after deploy to heroku? - Stack Overflow](https://stackoverflow.com/questions/12028088/how-can-i-clear-rails-cache-after-deploy-to-heroku)
 - [How do I clear the build cache? - Heroku Help](https://help.heroku.com/18PI5RSY/how-do-i-clear-the-build-cache)
-
-</p>
-</details>

@@ -7,15 +7,7 @@ sectionSlug: "bookmarks"
 
 # HTML
 
-<details>
-<summary>
-
 ## General
-
-</summary>
-
-<p>
-
 
 - [Quick HTML Reference](http://www.htmlgoodies.com/beyond/reference/article.php/3472851/Quick-HTML-Reference.htm)
 - [Quick Reference for HTML/CSS notation](https://www.khanacademy.org/computer-programming/quick-reference-for-htmlcss-notation/4616026632880128)
@@ -30,18 +22,7 @@ sectionSlug: "bookmarks"
 - [Upstatement/ups-mixin-lib: Bespoke Sass mixin library from Upstatement](https://github.com/Upstatement/ups-mixin-lib)
 - [Enhancing HTML 5 Lazy Loading With CSS and Minima…](https://levelup.gitconnected.com/enhancing-html-5-lazy-loading-with-css-and-minimal-javascript-afe274088f0b)
 
-</p>
-
-</details>
-
-<details>
-<summary>
-
 ### Cheat Sheets
-
-</summary>
-
-<p>
 
 - [HTML Cheat Sheet](http://www.simplehtmlguide.com/cheatsheet.php)
 - [HTML Cheat Sheet](http://www.cril.univ-artois.fr/~lecoutre/teaching/web/sheets/HTML.pdf)
@@ -50,43 +31,23 @@ sectionSlug: "bookmarks"
 - [📙 Emojipedia — 😃 Home of Emoji Meanings 💁👌🎍😍](https://emojipedia.org/)
 
 
-- [linkedin - Google Search](https://www.google.com/search?q=linkedin&rlz=1C1CHWA_enUS599US599&oq=linkedin&aqs=chrome..69i57j0l5.2566j0j7&sourceid=chrome&ie=UTF-8)
 - [linux tutorial - Google Search](https://www.google.com/search?q=linux+tutorial&rlz=1C1CHWA_enUS599US599&oq=linux+tutorial&aqs=chrome..69i57j0l5.4407j0j7&sourceid=chrome&ie=UTF-8)
 - [ubuntu tutorial - Google Search](https://www.google.com/search?q=ubuntu+tutorial&rlz=1C1CHWA_enUS599US599&oq=ubuntu+tutorial&aqs=chrome..69i57j0l5.4294j0j7&sourceid=chrome&ie=UTF-8)
+
+
+### ???
+
 - [Cat Dad On A Mission](https://saurookadook.github.io/)
 - [Marco Island Real Estate : kinavegaz : Free Download & Streaming : Internet Archive](https://archive.org/details/MarcoIslandRealEstate)
 - [Learn Enough Command Line to Be Dangerous | Learn Enough to Be Dangerous](https://www.learnenough.com/command-line-tutorial)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Flexbox
-
-</summary>
-
-<p>
 
 - [A Complete Guide to Flexbox | CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox Tutorial | HTML & CSS Is Hard](https://internetingishard.com/html-and-css/flexbox/)
 - [Flexbox Froggy - A game for learning CSS flexbox](https://flexboxfroggy.com/)
 - [thomaspark/flexboxfroggy: A game for learning CSS flexbox 🐸](https://github.com/thomaspark/flexboxfroggy/)
 
-</p>
-</details>
-
-<details>
-<summary>
-
 ### Accessibility
 
-</summary>
-
-<p>
-
 - [ARIA is Spackle, Not Rebar | CSS-Tricks - CSS-Tricks](https://css-tricks.com/aria-spackle-not-rebar/)
-
-</p>
-</details>

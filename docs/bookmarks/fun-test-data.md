@@ -7,14 +7,7 @@ sectionSlug: "bookmarks"
 
 # Fun Test Data
 
-<details>
-<summary>
-
 ## Lorem Ipsum
-
-</summary>
-
-<p>
 
 - [It's Arrested Lorem Ipsum](http://bluthipsum.com/)
 - [Moby Dick; Or, The Whale](https://www.gutenberg.org/ebooks/2701?msg=welcome_stranger)
@@ -22,6 +15,3 @@ sectionSlug: "bookmarks"
 - [Monocle Ipsum](http://www.monocleipsum.com/)
 - [Bacon Ipsum - A Meatier Lorem Ipsum](https://baconipsum.com/)
 - [Cat Ipsum - A Furrier Lorem Ipsum ](http://www.catipsum.com/)
-
-</p>
-</details>

@@ -7,64 +7,27 @@ sectionSlug: "bookmarks"
 
 <!-- Original path slug: coding-exercises_useful-articles -->
 
-<details>
-<summary>
-
 ## Coding Exercises/Useful Articles
-
-</summary>
-
-<p>
 
 - [Coding Exercises Archives - CronDose | Daily Dev Guides](https://www.crondose.com/category/coding-exercises/)
 - [Design Challenges & Design Challenge Ideas • Design Challenge](https://designchallenge.xyz/)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 #### Jest
 
-</summary>
-
-<p>
-
 - [javascript - Trigger useEffect in Jest testing - Stack Overflow](https://stackoverflow.com/questions/59147444/trigger-useeffect-in-jest-testing)
-
-</p>
-</details>
 
 ---
 
-<details>
-<summary>
-
 ### React Native
-
-</summary>
-
-<p>
 
 - [facebook/react-native: A framework for building native apps with React.](https://github.com/facebook/react-native)
 - [Getting Started · React Native](https://facebook.github.io/react-native/docs/getting-started.html)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Misc. Resources
-
-</summary>
-
-<p>
 
 - [Sign In with Auth0](https://mimo.auth0.com/login?client=ikYCv9U1p4hnYKBHckiTEJAuomrk4d3y&protocol=oauth2&redirect_uri=https%3A%2F%2Flearn.getmimo.com%2Flogin&response_type=token%20id_token&scope=roles%20openid%20offline_access%20email%20profile&audience=https%3A%2F%2Fapi.getmimo.com&nonce=bQJQO8iXkCYdpRsoK-jSF1KG.Z4Ol8LS&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS4yLjEifQ%3D%3D&state=uQ8kHxs9uGkcVmkkNJltosS70JxSfD5u)
 - [Julian Treasure: How to speak so that people want to listen | TED Talk](https://www.ted.com/talks/julian_treasure_how_to_speak_so_that_people_want_to_listen?referrer=playlist-the_most_popular_talks_of_all)
@@ -93,35 +56,15 @@ sectionSlug: "bookmarks"
 - [Clipy/Clipy: Clipboard extension app for macOS.](https://github.com/Clipy/Clipy)
 - [The RED method: A new strategy for monitoring mic…](https://www.infoworld.com/article/3638693/the-red-method-a-new-strategy-for-monitoring-microservices.amp.html)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 #### Command Line/Terminal
 
-</summary>
-
-<p>
-
 - [https://www.computervillage.org/articles/CommandLine.pdf](https://www.computervillage.org/articles/CommandLine.pdf)
-
-</p>
-</details>
 
 ---
 
-<details>
-<summary>
-
 #### Git
-
-</summary>
-
-<p>
 
 - [How to fix: fatal: Authentication failed for https://github.com/ | My Cyber Universe](https://mycyberuniverse.com/web/how-fix-fatal-authentication-failed-for-https-github-com.html)
 - [Basic Git Commands With Examples [+Cheat Sheet]](https://rubygarage.org/blog/most-basic-git-commands-with-examples)
@@ -133,19 +76,9 @@ sectionSlug: "bookmarks"
 - [Git Merging vs. Git Rebasing: The Beginner's Guide](https://spin.atomicobject.com/2019/01/10/git-merging-vs-rebasing/)
 - [Three Git Configurations that Should Be the Default](https://spin.atomicobject.com/2020/05/05/git-configurations-default/)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Bash
-
-</summary>
-
-<p>
 
 - [How can I display the contents of a text file on the command line? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/86321/how-can-i-display-the-contents-of-a-text-file-on-the-command-line)
 - [bash - How to replace an entire line in a text file by line number - Stack Overflow](https://stackoverflow.com/questions/11145270/how-to-replace-an-entire-line-in-a-text-file-by-line-number)
@@ -153,19 +86,9 @@ sectionSlug: "bookmarks"
 - [Install Bash git completion · bobthecow/git-flow-completion Wiki](https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion)
 - [LJDT: Taking Advantage of Screen - SUSE Communities](https://www.suse.com/c/ljdt-taking-advantage-screen/)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### SQL
-
-</summary>
-
-<p>
 
 - [Introduction to Common Table Expressions (CTE's) - Essential SQL](https://www.essentialsql.com/introduction-common-table-expressions-ctes/)
 - [PostgreSQL command line cheatsheet](https://gist.github.com/Kartones/dd3ff5ec5ea238d4c546)
@@ -186,144 +109,64 @@ sectionSlug: "bookmarks"
 - [How Postgres Unique Constraints Can Cause Deadlock](https://rcoh.me/posts/postgres-unique-constraints-deadlock/)
 - [SQLBolt - Learn SQL - Introduction to SQL](https://sqlbolt.com/)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Homebrew
-
-</summary>
-
-<p>
 
 - [macos - brew install postgresql (upgrade) error, could not link - dead links to old non-existent version - Stack Overflow](https://stackoverflow.com/questions/25075888/brew-install-postgresql-upgrade-error-could-not-link-dead-links-to-old-non)
 - [macos - Error installing PostgreSQL via Homebrew on Mac - Stack Overflow](https://stackoverflow.com/questions/51632036/error-installing-postgresql-via-homebrew-on-mac)
 - [psql - Homebrew installed PostgreSQL could not connect, database files are incompatible with server - Database Administrators Stack Exchange](https://dba.stackexchange.com/questions/191328/homebrew-installed-postgresql-could-not-connect-database-files-are-incompatible/192664)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Algorithms
-
-</summary>
-
-<p>
 
 - [algorithm - the number of trailing zeros in a factorial of a given number - Ruby - Stack Overflow](https://stackoverflow.com/questions/23977727/the-number-of-trailing-zeros-in-a-factorial-of-a-given-number-ruby)
 - [Factorial -- from Wolfram MathWorld](http://mathworld.wolfram.com/Factorial.html)
 - [Firecode.io | Landing Page](https://firecode.io/pages/landing)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Computing/Performance
-
-</summary>
-
-<p>
 
 - [Thread (computing) - Wikipedia](https://en.wikipedia.org/wiki/Thread_%28computing%29#Single_vs_multiprocessor_systems)
 - [Lambda calculus - Wikipedia](https://en.wikipedia.org/wiki/Lambda_calculus)
 - [Turing machine - Wikipedia](https://en.wikipedia.org/wiki/Turing_machine)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 #### Good things
-
-</summary>
-
-<p>
 
 - [Things I Don't Know as of 2018 — Overreacted](https://overreacted.io/things-i-dont-know-as-of-2018/)
 - [Moral Machine](http://moralmachine.mit.edu/)
 - [RallyCoding](https://rallycoding.com/)
 - [language agnostic - What is a lambda (function)? - Stack Overflow](https://stackoverflow.com/questions/16501/what-is-a-lambda-function)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 #### Security
 
-</summary>
-
-<p>
-
 - [Dependency Confusion: How I Hacked Into Apple, Microsoft and Dozens of Other Companies | by Alex Birsan | Medium](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610)
-
-</p>
-</details>
 
 ---
 
-<details>
-<summary>
-
 #### vim
-
-</summary>
-
-<p>
 
 - [Vim Cheat Sheet](https://vim.rtorr.com/)
 - [A Great Vim Cheat Sheet](https://vimsheet.com/)
 - [Vim cheatsheet](https://devhints.io/vim)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Linter stuff
-
-</summary>
-
-<p>
 
 - [reactjs - How to config ESLint for React on Atom Editor - Stack Overflow](https://stackoverflow.com/questions/30294870/how-to-config-eslint-for-react-on-atom-editor)
 - [AtomLinter](https://atomlinter.github.io/)
 - [linter](https://atom.io/packages/linter)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### In-Process Stuff
-
-</summary>
-
-<p>
 
 - [Data Structures: Create a Priority Queue Class | Learn freeCodeCamp](https://learn.freecodecamp.org/coding-interview-prep/data-structures/create-a-priority-queue-class)
 - [Fullstack Vue Book - The Complete Guide to Vue.js](https://www.fullstack.io/vue/)

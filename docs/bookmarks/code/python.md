@@ -5,14 +5,7 @@ fullPath: "/bookmarks/code/python"
 sectionSlug: "bookmarks"
 ---
 
-<details>
-<summary>
-
 ## Python
-
-</summary>
-
-<p>
 
 - [Managing Multiple Python Versions With pyenv – Real Python](https://realpython.com/intro-to-pyenv/)
 - [pyenv/pyenv: Simple Python version management](https://github.com/pyenv/pyenv)
@@ -27,36 +20,16 @@ sectionSlug: "bookmarks"
 - [riga/pymitter: Python port of the extended Node.js EventEmitter 2 approach providing namespaces, wildcards and TTL.](https://github.com/riga/pymitter)
 - [Which Python packages offer a stand-alone event system? - Stack Overflow](https://stackoverflow.com/questions/1092531/which-python-packages-offer-a-stand-alone-event-system)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Kafka
-
-</summary>
-
-<p>
 
 - [Introduction to Apache Kafka® for Python Programmers | Confluent](https://www.confluent.io/blog/introduction-to-apache-kafka-for-python-programmers/)
 - [Kafka Python Client | Confluent Documentation](https://docs.confluent.io/kafka-clients/python/current/overview.html)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### virtualenv
-
-</summary>
-
-<p>
 
 - [Setup python, pip, virtualenv and virtualwrapper, with zsh on a new machine · GitHub](https://gist.github.com/dixneuf19/a398c08f00aac24609c3cc44c29af1f0)
 - [virtualenvwrapper / virtualenvwrapper / issues / #341 - "ERROR: virtualenvwrapper could not find /path/to/virtualenv in your path" on Ubuntu 20.04 — Bitbucket](https://bitbucket.org/virtualenvwrapper/virtualenvwrapper/issues/341/error-virtualenvwrapper-could-not-find)
@@ -64,53 +37,19 @@ sectionSlug: "bookmarks"
 - [python 3.x - Install virtualenv and virtualenvwrapper on MacOS - Stack Overflow](https://stackoverflow.com/questions/49470367/install-virtualenv-and-virtualenvwrapper-on-macos)
 - [Python is deprecating `distutils.cfg` · Issue #76621 · Homebrew/homebrew-core · GitHub](https://github.com/Homebrew/homebrew-core/issues/76621)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 ### weird thangz
 
-</summary>
-
-<p>
-
 - [Pipe character in Python - Stack Overflow](https://stackoverflow.com/questions/5988665/pipe-character-in-python)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 ### SQLAlchemy
 
-</summary>
-
-<p>
-
-
-</p>
-</details>
-
----
-
-<details>
-<summary>
+_TODO_ 🫠
 
 #### Cheat Sheets
 
-</summary>
-
-<p>
-
 - [ORM Examples — SQLAlchemy 1.4 Documentation](https://docs.sqlalchemy.org/en/14/orm/examples.html)
 - [UsageRecipes · sqlalchemy/sqlalchemy Wiki](https://github.com/sqlalchemy/sqlalchemy/wiki/UsageRecipes)
-
-</p>
-</details>

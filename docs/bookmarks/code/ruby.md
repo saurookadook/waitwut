@@ -5,14 +5,7 @@ fullPath: "/bookmarks/code/ruby"
 sectionSlug: "bookmarks"
 ---
 
-<details>
-<summary>
-
 ## Ruby
-
-</summary>
-
-<p>
 
 - [The Definitive RSpec Tutorial With Examples - RubyGuides](https://www.rubyguides.com/2018/07/rspec-tutorial/)
 - [Introduction to Importing from CSV in Rails - YouTube](https://www.youtube.com/watch?v=mTnsUyLuPgY)
@@ -24,41 +17,18 @@ sectionSlug: "bookmarks"
 - [rbenv/rbenv: Manage your app's Ruby environment](https://github.com/rbenv/rbenv)
 - [A Quick (and Hopefully Painless) Ride Through Ruby (with Cartoon Foxes) :: Why's (Poignant) Guide to Ruby](http://poignant.guide/book/chapter-3.html)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### BostonRubyGroup
-
-</summary>
-
-<p>
 
 - [kddeisz/preval: Automatically optimizes your Ruby code](https://github.com/kddeisz/preval)
 - [Pre-evaluation in Ruby - Speaker Deck](https://speakerdeck.com/kddeisz/pre-evaluation-in-ruby)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### _why
-
-</summary>
-
-<p>
 
 - [What we can learn from "_why" the long lost open source developer · GitHub](https://github.com/readme/featured/why-the-lucky-stiff?mc_cid=f40fa3f793&mc_eid=576339b856)
 - [_why's Estate - The Little Coder's Predicament](https://viewsourcecode.org/why/hacking/theLittleCodersPredicament.html)
 - [Programming Ruby - Wikipedia](https://en.wikipedia.org/wiki/Programming_Ruby)
 - [Why's (Poignant) Guide to Ruby](https://poignant.guide/book/)
-
-</p>
-</details>

@@ -5,14 +5,7 @@ fullPath: "/bookmarks/code/misc"
 sectionSlug: "bookmarks"
 ---
 
-<details>
-<summary>
-
 ## Misc.
-
-</summary>
-
-<p>
 
 - [how to type copyright symbol windows laptop - Google Search](https://www.google.com/webhp?sourceid=chrome-instant&rlz=1C1CHWA_enUS599US599&ion=1&espv=2&ie=UTF-8#q=how+to+type+copyright+symbol+windows+laptop)
 - [Which is the best program to use for write HTML+CSS code? - Quora](https://www.quora.com/Which-is-the-best-program-to-use-for-write-HTML+CSS-code)
@@ -49,6 +42,3 @@ sectionSlug: "bookmarks"
 - [Organize Your Inbox with These 7 Gmail Filters](https://zapier.com/blog/gmail-filters/)
 - [Best paper awards for #AAAI2021](https://twitter.com/mishumausam/status/1357348794187145220)
 - [GET Vs. POST: Key Difference Between HTTP Methods](https://www.guru99.com/difference-get-post-http.html)
-
-</p>
-</details>

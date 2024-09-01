@@ -5,14 +5,7 @@ fullPath: "/bookmarks/code/react-redux"
 sectionSlug: "bookmarks"
 ---
 
-<details>
-<summary>
-
 ## React/Redux
-
-</summary>
-
-<p>
 
 - [Common Props Reference](https://react.dev/reference/react-dom/components/common#common-props)
 - [Make Your React Components Pretty 💅 - WalmartLabs - Medium](https://medium.com/walmartlabs/make-your-react-components-pretty-a1ae4ec0f56e)
@@ -63,54 +56,23 @@ sectionSlug: "bookmarks"
 - [Creating a React component with TDD - DEV Communi…](https://dev.to/mbarzeev/creating-a-react-component-with-tdd-2jn8)
 - [React Router VS Reach Router. Which React Routing…](https://blog.bitsrc.io/react-router-vs-reach-router-d26fe706d8db)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### Hooks API
-
-</summary>
-
-<p>
 
 - [How to fetch data with React Hooks](https://www.robinwieruch.de/react-hooks-fetch-data/)
 - [How To Handle Async Data Loading, Lazy Loading, and Code Splitting with React | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-handle-async-data-loading-lazy-loading-and-code-splitting-with-react)
 - [https://polvara.me/posts/fetching-asynchronous-data-with-react-hooks](https://polvara.me/posts/fetching-asynchronous-data-with-react-hooks)
 
-</p>
-</details>
-
 ---
-
-<details>
-<summary>
 
 ### Libraries
 
-</summary>
-
-<p>
-
 - [immer](https://github.com/immerjs/immer)
-
-
-</p>
-</details>
 
 ---
 
-<details>
-<summary>
-
 ### eBooks/Articles
-
-</summary>
-
-<p>
 
 - [taming-the-state-in-react/taming-the-state-in-react: Taming the State in React: Your journey to master Redux and MobX](https://github.com/taming-the-state-in-react/taming-the-state-in-react)
 - [React Express](http://www.react.express/)
@@ -118,26 +80,13 @@ sectionSlug: "bookmarks"
 - [React lifecycle methods diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 - [(5) Complete React Tutorial (& Redux ) #1- Introduction - YouTube](https://www.youtube.com/watch?v=OxIDLw0M-m0&feature=youtu.be)
 
-</p>
-</details>
-
 ---
 
-<details>
-<summary>
-
 ### ReactTable
-
-</summary>
-
-<p>
 
 - [reactjs - Import Issue for React-Table - Stack Overflow](https://stackoverflow.com/questions/59467778/import-issue-for-react-table)
 - [tannerlinsley/react-table: ⚛️ Hooks for building fast and extendable tables and datagrids for React](https://github.com/tannerlinsley/react-table)
 - [react-table/examples.md at master · tannerlinsley/react-table](https://github.com/tannerlinsley/react-table/blob/master/docs/examples.md)
 - [tannerlinsley/react-table: basic - CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-table/tree/master/examples/basic)
-
-</p>
-</details>
 
 ---
