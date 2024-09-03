@@ -96,6 +96,34 @@ getDimensions();
 
 ---
 
+## Throttling
+
+- allows limiting execution of a function to no more than once in a specified period of time _(even if it is called many times during said period)_
+- simple, common example:
+```JavaScript
+function throttle(fn, time) {
+    let timeout = null;
+    return function() {
+        if (timeout) {
+            return;
+        }
+
+        const context = this;
+        const args = arguments;
+        const later = () => {
+            fn.call(context, ...args);
+            timeout = null;
+        }
+        timeout = setTimeout(later, time);
+    }
+}
+
+```
+
+> Reference: [Optimizing Performance with Throttling in JavaScript](https://hackernoon.com/optimizing-performance-with-throttling-in-javascript) by [Marat](https://hackernoon.com/u/marat)
+
+---
+
 ## Asynchronous Stuff
 
 _TODO_ 🙃
