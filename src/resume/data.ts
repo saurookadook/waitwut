@@ -259,7 +259,7 @@ const EmploymentHistory: EmploymentRecord[] = [
             {
                 title: 'MTS Software Engineer',
                 startDate: 'November 2021',
-                endDate: 'May 2022',
+                endDate: 'June 2022',
             },
             {
                 title: 'AMTS Software Engineer',
@@ -428,6 +428,36 @@ const VolunteerWork: VolunteerRecord[] = [
  */
 const TechnicalProjects: TechnicalProjectRecord[] = [
     {
+        displayName: 'NLP Stock SA (WIP)',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/nlp-stock-sa',
+            },
+        ],
+        description: `A ${buildLink({
+            href: 'https://www.schwab.com/learn/story/using-sentiment-analysis-tools-your-trading',
+            text: 'stock sentiment analysis',
+        })} app using ${buildLink({
+            href: 'https://www.ibm.com/topics/natural-language-processing',
+            text: 'natural language processing',
+        })} built with ${buildLink({
+            href: 'https://docs.python.org/3.10/',
+            text: 'Python',
+        })}, ${buildLink({
+            href: 'https://www.typescriptlang.org/docs/',
+            text: 'TypeScript',
+        })}, ${buildLink({
+            href: 'https://www.postgresql.org/',
+            text: 'PostgreSQL',
+        })}, and ${buildLink({
+            href: 'https://www.docker.com/',
+            text: 'Docker',
+        })}.`,
+        startDate: 'February 2004',
+        endDate: 'Present',
+    },
+    {
         displayName: 'EV3 Brick Program - Basically-A-Tank',
         links: [
             {
@@ -466,16 +496,16 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
         endDate: 'Present',
     },
     {
-        displayName: '8-bit Discourse (WIP)',
+        displayName: '8-bit Discourse',
         links: [
             {
                 type: 'github repository',
                 url: 'https://github.com/saurookadook/eight-bit-discourse-app',
             },
         ],
-        description: 'Forum for open discussion of video games',
+        description: 'Forum for open discussion of video games (final project for Flatiron School)',
         startDate: 'June 2018',
-        endDate: 'Present',
+        endDate: 'May 2022',
     },
     {
         displayName: "Adopt Don't Shop",
@@ -485,7 +515,8 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
                 url: 'https://github.com/saurookadook/adopt-dont-shop-rails-js-app',
             },
         ],
-        description: 'Web app for helping provide home for animals in adoption shelters',
+        description:
+            'Web app for helping provide homes for animals in adoption shelters (project for Flatiron School)',
         startDate: 'March 2018',
         endDate: 'July 2018',
     },
@@ -497,7 +528,8 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
                 url: 'https://github.com/saurookadook/gamejournal-sinatra-app',
             },
         ],
-        description: 'Web app that serves as place for users to document their library of games',
+        description:
+            'Web app that serves as a place for users to document their library of games (project for Flatiron School)',
         startDate: 'February 2018',
         endDate: 'March 2018',
     },
