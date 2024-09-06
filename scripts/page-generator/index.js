@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const generateFileNameFromPageKey = require('../utils/index.js');
 
+// const __dirname = path.resolve();
+
 function getAllBookmarksData() {
     return new Promise((resolve, reject) => {
         fs.readFile('./allBookmarkPageData.json', 'utf-8', function (err, data) {
@@ -15,9 +17,9 @@ function getAllBookmarksData() {
     });
 }
 
-function generateMDXPageFromKey({ pageKey, pageMarkdown }) {
+function generateMDPageFromKey({ pageKey, pageMarkdown }) {
     const fileName = generateFileNameFromPageKey(pageKey);
-    const filePath = `../docs/bookmarks/code/${fileName}.mdx`;
+    const filePath = `../docs/bookmarks/code/${fileName}.md`;
     return fs.writeFile(filePath, pageMarkdown, 'utf8', function (err) {
         if (err) {
             throw new Error(err);
@@ -26,26 +28,6 @@ function generateMDXPageFromKey({ pageKey, pageMarkdown }) {
         console.log(`Creating page for '${fileName}'...`);
         return pageMarkdown;
     });
-
-    // const tablePromises = tables.map(tableName => {
-    //     return new Promise(function(resolve, reject) {
-
-    //         // const recordsArg = JSON.stringify({ records }, null, 2);
-
-    //         const filePath = `../docs/bookmarks/code/${tableName}.json`;
-    //         fs.writeFile(filePath, recordsArg, 'utf8', function(err) {
-    //             if (err) {
-    //                 reject(err);
-    //             }
-
-    //             resolve(() => {
-    //                 return JSON.parse(recordsArg);
-    //             });
-    //         });
-    //     });
-    // });
-
-    // return Promise.all(tablePromises).then(() => context);
 }
 
 async function generatePages() {
@@ -57,7 +39,9 @@ async function generatePages() {
 
     for (const key of allBookmarksData.allKeys) {
         if (allBookmarksData[key]) {
-            generateMDXPageFromKey({ pageKey: key, pageMarkdown: allBookmarksData[key] });
+            generateMDPageFromKey({ pageKey: key, pageMarkdown: allBookmarksData[key] });
         }
     }
 }
+
+generatePages();
