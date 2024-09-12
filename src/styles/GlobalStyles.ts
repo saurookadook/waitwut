@@ -6,7 +6,8 @@ import { defaultColors, resumeTheme, themeColors } from 'themes/index';
 const GlobalStyles = createGlobalStyle`
     :root,
     html {
-        background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor} !important;
+        background-color: ${(props) =>
+            props?.theme?.backgroundColor || defaultColors.backgroundColor} !important;
     }
 
     html,
@@ -18,7 +19,8 @@ const GlobalStyles = createGlobalStyle`
     /* TODO: can maybe remove this? */
     body[id],
     main {
-        background-color: ${(props) => props?.theme?.backgroundColor || defaultColors.backgroundColor};
+        background-color: ${(props) =>
+            props?.theme?.backgroundColor || defaultColors.backgroundColor};
     }
 
     body {
@@ -154,6 +156,16 @@ const WaitwutStyles = createGlobalStyle`
             padding: 4px;
         }
 
+        & blockquote {
+            background: rgb(255 255 255 / 0.25);
+            border-left: 3px solid #000;
+            display: flex;
+            flex-direction: column;
+            padding-inline: 1rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            row-gap: 0.5rem;
+        }
 
         /* https://css-tricks.com/examples/hrs/ */
         & hr {
@@ -204,8 +216,7 @@ const WaitwutStyles = createGlobalStyle`
             top: -2px;
         }
 
-        & [id*='note-page-content'],
-        & #sheet-page-content {
+        & [id*='-page-content'] {
             & a {
                 color: ${themeColors.darkerPurpleHex};
                 display: inline-block;

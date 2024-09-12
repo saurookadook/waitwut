@@ -1,10 +1,14 @@
 import React from 'react';
 
 import { PageContentWrapper } from 'components/pages/styled';
-import { PageTitle } from './styled';
+import { PageTitle, MarkdownContent } from './styled';
 
-// @ts-expect-error: need to define the type for markdown-only props
-const GenericMarkdownPage = ({ iconComponent, pageHtml, title, ...props }) => {
+const GenericMarkdownPage = ({
+    iconComponent,
+    pageHtml,
+    title,
+    ...props
+}: GenericMarkdownPageProps) => {
     return (
         <PageContentWrapper {...props}>
             <PageTitle>
@@ -12,7 +16,10 @@ const GenericMarkdownPage = ({ iconComponent, pageHtml, title, ...props }) => {
                 <span>{title}</span>
             </PageTitle>
             <hr />
-            <div dangerouslySetInnerHTML={{ __html: pageHtml }} />
+            <MarkdownContent
+                id="markdown-content" // force formatting
+                dangerouslySetInnerHTML={{ __html: pageHtml }}
+            />
         </PageContentWrapper>
     );
 };
