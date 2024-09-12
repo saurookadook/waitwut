@@ -19,4 +19,10 @@ const PageTitle = styled.h1`
     }
 `;
 
-export { PageTitle };
+const MarkdownContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+`;
+
+export { PageTitle, MarkdownContent };
