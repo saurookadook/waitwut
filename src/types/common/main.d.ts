@@ -71,7 +71,7 @@ interface ListPageData {
     allMarkdownRemark: MdxNodes;
 }
 
-/* ListPages */
+/* List Pages */
 interface BaseMdxFrontmatter {
     date?: Date;
     iconComponentName?: string;
@@ -92,7 +92,7 @@ interface BaseMdxProps {
 }
 
 type IconComponent = (
-    props: (React.ComponentPropsWithoutRef & Record<any, any>)?,
+    props?: (React.ComponentPropsWithoutRef & Record<any, any>)?,
 ) => React.ReactElement;
 
 type IconComponents = {
@@ -106,11 +106,17 @@ enum TopLevelPageSlugs {
     SHEETS = 'sheets',
 }
 
-/* Resume */
+/* Single Pages */
+type GenericMarkdownPageProps = React.ComponentPropsWithoutRef<HTMLDivElement> & {
+    iconComponent: IconComponent;
+    pageHtml: string;
+    title: string;
+};
 
+/* Resume */
 interface SectionComponentProps {
     heading: string;
-    data: Array<any>;
+    data: any[];
 }
 
 interface ResumeSection {
