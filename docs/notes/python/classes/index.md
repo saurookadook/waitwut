@@ -6,7 +6,14 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-# Classes
+- [Class Instances](/notes/python/classes/instances)
+- [Polymorphism and Duck Typing](/notes/python/classes/polymorphism)
+- [Inheritance and Implementation Sharing](/notes/python/classes/inheritance)
+- Examples
+    - [Simple Classes](/notes/python/classes/examples/simple)
+    - [Collaborating Classes](/notes/python/classes/examples/collaborating-classes)
+
+## Classes
 
 - what is a `class` in Python?
 - how class relates to type
