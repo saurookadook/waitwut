@@ -8,12 +8,7 @@ sectionSlug: "notes"
 
 ## Collaborating Classes
 
-<details>
-<summary>
-
 **Airtravel example** (_with collaborating classes_)
-
-</summary>
 
 ```python
 """Model for aircraft flights."""
@@ -67,8 +62,6 @@ class Aircraft:
 
 ```
 
-</details>
-
 ### The Law of Demeter
 - "principle of least knowledge"
 - object-oriented design principle which states you should never call methods on objects you received from other calls _(or "only talk to your friends")_
@@ -83,12 +76,7 @@ class Aircraft:
 
 ![Seat Booking Data Structure](/Python/PluralsightCourses/CorePython3_6-GettingStarted/images/classes/seat-booking-data-structure.png)
 
-<details>
-<summary>
-
 **Airtravel example** (_with seating_)
-
-</summary>
 
 ```python
 """Model for aircraft flights."""
@@ -177,16 +165,9 @@ class Aircraft:
 
 ```
 
-</details>
-
 ### Methods for Implentation Details
 
-<details>
-<summary>
-
 **Airtravel example** (_with impl. details refactor_)
-
-</summary>
 
 ```python
 """Model for aircraft flights."""
@@ -318,5 +299,3 @@ def make_flight():
     return f
 
 ```
-
-</details>
