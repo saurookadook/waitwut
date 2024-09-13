@@ -155,12 +155,9 @@ export const useSheetsQuery = (): SideMenuData => {
         graphql`
             query {
                 allMarkdownRemark(
-                    sort: {
-                        fields: [fields___pathComponents, fields___directParent]
-                        order: [ASC, ASC]
-                    }
+                    sort: [{ fields: { pathComponents: ASC } }, { fields: { directParent: ASC } }]
                 ) {
-                    group(field: frontmatter___sectionSlug) {
+                    group(field: { frontmatter: { sectionSlug: SELECT } }) {
                         nodes {
                             fields {
                                 directParent

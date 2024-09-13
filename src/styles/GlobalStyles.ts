@@ -152,7 +152,7 @@ const WaitwutStyles = createGlobalStyle`
             /* background-color: #FFF4DB; */
             border-radius: 4px;
             /* color: #8A6534; */
-            font-size: 1.25rem;
+            font-size: 1rem;
             padding: 4px;
         }
 
