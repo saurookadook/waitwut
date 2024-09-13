@@ -1,47 +1,44 @@
 ---
-title: "Classes"
+title: "Inheritance and Implementation Sharing"
 date: "2024-05-24"
-fullPath: "/notes/python/classes"
+fullPath: "/notes/python/classes/inheritance"
 iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-# Classes
+## Inheritance and Implementation Sharing
 
-- what is a `class` in Python?
-- how class relates to type
-- define new classes
-- instance methods
-    - adding to classes
-    - the `self` argument
-- initializers
-    - compare and contrast with constructors
-    - establishing and enforcing invariants
-- collaborating classes
-- decomposing problems
-- separating interface and implementation
-    - aka 'separating public APIs from implementation details'
-- combine programming paradigms
-    - explore deeper into "everything is an object"
-- nominal typing and duck typing
-- inheritance
+### Late Binding
 
----
+- Nominally-typed languages (such as Java) use polymorphism
+- Python uses **late binding**
+- can try **any method on any object**
 
-## Object-Oriented Design with Function Objects
+**IMPORTANT**
+- Inheritance in Python is primarily useful for sharing implementation between classes
 
-### New Requirement for `airtravel` Example: Print Boarding Passes
-    - print boarding cards in alphabetical order
-    - separation of concerns: don't put this on Flight class
-    - remember that functions are objects too!
+### Derived Classes
 
-#### Tell! Don't ask.
-- tell other objects what to do instead of asking them their state and responding to it
+- in Python, specify inheritance using parentheses containing base class name immediately after the class name in the `class` statement.
+
+```py
+class BaseClass:
+
+    def do_some_stuff(self):
+        print("Meow")
+
+
+class BetterClass(BaseClass):
+
+    def do_some_better_stuff(self):
+        self.do_some_stuff()
+
+```
 
 <details>
 <summary>
 
-**Airtravel example** (_with card printing_)
+**Airtravel example** (_with inheritance_)
 
 </summary>
 
@@ -158,23 +155,35 @@ class Flight:
 
 class Aircraft:
 
-    def __init__(self, registration, model, num_rows, num_seats_per_row):
+    def __init__(self, registration):
         self._registration = registration
-        self._model = model
-        self._num_rows = num_rows
-        self._num_seats_per_row = num_seats_per_row
 
     def registration(self):
         return self._registration
 
+    def num_seats(self):
+        rows, row_seats = self.seating_plan()
+        return len(rows) * len(row_seats)
+
+
+class AirbusA319(Aircraft):
+
     def model(self):
-        return self._model
+        return "Airbus A319"
 
     def seating_plan(self):
-        return (
-            range(1, self._num_rows + 1),
-            "ABCDEFGHJK"[:self._num_seats_per_row]
-        )
+        return range(1, 23), "ABCDEF"
+
+
+class Boeing777(Aircraft):
+
+    def model(self):
+        return "Boeing777"
+
+    def seating_plan(self):
+        # For simplicity's sake, we ignore complex
+        # seating arrangement for first class
+        return range(1, 56), "ABCDEFGHJK"
 
 
 def console_card_printer(passenger, seat, flight_number, aircraft):
@@ -193,14 +202,24 @@ def console_card_printer(passenger, seat, flight_number, aircraft):
 
 # module-level convenience function
 def make_flight():
-    f = Flight("BA758", Aircraft("G-EUPT", "Airbus A319", num_rows=22, num_seats_per_row=6))
+    # f = Flight("BA758", Aircraft("G-EUPT", "Airbus A319", num_rows=22, num_seats_per_row=6))
+    f = Flight("BA758", AirbusA319("G-EUPT"))
     f.allocate_seat("12A", "Guido van Rossum")
     f.allocate_seat("15F", "Bjarne Stroustrup")
     f.allocate_seat("15E", "Anders Hejlsberg")
     f.allocate_seat("1C", "John McCarthy")
     f.allocate_seat("1D", "Rich Hickey")
-    return f
+
+    g = Flight("AF72", Boeing777("F-GSPS"))
+    g.allocate_seat("55K", "Larry Wall")
+    g.allocate_seat("33G", "Yukihiro Matsumoto")
+    g.allocate_seat("4B", "Brian Kernighan")
+    g.allocate_seat("4A", "Dennis Ritchie")
+
+    return f, g
 
 ```
 
 </details>
+
+

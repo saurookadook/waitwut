@@ -1,47 +1,32 @@
 ---
-title: "Classes"
+title: "Polymorphism and Duck Typing"
 date: "2024-05-24"
-fullPath: "/notes/python/classes"
+fullPath: "/notes/python/classes/polymorphism"
 iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-# Classes
+## Polymorphism and Duck Typing
 
-- what is a `class` in Python?
-- how class relates to type
-- define new classes
-- instance methods
-    - adding to classes
-    - the `self` argument
-- initializers
-    - compare and contrast with constructors
-    - establishing and enforcing invariants
-- collaborating classes
-- decomposing problems
-- separating interface and implementation
-    - aka 'separating public APIs from implementation details'
-- combine programming paradigms
-    - explore deeper into "everything is an object"
-- nominal typing and duck typing
-- inheritance
+### Polymorphism
+- using objects of different types through a uniform interface
+- applies to both functions as well as more complex types
 
----
+#### Polymorphism with Card Printer
+- `make_boarding_card()` did not rely on any concrete types
+- any other object that fit the interface would work in place of `console_card_printer()`
 
-## Object-Oriented Design with Function Objects
+### Duck Typing
+_"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."_ - James Whitecomb Riley
 
-### New Requirement for `airtravel` Example: Print Boarding Passes
-    - print boarding cards in alphabetical order
-    - separation of concerns: don't put this on Flight class
-    - remember that functions are objects too!
-
-#### Tell! Don't ask.
-- tell other objects what to do instead of asking them their state and responding to it
+- object's fitness for use is only determined at use/runtime
+- contrasts with statically typed languages, where compiler determines if object can be used
+- suitability is not determined by inheritance hierarchies, base classes, or anything except the attributes an object has at time of use
 
 <details>
 <summary>
 
-**Airtravel example** (_with card printing_)
+**Airtravel example** (_with polymorphism_)
 
 </summary>
 
@@ -155,26 +140,61 @@ class Flight:
                 if passenger is not None:
                     yield (passenger, f"{row}{letter}")
 
+### NOTE:
+# - `Aircraft` class is somewhat flawed in that instantiated objects depend on being supplied with
+# seating configuration that matches aircraft model
+# - for this example, may be simpler to creat separate classes for each specific
+# model of aircraft with fixed seating configuration
+###
+# class Aircraft:
 
-class Aircraft:
+#     def __init__(self, registration, model, num_rows, num_seats_per_row):
+#         self._registration = registration
+#         self._model = model
+#         self._num_rows = num_rows
+#         self._num_seats_per_row = num_seats_per_row
 
-    def __init__(self, registration, model, num_rows, num_seats_per_row):
+#     def registration(self):
+#         return self._registration
+
+#     def model(self):
+#         return self._model
+
+#     def seating_plan(self):
+#         return (
+#             range(1, self._num_rows + 1),
+#             "ABCDEFGHJK"[:self._num_seats_per_row]
+#         )
+
+
+class AirbusA319:
+    def __init__(self, registration):
         self._registration = registration
-        self._model = model
-        self._num_rows = num_rows
-        self._num_seats_per_row = num_seats_per_row
 
     def registration(self):
         return self._registration
 
     def model(self):
-        return self._model
+        return "Airbus A319"
 
     def seating_plan(self):
-        return (
-            range(1, self._num_rows + 1),
-            "ABCDEFGHJK"[:self._num_seats_per_row]
-        )
+        return range(1, 23), "ABCDEF"
+
+
+class Boeing777:
+    def __init__(self, registration):
+        self._registration = registration
+
+    def registration(self):
+        return self._registration
+
+    def model(self):
+        return "Boeing777"
+
+    def seating_plan(self):
+        # For simplicity's sake, we ignore complex
+        # seating arrangement for first class
+        return range(1, 56), "ABCDEFGHJK"
 
 
 def console_card_printer(passenger, seat, flight_number, aircraft):
@@ -193,13 +213,21 @@ def console_card_printer(passenger, seat, flight_number, aircraft):
 
 # module-level convenience function
 def make_flight():
-    f = Flight("BA758", Aircraft("G-EUPT", "Airbus A319", num_rows=22, num_seats_per_row=6))
+    # f = Flight("BA758", Aircraft("G-EUPT", "Airbus A319", num_rows=22, num_seats_per_row=6))
+    f = Flight("BA758", AirbusA319("G-EUPT"))
     f.allocate_seat("12A", "Guido van Rossum")
     f.allocate_seat("15F", "Bjarne Stroustrup")
     f.allocate_seat("15E", "Anders Hejlsberg")
     f.allocate_seat("1C", "John McCarthy")
     f.allocate_seat("1D", "Rich Hickey")
-    return f
+
+    g = Flight("AF72", Boeing777("F-GSPS"))
+    g.allocate_seat("55K", "Larry Wall")
+    g.allocate_seat("33G", "Yukihiro Matsumoto")
+    g.allocate_seat("4B", "Brian Kernighan")
+    g.allocate_seat("4A", "Dennis Ritchie")
+
+    return f, g
 
 ```
 
