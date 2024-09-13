@@ -41,6 +41,7 @@
         "babel-plugin-styled-components": "^2.1.4",
         "classnames": "^2.5.1",
         "gatsby": "^5.13.7",
+        "gatsby-plugin-algolia": "^1.0.3",
         "gatsby-plugin-catch-links": "^5.13.1",
         "gatsby-plugin-image": "^3.13.1",
         "gatsby-plugin-netlify": "^5.1.1",
