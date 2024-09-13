@@ -92,3 +92,51 @@ _in pseudo Python ([ref. from Wikipedia](https://en.wikipedia.org/wiki/Negamax))
 
 </figcaption>
 </figure>
+
+---
+
+## Cycling through integers
+
+<figure>
+
+```python
+def cycle_value(
+    starting_value: int,
+    minimun_value: int,
+    shift_offset: int,
+    length_of_range: int,  # this is the value used with the modulo operator
+    always_positive: bool = False,
+) -> int:
+    """The ultimate formula for cycling through values using the modulo operator
+    (inspired by https://dev.to/timothee/using-modulo-to-shift-a-value-and-keep-it-inside-a-range-8fm)
+
+    Args:
+        `starting_value`: _description_
+        `minimun_value`: _description_
+        `shift_offset`: _description_
+        `length_of_range`: _description_
+        `always_positive`: _description_
+
+    Returns:
+        `int`: _description_
+    """
+    if always_positive:
+        return (
+            starting_value
+            - minimun_value
+            + (shift_offset % length_of_range)
+            + length_of_range
+        ) % length_of_range + minimun_value
+    else:
+        return (
+            starting_value - minimun_value + shift_offset
+        ) % length_of_range + minimun_value
+
+```
+
+<figcaption>
+
+Formula for using the modulus operator to cycle through integer values
+
+</figcaption>
+</figure>
