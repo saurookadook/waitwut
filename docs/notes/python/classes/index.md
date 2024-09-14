@@ -9,6 +9,8 @@ sectionSlug: "notes"
 - [Class Instances](/notes/python/classes/instances)
 - [Polymorphism and Duck Typing](/notes/python/classes/polymorphism)
 - [Inheritance and Implementation Sharing](/notes/python/classes/inheritance)
+- [Class Attributes and Methods](/notes/python/classes/attributes-and-methods)
+- [Class Properties](/notes/python/classes/properties)
 - Examples
     - [Simple Classes](/notes/python/classes/examples/simple)
     - [Collaborating Classes](/notes/python/classes/examples/collaborating-classes)
