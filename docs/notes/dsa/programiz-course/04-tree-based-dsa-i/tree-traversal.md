@@ -12,7 +12,7 @@ _from [Tree Traversal](https://www.programiz.com/dsa/tree-traversal)_
 Traversing tree means visiting every node in tree (might want to add all values in tree or find largest one)
 
 **Basic structure of tree:**
-```c++
+```cpp
 struct node {
     int data;
     struct node* left;
