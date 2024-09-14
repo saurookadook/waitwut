@@ -6,13 +6,7 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-# Properties and Class Methods
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
+## Simple Example
 
 ```python
 class ShippingContainer:
@@ -23,18 +17,9 @@ class ShippingContainer:
 
 ```
 
-</span>
-</details>
-
 ## Class Attributes
 
 Class attributes created within scope of class
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 class ShippingContainer:
@@ -49,20 +34,11 @@ class ShippingContainer:
 
 ```
 
-</span>
-</details>
-
-**NOTE**: assignment via `self.attr = something` _always_ creates instance attribute
+> **NOTE**: assignment via `self.attr = something` _always_ creates instance attribute
 
 ## Static Methods
 
 - created with use of `@staticmethod` decorator
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 class ShippingContainer:
@@ -82,18 +58,9 @@ class ShippingContainer:
 
 ```
 
-</span>
-</details>
-
 ## Class Methods
 
 - created with use of `@classmethod` decorator
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 class ShippingContainer:
@@ -113,9 +80,6 @@ class ShippingContainer:
 
 ```
 
-</span>
-</details>
-
 ### Class Methods for Named Constructors
 
 - "named constructors" also known as "factory functions"
@@ -123,12 +87,6 @@ class ShippingContainer:
     - allows support for multiple functions which behave similarly to constructors but:
         - with different behaviors
         - without needing to change `__init__` to handle different forms of argument lists
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 class ShippingContainer:
@@ -156,9 +114,6 @@ class ShippingContainer:
 
 ```
 
-</span>
-</details>
-
 #### _Aside - ISO 6346 BIC code_
 - _BIC === Bureau International des Containers (International Container Bureau)_
 - _Full example: **CSQU3054383**_
@@ -168,15 +123,7 @@ _consists of:_
     - _serial number (**305438**)_
     - _check digit (**3**)_
 
-<details>
-
-<summary>
-
-_Provided helper module_
-
-</summary>
-
-<span>
+_**Provided helper module**: `iso6346.py`_
 
 ```python
 """
@@ -251,16 +198,7 @@ def letter_code(letter):
 
 ```
 
-</span>
-</details>
-
 ### Static Method Example Using BIC Code Helper
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 import iso6346
@@ -300,18 +238,9 @@ class ShippingContainer:
 
 ```
 
-</span>
-</details>
-
 ## Static Methods with Inheritance
 
 - in Python, static methods can be overridden in subclasses
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 import iso6346
@@ -361,18 +290,9 @@ class RefrigeratedShippingContainer(ShippingContainer):
         )
 ```
 
-</span>
-</details>
-
 ## Class Methods with Inheritance
 
 - distinguishing feature of Python is ability to have class methods behave polymorphically
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 import iso6346
@@ -433,19 +353,10 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 ```
 
-</span>
-</details>
-
 ## Properties
 
 - encapsulation using the `@property` decorator
 [Property Decorator Diagram](/src/images/python/property-decorator-diagram.png)
-
-<details>
-
-<summary>Code example</summary>
-
-<span>
 
 ```python
 import iso6346
@@ -514,9 +425,6 @@ class RefrigeratedShippingContainer(ShippingContainer):
         self._celsius = value
 
 ```
-
-</span>
-</details>
 
 <details>
 
@@ -612,12 +520,6 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
 - inheritance interaction with the `@property` decorator
 
-<details>
-
-<summary>Code example</summary>
-
-<span>
-
 ```python
 import iso6346
 
@@ -711,9 +613,6 @@ class RefrigeratedShippingContainer(ShippingContainer):
         return super().volume_in_cubic_feet - RefrigeratedShippingContainer.FRIDGE_VOLUME_IN_CUBIC_FEET
 
 ```
-
-</span>
-</details>
 
 <details>
 
@@ -831,9 +730,8 @@ class HeatedRefrigeratedShippingContainer(RefrigeratedShippingContainer):
 </span>
 </details>
 
-_Aside - chained relational operators_
-
-Python allows for chaining relational operators, so that one can write `a < b < c` in place of `(a < b) and (b < c)`
+> _Aside - chained relational operators_
+> Python allows for chaining relational operators, so that one can write `a < b < c` in place of `(a < b) and (b < c)`
 
 <details>
 
