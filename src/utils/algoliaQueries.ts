@@ -55,7 +55,7 @@ function pageToAlgoliaRecord({ node }: { node: Queries.MarkdownRemark }) {
         fullPath: frontmatter?.fullPath,
         title: frontmatter?.title,
         normalizedContent: strippedHTML.slice(0, 9000),
-        contentDigest: internal.contentDigest,
+        internal,
     };
 }
 
