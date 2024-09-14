@@ -18,18 +18,12 @@ const pageQuery = `{
     ) {
         edges {
             node {
+                id
                 frontmatter {
-                    date(formatString: "MMMM D, YYYY")
                     fullPath
-                    sectionSlug
                     title
                 }
-                fields {
-                    pathComponents
-                    slug
-                }
                 html
-                id
                 internal {
                     contentDigest
                 }
@@ -38,13 +32,30 @@ const pageQuery = `{
     }
 }`;
 
+const regexPatterns = {
+    codeBlocks:
+        /<div.+?class.+?\"gatsby-highlight.*?\".+?<pre.+?class.+?\".*?language-.+?\".+?<code.+?\">.+?<\/code>.*?<\/pre>.*?<\/div>/gims,
+    innerSvgElements: /<path[^<]+<\/path>/gims,
+    miscAttrs: /(class|focusable|style)=.*?\"[^\"]+?\"/gims,
+};
+
+function stripTagsFromHTML(htmlString: string) {
+    return htmlString // force formatting
+        .replace(regexPatterns.codeBlocks, '')
+        .replace(regexPatterns.innerSvgElements, '')
+        .replace(regexPatterns.miscAttrs, '');
+}
+
 function pageToAlgoliaRecord({ node }: { node: Queries.MarkdownRemark }) {
-    const { id, frontmatter, fields, ...rest } = node;
+    const { id, frontmatter, html, internal } = node;
+    const strippedHTML = stripTagsFromHTML(html || '');
+
     return {
         objectID: id,
-        ...frontmatter,
-        ...fields,
-        ...rest,
+        fullPath: frontmatter?.fullPath,
+        title: frontmatter?.title,
+        normalizedContent: strippedHTML.slice(0, 9000),
+        contentDigest: internal.contentDigest,
     };
 }
 
@@ -55,8 +66,9 @@ type PageQueryData = {
 const queries = [
     {
         query: pageQuery,
-        transformer: ({ data }: { data: PageQueryData }) =>
-            data.pages.edges.map(pageToAlgoliaRecord),
+        transformer: ({ data }: { data: PageQueryData }) => {
+            return data.pages.edges.map(pageToAlgoliaRecord);
+        },
         indexName,
         settings: { attributesToSnippet: ['excerpt:20'] },
     },
