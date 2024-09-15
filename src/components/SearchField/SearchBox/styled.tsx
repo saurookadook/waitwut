@@ -7,7 +7,6 @@ const openStyles = css`
     cursor: text;
     margin-left: -1.5rem;
     padding-left: 1.5rem;
-    width: 15rem;
 `;
 
 const closedStyles = css`
@@ -15,7 +14,6 @@ const closedStyles = css`
     cursor: pointer;
     margin-left: -1rem;
     padding-left: 1rem;
-    width: 0;
 `;
 
 interface StyledSearchBoxProps {
@@ -37,9 +35,10 @@ const StyledSearchBox = styled(SearchBox)<StyledSearchBoxProps>`
         font-size: 1rem;
         /* outline: none; */
         transition: 100ms;
+        width: 15rem;
 
         &::placeholder {
-            color: ${({ theme }) => theme.white};
+            color: rgb(255 255 255 / 0.6);
         }
     }
 

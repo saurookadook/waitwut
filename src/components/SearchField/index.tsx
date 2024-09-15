@@ -3,10 +3,11 @@ import { Algoliasearch, algoliasearch } from 'algoliasearch';
 import { InstantSearch } from 'react-instantsearch';
 import { ThemeProvider } from 'styled-components';
 
-import { StyledSearchBox } from './SearchBox/styled';
-import SearchResults from './SearchResults';
+import { StyledSearchBox } from 'components/SearchField/SearchBox/styled';
+import SearchResults from 'components/SearchField/SearchResults';
 import { themeColors } from 'themes';
 import { useClickOutside } from 'utils';
+import { StyledSearchFieldRoot } from './styled';
 
 const defaultIndices: SearchIndex[] = [{ name: 'Pages', title: 'Pages' }];
 
@@ -31,7 +32,7 @@ const SearchField = ({ indices = defaultIndices }) => {
 
     return (
         <ThemeProvider theme={searchFieldTheme}>
-            <div ref={rootRef} style={{ margin: '0.5rem 0', position: 'relative' }}>
+            <StyledSearchFieldRoot ref={rootRef}>
                 <InstantSearch
                     // @ts-expect-error: the base type of `Algoliasearch` type is `SearchClient` so not sure what's up there lol
                     searchClient={searchClient}
@@ -47,7 +48,7 @@ const SearchField = ({ indices = defaultIndices }) => {
                         show={hasFocus && !!query && query.length > 0}
                     />
                 </InstantSearch>
-            </div>
+            </StyledSearchFieldRoot>
         </ThemeProvider>
     );
 };

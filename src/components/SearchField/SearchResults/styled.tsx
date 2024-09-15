@@ -36,7 +36,6 @@ const StyledSearchResults = styled.div<StyledSearchResultsProps>`
 
     #waitwut & .Hits {
         padding: 1rem;
-        padding-bottom: 0;
 
         & ol {
             list-style: none;
