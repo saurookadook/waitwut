@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import { minWidth600 } from 'styles/mq';
-import { defaultColors, resumeTheme, themeColors } from 'themes/index';
+import { defaultColors, resumeTheme, themeColors } from 'themes';
 
 const GlobalStyles = createGlobalStyle`
     :root,
