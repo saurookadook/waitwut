@@ -19,6 +19,7 @@ sectionSlug: "bookmarks"
 - [Python import: Advanced Techniques and Tips – Real Python](https://realpython.com/python-import/)
 - [riga/pymitter: Python port of the extended Node.js EventEmitter 2 approach providing namespaces, wildcards and TTL.](https://github.com/riga/pymitter)
 - [Which Python packages offer a stand-alone event system? - Stack Overflow](https://stackoverflow.com/questions/1092531/which-python-packages-offer-a-stand-alone-event-system)
+- [Pyrexp: a Python regular expression editor](https://pythonium.net/regex)
 
 ---
 
