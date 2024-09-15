@@ -9,16 +9,16 @@ import {
     useStats,
 } from 'react-instantsearch';
 
-import { StyledSearchResults, StyledPageHit } from './styled';
+import { StyledHitCount, StyledPageHit, StyledSearchResults } from './styled';
 
 const HitCount = () => {
     const { nbHits } = useStats();
 
     return (
         nbHits > 0 && (
-            <div className="HitCount">
+            <StyledHitCount>
                 {nbHits} result{nbHits !== 1 ? 's' : ''}
-            </div>
+            </StyledHitCount>
         )
     );
 };

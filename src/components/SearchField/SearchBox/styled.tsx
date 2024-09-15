@@ -38,7 +38,7 @@ const StyledSearchBox = styled(SearchBox)<StyledSearchBoxProps>`
         width: 15rem;
 
         &::placeholder {
-            color: rgb(255 255 255 / 0.6);
+            color: ${({ theme }) => theme.whiteFaded};
         }
     }
 

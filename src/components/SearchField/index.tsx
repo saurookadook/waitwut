@@ -13,9 +13,9 @@ const defaultIndices: SearchIndex[] = [{ name: 'Pages', title: 'Pages' }];
 
 const searchFieldTheme = {
     commentGray: themeColors.commentGray,
-    faded: '#888',
     graphite: themeColors.graphite,
     white: themeColors.white,
+    whiteFaded: 'rgb(255 255 255 / 0.6)',
 };
 
 const SearchField = ({ indices = defaultIndices }) => {
