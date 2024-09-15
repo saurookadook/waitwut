@@ -5,25 +5,36 @@ import { Autocomplete, TextField } from '@mui/material';
 
 const SearchBox = ({
     className,
-    hasFocus,
-    onFocus,
-    onChange,
+    onChangeCb,
+    onFocusCb,
 }: {
     className?: string;
-    hasFocus: boolean;
-    onFocus: React.FocusEventHandler;
-    onChange: React.ChangeEventHandler;
+    onChangeCb: (query: string) => void;
+    onFocusCb: React.FocusEventHandler;
 }) => {
     const { query, refine } = useSearchBox();
 
     return (
         <form className={className}>
-            <Autocomplete
+            {/* <Autocomplete
                 id="search-input"
                 freeSolo
                 options={[]}
                 renderInput={(params) => <TextField {...params} label="freeSolo" />}
+            /> */}
+            <input
+                className="search-input"
+                aria-label="Search field"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    refine(e.target.value);
+                    onChangeCb(e.target.value);
+                }}
+                onFocus={onFocusCb}
+                placeholder="Search"
+                type="text"
+                value={query}
             />
+            <SearchSharpIcon className="search-input-icon" />
         </form>
     );
 };

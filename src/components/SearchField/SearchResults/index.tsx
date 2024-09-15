@@ -56,10 +56,8 @@ const HitsInIndex = ({ index }: { index: SearchIndex }) => {
 const SearchResults = ({
     className,
     indices,
-    show,
 }: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     indices: SearchIndex[];
-    show: boolean;
 }) => {
     return (
         <div className={className}>
