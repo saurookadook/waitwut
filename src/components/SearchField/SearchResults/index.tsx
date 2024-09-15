@@ -25,15 +25,15 @@ const HitCount = () => {
 //     __position: number;
 //     queryID?: string | undefined;
 //     fullPath: string;
-//     slug: string;
 //     title: string;
 // };
 
 // TODO: maybe the docs have a good example for typing this
 const PageHit = ({ hit }: { hit: any }) => {
+    // console.log({ fn: 'PageHit', hit });
     return (
         <div>
-            <Link to={hit.slug}>
+            <Link to={hit.fullPath}>
                 <h4>
                     <Highlight attribute="title" hit={hit} />
                 </h4>

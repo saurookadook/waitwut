@@ -40,7 +40,7 @@ const StyledSearchResults = styled(SearchResults)<StyledSearchResultsProps>`
             margin-bottom: 1rem;
 
             & a {
-                color: ${themeFromExample.foreground};
+                color: ${() => themeFromExample.foreground};
 
                 & h4 {
                     margin-top: 0;
