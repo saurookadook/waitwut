@@ -5,7 +5,7 @@ const events: EventsTuple = ['mousedown', 'touchstart'];
 
 const useClickOutside = (ref: React.RefObject<HTMLDivElement>, onClickOutside: () => void) => {
     const isOutside = (element: EventTarget | null) =>
-        element != null && ref.current?.contains(element as HTMLElement);
+        element != null && (!ref.current || !ref.current?.contains(element as HTMLElement));
 
     const onClick = (event: Event) => {
         if (isOutside(event.target)) {
