@@ -6,7 +6,13 @@ import { StateContext, DispatchContext } from 'common/contexts';
 import { SearchField } from 'components';
 import { closeMenuDrawer, toggleMenuDrawer } from 'store/actions';
 import { appBarTheme } from 'themes';
-import { StyledAppBar, MenuButton, CustomMenuIcon, NavLink } from './styled';
+import {
+    StyledAppBar, // force formatting
+    MenuButton,
+    CustomMenuIcon,
+    NavLink,
+    StyledAppBarSpacer,
+} from './styled';
 
 const Header = ({
     data, // force formatting
@@ -36,8 +42,9 @@ const Header = ({
                                     wait, wut?
                                 </NavLink>
                             </Typography>
-                            <SearchField />
                         </Toolbar>
+                        <StyledAppBarSpacer />
+                        <SearchField />
                     </StyledAppBar>
                 </ThemeProvider>
             </Box>

@@ -5,9 +5,13 @@ import { AppBar, IconButton } from '@mui/material';
 import { minWidth600, minWidth870, minWidth1024 } from '../../styles/mq';
 
 const StyledAppBar = styled(AppBar)`
-    background-color: ${(props) => props?.theme?.backgroundColor} !important;
-    color: ${(props) => props.theme?.color} !important;
-    z-index: 1000000 !important;
+    #waitwut & {
+        background-color: ${(props) => props?.theme?.backgroundColor};
+        color: ${(props) => props.theme?.color};
+        flex-direction: row;
+        justify-content: space-around;
+        z-index: 1000000;
+    }
 `;
 
 const MenuButton = styled(IconButton)`
@@ -102,13 +106,17 @@ const NavLink = styled(Link)`
     text-decoration: none;
     width: max-content;
 
-    ${minWidth600} {
+    /* ${minWidth600} {
         margin-left: 5%;
     }
 
     ${minWidth870} {
         margin-left: 12em;
-    }
+    } */
 `;
 
-export { StyledAppBar, MenuButton, CustomMenuIcon, NavLink };
+const StyledAppBarSpacer = styled.div`
+    width: 30vw;
+`;
+
+export { StyledAppBar, MenuButton, CustomMenuIcon, NavLink, StyledAppBarSpacer };
