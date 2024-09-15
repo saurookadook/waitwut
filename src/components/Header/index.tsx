@@ -3,9 +3,16 @@ import { ThemeProvider, useTheme } from 'styled-components';
 import { Box, Toolbar, Typography } from '@mui/material';
 
 import { StateContext, DispatchContext } from 'common/contexts';
+import { SearchField } from 'components';
 import { closeMenuDrawer, toggleMenuDrawer } from 'store/actions';
 import { appBarTheme } from 'themes';
-import { StyledAppBar, MenuButton, CustomMenuIcon, NavLink } from './styled';
+import {
+    StyledAppBar, // force formatting
+    MenuButton,
+    CustomMenuIcon,
+    NavLink,
+    StyledAppBarSpacer,
+} from './styled';
 
 const Header = ({
     data, // force formatting
@@ -26,7 +33,9 @@ const Header = ({
                     <StyledAppBar>
                         <Toolbar className="header-items-wrapper">
                             <MenuButton onClick={() => toggleMenuDrawer({ dispatch })}>
-                                <CustomMenuIcon className={menu.drawerVisible ? 'menu-open' : 'menu-closed'} />
+                                <CustomMenuIcon
+                                    className={menu.drawerVisible ? 'menu-open' : 'menu-closed'}
+                                />
                             </MenuButton>
                             <Typography variant="h4" component="div">
                                 <NavLink to="/" onClick={() => closeMenuDrawer({ dispatch })}>
@@ -34,6 +43,8 @@ const Header = ({
                                 </NavLink>
                             </Typography>
                         </Toolbar>
+                        <StyledAppBarSpacer />
+                        <SearchField />
                     </StyledAppBar>
                 </ThemeProvider>
             </Box>

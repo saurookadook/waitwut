@@ -1,4 +1,7 @@
+require("dotenv").config()
+
 import type { GatsbyConfig } from 'gatsby';
+import { queries as alogliaQueries } from './src/utils/algoliaQueries'
 
 const config: GatsbyConfig = {
     // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -39,6 +42,14 @@ const config: GatsbyConfig = {
                 name: `Sheets`,
                 path: `${__dirname}/docs/sheets`,
             },
+        },
+        {
+            resolve: 'gatsby-plugin-algolia',
+            options: {
+                appId: process.env.GATSBY_ALGOLIA_APP_ID,
+                apiKey: process.env.ALGOLIA_ADMIN_KEY,
+                queries: alogliaQueries
+            }
         },
         {
             resolve: `gatsby-transformer-remark`,
