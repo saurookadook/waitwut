@@ -1,6 +1,16 @@
 /// <reference types="react-scripts" />
 
-// export {}
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            ALGOLIA_ADMIN_KEY: string;
+            GATSBY_ALGOLIA_APP_ID: string;
+            GATSBY_ALGOLIA_SEARCH_KEY: string;
+        }
+    }
+}
+
+export {};
 type EmptyObject = Record<string, unknown>;
 type AmbiguousObject = Record<string, unknown> | EmptyObject;
 type DynamicObject<T> = Record<string, T>;
