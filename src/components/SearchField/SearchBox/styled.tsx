@@ -1,14 +1,13 @@
 import styled, { css } from 'styled-components';
 
-import { themeFromExample } from 'components/SearchField/index';
 import SearchBox from './index';
 
 const openStyles = css`
-    background: ${() => themeFromExample.background};
+    background: ${({ theme }) => theme.graphite};
     cursor: text;
     margin-left: -1.5rem;
     padding-left: 1.5rem;
-    width: 10rem;
+    width: 15rem;
 `;
 
 const closedStyles = css`
@@ -34,15 +33,18 @@ const StyledSearchBox = styled(SearchBox)<StyledSearchBoxProps>`
 
         border: ${({ $hasFocus }) => ($hasFocus ? 'auto' : 'none')};
         border-radius: 2px;
-        color: ${() => themeFromExample.foreground};
+        color: ${({ theme }) => theme.white};
+        font-size: 1rem;
+        /* outline: none; */
+        transition: 100ms;
 
         &::placeholder {
-            color: ${() => themeFromExample.faded};
+            color: ${({ theme }) => theme.white};
         }
     }
 
     & .search-input-icon {
-        color: ${() => themeFromExample.foreground};
+        color: ${({ theme }) => theme.white};
         margin: 0.25rem;
         pointer-events: none;
         width: 1rem;

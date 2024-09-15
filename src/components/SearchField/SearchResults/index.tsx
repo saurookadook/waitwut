@@ -9,6 +9,8 @@ import {
     useStats,
 } from 'react-instantsearch';
 
+import { StyledSearchResults, StyledPageHit } from './styled';
+
 const HitCount = () => {
     const { nbHits } = useStats();
 
@@ -32,15 +34,15 @@ const HitCount = () => {
 const PageHit = ({ hit }: { hit: any }) => {
     // console.log({ fn: 'PageHit', hit });
     return (
-        <div>
+        <StyledPageHit>
             <Link to={hit.fullPath}>
                 <h4>
                     <Highlight attribute="title" hit={hit} />
                 </h4>
+                <span>{hit.fullPath}</span>
             </Link>
             {/* <Snippet attribute="excerpt" hit={hit} /> */}
-            <Snippet attribute="fullPath" hit={hit} />
-        </div>
+        </StyledPageHit>
     );
 };
 
@@ -56,16 +58,18 @@ const HitsInIndex = ({ index }: { index: SearchIndex }) => {
 const SearchResults = ({
     className,
     indices,
+    show,
 }: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     indices: SearchIndex[];
+    show: boolean;
 }) => {
     return (
-        <div className={className}>
+        <StyledSearchResults className={className} $show={show}>
             {indices.map((index) => {
                 return <HitsInIndex key={index.name} index={index} />;
             })}
             <PoweredBy />
-        </div>
+        </StyledSearchResults>
     );
 };
 

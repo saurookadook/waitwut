@@ -1,59 +1,61 @@
 import styled, { css } from 'styled-components';
 
-import { themeFromExample } from 'components/SearchField/index';
-import SearchResults from './index';
+import { allButFirstChild } from 'styles/selectors';
 
 const popoverStyles = css`
-    background: ${({ theme }) => theme.backgroundColor};
+    background: ${({ theme }) => theme.graphite};
+    border: 1px solid ${({ theme }) => theme.graphite};
     border-radius: 2px;
+    /* TODO: maybe this box shadow could be a better color? */
     box-shadow: 0 0 5px 0;
+    display: flex;
+    flex-direction: column;
     margin-top: 0.5rem;
     max-height: 80vh;
     max-width: 30rem;
     overflow: scroll;
-    padding: 1rem;
     position: absolute;
     right: 0;
     top: 100%;
+    width: 25rem;
 `;
 
 interface StyledSearchResultsProps {
     readonly $show: boolean;
 }
 
-const StyledSearchResults = styled(SearchResults)<StyledSearchResultsProps>`
-    display: ${({ $show }) => ($show ? 'block' : 'none')};
+const StyledSearchResults = styled.div<StyledSearchResultsProps>`
     ${popoverStyles}
+
+    display: ${({ $show }) => ($show ? 'block' : 'none')};
 
     & .HitCount {
         display: flex;
         justify-content: flex-end;
     }
 
-    & .Hits {
+    #waitwut & .Hits {
+        padding: 1rem;
+        padding-bottom: 0;
+
         & ol {
             list-style: none;
             margin-left: 0;
-        }
+            padding-inline-start: 1rem;
 
-        & li.ais-Hits-item {
-            margin-bottom: 1rem;
-
-            & a {
-                color: ${() => themeFromExample.foreground};
-
-                & h4 {
-                    margin-top: 0;
-                    margin-bottom: 0.2rem;
-                }
+            & li${allButFirstChild} {
+                margin-top: 1rem;
             }
         }
     }
 
     & .ais-PoweredBy {
+        background-color: ${({ theme }) => theme.commentGray};
         display: flex;
-        font-size: 80%; /* percent...? */
+        font-size: 0.875rem;
         justify-content: flex-end;
+        padding: 1rem;
+        width: 100%;
 
         & svg {
             width: 7.5rem;
@@ -61,4 +63,16 @@ const StyledSearchResults = styled(SearchResults)<StyledSearchResultsProps>`
     }
 `;
 
-export { StyledSearchResults };
+const StyledPageHit = styled.div`
+    & a {
+        color: ${({ theme }) => theme.white};
+
+        & h4 {
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 0.2rem;
+        }
+    }
+`;
+
+export { StyledSearchResults, StyledPageHit };
