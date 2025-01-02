@@ -258,3 +258,63 @@ console.log(superstoreStock.has('soap')); // Outputs: false
 superstoreStock.set('soap', 500); // Soap is restocked
 console.log(superstoreStock.has('soap')); // Outputs: true
 ```
+
+## Efficient Data Management with JavaScript Maps
+
+### Problem 1: Count Word Frequencies in a Text
+
+Imagine we have a blog. We want to analyze the posts to see which topics are most discussed. A practical solution involves writing a function to count the frequency of each word in a blog post while ignoring case and punctuation.
+
+This function is essential in text analysis tools used in search engine optimization. It can highlight popular topics and even suggest post tags, increasing visibility in search results.
+
+#### Naive Approach
+
+Straight away, we might think to tally word occurrences — an extra tedious process manually! This would mean extra loops, slow performance, and our time is too valuable to be inefficient.
+
+#### Efficient Approach
+
+Instead, Maps are handy, allowing us to map each unique word to its frequency count effortlessly. With this in mind, we can track how often each word appears with far less code and do it faster!
+
+Let's start by creating a function and cleaning up our input: remove punctuation and convert it to lowercase for consistency.
+
+```js
+function countWordFrequencies(text) {
+    const normalizedText = text.toLowerCase().replace(/[^\w\s]/g, "");
+    const words = normalizedText.split(/\s+/);
+    const frequencyMap = new Map();
+
+    let count;
+    for (const word of words) {
+        count = frequencyMap.get(word) || 0;
+        frequencyMap.set(word, count + 1);
+    }
+
+    return frequencyMap;
+}
+```
+
+### Problem 2: Find Sum of Values in a Hashmap
+
+Shifting gears to numbers, let's say we have a map representing a simple ledger with categories such as keys and expenses as values. How do we find the total of all categories?
+
+In real life, this could represent a personal finance app displaying your monthly spending. Quickly summing these values gives a clear picture of your financial health — a cornerstone of such an app's utility.
+
+### Approach and Solution Building
+
+Instead, the JavaScript Map's `.values()` method gives us a direct path to iterate over all the values needed for our sum. It's all about having the right tool for the job!
+
+```js
+function sumOfMapValues(numberMap) {
+    let sum = 0;
+
+    for (const value of numberMap.values()) {
+        sum += value;
+    }
+
+    return sum;
+}
+```
+
+## Solving Algorithmic Puzzles with JavaScript Maps
+
+🚧 _WIP_ 🚧
