@@ -317,4 +317,65 @@ function sumOfMapValues(numberMap) {
 
 ## Solving Algorithmic Puzzles with JavaScript Maps
 
-🚧 _WIP_ 🚧
+### Problem 1: Celebrity Element Identification
+
+Let's put it in a familiar scenario: at a party, it's easy to notice that one person everyone seems to know. This person, akin to the "celebrity" at the party, serves as the analogy for an element in an array that appears more than half the time — our task is to identify this celebrity element amid a crowd of numbers.
+
+#### Naive Approach
+
+The naive way to identify this celebrity is to count the occurrences of each number by looping over the array for each element and seeing if it repeats sufficiently to be our star. Computationally, this translates to significant time (quadratic time complexity) for larger arrays — an apparent inefficiency.
+
+#### Efficient Approach Explanation
+
+Now, let's be savvy about this. Enter the `Map`: your sophisticated voting tally system. With it, you can keep a running total of each element appearance as you go through the array once rather than reviewing the entire list for each integer.
+
+```js
+function findLeaderInArray(arr) {
+    const countMap = new Map();
+    const majorityThreshold = arr.length / 2;
+
+    for (const num of arr) {
+        const currentCount = countMap.get(num) || 0;
+        countMap.set(num, currentCount + 1);
+
+        if (countMap.get(num) > majorityThreshold) {
+            return num;
+        }
+    }
+
+    return -1;
+}
+
+```
+
+### Problem 2: Keyword Document Indexer
+
+Now, let's transition to a digital library setting, where you want to find all articles that mention a specific word, say "sustainability." Just like a librarian who quickly locates books on a topic, we need an efficient system to index words to documents in which they appear — a task vital for modern search engines to function effectively.
+
+#### Naive Approach
+
+Manually scanning through each document to note every word's occurrence, akin to flipping through each book's pages, is our naive approach. This might be manageable for a small number of short documents, but as the library grows, this approach becomes untenable — not to mention it can lead to errors and duplicates.
+
+### Efficient Approach
+
+Employing `Map`s and `Set`s in JavaScript is akin to using a digital catalog system — swift, error-free, and capable of efficiently handling extensive volumes of data. This approach provides the quick lookup functionality to link words with documents effectively.
+
+```js
+function createKeywordIndex(documents) {
+    const wordsIndex = new Map();
+
+    documents.forEach((doc, docIndex) => {
+        const words = doc.split(/\s+/);
+
+        words.forEach((word) => {
+            if (wordsIndex.has(word)) {
+                wordsIndex.get(word).add(docIndex);
+            } else {
+                index.set(word, new Set([docIndex]));
+            }
+        })
+    });
+
+    return wordsIndex;
+}
+```
