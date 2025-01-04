@@ -77,7 +77,74 @@ console.log(sumOfDigits(12345)); // Will print 15 (1+2+3+4+5)
 
 ## Binary Search in JavaScript: Unraveling the Algorithm and Complexity
 
-🚧
+**Binary Search** is an efficient algorithm that pinpoints elements in a sorted list. It's like finding a house number on a long street — instead of starting from one end, you begin in the middle and, based on whether the house number is higher or lower, you search the right or left half of the list.
+
+### Unveiling Binary Search
+
+Binary Search follows a divide-and-conquer strategy. It starts in the middle of a sorted list. If the middle value is the desired one, great! If not, it uses the sorted nature of the list to eliminate half of it. The side to eliminate is selected based on whether the target is smaller or larger than the middle value.
+
+### Implementing Binary Search Using Recursion in JavaScript
+
+This implementation of a binary search algorithm calls itself recursively, gradually shrinking the search area until it finds the target.
+
+```js
+function recursiveBinarySearch({ arr, start, end, target }) {
+    // Base case: search area is empty
+    if (start > end) {
+        return -1;
+    }
+
+    const midPoint = Math.floor((start + end) / 2);
+
+    // Found the target
+    if (arr[midPoint] == target) {
+        return midPoint;
+    }
+
+    return (arr[midpoint] > target)
+    // If the target is less than the midpoint, search the left half
+        ? recursiveBinarySearch({ arr, start, end: midPoint - 1, target })
+    // Else, search the right half
+        : recursiveBinarySearch({ arr, start: midPoint + 1, end, target });
+}
+```
+
+### Implementing Binary Search Using Iteration in JavaScript
+
+This implementation of a binary search algorithm uses a `while` loop instead of recursion.
+
+```js
+function iterativeBinarySearch({ arr, target }) {
+    let start = 0;
+    let end = arr.length - 1;
+    let midPoint;
+
+    while (start <= end) {
+        midPoint = Math.floor((start + end) / 2);
+
+        if (arr[midPoint] == target) {
+            // Found the target
+            return midPoint;
+        }
+
+        if (arr[midPoint] < target) {
+            // Search the right half
+            start = midPoint + 1;
+        } else {
+            // Search the left half
+            end = midPoint - 1;
+        }
+    }
+
+    return -1;
+}
+```
+
+### Analyzing Complexity of Binary Search
+
+Binary Search reduces the input size by half on every step, hence it takes `log(n)` steps to find a target in an array of size `n`. Thus, the time complexity of Binary Search is **`O(log n)`**.
+
+Both recursive and iterative approaches share the same time complexity — **`O(log n)`**. Their choice usually comes down to specific problems, constraints, and personal preferences.
 
 ## Advanced Binary Search: Mastering Complex Array Problems
 
