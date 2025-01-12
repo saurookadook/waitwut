@@ -148,7 +148,316 @@ Both recursive and iterative approaches share the same time complexity — **`O(
 
 ## Advanced Binary Search: Mastering Complex Array Problems
 
-🚧
+Some applications of binary search that transcend basic searching include applying it to complex data structures, such as _**bitonic arrays**_ and _**rotated sorted arrays**_, to find specific elements efficiently.
+
+### Problem 1: Searching in a Bitonic Array
+
+Consider a bitonic array as a numerical sequence simulating the trajectory of a roller coaster — first, it rises to a peak, then descends. For example, consider the array `[1, 2, 3, 4, 5, 3, 1]`: its first part ascends, and the last descends, making it bitonic. Your goal is to find a value in such an array.
+
+#### Naive Approach
+
+You might walk the entire path, which is exhaustive and represents our naive approach with a time complexity of **`O(n)`**. Our aim today is a more efficient method.
+
+#### Efficient Approach Explained
+
+To apply binary search, we first locate the _peak_ of the array, then perform binary search on either side of the peak: one for the increasing sub-array and one for the decreasing sub-array.
+
+##### Example using iterative binary search
+
+```js
+const calculateMidPoint = (start, end) =>
+    Math.floor((start + end) / 2);
+
+function findInBitonicArray({ arr, target }) {
+    // 1. FIND PEAK OF THE ARRAY
+    let start = 0;
+    let end = arr.length - 1;
+    let midPoint;
+
+    while (start < end) {
+        midPoint = calculateMidPoint(start, end);
+
+        if (arr[midPoint] > arr[midPoint + 1]) {
+            // Peak is to the left
+            end = midPoint;
+        } else {
+            // Peak is to the right
+            start = midPoint + 1;
+        }
+    }
+
+    // Peak is found
+    let peak = start;
+
+    // 2. BINARY SEARCH ON ASCENDING SUB-ARRAY
+    start = 0;
+    end = peak;
+    while (start <= end) {
+        midPoint = calculateMidPoint(start, end);
+        if (arr[midPoint] === target) return midPoint;
+        else if (arr[midPoint] < target) start = midPoint + 1;
+        else end = midPoint - 1;
+    }
+
+    // 3. BINARY SEARCH ON DESCENDING SUB-ARRAY
+    start = peak;
+    end = arr.length - 1;
+    while (start <= end) {
+        midPoint = calculateMidPoint(start, end);
+        if (arr[midPoint] === target) return midPoint;
+        else if (arr[midPoint] > target) start = midPoint + 1;
+        else end = midPoint - 1;
+    }
+
+    return -1;
+}
+```
+
+##### Example using recursive binary search
+
+```js
+const directionEnum = {
+    ASC: 'ASC',
+    DESC: 'DESC',
+}
+
+const calculateMidPoint = (start, end) =>
+    Math.floor((start + end) / 2);
+
+function binarySearch({ arr, start, end, target, direction }) {
+    if (start > end) {
+        return -1;
+    }
+
+    const midPoint = calculateMidPoint(start, end);
+
+    if (arr[midPoint] == target) {
+        return midPoint;
+    }
+
+    const comparison = direction === directionEnum.DESC
+        ? (arr[midPoint] > target)
+        : (arr[midPoint] < target)
+
+    return comparison
+        ? binarySearch({ arr, start, end: midPoint - 1, target })
+        : binarySearch({ arr, start: midPoint + 1, end, target });
+}
+
+function findPeak(arr) {
+    let start = 0;
+    let end = arr.length - 1;
+    let mid;
+
+    while (start < end) {
+        mid = calculateMidPoint(start, end);
+
+        if (arr[mid] > arr[mid] + 1) high = mid;
+        else start = mid + 1;
+    }
+
+    return start;
+}
+
+function findInBitonicArray({ arr, target }) {
+    // 1. FIND PEAK OF THE ARRAY
+    const peak = findPeak(arr);
+
+    // 2. BINARY SEARCH ON ASCENDING SUB-ARRAY
+    const start = 0;
+    const end = peak;
+
+    const ascResult = binarySearch({
+        arr,
+        start: 0,
+        end: peak,
+        target,
+        direction: directionEnum.ASC
+    });
+
+    // 3. BINARY SEARCH ON DESCENDING SUB-ARRAY
+    return ascResult >= 0
+        ? ascResult
+        : binarySearch({
+            arr,
+            start: peak,
+            end: arr.length - 1,
+            target,
+            direction: directionEnum.DESC
+         });
+}
+
+```
+
+### Problem 2: Searching the Minimum Element in a Rotated Sorted Array
+
+Imagine you have a shuffled deck of cards that needs to be reordered. That could be represented with a rotated sorted array. For example, if we rotate array `[1, 2, 3, 4, 5]`, we could get `[3, 4, 5, 1, 2]`.
+
+#### Naive Approach
+
+You could check each element, one by one, to find the lowest, which is our naive approach with a time complexity of **`O(n)`**. Or, we could use binary search for a more efficient find.
+
+#### Efficient Approach Explained
+
+For the naive approach to finding the minimum element in a rotated sorted array, we'd sequentially traverse the array until we found the point where the current element is less than the preceding element, indicating the minimum.
+
+Instead, we adopt binary search to identify the rotation point, which harbors the smallest element. This is like deducing the first card in the shuffled deck without flipping through every card.
+
+#### Solution Building: Leveraging Binary Search
+
+```js
+function findMinimumInRotatedSortedArray(arr) {
+    let start = 0;
+    let end = arr.length - 1;
+    let midPoint;
+
+    // Akin to deducing where the deck split happened
+    while (start < end) {
+        midPoint = Math.floor((start + end) / 2);
+
+        // NOTE: flip this comparison to get the MAXIMUM value
+        if (arr[midPoint] > arr[end]) {
+            // Rotation point is to the right
+            start = midPoint + 1;
+        } else {
+            // Or to the left?
+            end = midPoint;
+        }
+    }
+
+    // Rotation point is found
+    return arr[start];
+}
+```
+
+### Practice Problem 1
+
+Alright, Space Voyager, here's your next assignment, a real noggin' buster! You have an array of unique numbers forming a 'bitonic sequence'. Now, that's a fancy term for a sequence that first increases, hits a peak, and then decreases. Just picture a cosmic roller coaster ride!
+
+Your mission? Create a function, findPosition, that returns the 'index' of a given number, 'x', from that array. If 'x' is in hyperspace and not in our sequence, return -1.
+
+Let's be precise: an input to findPosition is a number you want to locate, and the output is either the number's first occurrence position or -1 if the number does not exist. Now, go supe up your code engines, Voyager! You got this!
+
+```js
+const calculateMidPoint = (start, end) =>
+    Math.floor((start + end) / 2);
+
+function findPeak(arr) {
+    let low = 0;
+    let high = arr.length - 1;
+    let mid;
+
+    while (low < high) {
+        mid = calculateMidPoint(low, high);
+        if (arr[mid] > arr[mid + 1]) high = mid;
+        else low = mid + 1;
+    }
+
+    return low;
+}
+
+function binarySearch({ arr, target, low, high, ascending }) {
+    if (low > high) return -1;
+
+    const mid = calculateMidPoint(low, high);
+
+    if (arr[mid] === target) return mid;
+
+    // const comparisonForDirection = (ascending && arr[mid] < target) || arr[mid] > target
+    // return comparisonForDirection
+    //     ? binarySearch({ arr, target, ascending, low: mid + 1, high })
+    //     : binarySearch({ arr, target, ascending, low, high: mid - 1 });
+
+
+    const commonArgs = (ascending && arr[mid] < target) || arr[mid] > target ? {
+            low: mid + 1,
+            high
+        } : {
+            low,
+            high: mid - 1
+        };
+
+    return binarySearch({ arr, target, ascending, ...commonArgs });
+}
+
+// function binarySearch({ arr, target, low, high, ascending }) {
+//     const peak = findPeak(arr);
+//     let start;
+//     let end;
+//     let mid;
+
+//     // 2. BINARY SEARCH ON ASCENDING SUB-ARRAY
+//     start = 0;
+//     end = peak;
+//     while (start <= end) {
+//         midPoint = calculateMidPoint(start, end);
+//         if (arr[midPoint] === target) return midPoint;
+//         else if (arr[midPoint] < target) start = midPoint + 1;
+//         else end = midPoint - 1;
+//     }
+
+//     // 3. BINARY SEARCH ON DESCENDING SUB-ARRAY
+//     start = peak;
+//     end = arr.length - 1;
+//     while (start <= end) {
+//         midPoint = calculateMidPoint(start, end);
+//         if (arr[midPoint] === target) return midPoint;
+//         else if (arr[midPoint] > target) start = midPoint + 1;
+//         else end = midPoint - 1;
+//     }
+
+//     return -1;
+
+//     // while (low <= high) {
+//     //     mid = Math.floor(low + (high - low) / 2);
+//     //     if (arr[mid] == x) {
+//     //         return mid;
+//     //     } else if (ascending) {
+//     //         if (arr[mid] < x) {
+//     //             low = mid + 1;
+//     //         } else {
+//     //             high = mid - 1;
+//     //         }
+//     //     } else {
+//     //         // TODO: implement descending binary search logic
+//     //     }
+//     // }
+//     // return -1;
+// }
+
+function findPosition({ arr, target }) {
+        // TODO: find peak using the implemented findPeak function
+        const peak = findPeak(arr);
+        // TODO: search to the left of the peak
+        const leftResult = binarySearch({
+            arr,
+            target,
+            low: 0,
+            high: peak,
+            ascending: true,
+        });
+        // TODO: search to the right of the peak
+        return leftResult >= 0
+            ? leftResult
+            : binarySearch({
+                arr,
+                target,
+                low: peak,
+                high: arr.length - 1,
+                ascending: false
+            });
+}
+
+const bitonicArray = [-3, -2, 4, 6, 10, 8, 7, 1];
+const x = 7;
+const position = findPosition({ arr: bitonicArray, target: x });
+
+if (position === -1) {
+    console.log("Element not present");
+} else {
+    console.log(`Element present at index ${position}`);
+}
+```
 
 ## Sorting Data Swiftly: Quick Sort in JavaScript Explained
 
