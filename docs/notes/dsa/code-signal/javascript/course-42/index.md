@@ -461,7 +461,75 @@ if (position === -1) {
 
 ## Sorting Data Swiftly: Quick Sort in JavaScript Explained
 
-🚧
+**Quick Sort** details:
+- devised by Tony Hoare in 1959
+- a speedy sorting algorithm akin to sorting toys by size
+- leverages the divide-and-conquer strategy, whereby it selects a pivot element and then arranges all smaller elements to one side and larger ones to the other
+
+### Quick Sort Under The Hood
+
+Quick Sort operates in three steps:
+
+1. Selecting a pivot.
+2. Shifting elements smaller than the pivot to one side, and moving elements larger than the pivot to the other side.
+3. Repeating these steps for both sides separately.
+
+Consider, for instance, sorting `[3, 9, 4, 7, 5, 1, 6, 2, 8]` with `7` as the pivot. After one round, it becomes `[3, 4, 5, 1, 6, 2, 7, 9, 8]`. The pivot `7` is correctly placed, and we can then divide the array into two parts: `[3, 4, 5, 1, 6]` and `[9, 8]`, which can be sorted separately.
+
+### Quick Sort Implementation in JavaScript
+
+This implementation is going to consist of 2 parts: [Partition](#part-1-partition) and [Sorting](#part-2-sorting).
+
+#### Part 1: Partition
+
+First, we partition the array around the pivot in our partition function:
+
+```js
+function partition(arr, low, high) {
+    const pivot = arr[high]; // The pivot is the last element
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+        // If the current element is smaller than the pivot
+        if (arr[j] <= pivot) {
+            i++;
+            // Swap the current element with the element at index i
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    }
+    // Position the pivot in the correct position in the array
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+    return i + 1;
+}
+
+```
+
+In this portion of the code, we selected the last element as the pivot and placed smaller elements on the left.
+
+The function starts by initializing `i` to one index before the `start`. This `i` basically keeps track of the latest position where an element has been swapped because it was less than or equal to the pivot. If `arr[j]` is less than or equal to the pivot, `i` is incremented and then `arr[j]` is swapped with `arr[i]`. Essentially, smaller elements get pushed towards the front of the array (or the given part of the array).
+
+The `start` and `end` parameters control which part of the given array is under the partition operation. Using these parameters, we can apply partition to some part of the array, which will be helpful later.
+
+#### Part 2: Sorting
+
+Then, we apply **Quick Sort** with a function that invokes partition and recursively sorts the two halves:
+
+```js
+function quickSort(arr, low, high) {
+    if (low < high) {
+        const pivot = partition(arr, low, high);
+        // Recursively sort the left half
+        quickSort(arr, low, pivot - 1);
+        // Recursively sort the right half
+        quickSort(arr, pivot + 1, high);
+    }
+}
+
+```
+
+### Honing In On Quick Sort Efficiency
+
+The time complexity of **Quick Sort** can vary. Generally speaking, the more unique items there are, the quicker **Quick Sort** works. In the best and average cases, it shines with a time complexity of **`O(n∗log(n))`**. However, the time complexity can degrade to **`O(n^2)`** in the worst case.
 
 ## Merge Sort Mastery: Sorting Arrays Efficiently in JavaScript
 
