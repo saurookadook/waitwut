@@ -67,12 +67,14 @@ const TechnicalProjectItem = ({
                         </ProjectLinkText>
                     </ProjectLink>
                 ))}
+
                 <SubText className="project-dates">
                     <i>
                         ({startDate} - {endDate})
                     </i>
                 </SubText>
-                <SubText>{description}</SubText>
+
+                <SubText dangerouslySetInnerHTML={{ __html: description }} />
             </ProjectDetails>
         </ProjectItemContainer>
     );
