@@ -157,7 +157,7 @@ function logTemplateLiteralFuncArgs({ strings, values }) {
 }
 
 function buildCSSTextContent({ randClass, tag, strings, values }) {
-    console.log(`'this' in 'buildCSSTextContent'\n`, this);
+    // console.log(`'this' in 'buildCSSTextContent'\n`, this);
     let result = '';
 
     const strsLen = strings.length;
@@ -181,8 +181,8 @@ function buildCSSTextContent({ randClass, tag, strings, values }) {
 }
 
 var styledLite = function _styledLite(strings, ...values) {
-    // logTemplateLiteralFuncArgs({ strings, values });
-    console.log(`'this' in 'styledLite'\n`, this);
+    logTemplateLiteralFuncArgs({ strings, values });
+    // console.log(`'this' in 'styledLite'\n`, this);
     const _tag = this.tag;
     const randID = Number.parseFloat(Math.random()).toFixed(5).replace(/^0\./, '');
     const kls = `slite-${randID}`;
@@ -193,8 +193,8 @@ var styledLite = function _styledLite(strings, ...values) {
         strings,
         values
     });
-    console.log('---- buildCSSTextContent')
-    console.log(styleTextContent);
+    // console.log('---- buildCSSTextContent')
+    // console.log(styleTextContent);
     const styleEl = document.createElement('style');
     styleEl.textContent = styleTextContent;
     document.querySelector('head').appendChild(styleEl);
@@ -240,17 +240,23 @@ var styledLiteTest = styledLite`
 var divStyles = {
     bgColor: '#2BC6C6',
     height: 100,
-    width: '10rem',
+    width: '30rem',
+}
+
+function handleDimensionVal(val) {
+    return typeof val === 'number'
+        ? `${val}%`
+        : val
 }
 
 var styledLiteDivText = slite.div`
     background: ${divStyles.bgColor};
     display: flex;
-    height: ${divStyles.height};
+    height: ${handleDimensionVal(divStyles.height)};
     position: fixed;
     top: 0;
-    width: ${divStyles.width};
-    z-index: 10;
+    width: ${handleDimensionVal(divStyles.width)};
+    z-index: 1000;
 `;
 
 var bodyEl = document.querySelector('body');
