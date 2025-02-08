@@ -122,6 +122,144 @@ if (colors.length) {
 
 ---
 
+## Template Literals
+
+### [Tagged Templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates)
+
+> A more advanced form of template literals are tagged templates.
+>
+> Tags allow you to parse template literals with a function. The first argument of a tag function contains an array of string values. The remaining arguments are related to the expressions.
+>
+> The tag function can then perform whatever operations on these arguments you wish, and return the manipulated string. (Alternatively, it can return something completely different, as described in one of the following examples.)
+>
+> The name of the function used for the tag can be whatever you want.
+
+```js
+function logTemplateLiteralFuncArgs({ strings, values }) {
+    const strsLen = strings.length;
+    const valsLen = values.length;
+
+    console.log('    logTemplateLiteralFuncArgs    '.padStart(50, '=').padEnd(100, '='));
+    console.log(`    'strings' arg length - ${strsLen}`);
+    console.log(`    'values' arg length - ${valsLen}`);
+
+    const longest = valsLen > strsLen ? valsLen : strsLen;
+
+    for (let i = 0; i < longest; i++) {
+        console.log(`arg # : ${i}`);
+        if (i < strsLen) {
+            console.log(`'strings'${i} - ${strings[i]}`);
+        }
+        if (i < valsLen) {
+            console.log(`'values'${i} - ${values[i]}`);
+        }
+    }
+}
+
+function buildCSSTextContent({ randClass, tag, strings, values }) {
+    console.log(`'this' in 'buildCSSTextContent'\n`, this);
+    let result = '';
+
+    const strsLen = strings.length;
+    const valsLen = values.length;
+    const longest = valsLen > strsLen ? valsLen : strsLen;
+
+    for (let i = 0; i < longest; i++) {
+        if (i < strsLen) {
+            result += strings[i];
+        }
+        if (i < valsLen) {
+            result += values[i];
+        }
+    }
+
+    if (!result.includes('{')) {
+        result = `${tag}.${randClass} {\n` + result + `\n}`;
+    }
+
+    return result;
+}
+
+var styledLite = function _styledLite(strings, ...values) {
+    // logTemplateLiteralFuncArgs({ strings, values });
+    console.log(`'this' in 'styledLite'\n`, this);
+    const _tag = this.tag;
+    const randID = Number.parseFloat(Math.random()).toFixed(5).replace(/^0\./, '');
+    const kls = `slite-${randID}`;
+
+    const styleTextContent = buildCSSTextContent({
+        randClass: kls,
+        tag: _tag,
+        strings,
+        values
+    });
+    console.log('---- buildCSSTextContent')
+    console.log(styleTextContent);
+    const styleEl = document.createElement('style');
+    styleEl.textContent = styleTextContent;
+    document.querySelector('head').appendChild(styleEl);
+
+    const el = document.createElement(_tag);
+    el.classList.add(kls);
+
+    const spanLabel = document.createComment('span');
+    spanLabel.textContent = `styles for '${_tag}'`;
+    el.appendChild(spanLabel);
+
+    const preTag = document.createElement('pre');
+    preTag.textContent = styleTextContent;
+    el.appendChild(preTag);
+
+    return el;
+}
+
+var slite = (function () {
+    return {
+        div: styledLite.bind({ tag: 'div' }),
+        p: styledLite.bind({ tag: 'p' }),
+        span: styledLite.bind({ tag: 'span' }),
+    }
+})();
+
+var styleVars = {
+    bgColor: '#000000',
+    textColor: '#ffffff',
+    textSize: '1rem'
+};
+
+var styledLiteTest = styledLite`
+    background: ${styleVars.bgColor};
+    color: ${styleVars.bgColor};
+    display: flex;
+    flex-direction: column;
+    font-size: ${styleVars.textSize};
+    height: 100%;
+    width: 100%;
+`;
+
+var divStyles = {
+    bgColor: '#2BC6C6',
+    height: 100,
+    width: '10rem',
+}
+
+var styledLiteDivText = slite.div`
+    background: ${divStyles.bgColor};
+    display: flex;
+    height: ${divStyles.height};
+    position: fixed;
+    top: 0;
+    width: ${divStyles.width};
+    z-index: 10;
+`;
+
+var bodyEl = document.querySelector('body');
+bodyEl.prepend(styledLiteDivText);
+
+```
+
+---
+
 ## lolwtf
 
 ```JavaScript
