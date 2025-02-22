@@ -173,7 +173,7 @@ const EmploymentHistory: EmploymentRecord[] = [
             },
             {
                 title: 'Software Engineer III',
-                startDate: 'June 2022',
+                startDate: 'June 2022', // June 6th, 2022
                 endDate: 'Present',
             },
         ],
@@ -259,11 +259,11 @@ const EmploymentHistory: EmploymentRecord[] = [
             {
                 title: 'MTS Software Engineer',
                 startDate: 'November 2021',
-                endDate: 'June 2022',
+                endDate: 'June 2022', // May 27th, 2022
             },
             {
                 title: 'AMTS Software Engineer',
-                startDate: 'March 2020',
+                startDate: 'March 2020', // March 1, 2020
                 endDate: 'October 2021',
             },
         ],
@@ -302,8 +302,8 @@ const EmploymentHistory: EmploymentRecord[] = [
         roles: [
             {
                 title: 'Support Engineer',
-                startDate: 'April 2019',
-                endDate: 'February 2020',
+                startDate: 'April 2019', // April 29th, 2019
+                endDate: 'February 2020', // February 28th, 2020
             },
         ],
         responsibilities: [
@@ -329,8 +329,8 @@ const EmploymentHistory: EmploymentRecord[] = [
         roles: [
             {
                 title: 'Engineering Apprentice',
-                startDate: 'August 2018',
-                endDate: 'April 2019',
+                startDate: 'August 2018', // August 20th, 2018
+                endDate: 'April 2019', // April 26th, 2019
             },
         ],
         responsibilities: [
