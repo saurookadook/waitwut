@@ -46,6 +46,7 @@ const TechnicalSkills: string[] = [
     'JavaScript (ES5 and ES6)',
     'TypeScript',
     'Node.js',
+    'Jest',
     'Python',
     'SQLAlchemy',
     'FastAPI',
@@ -54,12 +55,12 @@ const TechnicalSkills: string[] = [
     'PostgreSQL',
     'React',
     'Redux',
+    'd3.js',
     'Gatsby.js',
     'RegEx',
     'HTML',
     'CSS',
     'SASS',
-    'Jest',
     'Express',
     'Docker',
     'Kafka',
@@ -178,14 +179,30 @@ const EmploymentHistory: EmploymentRecord[] = [
             },
         ],
         responsibilities: [
+            `Architected, built, and developed UI for Practice Exams using ${buildLink({
+                href: 'https://react.dev/',
+                text: 'React'
+            })}, ${buildLink({
+                href: 'https://storybook.js.org/',
+                text: 'Storybook'
+            })}, and ${buildLink({
+                href: 'https://jestjs.io/',
+                text: 'Jest'
+            })}`,
             `Worked on the
             ${buildLink({
                 href: 'https://www.pluralsight.com/product/skills-assessment',
                 text: 'Skill IQ assessments product',
             })}`,
-            `As tech lead, managed and contributed to development of the ${buildLink({
+            `As tech lead, managed and contributed to development of both the ${buildLink({
                 href: 'https://app.pluralsight.com/skilliq/my-skills',
                 text: 'My Skills tab',
+            })} and refactor of ${buildLink({
+                href: 'https://www.pluralsight.com/product/skills-assessment',
+                text: 'Skill IQ'
+            })}'s graph components using ${buildLink({
+                href: 'https://d3js.org/',
+                text: 'd3.js'
             })}`,
             `Collaborated on feature development and maintenance of ${buildLink({
                 href: 'https://docs.python.org/3.10/',
@@ -427,6 +444,40 @@ const VolunteerWork: VolunteerRecord[] = [
  * '
  */
 const TechnicalProjects: TechnicalProjectRecord[] = [
+    {
+        displayName: 'react-utils',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/react-utils',
+            },
+            {
+                type: 'npm registry',
+                url: 'https://npmjs.com/org/saurookkadookk',
+            }
+        ],
+        description: `A collection of useful, lightweight utilities for use in ${buildLink({
+            href: 'https://react.dev/',
+            text: 'React'
+        })} applications.`,
+        startDate: 'November 2024',
+        endDate: 'Present',
+    },
+    {
+        displayName: 'node-kafka-mini-app',
+        links: [
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/node-kafka-mini-app',
+            },
+        ],
+        description: `A mini app in Node.js utilizing ${buildLink({
+            href: 'https://kafka.js.org/docs/getting-started',
+            text: 'KafkaJS',
+        })}`,
+        startDate: 'November 2025',
+        endDate: 'Present',
+    },
     {
         displayName: 'NLP Stock SA (WIP)',
         links: [
