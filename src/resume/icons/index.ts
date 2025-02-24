@@ -7,6 +7,16 @@ import PluralsightLogo from './pluralsight';
 import SalesforceIcon from './salesforce';
 import UpstatementU from './upstatement';
 
+export {
+    BSOCombinedLogo,
+    EvergageLogoVector,
+    GitHubOctocat,
+    NpmLogo,
+    PluralsightLogo,
+    SalesforceIcon,
+    UpstatementU,
+};
+
 // prettier-ignore
 const resumeIconsMap = {
     "boston-symphony-orchestra": BSOCombinedLogo,

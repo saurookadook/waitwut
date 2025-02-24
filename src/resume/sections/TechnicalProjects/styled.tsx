@@ -42,6 +42,7 @@ const ProjectDetails = styled.div`
     flex-direction: column;
     margin: 0;
     margin-top: 0.5rem;
+    margin-left: 0.5rem;
     padding-right: 0;
     /* padding-left: calc(${listItemPadding} / 2); */
     row-gap: 0.375rem;
@@ -104,7 +105,6 @@ const ProjectLinkText = styled.span`
     display: inline-flex;
     font-size: 1.25rem;
     line-height: 1;
-    margin-left: 0.5rem;
     position: relative;
 
     ${minWidth600} {
