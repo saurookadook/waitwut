@@ -243,3 +243,105 @@ class ElementarySchoolLibrarian implements Librarian {
 }
 
 ```
+
+---
+
+## Classes
+
+### Parameter Properties
+
+```typescript
+class Author {
+    name: string;
+
+    constructor(authorName: string) {
+        this.name = authorName;
+    }
+}
+
+/* Identical functionality to above */
+class Author {
+    constructor(public name: string) { }
+}
+
+```
+
+### Abstract Classes
+
+- created with `abstract` keyword
+- base classes that may not be instantiated directly
+- may contain implementation details
+- abstract methods are _**not**_ implemented
+
+```typescript
+abstract class Video {
+
+    private _producer: string = '';
+
+    constructor(public title: string, protected year: number) {
+        console.log('Creating a new Video...');
+    }
+
+    get producer(): string {
+        return this._producer.toUpperCase();
+    }
+
+    set producer(newProducer: string) {
+        this._producer = newProducer;
+    }
+
+    abstract printCredits(): void;
+}
+
+class Documentary extends Video {
+    constructor(docTitle: string, docYear: number, public subject: string) {
+        super(docTitle, docYear);
+    }
+
+    printCredits(): void {
+        console.log(`Producer: ${this.producer}`);
+    }
+}
+```
+
+### Class Expressions
+
+- [ES6 feature](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class) supported by TypeScript
+- class expressions can be used anywhere a class definition is expected
+
+```typescript
+abstract class Video {
+
+    private _producer: string = '';
+
+    constructor(public title: string, protected year: number) {
+        console.log('Creating a new Video...');
+    }
+
+    get producer(): string {
+        return this._producer.toUpperCase();
+    }
+
+    set producer(newProducer: string) {
+        this._producer = newProducer;
+    }
+
+    abstract printCredits(): void;
+}
+
+const Musical = class extends Video {
+    printCredits(): void {
+        console.log(`Musical credits: ${this.producer}`);
+    }
+}
+
+const myMusical = new Musical('Grease', 1978);
+myMusical.producer = 'Sing-Song Pictures';
+myMusical.printCredits();
+
+/* Just to show what's possible :] */
+class Course extends class { title: string = ''; } {
+    subject: string = '';
+}
+
+```
