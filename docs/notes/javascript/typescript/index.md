@@ -352,3 +352,18 @@ class Course extends class { title: string = ''; } {
 }
 
 ```
+
+## Modules
+
+### Module Resolution Strategies
+
+- TypeScript compiler uses strategy specified by `"moduleResolution"` property
+  - as of 03/07/2025, the two available optiosn are `"Classic" | "Node"`
+- See [docs for more info](https://www.typescriptlang.org/docs/handbook/modules/theory.html#module-resolution)
+
+|                                   Classic                                   |                                   Node                                   |
+| :---                                                                        | :---                                                                     |
+| Defalut when emitting `"AMD"`, `"UMD"`, `"System"`, or `"ES2015"` modules.  | Default when emitting `"CommonJS"` modules                               |
+| Simple - compiler traverses directories looking for right module. If relative reference, exact module location provided as part of import statement. If non-relative reference, compiler walks up directory tree looking for module starting in location of importing file | Closely mirrors Node module resolution - For relative references, compiler looks for file or directory with name specified on import statement. For non-relative references, walks up directory tree looking for folder named `node_modules` and will try to locate module there. |
+| Less configurable                                                           | More configurable                                                        |
+
