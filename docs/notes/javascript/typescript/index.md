@@ -367,3 +367,92 @@ class Course extends class { title: string = ''; } {
 | Simple - compiler traverses directories looking for right module. If relative reference, exact module location provided as part of import statement. If non-relative reference, compiler walks up directory tree looking for module starting in location of importing file | Closely mirrors Node module resolution - For relative references, compiler looks for file or directory with name specified on import statement. For non-relative references, walks up directory tree looking for folder named `node_modules` and will try to locate module there. |
 | Less configurable                                                           | More configurable                                                        |
 
+---
+
+## Generics
+
+### What are generics?
+
+- code that works with multiple types
+- accepts "type parameters" for each instance of invocation
+- can be applied to functions, interfaces, and classes
+
+### What are type parameters?
+
+- specify the type a generic will operate over
+- listed separate from function parameters inside angle brackets
+- conventionally represented by letter `T` _(e.g. `Array<T>`)_
+- actual type provided at instance creation or function invocation
+
+### Using `Array` generic
+
+```typescript
+let poetryBooks: Book[];
+
+let fictionBooks: Array<Book>;
+
+const historyBooks = new Array<Book>(5);
+
+```
+
+### Generic Functions
+
+```typescript
+function logAndReturn<T>(thing: T): T {
+    console.log(`The Thing: ${thing}`);
+    return thing;
+}
+
+const someString: string = logAndReturn<string>('log this');
+
+const someBool: boolean = logAndReturn<boolean>(true);
+
+```
+
+### Generic Interfaces
+
+```typescript
+interface Inventory<T> {
+    getNewestItem: () => T;
+    addItem: (newItem: T) => void;
+    getAllItems: () => Array<T>;
+}
+
+let bookInventory: Inventory<Book>;
+const allBooks: Array<Book> = bookInventory.getAllItems();
+
+```
+
+### Generic Classes
+
+```typescript
+class Catalog<T> implements Inventory<T> {
+    private catalogItems = new Array<T>();
+
+    addItem(newItem: T) {
+        this.catalogItems.push(newItem);
+    }
+
+    // implement other interface methods here
+}
+
+const bookCatalog = new Catalog<Book>();
+
+```
+
+### Generic Constraints
+
+- describes types that may be passed as generic parameter
+- constraint is applied through use of `extends` keyword
+- only types satisfying constraint may be used
+
+```typescript
+interface CatalogItem {
+    catalogNumber: number;
+}
+
+class Catalog<T extends CatalogItem> implements Inventory<T> {
+    // implement interface methods here
+}
+
+```
