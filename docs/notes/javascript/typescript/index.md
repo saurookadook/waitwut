@@ -2,6 +2,7 @@
 title: 'TypeScript'
 date: '2025-03-06'
 fullPath: '/notes/javascript/typescript'
+iconComponentName: "typescript_icon"
 sectionSlug: 'notes'
 ---
 
