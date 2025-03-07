@@ -456,3 +456,27 @@ class Catalog<T extends CatalogItem> implements Inventory<T> {
 }
 
 ```
+
+---
+
+## Type Declaration Files
+
+### What are Type Declaration Files
+
+- sometimes serve as TypeScript wrapper for JavaScript libraries
+- include
+  - types for variables, functions, etc.
+  - define valid property names
+  - define function paramters
+  - and more
+- development-time tool
+- filenames end with `.d.ts`
+- available for thousands of libraries
+
+### Where to find declaration files?
+
+- sometimes included with libraries
+- [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
+  - GitHub repo containing thousands of type declaration files
+  - declaration files often maintained independently of related JavaScript library
+  - source for installation utilities
