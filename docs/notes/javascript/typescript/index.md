@@ -7,6 +7,12 @@ sectionSlug: 'notes'
 
 # Overview
 
+- [Arrays](#arrays)
+- [Type Narrowing](#type-narrowing)
+- [Functions](#functions)
+- [Interfaces](#interfaces)
+- [Classes](#classes)
+
 ## Arrays
 
 2 primary ways to declare types of arrays
