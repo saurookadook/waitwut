@@ -480,3 +480,45 @@ class Catalog<T extends CatalogItem> implements Inventory<T> {
   - GitHub repo containing thousands of type declaration files
   - declaration files often maintained independently of related JavaScript library
   - source for installation utilities
+
+---
+
+## Decorators
+
+- function that is applied to other code
+- form of [metaprogramming](https://en.wikipedia.org/wiki/Metaprogramming#:~:text=Metaprogramming%20is%20a%20computer%20programming,even%20modify%20itself%2C%20while%20running.)
+- similar to attributes in C# and annotations in Java
+- may be applied to...
+  - classes
+  - methods
+  - properties
+  - fields
+  - getters/setters
+
+```typescript
+function logMethodInfo(originalMethod: any, _context: ClassMethodDecoratorContext) {
+    return function replacementMethod(this: any, ...args: any[]) {
+        console.log(`Decorated construct: ${_context.kind}`);
+        console.log(`Decorated construct name: ${_context.name as string}`);
+
+        const result = originalMethod.call(this, ...args);
+        return result
+    }
+}
+
+class Documentary extends Video {
+    constructor(docTitle: string, docYear: number, public subject: string) {
+        super(docTitle, docYear);
+    }
+
+    @logMethodInfo
+    printItem(): void {
+        super.printItem();
+        console.log(`Subject: ${this.subject} (${this.year})`);
+    }
+
+    printCredits(): void {
+        console.log(`Producer: ${this.producer}`);
+    }
+}
+```
