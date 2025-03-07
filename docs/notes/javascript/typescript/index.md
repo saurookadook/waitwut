@@ -52,6 +52,8 @@ else {
 
 ```
 
+---
+
 ## Functions
 
 ### Adding Type Annotations
@@ -151,5 +153,93 @@ let releaseFunc: (someYear: number) => string;
 releaseFunc = ReleaseMessage;
 
 let message: string = releaseFunc(2024);
+
+```
+
+---
+
+## Interfaces
+
+- contracts that define types
+- compiler enforces contract via type checking
+- collection of property and method definitions
+- [duck typing](https://en.wikipedia.org/wiki/Duck_typing#:~:text=If%20it%20walks%20like%20a%20duck%20and%20it%20quacks%20like%20a%20duck,%20then%20it%20must%20be%20a%20duck)
+
+```typescript
+interface Duck {
+    color?: string;
+    quack: () => void;
+    swim: () => void;
+    walk: () => void;
+}
+
+const probablyADuck = {
+    quack: () => console.log('quacking like a duck'),
+    swim: () => console.log('swiming like a duck'),
+    walk: () => console.log('walking like a duck'),
+}
+
+function FlyOverWater(bird: Duck) { }
+
+FlyOverWater(probablyADuck);
+```
+
+### Interfaces For Functions
+
+```typescript
+function createMovieID(name: string, id: number): string {
+    return name + id;
+}
+
+interface IDBuilder {
+    (str: string, int: number): string;
+}
+
+const idBuilder: IDBuilder = createMovieID;
+
+/* As a property in another interface */
+interface Movie {
+    title: string;
+    director: string;
+    yearReleased: number;
+    streaming: boolean;
+    length?: number;
+    logReview?: ReviewLogger;
+}
+
+interface ReviewLogger {
+    (review: string): void;
+}
+```
+
+### Extending Interfaces
+
+```typescript
+interface LibraryResource {
+    catalogNumber: number;
+}
+
+interface Book {
+    title: string;
+}
+
+interface Encyclopedia extends LibraryResource, Book {
+    volume: number;
+}
+
+```
+
+### Interfaces with Classes
+
+```typescript
+interface Librarian {
+    doWork: () => void;
+}
+
+class ElementarySchoolLibrarian implements Librarian {
+    doWork() {
+        console.log('Reading to and teaching children...');
+    }
+}
 
 ```
