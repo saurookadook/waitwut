@@ -20,7 +20,7 @@ sectionSlug: 'notes'
 
 ## Arrays
 
-2 primary ways to declare types of arrays
+- 2 primary ways to declare types of arrays
 
 ```typescript
 const strArray1: string[] = ['here', 'are', 'strings'];
