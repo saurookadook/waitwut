@@ -13,6 +13,10 @@ sectionSlug: 'notes'
 - [Functions](#functions)
 - [Interfaces](#interfaces)
 - [Classes](#classes)
+- [Modules](#modules)
+- [Generics](#generics)
+- [Type Declaration Files](#type-declaration-files)
+- [Decorators](#decorators)
 
 ## Arrays
 
