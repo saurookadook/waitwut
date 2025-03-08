@@ -2,6 +2,7 @@
 title: 'TypeScript'
 date: '2025-03-06'
 fullPath: '/notes/javascript/typescript'
+iconComponentName: "typescript_icon"
 sectionSlug: 'notes'
 ---
 
@@ -12,10 +13,14 @@ sectionSlug: 'notes'
 - [Functions](#functions)
 - [Interfaces](#interfaces)
 - [Classes](#classes)
+- [Modules](#modules)
+- [Generics](#generics)
+- [Type Declaration Files](#type-declaration-files)
+- [Decorators](#decorators)
 
 ## Arrays
 
-2 primary ways to declare types of arrays
+- 2 primary ways to declare types of arrays
 
 ```typescript
 const strArray1: string[] = ['here', 'are', 'strings'];
@@ -350,4 +355,174 @@ class Course extends class { title: string = ''; } {
     subject: string = '';
 }
 
+```
+
+## Modules
+
+### Module Resolution Strategies
+
+- TypeScript compiler uses strategy specified by `"moduleResolution"` property
+  - as of 03/07/2025, the two available optiosn are `"Classic" | "Node"`
+- See [docs for more info](https://www.typescriptlang.org/docs/handbook/modules/theory.html#module-resolution)
+
+|                                   Classic                                   |                                   Node                                   |
+| :---                                                                        | :---                                                                     |
+| Defalut when emitting `"AMD"`, `"UMD"`, `"System"`, or `"ES2015"` modules.  | Default when emitting `"CommonJS"` modules                               |
+| Simple - compiler traverses directories looking for right module. If relative reference, exact module location provided as part of import statement. If non-relative reference, compiler walks up directory tree looking for module starting in location of importing file | Closely mirrors Node module resolution - For relative references, compiler looks for file or directory with name specified on import statement. For non-relative references, walks up directory tree looking for folder named `node_modules` and will try to locate module there. |
+| Less configurable                                                           | More configurable                                                        |
+
+---
+
+## Generics
+
+### What are generics?
+
+- code that works with multiple types
+- accepts "type parameters" for each instance of invocation
+- can be applied to functions, interfaces, and classes
+
+### What are type parameters?
+
+- specify the type a generic will operate over
+- listed separate from function parameters inside angle brackets
+- conventionally represented by letter `T` _(e.g. `Array<T>`)_
+- actual type provided at instance creation or function invocation
+
+### Using `Array` generic
+
+```typescript
+let poetryBooks: Book[];
+
+let fictionBooks: Array<Book>;
+
+const historyBooks = new Array<Book>(5);
+
+```
+
+### Generic Functions
+
+```typescript
+function logAndReturn<T>(thing: T): T {
+    console.log(`The Thing: ${thing}`);
+    return thing;
+}
+
+const someString: string = logAndReturn<string>('log this');
+
+const someBool: boolean = logAndReturn<boolean>(true);
+
+```
+
+### Generic Interfaces
+
+```typescript
+interface Inventory<T> {
+    getNewestItem: () => T;
+    addItem: (newItem: T) => void;
+    getAllItems: () => Array<T>;
+}
+
+let bookInventory: Inventory<Book>;
+const allBooks: Array<Book> = bookInventory.getAllItems();
+
+```
+
+### Generic Classes
+
+```typescript
+class Catalog<T> implements Inventory<T> {
+    private catalogItems = new Array<T>();
+
+    addItem(newItem: T) {
+        this.catalogItems.push(newItem);
+    }
+
+    // implement other interface methods here
+}
+
+const bookCatalog = new Catalog<Book>();
+
+```
+
+### Generic Constraints
+
+- describes types that may be passed as generic parameter
+- constraint is applied through use of `extends` keyword
+- only types satisfying constraint may be used
+
+```typescript
+interface CatalogItem {
+    catalogNumber: number;
+}
+
+class Catalog<T extends CatalogItem> implements Inventory<T> {
+    // implement interface methods here
+}
+
+```
+
+---
+
+## Type Declaration Files
+
+### What are Type Declaration Files
+
+- sometimes serve as TypeScript wrapper for JavaScript libraries
+- include
+  - types for variables, functions, etc.
+  - define valid property names
+  - define function paramters
+  - and more
+- development-time tool
+- filenames end with `.d.ts`
+- available for thousands of libraries
+
+### Where to find declaration files?
+
+- sometimes included with libraries
+- [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
+  - GitHub repo containing thousands of type declaration files
+  - declaration files often maintained independently of related JavaScript library
+  - source for installation utilities
+
+---
+
+## Decorators
+
+- function that is applied to other code
+- form of [metaprogramming](https://en.wikipedia.org/wiki/Metaprogramming#:~:text=Metaprogramming%20is%20a%20computer%20programming,even%20modify%20itself%2C%20while%20running.)
+- similar to attributes in C# and annotations in Java
+- may be applied to...
+  - classes
+  - methods
+  - properties
+  - fields
+  - getters/setters
+
+```typescript
+function logMethodInfo(originalMethod: any, _context: ClassMethodDecoratorContext) {
+    return function replacementMethod(this: any, ...args: any[]) {
+        console.log(`Decorated construct: ${_context.kind}`);
+        console.log(`Decorated construct name: ${_context.name as string}`);
+
+        const result = originalMethod.call(this, ...args);
+        return result
+    }
+}
+
+class Documentary extends Video {
+    constructor(docTitle: string, docYear: number, public subject: string) {
+        super(docTitle, docYear);
+    }
+
+    @logMethodInfo
+    printItem(): void {
+        super.printItem();
+        console.log(`Subject: ${this.subject} (${this.year})`);
+    }
+
+    printCredits(): void {
+        console.log(`Producer: ${this.producer}`);
+    }
+}
 ```
