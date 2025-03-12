@@ -167,6 +167,10 @@ let message: string = releaseFunc(2024);
 
 ```
 
+### Misc
+
+- function that throws an error can have inferred return type of `never`
+
 ---
 
 ## Interfaces
