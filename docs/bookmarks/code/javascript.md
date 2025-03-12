@@ -17,6 +17,18 @@ sectionSlug: "bookmarks"
 
 ---
 
+### Popular Libraries
+
+- [Lodash](https://lodash.com/)
+- [Jest](https://jestjs.io/)
+- [React](https://react.dev/)
+- [NestJS](https://nestjs.com/)
+- [ExpressJS](https://expressjs.com/)
+- [RxJS](https://rxjs.dev/guide/overview)
+- [Angular](https://angular.io/)
+
+---
+
 ### JWT
 
 - [JSON Web Tokens - jwt.io](https://jwt.io/)
@@ -118,7 +130,7 @@ _TODO_ 🫠
 
 ### Testing
 
-- [Jest · 🃏 Delightful JavaScript Testing](https://jestjs.io/)
+- [Jest](https://jestjs.io/)
 
 ---
 
