@@ -6,11 +6,14 @@ iconComponentName: "javascript_icon"
 sectionSlug: 'notes'
 ---
 
-# Overview
+## Overview
 
 - [Promises](#promises)
+- [`async/await`](#asyncawait)
+- [Long-running Tasks](#long-running-tasks)
+- [Throttling and Debouncing](#throttling-and-debouncing)
 
-## Promises
+### Promises
 
 ```javascript
 function getMoviesByDirector(director) {
@@ -57,6 +60,88 @@ getMoviesByDirector(directorArg)
 
 ---
 
-## `async/await`
+### `async/await`
 
+🚧 **WIP** 🚧
 
+---
+
+### Long-running Tasks
+
+- can use `setTimeout` to break code up into smaller chunks to be run as individual tasks
+- prevents main thread becoming unresponsive to user interactions
+
+---
+
+### Throttling and Debouncing
+
+#### Throttling
+
+- technique for preventing function/method from being called more than once every `X` milliseconds
+- think of it as _"**slowing down a constant stream of events**"_
+- basic throttle function
+  - takes another function and time limit as arguments
+  - returns function which first checks whether passed function has already run
+  - if not, calls function and updates `lastRan` variable with current timestamp
+  - if it already ran, clears existing timer and creates new timer for `<limit> - <time between now and when it was last run>`
+
+```javascript
+function throttle(fn, limit) {
+    let timerId;
+    let lastRan;
+
+    return function(...args) {
+        if (!lastRan) {
+            fn.apply(this, args);
+            lastRan = Date.now();
+        } else {
+            const now = Date.now();
+            clearTimeout(timerId);
+            timerId = setTimeout(() => {
+                if ((now - lastRan) >= limit) {
+                    fn.apply(this, args);
+                    lastRan = now;
+                }
+            }, limit - (now - lastRan));
+        }
+    }
+}
+
+const recalcLayout = () => {
+    // recalculate something about the layout
+};
+
+window.addEventListener(
+    'resize',
+    throttle(recalcLayout, 200);
+)
+```
+
+#### Debouncing
+
+- technique to ensure that function/method is only called after a specified delay has occurred since function was last invoked
+- if function called again before timer has expired, function is not invoked and timer restarted
+- think of it as _"**waiting for stream of events to have stopped, then invoking function**"_
+
+```javascript
+function debounce(fn, delay) {
+    let timerId;
+
+    return function(...args) {
+        clearTimeout(timerId);
+        timerId = setTimeout(
+            () => fn.apply(this, args),
+            delay
+        );
+    };
+}
+
+const lookahead = () => {
+    // get lookahead data
+};
+
+input.addEventListener(
+    'input',
+    debounce(lookahead, 300)
+);
+```
