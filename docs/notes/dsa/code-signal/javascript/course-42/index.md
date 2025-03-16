@@ -624,8 +624,264 @@ function mergeSort(unsortedArray) {
 
 ## Mastering the Sort Function: Organizing Data in JavaScript
 
-🚧
+### Custom Sorting with JavaScript's Sort Function
+
+The true power of `sort()` reveals itself when you provide a compare function. This function determines the sorting order. Let's look at an array of scores sorted in descending order:
+
+```javascript
+let scores = [60, 90, 82, 100, 56];
+scores.sort((a, b) => b - a);
+
+console.log(scores); // Output: [100, 90, 82, 60, 56]
+```
+
+### Multi-Factor Sorting in JavaScript
+
+We can sort arrays on multiple layers using JavaScript's `sort()` function. This technique is called multi-factor sorting.
+
+Consider an array of objects representing students, with each object containing the student's name and grade. We can sort this array by grade and name within each grade.
+
+```javascript
+let students = [
+    { name: "Tom", grade: 90 },
+    { name: "Jerry", grade: 95 },
+    { name: "Mickey", grade: 90 },
+    { name: "Donald", grade: 95 }
+];
+
+students.sort((a, b) => {
+    if (a.grade < b.grade) return -1;
+    if (a.grade > b.grade) return 1;
+
+    // Here, `grade` is same so we sort by `name`
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+
+    return 0;
+});
+
+/* Slightly more DRY solution */
+const sortOrderProperties = [
+    'grade',
+    'name',
+];
+
+students.sort((a, b) => {
+    for (const property of sortOrderProperties) {
+        if (a[property] < b[property]) return -1;
+        if (a[property] > b[property]) return 1;
+    }
+
+    return 0;
+});
+
+```
 
 ## Advanced Techniques with Sorting Algorithms: K-th Largest Element and Inversion Count
 
-🚧
+### Problem 1: Finding K-th Number in an Array
+
+Picture an array of numbers and a number `k`. Your mission is to discover the `k`-th smallest number in that array. `k` starts from `1`, so when `k = 1`, we seek the smallest number; when `k = 2`, we want the second smallest, and onwards.
+
+#### Simple Solutions
+
+The first solution might involve scanning and shrinking the array by removing the smallest number until you reach the `k`-th smallest. But this method, while straightforward, has a time complexity of **`O(n^2)`** due to continuous array rewriting.
+
+An efficient plan might be to sort the array and then directly select the `k`-th number:
+
+```javascript
+inputArray.sort((a, b) => a - b);
+return inputArray[k - 1];
+```
+
+This method has a better time complexity - **`O(n*log n)`**. But can we do even better? Quick Sort thinks so.
+
+#### Quick Sort to the Rescue
+
+Quick Sort can provide an optimal solution.
+- We’ll divide the array into two parts using a pivot:
+  - the left side contains numbers less than the pivot
+  - the right side has all greater numbers
+- If the pivot's position equals `k`, that's our answer! If not, we repeat the process on the necessary partition.
+
+##### Building the Solution
+
+###### Partition
+
+```javascript
+/**
+ * @description Partitions array in place
+ * @param {Array} arr
+ * @param {number} low
+ * @param {number} high
+ * @returns {number} Position of new low value
+ */
+function partitionForSmallest(arr, low, high) {
+    console.log('    partitionForSmallest    '.padStart(80, '|').padEnd(120, '|'))
+    console.log({
+        place: 'START',
+        arr,
+        low,
+        high,
+    });
+    const pivot = arr[low];
+    let newLow = low;
+
+    for (let j = low + 1; j <= high; j++) {
+        if (arr[j] <= pivot) {
+            newLow++;
+            [arr[newLow], arr[j]] = [arr[j], arr[newLow]];
+        }
+    }
+
+    [arr[newLow], arr[low]] = [arr[low], arr[newLow]];
+    console.log('\n', {
+        place: 'END',
+        arr,
+        newLow,
+        low,
+        high,
+    });
+    console.log(''.padStart(120, '|'));
+    return newLow;
+}
+
+function partitionForLargest(arr, low, high) {
+    console.log('    partitionForLargest    '.padStart(80, '|').padEnd(120, '|'))
+    console.log({
+        fnName: 'START',
+        arr,
+        low,
+        high,
+    });
+    let pivot = arr[high];
+    let i = low - 1;
+
+    for (let j = low; j <= high - 1; j++) {
+        if (arr[j] >= pivot) {
+            i++;
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    }
+
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+    console.log('\n', {
+        fnName: 'END',
+        arr,
+        newLow: i + 1,
+        low,
+        high,
+    });
+    console.log(''.padStart(120, '|'));
+    return i + 1;
+}
+```
+
+###### Main Logic
+
+- if pivot's position equals `k`, return pivot
+- else, check appropriate partition
+
+```javascript
+const partition = partitionForSmallest
+
+const lessThanArrayPortionLength = (x, start, end) => {
+    const arrayPortionLength = end - start + 1
+    return x <= arrayPortionLength;
+}
+
+function kthSmallest(arr, start, end, k) {
+    if (k > 0 && lessThanArrayPortionLength(k, start, end)) {
+        const pivotPosition = partition(arr, start, end);
+        // if pivot's position === k
+        if (pivotPosition - start === k - 1) {
+            return arr[pivotPosition];
+        }
+
+        return (pivotPosition - start > k - 1)
+            ? kthSmallest(arr, start, pivotPosition - 1, k)
+            : kthSmallest(arr, pivotPosition + 1, end, k - pivotPosition + start - 1);
+    }
+
+    return Number.MAX_SAFE_INTEGER;
+}
+
+function findKthSmallest(numbers, k) {
+    if (!numbers || numbers.length < k) return Number.MIN_SAFE_INTEGER;
+    return kthSmallest(numbers, 0, numbers.length - 1, k);
+}
+
+console.log(findKthSmallest([1, 7, 2, 4, 2, 1, 6], 5));  // Prints 4
+```
+
+**Additional notes about solution**
+
+`Number.MIN_SAFE_INTEGER` is returned by `findKthSmallest` if the input array `numbers` is empty or has fewer elements than `k`. This could represent a case where the `k` smallest value doesn't exist.
+
+`Number.MAX_SAFE_INTEGER` is used in the `kthSmallest` function if `k` is either less than 1 or greater than the length of the portion of the array being considered. This could mean that there's an error in the `k` parameter passed, or the array doesn't have enough elements.
+
+These extreme values are used because they are unlikely to be a valid result in any normal situation, making it easy to spot when something has gone wrong. It's a convention to return values which clearly indicate error situations, aiding in debugging and error handling.
+
+### Problem 2: Counting Flips in an Array
+
+Problem two presents an array; your challenge is counting the **flips** or **inversions**. An **inversion** is _a pair of numbers with the higher one coming first_.
+
+For instance, in `numbers = [4, 2, 1, 3]`, there are **4 inversions**: `(4, 2)`, `(4, 1)`, `(4, 3)`, and `(2, 1)`.
+
+#### Using Merge Sort
+Merge Sort can efficiently solve this. It sorts an array in **`O(n*log n)`** by splitting it, sorting the halves, and merging them. During this process, we can count the inversions.
+
+When merging, a smaller number on the right than a number on the left reveals an inversion. And it's not just one: there are as many inversions as the remaining numbers on the left.
+
+##### Building the Solution
+
+###### Helper Function
+
+```javascript
+function mergeAndCount(arr1, arr2) {
+    let i = 0;
+    let j = 0;
+    let merged = [];
+    let inversions = 0;
+
+    while (i < arr1.length || j < arr2.length) {
+        if (i === arr1.length) {
+            merged.push(arr2[j]);
+            j++;
+        } else if (j === arr2.length) {
+            merged.push(arr1[i]);
+            i++;
+        } else if (arr1[i] <= arr2[j]) {
+            merged.push(arr1[i]);
+            i++
+        } else {
+            merged.push(arr2[j]);
+            j++;
+            inversions += (arr1.length - i);
+        }
+    }
+
+    return [merged, inversions];
+}
+```
+
+###### Main Function
+
+```javascript
+function countInversions(arr) {
+    if (arr.length === 1) return [arr, 0];
+
+    const middle = Math.floor(arr.length / 2);
+    const [left, leftInversions] = countInversions(arr.slice(0, middle));
+    const [right, rightInversions] = countInversions(arr.slice(middle));
+    const [merged, mergedInversions] = mergeAndCount(left, right);
+
+    return [
+        merged,
+        leftInversions + rightInversions + mergedInversions,
+    ];
+}
+
+console.log(countInversions([4, 2, 1, 3])); // Prints [ [ 1, 2, 3, 4 ], 4 ]
+
+```
