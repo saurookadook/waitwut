@@ -1,7 +1,7 @@
 ---
 title: 'Hashing, Dictionaries, and Sets in JS'
 date: '2024-10-07'
-fullPath: '/notes/dsa/code-signal/javascript/course-41'
+fullPath: '/notes/dsa/code-signal/javascript/algos-and-ds/course-1-41'
 sectionSlug: 'notes'
 ---
 

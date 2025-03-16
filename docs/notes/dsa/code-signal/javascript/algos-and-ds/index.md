@@ -1,7 +1,7 @@
 ---
 title: 'Mastering Algorithms and Data Structures in JavaScript'
 date: '2024-10-07'
-fullPath: '/notes/dsa/code-signal/javascript'
+fullPath: '/notes/dsa/code-signal/javascript/algos-and-ds'
 sectionSlug: 'notes'
 ---
 

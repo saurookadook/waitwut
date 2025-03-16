@@ -1,7 +1,7 @@
 ---
 title: 'Sorting and Searching Algorithms in JS'
 date: '2025-01-03'
-fullPath: '/notes/dsa/code-signal/javascript/course-42'
+fullPath: '/notes/dsa/code-signal/javascript/algos-and-ds/course-2-42'
 sectionSlug: 'notes'
 ---
 
