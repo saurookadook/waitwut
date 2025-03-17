@@ -53,13 +53,10 @@ _in pseudo Python ([ref. from Wikipedia](https://en.wikipedia.org/wiki/Minimax))
 </figcaption>
 </figure>
 
-
-
 ### Negamax
 
 - common simplification of the [minimax algorithm](#minimax)
 - **terminal node**: has score that would be game ending _(i.e. corresponding to win, lose, or draw)_
-
 
 <figure>
 
@@ -140,3 +137,67 @@ Formula for using the modulus operator to cycle through integer values
 
 </figcaption>
 </figure>
+
+---
+
+## Memoization
+
+- special form of caching
+- store results of function calls based on inputs
+- useful for functions where expensive computations that are often called with same parameters
+
+```javascript
+function memoize(fn) {
+    const cache = {};
+
+    return function(...args) {
+        const key = JSON.stringify(...args);
+
+        if (cache[key]) {
+            return cache[key];
+        }
+
+        const result = fn(...args);
+        cache[key] = result;
+        return result;
+    }
+}
+
+function fib(n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
+}
+
+const memoizedFibonacci = memoize(fib);
+
+memoizedFibonacci(10);
+memoizedFibonacci(10); // <- this call will just return cached result
+```
+
+---
+
+## Caching
+
+- general term referring to storing data temporarily to avoid getting/calculating that data again
+- for example, how a browser caches static assets _(images, etc.)_ by domain
+- when domain visited again, unchanged assets loaded from cache instead of fetched again
+
+```javascript
+class DataCache {
+    #cache = {};
+
+    getData(key) {
+        if (this.#cache[key]) {
+            return this.#cache[key];
+        }
+
+        const data = this.#fetchData(key);
+        this.#cache[key] = data;
+        return data;
+    }
+
+    #fetchData(key) {
+        // get data from API/DB/etc.
+    }
+}
+```
