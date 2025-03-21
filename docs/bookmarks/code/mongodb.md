@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/mongodb"
 sectionSlug: "bookmarks"
 ---
 
-## MongoDB
+## General
 
 - [How to resolve SocketException: Address already in use MongoDB | by Balasubramani M | Medium](https://medium.com/@balasubramanim/how-to-resolve-socketexception-address-already-in-use-mongodb-75fa8ea4a2a6)
 - [Quick Cheat Sheet for Mongo DB Shell commands.](https://gist.github.com/michaeltreat/d3bdc989b54cff969df86484e091fd0c)
