@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/wordpress"
 sectionSlug: "bookmarks"
 ---
 
-## Wordpress
+## General
 
 - [The Complete WordPress Website Business Course | Udemy](https://www.udemy.com/the-complete-wordpress-website-business-course/learn/v4/t/lecture/5249312?start=0)
 - [Welcome to sFTP Client](https://www.sftpclient.io/gb)

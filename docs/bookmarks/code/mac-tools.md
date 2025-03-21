@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/mac-tools"
 sectionSlug: "bookmarks"
 ---
 
-## Mac Tools
+## General
 
 - [rugarciap/Turbo-Boost-Switcher: Turbo Boost disabler / enable app for Mac OS X](https://github.com/rugarciap/Turbo-Boost-Switcher)
 - [Turbo Boost Switcher Pro for Mac](https://gumroad.com/l/YeBQUF)

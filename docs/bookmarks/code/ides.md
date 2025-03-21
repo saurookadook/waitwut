@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/ides"
 sectionSlug: "bookmarks"
 ---
 
-## IDEs
+## General
 
 - [Features](https://www.gitpod.io/features)
 - [Dash for macOS - API Documentation Browser, Snippet Manager - Kapeli](https://kapeli.com/dash)

@@ -7,7 +7,7 @@ sectionSlug: "bookmarks"
 
 <!-- Original path slug: node-js_nvm_npm -->
 
-## Node.js/nvm/npm
+## General
 
 - [How to Update Node.js to Latest Version (Linux, Ubuntu, OSX, Others) - HostingAdvice.com](https://www.hostingadvice.com/how-to/update-node-js-latest-version/#winmac)
 - [styled-css-grid - npm](https://www.npmjs.com/package/styled-css-grid)

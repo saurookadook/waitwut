@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/react-redux"
 sectionSlug: "bookmarks"
 ---
 
-## React/Redux
+## General
 
 - [Common Props Reference](https://react.dev/reference/react-dom/components/common#common-props)
 - [Make Your React Components Pretty 💅 - WalmartLabs - Medium](https://medium.com/walmartlabs/make-your-react-components-pretty-a1ae4ec0f56e)

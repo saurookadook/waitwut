@@ -14,12 +14,6 @@ sectionSlug: "bookmarks"
 
 ---
 
-#### Jest
-
-- [javascript - Trigger useEffect in Jest testing - Stack Overflow](https://stackoverflow.com/questions/59147444/trigger-useeffect-in-jest-testing)
-
----
-
 ### React Native
 
 - [facebook/react-native: A framework for building native apps with React.](https://github.com/facebook/react-native)
@@ -172,6 +166,3 @@ sectionSlug: "bookmarks"
 - [Fullstack Vue Book - The Complete Guide to Vue.js](https://www.fullstack.io/vue/)
 - [React 16 - The Complete Guide (incl. React Router 4 & Redux) | Udemy](https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/t/lecture/8090834?start=15)
 - [I created the exact same app in React and Vue. Here are the differences.](https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd)
-
-</p>
-</details>

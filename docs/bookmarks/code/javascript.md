@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/javascript"
 sectionSlug: "bookmarks"
 ---
 
-## JavaScript
+## General
 
 - [Standard built-in objects - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
 - [EXAMPLES](https://tonejs.github.io/examples/)
@@ -51,18 +51,6 @@ sectionSlug: "bookmarks"
 ### Axios
 
 - [axios/axios: Promise based HTTP client for the browser and node.js](https://github.com/axios/axios)
-
----
-
-### Typescript
-
-- [A quick introduction to “Type Declaration” files and adding type support to your JavaScript packages | by Uday Hiwarale | JsPoint | Medium](https://medium.com/jspoint/typescript-type-declaration-files-4b29077c43)
-- [TypeScript: Documentation - Introduction](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
-- [Adding TypeScript | Create React App](https://create-react-app.dev/docs/adding-typescript/)
-- [Advanced Configuration | Create React App](https://create-react-app.dev/docs/advanced-configuration/)
-- [How to declare global types in TypeScript | bobbyhadz](https://bobbyhadz.com/blog/typescript-make-types-global)
-- [TypeScript Cheatsheet, Common Errors, and More | Joshua's Docs](https://docs.joshuatz.com/cheatsheets/typescript/)
-- [TypeScript: Documentation - Global .d.ts](https://www.typescriptlang.org/docs/handbook/declaration-files/templates/global-d-ts.html)
 
 ---
 
@@ -118,7 +106,10 @@ _TODO_ 🫠
 
 ### Testing
 
+#### Jest
+
 - [Jest · 🃏 Delightful JavaScript Testing](https://jestjs.io/)
+- [javascript - Trigger useEffect in Jest testing - Stack Overflow](https://stackoverflow.com/questions/59147444/trigger-useeffect-in-jest-testing)
 
 ---
 

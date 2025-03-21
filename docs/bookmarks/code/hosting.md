@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/hosting"
 sectionSlug: "bookmarks"
 ---
 
-## Hosting
+## General
 
 - _[TODO 🙃](#)_
 

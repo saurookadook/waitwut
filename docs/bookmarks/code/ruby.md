@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/ruby"
 sectionSlug: "bookmarks"
 ---
 
-## Ruby
+## General
 
 - [The Definitive RSpec Tutorial With Examples - RubyGuides](https://www.rubyguides.com/2018/07/rspec-tutorial/)
 - [Introduction to Importing from CSV in Rails - YouTube](https://www.youtube.com/watch?v=mTnsUyLuPgY)
