@@ -58,6 +58,61 @@ getMoviesByDirector(directorArg)
     .catch((reason) => console.error(`Error getting movies for ${directorArg}`, reason)); // <- will get called with thrown error from first `then` call
 ```
 
+#### Arrays of Promises
+
+```javascript
+// Examples of a `Promise.all` helper without using `Promise.all`
+
+function waitForAll(promises) {
+    const results = [];
+    let completed = 0;
+    const rejected = null;
+
+    for (let i = 0; i < promises.length; i++) {
+        promises[i].then((res) => {
+            results[i] = res;
+            completed++;
+            return res;
+        }).catch((err) => {
+            rejected = err;
+            return err;
+        })
+    }
+
+    return new Promise((resolve, reject) => {
+        var checkIsDone = setInterval(() => {
+            if (completed === promises.length) {
+                clearInterval(checkIsDone);
+                resolve(results);
+            } else if (rejected != null) {
+                clearInterval(checkIsDone);
+                reject(rejected);
+            }
+        }, 0);
+    });
+}
+
+function _waitForAll(promises) {
+    return new Promise((resolve, reject) => {
+        const results = [];
+        let completed = 0;
+
+        promises.forEach((promise, i) => {
+            promise.then((res) => {
+                results[i] = res;
+                completed++;
+
+                if (completed === promises.length) {
+                    resolve(results);
+                }
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+    })
+}
+```
+
 ---
 
 ### `async/await`
