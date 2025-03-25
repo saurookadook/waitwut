@@ -184,6 +184,10 @@ let message: string = releaseFunc(2024);
 - collection of property and method definitions
 - [duck typing](https://en.wikipedia.org/wiki/Duck_typing#:~:text=If%20it%20walks%20like%20a%20duck%20and%20it%20quacks%20like%20a%20duck,%20then%20it%20must%20be%20a%20duck)
 
+> &nbsp;
+> ⚠️ **BEWARE**: In a class that extends an interface, TypeScript _**will not**_ throw an error if a class method's signature is subset of the method defined by the interface. However, TypeScript _**will**_ throw an error if a class method's signature is a superset of the method defined by the interface.
+> &nbsp;
+
 ```typescript
 interface Duck {
     color?: string;
