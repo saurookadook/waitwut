@@ -5,11 +5,16 @@ fullPath: "/bookmarks/code/typescript"
 sectionSlug: "bookmarks"
 ---
 
-# TypeScript
-
 ## General
 
-_TODO_
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [A quick introduction to “Type Declaration” files and adding type support to your JavaScript packages | by Uday Hiwarale | JsPoint | Medium](https://medium.com/jspoint/typescript-type-declaration-files-4b29077c43)
+- [TypeScript: Documentation - Introduction](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
+- [Adding TypeScript | Create React App](https://create-react-app.dev/docs/adding-typescript/)
+- [Advanced Configuration | Create React App](https://create-react-app.dev/docs/advanced-configuration/)
+- [How to declare global types in TypeScript | bobbyhadz](https://bobbyhadz.com/blog/typescript-make-types-global)
+- [TypeScript Cheatsheet, Common Errors, and More | Joshua's Docs](https://docs.joshuatz.com/cheatsheets/typescript/)
+- [TypeScript: Documentation - Global .d.ts](https://www.typescriptlang.org/docs/handbook/declaration-files/templates/global-d-ts.html)
 
 ## Tutorials
 

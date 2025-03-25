@@ -7,7 +7,7 @@ sectionSlug: "bookmarks"
 
 <!-- Original path slug: rails-tools_articles -->
 
-## Rails Tools/Articles
+## General
 
 - [twbs/bootstrap-rubygem: Bootstrap 4 Ruby Gem for Rails / Sprockets and Compass.](https://github.com/twbs/bootstrap-rubygem)
 - [varvet/pundit: Minimal authorization through OO design and pure Ruby classes](https://github.com/varvet/pundit)
