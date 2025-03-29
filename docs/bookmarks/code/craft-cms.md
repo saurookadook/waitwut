@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/craft-cms"
 sectionSlug: "bookmarks"
 ---
 
-## Craft CMS
+## General
 
 - [craft cms database structure diagram - Google Search](https://www.google.com/search?q=craft+cms+database+structure+diagram&rlz=1C5CHFA_enUS779US779&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi5w4H_mfXfAhWOGXwKHatXDSMQ_AUIDigB&biw=945&bih=868#imgrc=hm9Q4Xxykfo6BM:)
 - [Package 'mysql-client' has no installation candidate · Issue #220 · postlight/headless-wp-starter](https://github.com/postlight/headless-wp-starter/issues/220)

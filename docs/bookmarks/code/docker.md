@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/docker"
 sectionSlug: "bookmarks"
 ---
 
-### Docker
+## General
 
 - [Logs and troubleshooting | Docker Documentation](https://docs.docker.com/docker-for-mac/troubleshoot/#docker-knowledge-hub)
 - [BretFisher/udemy-docker-mastery: Udemy Course to build, compose, deploy, and manage containers from local development to high-availability in the cloud](https://github.com/bretfisher/udemy-docker-mastery)
@@ -15,7 +15,7 @@ sectionSlug: "bookmarks"
 
 ---
 
-#### Docker Compose
+### Docker Compose
 
 - [Docker-compose up failing because "port is already allocated" · Issue #4950 · docker/compose](https://github.com/docker/compose/issues/4950)
 

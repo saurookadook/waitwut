@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/arduino"
 sectionSlug: "bookmarks"
 ---
 
-## Arduino
+## General
 
 - [Why in RGB the biggest number for any particular color is 255? - Quora](https://www.quora.com/Why-in-RGB-the-biggest-number-for-any-particular-color-is-255)
 

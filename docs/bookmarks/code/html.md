@@ -1,11 +1,9 @@
 ---
-title: "HTML Bookmarks"
+title: "HTML"
 date: "2022-10-21"
 fullPath: "/bookmarks/code/html"
 sectionSlug: "bookmarks"
 ---
-
-# HTML
 
 ## General
 

@@ -1,11 +1,9 @@
 ---
-title: "CSS Bookmarks"
+title: "CSS"
 date: "2022-10-21"
 fullPath: "/bookmarks/code/css"
 sectionSlug: "bookmarks"
 ---
-
-# CSS Bookmarks
 
 ## General
 

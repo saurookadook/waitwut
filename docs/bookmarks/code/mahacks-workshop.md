@@ -5,9 +5,7 @@ fullPath: "/bookmarks/code/mahacks-workshop"
 sectionSlug: "bookmarks"
 ---
 
-## MAHacks Workshop
-
-### History
+## History
 
 - [About Ruby](https://www.ruby-lang.org/en/about/)
 - [The History of Ruby — SitePoint](https://www.sitepoint.com/history-ruby/)
@@ -17,6 +15,6 @@ sectionSlug: "bookmarks"
 - [Active record pattern - Wikipedia](https://en.wikipedia.org/wiki/Active_record_pattern)
 - [Ruby on Rails - Wikipedia](https://en.wikipedia.org/wiki/Ruby_on_Rails)
 
-### MVC
+## MVC
 
 - [Model-View-Controller (MVC) Explained Through Ordering Drinks At The Bar](https://medium.freecodecamp.org/model-view-controller-mvc-explained-through-ordering-drinks-at-the-bar-efcba6255053)
