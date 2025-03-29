@@ -6,8 +6,6 @@ iconComponentName: "typescript_icon"
 sectionSlug: 'notes'
 ---
 
-## Overview
-
 - [Arrays](#arrays)
 - [Type Narrowing](#type-narrowing)
 - [Functions](#functions)
@@ -17,6 +15,12 @@ sectionSlug: 'notes'
 - [Generics](#generics)
 - [Type Declaration Files](#type-declaration-files)
 - [Decorators](#decorators)
+
+## Overview
+
+- `ts-ast-viewer`: Useful tool for viewing [**abstract syntax tree**]() created by TypeScript compiler
+  - [web page](https://ts-ast-viewer.com/#)
+  - [GitHub repo](https://github.com/dsherret/ts-ast-viewer)
 
 ---
 
