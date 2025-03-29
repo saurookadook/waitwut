@@ -285,11 +285,38 @@ console.log(ms.getMax());  // Expected: 4
 
 ## Understanding Queues in JavaScript: From Concept to Code
 
-🚧 **WIP** 🚧
+- First-In, First-Out (FIFO) data structure
 
-### TBD
+### Implementing a Queue in JavaScript
 
-🚧 **WIP** 🚧
+```javascript
+class Queue {
+    constructor() {
+        this.data = [];
+    }
+
+    enqueue(element) {
+        this.data.push(element);
+    }
+
+    dequeue() {
+        if (this.isEmpty()) {
+            return "Underflow";
+        }
+
+        return this.data.shift();
+    }
+
+    isEmpty() {
+        return this.data.length <= 0;
+    }
+}
+```
+
+### Complexity Analysis of Queue Operations
+
+- **time complexity** of both `enqueue` and `dequeue` operations is constant: **`O(1)`**
+- **space complexity** of a queue scales with the number of elements: **`O(n)`**
 
 ---
 
