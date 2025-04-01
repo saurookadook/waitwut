@@ -451,3 +451,206 @@ a::after {
     Read More of the 1st Post
 </a>
 ```
+
+---
+
+## Accessible Form Design
+
+1. **Identify Required Fields**
+  - reduces cognitive load
+  - don't rely on color alone!
+2. **Add Special Formatting Requirements**
+  - reduces cognitive load
+  - prevents frustration
+3. **Add Clear, Descriptive Form Labels**
+  - all fields need a label
+  - don't solely use placeholder text to label fields _(disappears when we type)_
+4. **Provide Clear Feedback for Errors and Warnings**
+  - don't rely on color alone
+  - add a message
+
+### Native vs. Custom Form Controls
+
+Should _**always**_ use native controls if possible as custom markup will often require a lot of other HTML attributes and/or JavaScript to make them accessible.
+
+### Labeling and Describing Form Controls
+
+- Use `label` tags with the `for` attribute, which should have the value of the `id` for the related form field.
+```html
+<label for="firstName">First name</label>
+<input id="firstName" type="text" />
+```
+- Placeholder text should be reserved to providing more information to the user, like instructions or example values
+- When sensible, hidden labels are ok but must still exist in code _**and**_ be available to assistive technologies
+- Labels must be clear and descriptive
+- Provide instructions when needed
+- Group related fields _(such as using the `fieldset` tag)_
+- Mark required fields
+
+### Keyboard Navigation and Control
+
+1. **Focus and Active Indicators**
+  - browsers add them by default _(so don't remove them!)_
+  - they must exist
+  - they must be unobstructed
+  - they need plenty of contrast
+2. **Tab Order**
+  - ensure source order is correct
+  - should have a logical flow
+  - add tabindex for custom controls
+  - use native controls!
+3. **Avoid Non-standard Functionality**
+  - don't make it awkward!
+
+### Adding Accessibility to Custom Non-standard Form Controls
+
+#### WAI-ARIA
+- Accessible Rich Internet Applications
+- specification from W3C's Web Accessibility Initiative (WAI)
+- set of attributes for HTML to make it more accessible
+- [Common UI patterns with custom markup and full accessibility features](https://www.w3.org/WAI/ARIA/apg/patterns/)
+
+**Custom Select Example**
+```html
+<!-- BEFORE -->
+<span>
+    <input id="country" required hidden type="hidden" />
+    <span id="exp_elem" class="account__label">
+        Country <span class="account__required">*</span>
+    </span>
+    <div id="exp_wraper">
+        <div
+            tabindex="0"
+            id="exp_button"
+            onclick="toggleDropdown(event)">
+        </div>
+        <ul
+            tabindex="0"
+            id="exp_elem_list"
+            class="hidden">
+            <li id="exp_elem_au">Australia</li>
+            <li id="exp_elem_br">Brazil</li>
+            <li id="exp_elem_ca">Canada</li>
+            <li id="exp_elem_cl">Chile</li>
+            <!-- ... -->
+        </ul>
+    </div>
+</span>
+
+<!-- AFTER -->
+<span>
+    <input id="country" required hidden type="hidden" />
+    <span id="exp_elem" class="account__label">
+        Country <span class="account__required">*</span>
+    </span>
+    <div id="exp_wraper">
+        <button
+            tabindex="0"
+            aria-labelledby="exp_elem exp_button"
+            aria-haspopup="listbox"
+            id="exp_button"
+            onclick="toggleDropdown(event)">
+        </button>
+        <ul
+            tabindex="0"
+            role="listbox"
+            aria-labelledby="exp_elem"
+            id="exp_elem_list"
+            class="hidden">
+            <li id="exp_elem_au" role="option">Australia</li>
+            <li id="exp_elem_br" role="option">Brazil</li>
+            <li id="exp_elem_ca" role="option">Canada</li>
+            <li id="exp_elem_cl" role="option">Chile</li>
+            <!-- ... -->
+        </ul>
+    </div>
+</span>
+```
+
+### Creating Accessible Form Validation
+
+1. **Feedback for Both Success and Failure**
+  - report if there are errors
+  - report successful submission too
+2. **Error Can Be Read By Assistive Technologies**
+  - don't rely on icons and colors only
+  - inaccessible to those who don't see color
+  - inaccessible to those who can't see
+3. **Avoid Disabling the Submit Button**
+  - the disabled button won't ever receive focus for someone using keyboard only to navigate
+  - better to let users submit data at any time and if error exists, set focus on first field with error
+4. **Error Messages Should be Helpful**
+  - needs to be clear!
+  - consider an email field
+    - "Error" is a bad error message
+    - "Error: email address is invalid, example@domain.com" is much better
+
+---
+
+## Adding Accessibility to Images and Media
+
+### The `alt` Attribute
+
+- short description of the content of the image
+- present the content and function of the image
+- should be succinct, a single sentence or two
+- should **not** be redundant to context of content around it
+- should **not** restate that it's an image/graphic/illustration/etc.
+- commonly recommended that every image has alt attribute
+  - in some cases, it can be empty: if content around image would make the text redundant, sometimes icons, etc.
+
+### Images Containing Content
+
+- for the most part, just add text content in image to alt text
+- for images applied as CSS backgrounds, use `role="image"` and `aria-label="..."`
+
+### Purely Decorative Images
+
+- for `img` tags, use empty `alt` attribute
+- could also apply the CSS as a background image
+- `aria-hidden="true"`
+
+### Complex Images
+
+- can't be described in a short sentence or two
+- charts, graphs, diagrams, illustrations, etc.
+- require more in-depth descriptions
+- if description length allows, can add detailed description inside `figcaption`
+```html
+<figure role="group">
+    <div>
+        <img alt="Super Complex Thing" src="..." />
+    </div>
+
+    <figcaption>
+        <h2>
+            Super Complex Thing
+        </h2>
+        <dl>
+            <dt>
+                First part of complex thing
+            </dt>
+            <dd>...</dd>
+
+        </dl>
+    </figcaption>
+</figure>
+```
+- if description is sufficiently long, put description in its own page and link to page in `figcaption`
+
+---
+
+## Video, Audio, and Accessibility
+
+1. **Captions**
+  - text alternatives for time-based media (video or audio)
+  - help those that are hearing impaired or do not have access to sound
+  - closed and open captions are acceptable
+  - should be...
+    - adjustable for size, font, and color
+    - synchronized with audio
+    - equivalent to spoken word
+2. **Provide Transcripts**
+  - allow content to be read in one form or another
+  - provide textual version of content
+  - not intended to be created verbatim
