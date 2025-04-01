@@ -6,8 +6,7 @@ iconComponentName: "typescript_icon"
 sectionSlug: 'notes'
 ---
 
-## Overview
-
+- [Reference Repositories](#reference-repositories)
 - [Arrays](#arrays)
 - [Type Narrowing](#type-narrowing)
 - [Functions](#functions)
@@ -20,7 +19,15 @@ sectionSlug: 'notes'
 
 ---
 
-### Arrays
+## Reference Repositories
+
+- [pstypescriptcc](https://github.com/saurookadook/pstypescriptcc)
+- [typescript-5-exemplar](https://github.com/saurookadook/typescript-5-exemplar)
+- [software-patterns-in-ts](https://github.com/saurookadook/software-patterns-in-ts)
+
+---
+
+## Arrays
 
 - 2 primary ways to declare types of arrays
 
@@ -32,7 +39,7 @@ const strArray2: Array<string> = ['more', 'strings', 'here'];
 
 ---
 
-### Type Narrowing
+## Type Narrowing
 
 ```typescript
 function getReview(title: string): string | number {
@@ -69,9 +76,9 @@ else {
 
 ---
 
-### Functions
+## Functions
 
-#### Adding Type Annotations
+### Adding Type Annotations
 
 ```typescript
 function simpleExample(score: number, message: string): string {
@@ -79,7 +86,7 @@ function simpleExample(score: number, message: string): string {
 }
 ```
 
-#### Options Parameters
+### Options Parameters
 
 - denoted with `?` after parameter name
 - must appear after all required parameters
@@ -88,7 +95,7 @@ function simpleExample(score: number, message: string): string {
 function createCustomer(name: string, age?: number) { }
 ```
 
-#### Default Parameters
+### Default Parameters
 
 - may be set to a literal value or an expression
 
@@ -98,7 +105,7 @@ function getBookByTitle(title: string = 'The C Programming Language') { }
 function getBookByTitle(title: string = getMostPopularBook()) { }
 ```
 
-#### Rest Parameters
+### Rest Parameters
 
 - collects group of parameters into a **single array**
 
@@ -111,7 +118,7 @@ let booksForDaniel = getBooksReadForCustomer('Daniel', 2, 5, 12, 42);
 
 ```
 
-#### Function Overloads
+### Function Overloads
 
 - one symbol name
 - multiple function types
@@ -135,7 +142,7 @@ function getTitles(bookProperty: string | boolean): string[] {
 
 ```
 
-#### Function Types
+### Function Types
 
 - [docs](https://www.typescriptlang.org/docs/handbook/2/functions.html)
 
@@ -171,13 +178,13 @@ let message: string = releaseFunc(2024);
 
 ```
 
-#### Misc
+### Misc
 
 - function that throws an error can have inferred return type of `never`
 
 ---
 
-### Interfaces
+## Interfaces
 
 - contracts that define types
 - compiler enforces contract via type checking
@@ -205,7 +212,7 @@ FlyOverWater(probablyADuck);
 
 ---
 
-### Interfaces For Functions
+## Interfaces For Functions
 
 ```typescript
 function createMovieID(name: string, id: number): string {
@@ -235,7 +242,7 @@ interface ReviewLogger {
 
 ---
 
-### Extending Interfaces
+## Extending Interfaces
 
 ```typescript
 interface LibraryResource {
@@ -254,7 +261,7 @@ interface Encyclopedia extends LibraryResource, Book {
 
 ---
 
-### Interfaces with Classes
+## Interfaces with Classes
 
 ```typescript
 interface Librarian {
@@ -271,9 +278,9 @@ class ElementarySchoolLibrarian implements Librarian {
 
 ---
 
-### Classes
+## Classes
 
-#### Parameter Properties
+### Parameter Properties
 
 ```typescript
 class Author {
@@ -291,7 +298,7 @@ class Author {
 
 ```
 
-#### Abstract Classes
+### Abstract Classes
 
 - created with `abstract` keyword
 - base classes that may not be instantiated directly
@@ -329,7 +336,7 @@ class Documentary extends Video {
 }
 ```
 
-#### Class Expressions
+### Class Expressions
 
 - [ES6 feature](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class) supported by TypeScript
 - class expressions can be used anywhere a class definition is expected
@@ -373,9 +380,9 @@ class Course extends class { title: string = ''; } {
 
 ---
 
-### Modules
+## Modules
 
-#### Module Resolution Strategies
+### Module Resolution Strategies
 
 - TypeScript compiler uses strategy specified by `"moduleResolution"` property
   - as of 03/07/2025, the two available optiosn are `"Classic" | "Node"`
@@ -389,22 +396,22 @@ class Course extends class { title: string = ''; } {
 
 ---
 
-### Generics
+## Generics
 
-#### What are generics?
+### What are generics?
 
 - code that works with multiple types
 - accepts "type parameters" for each instance of invocation
 - can be applied to functions, interfaces, and classes
 
-#### What are type parameters?
+### What are type parameters?
 
 - specify the type a generic will operate over
 - listed separate from function parameters inside angle brackets
 - conventionally represented by letter `T` _(e.g. `Array<T>`)_
 - actual type provided at instance creation or function invocation
 
-#### Using `Array` generic
+### Using `Array` generic
 
 ```typescript
 let poetryBooks: Book[];
@@ -415,7 +422,7 @@ const historyBooks = new Array<Book>(5);
 
 ```
 
-#### Generic Functions
+### Generic Functions
 
 ```typescript
 function logAndReturn<T>(thing: T): T {
@@ -429,7 +436,7 @@ const someBool: boolean = logAndReturn<boolean>(true);
 
 ```
 
-#### Generic Interfaces
+### Generic Interfaces
 
 ```typescript
 interface Inventory<T> {
@@ -443,7 +450,7 @@ const allBooks: Array<Book> = bookInventory.getAllItems();
 
 ```
 
-#### Generic Classes
+### Generic Classes
 
 ```typescript
 class Catalog<T> implements Inventory<T> {
@@ -460,7 +467,7 @@ const bookCatalog = new Catalog<Book>();
 
 ```
 
-#### Generic Constraints
+### Generic Constraints
 
 - describes types that may be passed as generic parameter
 - constraint is applied through use of `extends` keyword
@@ -479,9 +486,9 @@ class Catalog<T extends CatalogItem> implements Inventory<T> {
 
 ---
 
-### Type Declaration Files
+## Type Declaration Files
 
-#### What are Type Declaration Files
+### What are Type Declaration Files
 
 - sometimes serve as TypeScript wrapper for JavaScript libraries
 - include
@@ -493,7 +500,7 @@ class Catalog<T extends CatalogItem> implements Inventory<T> {
 - filenames end with `.d.ts`
 - available for thousands of libraries
 
-#### Where to find declaration files?
+### Where to find declaration files?
 
 - sometimes included with libraries
 - [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
@@ -503,7 +510,7 @@ class Catalog<T extends CatalogItem> implements Inventory<T> {
 
 ---
 
-### Decorators
+## Decorators
 
 - function that is applied to other code
 - form of [metaprogramming](https://en.wikipedia.org/wiki/Metaprogramming#:~:text=Metaprogramming%20is%20a%20computer%20programming,even%20modify%20itself%2C%20while%20running.)
