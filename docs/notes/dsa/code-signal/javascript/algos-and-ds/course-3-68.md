@@ -322,8 +322,97 @@ class Queue {
 
 ## Mastering Queue Operations: Efficient Data Processing for Interviews
 
-🚧 **WIP** 🚧
+### Problem 1: Queue Interleaving
 
-### TBD
+When merging data from two different sources, we seek to alternate between each source fairly, much as traffic from two lanes merges on a highway. Cars from both lanes are expected to merge seamlessly, taking turns. In the world of data structures, we face a similar task of intertwining two queues.
 
-🚧 **WIP** 🚧
+#### Problem Actualization
+
+Suppose you're working with two devices that send printing tasks to a shared printer. You would alternate print jobs from each device's queue to prevent one device from monopolizing the printer. This concept of combining two queues by alternating their elements is what we're implementing here.
+
+#### Efficient Approach Explanation
+
+An efficient solution adheres strictly to queue operations: `enqueue` (to add an element) and `dequeue` (to remove and fetch the front element). We _interleave_ by performing alternating `dequeue` operations from each queue, and adding the results to a new one. This approach respects the FIFO nature of queues and optimizes time complexity.
+
+
+```javascript
+// using `Queue` class from above
+function interweaveQueues(queue1, queue2) {
+    const resultQueue = new Queue();
+
+    while (!queue1.isEmpty() || !queue2.isEmpty()) {
+        if (!queue1.isEmpty()) {
+            resultQueue.enqueue(queue1.dequeue());
+        }
+        if (!queue2.isEmpty()) {
+            resultQueue.enqueue(queue2.dequeue());
+        }
+    }
+
+    return resultQueue;
+}
+
+
+// using built-in arrays
+const isEmpty = (arr) => arr.length <= 0;
+
+function interweaveArrays(arr1, arr2) {
+    const resultArray = [];
+
+    while (!isEmpty(arr1) || !isEmpty(arr2)) {
+        if (!isEmpty(arr1)) {
+            resultArray.push(arr1.shift());
+        }
+        if (!isEmpty(arr2)) {
+            resultArray.push(arr2.shift());
+        }
+    }
+
+    return resultArray;
+}
+```
+
+### Problem 2: Moving Average for Data Stream
+
+Let's move on to the next problem - calculating the moving average from a data stream. This often appears in technical interviews and is typically applied in real-time decision-making settings, such as a trader monitoring livestock prices for rapid buying or selling decisions. We have to compute the average of the last `k` elements from a streaming data, which is crucial for trend analysis in data science.
+
+#### Real-world Scenario
+
+Consider a fitness app that continually updates the user's average heart rate over the previous 10 minutes. Based on each new heart rate reading, the app calculates and updates this information to present the user's latest health status.
+
+#### Naive Approach
+
+A simple technique would be to store all the data points and recompute the average every time a new item arrives. However, this method might need to be more efficient, especially when dealing with large datasets or infinite data streams.
+
+#### Efficient Solution to the Problem
+
+A queue can provide an efficient solution to this problem. Keeping a sliding window of the most recent k elements mirrors our fitness app's continuous update cycle of heart rate readings, where newer readings replace the older entries.
+
+#### Building the Solution
+
+```javascript
+// simulates backend of fitness tracking app
+class MovingAverage {
+    constructor(size) {
+        this.size = size;
+        this.window = new Queue();
+        this.sum = 0.0;
+    }
+
+    next(val) {
+        if (this.window.getSize() === this.size) {
+            this.sum -= this.window.dequeue();
+        }
+
+        this.window.enqueue(val);
+        this.sum += val;
+        return this.sum / this.window.getSize();
+    }
+}
+
+const movingAvg = new MovingAverage(3);
+console.log(movingAvg.next(1));     // returns 1.0 (like a single heart rate reading)
+console.log(movingAvg.next(10));    // returns 5.5 (the average after a short burst of activity)
+console.log(movingAvg.next(3));     // returns 4.66667 (normalizing after the burst)
+console.log(movingAvg.next(5));     // returns 6.0 (the most recent average, taking into account the last three readings)
+```
