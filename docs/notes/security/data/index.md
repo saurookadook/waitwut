@@ -1,6 +1,6 @@
 ---
 title: 'Data Security'
-date: '2025-04-01'
+date: '2025-04-02'
 fullPath: '/notes/security/data'
 sectionSlug: 'notes'
 ---
