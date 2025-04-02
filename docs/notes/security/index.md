@@ -109,3 +109,120 @@ sectionSlug: 'notes'
 - use anti-forgery tokens for authenticity
 - educate users on security signs
 - regularly update and patch system
+
+---
+
+## Cross-site Request Forgery
+
+### Anatomy of Cross-site Request Forgery
+
+1. **User Login**: user logs into `example.com` and site drops cookie to recognize her for session duration
+2. **Bait Website**: while still logged into `example.com`, user visits `evil.com` _(likely baited into doing so)_
+3. **Crafted Request**: `evil.com` has hidden form or script that's crafted to send request to `bank.com` to transfer money to attacker's account
+
+### Prevention
+
+- Synchronizer Token Pattern: generate unique session token
+- Server-side Storage: token stored on server
+- Client-side Inclusion: include token as hidden field in forms that trigger sensitive actions
+
+---
+
+## Handling Raw Data
+
+### Safeguarding Raw Data in HTML
+
+- secure raw HTML data
+- **never** manipulate inner HTML directly with unfiltered data
+- use [DOMPurify](https://github.com/cure53/DOMPurify) for safe data rendering
+
+#### Best Practices for Secure JSON Embedding
+
+- securely incorporate JSON, use serialization
+- ensure JSON data is escaped
+- if serialization isn't an option, use encoded JSON _(such as Base64)_ in quotes for security
+
+#### Handling API Data
+
+- serialize (if possible) and user proper encoding for API data
+- apply [DOMPurify](https://github.com/cure53/DOMPurify) for an extra layer of security
+- use curly brackets in React components to maintain data integrity
+
+---
+
+## Insecure Client-side Logging
+
+### Preliminary Considerations
+
+- **Data Sensitivity**: Redact or exclude sensitive data like credentials
+- **Logging Importance**: Essential for system management
+- **Security Logging**: Log security-specific events for analysis
+
+### Caution: Blocking Nature of Logging
+
+- use logging carefully due to inherent challenges
+- in JavaScript, logging functions can block processes
+- API failure can harm React app user experience
+
+### Considerations When Designing Logging Framework
+
+- logging is key for secure, efficient apps
+- robost logging builds user trust
+- use OWASP/Nike cheat sheet for best practices
+- asynchronous logging is a must in React
+- asynchronous logging adds resilience
+- avoid synchronous logging due to risks
+
+### Monitoring Abstract Attack Vectors
+
+- watch for red-flag events like frequent admin calls as signs of malicious activity
+- detect "Impossible Travel" anomalies indicating session theft or VPN use
+- early logging enables quick security countermeasures
+
+---
+
+## Lazy Loading
+
+### Protecting Administrative Code
+
+- lazy loading fetches admin code and APIs only when needed
+- aligns with asynchronous loading to follow least-privilege principle
+- centralizes security measures on server, boosting app security
+
+---
+
+## Server-side Rendering
+
+- SSR in React boosts performance by using Node.js for dynamic HTML
+- React is evolving to include SSR, despite its client-side origins
+- using SSR in React increases application complexity
+
+### Dissecting Server-side Rendering
+
+- [renderTo functions](https://react.dev/reference/react-dom/server) secure SSR but misuse risks vulnerabilities
+- for security, avoid raw variables in `renderTo` functions and keep templates immutable
+- XHR and JSON in React don't secure SSR-based template injections
+
+### Prevention
+
+---
+
+## The Zip Slip Attack
+
+- addresses Zip Slip vulnerability causing file overwrites and remote attacks
+- identified by Snyk in 2018
+- affects multiple programming languages _(such as JavaScript, Python, Java, .NET, Go, and more)_
+- related to inadequate sanitization of relative file paths during archive extraction process
+  - if attacker can manipulate content within an archived file, they can inject files with carefully crafted relative paths that navigate out of intended target directory
+
+### Automating Zip Slip
+
+1. attacker concocts a zip archive comprising two files: `Good.txt` and `Evil.txt`
+2. zip file sent to victim, often disguised as harmless document archive
+3. vulnerable library extracts file outside target directory
+4. `Evil.txt` written two levels above target location due to its relative path
+5. finally, command is executed
+  - ultimate danger if directory where bad file lands is within system's path and has writeable permissions
+  - if system intermittently executes files from that location, sets the stage for remote command execution
+
+> **NOTE**: Express.js lacks Zip Slip defenses
