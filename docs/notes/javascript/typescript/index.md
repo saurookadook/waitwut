@@ -6,16 +6,48 @@ iconComponentName: "typescript_icon"
 sectionSlug: 'notes'
 ---
 
+- [Overview](#overview)
 - [Reference Repositories](#reference-repositories)
 - [Arrays](#arrays)
 - [Type Narrowing](#type-narrowing)
 - [Functions](#functions)
+  - [Adding Type Annotations](#adding-type-annotations)
+  - [Options Parameters](#options-parameters)
+  - [Default Parameters](#default-parameters)
+  - [Rest Parameters](#rest-parameters)
+  - [Function Overloads](#function-overloads)
+  - [Function Types](#function-types)
+  - [Misc](#misc)
 - [Interfaces](#interfaces)
+- [Interfaces For Functions](#interfaces-for-functions)
+- [Extending Interfaces](#extending-interfaces)
+- [Interfaces with Classes](#interfaces-with-classes)
 - [Classes](#classes)
+  - [Parameter Properties](#parameter-properties)
+  - [Abstract Classes](#abstract-classes)
+  - [Class Expressions](#class-expressions)
 - [Modules](#modules)
+  - [Module Resolution Strategies](#module-resolution-strategies)
 - [Generics](#generics)
+  - [What are generics?](#what-are-generics)
+  - [What are type parameters?](#what-are-type-parameters)
+  - [Using `Array` generic](#using-array-generic)
+  - [Generic Functions](#generic-functions)
+  - [Generic Interfaces](#generic-interfaces)
+  - [Generic Classes](#generic-classes)
+  - [Generic Constraints](#generic-constraints)
 - [Type Declaration Files](#type-declaration-files)
+  - [What are Type Declaration Files](#what-are-type-declaration-files)
+  - [Where to find declaration files?](#where-to-find-declaration-files)
 - [Decorators](#decorators)
+
+---
+
+## Overview
+
+- `ts-ast-viewer`: Useful tool for viewing [**abstract syntax tree**]() created by TypeScript compiler
+  - [web page](https://ts-ast-viewer.com/#)
+  - [GitHub repo](https://github.com/dsherret/ts-ast-viewer)
 
 ---
 
@@ -190,6 +222,10 @@ let message: string = releaseFunc(2024);
 - compiler enforces contract via type checking
 - collection of property and method definitions
 - [duck typing](https://en.wikipedia.org/wiki/Duck_typing#:~:text=If%20it%20walks%20like%20a%20duck%20and%20it%20quacks%20like%20a%20duck,%20then%20it%20must%20be%20a%20duck)
+
+> &nbsp;
+> ⚠️ **BEWARE**: In a class that extends an interface, TypeScript _**will not**_ throw an error if a class method's signature is subset of the method defined by the interface. However, TypeScript _**will**_ throw an error if a class method's signature is a superset of the method defined by the interface.
+> &nbsp;
 
 ```typescript
 interface Duck {

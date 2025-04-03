@@ -72,6 +72,21 @@ sectionSlug: 'notes'
 - _**always**_ configure `outDir` setting
   - _by default, `tsc` command emits compiled files next to original source files_
 
+#### Watching Files and Directories
+
+- 2 primary settings in `tsconfig`
+  - `watchFile`
+  - `watchDirectory`
+- watch options:
+  - Priority Polling Interval
+  - Dynamic Priority Polling
+  - File System Events (FS Events)
+  - FS Events on Parent Directory
+  - FS Events with Dynamic Priority Polling
+- can also use environment variables
+  - `TSC_WATCHFILE`
+  - `TSC_WATCHDIRECTORY`
+
 ### Tooling Best Practices
 
 - linter _([`typescript-eslint`](https://typescript-eslint.io/))_
