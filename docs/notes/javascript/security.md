@@ -98,3 +98,49 @@ function merge(target, source) {
   - `Object.create(null, ...)`
 - use `Map` instead of `{}`
   - `Map` has richer API and better performance
+
+---
+
+## Testing
+
+- can use unit tests to detect prototype pollution
+```javascript
+// utils.js
+export function merge(target, source) {
+    for (let prop in source) {
+        if (typeof target[prop] === 'object' && typeof source[prop] === 'object') {
+            merge(target[prop], source[prop]);
+        }
+        target[prop] = source[prop];
+    }
+    return target;
+}
+
+// utils.test.js
+import { merge } from './utils'
+
+describe('merge', () => {
+    it('prevents prototype pollution', () => {
+        const malicious = JSON.parse('{"__proto__": {"injected": 0}}');
+        merge({}, malicious);
+
+        const o = {};
+        // Should fail if prototype is polluted
+        expect(o.injected).toStrictEqual(undefined);
+    })
+})
+```
+
+### Popular Security Testing Tools
+
+- **SAST**
+  - [ESLint](https://github.com/eslint)
+  - GitHub Code Scanning and LGTM
+  - [semgrep](https://github.com/semgrep/semgrep)
+- **OWASP ZAP**
+  - many commercial alternatives
+- **dependency management**
+  - `npm audit`
+  - [Retire.js](https://github.com/RetireJS/retire.js)
+  - [Dependency-Track](https://github.com/DependencyTrack/dependency-track)
+  - [Snyk](https://snyk.io/)
