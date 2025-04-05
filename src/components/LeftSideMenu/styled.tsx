@@ -25,7 +25,8 @@ const StyledDrawer = styled(Drawer)<StyledDrawerProps>`
     & > .MuiDrawer-paper {
         background-color: ${(props) => props?.theme?.backgroundColor};
         border: none;
-        box-shadow: inset -1px 0 5px ${(props) => props.theme?.color};
+        /* box-shadow: inset -1px 0 5px ${(props) => props.theme?.color}; */
+        box-shadow: 2px 0 5px ${(props) => props.theme?.color};
         box-sizing: border-box;
         color: ${(props) => props.theme?.color};
         padding-top: 6rem;

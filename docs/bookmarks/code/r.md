@@ -5,13 +5,7 @@ fullPath: "/bookmarks/code/r"
 sectionSlug: "bookmarks"
 ---
 
-## R
-
-_TODO_ 🫠
-
----
-
-### General
+## General
 
 - [R: The R Project for Statistical Computing](https://www.r-project.org/)
 - [The Comprehensive R Archive Network](http://cran.mirrors.hoobly.com/)

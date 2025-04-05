@@ -9,7 +9,7 @@ import {
     GenericGridContainer,
     ToggleIcon,
 } from 'resume/styled';
-import GitHubOctocat from 'resume/icons/github';
+import { GitHubOctocat, NpmLogo } from 'resume/icons';
 import { themeColors } from 'themes/index';
 import { collapsedOrExpanded, isWindowDefined } from 'utils/index';
 import {
@@ -21,6 +21,31 @@ import {
     ProjectLinkText,
     SubText,
 } from './styled';
+
+const ProjectLinkIcon = ({
+    linkType,
+}: {
+    // TODO: should really have an enum for these types
+    linkType: string;
+}) => {
+    const iconProps = {
+        height: 24,
+        width: 24,
+    }
+
+    const Icon = (function() {
+        switch (linkType) {
+            case 'github repository':
+                return GitHubOctocat;
+            case 'npm registry':
+                return NpmLogo;
+            default:
+                return null;
+        }
+    })();
+
+    return Icon != null && <Icon {...iconProps} />;
+}
 
 const TechnicalProjectItem = ({
     technicalProjectRecord, // force formatting
@@ -62,17 +87,19 @@ const TechnicalProjectItem = ({
                 {links.map((link, i) => (
                     <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
                         <ProjectLinkText>
-                            {link.type === 'github repository' && <GitHubOctocat height={24} width={24} />}
-                            {link.url.replace('https://github.com/', '')}
+                            <ProjectLinkIcon linkType={link.type} />
+                            {link.url.replace(/https:\/\/\S+\.com\//im, '')}
                         </ProjectLinkText>
                     </ProjectLink>
                 ))}
+
                 <SubText className="project-dates">
                     <i>
                         ({startDate} - {endDate})
                     </i>
                 </SubText>
-                <SubText>{description}</SubText>
+
+                <SubText dangerouslySetInnerHTML={{ __html: description }} />
             </ProjectDetails>
         </ProjectItemContainer>
     );

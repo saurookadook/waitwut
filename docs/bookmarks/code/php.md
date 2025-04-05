@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/php"
 sectionSlug: "bookmarks"
 ---
 
-## PHP
+## General
 
 - [Learn PHP - Free Interactive PHP Tutorial](http://www.learn-php.org/)
 - [(Re)installing PHP on Mac OS X — justin hileman dot info](http://justinhileman.info/article/reinstalling-php-on-mac-os-x/)

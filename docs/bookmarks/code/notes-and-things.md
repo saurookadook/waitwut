@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/notes-and-things"
 sectionSlug: "bookmarks"
 ---
 
-## Notes and Things
+## General
 
 - [A Beginners Guide to Deploying a Rails App on Heroku](https://gist.github.com/thebucknerlife/606a8948daae21fd77fe)
 - [Web Developer for Chrome Installed or Upgraded](https://chrispederick.com/work/web-developer/installed/chrome/05/)

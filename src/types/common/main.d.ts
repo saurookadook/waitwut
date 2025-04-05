@@ -1,236 +1,250 @@
 /// <reference types="react-scripts" />
 
-// export {}
-type EmptyObject = Record<string, unknown>;
-type AmbiguousObject = Record<string, unknown> | EmptyObject;
-type DynamicObject<T> = Record<string, T>;
-type NullableValue<V> = V | null;
-type NullableObject<T> = {
-    [K in keyof T]: NullableValue<T[K]>;
-};
+export declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            ALGOLIA_ADMIN_KEY: string;
+            GATSBY_ALGOLIA_APP_ID: string;
+            GATSBY_ALGOLIA_SEARCH_KEY: string;
+        }
+    }
 
-interface CheatSheet {
-    name: string;
-    language: string;
-    content: string;
-}
+    type EmptyObject = Record<string, unknown>;
+    type AmbiguousObject = Record<string, unknown> | EmptyObject;
+    type DynamicObject<T> = Record<string, T>;
+    type NullableValue<V> = V | null;
+    type NullableObject<T> = {
+        [K in keyof T]: NullableValue<T[K]>;
+    };
 
-interface AllCheatSheets {
-    allCheatSheets: CheatSheet[];
-}
+    interface CheatSheet {
+        name: string;
+        language: string;
+        content: string;
+    }
 
-interface NavLinkItem {
-    fullPath: string;
-    label: string;
-    slug: string;
-    children?: NavLinkItem[];
-    iconName?: string;
-    pathComponents?: string[];
-}
+    interface AllCheatSheets {
+        allCheatSheets: CheatSheet[];
+    }
 
-interface NodeFrontmatter {
-    fullPath: string;
-    sectionSlug: string;
-    title: string;
-    date?: Date;
-    iconComponentName?: string;
-}
+    interface NavLinkItem {
+        fullPath: string;
+        label: string;
+        slug: string;
+        children?: NavLinkItem[];
+        iconName?: string;
+        pathComponents?: string[];
+    }
 
-interface NodeFields {
-    directParent: string;
-    pathComponents: string[];
-    slug?: string;
-    topLevelParent: string;
-}
+    interface NodeFrontmatter {
+        fullPath: string;
+        sectionSlug: string;
+        title: string;
+        date?: Date;
+        iconComponentName?: string;
+    }
 
-interface NodeFromQuery {
-    name: string;
-    slug: string;
-    frontmatter: NodeFrontmatter;
-    fields: NodeFields;
-    path: string;
-}
+    interface NodeFields {
+        directParent: string;
+        pathComponents: string[];
+        slug?: string;
+        topLevelParent: string;
+    }
 
-interface GroupFromQuery {
-    nodes: NodeFromQuery[];
-    fieldValue: TopLevelPageSlugs;
-}
+    interface NodeFromQuery {
+        name: string;
+        slug: string;
+        frontmatter: NodeFrontmatter;
+        fields: NodeFields;
+        path: string;
+    }
 
-interface MdxNodes {
-    group: GroupFromQuery[];
-    nodes: NodeFromQuery[];
-}
+    interface GroupFromQuery {
+        nodes: NodeFromQuery[];
+        fieldValue: TopLevelPageSlugs;
+    }
 
-interface SideMenuData {
-    allMdx: MdxNodes;
-    allMarkdownRemark: MdxNodes;
-}
+    interface MdxNodes {
+        group: GroupFromQuery[];
+        nodes: NodeFromQuery[];
+    }
 
-interface ListPageData {
-    allMdx: MdxNodes;
-    allMarkdownRemark: MdxNodes;
-}
+    interface SideMenuData {
+        allMdx: MdxNodes;
+        allMarkdownRemark: MdxNodes;
+    }
 
-/* List Pages */
-interface BaseMdxFrontmatter {
-    date?: Date;
-    iconComponentName?: string;
-    title: string;
-}
+    interface ListPageData {
+        allMdx: MdxNodes;
+        allMarkdownRemark: MdxNodes;
+    }
 
-interface BaseMdx {
-    body: string;
-    frontmatter: BaseMdxFrontmatter;
-}
+    /* List Pages */
+    interface BaseMdxFrontmatter {
+        date?: Date;
+        iconComponentName?: string;
+        title: string;
+    }
 
-interface BaseMdxData {
-    mdx: BaseMdx;
-}
+    interface BaseMdx {
+        body: string;
+        frontmatter: BaseMdxFrontmatter;
+    }
 
-interface BaseMdxProps {
-    data: BaseData;
-}
+    interface BaseMdxData {
+        mdx: BaseMdx;
+    }
 
-type IconComponent = (
-    props?: (React.ComponentPropsWithoutRef & Record<any, any>)?,
-) => React.ReactElement;
+    interface BaseMdxProps {
+        data: BaseData;
+    }
 
-type IconComponents = {
-    [key: string]: IconComponent;
-};
+    type IconComponent = (
+        props?: (React.ComponentPropsWithoutRef & Record<any, any>)?,
+    ) => React.ReactElement;
 
-// TODO: is this even necessary?
-enum TopLevelPageSlugs {
-    BOOKMARKS = 'bookmarks',
-    NOTES = 'notes',
-    SHEETS = 'sheets',
-}
+    type IconComponents = {
+        [key: string]: IconComponent;
+    };
 
-/* Single Pages */
-type GenericMarkdownPageProps = React.ComponentPropsWithoutRef<HTMLDivElement> & {
-    iconComponent: IconComponent;
-    pageHtml: string;
-    title: string;
-};
+    // TODO: is this even necessary?
+    enum TopLevelPageSlugs {
+        BOOKMARKS = 'bookmarks',
+        NOTES = 'notes',
+        SHEETS = 'sheets',
+    }
 
-/* Resume */
-interface SectionComponentProps {
-    heading: string;
-    data: any[];
-}
+    /* Single Pages */
+    type GenericMarkdownPageProps = React.ComponentPropsWithoutRef<HTMLDivElement> & {
+        iconComponent: IconComponent;
+        pageHtml: string;
+        title: string;
+    };
 
-interface ResumeSection {
-    [key: string]:
-        | string[]
-        | EmploymentRecord[]
-        | VolunteerRecord[]
-        | TechnicalProjectRecord[]
-        | EducationRecord[];
-}
+    /* Resume */
+    interface SectionComponentProps {
+        heading: string;
+        data: any[];
+    }
 
-interface Site {
-    [key: string]: string;
-}
+    interface ResumeSection {
+        [key: string]:
+            | string[]
+            | EmploymentRecord[]
+            | VolunteerRecord[]
+            | TechnicalProjectRecord[]
+            | EducationRecord[];
+    }
 
-interface ContactInfo {
-    phone?: string;
-    email?: string;
-    sites: Site[];
-}
+    interface Site {
+        [key: string]: string;
+    }
 
-interface HeadingData {
-    firstName: string;
-    lastName: string;
-    contactInfo: ContactInfo;
-    introBlurb: string;
-}
+    interface ContactInfo {
+        phone?: string;
+        email?: string;
+        sites: Site[];
+    }
 
-interface GeoLocation {
-    city: string;
-    state: string;
-}
+    interface HeadingData {
+        firstName: string;
+        lastName: string;
+        contactInfo: ContactInfo;
+        introBlurb: string;
+    }
 
-interface Role {
-    title: string;
-    startDate: string;
-    endDate: string;
-}
+    interface GeoLocation {
+        city: string;
+        state: string;
+    }
 
-interface Company {
-    name: string;
-    location: GeoLocation;
-}
+    interface Role {
+        title: string;
+        startDate: string;
+        endDate: string;
+    }
 
-interface EmploymentRecord {
-    company: Company;
-    roles: Role[];
-    responsibilities?: string[];
-}
+    interface Company {
+        name: string;
+        location: GeoLocation;
+    }
 
-interface VolunteerRecord {
-    organization: Company;
-    roles: Role[];
-}
+    interface EmploymentRecord {
+        company: Company;
+        roles: Role[];
+        responsibilities?: string[];
+    }
 
-interface ProjectLink {
-    type: string;
-    url: string;
-}
+    interface VolunteerRecord {
+        organization: Company;
+        roles: Role[];
+    }
 
-interface TechnicalProjectRecord {
-    displayName: string;
-    links: ProjectLink[];
-    description: string;
-    startDate: string;
-    endDate: string;
-}
+    interface ProjectLink {
+        type: string;
+        url: string;
+    }
 
-interface EducationRecord {
-    institution: string;
-    location?: GeoLocation;
-    completionText: string;
-    certification: string;
-}
+    interface TechnicalProjectRecord {
+        displayName: string;
+        links: ProjectLink[];
+        description: string;
+        startDate: string;
+        endDate: string;
+    }
 
-/* Components */
-interface StyleOverrides {
-    [key: string]: string | number;
-}
+    interface EducationRecord {
+        institution: string;
+        location?: GeoLocation;
+        completionText: string;
+        certification: string;
+    }
 
-interface GenericStyledProps {
-    readonly overrides?: StyleOverrides;
-}
+    /* Components */
+    interface StyleOverrides {
+        [key: string]: string | number;
+    }
 
-/* Store */
-interface MenuStateSlice {
-    drawerVisible: boolean;
-}
+    interface GenericStyledProps {
+        readonly overrides?: StyleOverrides;
+    }
 
-type StateSlice = {
-    [key: string]: MenuStateSlice | AmbiguousObject;
-};
+    type SearchIndex = {
+        name: string;
+        title: string;
+    };
 
-interface CombinedState extends StateSlice {
-    menu?: MenuStateSlice;
-}
+    /* Store */
+    interface MenuStateSlice {
+        drawerVisible: boolean;
+    }
 
-interface BaseReducerAction {
-    type: string;
-    payload?: MenuStateSlice;
-}
+    type StateSlice = {
+        [key: string]: MenuStateSlice | AmbiguousObject;
+    };
 
-type GenericReducerFunc<S, A> = (state: S, action: A) => S;
+    interface CombinedState extends StateSlice {
+        menu?: MenuStateSlice;
+    }
 
-type StateSliceReducerFunc = (state: StateSlice, action: BaseReducerAction) => StateSlice;
+    interface BaseReducerAction {
+        type: string;
+        payload?: MenuStateSlice;
+    }
 
-type GenericStateSliceReducer<S, A> = [GenericReducerFunc<S, A>, S];
+    type GenericReducerFunc<S, A> = (state: S, action: A) => S;
 
-interface StateSliceReducer {
-    [key: string]: GenericStateSliceReducer;
-}
+    type StateSliceReducerFunc = (state: StateSlice, action: BaseReducerAction) => StateSlice;
 
-type CombinedStateSliceReducer = [GenericReducerFunc, CombinedState];
+    type GenericStateSliceReducer<S, A> = [GenericReducerFunc<S, A>, S];
 
-interface FinalReducers {
-    [key: string]: GenericReducerFunc;
+    interface StateSliceReducer {
+        [key: string]: GenericStateSliceReducer;
+    }
+
+    type CombinedStateSliceReducer = [GenericReducerFunc, CombinedState];
+
+    interface FinalReducers {
+        [key: string]: GenericReducerFunc;
+    }
 }

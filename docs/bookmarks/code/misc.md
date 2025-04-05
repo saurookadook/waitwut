@@ -5,7 +5,7 @@ fullPath: "/bookmarks/code/misc"
 sectionSlug: "bookmarks"
 ---
 
-## Misc.
+## General
 
 - [how to type copyright symbol windows laptop - Google Search](https://www.google.com/webhp?sourceid=chrome-instant&rlz=1C1CHWA_enUS599US599&ion=1&espv=2&ie=UTF-8#q=how+to+type+copyright+symbol+windows+laptop)
 - [Which is the best program to use for write HTML+CSS code? - Quora](https://www.quora.com/Which-is-the-best-program-to-use-for-write-HTML+CSS-code)
