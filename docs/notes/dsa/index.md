@@ -7,7 +7,7 @@ sectionSlug: 'notes'
 
 - [AlgoCasts: Exercises and Solutions](/notes/dsa/algorithm-exercises/algo-casts)
 - [DSA Programiz Course](/notes/dsa/programiz-course)
-    - _(some of the content from that site is... questionable 😅)_
+  - _(some of the content from that site is... questionable 😅)_
 
 ---
 
