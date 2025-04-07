@@ -11,13 +11,15 @@ An **Application Programming Interface (API)** is a contract for how two softwar
 
 ### Components of Web APIs
 
-**Inputs**
+#### **Inputs**
+
 - Path
 - Operation
 - Request
 - Version
 
-**Outputs**
+#### **Outputs**
+
 - Response Body
 - Status Code
 
