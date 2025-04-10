@@ -133,3 +133,82 @@ isUserAllowedToDrink(user); // true
 - improves code readability
 - creates chain of functions, and can easily remove link from chain
 - frameworks like React use composition by wrapping a component around another component
+
+## Recursion
+
+```javascript
+// Looping approach
+const countToTen = (number) => {
+    for (let i = number; i < 11; i++) {
+        console.log(i);
+    }
+};
+
+countToTen(1);
+
+const countToTenRecursive = (number) => {
+    if (number >= 11) return;
+
+    console.log(number);
+    countToTenRecursive(number + 1);
+};
+
+countToTenRecursive(1);
+```
+
+## Higher-order Functions
+
+- accepts function as argument and/or returns a function
+- `Array.prototype.filter`, `Array.prototype.map`, and `Array.prototype.reduce` are all examples of higher-order functions
+
+```javascript
+// simple example
+const add = (n1, n2) => n1 + n2;
+const subtract = (n1, n2) => n1 - n2;
+const multiply = (n1, n2) => n1 * n2;
+
+const compute = (mathOperation, initialValue, values) => {
+    let total = initialValue;
+
+    values.forEach((value) => {
+        total = mathOperation(total, value);
+    });
+
+    return total;
+};
+
+console.log(compute(add, 0, [2, 4])); // 6
+console.log(compute(subtract, 10, [5, 2])); // 3
+console.log(compute(multiply, 1, [2, 4])); // 8
+```
+
+## Currying
+
+```javascript
+f(a, b, c) -> f(a)(b)(c)
+```
+
+- transforms function with multiple arguments into several functions containing single argument
+- wraps function inside a function
+
+```javascript
+const add = (a, b, c) => a + b + c;
+
+console.log(add(5, 10, 20));
+
+const addUsingCurrying = (a) => (b) => (c) => a + b + c;
+
+console.log(add(5)(10)(20));
+
+const sendMessage = (greeting) => (name) => (message) =>
+    `${greeting} ${name}, ${message}`
+
+console.log(sendMessage("Hello")("Andy")("you are learning Currying"));
+```
+
+### But why?
+
+- not widely popular or adopted
+- could be confusing
+- not easily understood
+- useful for functional composition
