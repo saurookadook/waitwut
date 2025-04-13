@@ -12,8 +12,8 @@ sectionSlug: 'notes'
 ```typescript
 import { Controller, Get, Param } from '@nestjs/common';
 
-import { TodoService } from './todo.service';
 import { TodoDto } from './dto/todo.dto';
+import { TodoService } from './todo.service';
 
 @Controller('todos')
 export class TodoController {
