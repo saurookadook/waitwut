@@ -5,6 +5,10 @@ fullPath: '/notes/javascript/nestjs/basics'
 sectionSlug: 'notes'
 ---
 
+## Implementing ToDo App with NestJS
+
+_[Path in CodeSignal](https://codesignal.com/learn/paths/implementing-todo-app-with-nestjs)_
+
 - [Course 497](/notes/javascript/nestjs/basics/course-497)
   - [Unit 1: Understanding NestJS](/notes/javascript/nestjs/basics/course-497/unit-01)
   - [Unit 2: Controllers in NestJS](/notes/javascript/nestjs/basics/course-497/unit-02)
@@ -17,6 +21,11 @@ sectionSlug: 'notes'
   - [Unit 3: Implementing Update and Delete Handlers](/notes/javascript/nestjs/basics/course-498/unit-03)
   - [Unit 4: Enhancing the API with Filters and Specific Modifiers](/notes/javascript/nestjs/basics/course-498/unit-04)
   - [Unit 5: Returning 404 for Missing To-Do Items](/notes/javascript/nestjs/basics/course-498/unit-05)
+- [Course 499](/notes/javascript/nestjs/basics/course-499)
+  - [Unit 1: Integrating MongoDB](/notes/javascript/nestjs/basics/course-499/unit-01)
+  - [Unit 2: Transforming Data Store Objects to DTOs](/notes/javascript/nestjs/basics/course-499/unit-02)
+  - [Unit 3: Configuring a Middleware and adding Validation](/notes/javascript/nestjs/basics/course-499/unit-03)
+  - [Unit 4: Error Handling](/notes/javascript/nestjs/basics/course-499/unit-04)
 
 ## Data Transfer Object (DTO)
 
