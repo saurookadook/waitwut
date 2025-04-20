@@ -73,7 +73,7 @@ export class TodoController {
   // ... Existing GET, POST, and PUT handlers
 
   @Put(':id/complete')
-  findAll(@Param('id') id: string): TodoDto {
+  complete(@Param('id') id: string): TodoDto {
     return this.todoService.markTodoComplete(id);
   }
 
