@@ -1,5 +1,7 @@
 /// <reference types="react-scripts" />
 
+import { forwardRef } from 'react';
+
 export declare global {
     namespace NodeJS {
         interface ProcessEnv {
@@ -99,9 +101,7 @@ export declare global {
         data: BaseData;
     }
 
-    type IconComponent = (
-        props?: (React.ComponentPropsWithoutRef & Record<any, any>)?,
-    ) => React.ReactElement;
+    type IconComponent = React.ForwardRefExoticComponent;
 
     type IconComponents = {
         [key: string]: IconComponent;
