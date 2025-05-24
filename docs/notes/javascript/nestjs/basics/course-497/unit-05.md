@@ -2,6 +2,7 @@
 title: 'NestJS Basics - Generating Components Using the CLI'
 date: '2025-04-06'
 fullPath: '/notes/javascript/nestjs/basics/course-497/unit-05'
+iconComponentName: 'nestjs_icon'
 sectionSlug: 'notes'
 ---
 

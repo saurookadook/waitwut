@@ -2,6 +2,7 @@
 title: 'NestJS'
 date: '2025-04-05'
 fullPath: '/notes/javascript/nestjs'
+iconComponentName: 'nestjs_wordmark_icon'
 sectionSlug: 'notes'
 ---
 

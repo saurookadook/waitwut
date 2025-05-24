@@ -2,6 +2,7 @@
 title: 'Building a To-Do REST API with NestJS - Enhancing the API with Filters and Specific Modifiers'
 date: '2025-04-13'
 fullPath: '/notes/javascript/nestjs/basics/course-498/unit-04'
+iconComponentName: 'nestjs_icon'
 sectionSlug: 'notes'
 ---
 

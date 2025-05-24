@@ -2,6 +2,7 @@
 title: 'Adding Enterprise Features to your NestJS App - Error Handling'
 date: '2025-05-04'
 fullPath: '/notes/javascript/nestjs/basics/course-499/unit-04'
+iconComponentName: 'nestjs_icon'
 sectionSlug: 'notes'
 ---
 

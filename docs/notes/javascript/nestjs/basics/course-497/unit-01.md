@@ -2,6 +2,7 @@
 title: 'NestJS Basics - Understanding NestJS'
 date: '2025-04-05'
 fullPath: '/notes/javascript/nestjs/basics/course-497/unit-01'
+iconComponentName: 'nestjs_icon'
 sectionSlug: 'notes'
 ---
 

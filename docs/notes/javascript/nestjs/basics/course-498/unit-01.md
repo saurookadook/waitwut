@@ -2,6 +2,7 @@
 title: 'Building a To-Do REST API with NestJS - Set Up GET Queries'
 date: '2025-04-12'
 fullPath: '/notes/javascript/nestjs/basics/course-498/unit-01'
+iconComponentName: 'nestjs_icon'
 sectionSlug: 'notes'
 ---
 

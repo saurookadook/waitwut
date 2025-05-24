@@ -2,6 +2,7 @@
 title: 'NestJS Basics - Providers in NestJS'
 date: '2025-04-06'
 fullPath: '/notes/javascript/nestjs/basics/course-497/unit-03'
+iconComponentName: 'nestjs_icon'
 sectionSlug: 'notes'
 ---
 
