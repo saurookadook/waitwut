@@ -1,5 +1,5 @@
 ---
-title: 'NestJS Basics - Transforming Data Store Objects to DTOs'
+title: 'Adding Enterprise Features to your NestJS App - Transforming Data Store Objects to DTOs'
 date: '2025-04-20'
 fullPath: '/notes/javascript/nestjs/basics/course-499/unit-02'
 sectionSlug: 'notes'

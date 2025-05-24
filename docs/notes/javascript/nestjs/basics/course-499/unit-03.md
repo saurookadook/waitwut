@@ -1,5 +1,5 @@
 ---
-title: 'NestJS Basics - Configuring a Middleware and adding Validation'
+title: 'Adding Enterprise Features to your NestJS App - Configuring a Middleware and adding Validation'
 date: '2025-04-20'
 fullPath: '/notes/javascript/nestjs/basics/course-499/unit-03'
 sectionSlug: 'notes'

@@ -1,5 +1,5 @@
 ---
-title: 'NestJS Basics - Integrating MongoDB'
+title: 'Adding Enterprise Features to your NestJS App - Integrating MongoDB'
 date: '2025-04-17'
 fullPath: '/notes/javascript/nestjs/basics/course-499/unit-01'
 sectionSlug: 'notes'
