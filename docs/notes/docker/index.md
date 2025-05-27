@@ -50,6 +50,7 @@ RUN         npm install
 
 COPY        . ./
 EXPOSE      $PORT
+# NOTE: this exposed port refers to the INTERNAL PORT
 
 ENTRYPOINT  ["npm", "start"]
 ```
@@ -73,4 +74,83 @@ docker build -t <name> .
 # `<name>`: Image name
 # `<tag>`: Tag (often a version number)
 docker build -t <registry>/<name>:<tag> .
+```
+
+### Deploying Image to Docker Hub
+
+```sh
+docker push <user-name>/<image-name>:<tag>
+```
+
+### Images, Containers, and File Layers
+
+```txt
+R/O = Read Only
+R/W = Read/Write
+
+┌ - - - - - - - - - -┐ ─╮
+┆   Thin R/W Layer   ┆  ├──> Container Layer
+└- - - - - - - - - - ┘ ─╯
+
+╔════════════════════╗ ─╮
+║ ┌──────────────┐   ║  │
+║ │ 91e54dfb1179 │   ║  │
+║ └──────────────┘   ║  │
+║ ┌──────────────┐   ║  │
+║ │ d74508fb6632 │   ║  │
+║ └──────────────┘   ║  │
+║ ┌──────────────┐   ║  │
+║ │ c22013c84729 │   ║  │
+║ └──────────────┘   ║  ├──> Image Layers (R/O)
+║ ┌──────────────┐   ║  │
+║ │ d3a1f33e8a5a │   ║  │
+║ └──────────────┘   ║  │
+║                    ║  │
+║      Ubuntu        ║  │
+║                    ║  │
+╚════════════════════╝ ─╯
+┌──────────────┐           ╮
+│              │           ├
+└──────────────┘           ╯
+```
+
+<!--
+┐ └ ┴ ┬ ├ ─ ┼ ┘ ┌ │ ┤
+╣ ║ ╗ ╝ ╚ ╔ ╩ ╦ ╠ ═ ╬
+░ ▒ ▓ █ ▄ ▀ ■
+-->
+
+### Running a Container
+
+```sh
+docker run -p <external-port>:<internal-port> <image-name>
+```
+
+### Viewing Container Logs
+
+```sh
+docker logs <container-id>
+```
+
+## Using Container Volumes
+
+- [Docs on Volumes](https://docs.docker.com/storage/volumes)
+- can use volumes to store data outside of a container
+
+### Volume Mounts
+
+#### Creating a Container Volume
+
+Created by passing `-v` flag to `docker run`
+
+- syntax: `-v <path-to-directory-or-file-in-container>` or `-v <path-to-directory-or-file-on-host>:<path-to-directory-or-file-in-container>`
+- tells Docker that data in folder should be stored on container host
+
+
+```sh
+docker run -p <external-port>:<internal-port> -v /var/www/logs <image-name>
+
+docker run -p <external-port>:<internal-port> -v $(pwd):/var/www/logs <image-name>
+
+docker run -p <external-port>:<internal-port> -v $HOME/some/folder:/var/www/logs <image-name>
 ```
