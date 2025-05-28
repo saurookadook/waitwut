@@ -15,7 +15,11 @@ sectionSlug: 'notes'
   - environment consistency
   - ship software faster
 
-### Images and Containers
+Repo with examples: [NodeExpressMongoDBDockerApp](https://github.com/DanWahlin/NodeExpressMongoDBDockerApp)
+
+---
+
+## Images and Containers
 
 <dl>
     <dt>
@@ -30,7 +34,7 @@ sectionSlug: 'notes'
     <dd>an isolated, secured shipping container created from image that can be run, started, stopped, moved, and deleted</dd>
 </dl>
 
-### Dockerfile
+## Dockerfile
 
 - text document
 - contains all of the commands a user could call on the command line to assemble an image
@@ -62,7 +66,9 @@ ENTRYPOINT  ["npm", "start"]
 </figcaption>
 </figure>
 
-### Building the Image
+---
+
+## Building Images
 
 ```sh
 # `-t`: short for `--tag`
@@ -132,6 +138,8 @@ docker run -p <external-port>:<internal-port> <image-name>
 docker logs <container-id>
 ```
 
+---
+
 ## Using Container Volumes
 
 - [Docs on Volumes](https://docs.docker.com/storage/volumes)
@@ -146,11 +154,42 @@ Created by passing `-v` flag to `docker run`
 - syntax: `-v <path-to-directory-or-file-in-container>` or `-v <path-to-directory-or-file-on-host>:<path-to-directory-or-file-in-container>`
 - tells Docker that data in folder should be stored on container host
 
-
 ```sh
 docker run -p <external-port>:<internal-port> -v /var/www/logs <image-name>
 
 docker run -p <external-port>:<internal-port> -v $(pwd):/var/www/logs <image-name>
 
 docker run -p <external-port>:<internal-port> -v $HOME/some/folder:/var/www/logs <image-name>
+```
+
+---
+
+## Creating a Bridge Network
+
+- [Docs on Networking](https://docs.docker.com/network)
+
+### Key `docker network` Commands
+
+```sh
+docker network create --driver bridge <isolated_network_name>
+
+docker network ls
+
+docker network rm <isolated_network_name>
+
+# One way to add container to network
+docker run -d --net=<isolated_network_name> --name=<container_name> <image_name>
+# NOTE: both `--net` or `--network` are acceptable
+
+docker network inspect <network_id>
+```
+
+---
+
+## Shell into a Container
+
+```sh
+# `-it`: Interactive tty
+# `sh`: Shell to use (`/bin/bash`)
+docker exec -it <container_id> sh
 ```
