@@ -108,15 +108,16 @@ _see `examples/06_GRAPH_BASED_DSA/depth-first-search`_
 
 ```python
 def depth_first_search(graph, start, visited=None):
-        if visited is None:
-            visited = set()
-        visited.add(start)
+    if visited is None:
+        visited = set()
+    visited.add(start)
 
-        print(start)
+    print(start)
 
-        for next in graph[start] - visited:
-            depth_first_search(graph, next, visited)
-        return visited
+    # difference_between_start_and_visited === graph[start] - visited
+    for next in graph[start] - visited:
+        depth_first_search(graph, next, visited)
+    return visited
 
 
 graph = {
