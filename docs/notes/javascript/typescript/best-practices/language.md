@@ -433,7 +433,7 @@ function logIt<T extends LogType>(
   - _[Stage 3 decorators (TS>5)](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators)_
 
 ```typescript
-function instrument<T extends { new (..args: any[]): object }>(target: T) {
+function instrument<T extends { new (...args: any[]): object }>(target: T) {
     const originalConstructor = target.prototype.constructor;
 
     for (const key of Object.getOwnPropertyNames(originalConstructor.prototype)) {
