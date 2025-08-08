@@ -32,24 +32,27 @@ Pretty straightforward - `any` effectively disables type checking 🙂
 ### Handle `null` & `undefined` Safely
 
 - use union type to specify if variables could be `null` and/or `undefined`
-```typescript
-let e: string | undefined | null;
-```
+
+  ```typescript
+  let e: string | undefined | null;
+  ```
 
 - `undefined` type is sometimes inferred _(such as for optional parameters)_
-```typescript
-function echo(param?: string) { // <- type will be `string | undefined`
-    return param;
-}
-```
+
+  ```typescript
+  function echo(param?: string) { // <- type will be `string | undefined`
+      return param;
+  }
+  ```
 
 - use non-strict equality check to test for `null` _**and**_ `undefined`
-```typescript
-function echo(param?: string): string {
-    if (param != null) return param;
-    return '';
-}
-```
+
+  ```typescript
+  function echo(param?: string): string {
+      if (param != null) return param;
+      return '';
+  }
+  ```
 
 ### Avoid Excessive Annotation
 
@@ -95,7 +98,7 @@ let myProduct: ShippableProduct = {
 
 ```
 
-- **NOTE**: conflicting sub-types will result in `never`
+> **NOTE**: conflicting sub-types will result in `never`
 
 ```typescript
 interface Product {
@@ -228,41 +231,45 @@ type Coords = [
 Since class properties/objects/arrays are **mutable** by default, can use `readonly` and `ReadonlyArray` types to specify whether certain things should be **immutable**.
 
 - Class properties should be `readonly` if they do not need to change after initialization
-```typescript
-class Todo {
-    constructor(
-        public title: string,
-        public completed: boolean,
-        public readonly id: string
-    ) {
-        this.id = crypto.randomUUID();
-    }
 
-    public updateCompleted(status: boolean) {
-        this.completed = status;
-    }
-}
+  ```typescript
+  class Todo {
+      constructor(
+          public title: string,
+          public completed: boolean,
+          public readonly id: string
+      ) {
+          this.id = crypto.randomUUID();
+      }
 
-```
+      public updateCompleted(status: boolean) {
+          this.completed = status;
+      }
+  }
+
+  ```
 
 - can use `readonly` modifier _(or `ReadonlyArray` generic type)_ to make arrays **immutable**
-```typescript
-const immutable: readonly number[] = [1, 2, 3];
 
-const immutable: ReadonlyArray<number> = [1, 2, 3];
+  ```typescript
+  const immutable: readonly number[] = [1, 2, 3];
 
-```
+  const immutable: ReadonlyArray<number> = [1, 2, 3];
+
+  ```
 
 ### Use the Polymorphic `this`
 
-**Fluent API**
+#### Fluent API
+
 - chain methods together
 - popularized by jQuery
 - see:
   - [Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface)
   - [Fluent API: Practice and Theory](https://blog.sigplan.org/2021/03/02/fluent-api-practice-and-theory/)
 
-**Polymorphic `this`**
+#### Polymorphic `this`
+
 - `this` object can refer to different things in different contexts
 - don't need to do anything special to make `this` polymorphic
 
@@ -301,26 +308,26 @@ class Calculator {
 
 - **type assertion** tells TypeScript to treat value as if it were a specific type
 
-```typescript
-class SpecificConfig {
-    // ...
-}
+  ```typescript
+  class SpecificConfig {
+      // ...
+  }
 
-const config = state.someConfig as SpecificConfig;
-```
+  const config = state.someConfig as SpecificConfig;
+  ```
 
 - **type-guards** offer way to protect against bugs that could be introduced by type assertions
 
-```typescript
-class SpecificConfig {
-    // ...
-}
+  ```typescript
+  class SpecificConfig {
+      // ...
+  }
 
-function isSpecificType(config: any): config is SpecificConfig {
-    return config instanceof SpecificConfig;
-}
+  function isSpecificType(config: any): config is SpecificConfig {
+      return config instanceof SpecificConfig;
+  }
 
-```
+  ```
 
 ### Make Switch Statements Exhaustive
 
