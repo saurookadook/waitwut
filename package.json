@@ -7,10 +7,10 @@
         "gatsby"
     ],
     "engines": {
-        "node": "^18.20.0",
+        "node": "^20.18.3",
         "yarn": "^4.1.1"
     },
-    "packageManager": "yarn@4.1.1",
+    "packageManager": "yarn@4.1.1+sha256.f3cc0eda8e5560e529c7147565b30faa43b4e472d90e8634d7134a37c7f59781",
     "scripts": {
         "safe-rm-ycache": "rm -rf .yarn/ || true",
         "safe-rm-node-modules": "rm -rf node_modules/ || true",
