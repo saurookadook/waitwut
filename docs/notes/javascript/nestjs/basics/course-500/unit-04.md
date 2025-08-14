@@ -84,8 +84,6 @@ export class TodoService {
 
 ```
 
-Implementing ToDo App with NestJS
-
 ### Developing the Todo Controller
 
 ```typescript
