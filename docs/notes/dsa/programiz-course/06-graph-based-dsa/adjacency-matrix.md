@@ -11,13 +11,24 @@ sectionSlug: 'notes'
 - finite graph can be represented in form of a square matrix, where boolean value of matrix indicates if there is a direct path between two vertices
 
 example graph:
-_see `examples/06_GRAPH_BASED_DSA/_images/basic-undirected-graph`_
 
-represented as matrix:
-
+```txt
+╭───╮  ╭───╮
+│ 0 ├──┤ 3 │
+╰─┬─╯  ╰───╯
+  │ ╲
+  │  ╲╭───╮
+  │   │ 2 │
+  │  ╱╰───╯
+  │ ╱
+╭─┴─╮
+│ 1 │
+╰───╯
 ```
-// Graph adjacency matrix
 
+represented as graph adjacency matrix:
+
+```txt
     0   1   2   3
   -----------------
 0 | 0 | 1 | 1 | 1 |
@@ -30,6 +41,7 @@ represented as matrix:
   -----------------
 
 ```
+
 _see `examples/06_GRAPH_BASED_DSA/_images/adjacency-matrix/adjacency-matrix_graph-representation_1`_
 
 - each cell represented as `A[i][j]`, where `i` and `j` are vertices
@@ -43,15 +55,15 @@ _see `examples/06_GRAPH_BASED_DSA/_images/adjacency-matrix/adjacency-matrix_grap
 
 - basic operations such as adding edge, removing edge, checking existence of edge from vertex `i` to vertex `j` are extremly time efficient _(constant time operations)_
 - if graph is dense and number of edges is large, adjacency matrix should be first choice
-    - even if graph and adjacency matrix are sparse, can be represented using data structures for sparse matrices
+  - even if graph and adjacency matrix are sparse, can be represented using data structures for sparse matrices
 - biggest advantage comes from use of matrices
-    - recent advances in hardware enable performing expensive matrix operations on GPU
+  - recent advances in hardware enable performing expensive matrix operations on GPU
 - by performing operations on adjacency matrix, can get important insights into nature of graph and relationship between its vertices
 
 ## Cons of Adjacency Matrix
 
 - `VxV` space requirement of adjacency matrix makes it a memory hog
-    - graphs "out in the wild" usually don't have too many connections, which is major reason why adjacency lists are usually better
+  - graphs "out in the wild" usually don't have too many connections, which is major reason why adjacency lists are usually better
 - operations like `inEdges` and `outEdges` are expensive when using adjacency matrix representation
 
 <br/>
