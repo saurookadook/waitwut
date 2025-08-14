@@ -38,7 +38,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
       response.status(status).json(errorResponse);
     } else if (
-      status <= HttpStatus.BAD_REQUEST
+      status >= HttpStatus.BAD_REQUEST
       && status < HttpStatus.INTERNAL_SERVER_ERROR
     ) {
       response.status(status).json({
@@ -60,7 +60,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
 </figure>
 
 ### Integrating Exception Filter in App
-
 
 <figure>
 

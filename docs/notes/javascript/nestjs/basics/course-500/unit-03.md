@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
 
     try {
-      const payload = await this.verifyToken(request);
+      const payload = await this.verifyBearerToken(request);
       request['user'] = payload;
     } catch (error: unknown) {
       throw new UnauthorizedException();
@@ -33,15 +33,18 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 
-  private async verifyToken(request: Request): Promise<any> {
+  private async verifyBearerToken(request: Request): Promise<any> {
     const authHeader = request.headers.authorization || '';
-    const [authType, token] = authHeader.split(' ');
+    const [authType, bearerToken] = authHeader.split(' ');
 
-    if (authType !== 'Bearer' || !token) {
+    if (authType !== 'Bearer' || !bearerToken) {
       throw new UnauthorizedException();
     }
 
-    return await this.jwtService.verifyAsync(token);
+    return await this.jwtService.verifyAsync(bearerToken, {
+      // NOTE: or maybe get it from config service?
+      secret: process.env.JWT_SECRET
+    });
   }
 }
 ```
