@@ -438,6 +438,7 @@ function logIt<T extends LogType>(
 - references:
   - _[Stage 2 decorators (TS<5)](https://www.typescriptlang.org/docs/handbook/decorators.html)_
   - _[Stage 3 decorators (TS>5)](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators)_
+  - [JavaScript metaprogramming with decorators API](https://2ality.com/2022/10/javascript-decorators.html)
 
 ```typescript
 function instrument<T extends { new (...args: any[]): object }>(target: T) {
