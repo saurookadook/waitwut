@@ -5,7 +5,6 @@ import { minWidth600 } from 'styles/mq';
 import { allButLastChild } from 'styles/selectors';
 
 const EducationItemContainer = styled(GenericItemContainer)`
-    /* all but last child */
     &${allButLastChild} {
         margin-bottom: 2rem;
     }

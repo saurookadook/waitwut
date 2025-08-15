@@ -1,26 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { GenericHeading, GenericContainer } from 'resume/styled';
-import { minWidth600 } from 'styles/mq';
 import { resumeTheme } from 'themes/index';
+import { SkillsGroupWrapper, SkillsList } from './styled';
 
-const SkillsList = styled.p`
-    font-size: 1.5rem;
-
-    #resume & {
-        padding-right: 5vw;
-        padding-left: 5vw;
-
-        ${minWidth600} {
-            padding-right: 10vw;
-            padding-left: 10vw;
-        }
-    }
-`;
-
-const TechnicalSkills = ({ heading, data }: SectionComponentProps): React.ReactElement => {
-    const skillsAsCsv = data.join(', ');
+const TechnicalSkills = ({
+    heading, // force formatting
+    data,
+}: SectionComponentProps<TechnicalSkillRecord>): React.ReactElement => {
     return (
         <GenericContainer
             overrides={{
@@ -30,7 +17,16 @@ const TechnicalSkills = ({ heading, data }: SectionComponentProps): React.ReactE
             }}
         >
             <GenericHeading>{heading}</GenericHeading>
-            <SkillsList>{skillsAsCsv}</SkillsList>
+            {data.map(({ label, skills }) => {
+                const skillsAsCsv = skills.join(', ');
+                return (
+                    <SkillsGroupWrapper key={`tech-skills-${label}`}>
+                        <h3>{label}</h3>
+
+                        <SkillsList>{skillsAsCsv}</SkillsList>
+                    </SkillsGroupWrapper>
+                );
+            })}
         </GenericContainer>
     );
 };
