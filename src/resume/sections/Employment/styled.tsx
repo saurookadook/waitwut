@@ -24,14 +24,21 @@ const EmploymentItemContainer = styled(GenericItemContainer)`
         /* max-height: 4.25rem; */
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
-        transition: all 250ms ease-in 400ms;
+        transition-delay: 400ms;
+        transition-duration: 250ms;
+        transition-property: background-color, color, flex-grow, height, max-height,
+            opacity, padding;
+        transition-timing-function: ease-in;
     }
 
     &.expanded {
         /* max-height: 40rem; */
         padding-top: 1rem;
         padding-bottom: 1rem;
-        transition: all 500ms ease-in;
+        transition-duration: 500ms;
+        transition-property: background-color, color, flex-grow, height, max-height,
+            opacity, padding;
+        transition-timing-function: ease-in;
 
         &.pluralsight {
             background-color: ${resumeTheme.psBackgroundHex};
@@ -51,7 +58,8 @@ const EmploymentItemContainer = styled(GenericItemContainer)`
         &.upstatement {
             background-color: ${themeColors.blackRgb};
             color: ${themeColors.whiteRgb};
-            font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana, sans-serif;
+            font-family: 'TT Ramillas', 'GT America', Arial, Helvetica, Verdana,
+                sans-serif;
         }
 
         &.boston-symphony-orchestra {
@@ -81,11 +89,19 @@ const EmploymentItemGrid = styled.div`
     }
 
     .collapsed & {
-        transition: all 200ms ease-out;
+        /* transition: all 200ms ease-out; */
+        transition-duration: 200ms;
+        transition-property: background-color, color, flex-grow, height, max-height,
+            opacity;
+        transition-timing-function: ease-out;
     }
 
     .expanded & {
-        transition: all 200ms ease-out;
+        /* transition: all 200ms ease-out; */
+        transition-duration: 200ms;
+        transition-property: background-color, color, flex-grow, height, max-height,
+            opacity;
+        transition-timing-function: ease-out;
     }
 
     .collapsed & .name-and-location-wrapper .togglable,
@@ -149,11 +165,23 @@ const ExpandableDetails = styled.div.attrs((props) => {
     .collapsed &,
     .collapsed & a {
         color: transparent;
-        ${collapsedStyles}
+        /* ${collapsedStyles} */
+        max-height: 0;
+        opacity: 0;
+        /* transition: all 500ms ease-in; */
+        transition-duration: 500ms;
+        transition-property: background-color, color, flex, height, max-height, opacity;
+        transition-timing-function: ease-in;
     }
 
     .expanded & {
-        ${expandedStyles}
+        /* ${expandedStyles} */
+        max-height: 100%;
+        opacity: 1;
+        /* transition: all 500ms ease-in; */
+        transition-duration: 500ms;
+        transition-property: background-color, color, flex, height, max-height, opacity;
+        transition-timing-function: ease-in;
     }
 
     .expanded.pluralsight & {
@@ -264,28 +292,48 @@ const EmploymentIconWrapper = styled.span`
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
-    width: auto;
+
+    &,
+    & svg,
+    & img {
+        width: 100%;
+    }
 
     & svg,
     & img {
         flex-grow: 1;
         height: 100%;
         margin: auto;
-        width: auto;
     }
 
     ${minWidth600} {
+        align-self: flex-start;
         display: flex;
         grid-row: 1 / span 2;
         justify-content: center;
         overflow-y: hidden;
         position: relative;
-        width: 100%;
     }
 
     .collapsed & {
-        ${collapsedStyles}
-        min-height: 0;
+        max-height: 0;
+        opacity: 0;
+        /* min-height: 0; */
+        transition: background-color 500ms, color 500ms, flex 500ms, height 500ms 200ms,
+            max-height 500ms 200ms, opacity 250ms;
+
+        /* transition: all 500ms; */
+        transition-timing-function: ease-in;
+
+        & svg {
+            align-self: flex-start;
+            margin-top: 0;
+        }
+
+        /* &,
+        & svg {
+            ${collapsedStyles}
+        } */
     }
 
     .expanded & {
@@ -294,10 +342,15 @@ const EmploymentIconWrapper = styled.span`
         opacity: 0.5;
 
         ${minWidth600} {
-            align-self: flex-start;
-            height: auto;
+            height: 100%;
             min-height: 15rem;
             opacity: 1;
+
+            & svg {
+                align-self: flex-start;
+                margin-top: 0;
+                height: auto;
+            }
         }
     }
 
