@@ -31,9 +31,9 @@ const ProjectLinkIcon = ({
     const iconProps = {
         height: 24,
         width: 24,
-    }
+    };
 
-    const Icon = (function() {
+    const Icon = (function () {
         switch (linkType) {
             case 'github repository':
                 return GitHubOctocat;
@@ -45,7 +45,7 @@ const ProjectLinkIcon = ({
     })();
 
     return Icon != null && <Icon {...iconProps} />;
-}
+};
 
 const TechnicalProjectItem = ({
     technicalProjectRecord, // force formatting
@@ -77,6 +77,7 @@ const TechnicalProjectItem = ({
                     {displayName}
                 </ProjectDisplayName>
             </ProjectNameWrapper>
+
             <ProjectDetails
                 className={classNames(
                     'togglable', // force formatting
@@ -85,7 +86,12 @@ const TechnicalProjectItem = ({
                 )}
             >
                 {links.map((link, i) => (
-                    <ProjectLink key={`project-link-${i}`} href={link.url} target="_blank" rel="noreferrer">
+                    <ProjectLink
+                        key={`project-link-${i}`}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <ProjectLinkText>
                             <ProjectLinkIcon linkType={link.type} />
                             {link.url.replace(/https:\/\/\S+\.com\//im, '')}
@@ -132,13 +138,21 @@ const MobileGridContainer = ({
         <GenericGridContainer>
             <ProjectsWrapper>
                 {left.map((record, i) => {
-                    return <TechnicalProjectItem key={`technical-project-left-${i}`} technicalProjectRecord={record} />;
+                    return (
+                        <TechnicalProjectItem
+                            key={`technical-project-left-${i}`}
+                            technicalProjectRecord={record}
+                        />
+                    );
                 })}
             </ProjectsWrapper>
             <ProjectsWrapper>
                 {right.map((record, i) => {
                     return (
-                        <TechnicalProjectItem key={`technical-project-right-${i}`} technicalProjectRecord={record} />
+                        <TechnicalProjectItem
+                            key={`technical-project-right-${i}`}
+                            technicalProjectRecord={record}
+                        />
                     );
                 })}
             </ProjectsWrapper>
