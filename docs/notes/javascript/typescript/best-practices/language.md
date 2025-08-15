@@ -472,3 +472,115 @@ class Todo {
 }
 
 ```
+
+Simple examples from [TypeScript 5.0 announcement](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators)
+
+```typescript
+function bound(originalMethod: any, context: ClassMethodDecoratorContext) {
+  const methodName = String(context.name);
+
+  if (context.private) {
+    throw new Error(`'bound' cannot decorate private properties like ${methodName}.`);
+  }
+
+  context.addInitializer(function() {
+    this[methodName] = this[methodName].bind(this);
+  })
+}
+
+function loggedMethod(headMessage = "LOG") {
+  return function actualDecorator(originalMethod: any, context: ClassMethodDecoratorContext) {
+    const methodName = String(context.name);
+
+    function replacementMethod(this: any, ...args: any[]) {
+      console.log(`${headMessage}: Entering method '${methodName}'.`);
+      const result = originalMethod.call(this, ...args);
+      console.log(`${headMessage}: Exiting method '${methodName}'.`);
+      return result;
+    }
+
+    return replacementMethod;
+  }
+}
+
+class Person {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    @bound
+    @loggedMethod()
+    greet() {
+        console.log(`Hello, my name is ${this.name}.`);
+    }
+
+    @loggedMethod("⚠️")
+    special() {
+      console.log(`SO SPECIAL!`)
+    }
+}
+
+const p = new Person("Ron");
+p.greet();
+
+// Output:
+//
+//   LOG: Entering method 'greet'.
+//   Hello, my name is Ron.
+//   LOG: Exiting method 'greet'.
+
+const greet = p.greet;
+// Works!
+greet();
+
+/**
+ * NOTE: without the `bound` decorator, the above would break unless 1 of the following 2 changes was made
+ */
+class Person_1 {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+
+        this.greet = this.greet.bind(this);
+    }
+
+    @loggedMethod
+    greet() {
+        console.log(`Hello, my name is ${this.name}.`);
+    }
+}
+
+class Person_2 {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    @loggedMethod
+    greet = () => {
+        console.log(`Hello, my name is ${this.name}.`);
+    }
+}
+
+```
+
+#### Writing Well-Typed Decorators
+
+```typescript
+function loggedMethod<This, Args extends any[], Return>(
+  target: (this: This, ...args: Args) => Return,
+  context: ClassMethodDecoratorContext<This, (this: This, ...args: Args) => Return>
+) {
+  const methodName = String(context.name);
+
+  function replacementMethod(this: This, ...args: Args): Return {
+    console.log(`LOG: Entering method '${methodName}'.`);
+    const result = target.call(this, ...args);
+    console.log(`LOG: Exiting method '${methodName}'.`);
+    return result;
+  }
+
+  return replacementMethod;
+}
+```
