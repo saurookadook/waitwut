@@ -20,6 +20,16 @@ const ProjectItemContainer = styled(GenericItemContainer)`
         max-height: 100%;
         transition: all 300ms ease-in;
     }
+
+    & a {
+        display: inline-block;
+
+        &,
+        & > span {
+            color: ${themeColors.blackHex};
+            text-decoration: underline;
+        }
+    }
 `;
 
 const ProjectNameWrapper = styled.div`

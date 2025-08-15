@@ -41,38 +41,65 @@ function buildLink({
     return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
 }
 
-// TODO: separate these into categories?
-const TechnicalSkills: string[] = [
-    'JavaScript (ES5 and ES6)',
-    'TypeScript',
-    'Node.js',
-    'Jest',
-    'Python',
-    'SQLAlchemy',
-    'FastAPI',
-    'Pydantic',
-    'pytest',
-    'PostgreSQL',
-    'React',
-    'Redux',
-    'd3.js',
-    'Gatsby.js',
-    'RegEx',
-    'HTML',
-    'CSS',
-    'SASS',
-    'Express',
-    'Docker',
-    'Kafka',
-    'Java',
-    'MongoDB',
-    'Ruby',
-    'Rails',
-    'SQL',
-    'PHP',
-    'Twig',
-    'CraftCMS',
-    'Wordpress',
+const TechnicalSkills: TechnicalSkillRecord[] = [
+    {
+        label: 'Languages',
+        skills: [
+            'JavaScript (ES5 and ES6)',
+            'TypeScript',
+            'Node.js',
+            'Python',
+            'RegEx',
+            'HTML',
+            'CSS',
+            'SASS',
+            'SQL',
+            'Java',
+            'Ruby',
+            'PHP',
+        ],
+    },
+    {
+        label: 'Libraries/Frameworks',
+        skills: [
+            'React',
+            'Express',
+            'NestJS',
+            'Jest',
+            'Webpack',
+            'Vite',
+            'Vitest',
+            'd3.js',
+            'Gatsby.js',
+            'Redux',
+            'SQLAlchemy',
+            'FastAPI',
+            'Pydantic',
+            'pytest',
+            'Ruby on Rails',
+            'Twig',
+            'CraftCMS',
+            'Wordpress',
+        ],
+    },
+    {
+        label: 'Tools',
+        skills: [
+            'Command Line',
+            'Git',
+            'Docker',
+            'Kafka',
+            'PostgreSQL',
+            'NewRelic',
+            'Grafana',
+            'LaunchDarkly',
+            'Snowflake',
+            'AWS',
+            'MongoDB',
+            'Confluence',
+            'Jira',
+        ],
+    },
 ];
 
 const technologies = [
@@ -168,26 +195,33 @@ const EmploymentHistory: EmploymentRecord[] = [
         },
         roles: [
             {
-                title: 'Tech Lead',
-                startDate: 'October 2023',
-                endDate: 'Present',
-            },
-            {
                 title: 'Software Engineer III',
                 startDate: 'June 2022', // June 6th, 2022
-                endDate: 'Present',
+                endDate: 'June 2025',
+            },
+            {
+                title: 'Tech Lead',
+                startDate: 'October 2023',
+                endDate: 'October 2024',
             },
         ],
         responsibilities: [
+            `Spearheaded effort to retrofit legacy frontends into platform rewrite using ${buildLink(
+                {
+                    href: 'https://module-federation.io/',
+                    text: 'Module Federation',
+                },
+            )}`,
+            'Mentored and guided growth of junior engineers and interns',
             `Architected, built, and developed UI for Practice Exams using ${buildLink({
                 href: 'https://react.dev/',
-                text: 'React'
+                text: 'React',
             })}, ${buildLink({
                 href: 'https://storybook.js.org/',
-                text: 'Storybook'
+                text: 'Storybook',
             })}, and ${buildLink({
                 href: 'https://jestjs.io/',
-                text: 'Jest'
+                text: 'Jest',
             })}`,
             `Worked on the
             ${buildLink({
@@ -199,10 +233,10 @@ const EmploymentHistory: EmploymentRecord[] = [
                 text: 'My Skills tab',
             })} and refactor of ${buildLink({
                 href: 'https://www.pluralsight.com/product/skills-assessment',
-                text: 'Skill IQ'
+                text: 'Skill IQ',
             })}'s graph components using ${buildLink({
                 href: 'https://d3js.org/',
-                text: 'd3.js'
+                text: 'd3.js',
             })}`,
             `Collaborated on feature development and maintenance of ${buildLink({
                 href: 'https://docs.python.org/3.10/',
@@ -445,6 +479,28 @@ const VolunteerWork: VolunteerRecord[] = [
  */
 const TechnicalProjects: TechnicalProjectRecord[] = [
     {
+        displayName: 'connect-four-app',
+        links: [
+            { type: 'github repository', url: 'https://github.com/saurookadook/connect-four-app' },
+        ],
+        description: `A small full-stack 'Connect Four' app namely using ${buildLink({
+            href: 'https://docs.nestjs.com/',
+            text: 'NestJS',
+        })},
+        ${buildLink({ href: 'https://react.dev/', text: 'React' })}, ${buildLink({
+            href: 'https://www.typescriptlang.org/docs/',
+            text: 'TypeScript',
+        })}, ${buildLink({
+            href: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket',
+            text: 'WebSockets',
+        })}, ${buildLink({
+            href: 'https://www.docker.com/',
+            text: 'Docker',
+        })}, and ${buildLink({ href: 'https://nginx.org/en/docs/', text: 'NGINX' })}.`,
+        startDate: 'May 2025',
+        endDate: 'present',
+    },
+    {
         displayName: 'react-utils',
         links: [
             {
@@ -454,11 +510,11 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
             {
                 type: 'npm registry',
                 url: 'https://npmjs.com/org/saurookkadookk',
-            }
+            },
         ],
         description: `A collection of useful, lightweight utilities for use in ${buildLink({
             href: 'https://react.dev/',
-            text: 'React'
+            text: 'React',
         })} applications.`,
         startDate: 'November 2024',
         endDate: 'Present',

@@ -34,13 +34,19 @@ const EmploymentItem = ({
     const Icon = resumeIconsMap[companyNameClass];
 
     return (
-        <EmploymentItemContainer className={classNames(collapsedOrExpanded(isCollapsed), companyNameClass)}>
+        <EmploymentItemContainer
+            className={classNames(collapsedOrExpanded(isCollapsed), companyNameClass)}
+        >
             <EmploymentItemGrid>
                 <NameAndLocationWrapper>
                     <ToggleIcon onClick={handleToggleOnClick as MouseEventHandler}>
                         {isCollapsed ? <ExpandLess /> : <ExpandMore />}
                     </ToggleIcon>
-                    <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>{company.name}</CompanyName>
+
+                    <CompanyName onClick={handleToggleOnClick as MouseEventHandler}>
+                        {company.name}
+                    </CompanyName>
+
                     <LocationText
                         // as="span"
                         className="togglable"
@@ -50,6 +56,7 @@ const EmploymentItem = ({
                         {/* </i> */}
                     </LocationText>
                 </NameAndLocationWrapper>
+
                 <ExpandableDetails className="togglable">
                     <ExpandableDetailsItemWrapper className="role flex-column">
                         {roles.map(
@@ -57,25 +64,30 @@ const EmploymentItem = ({
                                 <span className="role-item" key={`role-item-${i}`}>
                                     <b>{role.title}</b>{' '}
                                     <span className="role-item-dates">
-                                        :: <i>{`${role.startDate} - ${role.endDate}`}</i>
+                                        ::{' '}
+                                        <i>{`${role.startDate} - ${role.endDate}`}</i>
                                     </span>
                                 </span>
                             ),
                         )}
                     </ExpandableDetailsItemWrapper>
+
                     {(responsibilities || []).length >= 1 && (
                         <ExpandableDetailsItemWrapper className="responsibilities">
                             <ul>
                                 {responsibilities?.map((responsibility, j) => (
                                     <li
                                         key={`responsibility-${j}`}
-                                        dangerouslySetInnerHTML={{ __html: responsibility }}
+                                        dangerouslySetInnerHTML={{
+                                            __html: responsibility,
+                                        }}
                                     />
                                 ))}
                             </ul>
                         </ExpandableDetailsItemWrapper>
                     )}
                 </ExpandableDetails>
+
                 {Icon && (
                     <EmploymentIconWrapper className={companyNameClass}>
                         <Icon />
@@ -95,9 +107,15 @@ const Employment = ({ heading, data }: SectionComponentProps): React.ReactElemen
                 color: themeColors.white,
             }}
         >
-            <GenericHeading overrides={{ paddingBottom: '0.25em' }}>{heading}</GenericHeading>
+            <GenericHeading overrides={{ paddingBottom: '0.25em' }}>
+                {heading}
+            </GenericHeading>
+
             {data.map((record, i) => (
-                <EmploymentItem key={`employment-item-${i}`} employmentRecord={record} />
+                <EmploymentItem
+                    key={`employment-item-${i}`}
+                    employmentRecord={record}
+                />
             ))}
         </GenericContainer>
     );

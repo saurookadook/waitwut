@@ -1,6 +1,6 @@
 {
     "//plugins": ["./node_modules/prettier-plugin-multiline-arrays"],
-    "printWidth": 100,
+    "printWidth": 88,
     "tabWidth": 4,
     "useTabs": false,
     "semi": true,
