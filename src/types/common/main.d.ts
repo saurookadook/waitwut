@@ -122,14 +122,14 @@ export declare global {
     };
 
     /* Resume */
-    interface SectionComponentProps {
+    interface SectionComponentProps<T = any> {
         heading: string;
-        data: any[];
+        data: T[];
     }
 
     interface ResumeSection {
         [key: string]:
-            | string[]
+            | TechnicalSkillRecord[]
             | EmploymentRecord[]
             | VolunteerRecord[]
             | TechnicalProjectRecord[]
@@ -167,6 +167,11 @@ export declare global {
     interface Company {
         name: string;
         location: GeoLocation;
+    }
+
+    interface TechnicalSkillRecord {
+        label: string;
+        skills: string[];
     }
 
     interface EmploymentRecord {

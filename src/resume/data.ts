@@ -41,38 +41,63 @@ function buildLink({
     return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
 }
 
-// TODO: separate these into categories?
-const TechnicalSkills: string[] = [
-    'JavaScript (ES5 and ES6)',
-    'TypeScript',
-    'Node.js',
-    'Jest',
-    'Python',
-    'SQLAlchemy',
-    'FastAPI',
-    'Pydantic',
-    'pytest',
-    'PostgreSQL',
-    'React',
-    'Redux',
-    'd3.js',
-    'Gatsby.js',
-    'RegEx',
-    'HTML',
-    'CSS',
-    'SASS',
-    'Express',
-    'Docker',
-    'Kafka',
-    'Java',
-    'MongoDB',
-    'Ruby',
-    'Rails',
-    'SQL',
-    'PHP',
-    'Twig',
-    'CraftCMS',
-    'Wordpress',
+const TechnicalSkills: TechnicalSkillRecord[] = [
+    {
+        label: 'Languages',
+        skills: [
+            'JavaScript (ES5 and ES6)',
+            'TypeScript',
+            'Node.js',
+            'Python',
+            'RegEx',
+            'HTML',
+            'CSS',
+            'SASS',
+            'SQL',
+            'Java',
+            'Ruby',
+            'PHP',
+        ],
+    },
+    {
+        label: 'Libraries/Frameworks',
+        skills: [
+            'React',
+            'Express',
+            'NestJS',
+            'Jest',
+            'Webpack',
+            'Vite',
+            'Vitest',
+            'd3.js',
+            'Gatsby.js',
+            'Redux',
+            'SQLAlchemy',
+            'FastAPI',
+            'Pydantic',
+            'pytest',
+            'Ruby on Rails',
+            'Twig',
+            'CraftCMS',
+            'Wordpress',
+        ],
+    },
+    {
+        label: 'Tools',
+        skills: [
+            'Docker',
+            'Kafka',
+            'PostgreSQL',
+            'NewRelic',
+            'Grafana',
+            'LaunchDarkly',
+            'Snowflake',
+            'AWS',
+            'MongoDB',
+            'Confluence',
+            'Jira',
+        ],
+    },
 ];
 
 const technologies = [
@@ -181,13 +206,13 @@ const EmploymentHistory: EmploymentRecord[] = [
         responsibilities: [
             `Architected, built, and developed UI for Practice Exams using ${buildLink({
                 href: 'https://react.dev/',
-                text: 'React'
+                text: 'React',
             })}, ${buildLink({
                 href: 'https://storybook.js.org/',
-                text: 'Storybook'
+                text: 'Storybook',
             })}, and ${buildLink({
                 href: 'https://jestjs.io/',
-                text: 'Jest'
+                text: 'Jest',
             })}`,
             `Worked on the
             ${buildLink({
@@ -199,10 +224,10 @@ const EmploymentHistory: EmploymentRecord[] = [
                 text: 'My Skills tab',
             })} and refactor of ${buildLink({
                 href: 'https://www.pluralsight.com/product/skills-assessment',
-                text: 'Skill IQ'
+                text: 'Skill IQ',
             })}'s graph components using ${buildLink({
                 href: 'https://d3js.org/',
-                text: 'd3.js'
+                text: 'd3.js',
             })}`,
             `Collaborated on feature development and maintenance of ${buildLink({
                 href: 'https://docs.python.org/3.10/',
@@ -454,11 +479,11 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
             {
                 type: 'npm registry',
                 url: 'https://npmjs.com/org/saurookkadookk',
-            }
+            },
         ],
         description: `A collection of useful, lightweight utilities for use in ${buildLink({
             href: 'https://react.dev/',
-            text: 'React'
+            text: 'React',
         })} applications.`,
         startDate: 'November 2024',
         endDate: 'Present',
