@@ -85,6 +85,8 @@ const TechnicalSkills: TechnicalSkillRecord[] = [
     {
         label: 'Tools',
         skills: [
+            'Command Line',
+            'Git',
             'Docker',
             'Kafka',
             'PostgreSQL',
@@ -193,17 +195,24 @@ const EmploymentHistory: EmploymentRecord[] = [
         },
         roles: [
             {
-                title: 'Tech Lead',
-                startDate: 'October 2023',
-                endDate: 'Present',
-            },
-            {
                 title: 'Software Engineer III',
                 startDate: 'June 2022', // June 6th, 2022
-                endDate: 'Present',
+                endDate: 'June 2025',
+            },
+            {
+                title: 'Tech Lead',
+                startDate: 'October 2023',
+                endDate: 'October 2024',
             },
         ],
         responsibilities: [
+            `Spearheaded effort to retrofit legacy frontends into platform rewrite using ${buildLink(
+                {
+                    href: 'https://module-federation.io/',
+                    text: 'Module Federation',
+                },
+            )}`,
+            'Mentored and guided growth of junior engineers and interns',
             `Architected, built, and developed UI for Practice Exams using ${buildLink({
                 href: 'https://react.dev/',
                 text: 'React',
@@ -469,6 +478,28 @@ const VolunteerWork: VolunteerRecord[] = [
  * '
  */
 const TechnicalProjects: TechnicalProjectRecord[] = [
+    {
+        displayName: 'connect-four-app',
+        links: [
+            { type: 'github repository', url: 'https://github.com/saurookadook/connect-four-app' },
+        ],
+        description: `A small full-stack 'Connect Four' app namely using ${buildLink({
+            href: 'https://docs.nestjs.com/',
+            text: 'NestJS',
+        })},
+        ${buildLink({ href: 'https://react.dev/', text: 'React' })}, ${buildLink({
+            href: 'https://www.typescriptlang.org/docs/',
+            text: 'TypeScript',
+        })}, ${buildLink({
+            href: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket',
+            text: 'WebSockets',
+        })}, ${buildLink({
+            href: 'https://www.docker.com/',
+            text: 'Docker',
+        })}, and ${buildLink({ href: 'https://nginx.org/en/docs/', text: 'NGINX' })}.`,
+        startDate: 'May 2025',
+        endDate: 'present',
+    },
     {
         displayName: 'react-utils',
         links: [
