@@ -6,13 +6,17 @@ iconComponentName: "javascript_icon"
 sectionSlug: "sheets"
 ---
 
-# Table of Contents
-
 - [Ponyfill](#ponyfill)
 - [Debouncing](#debouncing)
 - [Asynchronous Stuff](#asynchronous-stuff)
 - [IIFE](#iife)
 - [lolwtf](#lolwtf)
+
+---
+
+## Tasks and Microtasks Queues
+
+- [Microtask Guide](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide)
 
 ## Ponyfill
 
@@ -29,7 +33,7 @@ _from [ponyfill](https://ponyfill.com)_
 >
 > ```JavaScript
 > Number.isNaN ??= function (value) {
-> 	return value !== value;
+>   return value !== value;
 > };
 > ```
 >
@@ -43,7 +47,7 @@ _from [ponyfill](https://ponyfill.com)_
 >
 > ```JavaScript
 > export default function isNaN(value) {
-> 	return value !== value;
+>   return value !== value;
 > };
 > ```
 >
@@ -54,6 +58,7 @@ _from [ponyfill](https://ponyfill.com)_
 > ```
 >
 > Ponyfills should avoid using native APIs, because potential bugs or differences in the native APIs will make such a ponyfill less robust (therefore defeating one of its main purposes). There are important exceptions, such as when:
+>
 > - There is no way to implement some of the ponyfill without native APIs.
 > - Reimplementing native parts would have a large cost (e.g. performance or code size).
 > In such cases, it's still valuable for the ponyfill to minimize any assumptions about the underlying environment.
@@ -148,5 +153,5 @@ module.exports = doTheThing
 ```
 
 ```sh
-$ node inspect some/path/to/index.js
+node inspect some/path/to/index.js
 ```
