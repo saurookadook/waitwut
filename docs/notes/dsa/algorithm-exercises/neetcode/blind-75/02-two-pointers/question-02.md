@@ -49,3 +49,28 @@ Explanation: The only possible triplet sums up to 0.
 
 - `3 <= nums.length <= 1000`
 - `-10^5 <= nums[i] <= 10^5`
+
+## Solutions
+
+### Python
+
+```python
+from typing import List
+
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        results = []
+
+        for i in range(len(nums) - 2):
+            for j in range(i + 1, len(nums) - 1):
+                for k in range(j + 1, len(nums)):
+                    if nums[i] + nums[j] + nums[k] == 0:
+                        sorted_triplet = sorted([nums[i], nums[j], nums[k]])
+
+                        if sorted_triplet not in results:
+                            results.append(sorted_triplet)
+
+        return list(results)
+
+```

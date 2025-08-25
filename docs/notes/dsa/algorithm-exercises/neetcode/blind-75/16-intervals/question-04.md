@@ -36,3 +36,53 @@ Output: true
 
 - `0 <= intervals.length <= 500`
 - `0 <= intervals[i].start < intervals[i].end <= 1,000,000`
+
+## Solutions
+
+### Python
+
+```python
+from typing import List
+
+
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+
+"""
+Definition of Interval:
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+"""
+
+
+class Solution:
+    """Time & Space Complexity
+
+    Time complexity:
+        `O(n * log n)`
+    Space complexity:
+        `O(1)` or `O(n)` depending on the sorting algorithm.
+    """
+
+    def canAttendMeetings(self, intervals: List[Interval]) -> bool:
+        if len(intervals) == 0:
+            return True
+
+        sorted_intervals = sorted(intervals, key=lambda i: i.start)
+
+        final_end = sorted_intervals[0].end
+
+        for interval in sorted_intervals[1:]:
+            if not interval.start >= final_end:
+                return False
+
+            final_end = interval.end
+
+        return True
+
+```

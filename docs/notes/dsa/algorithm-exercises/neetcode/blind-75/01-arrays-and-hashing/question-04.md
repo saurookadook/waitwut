@@ -40,3 +40,42 @@ Output: [[""]]
 - `1 <= strs.length <= 1000`
 - `0 <= strs[i].length <= 100`
 - `strs[i]` is made up of lowercase English letters.
+
+## Solutions
+
+### JavaScript
+
+```javascript
+class Solution {
+  wordSortedCharMap = new Map();
+  groupedResults = [];
+  anagramGroup = [];
+
+    /**
+     * @param {string[]} strs
+     * @return {string[][]}
+     */
+    groupAnagrams(strs) {
+      this.populatedSortedCharMap(strs);
+
+      return [...this.wordSortedCharMap.values()];
+    }
+
+    populatedSortedCharMap(strs) {
+      for (const word of strs) {
+        const sortedChars = this.getSortedCharacters(word);
+        if (!this.wordSortedCharMap.has(sortedChars)) {
+          this.wordSortedCharMap.set(sortedChars, [word]);
+          continue;
+        }
+
+        this.wordSortedCharMap.get(sortedChars).push(word);
+      }
+    }
+
+    getSortedCharacters(input) {
+        return [...input].sort().join('');
+    }
+}
+
+```

@@ -37,3 +37,38 @@ Explanation: "tabacat" is not a palindrome.
 
 - `1 <= s.length <= 1000`
 - `s` is made up of only printable ASCII characters.
+
+## Solutions
+
+### Python
+
+```python
+import re
+from pprint import pprint as pp
+
+
+class Solution:
+    ALPHANUM_REGEX = r"[A-Za-z0-9]"
+
+    def isPalindrome(self, s: str) -> bool:
+        left_pointer = 0
+        right_pointer = len(s) - 1
+
+        while left_pointer <= right_pointer:
+            if not re.match(self.ALPHANUM_REGEX, s[left_pointer]):
+                left_pointer += 1
+                continue
+
+            if not re.match(self.ALPHANUM_REGEX, s[right_pointer]):
+                right_pointer -= 1
+                continue
+
+            if s[left_pointer].lower() != s[right_pointer].lower():
+                return False
+
+            left_pointer += 1
+            right_pointer -= 1
+
+        return True
+
+```

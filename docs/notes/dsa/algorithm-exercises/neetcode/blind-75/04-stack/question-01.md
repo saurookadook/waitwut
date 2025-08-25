@@ -46,3 +46,47 @@ Explanation: The brackets are not closed in the correct order.
 **Constraints**:
 
 - `1 <= s.length <= 1000`
+
+## Solutions
+
+### JavaScript
+
+```javascript
+class Solution {
+    OPEN_PARENS;
+    PAREN_MAP = {
+        ')': '(',
+        ']': '[',
+        '}': '{',
+    };
+
+    constructor() {
+        this.OPEN_PARENS = new Set(Object.values(this.PAREN_MAP))
+    }
+
+    /**
+     * @param {string} s
+     * @return {boolean}
+     */
+    isValid(s) {
+        const parens = [];
+
+        for (const char of s) {
+            if (parens.length === 0 && !this.OPEN_PARENS.has(char)) {
+                return false;
+            }
+
+            const lastParen = parens.at(-1);
+            if (parens.length > 0 && lastParen === this.PAREN_MAP[char]) {
+                parens.pop();
+                continue;
+            }
+
+            parens.push(char);
+        }
+
+        return parens.length === 0;
+    }
+}
+
+```
