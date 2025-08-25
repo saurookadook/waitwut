@@ -19,7 +19,7 @@ Find all cells where water can flow from that cell to **both** the Pacific and A
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/3899fae1-ab18-4d6b-15b4-c7f7aa224700/public" alt="Visual representation of 'heights' input for Example 1.">
 
-```Java
+```java
 Input: heights = [
   [4,2,7,3,4],
   [7,4,6,4,7],
@@ -31,7 +31,7 @@ Output: [[0,2],[0,4],[1,0],[1,1],[1,2],[1,3],[1,4],[2,0]]
 
 **Example 2**:
 
-```Java
+```java
 Input: heights = [[1],[1]]
 
 Output: [[0,0],[0,1]]

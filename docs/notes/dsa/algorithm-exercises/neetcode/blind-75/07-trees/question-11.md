@@ -19,7 +19,7 @@ You just need to ensure that a binary tree can be serialized to a string and thi
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/a9dfb17f-70e9-42a3-ba97-33cfd82f6100/public" alt="Diagram representation of 'root' input for Example 1.">
 
-```Java
+```java
 Input: root = [1,2,3,null,null,4,5]
 
 Output: [1,2,3,null,null,4,5]
@@ -27,7 +27,7 @@ Output: [1,2,3,null,null,4,5]
 
 **Example 2**:
 
-```Java
+```java
 Input: root = []
 
 Output: []

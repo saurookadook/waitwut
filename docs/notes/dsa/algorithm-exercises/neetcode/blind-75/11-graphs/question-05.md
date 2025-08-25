@@ -11,7 +11,7 @@ Given `n` nodes labeled from `0` to `n - 1` and a list of **undirected** edges (
 
 **Example 1**:
 
-```Java
+```java
 Input:
 n = 5
 edges = [[0, 1], [0, 2], [0, 3], [1, 4]]
@@ -22,7 +22,7 @@ true
 
 **Example 2**:
 
-```Java
+```java
 Input:
 n = 5
 edges = [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]]

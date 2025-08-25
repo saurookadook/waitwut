@@ -15,7 +15,7 @@ Return the total number of connected components in that graph.
 
 **Example 1**:
 
-```Java
+```java
 Input:
 n=3
 edges=[[0,1], [0,2]]
@@ -26,7 +26,7 @@ Output:
 
 **Example 2**:
 
-```Java
+```java
 Input:
 n=6
 edges=[[0,1], [1,2], [2,3], [4,5]]

@@ -13,7 +13,7 @@ You are given the root of a binary tree `root`. Invert the binary tree and retur
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/ac124ee6-207f-41f6-3aaa-dfb35815f200/public" alt="Representation of input and output for Example 1.">
 
-```Java
+```java
 Input: root = [1,2,3,4,5,6,7]
 
 Output: [1,3,2,7,6,5,4]
@@ -23,7 +23,7 @@ Output: [1,3,2,7,6,5,4]
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/e39e8d4f-9946-4f99-ee3d-0d4df08d4d00/public" alt="Representation of input and output for Example 2.">
 
-```Java
+```java
 Input: root = [3,2,1]
 
 Output: [3,1,2]
@@ -31,7 +31,7 @@ Output: [3,1,2]
 
 **Example 3**:
 
-```Java
+```java
 Input: root = []
 
 Output: []

@@ -15,7 +15,7 @@ You can assume the output will fit into a **32-bit** integer.
 
 **Example 1**:
 
-```Java
+```java
 Input: nums = [1,2,-3,4]
 
 Output: 4
@@ -23,7 +23,7 @@ Output: 4
 
 **Example 2**:
 
-```Java
+```java
 Input: nums = [-2,-1]
 
 Output: 2

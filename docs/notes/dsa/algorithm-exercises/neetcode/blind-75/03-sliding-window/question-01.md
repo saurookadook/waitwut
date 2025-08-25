@@ -15,7 +15,7 @@ Return the maximum profit you can achieve. You may choose to **not make any tran
 
 **Example 1**:
 
-```Java
+```java
 Input: prices = [10,1,5,6,7,1]
 
 Output: 6
@@ -25,7 +25,7 @@ Explanation: Buy `prices[1]` and sell `prices[4]`, `profit = 7 - 1 = 6`.
 
 **Example 2**:
 
-```Java
+```java
 Input: prices = [10,8,7,5,2]
 
 Output: 0

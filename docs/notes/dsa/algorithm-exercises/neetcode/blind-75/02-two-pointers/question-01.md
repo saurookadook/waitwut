@@ -15,7 +15,7 @@ A **palindrome** is a string that reads the same forward and backward. It is als
 
 **Example 1**:
 
-```Java
+```java
 Input: s = "Was it a car or a cat I saw?"
 
 Output: true

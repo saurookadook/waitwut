@@ -13,7 +13,7 @@ You are allowed to reuse words in the dictionary an unlimited number of times. Y
 
 **Example 1**:
 
-```Java
+```java
 Input: s = "neetcode", wordDict = ["neet","code"]
 
 Output: true
@@ -23,7 +23,7 @@ Explanation: Return true because "neetcode" can be split into "neet" and "code".
 
 **Example 2**:
 
-```Java
+```java
 Input: s = "applepenapple", wordDict = ["apple","pen","ape"]
 
 Output: true
@@ -33,7 +33,7 @@ Explanation: Return true because "applepenapple" can be split into "apple", "pen
 
 **Example 3**:
 
-```Java
+```java
 Input: s = "catsincars", wordDict = ["cats","cat","sin","in","car"]
 
 Output: false

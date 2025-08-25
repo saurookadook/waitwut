@@ -13,7 +13,7 @@ Return `true` if you can reach the last index starting from index `0`, or `false
 
 **Example 1**:
 
-```Java
+```java
 Input: nums = [1,2,0,1,0]
 
 Output: true
@@ -23,7 +23,7 @@ Explanation: First jump from index 0 to 1, then from index 1 to 3, and lastly fr
 
 **Example 2**:
 
-```Java
+```java
 Input: nums = [1,2,1,0,1]
 
 Output: false

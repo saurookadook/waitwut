@@ -19,7 +19,7 @@ Return `true` if `s` is a valid string, and `false` otherwise.
 
 **Example 1**:
 
-```Java
+```java
 Input: s = "[]"
 
 Output: true
@@ -27,7 +27,7 @@ Output: true
 
 **Example 2**:
 
-```Java
+```java
 Input: s = "([{}])"
 
 Output: true
@@ -35,7 +35,7 @@ Output: true
 
 **Example 3**:
 
-```Java
+```java
 Input: s = "[(])"
 
 Output: false

@@ -11,7 +11,7 @@ Given a node in a connected undirected graph, return a deep copy of the graph.
 
 Each node in the graph contains an integer value and a list of its neighbors.
 
-```Java
+```java
 class Node {
     public int val;
     public List<Node> neighbors;
@@ -28,7 +28,7 @@ The input node will always be the first node in the graph and have `1` as the va
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/96c7fb34-26e8-42e0-5f5d-61b8b8c96800/public" alt="Diagram representation of 'adjList' input for Example 1.">
 
-```Java
+```java
 Input: adjList = [[2],[1,3],[2]]
 
 Output: [[2],[1,3],[2]]
@@ -43,7 +43,7 @@ Node 3: val = 3 and neighbors = [2].
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/96c7fb34-26e8-42e0-5f5d-61b8b8c96800/public" alt="Diagram representation of 'adjList' input for Example 2.">
 
-```Java
+```java
 Input: adjList = [[]]
 
 Output: [[]]
@@ -53,7 +53,7 @@ Explanation: The graph has one node with no neighbors.
 
 **Example 3**:
 
-```Java
+```java
 Input: adjList = []
 
 Output: []

@@ -17,7 +17,7 @@ You may assume the output will fit in a **32-bit** integer.
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/7eddce4e-2fc4-4c3a-bb0f-9d1060243500/public" alt="Visual representation of inputs for Example 1: a 3-by-6 checkered board with a hiker (you) in the top-left corner and a trophy (goal) in the bottom-right corner.">
 
-```Java
+```java
 Input: m = 3, n = 6
 
 Output: 21
@@ -25,7 +25,7 @@ Output: 21
 
 **Example 2**:
 
-```Java
+```java
 Input: m = 3, n = 3
 
 Output: 6

@@ -15,7 +15,7 @@ For the word to be present it must be possible to form it with a path in the boa
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/a4639809-0754-4eda-221f-a4cd58bd9c00/public" alt="Visual representation of 'board' input with highlighted squares for 'word' input for Example 1.">
 
-```Java
+```java
 Input:
 board = [
   ["A","B","C","D"],
@@ -31,7 +31,7 @@ Output: true
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/a4639809-0754-4eda-221f-a4cd58bd9c00/public" alt="Visual representation of 'board' input with no highlighted squares for 'word' input for Example 2.">
 
-```Java
+```java
 Input:
 board = [
   ["A","B","C","D"],

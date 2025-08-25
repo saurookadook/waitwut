@@ -16,7 +16,7 @@ Implement the `WordDictionary` class:
 
 **Example 1**:
 
-```Java
+```java
 Input:
 ["WordDictionary", "addWord", "day", "addWord", "bay", "addWord", "may", "search", "say", "search", "day", "search", ".ay", "search", "b.."]
 

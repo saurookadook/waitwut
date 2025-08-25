@@ -18,7 +18,7 @@ Implement the PrefixTree class:
 
 **Example 1**:
 
-```Java
+```java
 Input:
 ["Trie", "insert", "dog", "search", "dog", "search", "do", "startsWith", "do", "insert", "do", "search", "do"]
 

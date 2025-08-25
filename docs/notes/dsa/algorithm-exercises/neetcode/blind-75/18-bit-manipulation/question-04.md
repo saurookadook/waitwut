@@ -13,7 +13,7 @@ Given an array `nums` containing `n` integers in the range `[0, n]` without any 
 
 **Example 1**:
 
-```Java
+```java
 Input: nums = [1,2,3]
 
 Output: 0
@@ -23,7 +23,7 @@ Explanation: Since there are `3` numbers, the range is `[0,3]`. The missing numb
 
 **Example 2**:
 
-```Java
+```java
 Input: nums = [0,2]
 
 Output: 1

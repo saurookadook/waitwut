@@ -13,7 +13,7 @@ Note: Intervals are _non-overlapping_ if they have no common point. For example,
 
 **Example 1**:
 
-```Java
+```java
 Input: intervals = [[1,2],[2,4],[1,4]]
 
 Output: 1
@@ -23,7 +23,7 @@ Explanation: After [1,4] is removed, the rest of the intervals are non-overlappi
 
 **Example 2**:
 
-```Java
+```java
 Input: intervals = [[1,2],[2,4]]
 
 Output: 0

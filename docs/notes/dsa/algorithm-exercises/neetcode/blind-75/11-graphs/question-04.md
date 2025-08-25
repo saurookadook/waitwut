@@ -17,7 +17,7 @@ Return `true` if it is possible to finish all courses, otherwise return `false`.
 
 **Example 1**:
 
-```Java
+```java
 Input: numCourses = 2, prerequisites = [[0,1]]
 
 Output: true
@@ -27,7 +27,7 @@ Explanation: First take course 1 (no prerequisites) and then take course 0.
 
 **Example 2**:
 
-```Java
+```java
 Input: numCourses = 2, prerequisites = [[0,1],[1,0]]
 
 Output: false

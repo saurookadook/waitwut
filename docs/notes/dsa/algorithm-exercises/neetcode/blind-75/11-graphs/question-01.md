@@ -13,7 +13,7 @@ An **island** is formed by connecting adjacent lands horizontally or vertically 
 
 **Example 1**:
 
-```Java
+```java
 Input: grid = [
     ["0","1","1","1","0"],
     ["0","1","0","1","0"],
@@ -25,7 +25,7 @@ Output: 1
 
 **Example 2**:
 
-```Java
+```java
 Input: grid = [
     ["1","1","0","0","1"],
     ["1","1","0","0","1"],

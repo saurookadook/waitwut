@@ -15,7 +15,7 @@ Return the answer with the smaller index first.
 
 **Example 1**:
 
-```Java
+```java
 Input: nums = [3,4,5,6], target = 7
 
 Output: [0,1]
@@ -25,7 +25,7 @@ Explanation: `nums[0] + nums[1] == 7`, so we return `[0, 1]`.
 
 **Example 2**:
 
-```Java
+```java
 Input: nums = [4,5,6], target = 10
 
 Output: [0,2]
@@ -33,7 +33,7 @@ Output: [0,2]
 
 **Example 3**:
 
-```Java
+```java
 Input: nums = [5,5], target = 10
 
 Output: [0,1]

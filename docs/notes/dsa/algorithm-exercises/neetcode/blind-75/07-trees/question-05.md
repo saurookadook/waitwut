@@ -15,7 +15,7 @@ The lowest common ancestor between two nodes `p` and `q` is the lowest node in a
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/2080ee6a-3d27-4cd5-0db2-07672ead8200/public" alt="Diagram representation of 'root' input for Example 1.">
 
-```Java
+```java
 Input: root = [5,3,8,1,4,7,9,null,2], p = 3, q = 8
 
 Output: 5
@@ -25,7 +25,7 @@ Output: 5
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/2080ee6a-3d27-4cd5-0db2-07672ead8200/public" alt="Diagram representation of 'root' input for Example 2.">
 
-```Java
+```java
 Input: root = [5,3,8,1,4,7,9,null,2], p = 3, q = 4
 
 Output: 3

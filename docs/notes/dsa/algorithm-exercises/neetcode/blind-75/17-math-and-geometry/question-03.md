@@ -17,7 +17,7 @@ You must update the matrix _in-place_.
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/49ffd14e-b32b-4ed8-e0d0-9378e5eb9b00/public" alt="Visual representation of input and result output for Example 1.">
 
-```Java
+```java
 Input: matrix = [
   [0,1],
   [1,0]
@@ -33,7 +33,7 @@ Output: [
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/04d99cc8-e453-464d-888c-58d0a95daf00/public" alt="Visual representation of input and result output for Example 2.">
 
-```Java
+```java
 Input: matrix = [
   [1,2,3],
   [4,0,5],

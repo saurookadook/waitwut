@@ -15,7 +15,7 @@ You may assume that you have an unlimited number of each coin.
 
 **Example 1**:
 
-```Java
+```java
 Input: coins = [1,5,10], amount = 12
 
 Output: 3
@@ -25,7 +25,7 @@ Explanation: 12 = 10 + 1 + 1. Note that we do not have to use every kind coin av
 
 **Example 2**:
 
-```Java
+```java
 Input: coins = [2], amount = 3
 
 Output: -1
@@ -35,7 +35,7 @@ Explanation: The amount of 3 cannot be made up with coins of 2.
 
 **Example 3**:
 
-```Java
+```java
 Input: coins = [1], amount = 0
 
 Output: 0

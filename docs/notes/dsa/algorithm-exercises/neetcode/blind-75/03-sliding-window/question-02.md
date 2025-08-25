@@ -13,7 +13,7 @@ A **substring** is a contiguous sequence of characters within a string.
 
 **Example 1**:
 
-```Java
+```java
 Input: s = "zxyzxyz"
 
 Output: 3
@@ -23,7 +23,7 @@ Explanation: The string "xyz" is the longest without duplicate characters.
 
 **Example 2**:
 
-```Java
+```java
 Input: s = "xxxx"
 
 Output: 1

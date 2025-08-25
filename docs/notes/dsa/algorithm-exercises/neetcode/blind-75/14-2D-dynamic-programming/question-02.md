@@ -17,7 +17,7 @@ A **common subsequence** of two strings is a subsequence that exists in both str
 
 **Example 1**:
 
-```Java
+```java
 Input: text1 = "cat", text2 = "crabt"
 
 Output: 3
@@ -27,7 +27,7 @@ Explanation: The longest common subsequence is "cat" which has a length of 3.
 
 **Example 2**:
 
-```Java
+```java
 Input: text1 = "abcd", text2 = "abcd"
 
 Output: 4
@@ -35,7 +35,7 @@ Output: 4
 
 **Example 3**:
 
-```Java
+```java
 Input: text1 = "abcd", text2 = "efgh"
 
 Output: 0

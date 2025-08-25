@@ -22,7 +22,7 @@ Implement the MedianFinder class:
 
 **Example 1**:
 
-```Java
+```java
 Input:
 ["MedianFinder", "addNum", "1", "findMedian", "addNum", "3" "findMedian", "addNum", "2", "findMedian"]
 

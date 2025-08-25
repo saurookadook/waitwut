@@ -13,7 +13,7 @@ Return an array `output` where `output[i]` is the number of `1`'s in the binary 
 
 **Example 1**:
 
-```Java
+```java
 Input: n = 4
 
 Output: [0,1,1,2,1]

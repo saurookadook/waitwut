@@ -13,7 +13,7 @@ You may assume that the correct output is always unique.
 
 **Example 1**:
 
-```Java
+```java
 Input: s = "OUZODYXAZV", t = "XYZ"
 
 Output: "YXAZ"
@@ -23,7 +23,7 @@ Explanation: `"YXAZ"` is the shortest substring that includes `"X"`, `"Y"`, and 
 
 **Example 2**:
 
-```Java
+```java
 Input: s = "xyz", t = "xyz"
 
 Output: "xyz"
@@ -31,7 +31,7 @@ Output: "xyz"
 
 **Example 3**:
 
-```Java
+```java
 Input: s = "x", t = "xy"
 
 Output: ""

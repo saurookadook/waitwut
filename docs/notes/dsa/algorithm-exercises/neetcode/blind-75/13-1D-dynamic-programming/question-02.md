@@ -15,7 +15,7 @@ Return the _maximum_ amount of money you can rob **without** alerting the police
 
 **Example 1**:
 
-```Java
+```java
 Input: nums = [1,1,3,3]
 
 Output: 4
@@ -25,7 +25,7 @@ Explanation: `nums[0] + nums[2] = 1 + 3 = 4`
 
 **Example 2**:
 
-```Java
+```java
 Input: nums = [2,9,8,3,6]
 
 Output: 16

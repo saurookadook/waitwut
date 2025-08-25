@@ -13,7 +13,7 @@ A **palindrome** is a string that reads the same forward and backward.
 
 **Example 1**:
 
-```Java
+```java
 Input: s = "abc"
 
 Output: 3
@@ -23,7 +23,7 @@ Explanation: "a", "b", "c".
 
 **Example 2**:
 
-```Java
+```java
 Input: s = "aaa"
 
 Output: 6

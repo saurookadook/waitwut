@@ -17,7 +17,7 @@ The **path sum** of a path is the sum of the node's values in the path.
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/9896b041-9021-44c2-ab3e-5cff76adf100/public" alt="Diagram representation of 'root' input for Example 1.">
 
-```Java
+```java
 Input: root = [1,2,3]
 
 Output: 6
@@ -29,7 +29,7 @@ Explanation: The path is 2 -> 1 -> 3 with a sum of 2 + 1 + 3 = 6.
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/19ce1187-387e-4323-f2c9-1a317ab36200/public" alt="Diagram representation of 'root' input for Example 2.">
 
-```Java
+```java
 Input: root = [-15,10,20,null,null,15,5,-5]
 
 Output: 40

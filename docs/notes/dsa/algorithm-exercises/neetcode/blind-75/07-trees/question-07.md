@@ -19,7 +19,7 @@ A **valid binary search tree** satisfies the following constraints:
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/18f9a316-8dc2-4e11-d304-51204454ac00/public" alt="Diagram representation of 'root' input for Example 1.">
 
-```Java
+```java
 Input: root = [2,1,3]
 
 Output: true
@@ -29,7 +29,7 @@ Output: true
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/6f14cb8d-efad-4221-2beb-fba2b19c8a00/public" alt="Diagram representation of 'root' input for Example 2.">
 
-```Java
+```java
 Input: root = [1,2,3]
 
 Output: false

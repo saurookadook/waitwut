@@ -13,7 +13,7 @@ An **anagram** is a string that contains the exact same characters as another st
 
 **Example 1**:
 
-```Java
+```java
 Input: strs = ["act","pots","tops","cat","stop","hat"]
 
 Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
@@ -21,7 +21,7 @@ Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
 
 **Example 2**:
 
-```Java
+```java
 Input: strs = ["x"]
 
 Output: [["x"]]
@@ -29,7 +29,7 @@ Output: [["x"]]
 
 **Example 3**:
 
-```Java
+```java
 Input: strs = [""]
 
 Output: [[""]]

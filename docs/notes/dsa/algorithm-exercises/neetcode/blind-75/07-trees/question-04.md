@@ -15,7 +15,7 @@ A subtree of a binary tree `tree` is a tree that consists of a node in `tree` an
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/2991a77a-9664-46ed-528d-019e392f7400/public" alt="Diagram representation of 'root' and 'subroot' inputs for Example 1.">
 
-```Java
+```java
 Input: root = [1,2,3,4,5], subRoot = [2,4,5]
 
 Output: true
@@ -25,7 +25,7 @@ Output: true
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/ae6114cb-23a0-457f-c441-0a82b7a58500/public" alt="Diagram representation of 'root' and 'subroot' inputs for Example 2.">
 
-```Java
+```java
 Input: root = [1,2,3,4,5,null,null,6], subRoot = [2,4,5]
 
 Output: false

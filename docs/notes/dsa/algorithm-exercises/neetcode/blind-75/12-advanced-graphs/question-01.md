@@ -20,7 +20,7 @@ A string `a` is lexicographically smaller than a string `b` if either of the fol
 
 **Example 1**:
 
-```Java
+```java
 Input: ["z","o"]
 
 Output: "zo"
@@ -31,7 +31,7 @@ From "z" and "o", we know 'z' < 'o', so return "zo".
 
 **Example 2**:
 
-```Java
+```java
 Input: ["hrn","hrf","er","enn","rfnn"]
 
 Output: "hernf"

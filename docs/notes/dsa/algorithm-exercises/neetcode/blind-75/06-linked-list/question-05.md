@@ -13,7 +13,7 @@ Remove the <code>n<sup>th</sup></code> node from the end of the list and return 
 
 **Example 1**:
 
-```Java
+```java
 Input: head = [1,2,3,4], n = 2
 
 Output: [1,2,4]
@@ -21,7 +21,7 @@ Output: [1,2,4]
 
 **Example 2**:
 
-```Java
+```java
 Input: head = [5], n = 1
 
 Output: []
@@ -29,7 +29,7 @@ Output: []
 
 **Example 3**:
 
-```Java
+```java
 Input: head = [1,2], n = 2
 
 Output: [2]

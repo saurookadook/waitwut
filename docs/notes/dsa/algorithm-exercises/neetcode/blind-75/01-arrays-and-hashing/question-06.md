@@ -13,7 +13,7 @@ Please implement `encode` and `decode`
 
 **Example 1**:
 
-```Java
+```java
 Input: ["neet","code","love","you"]
 
 Output:["neet","code","love","you"]
@@ -21,7 +21,7 @@ Output:["neet","code","love","you"]
 
 **Example 2**:
 
-```Java
+```java
 Input: ["we","say",":","yes"]
 
 Output: ["we","say",":","yes"]

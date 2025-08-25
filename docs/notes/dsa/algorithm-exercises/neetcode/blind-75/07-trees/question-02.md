@@ -15,7 +15,7 @@ The **depth** of a binary tree is defined as the number of nodes along the longe
 
 <img src="https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/5ea6da77-7e43-43e0-dd9d-e879ca0b1600/public" alt="Diagram representation of array input for Example 1.">
 
-```Java
+```java
 Input: root = [1,2,3,null,null,4]
 
 Output: 3
@@ -23,7 +23,7 @@ Output: 3
 
 **Example 2**:
 
-```Java
+```java
 Input: root = []
 
 Output: 0
