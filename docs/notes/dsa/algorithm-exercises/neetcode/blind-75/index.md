@@ -1,0 +1,102 @@
+---
+title: 'Neetcode'
+date: '2025-08-23'
+fullPath: '/notes/dsa/neetcode/blind-75'
+sectionSlug: 'notes'
+---
+
+## Questions
+
+- Arrays & Hashing
+  - [Contains Duplicate](./01-arrays-and-hashing/question-01.md)
+  - [Valid Anagram](./01-arrays-and-hashing/question-02.md)
+  - [Two Sum](./01-arrays-and-hashing/question-03.md)
+  - [Group Anagrams](./01-arrays-and-hashing/question-04.md)
+  - [Top K Frequent Elements](./01-arrays-and-hashing/question-05.md)
+  - [Encode and Decode Strings](./01-arrays-and-hashing/question-06.md)
+  - [Product of Array Except Self](./01-arrays-and-hashing/question-07.md)
+  - [Longest Consecutive Sequence](./01-arrays-and-hashing/question-08.md)
+- Two Pointers
+  - [Valid Palindrome](./02-two-pointers/question-01.md)
+  - [3 Sum](./02-two-pointers/question-02.md)
+  - [Container with Most Water](./02-two-pointers/question-03.md)
+- Sliding Window
+  - [Best Time to Buy and Sell Stock](./03-sliding-window/question-01.md)
+  - [Longest Substring Without Repeating Characters](./03-sliding-window/question-02.md)
+  - [Longest Repeating Character Replacement](./03-sliding-window/question-03.md)
+  - [Minimum Window Substring](./03-sliding-window/question-04.md)
+- Stack
+  - [Valid Parentheses](./04-stack/question-01.md)
+- Binary Search
+  - [Find Minimum In Rotated Sorted Array](./05-binary-search/question-01.md)
+  - [Search In Rotated Sorted Array](./05-binary-search/question-02.md)
+- Linked List
+  - [Reverse Linked List](./06-linked-list/question-01.md)
+  - [Merge Two Sorted Lists](./06-linked-list/question-02.md)
+  - [Linked List Cycle](./06-linked-list/question-03.md)
+  - [Reorder List](./06-linked-list/question-04.md)
+  - [Remove Nth Node From End of List](./06-linked-list/question-05.md)
+  - [Merge K Sorted Lists](./06-linked-list/question-06.md)
+- Trees
+  - [Invert Binary Tree](./07-trees/question-01.md)
+  - [Maximum Depth of Binary Tree](./07-trees/question-02.md)
+  - [Same Tree](./07-trees/question-03.md)
+  - [Subtree of Another Tree](./07-trees/question-04.md)
+  - [Lowest Common Ancestor of a Binary Search Tree](./07-trees/question-05.md)
+  - [Binary Tree Level Order Traversal](./07-trees/question-06.md)
+  - [Validate Binary Search Tree](./07-trees/question-07.md)
+  - [Kth Smallest Element in a BST](./07-trees/question-08.md)
+  - [Construct Binary Tree from Preorder and Inorder Traversal](./07-trees/question-09.md)
+  - [Binary Tree Maximum Path Sum](./07-trees/question-10.md)
+  - [Serialize and Deserialize Binary Tree](./07-trees/question-11.md)
+- Heap / Priority Queue
+  - [Find Median From Data Stream](./08-heap-priority-queue/question-01.md)
+- Backtracking
+  - [Combination Sum](./09-backtracking/question-01.md)
+  - [Word Search](./09-backtracking/question-02.md)
+- Tries
+  - [Implement Trie Prefix Tree](./10-tries/question-01.md)
+  - [Design Add and Search Words Data Structure](./10-tries/question-02.md)
+  - [Word Search II](./10-tries/question-03.md)
+- Graphs
+  - [Number of Islands](./11-graphs/question-01.md)
+  - [Clone Graph](./11-graphs/question-02.md)
+  - [Pacific Atlantic Water Flow](./11-graphs/question-03.md)
+  - [Course Schedule](./11-graphs/question-04.md)
+  - [Graph Valid Tree](./11-graphs/question-05.md)
+  - [Number of Connected Components in an Undirected Graph](./11-graphs/question-06.md)
+- Advanced Graphs
+  - [Alien Dictionary](./12-advanced-graphs/question-01.md)
+- 1-D Dynamic Programming
+  - [Climbing Stairs](./13-1D-dynamic-programming/question-01.md)
+  - [House Robber](./13-1D-dynamic-programming/question-02.md)
+  - [House Robber II](./13-1D-dynamic-programming/question-03.md)
+  - [Longest Palindromic Substring](./13-1D-dynamic-programming/question-04.md)
+  - [Palindromic Substrings](./13-1D-dynamic-programming/question-05.md)
+  - [Decode Ways](./13-1D-dynamic-programming/question-06.md)
+  - [Coin Change](./13-1D-dynamic-programming/question-07.md)
+  - [Maximum Product Subarray](./13-1D-dynamic-programming/question-08.md)
+  - [Word Break](./13-1D-dynamic-programming/question-09.md)
+  - [Longest Increasing Subsequence](./13-1D-dynamic-programming/question-10.md)
+- 2-D Dynamic Programming
+  - [Unique Paths](./14-2D-dynamic-programming/question-01.md)
+  - [Longest Common Subsequence](./14-2D-dynamic-programming/question-02.md)
+- Greedy
+  - [Maximum Subarray](./15-greedy/question-01.md)
+  - [Jump Game](./15-greedy/question-02.md)
+- Intervals
+  - [Insert Interval](./16-intervals/question-01.md)
+  - [Merge Intervals](./16-intervals/question-02.md)
+  - [Non Overlapping Intervals](./16-intervals/question-03.md)
+  - [Meeting Rooms](./16-intervals/question-04.md)
+  - [Meeting Rooms II](./16-intervals/question-05.md)
+- Math and Geometry
+  - [Rotate Image](./17-math-and-geometry/question-01.md)
+  - [Spiral Matrix](./17-math-and-geometry/question-02.md)
+  - [Set Matrix Zones](./17-math-and-geometry/question-03.md)
+- Bit Manipulation
+  - [Number of 1 Bits](./18-bit-manipulation/question-01.md)
+  - [Counting Bits](./18-bit-manipulation/question-02.md)
+  - [Reverse Bits](./18-bit-manipulation/question-03.md)
+  - [Missing Number](./18-bit-manipulation/question-04.md)
+  - [Sum of Two Integers](./18-bit-manipulation/question-05.md)
