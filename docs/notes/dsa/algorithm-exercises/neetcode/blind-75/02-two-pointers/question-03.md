@@ -33,3 +33,30 @@ Output: 4
 
 - `2 <= height.length <= 1000`
 - `0 <= height[i] <= 1000`
+
+## Solutions
+
+### Python
+
+```Python
+class Solution:
+    def maxArea(self, heights: List[int]) -> int:
+        result_area = 0
+
+        i = 0
+        j = len(heights) - 1
+
+        while i < j:
+            result_area = max(result_area, self.calc_area(heights, i, j))
+
+            if heights[i] < heights[j]:
+                i += 1
+            else:
+                j -= 1
+
+        return result_area
+
+    def calc_area(self, heights: List[int], i: int, j: int) -> int:
+        return (j - i) * min(heights[i], heights[j])
+
+```

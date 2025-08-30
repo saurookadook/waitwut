@@ -32,16 +32,84 @@ Output: []
 
 ## Solutions
 
-### Solution 1
+### Python
 
 ```Python
+from pprint import pprint as pp
+
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
 
+
+def from_last(self, n):
+    if self.next == None:
+        return self
+
+    slow_crawl = self
+    fast_crawl = self
+
+    while n > 0:
+        fast_crawl = fast_crawl.next
+        n -= 1
+
+    while fast_crawl.next is not None:
+        slow_crawl = slow_crawl.next
+        fast_crawl = fast_crawl.next
+
+    return slow_crawl
+
+
+def get_last(self):
+    if self.next == None:
+        return self
+
+    node = self.next
+
+    while node.next is not None:
+        node = node.next
+
+    return node
+
+
+def size(self):
+    counter = 0
+    node = self
+
+    while node is not None:
+        node = node.next
+        counter += 1
+
+    return counter
+
+
+
+setattr(ListNode, 'from_last', from_last)
+setattr(ListNode, 'get_last', get_last)
+setattr(ListNode, 'size', size)
+
+
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        reversed_linked_list = None
+
+        if head == None:
+            return reversed_linked_list
+
+        i = 0
+
+        for i in range(head.size()):
+            if reversed_linked_list == None:
+                reversed_linked_list = ListNode(val=head.from_last(i).val)
+            else:
+                reversed_linked_list.get_last().next = ListNode(
+                    val=head.from_last(i).val
+                )
+
+        return reversed_linked_list
+
 
 ```

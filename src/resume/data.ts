@@ -197,7 +197,7 @@ const EmploymentHistory: EmploymentRecord[] = [
             {
                 title: 'Software Engineer III',
                 startDate: 'June 2022', // June 6th, 2022
-                endDate: 'June 2025',
+                endDate: 'June 2025', // June 24th, 2025
             },
             {
                 title: 'Tech Lead',
@@ -228,10 +228,12 @@ const EmploymentHistory: EmploymentRecord[] = [
                 href: 'https://www.pluralsight.com/product/skills-assessment',
                 text: 'Skill IQ assessments product',
             })}`,
-            `As tech lead, managed and contributed to development of both the ${buildLink({
-                href: 'https://app.pluralsight.com/skilliq/my-skills',
-                text: 'My Skills tab',
-            })} and refactor of ${buildLink({
+            `As tech lead, managed and contributed to development of both the ${buildLink(
+                {
+                    href: 'https://app.pluralsight.com/skilliq/my-skills',
+                    text: 'My Skills tab',
+                },
+            )} and refactor of ${buildLink({
                 href: 'https://www.pluralsight.com/product/skills-assessment',
                 text: 'Skill IQ',
             })}'s graph components using ${buildLink({
@@ -289,10 +291,12 @@ const EmploymentHistory: EmploymentRecord[] = [
                 href: 'https://github.com/pluralsight/pando',
                 text: 'Pando design system library',
             })}`,
-            `Created cron jobs to trigger alerts for issues in data integrity between ${buildLink({
-                href: 'https://www.postgresql.org/',
-                text: 'PostgreSQL',
-            })} database tables and reflected tables in ${buildLink({
+            `Created cron jobs to trigger alerts for issues in data integrity between ${buildLink(
+                {
+                    href: 'https://www.postgresql.org/',
+                    text: 'PostgreSQL',
+                },
+            )} database tables and reflected tables in ${buildLink({
                 href: 'https://www.snowflake.com/en/',
                 text: 'Snowflake',
             })}`,
@@ -359,10 +363,12 @@ const EmploymentHistory: EmploymentRecord[] = [
         ],
         responsibilities: [
             'Assist in supporting customer web and email integrations for an enterprise, real-time personalization platform',
-            `Devise and create solutions for various types of web campaigns using ${buildLink({
-                href: 'https://kangax.github.io/compat-table/es5/',
-                text: 'ES5&nbsp;JS',
-            })} to deliver personalized content to end-users`,
+            `Devise and create solutions for various types of web campaigns using ${buildLink(
+                {
+                    href: 'https://kangax.github.io/compat-table/es5/',
+                    text: 'ES5&nbsp;JS',
+                },
+            )} to deliver personalized content to end-users`,
             `Write and fix sitemaps using ${buildLink({
                 href: 'https://kangax.github.io/compat-table/es5/',
                 text: 'ES5&nbsp;JS',
@@ -481,7 +487,10 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
     {
         displayName: 'connect-four-app',
         links: [
-            { type: 'github repository', url: 'https://github.com/saurookadook/connect-four-app' },
+            {
+                type: 'github repository',
+                url: 'https://github.com/saurookadook/connect-four-app',
+            },
         ],
         description: `A small full-stack 'Connect Four' app namely using ${buildLink({
             href: 'https://docs.nestjs.com/',
@@ -512,10 +521,12 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
                 url: 'https://npmjs.com/org/saurookkadookk',
             },
         ],
-        description: `A collection of useful, lightweight utilities for use in ${buildLink({
-            href: 'https://react.dev/',
-            text: 'React',
-        })} applications.`,
+        description: `A collection of useful, lightweight utilities for use in ${buildLink(
+            {
+                href: 'https://react.dev/',
+                text: 'React',
+            },
+        )} applications.`,
         startDate: 'November 2024',
         endDate: 'Present',
     },
@@ -610,7 +621,8 @@ const TechnicalProjects: TechnicalProjectRecord[] = [
                 url: 'https://github.com/saurookadook/eight-bit-discourse-app',
             },
         ],
-        description: 'Forum for open discussion of video games (final project for Flatiron School)',
+        description:
+            'Forum for open discussion of video games (final project for Flatiron School)',
         startDate: 'June 2018',
         endDate: 'May 2022',
     },
@@ -646,7 +658,8 @@ const Education: EducationRecord[] = [
     {
         institution: 'Flatiron School',
         completionText: 'June 2018',
-        certification: 'Full Stack Web Development, Ruby on Rails and JavaScript program',
+        certification:
+            'Full Stack Web Development, Ruby on Rails and JavaScript program',
     },
     {
         institution: 'Eastman School of Music ',

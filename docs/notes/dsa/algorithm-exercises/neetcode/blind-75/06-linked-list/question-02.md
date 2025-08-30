@@ -43,3 +43,70 @@ Output: []
 
 - `0 <= The length of the each list <= 100`
 - `-100 <= Node.val <= 100`
+
+## Solutions
+
+### Python
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+def get_last(self):
+    if self.next == None:
+        return self
+
+    node = self.next
+
+    while node.next is not None:
+        node = node.next
+
+    return node
+
+
+setattr(ListNode, 'get_last', get_last)
+
+
+class Solution:
+    merged_list = None
+
+    def mergeTwoLists(
+        self,
+        list1: Optional[ListNode],
+        list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
+        if not list1 and not list2:
+            return None
+
+        node_1 = list1
+        node_2 = list2
+
+        while node_1 or node_2:
+            if node_1 and node_2:
+                if node_1.val <= node_2.val:
+                    self.handle_assignment(node_1)
+                    node_1 = node_1.next
+                else:
+                    self.handle_assignment(node_2)
+                    node_2 = node_2.next
+
+            elif node_1:
+                self.handle_assignment(node_1)
+                node_1 = node_1.next
+            else:
+                self.handle_assignment(node_2)
+                node_2 = node_2.next
+
+        return self.merged_list
+
+    def handle_assignment(self, target_node):
+        if self.merged_list is None:
+            self.merged_list = ListNode(val=target_node.val)
+        else:
+            self.merged_list.get_last().next = ListNode(val=target_node.val)
+
+
+```

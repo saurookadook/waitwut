@@ -42,3 +42,37 @@ Output: false
 - `1 <= Length of the list <= 1000`
 - `-1000 <= Node.val <= 1000`
 - `index` is `-1` or a valid index in the linked list.
+
+## Solutions
+
+### Python
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        has_cycle = False
+
+        if not head:
+            return has_cycle
+
+        visited = set()
+        node = head
+
+        while node.next:
+            if node.next.__hash__() in visited:
+                has_cycle = True
+                break
+            else:
+                visited.add(node.next.__hash__())
+                node = node.next
+
+        return has_cycle
+
+
+```
