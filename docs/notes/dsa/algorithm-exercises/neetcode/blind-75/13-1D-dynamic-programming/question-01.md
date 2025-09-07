@@ -41,3 +41,23 @@ Explanation:
 **Constraints**:
 
 - `1 <= n <= 30`
+
+## Solutions
+
+### Python
+
+```python
+# ============================= 1 =============================
+class RecursiveSolution:
+    """1. Solution utilizing Recursion
+
+    Time & Space Complexity
+
+    Time complexity:
+        `O(2^n)`
+    Space complexity:
+        `O(n)`
+    """
+
+    def climbStairs(self, n: int) -> int:
+        pass

@@ -142,19 +142,18 @@ class DynamicProgrammingBottomUpSolution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[1])
         n = len(intervals)
-        # TODO: what does `dp` stand for...?
-        dp = [0] * n
+        dp_table = [0] * n
 
         for i in range(n):
-            dp[i] = 1
+            dp_table[i] = 1
             for j in range(i):
                 next_end = intervals[j][1]
                 current_start = intervals[i][0]
 
                 if next_end <= current_start:
-                    dp[i] = max(dp[i], 1 + dp[j])
+                    dp_table[i] = max(dp_table[i], 1 + dp_table[j])
 
-        max_non_overlapping = max(dp)
+        max_non_overlapping = max(dp_table)
         return n - max_non_overlapping
 
 
@@ -173,8 +172,8 @@ class DynamicProgrammingBinarySearchSolution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[1])
         n = len(intervals)
-        dp = [0] * n
-        dp[0] = 1
+        dp_table = [0] * n
+        dp_table[0] = 1
 
         def binary_search(right, target):
             left = 0
@@ -197,11 +196,13 @@ class DynamicProgrammingBinarySearchSolution:
             idx = binary_search(i, current_start)
 
             if idx == 0:
-                dp[i] = dp[i - 1]
+                dp_table[i] = dp_table[i - 1]
             else:
-                dp[i] = max(dp[i - 1], 1 + dp[idx - 1])
+                dp_table[i] = max(dp_table[i - 1], 1 + dp_table[idx - 1])
 
-        return n - dp[n - 1]
+        # NOTE: wouldn't this _always_ be comparing the last item in the table?
+        # Why not just this? `n - dp[-1]`
+        return n - dp_table[n - 1]
 
 
 # ============================= 5 =============================

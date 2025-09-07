@@ -27,6 +27,7 @@ sectionSlug: "notes"
 - [Collections](/notes/python/collections)
 - [Exceptions and Errors](/notes/python/exceptions-and-error-handling)
 - [Context Managers](/notes/python/context-managers)
+- [Concurrency](/notes/python/concurrency)
 - [Introspection](/notes/python/introspection)
 
 ## General

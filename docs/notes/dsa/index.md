@@ -99,9 +99,9 @@ _in pseudo Python ([ref. from Wikipedia](https://en.wikipedia.org/wiki/Negamax))
 ```python
 def cycle_value(
     starting_value: int,
-    minimun_value: int,
-    shift_offset: int,
     length_of_range: int,  # this is the value used with the modulo operator
+    minimun_value: int = 0,
+    shift_offset: int = 0,
     always_positive: bool = False,
 ) -> int:
     """The ultimate formula for cycling through values using the modulo operator
@@ -109,9 +109,9 @@ def cycle_value(
 
     Args:
         `starting_value`: _description_
+        `length_of_range`: _description_
         `minimun_value`: _description_
         `shift_offset`: _description_
-        `length_of_range`: _description_
         `always_positive`: _description_
 
     Returns:
