@@ -8,7 +8,9 @@ sectionSlug: 'notes'
 
 ## Resources
 
+- [Speed Up Your Python Program With Concurrency](https://realpython.com/python-concurrency/)
 - [Concurrency in Python: Understanding Threading, Multiprocessing, and Asyncio](https://medium.com/@ark.iitkgp/concurrency-in-python-understanding-threading-multiprocessing-and-asyncio-03bd92ca298b)
+- [Entering into the World of Concurrency with Python](https://www.freecodecamp.org/news/concurrency-in-python/)
 
 ## Threads and Processes
 
