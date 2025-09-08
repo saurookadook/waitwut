@@ -261,12 +261,12 @@ Practice of making websites usable for the **widest range of people possible**, 
 1. Identity Goals
 2. Put someone in charge of accessibility for project _(to keep everyone on track)_
 3. Evaluate Tools and Frameworks
-  - _if they're not accessible, we shouldn't use them!_
+    - _if they're not accessible, we shouldn't use them!_
 4. Do some research about current tools and best practices regarding accessibility
 5. Create Personas with different types of disabilities
-  - we can refer to throughout design and development process
-  - commonality for discussion
-  - create empathy
+    - we can refer to throughout design and development process
+    - commonality for discussion
+    - create empathy
 
 ### WCAG
 
@@ -349,6 +349,7 @@ Practice of making websites usable for the **widest range of people possible**, 
 
 - should only have 1 occurrence of `h1`
 - should be sure not to skip levels
+
 ```html
 <!-- BAD -->
 <h1>Main Title</h1>
@@ -435,6 +436,7 @@ Use when description for each item is needed or for key/value pairs
 ### CSS Cascade Overview
 
 Applied in order:
+
 1. default browser styles
 2. external CSS
 3. style sheets embedded in page
@@ -442,6 +444,7 @@ Applied in order:
 5. end user custom configuration settings
 
 **End user is ultimately in control** so we should build with flexibility in mind
+
 - use scalable values _(`em`, `rem`, `%`, etc.)_
 - don't rely on CSS alone to convey meaning
 - use proper, semantic HTML whenever possible
@@ -483,6 +486,7 @@ Applied in order:
 
 - if possible, use more descriptive text _(instead of "read more", something like "read more of the 1st post")_
 - if it's visually important to just have generic text in a link, can use CSS
+
 ```html
 <style>
 a::after {
@@ -500,17 +504,17 @@ a::after {
 ## Accessible Form Design
 
 1. **Identify Required Fields**
-  - reduces cognitive load
-  - don't rely on color alone!
+     - reduces cognitive load
+     - don't rely on color alone!
 2. **Add Special Formatting Requirements**
-  - reduces cognitive load
-  - prevents frustration
+     - reduces cognitive load
+     - prevents frustration
 3. **Add Clear, Descriptive Form Labels**
-  - all fields need a label
-  - don't solely use placeholder text to label fields _(disappears when we type)_
+    - all fields need a label
+    - don't solely use placeholder text to label fields _(disappears when we type)_
 4. **Provide Clear Feedback for Errors and Warnings**
-  - don't rely on color alone
-  - add a message
+    - don't rely on color alone
+    - add a message
 
 ### Native vs. Custom Form Controls
 
@@ -519,10 +523,12 @@ Should _**always**_ use native controls if possible as custom markup will often 
 ### Labeling and Describing Form Controls
 
 - Use `label` tags with the `for` attribute, which should have the value of the `id` for the related form field.
-```html
-<label for="firstName">First name</label>
-<input id="firstName" type="text" />
-```
+
+  ```html
+  <label for="firstName">First name</label>
+  <input id="firstName" type="text" />
+  ```
+
 - Placeholder text should be reserved to providing more information to the user, like instructions or example values
 - When sensible, hidden labels are ok but must still exist in code _**and**_ be available to assistive technologies
 - Labels must be clear and descriptive
@@ -533,27 +539,29 @@ Should _**always**_ use native controls if possible as custom markup will often 
 ### Keyboard Navigation and Control
 
 1. **Focus and Active Indicators**
-  - browsers add them by default _(so don't remove them!)_
-  - they must exist
-  - they must be unobstructed
-  - they need plenty of contrast
+    - browsers add them by default _(so don't remove them!)_
+    - they must exist
+    - they must be unobstructed
+    - they need plenty of contrast
 2. **Tab Order**
-  - ensure source order is correct
-  - should have a logical flow
-  - add tabindex for custom controls
-  - use native controls!
+    - ensure source order is correct
+    - should have a logical flow
+    - add tabindex for custom controls
+    - use native controls!
 3. **Avoid Non-standard Functionality**
-  - don't make it awkward!
+    - don't make it awkward!
 
 ### Adding Accessibility to Custom Non-standard Form Controls
 
 #### WAI-ARIA
+
 - Accessible Rich Internet Applications
 - specification from W3C's Web Accessibility Initiative (WAI)
 - set of attributes for HTML to make it more accessible
 - [Common UI patterns with custom markup and full accessibility features](https://www.w3.org/WAI/ARIA/apg/patterns/)
 
-**Custom Select Example**
+##### Custom Select Example
+
 ```html
 <!-- BEFORE -->
 <span>
@@ -613,20 +621,20 @@ Should _**always**_ use native controls if possible as custom markup will often 
 ### Creating Accessible Form Validation
 
 1. **Feedback for Both Success and Failure**
-  - report if there are errors
-  - report successful submission too
+    - report if there are errors
+    - report successful submission too
 2. **Error Can Be Read By Assistive Technologies**
-  - don't rely on icons and colors only
-  - inaccessible to those who don't see color
-  - inaccessible to those who can't see
+    - don't rely on icons and colors only
+    - inaccessible to those who don't see color
+    - inaccessible to those who can't see
 3. **Avoid Disabling the Submit Button**
-  - the disabled button won't ever receive focus for someone using keyboard only to navigate
-  - better to let users submit data at any time and if error exists, set focus on first field with error
+    - the disabled button won't ever receive focus for someone using keyboard only to navigate
+    - better to let users submit data at any time and if error exists, set focus on first field with error
 4. **Error Messages Should be Helpful**
-  - needs to be clear!
-  - consider an email field
-    - "Error" is a bad error message
-    - "Error: email address is invalid, example@domain.com" is much better
+    - needs to be clear!
+    - consider an email field
+        - "Error" is a bad error message
+        - "Error: email address is invalid, example@domain.com" is much better
 
 ---
 
@@ -659,26 +667,28 @@ Should _**always**_ use native controls if possible as custom markup will often 
 - charts, graphs, diagrams, illustrations, etc.
 - require more in-depth descriptions
 - if description length allows, can add detailed description inside `figcaption`
-```html
-<figure role="group">
-    <div>
-        <img alt="Super Complex Thing" src="..." />
-    </div>
 
-    <figcaption>
-        <h2>
-            Super Complex Thing
-        </h2>
-        <dl>
-            <dt>
-                First part of complex thing
-            </dt>
-            <dd>...</dd>
+  ```html
+  <figure role="group">
+      <div>
+          <img alt="Super Complex Thing" src="..." />
+      </div>
 
-        </dl>
-    </figcaption>
-</figure>
-```
+      <figcaption>
+          <h2>
+              Super Complex Thing
+          </h2>
+          <dl>
+              <dt>
+                  First part of complex thing
+              </dt>
+              <dd>...</dd>
+
+          </dl>
+      </figcaption>
+  </figure>
+  ```
+
 - if description is sufficiently long, put description in its own page and link to page in `figcaption`
 
 ---
@@ -686,14 +696,24 @@ Should _**always**_ use native controls if possible as custom markup will often 
 ## Video, Audio, and Accessibility
 
 1. **Captions**
-  - text alternatives for time-based media (video or audio)
-  - help those that are hearing impaired or do not have access to sound
-  - closed and open captions are acceptable
-  - should be...
-    - adjustable for size, font, and color
-    - synchronized with audio
-    - equivalent to spoken word
+    - text alternatives for time-based media (video or audio)
+    - help those that are hearing impaired or do not have access to sound
+    - closed and open captions are acceptable
+    - should be...
+         - adjustable for size, font, and color
+         - synchronized with audio
+         - equivalent to spoken word
 2. **Provide Transcripts**
-  - allow content to be read in one form or another
-  - provide textual version of content
-  - not intended to be created verbatim
+     - allow content to be read in one form or another
+     - provide textual version of content
+     - not intended to be created verbatim
+
+---
+
+## Further Reading
+
+- [Reckoning: Part 1 — The Landscape](https://infrequently.org/2024/08/the-landscape/)
+- [Reckoning: Part 2 — Object Lesson](https://infrequently.org/2024/08/object-lesson/)
+- [Reckoning: Part 3 — Caprock](https://infrequently.org/2024/08/caprock/)
+- [Reckoning: Part 4 — The Way Out](https://infrequently.org/2024/08/the-way-out/)
+- [WebPageTest](https://webpagetest.org/)
