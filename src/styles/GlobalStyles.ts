@@ -115,9 +115,12 @@ const WaitwutStyles = createGlobalStyle`
             color: ${themeColors.graphite};
         }
 
-        & ul,
+        & ul {
+            list-style: disc;
+        }
+
         & ol {
-            list-style: initial;
+            list-style: decimal;
         }
 
         & li,
