@@ -46,3 +46,116 @@ Output: 4
 
 - `1 <= nums.length <= 1000`
 - `-1000 <= nums[i] <= 1000`
+
+## Solutions
+
+### Python
+
+```python
+from typing import List
+
+
+class Solution:
+
+    def findMin(self, nums: List[int]) -> int:
+        return self.recursive_binary_search(nums)
+
+    def recursive_binary_search(self, nums_slice: List[int]) -> int:
+        if len(nums_slice) <= 2:
+            return min(nums_slice)
+
+        left_idx = 0
+        mid_idx = len(nums_slice) // 2
+        right_idx = len(nums_slice) - 1
+
+        if (
+            nums_slice[left_idx] < nums_slice[mid_idx]
+            and nums_slice[left_idx] < nums_slice[right_idx]
+        ):
+            right_idx = mid_idx
+        elif (
+            nums_slice[right_idx] < nums_slice[mid_idx]
+            and nums_slice[right_idx] < nums_slice[left_idx]
+        ):
+            left_idx = mid_idx
+        else:
+            left_idx += 1
+
+        new_slice = nums_slice[left_idx : right_idx + 1]
+
+        return self.recursive_binary_search(new_slice)
+
+
+# ============================= 1 =============================
+class BruteForceSolution:
+    """1. Solution utilizing Brute Force approach
+
+    Time & Space Complexity
+
+    Time complexity:
+        `O(n)`
+    Space complexity:
+        `O(1)`
+    """
+
+    def findMin(self, nums: List[int]) -> int:
+        return min(nums)
+
+
+# ============================= 2 =============================
+class BinarySearchSolution:
+    """2. Solution utilizing Binary Search algorithm
+
+    Time & Space Complexity
+
+    Time complexity:
+        `O(log n)`
+    Space complexity:
+        `O(1)`
+    """
+
+    def findMin(self, nums: List[int]) -> int:
+        result = nums[0]
+        l, r = 0, len(nums) - 1
+
+        while l <= r:
+            if nums[l] < nums[r]:
+                result = min(result, nums[l])
+                break
+
+            m = (l + r) // 2
+            result = min(result, nums[m])
+            if nums[m] >= nums[l]:
+                l = m + 1
+            else:
+                r = m - 1
+
+        return result
+
+
+# ============================= 3 =============================
+class BinarySearchLowerBoundSolution:
+    """3. Solution utilizing Binary Search (lower bound) algorithm
+
+    Time & Space Complexity
+
+    Time complexity:
+        `O(log n)`
+    Space complexity:
+        `O(1)`
+    """
+
+    def findMin(self, nums: List[int]) -> int:
+        l, r = 0, len(nums) - 1
+
+        while l < r:
+            m = l + (r - l) // 2
+            if nums[m] < nums[r]:
+                r = m
+            else:
+                l = m + 1
+
+        return nums[l]
+
+
+```
