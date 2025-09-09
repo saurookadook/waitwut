@@ -149,7 +149,7 @@ class SweepLineSolution:
             mp[start] += 1
             mp[end] -= 1
 
-        res = []
+        results = []
         interval = []
         have = 0
 
@@ -161,8 +161,10 @@ class SweepLineSolution:
 
             if have == 0:
                 interval.append(i)
-                res.append(interval)
+                results.append(interval)
                 interval = []
+
+        return results
 
 
 # ============================= 3 =============================
@@ -187,7 +189,7 @@ class GreedySolution:
         for start, end in intervals:
             mp[start] = max(end + 1, mp[start])
 
-        res = []
+        results = []
         have = -1
         interval_start = -1
 
@@ -198,13 +200,13 @@ class GreedySolution:
                 have = max(mp[i] - 1, have)
 
             if have == i:
-                res.append([interval_start, have])
+                results.append([interval_start, have])
                 have = -1
                 interval_start = -1
 
         if interval_start != -1:
-            res.append([interval_start, have])
+            results.append([interval_start, have])
 
-        return res
+        return results
 
 ```
