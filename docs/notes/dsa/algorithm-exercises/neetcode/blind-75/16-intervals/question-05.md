@@ -42,7 +42,7 @@ Output: 1
 ### Python
 
 ```python
-from pprint import pprint as pp
+from pprint import pprint as p_print
 from typing import List
 
 
@@ -61,20 +61,6 @@ class Interval(object):
 """
 
 
-def find_earliest_day_without_conflict(days_list, interval):
-    # pp({
-    #     "days_list": days_list,
-    #     "interval_start": interval.start,
-    #     "interval_end": interval.end
-    # })
-
-    generator = (
-        day_interval for day_interval in days_list if interval.start >= day_interval.end
-    )
-
-    return next(generator, None)
-
-
 class Solution:
     def minMeetingRooms(self, intervals: List[Interval]) -> int:
         if len(intervals) == 0:
@@ -84,11 +70,11 @@ class Solution:
         days_with_intervals = [sorted_intervals[0]]
 
         for interval in sorted_intervals[1:]:
-            earliest_day_without_conflict = find_earliest_day_without_conflict(
+            earliest_day_without_conflict = self.find_earliest_day_without_conflict(
                 days_list=days_with_intervals, interval=interval
             )
 
-            # pp(earliest_day_without_conflict)
+            # p_print(earliest_day_without_conflict)
 
             if earliest_day_without_conflict:
                 earliest_day_without_conflict.end = interval.end
@@ -96,5 +82,23 @@ class Solution:
                 days_with_intervals.append(interval)
 
         return len(days_with_intervals)
+
+    def find_earliest_day_without_conflict(
+        self, days_list: List[Interval], interval: Interval
+    ) -> Interval | None:
+        # p_print({
+        #     "days_list": days_list,
+        #     "interval_start": interval.start,
+        #     "interval_end": interval.end
+        # })
+
+        generator = (
+            day_interval
+            for day_interval in days_list
+            if interval.start >= day_interval.end
+        )
+
+        return next(generator, None)
+
 
 ```
