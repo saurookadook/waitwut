@@ -6,8 +6,11 @@ sectionSlug: 'notes'
 ---
 
 - [AlgoCasts: Exercises and Solutions](/notes/dsa/algorithm-exercises/algo-casts)
+- [NeetCode](/notes/dsa/neetcode)
+- [CodeSignal](/notes/dsa/code-signal)
 - [DSA Programiz Course](/notes/dsa/programiz-course)
   - _(some of the content from that site is... questionable 😅)_
+- [Google's Tech Dev Guide](/notes/dsa/tech-dev-guide)
 
 ---
 
