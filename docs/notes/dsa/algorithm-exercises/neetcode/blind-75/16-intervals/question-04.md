@@ -80,7 +80,7 @@ class Solution:
         final_end = sorted_intervals[0].end
 
         for interval in sorted_intervals[1:]:
-            if not interval.start >= final_end:
+            if interval.start < final_end:
                 return False
 
             final_end = interval.end
