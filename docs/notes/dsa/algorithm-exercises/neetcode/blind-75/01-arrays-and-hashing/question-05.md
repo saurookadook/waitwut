@@ -35,6 +35,8 @@ Output: [7]
 - `-1000 <= nums[i] <= 1000`
 - `1 <= k <= number of distinct elements in nums`
 
+---
+
 ## Solutions
 
 ### JavaScript

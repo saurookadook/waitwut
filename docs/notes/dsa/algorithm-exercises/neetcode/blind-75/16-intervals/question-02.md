@@ -35,6 +35,8 @@ Output: [[1,3]]
 - `intervals[i].length == 2`
 - `0 <= start <= end <= 1000`
 
+---
+
 ## Solutions
 
 ### Python

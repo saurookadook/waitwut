@@ -37,6 +37,8 @@ Output: 1
 - `0 <= intervals.length <= 500`
 - `0 <= intervals[i].start < intervals[i].end <= 1,000,000`
 
+---
+
 ## Solutions
 
 ### Python

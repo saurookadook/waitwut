@@ -34,6 +34,8 @@ Output: 4
 - `2 <= height.length <= 1000`
 - `0 <= height[i] <= 1000`
 
+---
+
 ## Solutions
 
 ### Python

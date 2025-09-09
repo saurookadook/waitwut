@@ -38,6 +38,8 @@ Explanation: You cannot rob `nums[0] + nums[2] + nums[4] = 16` because `nums[0]`
 - `1 <= nums.length <= 100`
 - `0 <= nums[i] <= 100`
 
+---
+
 ## Solutions
 
 ### Python

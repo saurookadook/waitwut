@@ -47,6 +47,8 @@ Explanation: The brackets are not closed in the correct order.
 
 - `1 <= s.length <= 1000`
 
+---
+
 ## Solutions
 
 ### JavaScript

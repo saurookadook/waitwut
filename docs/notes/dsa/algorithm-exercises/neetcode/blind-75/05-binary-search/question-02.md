@@ -40,6 +40,8 @@ Output: -1
 - `-1000 <= nums[i] <= 1000`
 - `-1000 <= target <= 1000`
 
+---
+
 ## Python
 
 ### Solutions

@@ -50,6 +50,8 @@ Explanation: The only possible triplet sums up to 0.
 - `3 <= nums.length <= 1000`
 - `-10^5 <= nums[i] <= 10^5`
 
+---
+
 ## Solutions
 
 ### Python

@@ -44,6 +44,8 @@ Output: []
 - `0 <= The length of the each list <= 100`
 - `-100 <= Node.val <= 100`
 
+---
+
 ## Solutions
 
 ### Python

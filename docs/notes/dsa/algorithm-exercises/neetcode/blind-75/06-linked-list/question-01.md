@@ -30,6 +30,8 @@ Output: []
 - `0 <= The length of the list <= 1000`
 - `-1000 <= Node.val <= 1000`
 
+---
+
 ## Solutions
 
 ### Python

@@ -36,6 +36,8 @@ Output: "bb"
 - `1 <= s.length <= 1000`
 - `s` contains only digits and English letters.
 
+---
+
 ## Solutions
 
 ### Python

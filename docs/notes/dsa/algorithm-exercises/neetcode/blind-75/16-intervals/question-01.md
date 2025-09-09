@@ -38,3 +38,5 @@ Output: [[1,2],[3,5],[6,7],[9,10]]
 - `0 <= intervals.length <= 1000`
 - `newInterval.length == intervals[i].length == 2`
 - `0 <= start <= end <= 1000`
+
+---

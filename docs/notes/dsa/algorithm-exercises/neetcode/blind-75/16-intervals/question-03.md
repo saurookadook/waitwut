@@ -35,6 +35,8 @@ Output: 0
 - `intervals[i].length == 2`
 - `-50000 <= starti < endi <= 50000`
 
+---
+
 ## Solutions
 
 ### Python

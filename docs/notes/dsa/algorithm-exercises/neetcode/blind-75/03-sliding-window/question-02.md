@@ -34,6 +34,8 @@ Output: 1
 - `0 <= s.length <= 1000`
 - `s` may consist of printable ASCII characters.
 
+---
+
 ## Solutions
 
 ### Python

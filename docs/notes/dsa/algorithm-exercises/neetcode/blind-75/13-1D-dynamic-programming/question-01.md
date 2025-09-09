@@ -42,6 +42,8 @@ Explanation:
 
 - `1 <= n <= 30`
 
+---
+
 ## Solutions
 
 ### Python

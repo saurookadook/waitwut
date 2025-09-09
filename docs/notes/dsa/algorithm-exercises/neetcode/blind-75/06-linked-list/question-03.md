@@ -43,6 +43,8 @@ Output: false
 - `-1000 <= Node.val <= 1000`
 - `index` is `-1` or a valid index in the linked list.
 
+---
+
 ## Solutions
 
 ### Python
