@@ -5,9 +5,10 @@ fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa'
 sectionSlug: 'notes'
 ---
 
-# [Graph Data Structure](https://www.programiz.com/dsa/graph)
+## [Graph Data Structure](https://www.programiz.com/dsa/graph)
 
-## Subsections
+### Subsections
+
 - [Spanning Tree](/docs/notes/dsa/programiz-course/06-graph-based-dsa/spanning-tree.md)
 - [Strongly Connected Components and Kosarajus Algorithm](/docs/notes/dsa/programiz-course/06-graph-based-dsa/kosarajus-algorithm.md)
 - [Adjacency Matrix](/docs/notes/dsa/programiz-course/06-graph-based-dsa/adjacency-matrix.md)
@@ -16,14 +17,14 @@ sectionSlug: 'notes'
 - [Breadth-First Search](/docs/notes/dsa/programiz-course/06-graph-based-dsa/breadth-first-search.md)
 - [Bellman Ford's Algorithm](/docs/notes/dsa/programiz-course/06-graph-based-dsa/bellman-fords-algorithm.md)
 
-## Overview
+### Overview
 
 - collection of nodes that have data and are connected to other nodes
 - graph is a data structure (V, E) that consists of:
-    - collection of vertices V
-    - collection of edges E, represented as ordered pairs of vertices (u,v)
+  - collection of vertices V
+  - collection of edges E, represented as ordered pairs of vertices (u,v)
 
-```
+```txt
 // vertices and edges
 
 0 --- 3
@@ -44,7 +45,7 @@ G = {V, E}
 
 ---
 
-## Graph Terminology
+### Graph Terminology
 
 - **Adjacency:** vertex is said to be adjacent to another vertex if they are connected by an edge
 - **Path:** sequence of edges which allows going from vertex A to vertex B
@@ -54,14 +55,14 @@ G = {V, E}
 
 ---
 
-## Graph Representation
+### Graph Representation
 
-### 1. Adjacency Matrix
+#### 1. Adjacency Matrix
 
 - 2D array of V x V vertices, each row and column representing a vertex
 - if value of any element `a[i][j]` is 1, it represents that there is an edge connecting vertex `i` and vertex `j`
 
-```
+```txt
 // vertices and edges
 
 0 --- 3
@@ -89,7 +90,7 @@ G = {V, E}
 - edge lookup is extremely fast in adjacency matrix representation
 - requires more space, since we _must_ reserve space for every possible link between all vertices (V x V)
 
-### 2. Adjacency List
+#### 2. Adjacency List
 
 - represents graph as array of linked lists
 - index of array represents vertex and each element in linked list represents other vertices that form an edge with that vertex
@@ -119,9 +120,10 @@ G = {V, E}
 
 ---
 
-## Graph Operations
+### Graph Operations
 
 most common are:
+
 - check if element is present in graph
 - graph traversal
 - add elements(vertex, edges) to graph
@@ -130,4 +132,3 @@ most common are:
 <br/>
 
 ---
-

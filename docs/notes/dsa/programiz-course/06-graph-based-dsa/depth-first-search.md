@@ -5,12 +5,12 @@ fullPath: '/notes/dsa/programiz-course/06-graph-based-dsa/depth-first-search'
 sectionSlug: 'notes'
 ---
 
-# [DFS Algorithm](https://www.programiz.com/dsa/graph-dfs)
+## [DFS Algorithm](https://www.programiz.com/dsa/graph-dfs)
 
 - **Depth-First Search** (or **Depth-First Traversal**) is recursive algorithm for searching all vertices in graph or tree data structure
-    - _traversal = visiting all nodes of a graph_
+  - _traversal = visiting all nodes of a graph_
 
-## Depth-First Search Algorithm
+### Depth-First Search Algorithm
 
 - standard DFS implementation puts each vertex of graph into one of two categories:
     1. Visited
@@ -26,36 +26,36 @@ sectionSlug: 'notes'
 
 ---
 
-## Depth-First Search Example
+### Depth-First Search Example
 
-- Step 0
-    - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-0`_
-- Step 1
-    - start from vertex 0
-    - put it in Visited List and put its adjacent vertices in Stack
-    - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-1`_
-- Step 2
-    - visit element at top of Stack and go to its adjacent nodes
-    - in this example: since 0 has already been visited, we visit 2 instead
-    - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-2`_
-- Steps 3 and 4
-    - Vertex 2 has unvisited adjacent vertex in 4, so add that to top of Stack and visit it
-    - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-3`_
-    - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-4`_
-- Step 5
-    - after visiting last element 3, it doesn't have any unvisited adjacent nodes so we have completed Depth-First Traversal of graph
-    - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-5`_
+- **Step 0**
+  - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-0`_
+- **Step 1**
+  - start from vertex 0
+  - put it in Visited List and put its adjacent vertices in Stack
+  - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-1`_
+- **Step 2**
+  - visit element at top of Stack and go to its adjacent nodes
+  - in this example: since 0 has already been visited, we visit 2 instead
+  - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-2`_
+- **Steps 3 and 4**
+  - Vertex 2 has unvisited adjacent vertex in 4, so add that to top of Stack and visit it
+  - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-3`_
+  - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-4`_
+- **Step 5**
+  - after visiting last element 3, it doesn't have any unvisited adjacent nodes so we have completed Depth-First Traversal of graph
+  - _see `examples/06_GRAPH_BASED_DSA/_images/depth-first-search/graph-dfs-step-5`_
 
 <br/>
 
 ---
 
-## DFS Pseudocode (recursive implementation)
+### DFS Pseudocode (recursive implementation)
 
 - in `init()` function, we run DFS function on every node
-    - since graph might have two different disconnected parts, doing this ensures that we cover every vertex
+  - since graph might have two different disconnected parts, doing this ensures that we cover every vertex
 
-```
+```txt
 // ∈ = "is an element of"
 
 // shorthand
@@ -92,7 +92,7 @@ init() {
 
 ---
 
-## DFS Implementation in Python, Java, and C++
+### DFS Implementation in Python, Java, and C++
 
 > **NODE**: code has been simplified in order to focus on algorithm rather than other details
 
@@ -261,12 +261,12 @@ class Graph {
 
 </details>
 
-### Complexity of Depth-First Search
+#### Complexity of Depth-First Search
 
 - time complexity of DFS algorithm is `O(V + E)`, where `V` is number of nodes and `E` is number of edges
 - space complexity is `O(V)`
 
-### Applications of DFS Algorithm
+#### Applications of DFS Algorithm
 
 - finding the path (of what...?)
 - test if graph is [bipartite](https://mathworld.wolfram.com/BipartiteGraph.html#:~:text=A%20bipartite%20graph%2C%20also%20called,the%20same%20set%20are%20adjacent.)
