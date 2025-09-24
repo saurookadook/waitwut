@@ -33,3 +33,158 @@ Output: 5
 
 - `1 <= s.length <= 1000`
 - `0 <= k <= s.length`
+
+---
+
+## Solutions
+
+### Python
+
+```python
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        return self.solution_1(s, k)
+
+    def solution_1(self, s: str, k: int) -> int:
+        n = len(s)
+        longest_repeating = 0
+        char_set = set(s)
+
+        for c in char_set:
+            count, sliding_idx = 0, 0
+
+            for idx in range(n):
+                if s[idx] == c:
+                    count += 1
+
+                while self.current_window(idx, sliding_idx) - count > k:
+                    if s[sliding_idx] == c:
+                        count -= 1
+                    sliding_idx += 1
+
+                longest_repeating = max(longest_repeating, self.current_window(idx, sliding_idx))
+
+        return longest_repeating
+
+    def current_window(self, idx: int, sliding_idx: int) -> int:
+        return idx - sliding_idx + 1
+
+
+# ============================= 1 =============================
+class BruteForceSolution:
+    """1. Solution utilizing Brute Force Algorithm
+
+    ---- Time & Space Complexity ----
+
+    Time complexity:
+        - `O(n^2)`
+    Space complexity:
+        - `O(m)`
+
+    _NOTE: Where `n` is the length of the string and `m` is the total number of
+    unique characters in the string._
+    """
+
+    def characterReplacement(self, s: str, k: int) -> int:
+        n = len(s)
+        longest_repeating = 0
+
+        for i in range(n):
+            count, maxf = {}, 0
+
+            for j in range(i, n):
+                count[s[j]] = 1 + count.get(s[j], 0)
+                maxf = max(maxf, count[s[j]])
+
+                if self.current_window(j, i) - maxf <= k:
+                    longest_repeating = max(
+                        longest_repeating, self.current_window(j, i)
+                    )
+
+        return longest_repeating
+
+    def current_window(self, idx: int, sliding_idx: int) -> int:
+        return idx - sliding_idx + 1
+
+
+# ============================= 2 =============================
+class SlidingWindowSolution:
+    """2. Solution utilizing a Sliding Window Algorithm
+
+    ---- Time & Space Complexity ----
+
+    Time complexity:
+        - `O(m * n)`
+    Space complexity:
+        - `O(m)`
+
+    _NOTE: Where `n` is the length of the string and `m` is the total number of
+    unique characters in the string._
+    """
+
+    def characterReplacement(self, s: str, k: int) -> int:
+        n = len(s)
+        longest_repeating = 0
+        char_set = set(s)
+
+        for c in char_set:
+            count, sliding_idx = 0, 0
+            for idx in range(n):
+                if s[idx] == c:
+                    count += 1
+
+                while self.current_window(idx, sliding_idx) - count > k:
+                    if s[sliding_idx] == c:
+                        count -= 1
+                    sliding_idx += 1
+
+                longest_repeating = max(
+                    longest_repeating, self.current_window(idx, sliding_idx)
+                )
+
+        return longest_repeating
+
+    def current_window(self, idx: int, sliding_idx: int) -> int:
+        return idx - sliding_idx + 1
+
+
+# ============================= 3 =============================
+class OptimalSlidingWindowSolution:
+    """3. Solution utilizing an optimized Sliding Window Algorithm
+
+    ---- Time & Space Complexity ----
+
+    Time complexity:
+        - `O(n)`
+    Space complexity:
+        - `O(m)`
+
+    _NOTE: Where `n` is the length of the string and `m` is the total number of
+    unique characters in the string._
+    """
+
+    def characterReplacement(self, s: str, k: int) -> int:
+        n = len(s)
+        count_map = {}
+        longest_repeating = 0
+
+        l = 0
+        maxf = 0
+        for r in range(n):
+            r_char = s[r]
+            count_map[r_char] = 1 + count_map.get(r_char, 0)
+            maxf = max(maxf, count_map[r_char])
+
+            while self.current_window(r, l) - maxf > k:
+                count_map[s[l]] -= 1
+                l += 1
+
+            longest_repeating = max(longest_repeating, self.current_window(r, l))
+
+        return longest_repeating
+
+    def current_window(self, idx: int, sliding_idx: int) -> int:
+        return idx - sliding_idx + 1
+
+
+```

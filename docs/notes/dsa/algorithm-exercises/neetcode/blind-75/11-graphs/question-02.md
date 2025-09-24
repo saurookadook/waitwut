@@ -18,7 +18,7 @@ class Node {
 }
 ```
 
-The graph is shown in the test cases as an adjacency list. **An adjacency list** is a mapping of nodes to lists, used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.
+The graph is shown in the test cases as an adjacency list. An **adjacency list** is _a mapping of nodes to lists, used to represent a finite graph_. Each list describes the set of neighbors of a node in the graph.
 
 For simplicity, nodes values are numbered from `1` to `n`, where `n` is the total number of nodes in the graph. The index of each node within the adjacency list is the same as the node's value (1-indexed).
 
@@ -66,3 +66,127 @@ Explanation: The graph is empty.
 - `0 <= The number of nodes in the graph <= 100`
 - `1 <= Node.val <= 100`
 - There are no duplicate edges and no self-loops in the graph.
+
+---
+
+## Solutions
+
+### Python
+
+```python
+from typing import List, Optional
+
+
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Node:
+    def __init__(self, val=0, neighbors=None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+
+    def __repr__(self):
+        return f"<Node // val: {self.val}, neighbors: {[n.val for n in self.neighbors]}>"
+
+
+class Solution:
+    def cloneGraph(self, node: Optional["Node"]) -> Optional["Node"]:
+        if not node:
+            return None
+
+        visited = dict()
+
+        def get_or_create_node_clone(node: Node) -> Node | None:
+            nonlocal visited
+
+            if node in visited:
+                return visited[node]
+
+            cloned = Node(val=node.val)
+            visited[node] = cloned
+
+            for neighbor in node.neighbors:
+                cloned.neighbors.append(get_or_create_node_clone(neighbor))
+
+            return cloned
+
+        return get_or_create_node_clone(node)
+
+
+# ============================= 1 =============================
+class DepthFirstSearchSolution:
+    """1. Solution utilizing a Depth-First Search algorithm
+
+    Time & Space Complexity
+
+    Time complexity:
+        `O(V * E)`
+    Space complexity:
+        `O(V)`
+
+    _NOTE: Where `V` is the number of vertices and `E` is the number of edges.
+    """
+
+    def cloneGraph(self, node: Optional[Node]) -> Optional[Node]:
+        cloned_node_lookup = {}
+
+        def dfs(node):
+            if node in cloned_node_lookup:
+                return cloned_node_lookup[node]
+
+            copy = Node(node.val)
+            cloned_node_lookup[node] = copy
+
+            for neighbor in node.neighbors:
+                copy.neighbors.append(dfs(neighbor))
+
+            return copy
+
+        return dfs(node) if node else None
+
+
+# ============================= 2 =============================
+from collections import deque
+
+
+class BreadthFirstSearchSolution:
+    """2. Solution utilizing a Breadth-First Search algorithm
+
+    Time & Space Complexity
+
+    Time complexity:
+        `O(V * E)`
+    Space complexity:
+        `O(V)`
+
+    _NOTE: Where `V` is the number of vertices and `E` is the number of edges.
+    """
+
+    def cloneGraph(self, node: Optional[Node]) -> Optional[Node]:
+        if not node:
+            return None
+
+        cloned_node_lookup = {}
+        cloned_node_lookup[node] = Node(val=node.val)
+        q = deque([node])
+
+        while q:
+            current = q.popleft()
+
+            for neighbor in current.neighbors:
+                if neighbor not in cloned_node_lookup:
+                    cloned_node_lookup[neighbor] = Node(neighbor.val)
+                    q.append(neighbor)
+                cloned_node_lookup[current].neighbors.append(
+                    cloned_node_lookup[neighbor]
+                )
+
+        return cloned_node_lookup[node]
+
+
+```

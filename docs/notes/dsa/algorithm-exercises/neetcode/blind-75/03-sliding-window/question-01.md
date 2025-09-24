@@ -7,7 +7,7 @@ sectionSlug: 'notes'
 
 ## Instructions
 
-You are given an integer array `prices` where `prices[i]` is the price of NeetCoin on the <code><em>i<sup>th</sup></em></code> day.
+You are given an integer array `prices` where `prices[i]` is the price of NeetCoin on the <em class="math">i<sup>th</sup></em> day.
 
 You may choose a **single day** to buy one NeetCoin and choose a **different day in the future** to sell it.
 

@@ -189,6 +189,11 @@ const WaitwutStyles = createGlobalStyle`
             ); */
         }
 
+        & em.math {
+          font-family: 'math', 'Times New Roman';
+          font-weight: 600;
+        }
+
         & .doc-list {
             padding-left: 0;
         }
@@ -224,6 +229,28 @@ const WaitwutStyles = createGlobalStyle`
                 color: ${themeColors.darkerPurpleHex};
                 display: inline-block;
             }
+        }
+
+        & #continuous-functions-grid {
+          display: flex;
+          flex-direction: column;
+          font-style: italic;
+          margin: 0 auto;
+          width: fit-content;
+
+          & > div {
+            column-gap: 0.25rem;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(10px, 24px));
+          }
+
+          & .main-expressions {
+            /* */
+          }
+
+          & .sub-expressions {
+            font-size: 0.625rem;
+          }
         }
     }
 `;

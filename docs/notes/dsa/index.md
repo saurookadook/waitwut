@@ -204,3 +204,28 @@ class DataCache {
     }
 }
 ```
+
+---
+
+## Misc
+
+Map data structure naming conventions often vary by programming language, framework, and team preferences, but several common practices promote clarity and readability.
+General Principles:
+Descriptive names: The name should clearly indicate the purpose and content of the map.
+Consistency: Adhere to a chosen naming convention throughout the codebase.
+Avoid ambiguity: Ensure the name doesn't lead to confusion about the map's role or the types of data it stores.
+
+### Common Map Naming Conventions
+
+- **Indicating Key-Value Relationship**:
+  - `keyToValueMap` or `keyMap`: This pattern explicitly highlights the mapping relationship. For example, userIdToAccountMap, nameToAddressMap.
+  - **Type-specific suffixes**: Appending `Map` to the name of the value type. For example, `accountMap` (if values are accounts), `userPreferencesMap`.
+- **Pluralization (for collections)**:
+  - **Plural form of the value type**: When a map effectively represents a collection of items, using the plural form of the value type can be intuitive. For example, `accountsById`, `productsBySku`.
+- **Contextual Naming**:
+  - **Reflecting the domain**: Incorporate terms from the application domain to make the map's purpose evident. For example, `customerOrders`, `inventoryLevels`.
+
+#### Considerations for Complex Maps (e.g., maps of maps):
+
+- **Layered naming**: Combine conventions to reflect the nested structure. For example, `ageToEmailMap` (for `Map<Age, Email>`), or `countryToCityMap` (for `Map<Country, Map<String, City>>`).
+- **Clarity over brevity**: While concise names are generally preferred, ensure clarity is not sacrificed when dealing with complex data structures.

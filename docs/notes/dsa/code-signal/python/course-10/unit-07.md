@@ -15,7 +15,7 @@ This problem could arise on numerous occasions. Imagine running a survey where e
 
 ### Problem 1: Naive Approach
 
-One naive approach is for each element, iterate over the entire list, and count the number of occurrences. However, this approach could lead to <em>O(N<sup>2</sup>)</em> time complexity, which is not suitable for a large dataset, where <em>N</em> is the size of the list.
+One naive approach is for each element, iterate over the entire list, and count the number of occurrences. However, this approach could lead to <em class="math">O(N<sup>2</sup>)</em> time complexity, which is not suitable for a large dataset, where <em class="math">N</em> is the size of the list.
 
 ### Problem 1: Efficient Approach Explanation
 
@@ -65,7 +65,7 @@ Imagine you are building a search feature for an app, and you need a function th
 
 ### Problem 2: Naive Approach
 
-A naive solution to this problem could involve iterating through the entire list for each word storing document indices for each word. While this approach does yield the outcome we are looking for, it is inefficient with a time complexity of <em>O(N<sup>2</sup>)</em>.
+A naive solution to this problem could involve iterating through the entire list for each word storing document indices for each word. While this approach does yield the outcome we are looking for, it is inefficient with a time complexity of <em class="math">O(N<sup>2</sup>)</em>.
 
 ### Problem 2: Efficient Approach Explanation
 
@@ -89,6 +89,6 @@ def keyword_index(docs):
 
 ```
 
-As evident from the function, the keyword_index function runs in <em>O(N)</em> time, achieving the task efficiently with the help of dictionaries.
+As evident from the function, the keyword_index function runs in <em class="math">O(N)</em> time, achieving the task efficiently with the help of dictionaries.
 
 ### Problem 2:

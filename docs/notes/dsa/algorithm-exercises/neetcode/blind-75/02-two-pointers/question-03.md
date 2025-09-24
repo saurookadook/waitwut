@@ -7,7 +7,7 @@ sectionSlug: 'notes'
 
 ## Instructions
 
-You are given an integer array `heights` where `heights[i]` represents the height of the <em>i<sup>th</sup></em> bar.
+You are given an integer array `heights` where `heights[i]` represents the height of the <em class="math">i<sup>th</sup></em> bar.
 
 You may choose any two bars to form a container. Return the maximum amount of water a container can store.
 

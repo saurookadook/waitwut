@@ -199,8 +199,8 @@ counts_by_letter
 ```
 
 ## pretty-printing using `pprint` module from Python standard library
+
 ```python
 from pprint import pprint as pp
 pp(basic_dict)
 ```
-
