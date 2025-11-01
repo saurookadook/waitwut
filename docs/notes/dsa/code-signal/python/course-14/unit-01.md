@@ -31,7 +31,7 @@ Before we jump into **Tree** implementation, let's familiarize ourselves with ke
 - **Path**: A sequence of **Nodes** and **Edges** connecting a **Node** with a descendant.
 - **Acyclic**: **Trees** cannot have cycles, which are **Paths** where the start and end points are the same.
 - **Connected**: All **Nodes** in a **Tree** are connected by **Paths**.
-- <em class="math">E = V − 1</em>: For any **Tree** the number of **Edges** (<em class="math">E</em>) is always one less than the number of vertices (<em class="math">V</em>), illustrating the tree's connectivity without cycles.
+- <em class="math">E = V − 1</em>: For any **Tree** the number of **Edges** (<em class="math">E</em>) is always one less than the number of **Vertices** (<em class="math">V</em>), illustrating the tree's connectivity without cycles.
 
 ## Implementation of Binary and Non-Binary Trees
 
@@ -62,7 +62,7 @@ class Node:
 
 In order to gain a practical understanding of the concepts presented so far, let's take a look at some examples of **Binary and Non-Binary Trees** along with their traversals.
 
-For our **Binary Tree**, let's use a simple structure with three levels of vertices.
+For our **Binary Tree**, let's use a simple structure with three levels of **Vertices**.
 
 ```mermaid
 flowchart TD
