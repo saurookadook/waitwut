@@ -1,6 +1,6 @@
 ---
 title: 'Discovering Connected Components in a Graph Using Depth-First Search'
-date: '2025-10-18'
+date: '2025-10-25'
 fullPath: '/notes/dsa/code-signal/python/course-15/unit-04'
 sectionSlug: 'notes'
 ---

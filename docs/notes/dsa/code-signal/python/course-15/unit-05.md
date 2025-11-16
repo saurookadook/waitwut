@@ -1,6 +1,6 @@
 ---
 title: 'Unveiling the Breadth-First Search Algorithm for Graph Traversal'
-date: '2025-10-18'
+date: '2025-10-30'
 fullPath: '/notes/dsa/code-signal/python/course-15/unit-05'
 sectionSlug: 'notes'
 ---

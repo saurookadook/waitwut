@@ -1,6 +1,6 @@
 ---
 title: 'Finding the Shortest Path in Graphs with BFS Algorithm'
-date: '2025-10-18'
+date: '2025-11-01'
 fullPath: '/notes/dsa/code-signal/python/course-15/unit-06'
 sectionSlug: 'notes'
 ---

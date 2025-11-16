@@ -102,8 +102,8 @@ _in pseudo Python ([ref. from Wikipedia](https://en.wikipedia.org/wiki/Negamax))
 ```python
 def cycle_value(
     starting_value: int,
-    length_of_range: int,  # this is the value used with the modulo operator
-    minimun_value: int = 0,
+    length_of_range: int = 10,  # this is the value used with the modulo operator
+    minimum_value: int = 0,
     shift_offset: int = 0,
     always_positive: bool = False,
 ) -> int:
@@ -113,7 +113,7 @@ def cycle_value(
     Args:
         `starting_value`: _description_
         `length_of_range`: _description_
-        `minimun_value`: _description_
+        `minimum_value`: _description_
         `shift_offset`: _description_
         `always_positive`: _description_
 
@@ -123,14 +123,14 @@ def cycle_value(
     if always_positive:
         return (
             starting_value
-            - minimun_value
+            - minimum_value
             + (shift_offset % length_of_range)
             + length_of_range
-        ) % length_of_range + minimun_value
+        ) % length_of_range + minimum_value
     else:
         return (
-            starting_value - minimun_value + shift_offset
-        ) % length_of_range + minimun_value
+            starting_value - minimum_value + shift_offset
+        ) % length_of_range + minimum_value
 
 ```
 

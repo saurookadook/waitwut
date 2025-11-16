@@ -5,19 +5,22 @@ fullPath: '/notes/dsa/code-signal/javascript/algos-and-ds/course-1-41'
 sectionSlug: 'notes'
 ---
 
-## Mastering Uniqueness and Disjointness with JavaScript Sets
+## 1: Mastering Uniqueness and Disjointness with JavaScript Sets
 
 `Sets` in JavaScript are a powerful way to handle collections of unique items, making them the ideal data structure for solving uniqueness and membership testing problems.
 
-### Problem 1: Check if Two Sets are Disjoint
+### Problem 1.1: Check if Two Sets are Disjoint
+
 Let's begin by considering the function `areDisjoint`, which takes two arrays and determines if they are disjoint, meaning they have no elements in common. This is crucial when analyzing datasets for overlapping values, similar to ensuring that two puzzle pieces from different puzzles don't fit together.
 
 Think of two companies looking to cross-promote products but wishing to target customers who have yet to interact with both brands. Ensuring that their promotional efforts are disjoint becomes essential.
 
-#### Naive Approach
+#### Problem 1.1: Naive Approach
+
 A naive approach would be to iterate over every element in the first array and, for each one, check every element in the second array for a match. This could be likened to standing at the junction of two busy streets and comparing every passerby on one side with every passerby on the other, looking for twins. The time cost grows prohibitively with the number of "passersby," making this method inefficient for larger datasets.
 
-#### Efficient Solution Building
+#### Problem 1.1: Efficient Solution Building
+
 Consider a scenario with a list of names and a super-fast scanner that can immediately tell you whether a name is on the list. In JavaScript terms, this is what `Sets` offer via their `has` method — a way to check presence in constant time.
 
 Let's build the solution, with this analogy in mind, step by step:
@@ -40,15 +43,18 @@ console.log(areDisjoint(['Alice', 'Bob', 'Charlie'], ['Charlie', 'Delta', 'Echo'
 
 This code illustrates how `Sets` can quickly indicate whether two lists share elements, producing `true` for completely disjoint lists and `false` otherwise.
 
-### Problem 2: Remove Duplicates in an Array
+### Problem 1.2: Remove Duplicates in an Array
+
 Now, we move on to a common data-cleaning problem: removing duplicates from an array. Consider a librarian cataloging books; duplicates waste space and need clarification. Like the librarian, we want our array to contain unique entries.
 
-#### Approaches
+#### Problem 1.2: Approaches
+
 The naive approach would involve creating a new list and adding only those items that aren't present, akin to checking each book against the entire catalog before shelving it. This method is impractical for a library of any considerable size due to its squared time complexity.
 
 Let's consider the efficient approach. Enter JavaScript `Sets`, which adhere to the principle that "each member is unique." By converting our array into a `Set`, we automatically remove duplicates
 
-#### Solution Building
+#### Problem 1.2: Solution Building
+
 Let's look at how we can neatly apply this in code:
 
 1. Create a `Set` from our array. We had an assistant who automatically filtered out duplicate names from our lists.
@@ -67,15 +73,20 @@ console.log(removeDuplicates([1, 5, 3, 5, 2, 2, 1]));
 
 These examples demonstrate how `Sets` elegantly handle duplicate removal, producing arrays that succinctly represent the unique elements they originally contained.
 
-## Unraveling Uniqueness and Anagram Mysteries with JavaScript Sets
+---
 
-### Problem 1: Unique Echo
+## 2: Unraveling Uniqueness and Anagram Mysteries with JavaScript Sets
+
+### Problem 2.1: Unique Echo
+
 Picture this: you're given a vast list of words, and you must identify the final word that stands proudly solitary — the last word that is not repeated. Imagine sorting through a database of unique identifiers and finding one identifier towards the end of the list that is unlike any others.
 
-### Naive Approach
+#### Problem 2.1: Naive Approach
+
 The straightforward approach would be to examine each word in reverse, comparing it to every other word for uniqueness. This brute-force method would result in poor time complexity, **`O(n^2)`**, which is less than ideal for large datasets.
 
-### Efficient Approach
+#### Problem 2.1: Efficient Approach
+
 We can use two `Set` instances:
 
 - `wordsSet` to maintain unique words
@@ -118,13 +129,15 @@ function findLastUniqueWord(words) {
 
 This efficient approach, with a time complexity closer to **`O(n)`**, is far superior to the naive method and showcases your proficiency at solving algorithmic problems with JavaScript's `Set`.
 
-## Problem 2: Anagram Matcher
+### Problem 2.2: Anagram Matcher
+
 Now, imagine a different scenario in which you have two arrays of strings, and your task is to find all the words from the first array that have an anagram in the second array.
 
-### Efficient Approach
+#### Problem 2.2: Efficient Approach
+
 We'll create a unique signature for each word by sorting its characters and then compare these signatures for matches. We'll use `Set` to store signatures for efficient access.
 
-### Solution Building
+#### Problem 2.2: Solution Building
 
 1. Construct a function to create sorted character signatures from the input string.
 2. Store these sorted characters from `array2` in a `Set` for fast lookup.
@@ -160,8 +173,8 @@ function findAnagrams(array1, array2) {
 
 By utilizing `Sets` in this manner, we achieve efficient anagram checking with reduced complexity, considering both the **`O(m * logm)`** character sorting for each word and the **`O(n)`** comparison for **`n`** words.
 
-
 ### Practice Task
+
 Picture two spacecraft log files, each a whole array of words. Your mission? Find the words from the second log file that have an anagram in the first log file. Then, add up the length of these matching anagram words. You must return this total length as a number. Now, remember, anagrams are words that have the same letters but rearranged. If a word has no anagram in the other array, abandon it.
 
 ```javascript
@@ -193,6 +206,8 @@ let result = findAnagrams(array1, array2);
 console.log(result);   // output: 9
 
 ```
+
+---
 
 ## Mastering JavaScript Maps: Keys to Efficient Data Handling
 
@@ -259,19 +274,19 @@ superstoreStock.set('soap', 500); // Soap is restocked
 console.log(superstoreStock.has('soap')); // Outputs: true
 ```
 
-## Efficient Data Management with JavaScript Maps
+## 3. Efficient Data Management with JavaScript Maps
 
-### Problem 1: Count Word Frequencies in a Text
+### Problem 3.1: Count Word Frequencies in a Text
 
 Imagine we have a blog. We want to analyze the posts to see which topics are most discussed. A practical solution involves writing a function to count the frequency of each word in a blog post while ignoring case and punctuation.
 
 This function is essential in text analysis tools used in search engine optimization. It can highlight popular topics and even suggest post tags, increasing visibility in search results.
 
-#### Naive Approach
+#### Problem 3.1: Naive Approach
 
 Straight away, we might think to tally word occurrences — an extra tedious process manually! This would mean extra loops, slow performance, and our time is too valuable to be inefficient.
 
-#### Efficient Approach
+#### Problem 3.1: Efficient Approach
 
 Instead, Maps are handy, allowing us to map each unique word to its frequency count effortlessly. With this in mind, we can track how often each word appears with far less code and do it faster!
 
@@ -293,13 +308,13 @@ function countWordFrequencies(text) {
 }
 ```
 
-### Problem 2: Find Sum of Values in a Hashmap
+### Problem 3.2: Find Sum of Values in a Hashmap
 
 Shifting gears to numbers, let's say we have a map representing a simple ledger with categories such as keys and expenses as values. How do we find the total of all categories?
 
 In real life, this could represent a personal finance app displaying your monthly spending. Quickly summing these values gives a clear picture of your financial health — a cornerstone of such an app's utility.
 
-### Approach and Solution Building
+#### Problem 3.2: Approach and Solution Building
 
 Instead, the JavaScript Map's `.values()` method gives us a direct path to iterate over all the values needed for our sum. It's all about having the right tool for the job!
 
@@ -315,17 +330,19 @@ function sumOfMapValues(numberMap) {
 }
 ```
 
-## Solving Algorithmic Puzzles with JavaScript Maps
+---
 
-### Problem 1: Celebrity Element Identification
+## 4. Solving Algorithmic Puzzles with JavaScript Maps
+
+### Problem 4.1: Celebrity Element Identification
 
 Let's put it in a familiar scenario: at a party, it's easy to notice that one person everyone seems to know. This person, akin to the "celebrity" at the party, serves as the analogy for an element in an array that appears more than half the time — our task is to identify this celebrity element amid a crowd of numbers.
 
-#### Naive Approach
+#### Problem 4.1: Naive Approach
 
 The naive way to identify this celebrity is to count the occurrences of each number by looping over the array for each element and seeing if it repeats sufficiently to be our star. Computationally, this translates to significant time (quadratic time complexity) for larger arrays — an apparent inefficiency.
 
-#### Efficient Approach Explanation
+#### Problem 4.1: Efficient Approach Explanation
 
 Now, let's be savvy about this. Enter the `Map`: your sophisticated voting tally system. With it, you can keep a running total of each element appearance as you go through the array once rather than reviewing the entire list for each integer.
 
@@ -348,15 +365,15 @@ function findLeaderInArray(arr) {
 
 ```
 
-### Problem 2: Keyword Document Indexer
+### Problem 4.2: Keyword Document Indexer
 
 Now, let's transition to a digital library setting, where you want to find all articles that mention a specific word, say "sustainability." Just like a librarian who quickly locates books on a topic, we need an efficient system to index words to documents in which they appear — a task vital for modern search engines to function effectively.
 
-#### Naive Approach
+#### Problem 4.2: Naive Approach
 
 Manually scanning through each document to note every word's occurrence, akin to flipping through each book's pages, is our naive approach. This might be manageable for a small number of short documents, but as the library grows, this approach becomes untenable — not to mention it can lead to errors and duplicates.
 
-### Efficient Approach
+#### Problem 4.2: Efficient Approach
 
 Employing `Map`s and `Set`s in JavaScript is akin to using a digital catalog system — swift, error-free, and capable of efficiently handling extensive volumes of data. This approach provides the quick lookup functionality to link words with documents effectively.
 
