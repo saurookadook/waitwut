@@ -1,0 +1,29 @@
+# See rule aliases: https://github.com/DavidAnson/markdownlint#rules--aliases
+
+# Need to disable in order to support PyMdown Tabbed extension and admonitions
+# See: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
+# See: https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+# code-block-style: false
+
+emphasis-style:
+  style: underscore
+
+# H1 headings are automatically inserted by mkdocs
+first-line-h1: false
+
+line-length: false
+
+# Allow same heading name if the parent is different
+no-duplicate-heading:
+  siblings_only: true
+
+no-inline-html: false
+
+# Disabled in order to support references to API
+reference-links-images: false
+
+ul-indent:
+  indent: 2
+
+ul-style:
+  style: sublist
