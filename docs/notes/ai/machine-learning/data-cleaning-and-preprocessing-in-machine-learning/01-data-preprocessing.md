@@ -1,7 +1,7 @@
 ---
 title: 'Data Preprocessing'
 date: '2025-11-16'
-fullPath: '/notes/ai/machine-learning/data-cleaning-and-preprocessing-in-machine-learning/data-preprocessing'
+fullPath: '/notes/ai/machine-learning/data-cleaning-and-preprocessing-in-machine-learning/01-data-preprocessing'
 sectionSlug: 'notes'
 ---
 
@@ -11,10 +11,10 @@ sectionSlug: 'notes'
 
 - transforms raw, discordant data into format that can be effectively utilized by machine learning algorithms
 - involves techniques such as
-    * cleaning data
-    * dealing with missing values
-    * data format transformations
-    * data normalization
+  * cleaning data
+  * dealing with missing values
+  * data format transformations
+  * data normalization
 
 ## Intro to Data Preprocessing
 

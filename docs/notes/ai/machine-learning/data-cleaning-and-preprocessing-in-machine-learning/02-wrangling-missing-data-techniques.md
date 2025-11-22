@@ -1,7 +1,7 @@
 ---
 title: 'Wrangling Missing Data: Techniques'
 date: '2025-11-16'
-fullPath: '/notes/ai/machine-learning/data-cleaning-and-preprocessing-in-machine-learning/wrangling-missing-data-techniques'
+fullPath: '/notes/ai/machine-learning/data-cleaning-and-preprocessing-in-machine-learning/02-wrangling-missing-data-techniques'
 sectionSlug: 'notes'
 ---
 
