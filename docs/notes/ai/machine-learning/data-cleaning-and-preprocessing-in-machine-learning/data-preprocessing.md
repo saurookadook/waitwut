@@ -1,7 +1,7 @@
 ---
-title: 'Data Preprocessing: The Titanic Dataset Exploration'
+title: 'Data Preprocessing'
 date: '2025-11-16'
-fullPath: '/notes/ai/machine-learning/data-cleaning-and-preprocessing-in-machine-learning/data-preprocessing-the-titanic-dataset-exploration'
+fullPath: '/notes/ai/machine-learning/data-cleaning-and-preprocessing-in-machine-learning/data-preprocessing'
 sectionSlug: 'notes'
 ---
 
