@@ -6,25 +6,28 @@ iconComponentName: "python_icon"
 sectionSlug: "notes"
 ---
 
-# decorators
+## decorators
+
 - modify or enhance functions without changing their definition
-    - aka, non-intrusive and maintainable
+  * aka, non-intrusive and maintainable
 - implemented as callables that take and return other callables
 - how they work:
-    - Python takes decorated function and creates new function object
-    - that function object is then passed to decorator function
-    - return value from decorator function is then bound to the name of the original function
+  * Python takes decorated function and creates new function object
+  * that function object is then passed to decorator function
+  * return value from decorator function is then bound to the name of the original function
 
-## Basic Syntax
+### Basic Syntax
+
 ```python
 @my_decorator
 def my_function():
     pass
 ```
 
-## First Decorator Example
+### First Decorator Example
 
 Consider: for whatever reason, you need to ensure that these functions return strings which only contain ASCII characters
+
 ```python
 # translated_words.py
 def vegetable():
@@ -37,9 +40,11 @@ def mineral():
     return 'stål'
 ```
 
-Solution 1: wrap strings in `ascii()`
+**Solution 1**: wrap strings in `ascii()`
+
 - not scalable
 - not maintainable
+
 ```python
 # translated_words.py
 def vegetable():
@@ -52,7 +57,8 @@ def mineral():
     return ascii('stål')
 ```
 
-Solution 2: using `escape_unicode` decorator
+**Solution 2**: using `escape_unicode` decorator
+
 ```python
 # escape_unicode.py
 def escape_unicode(f):
@@ -85,9 +91,10 @@ mineral()
 #=> 'st\\xe5l'
 ```
 
-## Other Objects as Decorators
+### Other Objects as Decorators
 
-### Classes as Decorators
+#### Classes as Decorators
+
 ```python
 class MyDec:
     def __init__(self, f):
@@ -103,6 +110,7 @@ def func():
 ```
 
 Example:
+
 ```python
 class CallCount:
     def __init__(self, f):
@@ -133,7 +141,7 @@ def hello(name):
 #=> 4
 ```
 
-### Instances as Decorators
+#### Instances as Decorators
 
 ```python
 class AnotherDec:
@@ -149,6 +157,7 @@ def func():
 ```
 
 Example:
+
 ```python
 # tracer.py
 class Trace:
@@ -186,7 +195,8 @@ def rotate_list(l):
 
 ```
 
-## Multiple Decorators
+### Multiple Decorators
+
 - simply declare decorators above function with each decorator on a new line
 - processed in reverse order
 
@@ -198,7 +208,7 @@ def some_function():
     pass
 ```
 
-## Decorating Methods
+### Decorating Methods
 
 ```python
 from escape_unicode import escape_unicode # from escape_unicode.py
@@ -232,12 +242,13 @@ class IslandMaker:
 
 ```
 
-## `functools.wrap()`
+### `functools.wraps()`
 
 - properly updates metadata on wrapped functions
-- **problem:** naive decorators can lose important metadata
+- **problem**: naive decorators can lose important metadata
 
-### Initial:
+#### Initial
+
 ```python
 # no_op.py
 def hello():
@@ -257,7 +268,8 @@ def hello():
 #=>     Print a well-known message.
 ```
 
-### After adding decorator:
+#### After adding decorator
+
 ```python
 # no_op.py
 def no_op(f):
@@ -282,7 +294,8 @@ def hello():
 #=>
 ```
 
-### After fixing decorator:
+#### After fixing decorator
+
 ```python
 # no_op.py
 def no_op(f):
@@ -311,13 +324,14 @@ def hello():
 #=> 'Print a well-known message.'
 ```
 
-### After fixing decorator with `functools.wrap()`:
+#### After fixing decorator with `functools.wraps()`
+
 ```python
 # no_op.py
 import functools
 
 def no_op(f):
-    @functools.wrap(f)
+    @functools.wraps(f)
     def no_op_wrapper():
         return f()
     return no_op_wrapper
@@ -340,7 +354,7 @@ def hello():
 #=> 'Print a well-known message.'
 ```
 
-## Decorators as argument validators
+### Decorators as argument validators
 
 ```python
 # create_list.py
